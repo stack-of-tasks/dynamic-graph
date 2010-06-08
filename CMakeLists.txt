@@ -96,10 +96,10 @@ ENDIF(WIN32)
 # Install the file in the appropriate place.
 SET(install_libdir_pkgconfig ${CMAKE_INSTALL_PREFIX}/lib/pkgconfig)
 
-CONFIGURE_FILE(${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}.pc.cmake
-  ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}.pc)
+CONFIGURE_FILE(${CMAKE_CURRENT_SOURCE_DIR}/dynamic-graph.pc.cmake
+  ${CMAKE_CURRENT_BINARY_DIR}/dynamic-graph.pc)
 
-INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}.pc
+INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/dynamic-graph.pc
   DESTINATION ${install_libdir_pkgconfig}	
   PERMISSIONS OWNER_READ GROUP_READ WORLD_READ OWNER_WRITE)
 
