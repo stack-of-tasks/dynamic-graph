@@ -9,7 +9,7 @@ SET(libdg_templates "")
 SET(libdg_plugins "")
 SET(PROJECT_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR})
 
-SET(LIBRARY_NAME ${PROJECT_NAME})
+SET(LIBRARY_NAME dgraph)
 
 #ordre est important
 INCLUDE_DIRECTORIES(
