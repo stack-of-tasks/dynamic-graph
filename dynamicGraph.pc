@@ -1,0 +1,13 @@
+prefix=/home/blue/sot-lib
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+datarootdir=${prefix}/share
+docdir=${datarootdir}/doc/dynamicGraph
+
+Name: dynamicGraph
+Description: 
+Version: 1.0
+Requires: MatrixAbstractLayer >= 1.0, dynamicsJRLJapan >= 1.0, hrp2Dynamics >= 1.0, walkGenJrl >= 1.0
+Libs: -L${libdir} -Wl,-R${libdir} -ldynamicGraph 
+Cflags: -I${includedir} 
