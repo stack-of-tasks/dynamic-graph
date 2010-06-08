@@ -22,6 +22,12 @@ SET(libdg_${SOT_MODULE_NAME}_plugins_src
       dgraph/shell-procedure.cpp
 )
 
+# Specify the compile flags for source file.
+SET_SOURCE_FILES_PROPERTIES(${SOT_MODULE_NAME}/shell-functions.cpp 
+			    ${SOT_MODULE_NAME}/shell-procedure.cpp
+        		    PROPERTIES 	 
+			    COMPILE_FLAGS "${MatrixAbstractLayer_cflags}" )
+
 # ---------------------------------------------------------------
 # --- GENERIC RULES ---------------------------------------------
 # ---------------------------------------------------------------

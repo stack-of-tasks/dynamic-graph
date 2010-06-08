@@ -63,9 +63,10 @@ std::ofstream dg_debugfile; //( "/dev/null", std::ios::trunc&std::ios::out );
 
 #endif
 
-DebugTrace dgDebugFLOW(dg_debugfile);
-DebugTrace dgERRORFLOW(dg_debugfile);
-
+namespace dynamicgraph {
+	DebugTrace dgDEBUGFLOW(dg_debugfile);
+	DebugTrace dgERRORFLOW(dg_debugfile);
+}
 
 void DebugTrace::openFile( const char * filename )
 {

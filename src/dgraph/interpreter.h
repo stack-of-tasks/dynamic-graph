@@ -180,9 +180,6 @@ class DYNAMICGRAPH_EXPORT Interpreter
 
 };
 
-
-DYNAMICGRAPH_EXPORT extern Interpreter Shell;
-
 /* -------------------------------------------------------------------------- */
 /* -------------------------------------------------------------------------- */
 /* -------------------------------------------------------------------------- */
@@ -204,8 +201,11 @@ public:
 	ShellFunctionRegisterer reg( name,boost::bind(fun,_1,_2,_3) );\
   }
 
+DYNAMICGRAPH_EXPORT extern Interpreter Shell;
 
 } // namespace dynamicgraph
+
+
 
 #endif /* #ifndef  */
 

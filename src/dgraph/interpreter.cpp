@@ -400,6 +400,7 @@ cmdComputeSignal( const std::string& cmdLine, std::istringstream& cmdArg, std::o
 void Interpreter::
 cmd( const std::string& cmdLine, istringstream& cmdArg, std::ostream& os )
 {
+ cout << "#HACK cmd(" << cmdArg.str() << ")" << endl;
   istringstream cmdparse(cmdLine.c_str());
   string obj,fun;
   if (cmdLine.find_first_not_of(" ") == string::npos)
@@ -486,6 +487,7 @@ ShellFunctionRegisterer( const std::string& funName,
 			    const Interpreter::ShellBasicFunction& f)
 {
   dgDEBUGIN(25);
+  cout << "#HACK registering " << funName << endl;
   Shell.registerFunction(funName,f);
   dgDEBUGOUT(25);
 }
@@ -504,5 +506,8 @@ void Interpreter::writeCompletionList(std::ostream& os)
 
 }
 
+namespace dynamicgraph {
 //! The global Shell object.
-Interpreter dynamicgraph::Shell;
+	Interpreter Shell;
+}
+

@@ -488,9 +488,9 @@ cmdCompletionList( const std::string cmdLine, istringstream& cmdArg, std::ostrea
 
 
 extern "C" {
-   ShellFunctionRegisterer regFun2
-   ( "try",boost::bind(ShellFunctions::cmdTry,_1,_2,_3) );
    ShellFunctionRegisterer regFun1
+   ( "try",boost::bind(ShellFunctions::cmdTry,_1,_2,_3) );
+   ShellFunctionRegisterer regFun2
    ( "loadPlugins",boost::bind(ShellFunctions::cmdLoadPlugins,_1,_2,_3) );
    ShellFunctionRegisterer regFun3
     ( "displayPlugins",boost::bind(ShellFunctions::cmdDisplayPlugins,_1,_2,_3) );

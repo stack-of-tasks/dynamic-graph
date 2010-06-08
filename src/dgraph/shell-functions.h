@@ -60,6 +60,7 @@
 #define STATIC_SHELL_FUNCTION( name ) \
   static void name( const std::string cmd,std::istringstream& args, \
                        std::ostream& os )
+
 /*! @ingroup dgraph
   \brief This plugin implements a bunch of useful shell commands.
 
@@ -91,8 +92,6 @@ class SHELLFUNCTIONS_EXPORT ShellFunctions
   STATIC_SHELL_FUNCTION( cmdFlagSet );
   STATIC_SHELL_FUNCTION( cmdCompletionList );
 };
-
-
 
 
 #endif //#ifndef __SOT_SHELL_FUNCTIONS_HH__
