@@ -77,7 +77,7 @@ INCLUDE(debug/SourcesLib.cmake)
 INCLUDE(dgraph/SourcesLib.cmake)
 INCLUDE(signal/SourcesLib.cmake)
 INCLUDE(exception/SourcesLib.cmake)
-MESSAGE("Install prefix = ${CMAKE_INSTALL_PREFIX}")
+
 # -------------------------------------------------------------
 # --- HEADERS -------------------------------------------------
 # -------------------------------------------------------------
