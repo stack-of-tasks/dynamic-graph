@@ -25,8 +25,6 @@
 #include <dynamicGraph/signal.h>
 #include <dynamicGraph/exception-signal.h>
 
-#include <MatrixAbstractLayer/boost.h>
-
 #ifdef WIN32
 #include <Windows.h>
 #endif

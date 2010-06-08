@@ -23,8 +23,6 @@
 #include <dynamicGraph/debug.h>
 #include <dynamicGraph/entity.h>
 
-#include <MatrixAbstractLayer/boost.h>
-
 #include <fstream>
 using namespace std;
 using namespace dynamicgraph;
