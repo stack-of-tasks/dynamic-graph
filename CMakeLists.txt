@@ -16,6 +16,14 @@ SET(PROJECT_VERSION ${${PROJECT_NAME}_VERSION})
 
 SET(CMAKE_VERBOSE_MAKEFILE true)
 
+
+# Get the OS
+SET(OS ${CMAKE_SYSTEM_NAME})
+
+#----------------------------------------------------
+# --- GENERIC FLAGS ---------------------------------
+#----------------------------------------------------
+# Specify the compile flags for the overall library.
 IF(WIN32)
   SET(LIBDIR_KW "/LIBPATH:")
   SET(LIBINCL_KW "")
@@ -27,6 +35,37 @@ IF(UNIX)
   SET(LIBINCL_KW "-l")
   SET(LIB_EXT "")
 ENDIF(UNIX)
+
+# Link flags
+SET(${PROJECT_NAME}_LINK_SRC_FLAGS "")
+SET(${PROJECT_NAME}_LINK_FLAGS "${LIBDIR_KW}${${PROJECT_NAME}_BINARY_DIR}/lib ")
+SET(${PROJECT_NAME}_LINK_FLAGS "${${PROJECT_NAME}_LINK_FLAGS} ${LIBINCLUSION_KW}${${PROJECT_NAME}_INTERN_LIBS}${LIBINCLUSION_EXT}")
+IF(UNIX)
+  SET(${PROJECT_NAME}_LINK_SRC_FLAGS "${${PROJECT_NAME}_LINK_SRC_FLAGS} -ldl")
+  SET(${PROJECT_NAME}_LINK_FLAGS "${${PROJECT_NAME}_LINK_FLAGS} -ldl")
+ENDIF(UNIX)
+
+# Release flags
+IF(\"${CMAKE_BUILD_TYPE}\" STREQUAL \"\" )
+ELSE(\"${CMAKE_BUILD_TYPE}\" STREQUAL \"\" )
+  IF(${CMAKE_BUILD_TYPE} STREQUAL DEBUG)
+    SET(${PROJECT_NAME}_CXXFLAGS ${CMAKE_CXX_FLAGS_DEBUG}) # Useless since CXX_FLAGS, not CXXFLAGS.
+  ENDIF(${CMAKE_BUILD_TYPE} STREQUAL DEBUG)
+  IF(${CMAKE_BUILD_TYPE} STREQUAL RELEASE)
+    SET(${PROJECT_NAME}_CXXFLAGS ${CMAKE_CXX_FLAGS_RELEASE}) # Same here.
+  ENDIF(${CMAKE_BUILD_TYPE} STREQUAL RELEASE)
+ENDIF (\"${CMAKE_BUILD_TYPE}\" STREQUAL \"\")
+
+# --- Default options -------------------------------------------------
+OPTION(BUILD_SHARED_LIBS "Build ${PROJECT_NAME} with shared libraries." ON)
+OPTION(GENERATE_DOC "Generate html documentation" OFF)
+
+OPTION(USE_BOOST "Compile with boost." ON)
+OPTION(USE_DYNAMICS_JRL_JAPAN "Compile with dynamicsJRLJapan" ON)
+
+# Release/Debug
+#SET(CMAKE_BUILD_TYPE RELEASE)
+#SET(CMAKE_BUILD_TYPE DEBUG)
 
 #
 # Look for dependencies
@@ -157,8 +196,6 @@ INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}.pc
 
 ADD_SUBDIRECTORY(src)
 ADD_SUBDIRECTORY(include)
-#ADD_SUBDIRECTORY(unitTesting)
-
 #
 # Documentation produced by doxygen
 #
