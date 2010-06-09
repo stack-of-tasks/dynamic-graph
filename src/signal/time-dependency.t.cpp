@@ -23,13 +23,13 @@
 #ifndef __TIME_DEPENDANCY_TCPP
 #define __TIME_DEPENDANCY_TCPP
 
-#include <dynamicGraph/time-dependency.h>
+#include <dynamic-graph/time-dependency.h>
 
 using namespace dynamicgraph;
 
 #undef VP_TEMPLATE_DEBUG_MODE
 #define VP_TEMPLATE_DEBUG_MODE 0
-#include <dynamicGraph/debug.h>
+#include <dynamic-graph/debug.h>
 
 #define __TIME_DEPENDANCY_INIT(sig,dep)     \
     leader(*sig)                                \

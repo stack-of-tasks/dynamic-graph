@@ -17,13 +17,13 @@
  *
  * ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 
-#include <dynamicGraph/shell-functions.h>
-#include <dynamicGraph/plugin-loader.h>
-#include <dynamicGraph/factory.h>
-#include <dynamicGraph/debug.h>
-#include <dynamicGraph/entity.h>
-#include <dynamicGraph/signal.h>
-#include <dynamicGraph/exception-signal.h>
+#include <dynamic-graph/shell-functions.h>
+#include <dynamic-graph/plugin-loader.h>
+#include <dynamic-graph/factory.h>
+#include <dynamic-graph/debug.h>
+#include <dynamic-graph/entity.h>
+#include <dynamic-graph/signal.h>
+#include <dynamic-graph/exception-signal.h>
 
 #ifdef WIN32
 #include <Windows.h>

@@ -17,7 +17,7 @@
  *
  * ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 
-#include <dynamicGraph/signal-array.h>
+#include <dynamic-graph/signal-array.h>
 
 namespace dynamicgraph {
 	SignalArray<int> sotNOSIGNAL(0);

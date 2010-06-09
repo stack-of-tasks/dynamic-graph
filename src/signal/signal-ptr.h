@@ -25,8 +25,8 @@
 
 #include <iostream>
 
-#include <dynamicGraph/exception-signal.h>
-#include <dynamicGraph/signal.h>
+#include <dynamic-graph/exception-signal.h>
+#include <dynamic-graph/signal.h>
 
 namespace dynamicgraph {
 
@@ -135,7 +135,7 @@ class SignalPtr
 
 } // namespace dynamicgraph
 
-#include <dynamicGraph/signal-ptr.t.cpp>
+#include <dynamic-graph/signal-ptr.t.cpp>
 
 
 #endif // #ifndef __SIGNAL_PTR_HH

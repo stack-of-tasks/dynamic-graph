@@ -23,9 +23,9 @@
 #ifndef __DEPENDANT_SIGNAL_HH
 #define __DEPENDANT_SIGNAL_HH
 
-#include <dynamicGraph/signal.h>
+#include <dynamic-graph/signal.h>
 
-#include <dynamicGraph/time-dependency.h>
+#include <dynamic-graph/time-dependency.h>
 
 namespace dynamicgraph {
 

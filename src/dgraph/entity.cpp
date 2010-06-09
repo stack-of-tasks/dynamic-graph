@@ -18,10 +18,10 @@
  * ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 
 /*! Local framework includes */
-#include <dynamicGraph/entity.h>
-#include <dynamicGraph/pool.h>
-#include <dynamicGraph/pool.h>
-#include <dynamicGraph/debug.h>
+#include <dynamic-graph/entity.h>
+#include <dynamic-graph/pool.h>
+#include <dynamic-graph/pool.h>
+#include <dynamic-graph/debug.h>
 
 /*! System includes */
 #include <stdlib.h>

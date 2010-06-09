@@ -42,7 +42,7 @@
 #include <fstream>
 #include <sstream>
 #include <stdarg.h>
-#include <dynamicGraph/dynamicGraph-API.h>
+#include <dynamic-graph/dynamicGraph-API.h>
 
  
 /* -------------------------------------------------------------------------- */

@@ -27,8 +27,8 @@
 /* --------------------------------------------------------------------- */
 
 /* SOT */
-#include <dynamicGraph/exception-factory.h>
-#include <dynamicGraph/interpreter.h>
+#include <dynamic-graph/exception-factory.h>
+#include <dynamic-graph/interpreter.h>
 
 /* --- STD --- */
 #include <string>

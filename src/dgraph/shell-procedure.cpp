@@ -17,17 +17,17 @@
  *
  * ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 
-#include <dynamicGraph/shell-procedure.h>
-#include <dynamicGraph/plugin-loader.h>
-#include <dynamicGraph/factory.h>
-#include <dynamicGraph/debug.h>
-#include <dynamicGraph/entity.h>
+#include <dynamic-graph/shell-procedure.h>
+#include <dynamic-graph/plugin-loader.h>
+#include <dynamic-graph/factory.h>
+#include <dynamic-graph/debug.h>
+#include <dynamic-graph/entity.h>
 
 #include <fstream>
 using namespace std;
 using namespace dynamicgraph;
 
-void sotShellProcedure::
+void ShellProcedure::
 cmdStartProcedure( const std::string& cmdLine,std::istringstream& args,std::ostream& os )
 {
   if( cmdLine == "help" ) 
@@ -50,7 +50,7 @@ cmdStartProcedure( const std::string& cmdLine,std::istringstream& args,std::ostr
     }
 }
 
-void sotShellProcedure::
+void ShellProcedure::
 cmdContinueProcedure( const std::string& cmdLine,std::istringstream& args,std::ostream& os )
 {
   if( cmdLine == "help" ) 
@@ -83,7 +83,7 @@ cmdContinueProcedure( const std::string& cmdLine,std::istringstream& args,std::o
   currentProc.instructions.push_back( ins );
 }
 
-void sotShellProcedure::
+void ShellProcedure::
 cmdEndProcedure( const std::string& cmdLine,std::istringstream& args,std::ostream& os )
 {
   if( cmdLine == "help" ) 
@@ -110,12 +110,12 @@ cmdEndProcedure( const std::string& cmdLine,std::istringstream& args,std::ostrea
     {      os<< "Redefining proc <"<<procName<<">: procedure already defined. "
 	     << "Overwrite it."<<endl;    }
   ShellFunctionRegisterer registration
-  ( procName.c_str(),boost::bind(&sotShellProcedure::cmdProcedure,
+  ( procName.c_str(),boost::bind(&ShellProcedure::cmdProcedure,
 				 this,procName,_1,_2,_3) );
 
 }
 
-void sotShellProcedure::
+void ShellProcedure::
 cmdProcedure(   const std::string& procname,
 		const std::string& cmdLine,std::istringstream& args,std::ostream& os )
 {
@@ -226,7 +226,7 @@ cmdProcedure(   const std::string& procname,
     }
 }
 
-void sotShellProcedure::
+void ShellProcedure::
 cmdFor( const std::string& cmdLine,std::istringstream& args,std::ostream& os )
 {
   if( cmdLine == "help" ) 
@@ -277,22 +277,22 @@ cmdFor( const std::string& cmdLine,std::istringstream& args,std::ostream& os )
     }
 }
 
-sotShellProcedure sotShellProceduror;
+ShellProcedure sotShellProceduror;
 
 extern "C" {
   ShellFunctionRegisterer regFun1
-  ( "proc",boost::bind(&sotShellProcedure::cmdStartProcedure,
+  ( "proc",boost::bind(&ShellProcedure::cmdStartProcedure,
 		       &sotShellProceduror,_1,_2,_3) );
 
   ShellFunctionRegisterer regFun2
-  ( "->",boost::bind(&sotShellProcedure::cmdContinueProcedure,
+  ( "->",boost::bind(&ShellProcedure::cmdContinueProcedure,
 		       &sotShellProceduror,_1,_2,_3) );
   ShellFunctionRegisterer regFun3
-  ( "endproc",boost::bind(&sotShellProcedure::cmdEndProcedure,
+  ( "endproc",boost::bind(&ShellProcedure::cmdEndProcedure,
 		       &sotShellProceduror,_1,_2,_3) );
 
   ShellFunctionRegisterer regFun4
-  ( "for",boost::bind(&sotShellProcedure::cmdFor,
+  ( "for",boost::bind(&ShellProcedure::cmdFor,
 		      _1,_2,_3) );
 }                                                       
 

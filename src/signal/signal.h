@@ -29,8 +29,8 @@
 #include <string>
 #include <iostream>
 
-#include <dynamicGraph/exception-signal.h>
-#include <dynamicGraph/signal-base.h>
+#include <dynamic-graph/exception-signal.h>
+#include <dynamic-graph/signal-base.h>
 
 
 #ifdef HAVE_LIBBOOST_THREAD
@@ -131,7 +131,7 @@ protected:
 
 } // namespace dynamicgraph
 
-#include <dynamicGraph/signal.t.cpp>
+#include <dynamic-graph/signal.t.cpp>
 
 #endif // #ifndef __SIGNAL_HH
 

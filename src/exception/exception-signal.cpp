@@ -17,7 +17,7 @@
  *
  * ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 
-#include <dynamicGraph/exception-signal.h>
+#include <dynamic-graph/exception-signal.h>
 #include <stdarg.h>
 #include <cstdio>
 

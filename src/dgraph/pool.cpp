@@ -22,9 +22,9 @@
 /* --------------------------------------------------------------------- */
 
 /* --- SOT --- */
-#include <dynamicGraph/pool.h>
-#include <dynamicGraph/debug.h>
-#include <dynamicGraph/entity.h>
+#include <dynamic-graph/pool.h>
+#include <dynamic-graph/debug.h>
+#include <dynamic-graph/entity.h>
 #include <list>
 #include <typeinfo>
 
@@ -128,7 +128,7 @@ clearPlugin( const std::string& name )
 
 /* --------------------------------------------------------------------- */
 
-#include <dynamicGraph/entity.h>
+#include <dynamic-graph/entity.h>
 
 #ifdef WIN32
 #include <time.h>
@@ -246,7 +246,7 @@ commandLine( const std::string& objectName,const std::string& functionName,
 
 
 
-#include <dynamicGraph/interpreter.h>
+#include <dynamic-graph/interpreter.h>
 
 SignalBase<int>&
 PoolStorage::

@@ -23,8 +23,8 @@
 /* --------------------------------------------------------------------- */
 
 /* --- SOT --- */
-#include <dynamicGraph/debug.h>
-#include <dynamicGraph/factory.h>
+#include <dynamic-graph/debug.h>
+#include <dynamic-graph/factory.h>
 
 using namespace std;
 using namespace dynamicgraph;

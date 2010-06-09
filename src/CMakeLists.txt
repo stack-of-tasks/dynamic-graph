@@ -88,17 +88,17 @@ SET(ADDED_SRC_DEPEND_PROPERTIES "")
 FOREACH (header ${libdg_headers} ${libdg_templates}) 
   GET_FILENAME_COMPONENT(headerName ${header} NAME)
   ADD_CUSTOM_COMMAND(
-   OUTPUT ${${PROJECT_NAME}_BINARY_DIR}/include/dynamicGraph/${headerName}
+   OUTPUT ${${PROJECT_NAME}_BINARY_DIR}/include/dynamic-graph/${headerName}
    COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_CURRENT_SOURCE_DIR}/${header} 
-           ${${PROJECT_NAME}_BINARY_DIR}/include/dynamicGraph/${headerName}
+           ${${PROJECT_NAME}_BINARY_DIR}/include/dynamic-graph/${headerName}
    DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/${header}  
   )
   INSTALL(FILES
-	   ${${PROJECT_NAME}_BINARY_DIR}/include/dynamicGraph/${headerName}
-	   DESTINATION ${CMAKE_INSTALL_PREFIX}/include/dynamicGraph
+	   ${${PROJECT_NAME}_BINARY_DIR}/include/dynamic-graph/${headerName}
+	   DESTINATION ${CMAKE_INSTALL_PREFIX}/include/dynamic-graph
 	   PERMISSIONS OWNER_READ GROUP_READ WORLD_READ OWNER_WRITE)
   SET(HEADER_IN_INCLUDE_DIR ${HEADER_IN_INCLUDE_DIR} 
-       ${${PROJECT_NAME}_BINARY_DIR}/include/dynamicGraph/${headerName})
+       ${${PROJECT_NAME}_BINARY_DIR}/include/dynamic-graph/${headerName})
 ENDFOREACH(header)
 
 # --- Create a top level rule to copy all the headers from src to include/dynamicGraph
@@ -218,19 +218,19 @@ FOREACH (plugin ${libdg_plugins_headers})
   
   # Add a command to copy the header.
   ADD_CUSTOM_COMMAND(
-	OUTPUT ${${PROJECT_NAME}_BINARY_DIR}/include/dynamicGraph/${pluginHeader}
+	OUTPUT ${${PROJECT_NAME}_BINARY_DIR}/include/dynamic-graph/${pluginHeader}
 	COMMAND ${CMAKE_COMMAND} -E copy 
 	${CMAKE_CURRENT_SOURCE_DIR}/${plugin} 
-	${${PROJECT_NAME}_BINARY_DIR}/include/dynamicGraph/${pluginHeader}
+	${${PROJECT_NAME}_BINARY_DIR}/include/dynamic-graph/${pluginHeader}
 	DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/${plugin})
 
-  INSTALL(FILES ${${PROJECT_NAME}_BINARY_DIR}/include/dynamicGraph/${pluginHeader}
-	   DESTINATION ${CMAKE_INSTALL_PREFIX}/include/dynamicGraph
+  INSTALL(FILES ${${PROJECT_NAME}_BINARY_DIR}/include/dynamic-graph/${pluginHeader}
+	   DESTINATION ${CMAKE_INSTALL_PREFIX}/include/dynamic-graph
 	   PERMISSIONS OWNER_READ GROUP_READ WORLD_READ OWNER_WRITE)
   
   # Create a top level rule to copy all the headers from src to include/dg
   ADD_CUSTOM_TARGET(header_${newsofile} ALL
-	 DEPENDS ${${PROJECT_NAME}_BINARY_DIR}/include/dynamicGraph/${pluginHeader})
+	 DEPENDS ${${PROJECT_NAME}_BINARY_DIR}/include/dynamic-graph/${pluginHeader})
 ENDFOREACH(plugin)
 
 # --- PLUGIN TEMPLATEs -----------------------------------------
@@ -252,7 +252,7 @@ FOREACH (plugin ${libdg_plugins_templates})
 	DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/${plugin})
 
   INSTALL(FILES ${${PROJECT_NAME}_BINARY_DIR}/include/dynamicGraph/${pluginTemplate}
-	   DESTINATION ${CMAKE_INSTALL_PREFIX}/include/dynamicGraph
+	   DESTINATION ${CMAKE_INSTALL_PREFIX}/include/dynamic-graph
 	   PERMISSIONS OWNER_READ GROUP_READ WORLD_READ OWNER_WRITE)
   
   # Create a top level rule to copy all the headers from src to include/dg

@@ -27,8 +27,8 @@
 /* --------------------------------------------------------------------- */
 
 /* SOT */
-#include <dynamicGraph/exception-factory.h>
-#include <dynamicGraph/interpreter.h>
+#include <dynamic-graph/exception-factory.h>
+#include <dynamic-graph/interpreter.h>
 
 /* --- STD --- */
 #include <string>
@@ -46,13 +46,13 @@
 /* --------------------------------------------------------------------- */
 
 #if defined (WIN32) 
-#  if defined (sotShellProcedure_EXPORTS) 
-#    define SOTSHELLPROCEDURE_EXPORT __declspec(dllexport)
+#  if defined (ShellProcedure_EXPORTS)
+#    define ShellProcedure_EXPORT __declspec(dllexport)
 #  else  
-#    define SOTSHELLPROCEDURE_EXPORT __declspec(dllimport)
+#    define ShellProcedure_EXPORT __declspec(dllimport)
 #  endif 
 #else
-#  define SOTSHELLPROCEDURE_EXPORT
+#  define ShellProcedure_EXPORT
 #endif
 
 /* --------------------------------------------------------------------- */
@@ -65,7 +65,7 @@
 
   For more information, load the plugin and type help on a sot shell.
  */
-class SOTSHELLPROCEDURE_EXPORT sotShellProcedure
+class ShellProcedure_EXPORT ShellProcedure
 {
  public:
   struct Instruction

@@ -31,7 +31,7 @@
  *
  * ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 
-#include <dynamicGraph/debug.h>
+#include <dynamic-graph/debug.h>
 #include <fstream>
 #include <ios>
 

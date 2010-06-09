@@ -33,14 +33,14 @@ IF(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
 ENDIF(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  FILE(INSTALL DESTINATION "/home/blue/sot-lib/share/doc/dynamicGraph" TYPE DIRECTORY FILES "/home/blue/sot-devel/dynamicGraph/doc/html")
+  FILE(INSTALL DESTINATION "/home/blue/sot-lib/share/doc/dynamic-graph" TYPE DIRECTORY FILES "/home/blue/sot-devel/dynamicGraph/doc/html")
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  FILE(INSTALL DESTINATION "/home/blue/sot-lib/share/doc/dynamicGraph/html" TYPE FILE FILES "/home/blue/sot-devel/dynamicGraph/doc/dynamicGraph.doxytag")
+  FILE(INSTALL DESTINATION "/home/blue/sot-lib/share/doc/dynamic-graph/html" TYPE FILE FILES "/home/blue/sot-devel/dynamicGraph/doc/dynamicGraph.doxytag")
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  FILE(INSTALL DESTINATION "/home/blue/sot-lib/share/doc/dynamicGraph/html" TYPE DIRECTORY FILES "/home/blue/sot-devel/dynamicGraph/doc/pictures")
+  FILE(INSTALL DESTINATION "/home/blue/sot-lib/share/doc/dynamic-graph/html" TYPE DIRECTORY FILES "/home/blue/sot-devel/dynamicGraph/doc/pictures")
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 

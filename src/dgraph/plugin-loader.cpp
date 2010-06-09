@@ -29,8 +29,8 @@
 #endif
 
 /* --- SOT --- */
-#include <dynamicGraph/plugin-loader.h>
-#include <dynamicGraph/debug.h>
+#include <dynamic-graph/plugin-loader.h>
+#include <dynamic-graph/debug.h>
 
 /* --- STD --- */
 #include <fstream>

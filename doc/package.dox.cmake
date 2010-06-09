@@ -93,7 +93,7 @@ CHM_FILE               =
 HHC_LOCATION           = 
 GENERATE_CHI           = NO
 BINARY_TOC             = NO
-TOC_EXPAND             = YES
+TOC_EXPAND             = NO
 DISABLE_INDEX          = NO
 ENUM_VALUES_PER_LINE   = 1
 GENERATE_TREEVIEW      = YES
@@ -172,7 +172,7 @@ PERL_PATH              = /usr/bin/perl
 #---------------------------------------------------------------------------
 # Configuration::additions related to the search engine   
 #---------------------------------------------------------------------------
-SEARCHENGINE           = NO
+SEARCHENGINE           = YES
 
 
 
@@ -180,7 +180,7 @@ SEARCHENGINE           = NO
 #---------------------------------------------------------------------------
 # Project related configuration options
 #---------------------------------------------------------------------------
-PROJECT_NAME           = "${PROJECT_NAME} library documentation"
+PROJECT_NAME           = "${PROJECT_NAME} library"
 PROJECT_NUMBER         = ${PROJECT_VERSION}
 
 #---------------------------------------------------------------------------
@@ -210,7 +210,7 @@ SHOW_DIRECTORIES       = NO
 #---------------------------------------------------------------------------
 FILE_PATTERNS          = *.h *.idl
 EXCLUDE_PATTERNS       = 
-INPUT                  = ${${PROJECT_NAME}_SOURCE_DIR}/include \
+INPUT                  = ${${PROJECT_NAME}_SOURCE_DIR}/src \
                          ${CMAKE_CURRENT_SOURCE_DIR}/additionalDoc
 
 #---------------------------------------------------------------------------

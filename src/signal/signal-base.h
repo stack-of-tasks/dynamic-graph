@@ -27,7 +27,7 @@
 #include <sstream>
 #include <iostream>
 
-#include <dynamicGraph/exception-signal.h>
+#include <dynamic-graph/exception-signal.h>
 #include <boost/noncopyable.hpp>
 
 namespace dynamicgraph {

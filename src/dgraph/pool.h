@@ -30,9 +30,9 @@
 #include <sstream>
 
 /* --- SOT --- */
-#include <dynamicGraph/exception-factory.h>
-#include <dynamicGraph/signal-base.h>
-#include <dynamicGraph/dynamicGraph-API.h>
+#include <dynamic-graph/exception-factory.h>
+#include <dynamic-graph/signal-base.h>
+#include <dynamic-graph/dynamicGraph-API.h>
 
 namespace dynamicgraph
 {

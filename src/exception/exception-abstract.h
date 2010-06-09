@@ -29,7 +29,7 @@
 /* Classes standards. */
 #include <iostream>                /* Classe ostream.    */
 #include <string>                  /* Classe string.     */
-#include <dynamicGraph/dynamicGraph-API.h>
+#include <dynamic-graph/dynamicGraph-API.h>
 
 
 // Uncomment this macros to have lines parameter on the throw display

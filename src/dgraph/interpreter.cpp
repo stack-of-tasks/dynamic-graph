@@ -23,9 +23,9 @@
 /* --------------------------------------------------------------------- */
 
 /* SOT */
-#include <dynamicGraph/interpreter.h>
-#include <dynamicGraph/plugin-loader.h>
-#include <dynamicGraph/debug.h>
+#include <dynamic-graph/interpreter.h>
+#include <dynamic-graph/plugin-loader.h>
+#include <dynamic-graph/debug.h>
 
 /* --- STD --- */
 using namespace std;
@@ -92,10 +92,10 @@ deregisterFunction( const std::string& funname )
 /* --------------------------------------------------------------------- */
 /* --- NEW ------------------------------------------------------------- */
 /* --------------------------------------------------------------------- */
-#include <dynamicGraph/factory.h>
+#include <dynamic-graph/factory.h>
 using namespace std;
-#include <dynamicGraph/entity.h>
-#include <dynamicGraph/signal-base.h>
+#include <dynamic-graph/entity.h>
+#include <dynamic-graph/signal-base.h>
 
 void Interpreter::
 cmdPlug( const std::string& cmdLine, istringstream& cmdArg, std::ostream& os )

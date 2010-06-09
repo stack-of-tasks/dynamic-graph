@@ -23,11 +23,11 @@
 #ifndef __SIGNAL_PTR_TCPP
 #define __SIGNAL_PTR_TCPP
 
-#include <dynamicGraph/signal-ptr.h>
+#include <dynamic-graph/signal-ptr.h>
 
 #undef VP_TEMPLATE_DEBUG_MODE
 #define VP_TEMPLATE_DEBUG_MODE 0
-#include <dynamicGraph/debug.h>
+#include <dynamic-graph/debug.h>
 
 using namespace dynamicgraph;
 

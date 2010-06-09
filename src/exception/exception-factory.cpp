@@ -17,8 +17,8 @@
  *
  * ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 
-#include <dynamicGraph/exception-factory.h>
-#include <dynamicGraph/debug.h>
+#include <dynamic-graph/exception-factory.h>
+#include <dynamic-graph/debug.h>
 #include <stdarg.h>
 #include <cstdio>
 

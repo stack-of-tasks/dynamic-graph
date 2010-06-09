@@ -23,8 +23,8 @@
 #ifndef __SIGNAL_ARRAY_HH
 #define __SIGNAL_ARRAY_HH
 
-#include <dynamicGraph/signal-base.h>
-#include <dynamicGraph/dynamicGraph-API.h>
+#include <dynamic-graph/signal-base.h>
+#include <dynamic-graph/dynamicGraph-API.h>
 
 namespace dynamicgraph {
 

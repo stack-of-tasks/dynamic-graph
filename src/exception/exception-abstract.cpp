@@ -19,8 +19,8 @@
 
 
 
-#include <dynamicGraph/exception-abstract.h>
-#include <dynamicGraph/debug.h>
+#include <dynamic-graph/exception-abstract.h>
+#include <dynamic-graph/debug.h>
 
 using namespace std;
 using namespace dynamicgraph;

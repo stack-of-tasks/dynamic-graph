@@ -17,8 +17,8 @@
  *
  * ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 
-#include <dynamicGraph/contiifstream.h>
-#include <dynamicGraph/debug.h>
+#include <dynamic-graph/contiifstream.h>
+#include <dynamic-graph/debug.h>
 
 sotContiifstream::
 sotContiifstream( const std::string& n )

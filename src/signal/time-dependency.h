@@ -26,8 +26,8 @@
 #include <list>
 #include <iostream> 
 
-#include <dynamicGraph/signal-base.h>
-#include <dynamicGraph/signal-array.h>
+#include <dynamic-graph/signal-base.h>
+#include <dynamic-graph/signal-array.h>
 
 template< class Time >
 class TimeDependancy
@@ -90,6 +90,6 @@ class TimeDependancy
 
 };
 
-#include <dynamicGraph/time-dependency.t.cpp>
+#include <dynamic-graph/time-dependency.t.cpp>
 
 #endif /* #ifndef __TIME_DEPENDANCY_HH */

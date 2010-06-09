@@ -32,8 +32,8 @@
 #include <map>
 
 /* --- SOT --- */
-#include <dynamicGraph/exception-factory.h>
-#include <dynamicGraph/dynamicGraph-API.h>
+#include <dynamic-graph/exception-factory.h>
+#include <dynamic-graph/dynamicGraph-API.h>
 
 namespace dynamicgraph {
 

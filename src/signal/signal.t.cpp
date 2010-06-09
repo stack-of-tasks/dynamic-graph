@@ -23,11 +23,11 @@
 #define __SIGNAL_TEMPLATE
 
 
-#include <dynamicGraph/signal.h>
+#include <dynamic-graph/signal.h>
 
 #undef VP_TEMPLATE_DEBUG_MODE
 #define VP_TEMPLATE_DEBUG_MODE 0
-#include <dynamicGraph/debug.h>
+#include <dynamic-graph/debug.h>
 
 using namespace dynamicgraph;
 
