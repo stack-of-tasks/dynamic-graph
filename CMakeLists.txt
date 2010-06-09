@@ -105,6 +105,7 @@ INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/dynamic-graph.pc
 
 ADD_SUBDIRECTORY(src)
 ADD_SUBDIRECTORY(include)
+ADD_SUBDIRECTORY(unitTesting)
 #
 # Documentation produced by doxygen
 #
