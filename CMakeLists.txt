@@ -4,7 +4,7 @@
 
 CMAKE_MINIMUM_REQUIRED(VERSION 2.6)
 
-SET(PROJECT_NAME dynamicGraph)
+SET(PROJECT_NAME dynamic-graph)
 project(${PROJECT_NAME})
 
 # --- PROJECT VERSION -----------------------
@@ -16,6 +16,7 @@ SET(PROJECT_VERSION ${${PROJECT_NAME}_VERSION})
 
 SET(CMAKE_VERBOSE_MAKEFILE true)
 
+SET(LIBRARY_OUTPUT_PATH ${PROJECT_BINARY_DIR}/lib)
 
 # Get the OS
 SET(OS ${CMAKE_SYSTEM_NAME})
@@ -61,11 +62,6 @@ OPTION(BUILD_SHARED_LIBS "Build ${PROJECT_NAME} with shared libraries." ON)
 OPTION(GENERATE_DOC "Generate html documentation" OFF)
 
 OPTION(USE_BOOST "Compile with boost." ON)
-OPTION(USE_DYNAMICS_JRL_JAPAN "Compile with dynamicsJRLJapan" ON)
-
-# Release/Debug
-#SET(CMAKE_BUILD_TYPE RELEASE)
-#SET(CMAKE_BUILD_TYPE DEBUG)
 
 #
 # Look for dependencies
@@ -106,6 +102,7 @@ INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/dynamic-graph.pc
 ADD_SUBDIRECTORY(src)
 ADD_SUBDIRECTORY(include)
 ADD_SUBDIRECTORY(unitTesting)
+
 #
 # Documentation produced by doxygen
 #

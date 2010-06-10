@@ -24,7 +24,7 @@
 #define __SIGNAL_ARRAY_HH
 
 #include <dynamic-graph/signal-base.h>
-#include <dynamic-graph/dynamicGraph-API.h>
+#include <dynamic-graph/dynamic-graph-API.h>
 
 namespace dynamicgraph {
 

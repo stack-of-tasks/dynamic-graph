@@ -32,7 +32,7 @@
 /* --- SOT --- */
 #include <dynamic-graph/exception-factory.h>
 #include <dynamic-graph/signal-base.h>
-#include <dynamic-graph/dynamicGraph-API.h>
+#include <dynamic-graph/dynamic-graph-API.h>
 
 namespace dynamicgraph
 {

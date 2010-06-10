@@ -4,7 +4,7 @@
 \section intro_dynamicGraph Introduction
 
 This code implements the factory design pattern, making creation of entities
-available to packages depending on the dynamicGraph API.
+available to packages depending on the dynamic-graph API.
 
 Objects, which are derived from Entities, can be
  declared within the code and compiled to shared libraries (.so/.dll files).
@@ -42,7 +42,7 @@ corresponding headers in this module are:
 \ingroup dgraph
 @{
 
-Classes that make up the core of the dynamicGraph library are listed here.
+Classes that make up the core of the dynamic-graph library are listed here.
 @}
 \ingroup signals
 @{
