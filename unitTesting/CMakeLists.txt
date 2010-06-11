@@ -2,36 +2,30 @@
 #  Copyright 
 # 
 
-### test_shell
-SET(EXECUTABLE_NAME test_shell)
+### tests
+SET(tests
+	test_shell
+	test_pool
+	test_depend)
 
-ADD_DEFINITIONS(-DDEBUG=2)
+FOREACH(test_name ${tests})
+	SET(EXECUTABLE_NAME ${test_name})
 
-ADD_EXECUTABLE(${EXECUTABLE_NAME}
-  test_shell.cpp)
+	ADD_DEFINITIONS(-DDEBUG=2)
 
-INCLUDE_DIRECTORIES(
-	${CMAKE_CURRENT_SOURCE_DIR}/../include 
-)
+	ADD_EXECUTABLE(${EXECUTABLE_NAME}
+	  ${test_name}.cpp)
+	
+	INCLUDE_DIRECTORIES(
+		${CMAKE_CURRENT_SOURCE_DIR}/../include 
+	)
 
-LINK_DIRECTORIES(${${PROJECT_NAME}_BINARY_DIR}/lib)
+	LINK_DIRECTORIES(${${PROJECT_NAME}_BINARY_DIR}/lib)
 
-TARGET_LINK_LIBRARIES(${EXECUTABLE_NAME}
-  ${PROJECT_NAME}
-  dl)
-
-
-### test_factory
-# test currently disabled
-#SET(EXECUTABLE_NAME test_factory)
-
-#ADD_DEFINITIONS(-DDEBUG=2)
-
-#ADD_EXECUTABLE(${EXECUTABLE_NAME}
-#  test_factory.cpp)
-
-#INCLUDE_DIRECTORIES(${CMAKE_SOURCE_DIR}/include)
-#link_directories(${LIBRARY_OUTPUT_PATH})
-#TARGET_LINK_LIBRARIES(${EXECUTABLE_NAME}
-#  ${PROJECT_NAME}
-#  dl)
+	TARGET_LINK_LIBRARIES(${EXECUTABLE_NAME}
+	  ${PROJECT_NAME}
+	  dl)
+	  
+	INSTALL(TARGETS ${test_name}
+		DESTINATION ${CMAKE_INSTALL_PREFIX}/bin/${PROJECT_NAME})
+ENDFOREACH(test_name)
