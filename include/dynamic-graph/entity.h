@@ -30,7 +30,7 @@
 #include <dynamic-graph/signal-base.h>
 #include <dynamic-graph/exception-factory.h>
 #include <dynamic-graph/signal-array.h>
-#include <dynamic-graph/dynamic-graph-API.h>
+#include <dynamic-graph/dynamic-graph-api.h>
 
 /* --- STD --- */
 #include <string>

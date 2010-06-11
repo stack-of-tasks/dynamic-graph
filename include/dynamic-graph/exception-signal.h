@@ -27,7 +27,7 @@
 
 
 #include <dynamic-graph/exception-abstract.h>
-#include <dynamic-graph/dynamic-graph-API.h>
+#include <dynamic-graph/dynamic-graph-api.h>
 
 /* --------------------------------------------------------------------- */
 /* --- CLASS ----------------------------------------------------------- */
