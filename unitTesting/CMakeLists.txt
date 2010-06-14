@@ -6,7 +6,8 @@
 SET(tests
 	test_shell
 	test_pool
-	test_depend)
+	test_depend
+	test_factory)
 
 FOREACH(test_name ${tests})
 	SET(EXECUTABLE_NAME ${test_name})

@@ -25,6 +25,7 @@
 #include <string>
 #include <iostream>
 #include <cstdlib>
+#include <sstream>
 
 #include <dynamic-graph/factory.h>
 #include <dynamic-graph/entity.h>
@@ -96,7 +97,8 @@ if( NULL==dlib )
 #endif
   if( NULL==dlib ) 
     {
-      cerr << " Error dl"<<endl;
+	  cout << "This test can only be run after the package StackOfTasks has been installed\n"
+			  "Could not find sotGainAdaptive shared library" << endl;
 #ifndef WIN32
       cerr << dlerror() <<endl;
 #else
@@ -120,7 +122,13 @@ if( NULL==dlib )
       exit(0);
     }
 
-  Entity* gain = factory.newEntity("GainAdaptative","Gain");
+  Entity* gain = 0;
+  if ( !factory.existEntity("GainAdaptative") ) {
+	  cout << "Could not find entity class 'GainAdaptative'" << endl;
+	  exit(0);
+	}
+  else
+	 gain = factory.newEntity("GainAdaptative","Gain");
 
   
   gain->display(cout); cout << endl;
