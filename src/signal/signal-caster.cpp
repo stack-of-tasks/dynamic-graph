@@ -73,12 +73,6 @@ any SignalCaster::cast(const type_info& type, istringstream& iss) {
 /// The global instance of the caster class.
 DYNAMICGRAPH_EXPORT SignalCaster g_caster;
 
-SignalCastRegisterer::SignalCastRegisterer(const std::type_info& type, SignalCaster::displayer_type displayer,
-		SignalCaster::caster_type caster, SignalCaster::tracer_type tracer)
-{
-	g_caster.registerCast(type, displayer, caster, tracer);
-}
-
 /// Default casts, such as casts already supported by std::iostream
 template<typename T> class DefaultCastRegisterer : public SignalCastRegisterer {
 public:

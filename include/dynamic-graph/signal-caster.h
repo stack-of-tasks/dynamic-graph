@@ -65,12 +65,17 @@ private:
 extern SignalCaster g_caster;
 
 /*
- * The SignalCast registerer class. Can be used to automatically register a cast when instanced.
+ * The SignalCast registerer class. Can be used to automatically register a cast when
+ * instanced somewhere in a cpp file. Pass the typeid() of the type you want to
+ * register a cast to as the first argument.
+ * The code is provided here so the class does not need to be exported.
  */
 class SignalCastRegisterer {
 public:
 	SignalCastRegisterer(const std::type_info& type, SignalCaster::displayer_type displayer,
-			SignalCaster::caster_type caster, SignalCaster::tracer_type tracer);
+			SignalCaster::caster_type caster, SignalCaster::tracer_type tracer) {
+		g_caster.registerCast(type, displayer, caster, tracer);
+	}
 };
 
 /*!
