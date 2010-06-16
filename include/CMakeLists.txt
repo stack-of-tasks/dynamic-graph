@@ -27,6 +27,7 @@ signal-ptr.t.cpp
 signal.t.cpp
 time-dependency.h
 time-dependency.t.cpp
+signal-caster.h
 )
 
 # Recreate correct path for the headers

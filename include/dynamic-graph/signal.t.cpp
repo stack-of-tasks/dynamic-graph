@@ -24,6 +24,7 @@
 
 
 #include <dynamic-graph/signal.h>
+#include <dynamic-graph/signal-caster.h>
 
 #undef VP_TEMPLATE_DEBUG_MODE
 #define VP_TEMPLATE_DEBUG_MODE 0
@@ -54,52 +55,52 @@ Signal( std::string name )
 /* -------------------------------------------------------------------------- */
 
 
-//template< class T,class Time >
-//void Signal<T,Time>::
-//set( std::istringstream& stringValue )
-//{
-//  try
-//    {
-//      (*this) = sotSignalCast<T>::cast( stringValue );
-//    }
-//  catch DG_RETHROW
-//    catch (...)
-//      { SOT_THROW ExceptionSignal( ExceptionSignal::SET_IMPOSSIBLE,
-//				      "Set operation not possible with this signal. ",
-//				      "(bad cast while setting %s).",this->getName().c_str());
-//      }
-//
-//}
-//
-//template< class T,class Time >
-//void Signal<T,Time>::
-//get( std::ostream& os ) const
-//{
-//  try { sotSignalCast<T>::disp( this->accessCopy(),os ); }
-//  catch DG_RETHROW
-//    catch (...)
-//      { SOT_THROW ExceptionSignal( ExceptionSignal::SET_IMPOSSIBLE,
-//				      "get operation not possible with this signal. ",
-//				      "(bad cast while getting value from %s).",
-//				      SignalBase<Time>::getName().c_str());
-//      }
-//
-//}
-//
-//template< class T,class Time >
-//void Signal<T,Time>::
-//trace( std::ostream& os ) const
-//{
-//  try { sotSignalCast<T>::trace( this->accessCopy(),os ); }
-//  catch DG_RETHROW
-//    catch (...)
-//      { SOT_THROW ExceptionSignal( ExceptionSignal::SET_IMPOSSIBLE,
-//				      "TRACE operation not possible with this signal. ",
-//				      "(bad cast while getting value from %s).",
-//				      SignalBase<Time>::getName().c_str());
-//      }
-//
-//}
+template< class T,class Time >
+void Signal<T,Time>::
+set( std::istringstream& stringValue )
+{
+  try
+    {
+      (*this) = signal_cast<T>( stringValue );
+    }
+  catch DG_RETHROW
+    catch (...)
+      { DG_THROW ExceptionSignal( ExceptionSignal::SET_IMPOSSIBLE,
+				      "Set operation not possible with this signal. ",
+				      "(bad cast while setting %s).",this->getName().c_str());
+      }
+
+}
+
+template< class T,class Time >
+void Signal<T,Time>::
+get( std::ostream& os ) const
+{
+  try { signal_disp<T>( this->accessCopy(),os ); }
+  catch DG_RETHROW
+    catch (...)
+      { DG_THROW ExceptionSignal( ExceptionSignal::SET_IMPOSSIBLE,
+				      "get operation not possible with this signal. ",
+				      "(bad cast while getting value from %s).",
+				      SignalBase<Time>::getName().c_str());
+      }
+
+}
+
+template< class T,class Time >
+void Signal<T,Time>::
+trace( std::ostream& os ) const
+{
+  try { signal_trace<T>( this->accessCopy(),os ); }
+  catch DG_RETHROW
+    catch (...)
+      { DG_THROW ExceptionSignal( ExceptionSignal::SET_IMPOSSIBLE,
+				      "TRACE operation not possible with this signal. ",
+				      "(bad cast while getting value from %s).",
+				      SignalBase<Time>::getName().c_str());
+      }
+
+}
 
 
 /* -------------------------------------------------------------------------- */

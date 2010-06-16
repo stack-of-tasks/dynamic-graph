@@ -23,6 +23,7 @@ ADD_LIBRARY(${LIBRARY_NAME}
   exception/exception-signal.cpp
   
   signal/signal-array.cpp
+  signal/signal-caster.cpp
   )
 
 SET_TARGET_PROPERTIES(${LIBRARY_NAME} 

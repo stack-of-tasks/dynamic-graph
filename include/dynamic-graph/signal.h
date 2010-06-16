@@ -95,6 +95,11 @@ protected:
   Signal( std::string name );
   virtual ~Signal( void ) {}
 
+  /* --- Generic In/Out function --- */
+  virtual void get( std::ostream& value ) const;
+  virtual void set( std::istringstream& value ) ;
+  virtual void trace( std::ostream& os ) const;
+
   /* --- Generic Set function --- */
   virtual void setConstant( const T& t ); 
   virtual void setReference( const T* t,Mutex *mutexref=NULL );

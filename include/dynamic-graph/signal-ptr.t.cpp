@@ -123,7 +123,7 @@ plug( SignalBase<Time>* unknown_ref )
 	}
       catch(...)
 	{
-	  dgTDEBUG(25) << "FFatal error."<< std::endl;
+	  dgTDEBUG(25) << "Fatal error."<< std::endl;
 	  transmitAbstract = false;
 	  DG_THROW ExceptionSignal( ExceptionSignal::PLUG_IMPOSSIBLE,
 					"Compl. Uncompatible types for plugin.",
@@ -236,8 +236,8 @@ display( std::ostream& os ) const
     }
   else 
     { 
-      if(! isAbstractPluged()) os << " UNPLUGED";
-      else if(autoref()) os << " AUTOPLUGED";
+      if(! isAbstractPluged()) os << " UNPLUGGED";
+      else if(autoref()) os << " AUTOPLUGGED";
     }
      
   dgTDEBUGOUT(25);
