@@ -28,6 +28,7 @@ signal.t.cpp
 time-dependency.h
 time-dependency.t.cpp
 signal-caster.h
+all-signals.h
 )
 
 # Recreate correct path for the headers

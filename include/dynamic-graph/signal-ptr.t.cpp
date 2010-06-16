@@ -46,7 +46,7 @@ getPtr ( void )
   dgTDEBUGIN(25);
   if(! isPluged() )
     DG_THROW ExceptionSignal( ExceptionSignal::NOT_INITIALIZED,
-				  "In sotSignalPtr: SIN ptr not set.",
+				  "In SignalPtr: SIN ptr not set.",
 				  " (in signal <%s>)",getName().c_str());
   dgTDEBUGOUT(25);
   return signalPtr; 
@@ -61,7 +61,7 @@ getPtr ( void ) const
   dgTDEBUGIN(25);
   if(! isPluged() )
     { DG_THROW ExceptionSignal( ExceptionSignal::NOT_INITIALIZED,
-				    "In sotSignalPtr: SIN ptr not set.",
+				    "In SignalPtr: SIN ptr not set.",
 				    " (in signal <%s>)",getName().c_str()); }
   dgTDEBUGOUT(25);
   return signalPtr; 
@@ -73,7 +73,7 @@ getAbstractPtr ( void )
 {
   if(! isAbstractPluged() )
     { DG_THROW ExceptionSignal( ExceptionSignal::NOT_INITIALIZED,
-				    "In sotSignalPtr: SIN ptr not set.",
+				    "In SignalPtr: SIN ptr not set.",
 				    " (in signal <%s>)",getName().c_str()); }
   if( NULL!=signalPtr ) return signalPtr;
   else return abstractTransmitter;
@@ -85,7 +85,7 @@ getAbstractPtr ( void ) const
 {
   if(! isAbstractPluged() )
     { DG_THROW ExceptionSignal( ExceptionSignal::NOT_INITIALIZED,
-				    "In sotSignalPtr: SIN ptr not set.",
+				    "In SignalPtr: SIN ptr not set.",
 				    " (in signal <%s>)",getName().c_str()); }
   if( NULL!=signalPtr ) return signalPtr;
   else return abstractTransmitter;
@@ -232,7 +232,7 @@ display( std::ostream& os ) const
     {
       // 	    dgTDEBUG(25) << "Display pointed."<<std::endl;
       // 	    getPtr()->display(os<<"PTR->"); 
-      os << " -->-- PLUGED";
+      os << " -->-- PLUGGED";
     }
   else 
     { 

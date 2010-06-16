@@ -2,7 +2,7 @@
  * Copyright Projet JRL-Japan, 2007
  *+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
  *
- * File:      sotSignalArray.cpp
+ * File:      SignalArray.cpp
  * Project:   SOT
  * Author:    Nicolas Mansard
  *

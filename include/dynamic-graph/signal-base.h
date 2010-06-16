@@ -109,7 +109,7 @@ class SignalBase : public boost::noncopyable
       }
   /* --- SET ---------------------------------------------------------------- */
 
-  /* Generic set function. Should be reimplemented by the specific sotSignal.
+  /* Generic set function. Should be reimplemented by the specific Signal.
    */
   virtual void set( std::istringstream& value ) 
       { DG_THROW ExceptionSignal( ExceptionSignal::SET_IMPOSSIBLE,

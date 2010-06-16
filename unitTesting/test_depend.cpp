@@ -21,7 +21,7 @@
 /* -------------------------------------------------------------------------- */
 /* --- INCLUDES ------------------------------------------------------------- */
 /* -------------------------------------------------------------------------- */
-// #include <sot/sotSignal.h>
+// #include <dynamic-graph/all-signals.h>
 #include <dynamic-graph/signal.h>
 #include <dynamic-graph/signal-time-dependant.h>
 //#include <sot/TimeDependancy.h>
@@ -111,7 +111,7 @@ int main( void )
 					   sig2<<sig3,"Sig1");
 
 //    cout << "--- Test Array ------ "<<endl;
-//    sotSignalArray<int> tarr(12);
+//    SignalArray<int> tarr(12);
 //    tarr<<sig3<<sig2;//+sig2+sig3;
 //    dispArray(sig4<<sig2<<sig3);
 //    dispArray(tarr);

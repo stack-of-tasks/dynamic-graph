@@ -2,7 +2,7 @@
  * Copyright Projet JRL-Japan, 2007
  *+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
  *
- * File:      sotSignal.t.cpp
+ * File:      Signal.t.cpp
  * Project:   SOT
  * Author:    Nicolas Mansard
  *
