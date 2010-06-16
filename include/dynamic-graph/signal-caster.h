@@ -72,7 +72,7 @@ extern SignalCaster g_caster;
  */
 class SignalCastRegisterer {
 public:
-	SignalCastRegisterer(const std::type_info& type, SignalCaster::displayer_type displayer,
+	inline SignalCastRegisterer(const std::type_info& type, SignalCaster::displayer_type displayer,
 			SignalCaster::caster_type caster, SignalCaster::tracer_type tracer) {
 		g_caster.registerCast(type, displayer, caster, tracer);
 	}
