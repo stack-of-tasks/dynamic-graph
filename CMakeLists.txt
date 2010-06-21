@@ -106,7 +106,10 @@ ADD_SUBDIRECTORY(unitTesting)
 #
 # Documentation produced by doxygen
 #
-INCLUDE(FindDoxygen)
-IF(DOXYGEN_FOUND)
-  add_subdirectory(doc)
-ENDIF(DOXYGEN_FOUND)
+IF(GENERATE_DOC)
+  INCLUDE(FindDoxygen)
+  IF(DOXYGEN_FOUND)
+    MESSAGE(STATUS "Doxygen found")
+    add_subdirectory(doc)
+  ENDIF(DOXYGEN_FOUND)
+ENDIF(GENERATE_DOC)
