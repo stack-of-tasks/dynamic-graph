@@ -12,6 +12,7 @@
 #include <string>
 #include <sstream>
 #include <algorithm>
+#include <dynamic-graph/exception-signal.h>
 
 using namespace std;
 using namespace boost;
@@ -29,14 +30,14 @@ SignalCaster::~SignalCaster() {
 void SignalCaster::registerCast(const type_info& type, SignalCaster::displayer_type displayer,
 		SignalCaster::caster_type caster, SignalCaster::tracer_type tracer) {
 	if ( existsCast(type) )
-		throw ( 1 ); //TODO: throw "cast already registered for type" exception
+		throw ExceptionSignal(ExceptionSignal::GENERIC); //TODO: throw "cast already registered for type" exception
 	functions_[type.name()] = cast_functions_type(displayer,caster, tracer);
 }
 
 void SignalCaster::unregisterCast(const std::type_info& type) {
 	size_t n = functions_.erase(type.name());
 	if ( 0 == n ) // erase did not find element
-		throw ( 1 ); // TODO: throw Cast not registered exception
+		throw ExceptionSignal(ExceptionSignal::GENERIC); // TODO: throw Cast not registered exception
 }
 
 bool SignalCaster::existsCast(const type_info& type) {
@@ -48,7 +49,7 @@ void SignalCaster::disp(const any& object, ostream& os) {
 	map<string, cast_functions_type>::iterator it =
 			functions_.find(type_name);
 	if ( it == functions_.end() )
-		throw 1;; //TODO: throw "cast not registered" exception
+		throw ExceptionSignal(ExceptionSignal::BAD_CAST); //TODO: throw "cast not registered" exception
 	(*it).second.get<0>()(object, os); // call display function (tuple index 0)
 }
 
@@ -57,7 +58,7 @@ void SignalCaster::trace(const any& object, ostream& os) {
 	map<string, cast_functions_type>::iterator it =
 			functions_.find(type_name);
 	if ( it == functions_.end() )
-		throw 1;; //TODO: throw "cast not registered" exception
+		throw ExceptionSignal(ExceptionSignal::BAD_CAST);; //TODO: throw "cast not registered" exception
 	(*it).second.get<2>()(object, os); // call trace function (tuple index 2)
 }
 
@@ -65,7 +66,7 @@ any SignalCaster::cast(const type_info& type, istringstream& iss) {
 	const char* type_name = type.name();
 	map<string, cast_functions_type>::iterator it =	functions_.find(type_name);
 	if ( it == functions_.end() )
-		throw 1;; //TODO: throw "cast not registered" exception
+		throw ExceptionSignal(ExceptionSignal::BAD_CAST);; //TODO: throw "cast not registered" exception
 	return (*it).second.get<1>()(iss); // call cast function (tuple index 1)
 }
 
