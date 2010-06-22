@@ -2,8 +2,8 @@
  * Copyright Projet JRL-Japan, 2007
  *+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
  *
- * File:      sotContiifstream.h
- * Project:   SOT
+ * File:      Contiifstream.h
+ * Project:   DYNAMIC-GRAPH
  * Author:    Nicolas Mansard
  *
  * Version control
@@ -45,17 +45,17 @@
 
 #if defined (WIN32) 
 #  if defined (sotContiifstream_EXPORTS)
-#    define SOTCONTIIFSTREAM_EXPORT __declspec(dllexport)
+#    define DYNAMICGRAPHCONTIIFSTREAM_EXPORT __declspec(dllexport)
 #  else  
-#    define SOTCONTIIFSTREAM_EXPORT __declspec(dllimport)
+#    define DYNAMICGRAPHCONTIIFSTREAM_EXPORT __declspec(dllimport)
 #  endif 
 #else
-#  define SOTCONTIIFSTREAM_EXPORT
+#  define DYNAMICGRAPHCONTIIFSTREAM_EXPORT
 #endif
 /* --------------------------------------------------------------------- */
 /* --- CLASS ----------------------------------------------------------- */
 /* --------------------------------------------------------------------- */
-class SOTCONTIIFSTREAM_EXPORT sotContiifstream
+class DYNAMICGRAPHCONTIIFSTREAM_EXPORT Contiifstream
 {
 protected:
   std::string filename;
@@ -66,8 +66,8 @@ protected:
   bool first;
  
 public: /* --- Constructor --- */
-  sotContiifstream( const std::string& n="" );
-  ~sotContiifstream( void );
+  Contiifstream( const std::string& n="" );
+  ~Contiifstream( void );
   void open( const std::string& n ) { filename=n; cursor=0; }
   
 public: /* --- READ FILE --- */

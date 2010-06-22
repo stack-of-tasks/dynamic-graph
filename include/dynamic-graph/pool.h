@@ -2,8 +2,8 @@
  * Copyright Projet JRL-Japan, 2007
  *+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
  *
- * File:      pool.h
- * Project:   SOT
+ * File:      g_pool.h
+ * Project:   DYNAMIC-GRAPH
  * Author:    François Bleibel (from Nicolas Mansard)
  *
  * Version control
@@ -29,7 +29,7 @@
 #include <string>
 #include <sstream>
 
-/* --- SOT --- */
+/* --- DYNAMIC-GRAPH --- */
 #include <dynamic-graph/exception-factory.h>
 #include <dynamic-graph/signal-base.h>
 #include <dynamic-graph/dynamic-graph-api.h>
@@ -119,8 +119,8 @@ class DYNAMICGRAPH_EXPORT PoolStorage
     If the method of the object displays some information this will
     be done on os.
 
-    The commands specific to the <b>pool<\b> object are:
-    \li <b>list</b> : List all the entities registered in the pool.s
+    The commands specific to the <b>g_pool<\b> object are:
+    \li <b>list</b> : List all the entities registered in the g_pool.s
   */
   void commandLine( const std::string& objectName,const std::string& functionName,
 		    std::istringstream& cmdArg, std::ostream& os );
@@ -130,7 +130,7 @@ class DYNAMICGRAPH_EXPORT PoolStorage
   void writeCompletionList(std::ostream& os);
 };
 
-DYNAMICGRAPH_EXPORT extern dynamicgraph::PoolStorage pool;
+DYNAMICGRAPH_EXPORT extern dynamicgraph::PoolStorage g_pool;
 
 }  // namespace dynamicgraph
 

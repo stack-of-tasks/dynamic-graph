@@ -3,7 +3,7 @@
  *+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
  *
  * File:      ExceptionSignal.cpp
- * Project:   SOT
+ * Project:   DYNAMIC-GRAPH
  * Author:    Nicolas Mansard
  *
  * Version control

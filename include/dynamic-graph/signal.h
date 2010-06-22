@@ -3,7 +3,7 @@
  *+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
  *
  * File:      Signal.h
- * Project:   SOT
+ * Project:   DYNAMIC-GRAPH
  * Author:    Nicolas Mansard
  *
  * Version control

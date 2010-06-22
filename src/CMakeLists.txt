@@ -43,8 +43,8 @@ INSTALL(TARGETS ${LIBRARY_NAME}
 ### Plugins
 ####################################
 SET(plugins_list 
-	dgraph/shell-functions
-	dgraph/shell-procedure
+	plugins/shell-functions
+	plugins/shell-procedure
 	debug/contiifstream
 )
 

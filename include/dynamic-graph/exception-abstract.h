@@ -3,7 +3,7 @@
  *+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
  *
  * File:      exception-abstract.h
- * Project:   SOT
+ * Project:   DYNAMIC-GRAPH
  * Author:    Nicolas Mansard
  *
  * Version control
@@ -33,7 +33,7 @@
 
 
 // Uncomment this macros to have lines parameter on the throw display
-// #define SOT_EXCEPTION_PASSING_PARAM 
+// #define DYNAMIC-GRAPH_EXCEPTION_PASSING_PARAM 
 
 /* --------------------------------------------------------------------- */
 /* --- CLASS ----------------------------------------------------------- */
@@ -91,7 +91,7 @@ public:
   DYNAMICGRAPH_EXPORT friend std::ostream & operator << (std::ostream & os,
 				     const ExceptionAbstract & err);
 
-#ifdef SOT_EXCEPTION_PASSING_PARAM 
+#ifdef DYNAMICGRAPH_EXCEPTION_PASSING_PARAM 
  public:
   class Param
     {
@@ -120,7 +120,7 @@ public:
   template<class Exc>
     friend Exc& operator+ ( const ExceptionAbstract::Param& p, Exc& e )
     { e.p.initCopy(p);   return e;    }
-#endif //#ifdef SOT_EXCEPTION_PASSING_PARAM 
+#endif //#ifdef DYNAMICGRAPH_EXCEPTION_PASSING_PARAM 
 };
 
 } // namespace dynamicgraph
@@ -129,11 +129,11 @@ public:
 
 
 
-#ifdef SOT_EXCEPTION_PASSING_PARAM 
+#ifdef DYNAMICGRAPH_EXCEPTION_PASSING_PARAM
 #  define DG_THROW throw ExceptionAbstract::Param(__LINE__,__FUNCTION__,__FILE__) +
-#else //#ifdef SOT_EXCEPTION_PASSING_PARAM 
+#else //#ifdef DYNAMICGRAPH_EXCEPTION_PASSING_PARAM 
 #  define DG_THROW throw
-#endif //#ifdef SOT_EXCEPTION_PASSING_PARAM 
+#endif //#ifdef DYNAMICGRAPH_EXCEPTION_PASSING_PARAM 
 
 
 #endif /* #ifndef __ABSTRACT_EXCEPTION_H */

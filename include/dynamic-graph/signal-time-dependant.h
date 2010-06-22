@@ -3,7 +3,7 @@
  *+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
  *
  * File:      signal-time-dependant.h
- * Project:   SOT
+ * Project:   DYNAMIC-GRAPH
  * Author:    Nicolas Mansard
  *
  * Version control

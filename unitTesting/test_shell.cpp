@@ -3,7 +3,7 @@
  *+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
  *
  * File:      test_shell.cc
- * Project:   SOT
+ * Project:   DYNAMIC-GRAPH
  * Author:    Nicolas Mansard
  *
  * Version control
@@ -39,7 +39,7 @@ int main( int argc,char** argv )
   
   dgDEBUG(5) << " Loading..." << endl;
   PluginLoader pl;
-  Shell.referencePluginLoader( &pl );
+  g_shell.referencePluginLoader( &pl );
 
   int fileIdx;
   try
@@ -48,7 +48,7 @@ int main( int argc,char** argv )
 	{
 	  std::istringstream script( argv[fileIdx] );
 	  cout << "Run "<< argv[fileIdx] << endl;
-	  Shell.cmd( "run",script,cout );
+	  g_shell.cmd( "run",script,cout );
 	}
     } 
   catch( ExceptionAbstract& e )
@@ -66,7 +66,7 @@ int main( int argc,char** argv )
       try
 	{
 	  dgDEBUG(5) << "Run shell." << endl;
-	  Shell.shell(cin,cout);
+	  g_shell.shell(cin,cout);
 	  dgDEBUG(5) << "Shell over." << endl;
       if( cin.eof() ) break;
 	} 

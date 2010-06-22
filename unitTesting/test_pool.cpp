@@ -68,8 +68,8 @@ main() {
 	MyEntity myEntity("MyEntity");
 
 	cout << "-- Pool.list" << endl;
-	pool.commandLine("pool", "list", *auto_ptr<istringstream>(new istringstream("")), cout);
-	Entity& e = pool.getEntity("MyEntity");
+	g_pool.commandLine("pool", "list", *auto_ptr<istringstream>(new istringstream("")), cout);
+	Entity& e = g_pool.getEntity("MyEntity");
 	cout << "-- Display" << endl;
 	e.display(cout);
 }

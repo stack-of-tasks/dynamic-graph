@@ -3,8 +3,8 @@
  *+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
  *
  * File:      interpretor.cpp
- * Project:   SOT
- * Author:    François Bleibel (from Nicolas Mansard)
+ * Project:   DYNAMIC-GRAPH
+ * Author:    François Bleibel, Nicolas Mansard
  *
  * Version control
  * ===============
@@ -22,7 +22,7 @@
 /* --- INCLUDE --------------------------------------------------------- */
 /* --------------------------------------------------------------------- */
 
-/* SOT */
+/* DYNAMIC-GRAPH */
 #include <dynamic-graph/interpreter.h>
 #include <dynamic-graph/plugin-loader.h>
 #include <dynamic-graph/debug.h>
@@ -121,12 +121,12 @@ cmdPlug( const std::string& cmdLine, istringstream& cmdArg, std::ostream& os )
     }
 
   dgDEBUG(20) << "Get Ent1 <"<<obj1<<"> ."<<endl;
-  Entity& ent1 = pool.getEntity(obj1);
+  Entity& ent1 = g_pool.getEntity(obj1);
   dgDEBUG(20) << "Get Sig1 <"<<fun1<<"> ."<<endl;
   SignalBase<int> &sig1 = ent1.getSignal(fun1);
 
   dgDEBUG(20) << "Get Ent2 <"<<obj2<<"> ."<<endl;
-  Entity& ent2 = pool.getEntity(obj2);
+  Entity& ent2 = g_pool.getEntity(obj2);
   dgDEBUG(20) << "Get Sig2 <"<<fun2<<"> ."<<endl;
   SignalBase<int> &sig2 = ent2.getSignal(fun2);
 
@@ -147,10 +147,10 @@ cmdNew( const std::string& cmdLine, istringstream& cmdArg, std::ostream& os )
   string objName;
   cmdArg >> className >>objName;
   dgDEBUG(15) << "New <" << className<<"> requested."<<endl;
-  if( factory.existEntity( className ) )
+  if( g_factory.existEntity( className ) )
     {
       dgDEBUG(15) << "New entity<"<<className<<"> " <<objName<<std::endl;
-      factory.newEntity(className,objName);
+      g_factory.newEntity(className,objName);
     }
   else os << "  !! Class <" << className << "> does not exist."<<endl;
 }
@@ -167,7 +167,7 @@ cmdDestroy( const std::string& cmdLine, istringstream& cmdArg, std::ostream& os 
     }
   string objName;  cmdArg >> objName;
   dgDEBUG(15) << "Destroy <" << objName <<"> requested."<<endl;
-  delete &( pool.getEntity( objName ) );
+  delete &( g_pool.getEntity( objName ) );
 
 }
 
@@ -334,7 +334,7 @@ cmdSetSignal( const std::string& cmdLine, std::istringstream& cmdArg, std::ostre
 
   string objname,signame;
   objectNameParser(cmdArg,objname,signame);
-  Entity& obj = pool.getEntity(objname);
+  Entity& obj = g_pool.getEntity(objname);
   SignalBase<int>& sig = obj.getSignal( signame );
 
   cmdArg >> ws;
@@ -357,7 +357,7 @@ cmdGetSignal( const std::string& cmdLine, std::istringstream& cmdArg, std::ostre
 
   string objname,signame;
   objectNameParser(cmdArg,objname,signame);
-  Entity& obj = pool.getEntity(objname);
+  Entity& obj = g_pool.getEntity(objname);
   SignalBase<int>& sig = obj.getSignal( signame );
 
   os << signame << " = "; sig.get( os );
@@ -379,7 +379,7 @@ cmdComputeSignal( const std::string& cmdLine, std::istringstream& cmdArg, std::o
 
   string objname,signame;
   objectNameParser(cmdArg,objname,signame);
-  Entity& obj = pool.getEntity(objname);
+  Entity& obj = g_pool.getEntity(objname);
   SignalBase<int>& sig = obj.getSignal( signame );
 
   int time; cmdArg >> std::ws;
@@ -407,7 +407,7 @@ cmd( const std::string& cmdLine, istringstream& cmdArg, std::ostream& os )
   else if( objectNameParser( cmdparse,obj,fun ) )
     {
    dgDEBUG(15) << "Object <" << obj<< "> function <"<<fun<<">"<<endl;
-   pool.commandLine( obj,fun,cmdArg,os );
+   g_pool.commandLine( obj,fun,cmdArg,os );
   }
   else
     {
@@ -486,7 +486,7 @@ ShellFunctionRegisterer( const std::string& funName,
 			    const Interpreter::ShellBasicFunction& f)
 {
   dgDEBUGIN(25);
-  Shell.registerFunction(funName,f);
+  g_shell.registerFunction(funName,f);
   dgDEBUGOUT(25);
 }
 
@@ -505,7 +505,7 @@ void Interpreter::writeCompletionList(std::ostream& os)
 }
 
 namespace dynamicgraph {
-//! The global Shell object.
-	Interpreter Shell;
+//! The global g_shell object.
+	Interpreter g_shell;
 }
 

@@ -3,7 +3,7 @@
  *+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
  *
  * File:      test_factory.cc
- * Project:   SOT
+ * Project:   DYNAMIC-GRAPH
  * Author:    Nicolas Mansard
  *
  * Version control
@@ -123,12 +123,12 @@ if( NULL==dlib )
     }
 
   Entity* gain = 0;
-  if ( !factory.existEntity("GainAdaptative") ) {
+  if ( !g_factory.existEntity("GainAdaptative") ) {
 	  cout << "Could not find entity class 'GainAdaptative'" << endl;
 	  exit(0);
 	}
   else
-	 gain = factory.newEntity("GainAdaptative","Gain");
+	 gain = g_factory.newEntity("GainAdaptative","Gain");
 
   
   gain->display(cout); cout << endl;

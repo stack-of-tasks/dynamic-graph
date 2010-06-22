@@ -3,7 +3,7 @@
  *+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
  *
  * File:      plugin-loader.cpp
- * Project:   SOT
+ * Project:   DYNAMIC-GRAPH
  * Author:    François Bleibel (from Nicolas Mansard)
  *
  * Version control
@@ -28,7 +28,7 @@
 #include <dlfcn.h>
 #endif
 
-/* --- SOT --- */
+/* --- DYNAMIC-GRAPH --- */
 #include <dynamic-graph/plugin-loader.h>
 #include <dynamic-graph/debug.h>
 

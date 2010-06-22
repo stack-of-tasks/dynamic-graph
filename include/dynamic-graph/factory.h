@@ -2,8 +2,8 @@
  * Copyright Projet JRL-Japan, 2007
  *+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
  *
- * File:      factory.h
- * Project:   SOT
+ * File:      g_factory.h
+ * Project:   DYNAMIC-GRAPH
  * Author:    François Bleibel (from Nicolas Mansard)
  *
  * Version control
@@ -30,7 +30,7 @@
 #include <map>
 #include <string>
 
-/* --- SOT --- */
+/* --- DYNAMIC-GRAPH --- */
 #include <dynamic-graph/exception-factory.h>
 #include <dynamic-graph/dynamic-graph-api.h>
 
@@ -78,7 +78,7 @@ class DYNAMICGRAPH_EXPORT FactoryStorage
 
 };
 
-DYNAMICGRAPH_EXPORT extern FactoryStorage factory;
+DYNAMICGRAPH_EXPORT extern FactoryStorage g_factory;
 
 /* --- REGISTERER ----------------------------------------------------------- */
 /* --- REGISTERER ----------------------------------------------------------- */
@@ -105,8 +105,8 @@ class DYNAMICGRAPH_EXPORT EntityRegisterer
 };
 
 /*! This macro should be used to automatically register an entity
- * of classType to the factory. It is then possible to create it
- * with the factory.
+ * of classType to the g_factory. It is then possible to create it
+ * with the g_factory.
  */
 #define DYNAMICGRAPH_FACTORY_ENTITY_PLUGIN(classType,className) \
   const std::string classType::CLASS_NAME = className; \
