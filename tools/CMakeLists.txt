@@ -2,19 +2,18 @@
 #  Copyright 
 # 
 
-### tests
-SET(tests
-	test_pool
-	test_depend
-	test_signalcast)
+### tools
+SET(tools
+	test_shell
+)
 
-FOREACH(test_name ${tests})
-	SET(EXECUTABLE_NAME ${test_name})
+FOREACH(tool_name ${tools})
+	SET(EXECUTABLE_NAME ${tool_name})
 
 	ADD_DEFINITIONS(-DDEBUG=2)
 
 	ADD_EXECUTABLE(${EXECUTABLE_NAME}
-	  ${test_name}.cpp)
+	  ${tool_name}.cpp)
 	
 	INCLUDE_DIRECTORIES(
 		${CMAKE_CURRENT_SOURCE_DIR}/../include 
@@ -26,5 +25,6 @@ FOREACH(test_name ${tests})
 	  ${PROJECT_NAME}
 	  dl)
 	  
-	ADD_TEST(NAME ${test_name} COMMAND ${test_name})
-ENDFOREACH(test_name)
+	INSTALL(TARGETS ${tool_name}
+		DESTINATION ${CMAKE_INSTALL_PREFIX}/bin/${PROJECT_NAME})
+ENDFOREACH(tool_name)
