@@ -7,7 +7,6 @@ SET(tests
 	test_shell
 	test_pool
 	test_depend
-	test_factory
 	test_signalcast)
 
 FOREACH(test_name ${tests})

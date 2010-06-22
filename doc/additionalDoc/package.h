@@ -3,14 +3,14 @@
 
 \section intro_dynamicGraph Introduction
 
-This code implements the g_factory design pattern, making creation of entities
+This code implements the factory design pattern, making creation of entities
 available to packages depending on the dynamic-graph API.
 
 Objects, which are derived from Entities, can be
  declared within the code and compiled to shared libraries (.so/.dll files).
 These libraries can be loaded at run-time using the PluginLoader methods,
 and at the same time register their class names to the Factory (see the
-examples in the DYNAMIC-GRAPH documentation to learn how).
+examples in the SOT documentation to learn how).
 
 The Factory can then create instances of these objects and subsequently
 register them in the Pool, where they can be listed, accessed, and acted upon
