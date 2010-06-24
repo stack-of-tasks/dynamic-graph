@@ -29,7 +29,7 @@
 #define VP_TEMPLATE_DEBUG_MODE 0
 #include <dynamic-graph/debug.h>
 
-using namespace dynamicgraph;
+namespace dynamicgraph {
 
 template< class T,class Time >
 bool SignalPtr<T,Time>::
@@ -262,6 +262,7 @@ displayDependancies( std::ostream& os,const int depth,
   return os;
 }
 
+} // namespace dynamicgraph
 
 #endif // #ifndef __SIGNAL_PTR_TCPP
 

@@ -29,6 +29,9 @@
 #include <dynamic-graph/signal-base.h>
 #include <dynamic-graph/signal-array.h>
 
+namespace dynamicgraph {
+
+
 template< class Time >
 class TimeDependancy
 {
@@ -89,6 +92,9 @@ class TimeDependancy
   Time getPeriodTime( void ) const { return periodTime; }
 
 };
+
+} // namespace dynamicgraph
+
 
 #include <dynamic-graph/time-dependency.t.cpp>
 
