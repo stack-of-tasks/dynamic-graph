@@ -3,7 +3,7 @@
  *+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
  *
  * File:      shell-procedure.h
- * Project:   SOT
+ * Project:   DYNAMIC-GRAPH
  * Author:    François Bleibel (from Nicolas Mansard)
  *
  * Version control
@@ -26,7 +26,7 @@
 /* --- INCLUDE --------------------------------------------------------- */
 /* --------------------------------------------------------------------- */
 
-/* SOT */
+/* DYNAMIC-GRAPH */
 #include <dynamic-graph/exception-factory.h>
 #include <dynamic-graph/interpreter.h>
 
@@ -74,18 +74,18 @@ class ShellProcedure_EXPORT ShellProcedure
     std::vector<std::string> args;
     std::vector<int> params;
   };
-  struct sotProcedure {
+  struct Procedure {
     std::list< Instruction > instructions;
     std::vector< std::string > params;
     void clear() { instructions.clear(); params.clear(); }
   };
-  typedef std::map< std::string,sotProcedure > ProcedureList;
+  typedef std::map< std::string,Procedure > ProcedureList;
 
  public:
   std::string procName;
   ProcedureList procedureList;
 
-  sotProcedure currentProc;
+  Procedure currentProc;
 
  public:
   
@@ -104,4 +104,4 @@ class ShellProcedure_EXPORT ShellProcedure
 
 
 
-#endif //#ifndef __SOT_SHELL_PROCEDURE_HH__
+#endif //#ifndef __DYNAMIC-GRAPH_SHELL_PROCEDURE_HH__

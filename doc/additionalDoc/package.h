@@ -29,9 +29,9 @@ at the command line.
 
 The public static objects (singletons) made available by including the
 corresponding headers in this module are:
-\li factory: FactoryStorage
-\li pool: PoolStorage
-\li Shell: Interpreter
+\li g_factory: FactoryStorage
+\li g_pool: PoolStorage
+\li g_shell: Interpreter
 
 \image html pictures/use-case.svg
 

@@ -2,7 +2,7 @@
  * SignalCaster.cpp
  *
  *  Created on: Jun 14, 2010
- *      Author: blue
+ *      Author: François Bleibel, Nicolas Mansard
  */
 
 #include <dynamic-graph/signal-caster.h>

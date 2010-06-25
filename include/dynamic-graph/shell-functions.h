@@ -3,7 +3,7 @@
  *+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
  *
  * File:      shell-functions.h
- * Project:   SOT
+ * Project:   DYNAMIC-GRAPH
  * Author:    François Bleibel (from Nicolas Mansard)
  *
  * Version control
@@ -26,7 +26,7 @@
 /* --- INCLUDE --------------------------------------------------------- */
 /* --------------------------------------------------------------------- */
 
-/* SOT */
+/* DYNAMIC-GRAPH */
 #include <dynamic-graph/exception-factory.h>
 #include <dynamic-graph/interpreter.h>
 
@@ -94,4 +94,4 @@ class SHELLFUNCTIONS_EXPORT ShellFunctions
 };
 
 
-#endif //#ifndef __SOT_SHELL_FUNCTIONS_HH__
+#endif //#ifndef __DYNAMIC-GRAPH_SHELL_FUNCTIONS_HH__

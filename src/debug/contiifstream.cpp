@@ -2,8 +2,8 @@
  * Copyright Projet JRL-Japan, 2007
  *+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
  *
- * File:      sotContiifstream.cpp
- * Project:   SOT
+ * File:      Contiifstream.cpp
+ * Project:   DYNAMIC-GRAPH
  * Author:    Nicolas Mansard
  *
  * Version control
@@ -20,19 +20,19 @@
 #include <dynamic-graph/contiifstream.h>
 #include <dynamic-graph/debug.h>
 
-sotContiifstream::
-sotContiifstream( const std::string& n )
+Contiifstream::
+Contiifstream( const std::string& n )
   :filename(n),cursor(0),first(true) {}
 
 
-sotContiifstream::
-~sotContiifstream( void )
+Contiifstream::
+~Contiifstream( void )
 {
   dgDEBUGINOUT(5);
 }
 
 
-bool sotContiifstream::
+bool Contiifstream::
 loop( void )
 {
   dgDEBUGIN(25);
@@ -64,7 +64,7 @@ loop( void )
 }
 
 std::string 
-sotContiifstream::next( void ) 
+Contiifstream::next( void ) 
 {
   std::string res = *reader.begin();
   reader.pop_front();

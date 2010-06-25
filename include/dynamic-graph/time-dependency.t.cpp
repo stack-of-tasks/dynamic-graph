@@ -3,7 +3,7 @@
  *+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
  *
  * File:      TimeDependancy.t.cpp
- * Project:   SOT
+ * Project:   DYNAMIC-GRAPH
  * Author:    Nicolas Mansard
  *
  * Version control
@@ -25,7 +25,7 @@
 
 #include <dynamic-graph/time-dependency.h>
 
-using namespace dynamicgraph;
+namespace dynamicgraph {
 
 #undef VP_TEMPLATE_DEBUG_MODE
 #define VP_TEMPLATE_DEBUG_MODE 0
@@ -176,7 +176,7 @@ displayDependancies( std::ostream& os,const int depth,
   return os;
 }
 
-
+} // namespace dynamicgraph
 
 #endif /* #ifndef __TIME_DEPENDANCY_TCPP */
 

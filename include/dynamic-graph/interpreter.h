@@ -3,7 +3,7 @@
  *+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
  *
  * File:      interpreter.h
- * Project:   SOT
+ * Project:   DYNAMIC-GRAPH
  * Author:    François Bleibel (from Nicolas Mansard)
  *
  * Version control
@@ -26,7 +26,7 @@
 /* --- INCLUDE --------------------------------------------------------- */
 /* --------------------------------------------------------------------- */
 
-/* SOT */
+/* DYNAMIC-GRAPH */
 #include <dynamic-graph/signal-base.h>
 #include <dynamic-graph/exception-factory.h>
 #include <dynamic-graph/pool.h>
@@ -185,7 +185,7 @@ class DYNAMICGRAPH_EXPORT Interpreter
 /* -------------------------------------------------------------------------- */
 
 /*! \brief Class for automatic registration of shell functions.
- * Use the macro SOT_SHELL_FUNCTION_REGISTERER(name, fun) in a .cpp file
+ * Use the macro DYNAMIC-GRAPH_SHELL_FUNCTION_REGISTERER(name, fun) in a .cpp file
  * to register functions on plugin load.
  */
 class DYNAMICGRAPH_EXPORT ShellFunctionRegisterer
@@ -201,7 +201,7 @@ public:
 	ShellFunctionRegisterer reg( name,boost::bind(fun,_1,_2,_3) );\
   }
 
-DYNAMICGRAPH_EXPORT extern Interpreter Shell;
+DYNAMICGRAPH_EXPORT extern Interpreter g_shell;
 
 } // namespace dynamicgraph
 

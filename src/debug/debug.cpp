@@ -53,13 +53,13 @@ const char * DebugTrace::DEBUG_FILENAME_DEFAULT = "/tmp/traces_dynamicgraph.txt"
 #endif	/*WIN32*/
 #else
 std::ofstream dg_debugfile; //( "/dev/null", std::ios::trunc&std::ios::out );
- class __dgDebug_init
+ class dgDebug_init
  {
  public:
-   __dgDebug_init( void )
+   dgDebug_init( void )
      { dg_debugfile.setstate( std::ios::failbit ) ; /* dg_debugfile.close(); */ }
  };
- __dgDebug_init __dgDebug_initialisator;
+ dgDebug_init dgDebug_initialisator;
 
 #endif
 

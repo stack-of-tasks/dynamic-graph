@@ -37,13 +37,15 @@
 using namespace std;
 using namespace dynamicgraph;
 
-main() {
-	Signal<int, int> mySignal("out");
-	istringstream value("5");
+int main() {
+	Signal<double, int> mySignal("out");
+	istringstream value("42.0");
 	cout << "[cast] Setting signal value to " << value.str() << endl;
 	mySignal.set(value); // use "set" operation
 	cout << "[disp] The value read is ";
 	mySignal.get(cout);
 	cout << "[trace] Printing out trace: ";
 	mySignal.trace(cout);
+
+	return 0;
 }

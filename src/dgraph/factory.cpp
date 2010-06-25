@@ -3,8 +3,8 @@
  *+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
  *
  * File:      factory.cpp
- * Project:   SOT
- * Author:    François Bleibel (from Nicolas Mansard)
+ * Project:   DYNAMIC-GRAPH
+ * Author:    François Bleibel, Nicolas Mansard
  *
  * Version control
  * ===============
@@ -22,7 +22,7 @@
 /* --- INCLUDE --------------------------------------------------------- */
 /* --------------------------------------------------------------------- */
 
-/* --- SOT --- */
+/* --- DYNAMIC-GRAPH --- */
 #include <dynamic-graph/debug.h>
 #include <dynamic-graph/factory.h>
 
@@ -52,7 +52,7 @@ registerEntity( const std::string& entname,FactoryStorage::EntityConstructor_ptr
     {
 //       DG_THROW ExceptionFactory( ExceptionFactory::OBJECT_CONFLICT,
 // 				 "Another entity class already defined with the same name. ",
-// 				 "(while adding entity class <%s> inside the factory).",
+// 				 "(while adding entity class <%s> inside the g_factory).",
 // 				 entname.c_str() );
       dgERRORF("Another entity class already defined with the same name. "
 		"(while adding entity class <%s> inside the factory).",
@@ -127,7 +127,7 @@ EntityRegisterer( const std::string& entityClassName,
   :entityName( entityClassName )
 {
   dgDEBUGIN(15);
-  factory.registerEntity(entityClassName,maker);
+  g_factory.registerEntity(entityClassName,maker);
   dgDEBUGOUT(15);
 }
 
@@ -136,7 +136,7 @@ EntityRegisterer::
 {
   dgDEBUGIN(15);
 
-  factory.deregisterEntity(entityName);
+  g_factory.deregisterEntity(entityName);
 
   dgDEBUGOUT(15);
 }
@@ -174,6 +174,6 @@ commandLine( const std::string& cmdLine,std::istringstream& cmdArgs,
 }
 
 namespace dynamicgraph {
-	//! The global factory object.
-	FactoryStorage factory;
+	//! The global g_factory object.
+	FactoryStorage g_factory;
 }

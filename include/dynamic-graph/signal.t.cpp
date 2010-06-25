@@ -3,7 +3,7 @@
  *+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
  *
  * File:      Signal.t.cpp
- * Project:   SOT
+ * Project:   DYNAMIC-GRAPH
  * Author:    Nicolas Mansard
  *
  * Version control
@@ -30,7 +30,7 @@
 #define VP_TEMPLATE_DEBUG_MODE 0
 #include <dynamic-graph/debug.h>
 
-using namespace dynamicgraph;
+namespace dynamicgraph {
 
 #define __SIGNAL_INIT(name,Tcpy,Tref,TrefNC,mutex)  \
      SignalBase<Time>(name)               \
@@ -326,6 +326,8 @@ display (std::ostream& os) const
     }
   return os<<")";
 }
+
+} // namespace dynamicgraph
 
 #endif // #ifndef __SIGNAL_TEMPLATE
 

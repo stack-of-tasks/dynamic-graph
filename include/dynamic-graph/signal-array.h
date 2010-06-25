@@ -3,7 +3,7 @@
  *+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
  *
  * File:      SignalArray.h
- * Project:   SOT
+ * Project:   DYNAMIC-GRAPH
  * Author:    Nicolas Mansard
  *
  * Version control
@@ -85,15 +85,6 @@ class SignalArray_const
   virtual const SignalBase<Time>& operator[] ( const unsigned int& idx ) const
     { return *const_array[idx];   }
   virtual unsigned int getSize( void ) const { return rank; }
-
-/*   SignalArray_const<Time>& operator= ( SignalArray<Time> & siga ) */
-/*     { */
-/*       for( unsigned int i=0;i<rank;++i ) const_array[i]=&siga[i];  */
-/*       rank=siga.getSize(); */
-/*     } */
-    
-
-  //  friend class SignalArray<Time>;
 };
 
 
@@ -173,7 +164,12 @@ class SignalArray
 template<class Time>
 SignalArray<Time> operator<<( SignalBase<Time>& sig1,
 				 SignalBase<Time>& sig2 )
-{ SignalArray<Time> res(20); res<<sig1; res<<sig2; return res;}
+{
+	SignalArray<Time> res(20);
+	res<<sig1;
+	res<<sig2;
+	return res;
+}
 
 	DYNAMICGRAPH_EXPORT extern SignalArray<int> sotNOSIGNAL;
 

@@ -3,7 +3,7 @@
  *+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
  *
  * File:      ExceptionAbstract.cpp
- * Project:   SOT
+ * Project:   DYNAMIC-GRAPH
  * Author:    Nicolas Mansard
  *
  * Version control
@@ -70,7 +70,7 @@ getCode (void)
 /* ------------------------------------------------------------------------- */
 /* --- MODIFIORS ----------------------------------------------------------- */
 /* ------------------------------------------------------------------------- */
-#ifdef SOT_EXCEPTION_PASSING_PARAM 
+#ifdef DYNAMICGRAPH_EXCEPTION_PASSING_PARAM 
 
 
 ExceptionAbstract::Param& ExceptionAbstract::Param::
@@ -94,7 +94,7 @@ Param( const int& _line, const char * _function, const char * _file )
 {
     dgDEBUGINOUT(25);
 }
-#endif //#ifdef SOT_EXCEPTION_PASSING_PARAM 
+#endif //#ifdef DYNAMICGRAPH_EXCEPTION_PASSING_PARAM 
 
 /* ------------------------------------------------------------------------- */
 /* --- OP << --------------------------------------------------------------- */
@@ -108,11 +108,11 @@ operator << (ostream & os,
 {
     os << error.getExceptionName()<<"Error [#" << error.code << "]:  " << error.message << endl;
 
-#ifdef SOT_EXCEPTION_PASSING_PARAM 
+#ifdef DYNAMICGRAPH_EXCEPTION_PASSING_PARAM 
     if( error.p.set )
 	os << "Thrown from "<<error.p.file << ": "<<error.p.function
 	   <<" (#"<<error.p.line << ")"<<endl;
-#endif //#ifdef SOT_EXCEPTION_PASSING_PARAM 
+#endif //#ifdef DYNAMICGRAPH_EXCEPTION_PASSING_PARAM 
 
     return os;
 }

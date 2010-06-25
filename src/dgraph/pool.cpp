@@ -3,8 +3,8 @@
  *+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
  *
  * File:      pool.cpp
- * Project:   SOT
- * Author:    François Bleibel (from Nicolas Mansard)
+ * Project:   DYNAMIC-GRAPH
+ * Author:    François Bleibel, Nicolas Mansard
  *
  * Version control
  * ===============
@@ -21,7 +21,7 @@
 /* --- INCLUDE --------------------------------------------------------- */
 /* --------------------------------------------------------------------- */
 
-/* --- SOT --- */
+/* --- DYNAMIC-GRAPH --- */
 #include <dynamic-graph/pool.h>
 #include <dynamic-graph/debug.h>
 #include <dynamic-graph/entity.h>
@@ -264,7 +264,7 @@ getSignal( std::istringstream& sigpath )
 
 
 namespace dynamicgraph {
-	//! The global pool object.
-	PoolStorage pool;
+	//! The global g_pool object.
+	PoolStorage g_pool;
 }
 

@@ -3,7 +3,7 @@
  *+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
  *
  * File:      entity.cpp
- * Project:   SOT
+ * Project:   DYNAMIC-GRAPH
  * Author:    François Bleibel (from Nicolas Mansard)
  *
  * Version control
@@ -39,13 +39,13 @@ entityRegistration( void )
 {
   
   //sotPool.entity[name] = this;
-  pool.registerEntity(name,this);
+  g_pool.registerEntity(name,this);
 }
 
 void Entity::
 entityDeregistration( void ) 
 {
-  pool.deregisterEntity(name);
+  g_pool.deregisterEntity(name);
 }
 
 Entity::

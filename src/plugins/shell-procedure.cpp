@@ -3,8 +3,8 @@
  *+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
  *
  * File:      shell-procedure.cpp
- * Project:   SOT
- * Author:    François Bleibel (from Nicolas Mansard)
+ * Project:   DYNAMIC-GRAPH
+ * Author:    François Bleibel, Nicolas Mansard
  *
  * Version control
  * ===============
@@ -65,10 +65,6 @@ cmdContinueProcedure( const std::string& cmdLine,std::istringstream& args,std::o
   dgDEBUG(5)<<"Proc <" <<procName<<">: "<<cmd2<<endl;
   
   Instruction ins; ins.cmd=cmd2; 
-//   const unsigned int SIZE = 256;
-//   char buffer[SIZE]; args.getline(buffer,SIZE);
-//   dgDEBUG(5)<<"Proc <" <<procName<<"> arg= ["<<buffer<<"]"<<endl;
-//   ins.args=buffer;
   args >> ws;
   while( args.good() )
     {
@@ -97,7 +93,7 @@ cmdEndProcedure( const std::string& cmdLine,std::istringstream& args,std::ostrea
   procedureList[ procName ] = currentProc;
 
 //   std::string toto="toto";
-//   for( sotProcedure::iterator ins=procedureList[ toto ].begin();
+//   for( Procedure::iterator ins=procedureList[ toto ].begin();
 //        ins!=procedureList[ toto ].end(); ++ins )
 //     {
 //       dgDEBUG(15) << "Proc <" << procName << "> : " 
@@ -106,7 +102,7 @@ cmdEndProcedure( const std::string& cmdLine,std::istringstream& args,std::ostrea
 
   currentProc.clear();
 
-  if( Shell.deregisterFunction( procName ))
+  if( g_shell.deregisterFunction( procName ))
     {      os<< "Redefining proc <"<<procName<<">: procedure already defined. "
 	     << "Overwrite it."<<endl;    }
   ShellFunctionRegisterer registration
@@ -119,22 +115,6 @@ void ShellProcedure::
 cmdProcedure(   const std::string& procname,
 		const std::string& cmdLine,std::istringstream& args,std::ostream& os )
 {
-//   if( cmdLine == "help" ) 
-//     {
-//       std::string procname; args >> procname; os<< procname<<endl;
-//       if(! args.good() )
-// 	{
-// 	  os << "  - User defined procedures: "<<endl;
-// 	  for( ProcedureList::iterator iter=procedureList.begin();
-// 	       iter!=procedureList.end(); ++iter )
-// 	    os << "     -> " << iter->first << endl;
-// 	  return;
-// 	}
-//       else
-// 	{
-// 	  os <<"Help on user defined procedure <" << procname << ">"<<std::endl;
-// 	}
-//     }
   if( cmdLine == "help" ) 
     {
       os<<"  - "<<procname<<"\t\t\t\t\tUser-defined procedure"<<endl;
@@ -158,7 +138,7 @@ cmdProcedure(   const std::string& procname,
 						 argname.c_str() );
 		}
 	      
-	      sotProcedure & proc = pair->second;
+	      Procedure & proc = pair->second;
 	      unsigned int cmdnum=1;
 	      for( std::list<Instruction>::iterator ins=proc.instructions.begin();
 		   ins!=proc.instructions.end(); ++ins )
@@ -192,7 +172,7 @@ cmdProcedure(   const std::string& procname,
    * % -> endproc
    * % endproc
    */
-  sotProcedure proc = pair->second;
+  Procedure proc = pair->second;
 
   std::vector< std::string > paramValue;
   for( unsigned int i=0;i<proc.params.size();++i )
@@ -222,7 +202,7 @@ cmdProcedure(   const std::string& procname,
       
       dgDEBUG(15) << " Args = " << oss.str() << endl;
       iss.str(oss.str()); iss.clear();
-      Shell.cmd(ins->cmd,iss,os);
+      g_shell.cmd(ins->cmd,iss,os);
     }
 }
 
@@ -273,7 +253,7 @@ cmdFor( const std::string& cmdLine,std::istringstream& args,std::ostream& os )
 	  if( insp == idx ) { oss << i << " "; } else { oss<<insp<< " "; }
 	}
       iss.str( oss.str() );
-      Shell.cmd(cmd2,iss,os);
+      g_shell.cmd(cmd2,iss,os);
     }
 }
 

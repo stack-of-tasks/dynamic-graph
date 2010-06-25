@@ -3,8 +3,8 @@
  *+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
  *
  * File:      shell-functions.cpp
- * Project:   SOT
- * Author:    François Bleibel (from Nicolas Mansard)
+ * Project:   DYNAMIC-GRAPH
+ * Author:    François Bleibel, Nicolas Mansard
  *
  * Version control
  * ===============
@@ -46,7 +46,7 @@ cmdTry( const std::string cmdLine, istringstream& cmdArg, std::ostream& os )
   cmdArg>>cmdLine2;
   dgDEBUG(5)<<"Try <" <<cmdLine2<<">"<<endl;
   try{
-    Shell.cmd(cmdLine2,cmdArg,os);
+    g_shell.cmd(cmdLine2,cmdArg,os);
   } catch ( const ExceptionAbstract& e ) { os << "dgERROR catch: " <<endl<< e<<endl; }
   catch( ... ) { os<<"Unknown error catch." <<endl; }
 
@@ -60,15 +60,15 @@ cmdLoadPlugins( const std::string cmdLine, std::istringstream& cmdArg, std::ostr
 	 << "\t\tLoad the plugins listed in the file." <<endl;
       return;
     }
-  if( NULL!=Shell.dlPtr )
+  if( NULL!=g_shell.dlPtr )
     {
       string pluginName,directory;
       cmdArg >> pluginName;
       cmdArg >> directory;
       dgDEBUG(15) << "Load plugin list <" <<pluginName<<"> from dir <" << directory<<">."<<endl;
-      if( directory.length() != 0 ) Shell.dlPtr->setDirectory( directory );
-      Shell.dlPtr ->loadPluginList( pluginName );
-      Shell.dlPtr->loadPlugins();
+      if( directory.length() != 0 ) g_shell.dlPtr->setDirectory( directory );
+      g_shell.dlPtr ->loadPluginList( pluginName );
+      g_shell.dlPtr->loadPlugins();
     }
   else { os << "!!  Dynamic loading functionalities not accessible through the shell." <<endl; }
 }
@@ -84,7 +84,7 @@ cmdClearPlugin( const std::string cmdLine, std::istringstream& cmdArg, std::ostr
 
   string pluginName;
   cmdArg >> pluginName;
-  pool.clearPlugin( pluginName );
+  g_pool.clearPlugin( pluginName );
 
 }
 
@@ -97,9 +97,9 @@ cmdDisplayPlugins( const std::string cmdLine, std::istringstream& cmdArg, std::o
 	 << "\t\t\t\tDisplay the name of the loaded plugins." <<endl;
       return;
     }
-  if( NULL!=Shell.dlPtr )
+  if( NULL!=g_shell.dlPtr )
     {
-      std::map< std::string,std::string > m = Shell.dlPtr->getLoadedPluginNames();
+      std::map< std::string,std::string > m = g_shell.dlPtr->getLoadedPluginNames();
       for( std::map< std::string,std::string >::const_iterator iter = m.begin();
 	   iter!=m.end(); ++iter )
 	{
@@ -120,12 +120,12 @@ cmdDisplayFactory( const std::string cmdLine, std::istringstream& cmdArg,
 {
    if( cmdLine == "help" ) 
     {
-      os << "  - "; factory.commandLine(cmdLine,cmdArg,os);
+      os << "  - "; g_factory.commandLine(cmdLine,cmdArg,os);
       return;
     }
    
    string cmd2; cmdArg >> cmd2;
-   factory.commandLine( cmd2,cmdArg,os );
+   g_factory.commandLine( cmd2,cmdArg,os );
 }
 
 void ShellFunctions::
@@ -159,7 +159,7 @@ cmdUnplug( const std::string cmdLine, istringstream& cmdArg, std::ostream& os )
     }
 
   dgDEBUG(20) << "Get Ent2 <"<<obj2<<"> ."<<endl;
-  Entity& ent2 = pool.getEntity(obj2);
+  Entity& ent2 = g_pool.getEntity(obj2);
   dgDEBUG(20) << "Get Sig2 <"<<fun2<<"> ."<<endl;
   SignalBase<int> &sig2 = ent2.getSignal(fun2);
   
@@ -191,7 +191,7 @@ cmdSignalTime( const std::string cmdLine, istringstream& cmdArg, std::ostream& o
     }
 
   dgDEBUG(20) << "Get Ent2 <"<<obj2<<"> ."<<endl;
-  Entity& ent2 = pool.getEntity(obj2);
+  Entity& ent2 = g_pool.getEntity(obj2);
   dgDEBUG(20) << "Get Sig2 <"<<fun2<<"> ."<<endl;
   SignalBase<int> &sig2 = ent2.getSignal(fun2);
   
@@ -208,7 +208,7 @@ cmdSynchroSignal( const std::string cmdLine, std::istringstream& cmdArg, std::os
       return;
     }
 
-  SignalBase<int> & sig = pool.getSignal( cmdArg );
+  SignalBase<int> & sig = g_pool.getSignal( cmdArg );
   cmdArg >>ws;
   if( cmdArg.good() ) 
     {
@@ -265,8 +265,8 @@ cmdCopy( const std::string cmdLine, istringstream& cmdArg, std::ostream& os )
   istringstream str1(ssig1),str2(ssig2);
   
   try {
-    SignalBase<int> &sig1 = pool.getSignal( str1 );
-    SignalBase<int> &sig2 = pool.getSignal( str2 );
+    SignalBase<int> &sig1 = g_pool.getSignal( str1 );
+    SignalBase<int> &sig2 = g_pool.getSignal( str2 );
     
     dgDEBUG(25) << "Copy..."<<endl;
     sig2.plug(&sig1);
@@ -297,7 +297,7 @@ cmdFreeze( const std::string cmdLine, istringstream& cmdArg, std::ostream& os )
   istringstream str1(ssig1);
   
   try {
-    SignalBase<int> &sig1 = pool.getSignal( str1 );
+    SignalBase<int> &sig1 = g_pool.getSignal( str1 );
     
     dgDEBUG(25) << "Unplug..."<<endl;
     sig1.setConstantDefault();
@@ -319,16 +319,6 @@ cmdSqueeze( const std::string cmdLine, istringstream& cmdArg, std::ostream& os )
 	 << "\t\tIntercalate squeezeObj between mainObj and its source." <<endl;
       return;
     }
-
-//   bool target;
-//   {
-//     string source; cmdArg >> ws >> source;
-//     if( source=="source" ) { target=false; }
-//     else if( source=="target" ) { target=true; }
-//     else DG_THROW ExceptionFactory( ExceptionFactory::SYNTAX_ERROR,
-// 					"Squeeze: first arg should be source or target",
-// 					"(while calling squeeze %s ).",source.c_str());
-//   }
   
   string ssigMain,ssigIn,ssigOut;
   cmdArg>>ssigMain>>ssigIn>>ssigOut;
@@ -337,9 +327,9 @@ cmdSqueeze( const std::string cmdLine, istringstream& cmdArg, std::ostream& os )
   istringstream strOut(ssigOut);
 
   try {
-    SignalBase<int> &sigMain = pool.getSignal(strMain  );
-    SignalBase<int> &sigIn = pool.getSignal( strIn );
-    SignalBase<int> &sigOut = pool.getSignal( strOut );
+    SignalBase<int> &sigMain = g_pool.getSignal(strMain  );
+    SignalBase<int> &sigIn = g_pool.getSignal( strIn );
+    SignalBase<int> &sigOut = g_pool.getSignal( strOut );
 
     SignalBase<int> *sigMainSource = sigMain.getPluged();
     if( sigMainSource==&sigMain ) 
@@ -417,8 +407,8 @@ cmdSetPrompt( const std::string cmdLine, istringstream& cmdArg, std::ostream& os
   if( cmdArg. good() )
     {
       char buffer [80]; cmdArg .getline(buffer,80); 
-      Shell .prompt = buffer;
-    } else { os << "Current prompt is <" << Shell. prompt << ">." << endl; }
+      g_shell .prompt = buffer;
+    } else { os << "Current prompt is <" << g_shell. prompt << ">." << endl; }
 }
 
 void ShellFunctions::
@@ -472,7 +462,7 @@ cmdCompletionList( const std::string cmdLine, istringstream& cmdArg, std::ostrea
 
     std::string aFileName; cmdArg >> aFileName;
     std::ofstream completionFile((char *)aFileName.c_str());
-    pool.writeCompletionList( completionFile );
+    g_pool.writeCompletionList( completionFile );
 
 
   } catch( ExceptionAbstract & err ) { throw;  }

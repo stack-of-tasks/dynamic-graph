@@ -3,7 +3,7 @@
  *+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
  *
  * File:      entity.h
- * Project:   SOT
+ * Project:   DYNAMIC-GRAPH
  * Author:    François Bleibel (from Nicolas Mansard)
  *
  * Version control
@@ -26,7 +26,7 @@
 /* --- INCLUDE --------------------------------------------------------- */
 /* --------------------------------------------------------------------- */
 
-/* SOT */
+/* DYNAMIC-GRAPH */
 #include <dynamic-graph/signal-base.h>
 #include <dynamic-graph/exception-factory.h>
 #include <dynamic-graph/signal-array.h>
@@ -52,7 +52,7 @@ namespace dynamicgraph {
 
   These signals link the entities together to form a complete computation graph.
   To declare a new entity, please see the DYNAMICGRAPH_FACTORY_ENTITY_PLUGIN macro
-  in factory.h.
+  in g_factory.h.
   A command-line interface provided by the entity can be used by a sot shell to
   call methods from entities and display the result of their execution.
   Classes that derive from Entity can customize the command-line by overriding commandLine().

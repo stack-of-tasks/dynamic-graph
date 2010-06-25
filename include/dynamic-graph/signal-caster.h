@@ -2,7 +2,7 @@
  * SignalCaster.h
  *
  *  Created on: Jun 14, 2010
- *      Author: blue
+ *      Author: Francois Bleibel
  */
 
 #ifndef SIGNALCASTER_H_
