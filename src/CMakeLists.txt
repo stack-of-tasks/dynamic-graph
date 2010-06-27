@@ -17,23 +17,23 @@ ENDIF (\"${CMAKE_VERBOSITY_LEVEL}\" STREQUAL \"\")
 ADD_LIBRARY(${LIBRARY_NAME}
   SHARED
   debug/debug.cpp
-  
+
   dgraph/entity.cpp
   dgraph/factory.cpp
   dgraph/interpreter.cpp
   dgraph/plugin-loader.cpp
   dgraph/pool.cpp
-  
+
   exception/exception-abstract.cpp
   exception/exception-factory.cpp
   exception/exception-signal.cpp
-  
+
   signal/signal-array.cpp
   signal/signal-caster.cpp
   )
 
-SET_TARGET_PROPERTIES(${LIBRARY_NAME} 
-  PROPERTIES 
+SET_TARGET_PROPERTIES(${LIBRARY_NAME}
+  PROPERTIES
   SOVERSION ${PROJECT_VERSION}
   INSTALL_RPATH ${CMAKE_INSTALL_PREFIX}/lib)
 
@@ -44,11 +44,11 @@ SET_TARGET_PROPERTIES(${LIBRARY_NAME}
 
 INSTALL(TARGETS ${LIBRARY_NAME}
   DESTINATION ${CMAKE_INSTALL_PREFIX}/lib)
- 
+
 ####################################
 ### Plugins
 ####################################
-SET(plugins_list 
+SET(plugins_list
 	plugins/shell-functions
 	plugins/shell-procedure
 	debug/contiifstream
@@ -59,16 +59,16 @@ GET_FILENAME_COMPONENT(plugin ${plugin_file} NAME)
 ADD_LIBRARY(${plugin}
  SHARED
  "${plugin_file}.cpp")
- 
+
 TARGET_LINK_LIBRARIES(${plugin}
-	${PROJECT_NAME}) 
- 
+	${PROJECT_NAME})
+
 SET_TARGET_PROPERTIES(${plugin}
    PROPERTIES
    COMPILE_FLAGS "${${PROJECT_NAME}_CXXFLAGS}"
    PREFIX ""
    LIBRARY_OUTPUT_DIRECTORY "${${PROJECT_NAME}_BINARY_DIR}/lib/plugin")
-   
+
 INSTALL(TARGETS ${plugin}
 		DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/plugin)
 ENDFOREACH(plugin_file)
