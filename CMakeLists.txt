@@ -59,7 +59,7 @@ ENDIF (\"${CMAKE_BUILD_TYPE}\" STREQUAL \"\")
 
 # --- Default options -------------------------------------------------
 OPTION(BUILD_SHARED_LIBS "Build ${PROJECT_NAME} with shared libraries." ON)
-OPTION(GENERATE_DOC "Generate html documentation" OFF)
+OPTION(GENERATE_DOC "Generate html documentation" ON)
 
 # --- BOOST ---------------------------------------------------
 SET(Boost_THREAD_FOUND 0)

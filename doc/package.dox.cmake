@@ -210,7 +210,7 @@ SHOW_DIRECTORIES       = NO
 #---------------------------------------------------------------------------
 FILE_PATTERNS          = *.h *.idl
 EXCLUDE_PATTERNS       = 
-INPUT                  = ${${PROJECT_NAME}_SOURCE_DIR}/src \
+INPUT                  = ${${PROJECT_NAME}_SOURCE_DIR}/include \
                          ${CMAKE_CURRENT_SOURCE_DIR}/additionalDoc
 
 #---------------------------------------------------------------------------
