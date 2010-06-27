@@ -28,6 +28,8 @@ ADD_LIBRARY(${LIBRARY_NAME}
   exception/exception-factory.cpp
   exception/exception-signal.cpp
 
+  shell/functions.cpp
+
   signal/signal-array.cpp
   signal/signal-caster.cpp
   )
