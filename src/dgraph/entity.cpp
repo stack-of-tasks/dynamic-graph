@@ -238,7 +238,7 @@ commandLine( const std::string& cmdLine,std::istringstream& cmdArgs,std::ostream
       string sig; cmdArgs>>sig; 
       cmdArgs >>  ws; int depth=-1; 
       if( cmdArgs.good() ) { cmdArgs >> depth; }
-      getSignal(sig) .displayDependancies( os,depth ); os<<endl;
+      getSignal(sig) .displayDependencies( os,depth ); os<<endl;
     }
   else 
     {

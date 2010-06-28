@@ -20,8 +20,8 @@
 
 
 
-#ifndef __TIME_DEPENDANCY_HH
-#define __TIME_DEPENDANCY_HH
+#ifndef __TIME_DEPENDENCY_HH
+#define __TIME_DEPENDENCY_HH
 
 #include <list>
 #include <iostream> 
@@ -36,10 +36,10 @@ template< class Time >
 class TimeDependency
 {
  public:
-  enum DependancyType
+  enum DependencyType
     {
-      TIME_DEPENDANT, 
-      BOOL_DEPENDANT,
+      TIME_DEPENDENT, 
+      BOOL_DEPENDENT,
       ALWAYS_READY
     };
 
@@ -50,14 +50,14 @@ class TimeDependency
 
   SignalBase< Time >& leader;
 
-  typedef std::list< const SignalBase<Time> * > Dependancies;
-  static const DependancyType DEPENDANCY_TYPE_DEFAULT = TIME_DEPENDANT;
+  typedef std::list< const SignalBase<Time> * > Dependencies;
+  static const DependencyType DEPENDENCY_TYPE_DEFAULT = TIME_DEPENDENT;
 
-  Dependancies dependancies;
+  Dependencies dependencies;
   bool updateFromAllChildren;
   static const bool ALL_READY_DEFAULT = false;
 
-  DependancyType dependancyType;
+  DependencyType dependencyType;
 
   Time periodTime;
   static const Time PERIOD_TIME_DEFAULT = 1;
@@ -65,25 +65,25 @@ class TimeDependency
  public:
 
   TimeDependency( SignalBase<Time>* sig,
-		     const DependancyType dep = DEPENDANCY_TYPE_DEFAULT );
+		     const DependencyType dep = DEPENDENCY_TYPE_DEFAULT );
   TimeDependency( SignalBase<Time>* sig,
 		     const SignalArray_const<Time>& arr, 
-		     const DependancyType dep = DEPENDANCY_TYPE_DEFAULT );
+		     const DependencyType dep = DEPENDENCY_TYPE_DEFAULT );
   ~TimeDependency( void ) {}
 
-  void addDependancy( const SignalBase<Time>& sig );
-  void removeDependancy( const SignalBase<Time>& sig );
-  void clearDependancy( void );
+  void addDependency( const SignalBase<Time>& sig );
+  void removeDependency( const SignalBase<Time>& sig );
+  void clearDependency( void );
   
 
   virtual std::ostream & writeGraph(std::ostream &os) const;
-  std::ostream& displayDependancies( std::ostream& os,const int depth=-1,
+  std::ostream& displayDependencies( std::ostream& os,const int depth=-1,
 				     std::string space="",
 				     std::string next1="",std::string next2="" ) const;
   
   bool needUpdate( const Time& t1 ) const;
 
-  void setDependancyType( DependancyType dep ) { dependancyType = dep; }
+  void setDependencyType( DependencyType dep ) { dependencyType = dep; }
   
   void setNeedUpdateFromAllChildren( const bool b = true ){ updateFromAllChildren=b; }
   bool getNeedUpdateFromAllChildren( void ) const { return updateFromAllChildren; } 
@@ -98,4 +98,4 @@ class TimeDependency
 
 #include <dynamic-graph/time-dependency.t.cpp>
 
-#endif /* #ifndef __TIME_DEPENDANCY_HH */
+#endif /* #ifndef __TIME_DEPENDENCY_HH */

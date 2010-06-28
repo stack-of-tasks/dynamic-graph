@@ -133,23 +133,24 @@ int main( void )
    pro3.add(sig5);
    pro3.add(sig6);
    
-   sig5.setDependancyType(TimeDependency<int>::ALWAYS_READY);
-   sig6.setDependancyType(TimeDependency<int>::BOOL_DEPENDANT);
+   sig5.setDependencyType(TimeDependency<int>::ALWAYS_READY);
+   sig6.setDependencyType(TimeDependency<int>::BOOL_DEPENDENT);
 
    sig6.setReady();
 
-   sig1.displayDependancies(cout)<<endl;
+   sig1.displayDependencies(cout)<<endl;
  
-   cout << "Needs update?"<< endl <<  sig1.needUpdate(2) << endl;
+   cout << "Needs update?"    << endl 
+	<< sig1.needUpdate(2) << endl;
    dgDEBUG(1) << "Access sig1(2) "<<endl;
    sig1.access(2);
-   sig1.displayDependancies(cout)<<endl;
+   sig1.displayDependencies(cout) << endl;
    dgDEBUG(1) << "Access sig2(4) "<<endl;
    sig2.access(4);
-   sig1.displayDependancies(cout)<<endl;
+   sig1.displayDependencies(cout)<<endl;
    dgDEBUG(1) << "Access sig1(4) "<<endl;
    sig1.access(4);
-   sig1.displayDependancies(cout)<<endl;
+   sig1.displayDependencies(cout)<<endl;
 
    sig1.needUpdate(6);
    sig1.needUpdate(6);

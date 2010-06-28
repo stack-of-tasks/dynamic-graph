@@ -76,7 +76,7 @@ class SignalBase : public boost::noncopyable
       }
 
   virtual std::ostream& 
-      displayDependancies( std::ostream& os,const int depth=-1,
+      displayDependencies( std::ostream& os,const int depth=-1,
 			   std::string space="",
 			   std::string next1="",std::string next2="" ) const
       {
