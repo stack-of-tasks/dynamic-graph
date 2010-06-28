@@ -7,6 +7,17 @@ SET(tools
 	test_shell
 )
 
+### Configure shell launch script
+CONFIGURE_FILE(${CMAKE_CURRENT_SOURCE_DIR}/shell.sh.cmake
+			${${PROJECT_NAME}_BINARY_DIR}/tools/shell.sh)
+INSTALL(
+	FILES
+		${${PROJECT_NAME}_BINARY_DIR}/tools/shell.sh
+	DESTINATION
+		 ${CMAKE_INSTALL_PREFIX}/bin/${PROJECT_NAME}
+	PERMISSIONS OWNER_EXECUTE OWNER_WRITE OWNER_READ
+                      GROUP_EXECUTE GROUP_READ )
+
 FOREACH(tool_name ${tools})
 	SET(EXECUTABLE_NAME ${tool_name})
 
