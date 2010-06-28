@@ -20,6 +20,8 @@
 #include <dynamic-graph/contiifstream.h>
 #include <dynamic-graph/debug.h>
 
+using namespace dynamicgraph;
+
 Contiifstream::
 Contiifstream( const std::string& n )
   :filename(n),cursor(0),first(true) {}

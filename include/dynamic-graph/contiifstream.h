@@ -52,6 +52,8 @@
 #else
 #  define DYNAMICGRAPHCONTIIFSTREAM_EXPORT
 #endif
+
+namespace dynamicgraph {
 /* --------------------------------------------------------------------- */
 /* --- CLASS ----------------------------------------------------------- */
 /* --------------------------------------------------------------------- */
@@ -79,7 +81,7 @@ public: /* --- READ LIST --- */
   
 
 };
-
+} // namespace dynamicgraph
 
 #endif /* #ifndef __CONTIIFSTREAM_HH__ */
 
