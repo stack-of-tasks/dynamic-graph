@@ -51,7 +51,7 @@ from one feature to another. There are three main types of signals,
 all deriving from the common class dynamicgraph::SignalBase :
 \li dynamicgraph::Signal
 \li dynamicgraph::SignalPtr
-\li dynamicgraph::SignalTimeDependant
+\li dynamicgraph::SignalTimeDependent
 
 Signals can be grouped together using dynamicgraph::SignalArray.
 

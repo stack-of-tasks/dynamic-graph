@@ -22,7 +22,7 @@ signal.h
 signal-array.h
 signal-base.h
 signal-ptr.h
-signal-time-dependant.h
+signal-time-dependent.h
 signal-ptr.t.cpp
 signal.t.cpp
 time-dependency.h

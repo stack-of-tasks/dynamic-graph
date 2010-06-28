@@ -2,7 +2,7 @@
  * Copyright Projet JRL-Japan, 2007
  *+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
  *
- * File:      TimeDependancy.t.cpp
+ * File:      TimeDependency.t.cpp
  * Project:   DYNAMIC-GRAPH
  * Author:    Nicolas Mansard
  *
@@ -40,15 +40,15 @@ namespace dynamicgraph {
                          
 
 template< class Time >
-TimeDependancy<Time>::
-TimeDependancy( SignalBase<Time> *sig
+TimeDependency<Time>::
+TimeDependency( SignalBase<Time> *sig
 		   ,const DependancyType dep )
   :__TIME_DEPENDANCY_INIT(sig,dep)
 {}
 
 template< class Time >
-TimeDependancy<Time>::
-TimeDependancy( SignalBase<Time> * sig
+TimeDependency<Time>::
+TimeDependency( SignalBase<Time> * sig
 		   ,const SignalArray_const<Time>& ar
 		   ,const DependancyType dep )
   :__TIME_DEPENDANCY_INIT(sig,dep)
@@ -61,27 +61,27 @@ TimeDependancy( SignalBase<Time> * sig
 
 /* -------------------------------------------------------------------------- */
 template< class Time >
-void TimeDependancy<Time>::
+void TimeDependency<Time>::
 addDependancy( const SignalBase<Time>& sig )
 {
   dependancies.push_front(&sig); 
 }
 
 template< class Time >
-void TimeDependancy<Time>::
+void TimeDependency<Time>::
 removeDependancy( const SignalBase<Time>& sig )
 {
   dependancies.remove(&sig); 
 }
 template< class Time >
-void TimeDependancy<Time>::
+void TimeDependency<Time>::
 clearDependancy( void )
 {
   dependancies.clear(); 
 }
 
 template< class Time >
-bool TimeDependancy<Time>::
+bool TimeDependency<Time>::
 needUpdate( const Time& t1 ) const
 { 
   dgTDEBUG(15) << "# In {" << leader.getName() << " : ("<< leader.getReady()<<") "
@@ -122,7 +122,7 @@ needUpdate( const Time& t1 ) const
 
 
 template< class Time >
-std::ostream& TimeDependancy<Time>::
+std::ostream& TimeDependency<Time>::
 writeGraph(  std::ostream & os) const
 {
   std::string LeaderLocalName;
@@ -143,7 +143,7 @@ writeGraph(  std::ostream & os) const
 }
 
 template< class Time >
-std::ostream& TimeDependancy<Time>::
+std::ostream& TimeDependency<Time>::
 displayDependancies( std::ostream& os,const int depth,
 		     std::string space,
 		     std::string next1,std::string next2 ) const

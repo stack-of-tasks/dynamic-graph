@@ -12,6 +12,6 @@
 
 #include <dynamic-graph/signal.h>
 #include <dynamic-graph/signal-ptr.h>
-#include <dynamic-graph/signal-time-dependant.h>
+#include <dynamic-graph/signal-time-dependent.h>
 
 #endif /* ALLSIGNALS_H_ */

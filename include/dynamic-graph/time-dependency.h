@@ -2,7 +2,7 @@
  * Copyright Projet JRL-Japan, 2007
  *+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
  *
- * File:      TimeDependancy.h
+ * File:      TimeDependency.h
  * Project:   DYNAMIC-GRAPH
  * Author:    Nicolas Mansard
  *
@@ -33,7 +33,7 @@ namespace dynamicgraph {
 
 
 template< class Time >
-class TimeDependancy
+class TimeDependency
 {
  public:
   enum DependancyType
@@ -64,12 +64,12 @@ class TimeDependancy
 
  public:
 
-  TimeDependancy( SignalBase<Time>* sig,
+  TimeDependency( SignalBase<Time>* sig,
 		     const DependancyType dep = DEPENDANCY_TYPE_DEFAULT );
-  TimeDependancy( SignalBase<Time>* sig,
+  TimeDependency( SignalBase<Time>* sig,
 		     const SignalArray_const<Time>& arr, 
 		     const DependancyType dep = DEPENDANCY_TYPE_DEFAULT );
-  ~TimeDependancy( void ) {}
+  ~TimeDependency( void ) {}
 
   void addDependancy( const SignalBase<Time>& sig );
   void removeDependancy( const SignalBase<Time>& sig );
