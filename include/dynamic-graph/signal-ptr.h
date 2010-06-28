@@ -120,16 +120,16 @@ class SignalPtr
 	{ setConstant( t ); return *this; }
 
 
-    virtual std::ostream&  displayDependancies( std::ostream& os,const int depth=-1,
+    virtual std::ostream&  displayDependencies( std::ostream& os,const int depth=-1,
 						std::string space="",
 						std::string next1="",
 						std::string next2="" ) const;
     
  protected: // Interdiction of the rest of the heritage
     
-    virtual void addDependancy( const SignalBase<Time>& signal ) {}
-    virtual void removeDependancy( const SignalBase<Time>& signal ) {}
-    virtual void clearDependancies( void ) {}
+    virtual void addDependency( const SignalBase<Time>& signal ) {}
+    virtual void removeDependency( const SignalBase<Time>& signal ) {}
+    virtual void clearDependencies( void ) {}
     
 };
 

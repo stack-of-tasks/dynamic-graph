@@ -246,17 +246,17 @@ display( std::ostream& os ) const
 
 template< class T,class Time >
 std::ostream& SignalPtr<T,Time>::
-displayDependancies( std::ostream& os,const int depth,
+displayDependencies( std::ostream& os,const int depth,
 		     std::string space,
 		     std::string next1,std::string next2 ) const
 {
   dgTDEBUGIN(25);
   if( (isAbstractPluged())&&(!autoref()) )
-    { getAbstractPtr()->displayDependancies(os,depth,space,next1+"-- "
+    { getAbstractPtr()->displayDependencies(os,depth,space,next1+"-- "
 				    +SignalBase<Time>::name+" -->",next2); }
   else 
     {
-      SignalBase<Time>::displayDependancies(os,depth,space,next1,next2); 
+      SignalBase<Time>::displayDependencies(os,depth,space,next1,next2); 
     }
   dgTDEBUGOUT(25);
   return os;

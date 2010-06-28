@@ -225,7 +225,7 @@ commandLine( const std::string& cmdLine,std::istringstream& cmdArgs,std::ostream
       os << "Entity : " << std::endl
 	 << "  - print\t\t\tWhat d'you think?"<<endl
 	 << "  - signals\t\t\tDisplay the signals list."<<endl
-	 << "  - signalDep <signame> \tDisplay the dependancy graph for signal signame."<<endl;
+	 << "  - signalDep <signame> \tDisplay the dependency graph for signal signame."<<endl;
     }
   else if( cmdLine == "print")
     {

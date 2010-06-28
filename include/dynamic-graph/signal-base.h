@@ -60,11 +60,11 @@ class SignalBase : public boost::noncopyable
   virtual ~SignalBase( void ) {}
 
 
-  /* --- DEPENDANCIES ------------------------------------------------------- */
+  /* --- DEPENDENCIES ------------------------------------------------------- */
 
-  virtual void addDependancy( const SignalBase<Time>& signal ) {}
-  virtual void removeDependancy( const SignalBase<Time>& signal ) {}
-  virtual void clearDependancies( void ) {}
+  virtual void addDependency( const SignalBase<Time>& signal ) {}
+  virtual void removeDependency( const SignalBase<Time>& signal ) {}
+  virtual void clearDependencies( void ) {}
 
   virtual bool needUpdate( const Time& t ) const {return ready;}
   inline void setReady( const bool sready = true ) { ready = sready; }
