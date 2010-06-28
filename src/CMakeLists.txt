@@ -21,6 +21,7 @@ ADD_LIBRARY(${LIBRARY_NAME}
   dgraph/entity.cpp
   dgraph/factory.cpp
   dgraph/interpreter.cpp
+  dgraph/interpreter-helper.cpp
   dgraph/plugin-loader.cpp
   dgraph/pool.cpp
 

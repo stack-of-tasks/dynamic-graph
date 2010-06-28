@@ -7,6 +7,7 @@ dynamic-graph-api.h
 entity.h
 factory.h
 interpreter.h
+interpreter-helper.h
 plugin-loader.h
 pool.h
 
