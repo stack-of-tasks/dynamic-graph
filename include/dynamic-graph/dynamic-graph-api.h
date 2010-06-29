@@ -6,7 +6,7 @@
 #define DYNAMICGRAPH_API_H
 
 #if defined (WIN32)
-#  ifdef DYNAMICGRAPH_EXPORT
+#  ifdef dynamic_graph_EXPORT
 #    define DYNAMICGRAPH_EXPORT __declspec(dllexport)
 #  else
 #    define DYNAMICGRAPH_EXPORT __declspec(dllimport)

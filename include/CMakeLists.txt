@@ -14,7 +14,7 @@ pool.h
 exception-abstract.h
 exception-factory.h
 exception-signal.h
-
+exception-traces.h
 
 shell-functions.h
 shell-procedure.h
@@ -30,6 +30,8 @@ time-dependency.h
 time-dependency.t.cpp
 signal-caster.h
 all-signals.h
+
+
 )
 
 # Recreate correct path for the headers
