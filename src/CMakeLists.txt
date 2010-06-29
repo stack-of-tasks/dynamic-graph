@@ -27,6 +27,7 @@ ADD_LIBRARY(${LIBRARY_NAME}
   exception/exception-abstract.cpp
   exception/exception-factory.cpp
   exception/exception-signal.cpp
+  exception/exception-traces.cpp
 
   shell/functions.cpp
 

@@ -31,7 +31,8 @@ time-dependency.t.cpp
 signal-caster.h
 all-signals.h
 
-
+tracer.h
+tracer-real-time.h
 )
 
 # Recreate correct path for the headers
