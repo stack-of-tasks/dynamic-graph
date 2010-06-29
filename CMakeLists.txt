@@ -143,6 +143,16 @@ INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/dynamic-graph.pc
   DESTINATION ${install_libdir_pkgconfig}	
   PERMISSIONS OWNER_READ GROUP_READ WORLD_READ OWNER_WRITE)
 
+# Uninstall target.
+CONFIGURE_FILE(
+  "${CMAKE_CURRENT_SOURCE_DIR}/cmake_uninstall.cmake.in"
+  "${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake"
+  IMMEDIATE @ONLY)
+
+ADD_CUSTOM_TARGET(uninstall
+  "${CMAKE_COMMAND}" -P "${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake")
+
+# Testing 
 ENABLE_TESTING()
 
 ADD_SUBDIRECTORY(src)
