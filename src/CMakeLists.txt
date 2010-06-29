@@ -55,6 +55,8 @@ SET(plugins_list
 	plugins/shell-functions
 	plugins/shell-procedure
 	debug/contiifstream
+	traces/tracer
+	traces/tracer-real-time
 )
 
 FOREACH(plugin_file ${plugins_list})

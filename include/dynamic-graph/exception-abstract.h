@@ -53,6 +53,7 @@ class DYNAMICGRAPH_EXPORT ExceptionAbstract
       ABSTRACT = 0
       ,SIGNAL = 100
       ,FACTORY = 200
+      ,TRACES = 300
     };
 
   static const std::string EXCEPTION_NAME;
