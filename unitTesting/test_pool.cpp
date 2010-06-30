@@ -64,7 +64,7 @@ void MyEntity::display(std::ostream& os ) const {
 	os << "Hello! My name is " << getName() << " !" << endl;
 }
 
-main() {
+int main() {
 	MyEntity myEntity("MyEntity");
 
 	cout << "-- Pool.list" << endl;
