@@ -46,7 +46,7 @@
 /* --------------------------------------------------------------------- */
 
 #if defined (WIN32) 
-#  if defined (ShellProcedure_EXPORTS)
+#  if defined (shell_procedure_EXPORTS)
 #    define ShellProcedure_EXPORT __declspec(dllexport)
 #  else  
 #    define ShellProcedure_EXPORT __declspec(dllimport)
