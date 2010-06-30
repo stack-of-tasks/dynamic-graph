@@ -59,6 +59,8 @@ SET(plugins_list
 	traces/tracer-real-time
 )
 
+SET(tracer-real-time_dependancy tracer)
+
 FOREACH(plugin_file ${plugins_list})
 GET_FILENAME_COMPONENT(plugin ${plugin_file} NAME)
 ADD_LIBRARY(${plugin}
@@ -66,7 +68,7 @@ ADD_LIBRARY(${plugin}
  "${plugin_file}.cpp")
 
 TARGET_LINK_LIBRARIES(${plugin}
-	${PROJECT_NAME})
+	${PROJECT_NAME} ${${plugin}_dependancy})
 
 SET_TARGET_PROPERTIES(${plugin}
    PROPERTIES
