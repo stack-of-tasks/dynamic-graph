@@ -64,7 +64,7 @@ private:
 
 
 /// The library-wide instance of SignalCaster
-extern SignalCaster g_caster;
+extern DYNAMICGRAPH_EXPORT SignalCaster g_caster;
 
 /*
  * The SignalCast registerer class. Can be used to automatically register a cast when
