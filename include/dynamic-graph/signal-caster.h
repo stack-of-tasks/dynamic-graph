@@ -16,6 +16,8 @@
 #include <boost/tuple/tuple.hpp>
 #include <iostream>
 
+#include <dynamic-graph/dynamic-graph-api.h>
+
 namespace dynamicgraph {
 
 /*! This class allows serialization of a number of objects into (disp) and from
@@ -26,7 +28,7 @@ namespace dynamicgraph {
  * complex than a typical template-based compile-time resolve. So disp, cast and
  * trace are costly functions and should be used as such.
  */
-class SignalCaster {
+class DYNAMICGRAPH_EXPORT SignalCaster {
 public:
 	SignalCaster();
 	virtual ~SignalCaster();
