@@ -44,7 +44,7 @@
 /* --------------------------------------------------------------------- */
 
 #if defined (WIN32)
-#  if defined (sotContiifstream_EXPORTS)
+#  if defined (contiifstream_EXPORTS)
 #    define DYNAMICGRAPHCONTIIFSTREAM_EXPORT __declspec(dllexport)
 #  else
 #    define DYNAMICGRAPHCONTIIFSTREAM_EXPORT __declspec(dllimport)
