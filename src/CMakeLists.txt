@@ -56,7 +56,6 @@ INSTALL(TARGETS ${LIBRARY_NAME}
 ### Plugins
 ####################################
 SET(plugins_list
-	plugins/shell-functions
 	plugins/shell-procedure
 	debug/contiifstream
 	traces/tracer

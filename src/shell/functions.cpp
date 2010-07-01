@@ -17,7 +17,7 @@
  *
  * ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 
-#include <dynamic-graph/shell-functions.h>
+#include <dynamic-graph/functions.h>
 #include <dynamic-graph/plugin-loader.h>
 #include <dynamic-graph/factory.h>
 #include <dynamic-graph/debug.h>

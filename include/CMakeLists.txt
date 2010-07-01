@@ -16,7 +16,7 @@ exception-factory.h
 exception-signal.h
 exception-traces.h
 
-shell-functions.h
+functions.h
 shell-procedure.h
 
 signal.h
