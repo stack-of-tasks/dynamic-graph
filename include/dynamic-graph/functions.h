@@ -29,6 +29,7 @@
 /* DYNAMIC-GRAPH */
 #include <dynamic-graph/exception-factory.h>
 #include <dynamic-graph/interpreter.h>
+#include <dynamic-graph/dynamic-graph-api.h>
 
 /* --- STD --- */
 #include <string>
@@ -38,20 +39,6 @@
 /* --- BOOST --- */
 #include <boost/function.hpp>
 #include <boost/bind.hpp>
-
-/* --------------------------------------------------------------------- */
-/* --- API ------------------------------------------------------------- */
-/* --------------------------------------------------------------------- */
-
-#if defined (WIN32) 
-#  if defined (shell_functions_EXPORTS)
-#    define SHELLFUNCTIONS_EXPORT __declspec(dllexport)
-#  else  
-#    define SHELLFUNCTIONS_EXPORT __declspec(dllimport)
-#  endif 
-#else
-#  define SHELLFUNCTIONS_EXPORT
-#endif
 
 /* --------------------------------------------------------------------- */
 /* --- CLASS ----------------------------------------------------------- */
@@ -68,7 +55,7 @@
   and user interaction commands such as display and beep commands.
   For more information, load the plugin and type help on a sot shell.
  */
-class SHELLFUNCTIONS_EXPORT ShellFunctions
+class DYNAMICGRAPH_EXPORT ShellFunctions
 {
  public:
 
