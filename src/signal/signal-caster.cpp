@@ -50,7 +50,8 @@ void SignalCaster::disp(const any& object, ostream& os) {
 			functions_.find(type_name);
 
 	if ( it == functions_.end() )
-		throw ExceptionSignal(ExceptionSignal::BAD_CAST); //TODO: throw "cast not registered" exception
+		throw ExceptionSignal(ExceptionSignal::BAD_CAST, "bad cast");
+	//TODO: throw "cast not registered" exception
 	(*it).second.get<0>()(object, os); // call display function (tuple index 0)
 }
 
@@ -59,7 +60,8 @@ void SignalCaster::trace(const any& object, ostream& os) {
 	map<string, cast_functions_type>::iterator it =
 			functions_.find(type_name);
 	if ( it == functions_.end() )
-		throw ExceptionSignal(ExceptionSignal::BAD_CAST);; //TODO: throw "cast not registered" exception
+		throw ExceptionSignal(ExceptionSignal::BAD_CAST, "bad cast");;
+	//TODO: throw "cast not registered" exception
 	(*it).second.get<2>()(object, os); // call trace function (tuple index 2)
 }
 
@@ -68,7 +70,8 @@ any SignalCaster::cast(const type_info& type, istringstream& iss) {
 	map<string, cast_functions_type>::iterator it =	functions_.find(type_name);
 
 	if ( it == functions_.end() )
-		throw ExceptionSignal(ExceptionSignal::BAD_CAST);; //TODO: throw "cast not registered" exception
+		throw ExceptionSignal(ExceptionSignal::BAD_CAST, "bad cast");
+	//TODO: throw "cast not registered" exception
 	return (*it).second.get<1>()(iss); // call cast function (tuple index 1)
 }
 
