@@ -98,7 +98,10 @@ int main() {
 	cout << "[disp] Enumerating boost unit vectors" << endl;
 	for (int i = 0; i < 5; ++ i) {
 		unit_vector<double> v (5, i);
-		myVectorSignal.setConstant(v);
+		std::ostringstream os;
+		os << v;
+		std::istringstream ss(os.str());
+		myVectorSignal.set(ss);
 		// print out signal value
 		try{myVectorSignal.get(cout);}
 		catch( const ExceptionAbstract & exp ) { cout << exp << std::endl; }
