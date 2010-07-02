@@ -47,8 +47,36 @@ typedef boost::numeric::ublas::vector<double> Vector;
 // (this could be automated with macros)
 namespace {
 	DefaultCastRegisterer<bool> myBooleanCast;
-	DefaultCastRegisterer<Vector> myVectorCast;
 }
+
+#include <boost/numeric/ublas/vector.hpp>
+#include <boost/numeric/ublas/io.hpp>
+class BoostNumericsCastRegisterer
+  : public SignalCastRegisterer
+{
+  typedef boost::numeric::ublas::vector<double> bnuVector;
+
+  static boost::any castVector(std::istringstream& iss)
+  {  bnuVector res; iss >> res; return res; }
+  static void dispVector(const boost::any& object, std::ostream& os)
+  {
+    const bnuVector & v = boost::any_cast<bnuVector>(object);
+    os << "[ ";
+    for( unsigned int i=0;i<v.size();++i ) os << v(i) << " ";
+    os << " ];" << std::endl;
+  }
+  static void traceVector(const boost::any& object, std::ostream& os)
+  {
+    const bnuVector & v = boost::any_cast<bnuVector>(object);
+    for( unsigned int i=0;i<v.size();++i ) os << v(i) << " ";
+    os << std::endl;
+  }
+public:
+  BoostNumericsCastRegisterer(void)
+    : SignalCastRegisterer(typeid(bnuVector),dispVector,castVector,traceVector) {}
+};
+
+BoostNumericsCastRegisterer myVectorCast;
 
 int main() {
 	using namespace boost::numeric::ublas;
@@ -72,8 +100,8 @@ int main() {
 		unit_vector<double> v (5, i);
 		myVectorSignal.setConstant(v);
 		// print out signal value
-		cout << "  ";
-		myVectorSignal.get(cout);
+		try{myVectorSignal.get(cout);}
+		catch( const ExceptionAbstract & exp ) { cout << exp << std::endl; }
 		cout << endl;
 	}
 
