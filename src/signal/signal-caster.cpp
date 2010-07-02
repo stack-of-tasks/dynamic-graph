@@ -76,15 +76,6 @@ any SignalCaster::cast(const type_info& type, istringstream& iss) {
 /// The global instance of the caster class.
 SignalCaster g_caster;
 
-/// Default casts, such as casts already supported by std::iostream
-template<typename T> class DefaultCastRegisterer : public SignalCastRegisterer {
-public:
-	DefaultCastRegisterer() : SignalCastRegisterer(typeid(T), disp, cast, trace) {}
-	static boost::any cast(istringstream& iss) { T inst; iss >> inst; return inst; }
-	static void disp(const any& object, ostream& os) { os << any_cast<T>(object) << endl;; }
-	static void trace(const any& object, ostream& os) { disp(object,os); }
-};
-
 /// Registers useful casts
 namespace {
 	DefaultCastRegisterer<double> double_reg;

@@ -66,7 +66,7 @@ private:
 /// The library-wide instance of SignalCaster
 extern DYNAMICGRAPH_EXPORT SignalCaster g_caster;
 
-/*
+/*!
  * The SignalCast registerer class. Can be used to automatically register a cast when
  * instanced somewhere in a cpp file. Pass the typeid() of the type you want to
  * register a cast to as the first argument.
@@ -78,6 +78,17 @@ public:
 			SignalCaster::caster_type caster, SignalCaster::tracer_type tracer) {
 		g_caster.registerCast(type, displayer, caster, tracer);
 	}
+};
+
+/*! This class can be used to register default casts, i.e. casts already supported by
+ *  the object to an std::iostream through the operators >> and << .
+ */
+template<typename T> class DefaultCastRegisterer : public SignalCastRegisterer {
+public:
+	DefaultCastRegisterer() : SignalCastRegisterer(typeid(T), disp, cast, trace) {}
+	static boost::any cast(std::istringstream& iss) { T inst; iss >> inst; return inst; }
+	static void disp(const boost::any& object, std::ostream& os) { os << boost::any_cast<T>(object) << std::endl;; }
+	static void trace(const boost::any& object, std::ostream& os) { disp(object,os); }
 };
 
 /*!
