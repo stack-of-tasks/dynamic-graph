@@ -58,7 +58,7 @@ public:
 		       const std::string & msg = "" );
   ExceptionTraces( const ExceptionTraces::ErrorCodeEnum& errcode,
 			const std::string & msg,const char* format, ... );
-  virtual ~ExceptionTraces( void ){}
+  virtual ~ExceptionTraces( void ) throw () {}
 
 
 };

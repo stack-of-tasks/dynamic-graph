@@ -63,7 +63,7 @@ public:
 		       const std::string & msg = "" );
   ExceptionSignal( const ExceptionSignal::ErrorCodeEnum& errcode,
 			const std::string & msg,const char* format, ... );
-  virtual ~ExceptionSignal( void ){}
+  virtual ~ExceptionSignal( void ) throw() {}
 
 
 };

@@ -43,7 +43,7 @@ namespace dynamicgraph {
 
 /* \class ExceptionAbstract
  */
-class DYNAMICGRAPH_EXPORT ExceptionAbstract
+class DYNAMICGRAPH_EXPORT ExceptionAbstract : public std::exception
 {
 
  public:
@@ -74,7 +74,7 @@ private:
 public:
 
   ExceptionAbstract( const int& code, const std::string & msg = "" );
-  virtual ~ExceptionAbstract( void ){}
+  virtual ~ExceptionAbstract( void ) throw() {}
 
   /**  Access to the error code. */
   int getCode (void);
@@ -87,6 +87,10 @@ public:
    */
   const char *getMessage (void);
 
+  virtual const char* what() const throw()
+  {
+    return getStringMessage().c_str();
+  }
   
   /** Print the error structure. */
   DYNAMICGRAPH_EXPORT friend std::ostream & operator << (std::ostream & os,

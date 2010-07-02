@@ -17,6 +17,7 @@
 #include <iostream>
 
 #include <dynamic-graph/dynamic-graph-api.h>
+#include "dynamic-graph/exception-signal.h"
 
 namespace dynamicgraph {
 
@@ -101,7 +102,14 @@ template<typename T> void signal_disp(const T& value, std::ostream& os)
 	{ g_caster.disp(value, os); }
 
 template<typename T> T signal_cast(std::istringstream& iss)
-	{ return boost::any_cast<T>(g_caster.cast(typeid(T), iss)); }
+	{ 
+	  try {
+	    return boost::any_cast<T>(g_caster.cast(typeid(T), iss));
+	  } catch (...) {
+	    throw ExceptionSignal(ExceptionSignal::GENERIC,
+				  "Exception boost::any_cast");
+	  }
+	}
 
 template<typename T> void signal_trace(const T& value, std::ostream& os)
 	{ g_caster.trace(value, os); }

@@ -64,7 +64,7 @@ public:
 			const std::string & msg = "" );
   ExceptionFactory ( const ExceptionFactory::ErrorCodeEnum& errcode,
 			const std::string & msg,const char* format, ... );
-  virtual ~ExceptionFactory( void ){}
+  virtual ~ExceptionFactory( void ) throw() {}
 
 };
 
