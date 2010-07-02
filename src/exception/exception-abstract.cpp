@@ -54,8 +54,8 @@ getMessage (void)
     return (this->message) .c_str();
 }
 
-const string &ExceptionAbstract::
-getStringMessage (void)
+const string& ExceptionAbstract::
+getStringMessage (void) const
 {
     return this->message;
 }

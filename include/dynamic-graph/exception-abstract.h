@@ -80,7 +80,7 @@ public:
   int getCode (void);
 
   /** Reference access to the error message (can be empty). */
-  const std::string &getStringMessage (void);
+  const std::string& getStringMessage (void) const;
 
   /** Access to the pointer on the array of  \e char related to the error string.
    * Cannot be  \e NULL.
