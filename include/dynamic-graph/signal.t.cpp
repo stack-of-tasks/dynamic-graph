@@ -59,32 +59,14 @@ template< class T,class Time >
 void Signal<T,Time>::
 set( std::istringstream& stringValue )
 {
-  try
-    {
-      (*this) = signal_cast<T>( stringValue );
-    }
-  catch DG_RETHROW
-    catch (...)
-      { DG_THROW ExceptionSignal( ExceptionSignal::SET_IMPOSSIBLE,
-				      "Set operation not possible with this signal. ",
-				      "(bad cast while setting %s).",this->getName().c_str());
-      }
-
+  (*this) = signal_cast<T>( stringValue );
 }
 
 template< class T,class Time >
 void Signal<T,Time>::
 get( std::ostream& os ) const
 {
-  try { signal_disp<T>( this->accessCopy(),os ); }
-  catch DG_RETHROW
-    catch (...)
-      { DG_THROW ExceptionSignal( ExceptionSignal::SET_IMPOSSIBLE,
-				      "get operation not possible with this signal. ",
-				      "(bad cast while getting value from %s).",
-				      SignalBase<Time>::getName().c_str());
-      }
-
+  signal_disp<T>( this->accessCopy(),os );
 }
 
 template< class T,class Time >

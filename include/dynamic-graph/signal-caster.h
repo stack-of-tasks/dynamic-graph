@@ -103,12 +103,7 @@ template<typename T> void signal_disp(const T& value, std::ostream& os)
 
 template<typename T> T signal_cast(std::istringstream& iss)
 	{ 
-	  try {
-	    return boost::any_cast<T>(g_caster.cast(typeid(T), iss));
-	  } catch (...) {
-	    throw ExceptionSignal(ExceptionSignal::GENERIC,
-				  "Exception boost::any_cast");
-	  }
+	  return boost::any_cast<T>(g_caster.cast(typeid(T), iss));
 	}
 
 template<typename T> void signal_trace(const T& value, std::ostream& os)
