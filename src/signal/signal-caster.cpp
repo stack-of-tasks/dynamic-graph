@@ -29,8 +29,13 @@ SignalCaster::~SignalCaster() {
 
 void SignalCaster::registerCast(const type_info& type, SignalCaster::displayer_type displayer,
 		SignalCaster::caster_type caster, SignalCaster::tracer_type tracer) {
-	if ( existsCast(type) )
-		throw ExceptionSignal(ExceptionSignal::GENERIC); //TODO: throw "cast already registered for type" exception
+  if ( existsCast(type) ) {
+    std::string typeName(type.name());
+    std::ostringstream os;
+    os << "cast already registered for type " << typeName << ".";
+    throw ExceptionSignal(ExceptionSignal::GENERIC,
+			  os.str()); //TODO: throw "cast already registered for type" exception
+  }
 	functions_[type.name()] = cast_functions_type(displayer,caster, tracer);
 }
 
