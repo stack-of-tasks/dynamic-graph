@@ -70,7 +70,10 @@ any SignalCaster::cast(const type_info& type, istringstream& iss) {
 	map<string, cast_functions_type>::iterator it =	functions_.find(type_name);
 
 	if ( it == functions_.end() )
-		throw ExceptionSignal(ExceptionSignal::BAD_CAST, "bad cast");
+	  {
+	    throw ExceptionSignal(ExceptionSignal::BAD_CAST,
+				  "caster not in functions_ map.");
+	  }
 	//TODO: throw "cast not registered" exception
 	return (*it).second.get<1>()(iss); // call cast function (tuple index 1)
 }
