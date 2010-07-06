@@ -91,8 +91,12 @@ class DYNAMICGRAPH_EXPORT InterpreterHelper
    */
   void cmdDestroy( const std::string& objName, 
 		   std::ostream& os );
+
   /*! \brief Connect two signals.
-    Connect an input signal to an output one.
+    Connect the input signal obj1.signame1 to the output signal
+    obj2.signame2.
+    \param[in] obj1.signame1: the input signal.
+    \param[in] obj2.signame2: the output signal.
   */
   void cmdPlug( const std::string& obj1, const std::string & signame1,
 		const std::string& obj2, const std::string & signame2,
