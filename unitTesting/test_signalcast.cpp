@@ -35,6 +35,10 @@
 // only included because we will define new casts here. Not needed in general.
 #include <dynamic-graph/signal-caster.h>
 
+#include "test_signalcast_libA.h"
+#include "test_signalcast_libB.h"
+
+
 using namespace std;
 using namespace dynamicgraph;
 
@@ -106,6 +110,23 @@ int main() {
 		try{myVectorSignal.get(cout);}
 		catch( const ExceptionAbstract & exp ) { cout << exp << std::endl; }
 		cout << endl;
+	}
+
+	// check the following: "typeid of vA is different from typeid of vB
+	// in different shared libraries""
+	cout << "-- check typeid equality in shared libs" << endl;
+	if(typeid(vA) == typeid(vB)) {
+		cout << "The types of vA (libA.so) and vB (libB.so) are equal" << endl;
+	} else {
+		cout << "The types of vA (libA.so) and vB (libB.so) are different" << endl;
+	}
+
+	cout << "-- check type *name* equality in shared libs with type:" << endl
+			<< "  " << typeid(vA).name() << endl;
+	if( !strcmp(typeid(vA).name(), typeid(vB).name()) ) {
+		cout << "The type names of vA (libA.so) and vB (libB.so) are equal" << endl;
+	} else {
+		cout << "The type names of vA (libA.so) and vB (libB.so) are different" << endl;
 	}
 
 
