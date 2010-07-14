@@ -24,6 +24,9 @@ SET(OS ${CMAKE_SYSTEM_NAME})
 #----------------------------------------------------
 # --- GENERIC FLAGS ---------------------------------
 #----------------------------------------------------
+# For CMAKE Modules
+SET(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/CMakeModules")
+
 # Specify the compile flags for the overall library.
 IF(WIN32)
   SET(LIBDIR_KW "/LIBPATH:")
@@ -68,6 +71,8 @@ IF(Boost_THREAD_FOUND)
   #MESSAGE(STATUS "Boost_THREAD_LIBRARY:" ${Boost_THREAD_LIBRARY})
   #MESSAGE(STATUS "Boost_THREAD_LIBRARY_RELEASE:" ${Boost_THREAD_LIBRARY_RELEASE})
   #MESSAGE(STATUS "Boost_THREAD_LIBRARY_DEBUG:" ${Boost_THREAD_LIBRARY_DEBUG})
+	
+	ADD_DEFINITIONS(-DHAVE_LIBBOOST_THREAD)
 
   # Look for the type of pattern to find.
   SET(BOOST_PATTERN_TOFIND "")
@@ -95,6 +100,17 @@ IF(Boost_THREAD_FOUND)
     SET(BOOST_THREAD_LIB_NAME  ${Boost_THREAD_LIBRARY})
   ENDIF(BOOST_PATTERN_TOFIND)
 
+  # --- PTHREAD -------------------------------------------------------
+  FIND_PACKAGE(PTHREAD REQUIRED)
+  IF(PTHREAD_FOUND)
+    ADD_DEFINITIONS(-DHAVE_PTHREAD)
+    IF(UNIX)
+    	ADD_DEFINITIONS(-pthread)
+    ENDIF(UNIX)
+    INCLUDE_DIRECTORIES(${PTHREAD_INCLUDE_DIRS})
+	LINK_DIRECTORIES(${PTHREAD_LIBRARY_DIRS})
+  ENDIF(PTHREAD_FOUND)
+  
 ELSE(Boost_THREAD_FOUND)
   MESSAGE("WARNING: Boost thread not found. Trying without the thread library")
   FIND_PACKAGE(Boost)
