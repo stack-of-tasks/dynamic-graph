@@ -194,7 +194,7 @@ cmdLoadPlugin( const std::string& cmdLine, std::istringstream& cmdArg, std::ostr
 	dgDEBUG(25)<<"sotShell.dlPtr ="<< this->dlPtr <<endl;
 	dlPtr->loadPlugins();
 	dgDEBUG(25)<<"sotShell.dlPtr ="<< this->dlPtr <<endl;
-      }catch( ExceptionAbstract& e ) { dgDEBUG(5) << e << endl; throw e; }
+      }catch( ExceptionAbstract& e ) { dgDEBUG(5) << "ExceptionAbstract " << e << endl; throw e; }
     }
   else { os << "!!  Dynamic loading functionalities not accessible through the shell." <<endl; }
 }

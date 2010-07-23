@@ -162,7 +162,7 @@ TAGFILES               = \
 	/html/dynamicsJRLJapan.doxytag=/html \
 	/html/hrp2Dynamics.doxytag=/html \
 	/html/walkGenJrl.doxytag=/html
-GENERATE_TAGFILE       = dynamicGraph.doxytag
+GENERATE_TAGFILE       = dynamic-graph.doxytag
 ALLEXTERNALS           = NO
 EXTERNAL_GROUPS        = YES
 PERL_PATH              = /usr/bin/perl
@@ -180,7 +180,7 @@ SEARCHENGINE           = YES
 #---------------------------------------------------------------------------
 # Project related configuration options
 #---------------------------------------------------------------------------
-PROJECT_NAME           = "dynamicGraph library"
+PROJECT_NAME           = "dynamic-graph library"
 PROJECT_NUMBER         = 1.0.0
 
 #---------------------------------------------------------------------------
@@ -210,13 +210,13 @@ SHOW_DIRECTORIES       = NO
 #---------------------------------------------------------------------------
 FILE_PATTERNS          = *.h *.idl
 EXCLUDE_PATTERNS       = 
-INPUT                  = /home/blue/sot-devel/dynamicGraph/src \
-                         /home/blue/sot-devel/dynamicGraph/doc/additionalDoc
+INPUT                  = /home/blue/sot-devel/dg/include \
+                         /home/blue/sot-devel/dg/doc/additionalDoc
 
 #---------------------------------------------------------------------------
 # configuration options related to inserting images
 #---------------------------------------------------------------------------
-IMAGE_PATH = /home/blue/sot-devel/dynamicGraph/doc/figures
+IMAGE_PATH = /home/blue/sot-devel/dg/doc/figures
 #---------------------------------------------------------------------------
 # configuration options related to source browsing
 #---------------------------------------------------------------------------
@@ -233,9 +233,9 @@ VERBATIM_HEADERS       = NO
 # configuration options related to the HTML output
 #---------------------------------------------------------------------------
 HTML_OUTPUT            = html
-HTML_STYLESHEET        = /home/blue/sot-devel/dynamicGraph/doc/package.css
-HTML_HEADER            = /home/blue/sot-devel/dynamicGraph/doc/header.html
-HTML_FOOTER            = /home/blue/sot-devel/dynamicGraph/doc/footer.html
+HTML_STYLESHEET        = /home/blue/sot-devel/dg/doc/package.css
+HTML_HEADER            = /home/blue/sot-devel/dg/doc/header.html
+HTML_FOOTER            = /home/blue/sot-devel/dg/doc/footer.html
 
 #---------------------------------------------------------------------------
 # configuration options related to the LaTeX output

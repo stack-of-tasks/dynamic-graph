@@ -97,7 +97,12 @@ class DYNAMICGRAPH_EXPORT PluginLoader
   void addPlugin( const std::string& name, const std::string& dir="" );
   /*! \brief Load the plugins previously added */
   void loadPlugins( void );
+  /*! \brief Remove from the user memory the dynamic library related to the plugin. */
   void unloadPlugin( const std::string& plugname );
+  /*! \brief Remove all the dynamic libraries related to the plugins.
+      For non-re-entrant plugins this method HAS TO be called. */
+    void unloadAllPlugins();
+
 
   const std::map< std::string,std::string > getLoadedPluginNames( void ) 
   { return loadedPluginNames; }

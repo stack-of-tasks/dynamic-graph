@@ -261,3 +261,51 @@ searchPlugin( const std::string& plugname )
 
   return *plugFullName;
 }
+
+
+void PluginLoader::
+unloadAllPlugins()
+{
+  dgDEBUGIN( 15 );
+
+  PluginRefMap::KeyMap::iterator plugkey = pluginRefs->keyMap.begin();
+
+  while( plugkey!=pluginRefs->keyMap.end() )
+    {
+#ifndef WIN32
+      const int errCode = dlclose(plugkey->second);
+#else
+      const int errCode = FreeLibrary(plugkey->second);
+#endif
+      if( errCode )
+	{
+#ifndef WIN32
+	  dgDEBUG(1) << "Error while unloading <" << plugkey->first <<"> : "
+		      << dlerror() <<endl;
+#else
+	  // Retrieve the system error message for the last-error code
+	  LPTSTR pszMessage;
+	  DWORD dwLastError = GetLastError();
+	  FormatMessage(
+			FORMAT_MESSAGE_ALLOCATE_BUFFER |
+			FORMAT_MESSAGE_FROM_SYSTEM |
+			FORMAT_MESSAGE_IGNORE_INSERTS,
+			NULL,
+			dwLastError,
+			MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT),
+			(LPTSTR)&pszMessage,
+			0, NULL );
+
+	  dgDEBUG(1) << "Error while unloading <" << plugkey->first <<"> : "
+		      << pszMessage <<endl;
+
+	  LocalFree(pszMessage);
+#endif
+	}
+      plugkey++;
+    }
+
+  //pluginRefs.erase( plugkey );
+
+  dgDEBUGOUT( 15 );
+}

@@ -1,4 +1,4 @@
-# Install script for directory: /home/blue/sot-devel/dynamicGraph/doc
+# Install script for directory: /home/blue/sot-devel/dg/doc
 
 # Set the install prefix
 IF(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -12,7 +12,7 @@ IF(NOT DEFINED CMAKE_INSTALL_CONFIG_NAME)
     STRING(REGEX REPLACE "^[^A-Za-z0-9_]+" ""
            CMAKE_INSTALL_CONFIG_NAME "${BUILD_TYPE}")
   ELSE(BUILD_TYPE)
-    SET(CMAKE_INSTALL_CONFIG_NAME "RELEASE")
+    SET(CMAKE_INSTALL_CONFIG_NAME "")
   ENDIF(BUILD_TYPE)
   MESSAGE(STATUS "Install configuration: \"${CMAKE_INSTALL_CONFIG_NAME}\"")
 ENDIF(NOT DEFINED CMAKE_INSTALL_CONFIG_NAME)
@@ -33,14 +33,14 @@ IF(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
 ENDIF(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  FILE(INSTALL DESTINATION "/home/blue/sot-lib/share/doc/dynamic-graph" TYPE DIRECTORY FILES "/home/blue/sot-devel/dynamicGraph/doc/html")
+  FILE(INSTALL DESTINATION "/home/blue/sot-lib/share/doc/dynamic-graph" TYPE DIRECTORY FILES "/home/blue/sot-devel/dg/doc/html")
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  FILE(INSTALL DESTINATION "/home/blue/sot-lib/share/doc/dynamic-graph/html" TYPE FILE FILES "/home/blue/sot-devel/dynamicGraph/doc/dynamicGraph.doxytag")
+  FILE(INSTALL DESTINATION "/home/blue/sot-lib/share/doc/dynamic-graph/html" TYPE FILE FILES "/home/blue/sot-devel/dg/doc/dynamic-graph.doxytag")
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  FILE(INSTALL DESTINATION "/home/blue/sot-lib/share/doc/dynamic-graph/html" TYPE DIRECTORY FILES "/home/blue/sot-devel/dynamicGraph/doc/pictures")
+  FILE(INSTALL DESTINATION "/home/blue/sot-lib/share/doc/dynamic-graph/html" TYPE DIRECTORY FILES "/home/blue/sot-devel/dg/doc/pictures")
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 

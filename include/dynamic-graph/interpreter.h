@@ -104,7 +104,7 @@ class DYNAMICGRAPH_EXPORT Interpreter
   bool deregisterFunction( const std::string& funname );
 
 
-  /*! \brief Return the reference to the plugin loader. */
+  /*! \brief Set the reference of the plugin loader. */
   void referencePluginLoader( PluginLoader* dl__ )
   { dlPtr = dl__; }
 
