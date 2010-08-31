@@ -57,6 +57,7 @@ INSTALL(TARGETS ${LIBRARY_NAME}
 ####################################
 SET(plugins_list
 	plugins/shell-procedure
+	plugins/shell-functions
 	debug/contiifstream
 	traces/tracer
 	traces/tracer-real-time
