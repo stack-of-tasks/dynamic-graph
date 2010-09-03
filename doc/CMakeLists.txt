@@ -21,12 +21,12 @@ ADD_CUSTOM_TARGET(documentation ALL
 
 # html files
 INSTALL(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/html
-  DESTINATION ${CMAKE_INSTALL_PREFIX}/share/doc/dynamic-graph)
+  DESTINATION share/doc/dynamic-graph)
 
 # doxytag
 INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}.doxytag
-  DESTINATION ${CMAKE_INSTALL_PREFIX}/share/doc/dynamic-graph/html)
+  DESTINATION share/doc/dynamic-graph/html)
 
 # pictures
 INSTALL(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/pictures
-  DESTINATION ${CMAKE_INSTALL_PREFIX}/share/doc/dynamic-graph/html)
+  DESTINATION share/doc/dynamic-graph/html)

@@ -51,6 +51,6 @@ ENDFOREACH(lHeader)
 # Install procedure for the header files
 #----------------------------------------------------
 INSTALL(FILES ${fullpath_${PROJECT_NAME}_HEADERS}
-       DESTINATION ${CMAKE_INSTALL_PREFIX}/include/${PROJECT_NAME}
+       DESTINATION include/${PROJECT_NAME}
        PERMISSIONS OWNER_READ GROUP_READ WORLD_READ OWNER_WRITE
 )

@@ -50,7 +50,7 @@ IF (UNIX)
 ENDIF (UNIX)
 
 INSTALL(TARGETS ${LIBRARY_NAME}
-  DESTINATION ${CMAKE_INSTALL_PREFIX}/lib)
+  DESTINATION lib)
 
 ####################################
 ### Plugins
@@ -81,5 +81,5 @@ SET_TARGET_PROPERTIES(${plugin}
    LIBRARY_OUTPUT_DIRECTORY "${${PROJECT_NAME}_BINARY_DIR}/lib/plugin")
 
 INSTALL(TARGETS ${plugin}
-		DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/plugin)
+		DESTINATION lib/plugin)
 ENDFOREACH(plugin_file)
