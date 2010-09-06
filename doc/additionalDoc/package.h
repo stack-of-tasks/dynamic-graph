@@ -3,6 +3,12 @@
 
 \section intro_dynamicGraph Introduction
 
+The dynamic-graph package is used to connect computation nodes, "entities"
+together using a graph system, akin to what Simulink does. With the building
+blocks this package provides, you can easily create a full computation graph
+for a given problem. It is the basis for the stack of tasks operation.
+
+\section overview Code overview
 This code implements the factory design pattern, making creation of entities
 available to packages depending on the dynamic-graph API.
 
