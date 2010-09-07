@@ -38,18 +38,18 @@
 using namespace dynamicgraph;
 
 #ifdef WIN32
-const char * DebugTrace::DEBUG_FILENAME_DEFAULT = "c:/tmp/traces_dynamicgraph.txt";
+const char * DebugTrace::DEBUG_FILENAME_DEFAULT = "c:/tmp/dynamic-graph-traces.txt";
 #else	/*WIN32*/
-const char * DebugTrace::DEBUG_FILENAME_DEFAULT = "/tmp/traces_dynamicgraph.txt";
+const char * DebugTrace::DEBUG_FILENAME_DEFAULT = "/tmp/dynamic-graph-traces.txt";
 #endif	/*WIN32*/
 
 
 
 #ifdef VP_DEBUG
  #ifdef WIN32
-  std::ofstream dg_debugfile( "C:/tmp/traces_dynamicgraph.txt", std::ios::trunc&std::ios::out );
+  std::ofstream dg_debugfile( "C:/tmp/dynamic-graph-traces.txt", std::ios::trunc&std::ios::out );
  #else	/*WIN32*/
-  std::ofstream dg_debugfile( "/tmp/traces_dynamicgraph.txt", std::ios::trunc&std::ios::out );
+  std::ofstream dg_debugfile( "/tmp/dynamic-graph-traces.txt", std::ios::trunc&std::ios::out );
 #endif	/*WIN32*/
 #else
 std::ofstream dg_debugfile; //( "/dev/null", std::ios::trunc&std::ios::out );
