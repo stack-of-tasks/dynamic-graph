@@ -188,8 +188,8 @@ cmdSignalTime( const std::string cmdLine, istringstream& cmdArg, std::ostream& o
   if( !Interpreter::objectNameParser(str2,obj2,fun2) )
     {
       DG_THROW ExceptionFactory( ExceptionFactory::SYNTAX_ERROR,
-				     "Plug function: syntax is unplug OBJ2.SIG2.",
-				     "(while calling plug %s %s).",ssig.c_str() );
+				     "signalTime function: syntax is signalTime OBJ2.SIG2.",
+				     "(while calling signalTime %s).",ssig.c_str() );
     }
 
   dgDEBUG(20) << "Get Ent2 <"<<obj2<<"> ."<<endl;
