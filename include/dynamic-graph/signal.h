@@ -124,7 +124,7 @@ protected:
 
 
  public:
-  virtual void checkCompatibility( void ) { throw Tcopy;  }
+  virtual void checkCompatibility( void ) { throw Tcopy; }
 
  private:
   const T& setTcopy( const T& t );

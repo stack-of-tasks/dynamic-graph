@@ -64,13 +64,14 @@ registerFunction( const string& funname,
   if( funkey != functionMap.end() ) // key does exist
     {
       if( initDone )
-	{
-	  dgDEBUG(15) << "!! Another function already defined with the same name. "
-		       << "Funname is" <<funname.c_str() << endl;
-	}
-      throw ExceptionFactory( ExceptionFactory::FUNCTION_CONFLICT,
-				 "Another function already defined with the same name. ",
-				 "Funname is <%s>.",funname.c_str() );
+		{
+		  dgDEBUG(15) << "!! Another function already defined with the same name. Overloading "
+				   << "Funname is" <<funname.c_str() << endl;
+		  throw ExceptionFactory( ExceptionFactory::FUNCTION_CONFLICT,
+						 "Another function already defined with the same name. ",
+						 "Funname is <%s>.",funname.c_str() );
+
+		}
     }
   else
     {
@@ -475,7 +476,7 @@ shell( std::istream& sin, std::ostream& sout, const std::string& promptUser )
 	  istringstream args (cmdArgs);
 
 	  try{ cmd(cmdLine,args,sout); }
-	  catch( ExceptionAbstract& e ) { dgDEBUG(1) << e; throw e; }
+	  catch( exception& e ) { dgDEBUG(1) << e.what(); throw e; }
 	  catch(...) { dgDEBUG(1) << "!! unknow!." <<endl; throw; }
 	}
     }

@@ -49,6 +49,8 @@ IF (UNIX)
   TARGET_LINK_LIBRARIES(${LIBRARY_NAME} dl pthread) 
 ENDIF (UNIX)
 
+TARGET_LINK_LIBRARIES(${LIBRARY_NAME} ${Boost_LIBRARIES})
+
 INSTALL(TARGETS ${LIBRARY_NAME}
   DESTINATION lib)
 
@@ -72,7 +74,8 @@ ADD_LIBRARY(${plugin}
  "${plugin_file}.cpp")
 
 TARGET_LINK_LIBRARIES(${plugin}
-	${PROJECT_NAME} ${${plugin}_dependancy})
+	${PROJECT_NAME} ${${plugin}_dependancy}
+	${Boost_LIBRARIES})
 
 SET_TARGET_PROPERTIES(${plugin}
    PROPERTIES

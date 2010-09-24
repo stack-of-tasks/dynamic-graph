@@ -51,9 +51,9 @@ int main( int argc,char** argv )
 	  g_shell.cmd( "run",script,cout );
 	}
     } 
-  catch( ExceptionAbstract& e )
+  catch( exception& e )
     {
-      cout << "!! In file <" << argv[fileIdx] << "> : "  << e <<endl;
+      cout << "!! In file <" << argv[fileIdx] << "> : "  << e.what() <<endl;
     }
   catch ( const char* str ) {
 	  cout << "!! In file <" << argv[fileIdx] << "> : "
@@ -70,9 +70,9 @@ int main( int argc,char** argv )
 	  dgDEBUG(5) << "Shell over." << endl;
       if( cin.eof() ) break;
 	} 
-      catch( ExceptionAbstract& e )
+      catch( exception& e )
 	{
-	  cout << "!!  "  << e <<endl;
+	  cout << "!!  "  << e.what() <<endl;
 	}
       catch( ... ){ dgDEBUG(5) << "!! Unknown! " <<endl ; }
     }

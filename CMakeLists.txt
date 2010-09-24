@@ -67,7 +67,7 @@ OPTION(GENERATE_DOC "Generate html documentation" ON)
 
 # --- BOOST ---------------------------------------------------
 SET(Boost_THREAD_FOUND 0)
-FIND_PACKAGE(Boost COMPONENTS thread)
+FIND_PACKAGE(Boost COMPONENTS thread REQUIRED)
 IF(Boost_THREAD_FOUND)
   #MESSAGE(STATUS "Boost_THREAD_LIBRARY:" ${Boost_THREAD_LIBRARY})
   #MESSAGE(STATUS "Boost_THREAD_LIBRARY_RELEASE:" ${Boost_THREAD_LIBRARY_RELEASE})

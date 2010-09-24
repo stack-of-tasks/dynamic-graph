@@ -131,7 +131,9 @@ openFile( const SignalBase<int> & sig,
   dgDEBUG(5) << "Sig <"<<sig.getName()
 	      << ">: new file "<< filename << endl;
   std::ofstream * newfile = new std::ofstream( filename.c_str() );
+  dgDEBUG(5) << "Newfile:" << (void*) newfile << endl;
   hardFiles.push_back( newfile );
+  dgDEBUG(5) << "Creating Outstringstream" << endl;
 
   //std::stringstream * newbuffer = new std::stringstream();
   OutStringStream * newbuffer = new OutStringStream(); // std::stringstream();
