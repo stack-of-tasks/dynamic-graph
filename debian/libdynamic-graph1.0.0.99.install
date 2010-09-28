@@ -1,2 +1,3 @@
 usr/bin/*
-usr/lib/lib*.so.*
+usr/lib/*.so.*
+usr/lib/plugin/*.so

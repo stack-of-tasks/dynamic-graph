@@ -1,3 +1,9 @@
+dynamic-graph (1.0.0.99-3) lucid; urgency=low
+
+  * Add plug-ins to libdynamic-graph1.0.0.99.
+
+ -- Thomas Moulard <thomas.moulard@gmail.com>  Wed, 28 Sep 2010 11:45:00 +0200
+
 dynamic-graph (1.0.0.99-2) lucid; urgency=low
 
   * Add libboost-thread-dev to build requirement.
