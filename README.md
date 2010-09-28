@@ -1,7 +1,29 @@
-See INSTALL for installation instructions.
+dynamic-graph
+=============
 
-The dynamic-graph library is a framework to create dynamic 
-graphs of generic entities connected together by signals,
-with helper facilities such as signal casters, an object
-factory and an object pool. It is a spin-off and was
-originally part of the StackOfTasks library.
+This software provides an efficient way to modelize a C++ data-flow.
+
+A dynamic graph data-flow is composed of:
+ - entities (graph nodes)
+ - signals (input/output of a graph action)
+
+Output signals can then be plugged into input signals to data
+transmission.
+
+An efficient caching mechanism avoid useless data recomputation and a
+simple built-in language can be used to control the graph actions.
+
+
+Setup
+-----
+
+To compile this package, it is recommended to create a separate build
+directory:
+
+    mkdir _build
+    cd _build
+    cmake [OPTIONS] ..
+    make install
+
+Please note that CMake produces a `CMakeCache.txt` file which should
+be deleted to reconfigure a package from scratch.
