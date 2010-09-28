@@ -1,0 +1,5 @@
+dynamic-graph (1.0.0.99-1) lucid; urgency=low
+
+  * Initial work.
+
+ -- Thomas Moulard <thomas.moulard@gmail.com>  Wed, 28 Sep 2010 03:15:00 +0200

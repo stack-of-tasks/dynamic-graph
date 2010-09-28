@@ -1,0 +1,36 @@
+Source: dynamic-graph
+Priority: extra
+Maintainer: Thomas Moulard <thomas.moulard@gmail.com>
+Build-Depends: debhelper (>= 7.0.50~), cmake (>= 2.6),
+	       doxygen (>= 1.6.3),
+	       pkg-config (>= 0.22),
+	       libboost-dev (>= 1.33.1)
+Standards-Version: 3.8.4
+#Vcs-Git:
+#Vcs-browser:
+Section: libs
+#Homepage:
+
+Package: libdynamic-graph-dev
+Section: libdevel
+Architecture: any
+Depends: ${misc:Depends}
+Suggests: libdynamic-graph-doc
+Description: Dynamic graph C++ library
+ The dynamic graph library allows the representation of data-flow in C++.
+ It provides fast graph evaluation and a simple script language to manipulate
+ the graph actions.
+ .
+ This package contains development files (headers and pkg-config file).
+
+Package: libdynamic-graph-doc
+Section: doc
+Architecture: all
+Depends: ${misc:Depends}
+Suggests: libjrl-mathtools-doc
+Description: documentation for the dynamic graph C++ library
+ The dynamic graph library allows the representation of data-flow in C++.
+ It provides fast graph evaluation and a simple script language to manipulate
+ the graph actions.
+ .
+ This package contains the Doxygen documentation.

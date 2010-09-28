@@ -1,0 +1,23 @@
+This work was packaged for Debian by:
+
+    Thomas Moulard <thomas.moulard@gmail.com> on Wed, 28 Sep 2010 03:13:00 +0200
+
+It was downloaded from <not yet available>
+
+Upstream Author(s):
+
+    Thomas Moulard <thomas.moulard@gmail.com>
+
+Copyright:
+
+    Copyright (C) 2010 François Bleibel, Olivier Stasse, JRL, CNRS/AIST.
+
+License:
+
+    See `/usr/share/common-licenses/LGPL-3'.
+
+The Debian packaging is:
+
+    Copyright (C) 2010 Thomas Moulard <thomas.moulard@gmail.com>
+    and is licensed under the GPL version 3,
+    see `/usr/share/common-licenses/GPL-3'.
