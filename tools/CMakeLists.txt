@@ -4,17 +4,17 @@
 
 ### tools
 SET(tools
-	test_shell
+	sot-shell
 )
 
 ### Configure shell launch script
-CONFIGURE_FILE(${CMAKE_CURRENT_SOURCE_DIR}/shell.sh.cmake
-			${${PROJECT_NAME}_BINARY_DIR}/tools/shell.sh)
+CONFIGURE_FILE(${CMAKE_CURRENT_SOURCE_DIR}/sot-shell-plugin.sh.cmake
+	       ${${PROJECT_NAME}_BINARY_DIR}/tools/sot-shell-plugin.sh)
 INSTALL(
 	FILES
-		${${PROJECT_NAME}_BINARY_DIR}/tools/shell.sh
+		${${PROJECT_NAME}_BINARY_DIR}/tools/sot-shell-plugin.sh
 	DESTINATION
-		 bin/${PROJECT_NAME}
+		 bin
 	PERMISSIONS OWNER_EXECUTE OWNER_WRITE OWNER_READ
                       GROUP_EXECUTE GROUP_READ )
 
@@ -39,6 +39,5 @@ FOREACH(tool_name ${tools})
 		TARGET_LINK_LIBRARIES(${EXECUTABLE_NAME} dl)
 	ENDIF(UNIX)
 	  
-	INSTALL(TARGETS ${tool_name}
-		DESTINATION bin/${PROJECT_NAME})
+	INSTALL(TARGETS ${tool_name} DESTINATION bin)
 ENDFOREACH(tool_name)
