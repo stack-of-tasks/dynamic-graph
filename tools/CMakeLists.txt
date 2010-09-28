@@ -1,6 +1,6 @@
-# 
-#  Copyright 
-# 
+#
+#  Copyright
+#
 
 ### tools
 SET(tools
@@ -8,11 +8,11 @@ SET(tools
 )
 
 ### Configure shell launch script
-CONFIGURE_FILE(${CMAKE_CURRENT_SOURCE_DIR}/sot-shell-plugin.sh.cmake
-	       ${${PROJECT_NAME}_BINARY_DIR}/tools/sot-shell-plugin.sh)
+CONFIGURE_FILE(${CMAKE_CURRENT_SOURCE_DIR}/sot-shell-plugin.cmake
+	       ${${PROJECT_NAME}_BINARY_DIR}/tools/sot-shell-plugin)
 INSTALL(
 	FILES
-		${${PROJECT_NAME}_BINARY_DIR}/tools/sot-shell-plugin.sh
+		${${PROJECT_NAME}_BINARY_DIR}/tools/sot-shell-plugin
 	DESTINATION
 		 bin
 	PERMISSIONS OWNER_EXECUTE OWNER_WRITE OWNER_READ
@@ -25,19 +25,19 @@ FOREACH(tool_name ${tools})
 
 	ADD_EXECUTABLE(${EXECUTABLE_NAME}
 	  ${tool_name}.cpp)
-	
+
 	INCLUDE_DIRECTORIES(
-		${CMAKE_CURRENT_SOURCE_DIR}/../include 
+		${CMAKE_CURRENT_SOURCE_DIR}/../include
 	)
 
 	LINK_DIRECTORIES(${${PROJECT_NAME}_BINARY_DIR}/lib)
 
 	TARGET_LINK_LIBRARIES(${EXECUTABLE_NAME}
 	  ${PROJECT_NAME})
-	  
+
 	IF(UNIX)
 		TARGET_LINK_LIBRARIES(${EXECUTABLE_NAME} dl)
 	ENDIF(UNIX)
-	  
+
 	INSTALL(TARGETS ${tool_name} DESTINATION bin)
 ENDFOREACH(tool_name)
