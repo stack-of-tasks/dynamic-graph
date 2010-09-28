@@ -14,14 +14,24 @@ Section: libs
 Package: libdynamic-graph-dev
 Section: libdevel
 Architecture: any
-Depends: ${misc:Depends}
+Depends: libdynamic-graph1.0.0.99 (= ${binary:Version}), ${misc:Depends}
 Suggests: libdynamic-graph-doc
-Description: Dynamic graph C++ library
+Description: Dynamic graph C++ library development package
  The dynamic graph library allows the representation of data-flow in C++.
  It provides fast graph evaluation and a simple script language to manipulate
  the graph actions.
  .
  This package contains development files (headers and pkg-config file).
+
+
+Package: libdynamic-graph1.0.0.99
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Dynamic graph C++ library
+ The dynamic graph library allows the representation of data-flow in C++.
+ It provides fast graph evaluation and a simple script language to manipulate
+ the graph actions.
+
 
 Package: libdynamic-graph-doc
 Section: doc
