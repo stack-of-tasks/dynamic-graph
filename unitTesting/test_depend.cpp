@@ -1,22 +1,22 @@
-/*+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
- * Copyright Projet VISTA / IRISA, 2003
- *+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+/*
+ * Copyright 2010,
+ * François Bleibel,
+ * Olivier Stasse,
  *
- * File:      test_categorie.cc
- * Project:   Traces
- * Author:    Nicolas Mansard
+ * CNRS/AIST
  *
- * Version control
- * ===============
- *
- *  $Id: test_boost.cpp,v 1.1.1.1 2006-07-03 05:17:37 nmansard Exp $
- *
- * Description
- * ============
- *
- * Test la classe CategorieTrace.
- *
- * ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+ * This file is part of dynamic-graph.
+ * dynamic-graph is free software: you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation, either version 3 of
+ * the License, or (at your option) any later version.
+ * dynamic-graph is distributed in the hope that it will be
+ * useful, but WITHOUT ANY WARRANTY; without even the implied warranty
+ * of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.  You should
+ * have received a copy of the GNU Lesser General Public License along
+ * with dynamic-graph.  If not, see <http://www.gnu.org/licenses/>.
+ */
 
 /* -------------------------------------------------------------------------- */
 /* --- INCLUDES ------------------------------------------------------------- */

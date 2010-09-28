@@ -1,21 +1,22 @@
-/*+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
- * Copyright Projet JRL-Japan, 2010
- *+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+/*
+ * Copyright 2010,
+ * François Bleibel,
+ * Olivier Stasse,
  *
- * File:      interpreter.h
- * Project:   DYNAMIC-GRAPH
- * Author:    O. Stasse, 
- *            F. Bleibel, 
- *            N. Mansard
+ * CNRS/AIST
  *
- * Description
- * ============
- * \file This class provides an entry point for any interpreter
- *       willing to connect to the dynamic-graph.
- *
- * ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
-
-
+ * This file is part of dynamic-graph.
+ * dynamic-graph is free software: you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation, either version 3 of
+ * the License, or (at your option) any later version.
+ * dynamic-graph is distributed in the hope that it will be
+ * useful, but WITHOUT ANY WARRANTY; without even the implied warranty
+ * of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.  You should
+ * have received a copy of the GNU Lesser General Public License along
+ * with dynamic-graph.  If not, see <http://www.gnu.org/licenses/>.
+ */
 
 #ifndef __INTERPRETER_HELPER_HH__
 #define __INTERPRETER_HELPER_HH__

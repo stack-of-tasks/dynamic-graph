@@ -1,35 +1,22 @@
-/*+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
- * Copyright Projet Lagadic, 2005
- *+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+/*
+ * Copyright 2010,
+ * François Bleibel,
+ * Olivier Stasse,
  *
- * File:      dgDebug.h
- * Project:   STack of Tasks
- * Author:    Nicolas Mansard
+ * CNRS/AIST
  *
- * Version control
- * ===============
- *
- *  $Id$
- *
- * Description
- * ============
- *
- * Macro de trace et de debugage
- *
- *   - TRACAGE:    TRACE et ERROR_TRACE fonctionnent comme des printf
- * avec retour chariot en fin de fonction.
- *                 CERROR et CTRACE fonctionnent comme les flux de sortie
- * C++ cout et cerr.
- *   - DEBUGAGE:   DEBUG_TRACE(niv,  et DERROR_TRACE(niv, fonctionnent
- * comme des printf, n'imprimant que si le niveau de trace 'niv' est
- * superieur au mode de debugage VP_DEBUG_MODE.
- *                 CDEBUG(niv) fonctionne comme le flux de sortie C++ cout.
- *                 DEBUG_ENABLE(niv) vaut 1 ssi le niveau de tracage 'niv'
- * est superieur au  mode de debugage DEBUG_MODE. Il vaut 0 sinon.
- *   - PROG DEFENSIVE: DEFENSIF(a) vaut a ssi le mode defensif est active,
- * et vaut 0 sinon.
- *
- * ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+ * This file is part of dynamic-graph.
+ * dynamic-graph is free software: you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public License
+ * as published by the Free Software Foundation, either version 3 of
+ * the License, or (at your option) any later version.
+ * dynamic-graph is distributed in the hope that it will be
+ * useful, but WITHOUT ANY WARRANTY; without even the implied warranty
+ * of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.  You should
+ * have received a copy of the GNU Lesser General Public License along
+ * with dynamic-graph.  If not, see <http://www.gnu.org/licenses/>.
+ */
 
 #include <dynamic-graph/debug.h>
 #include <fstream>
