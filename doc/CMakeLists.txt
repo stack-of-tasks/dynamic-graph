@@ -49,7 +49,7 @@ SET(HTMLDIR ${DOCDIR}/html)
 # Add `doc' target.
 ADD_CUSTOM_TARGET(
   doc ALL
-  DEPENDS html/index.html dg-coshell.1.gz)
+  DEPENDS html/index.html dg-shell.1.gz dg-shell-plugin.1.gz)
 
 
 # Generate Doxygen configuration file.
