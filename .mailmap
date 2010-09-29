@@ -1,0 +1,39 @@
+#
+# This list is used by git-shortlog to fix a few botched name translations
+# in the git archive, either because the author's full name was messed up
+# and/or not always written the same way, making contributions from the
+# same person appearing not to be so or badly displayed.
+
+Anthony Mallet <anthony.mallet@laas.fr>
+
+Olivier Stasse <grxuser@jrl005.a01.aist.go.jp>
+Olivier Stasse <olivier.stasse@aist.go.jp>
+Olivier Stasse <stasse@dhcpt1243.a02.aist.go.jp>
+Olivier Stasse <stasse@jrl005.a01.aist.go.jp>
+Olivier Stasse <olivier.stasse@aist.go.jp>
+Olivier Stasse <stasse@stasse-laptop.(none)>
+Olivier Stasse <olivier.stasse@aist.go.jp>
+Olivier Stasse <stasse@dhcpt1059.a02.aist.go.jp>
+Olivier Stasse <stasse@jrl005.a01.aist.go.jp>
+Olivier Stasse <stasse@jrl005.a02.aist.go.jp>
+Olivier Stasse <olivier.stasse@aist.go.jp>
+Olivier Stasse <stasse@jrl006.(none)>
+Olivier Stasse <stasse@stasse-laptop.(none)>
+
+
+Nicolas Mansard <nmansard@devgiri.(none)>
+Nicolas Mansard <nmansard@jorasse.(none)>
+Nicolas Mansard <nmansard@laas.fr>
+
+
+Florent Lamiraux <florent@big-laptop.(none)>
+Florent Lamiraux <florent@dhcpt1253.a02.aist.go.jp>
+Florent Lamiraux <florent@florent-laptop.laas.fr>
+Florent Lamiraux <florent@florent-laptop.(none)>
+Florent Lamiraux <florent@laas.fr>
+Florent Lamiraux <Florent Lamiraux florent@laas.fr>
+Florent Lamiraux <florent@florent-laptop.(none)>
+Florent Lamiraux <Florent Lamiraux florent@laas.fr>
+Florent Lamiraux <florent@localhost.localdomain>
+Florent Lamiraux <florent@poullenc.laas.fr>
+Florent Lamiraux <florent@poullenc.(none)>
