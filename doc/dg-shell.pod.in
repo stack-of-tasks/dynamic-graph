@@ -1,0 +1,31 @@
+=head1 NAME
+
+dg-shell - Stack of tasks shell
+
+
+=head1 SYNOPSIS
+
+dg-shell [FILE]
+
+
+=head1 DESCRIPTION
+
+Start the stack of tasks and provides to the user an interactive shell
+to control the data-flow.
+
+Optionally, a file which will be interpreted at start-up can be given
+to the program.
+
+
+=head1 AUTHORS
+
+This software has been developed at CNRS/AIST and LAAS-CNRS laboratories.
+
+See <@CMAKE_INSTALL_PREFIX@/share/doc/libdg-middleware-dev/AUTHORS> to
+see the list of all contributors.
+
+
+=head1 SEE ALSO
+       dg-shell-plugin(1)
+
+See also <@PROJECT_URL@> for additional resources.
