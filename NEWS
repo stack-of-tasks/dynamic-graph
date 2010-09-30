@@ -1,4 +1,123 @@
-                                                                -*- outline -*-
+New in version 1.1 - 2010-09-30
+      Configured dynamicGraph package and cmake files. Last-minute adjustment to code for SOT separation (SOT Break)
+      Added forgotten files.
+      Wrong file added to git repository (corrected).
+New in version 1.0.0
+      Changed version number to 1.0.0
+      Removed SOT reference (<sot/*.h> --> <dynamicGraph/*.h>)
+      dynamicGraph now compiles shared libraries.
+      Type in symbol dgDEBUGFLOW resulted in not being able to load shared libraries. Fixed. Preliminary documentation changes. Re-added INSTALL file.
+      Removed debug hack left in the last commit.
+      Removed dependencies on all other packages.
+      Renamed pkg-config definition file to adhere standards.
+      Added documentation, renamed header paths, corrected CMakeLists accordingly.
+      Added two unit tests.
+      The package name is now dynamic-graph (this still needs to be changed in the git repository). Updated source files to reflect that change. Clarified CMakeLists, explicited cpp source files for libraries.
+      Added forgotten header dynamic-graph-API.h
+      Changed CMakeLists to cope for the new headers location.     Renamed dynamic-graph-API.h to dynamic-graph-api.h in every header file.
+      Added a new test (test_pool).
+      Added two unit tests.
+      Implemented dynamic casting facility from signals to std::streams
+      Bug fixes following the reintroduction of casts in dynamicgraph.
+      Cast: Unit testing
+      Forgot to include some code in the last commit.
+      Used signal exceptions for the exceptions thrown by SignalCast.
+      Added forgotten test file test_signalcast.cpp
+      Added forgotten file all-signals.h
+      Now only generated documentation if GENERATE_DOC is ON.
+      Cosmetic change in CMakeLists.txt
+      Removed all 'sot' references.
+      Re-added shell functions and procedures.
+      Added README information. Read me! Removed the test test_factory (need to design a new one)
+      Separated unit tests and tools. Added ADD_TEST cmake command.
+      Removed all using namespace directives from headers. Some minor resulting bugfixes.
+      Added UNIX guard for inclusion of dynamic load library in CMakeFiles.
+      Added auto-generated script to start shell with default plugins loaded.
+      Corrected typo 'dependant' -> 'dependent'
+      Added tracer plugin to source.
+      Removed default definition of VP_DEBUG_MODE in cmake (already in header).
+      Changed linking of exceptions and traces.
+      Removed the EXTRA_LIBRARIES.
+      Put shell functions firmly into dynamicgraph. Removed plugin. Corrected headers inclusion.
+      Made DefaultSignalCaster public (exported).     Added boost::ublas::vector example to test_signalcast.
+      Added SignalCaster tests with shared libraries.
+      Enabled thread support (was disabled before because HAVE_LIBBOOST_THREAD was not defined)
+      Port Olivier's changes in SOT commit eacfd9544ca
+      Added support for TOOLS exceptions
+      Re-added shell-functions plugin (exports functions defined in dynamic-graph to the shell).
+      Removed CMAKE_INSTALL_PREFIX in INSTALL directives.
+      Changed parts of documentation.
+      Changed name of the traces file.
+      Added more exception catch codes in interpreter. Should now link correctly with boost libraries. Small debug output changes.
+      Merge branch 'master' of git+ssh://softs.laas.fr/git/jrl/frameworks/dynamicGraph
+      Removed automatic definition of VP_DEBUG.
+      Added libraries rpath.
+      Revert "Added libraries rpath."
 
-New in X.Y, XXXX-YY-ZZ:
-* Initial release.
+Francois Keith (11):
+      Win32: Correct typo in the macro name for the API
+      Win32: typo in the API
+      Add a missing dependency between tracer-RT and tracer
+      Win32: Add the exportation of SignalCast
+      Win32: Correct exportation of g_caster
+      The dependency in dl is unix-specific
+      Add the missing "int" in "int main (void)"
+      Win32: Correct API name for contiifstream
+      Win32: Add some definitions to avoid some verbose warnings
+      Use the correct macro for import/export in functions.h
+      Correct the exception raised by signalTime
+
+Mansard (1):
+      Added an example of caster construction for type vector (dummy cast, similar to the default one, just for the tuto).
+
+Olivier Stasse (4):
+      Add detection of boost.
+      Fix boost detection
+      First version for the interpreter-helper.
+      Add uninstall target to dynamic-graph.
+
+Thomas Moulard (19):
+      Getting rid of obsolete autogen.sh file.
+      Rename README into README.md.
+      Remove INSTALL file.
+      Rewrite README using Markdown syntax.
+      Rewrite NEWS file.
+      Rewrite AUTHORS file.
+      Add LGPL-3 license.
+      Add license header.
+      Debianize package.
+      Update project version to 1.0.0.99
+      Fix Debian package (main binary pacakge was missing).
+      Add newline at end of file.
+      Fix shell.sh.cmake.
+      Install binaries in bin directory.
+      Use mktemp to create temporary file in sot-shell-plugin.sh.
+      Remove .sh extension to installed shell scripts.
+      Add missing build requirement in Debian package.
+      Increment build number for the Debian package.
+      Add plug-ins to package.
+
+florent (17):
+      Rename file according to standard
+      Fix documentation generation
+      Activate debug tracing by configuration option CMAKE_VERBOSITY_LEVEL     	 * src/CMakeLists.txt.
+      Remove trailing white spaces
+      Migrate code of plugin shell-functions to main library
+      Add -DVP_DEBUG in debug mode.
+      Move class Contiifstream into namespace dynamicgraph.
+      Cosmetic changes
+      Reintroduce file that mysteriously disappeared in commit 41e11cc3776c29c91ef
+      Fix compilation of tests
+      Make ExceptionAbstract::getStringMessage const
+      Add message in exception
+      Use stringstream to pass values in set/get test.
+      Make ExceptionAbstract derive from std::exception.
+      Do not rethrow exception, since boost exceptions derive from std::exception
+      Make exception message more explicit
+      Add message in exception when a signal type is already registered.
+
+stasse (3):
+      Reinforce the dependant->dependent policy.     Merge the florent branch.     Makes the test_depend.cpp test works.
+      Reinforce the dependant->dependent policy.
+      Adding documentation to cmdPlug.
+
