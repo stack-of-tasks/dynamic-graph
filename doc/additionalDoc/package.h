@@ -61,7 +61,30 @@ corresponding headers in this module are:
 
 \image html pictures/use-case.svg
 
-.
+\section entities List of entities in this package
+Since most of the functionality in projects using the dynamic-graph framework
+is exposed from entities, here is a short description of all the entities contained in
+this package:
+\li Tracer (generated plugin file tracer.dll or tracer.so)
+The Tracer entity monitors a set of signals. With a change of the entity's <trigger> signal,
+the tracked signal values are recorded and traced to a file. The behavior of the trace-to-file
+function can be changed, from printing to a file immediately after recording, to printing out
+only when asked explicitly.\br
+The commands that this entity exposes are (you can also type [entity name].help at the
+dynamic-graph shell command line to see this list):\br
+open, close, add (a signal), clear, record, trace, start, stop
+\br\br
+For more information on the signals exposed by this entity, please check the
+code documentation of the dynamicgraph::Tracer class.
+
+\li TracerRealTime
+\li ShellProcedure
+\li ShellFunctions
+\li Contiifstream
+
+The entities will be placed in ${PREFIX}/lib/plugin (since this may change, it is advised to
+check the install log or the CMakeLists.txt file to check the installation path).
+
 \defgroup dgraph Core classes and objects
 \defgroup signals Signals
 
@@ -86,5 +109,4 @@ Signals can be plug into one another or set through shell commands.
 @}
 
 \namespace dynamicgraph This is the namespace where every object and class of this library is located.
-
 */
