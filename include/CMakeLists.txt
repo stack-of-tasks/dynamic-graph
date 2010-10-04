@@ -1,3 +1,8 @@
+# Generate header with default script directory.
+SET(DG_IMPORT_DEFAULT_PATHS \"${CMAKE_INSTALL_PREFIX}/script\")
+CONFIGURE_FILE(${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}/import-default-paths.h.cmake
+		       ${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}/import-default-paths.h)
+
 SET(${PROJECT_NAME}_HEADERS
 contiifstream.h
 debug.h
@@ -10,6 +15,8 @@ interpreter.h
 interpreter-helper.h
 plugin-loader.h
 pool.h
+import.h
+import-default-paths.h
 
 exception-abstract.h
 exception-factory.h

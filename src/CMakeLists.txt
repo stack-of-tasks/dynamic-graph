@@ -23,6 +23,7 @@ ADD_LIBRARY(${LIBRARY_NAME}
   dgraph/interpreter-helper.cpp
   dgraph/plugin-loader.cpp
   dgraph/pool.cpp
+  dgraph/import.cpp
 
   exception/exception-abstract.cpp
   exception/exception-factory.cpp

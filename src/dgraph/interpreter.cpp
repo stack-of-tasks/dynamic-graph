@@ -26,6 +26,7 @@
 #include <dynamic-graph/interpreter.h>
 #include <dynamic-graph/plugin-loader.h>
 #include <dynamic-graph/debug.h>
+#include <dynamic-graph/import.h>
 
 /* --- STD --- */
 using namespace std;
@@ -51,6 +52,9 @@ Interpreter( PluginLoader* dl__ )
   registerFunction("set",boost::bind(&Interpreter::cmdSetSignal,this,_1,_2,_3));
   registerFunction("get",boost::bind(&Interpreter::cmdGetSignal,this,_1,_2,_3));
   registerFunction("compute",boost::bind(&Interpreter::cmdComputeSignal,this,_1,_2,_3));
+  registerFunction("import",boost::bind(&dynamicgraph::command::import,boost::ref(*this),_1,_2,_3));
+  registerFunction("pushImportPaths",boost::bind(&dynamicgraph::command::pushImportPaths,boost::ref(*this),_1,_2,_3));
+  registerFunction("popImportPaths",boost::bind(&dynamicgraph::command::popImportPaths,boost::ref(*this),_1,_2,_3));
   prompt = PROMPT_DEFAULT;
   initDone = true;
 }
