@@ -64,23 +64,50 @@ corresponding headers in this module are:
 \section entities List of entities in this package
 Since most of the functionality in projects using the dynamic-graph framework
 is exposed from entities, here is a short description of all the entities contained in
-this package:
-\li Tracer (generated plugin file tracer.dll or tracer.so)
-The Tracer entity monitors a set of signals. With a change of the entity's <trigger> signal,
+this package. Note that most entities are contained in a binary file that closely matches
+the entities' names in the scripts; loading this file with the plugin loader will
+enable creation of this entity through the factory.
+\li \link dynamicgraph::Tracer Tracer \endlink (generated plugin file tracer.dll or tracer.so)\n
+The \b Tracer entity monitors a set of signals. With an input change on the entity's <trigger> signal,
 the tracked signal values are recorded and traced to a file. The behavior of the trace-to-file
 function can be changed, from printing to a file immediately after recording, to printing out
-only when asked explicitly.\br
-The commands that this entity exposes are (you can also type [entity name].help at the
-dynamic-graph shell command line to see this list):\br
-open, close, add (a signal), clear, record, trace, start, stop
-\br\br
+only when asked explicitly.\n
+The \b commands that this entity exposes are (you can also type [entity name].help at the
+dynamic-graph shell command line to see this list):
+\code
+open, close (a file);
+add (a signal)
+clear (recorded values);
+record (signal values)
+trace (recorded values to file)
+start, stop (traces)
+\endcode
+\n
 For more information on the signals exposed by this entity, please check the
 code documentation of the dynamicgraph::Tracer class.
+\n\n
+\b Sample \b usage \n
+The following code creates a TracerRealTime entity, then sets the tracing buffer
+size to 10MB. It then tells the tracer to create files with names of the form:
+jl_XXX.dat where XXX is the signal name, and adds a few signals after
+clearing the traces;
+\code
+new TracerRealTime tr
+tr.bufferSize 10485760
 
-\li TracerRealTime
+tr.open  ${TRACE_REPOSITORY} jl_ .dat
+OpenHRP.periodicCall addSignal tr.triger
+(...)
+# --- TRACE ---
+tr.clear
+tr.add OpenHRP.forceRARM
+tr.add dyn.0
+tr.add jgain.gain
+\endcode
+\li \link dynamicgraph::TracerRealTime TracerRealTime \endlink
 \li ShellProcedure
 \li ShellFunctions
-\li Contiifstream
+\li \link dynamicgraph::Contiifstream Contiifstream \endlink
 
 The entities will be placed in ${PREFIX}/lib/plugin (since this may change, it is advised to
 check the install log or the CMakeLists.txt file to check the installation path).
@@ -105,7 +132,7 @@ all deriving from the common class dynamicgraph::SignalBase :
 Signals can be grouped together using dynamicgraph::SignalArray.
 
 Signals implement a caching mechanism by storing the last computation time tick.
-Signals can be plug into one another or set through shell commands.
+Signals can be plugged into one another or set through shell commands.
 @}
 
 \namespace dynamicgraph This is the namespace where every object and class of this library is located.

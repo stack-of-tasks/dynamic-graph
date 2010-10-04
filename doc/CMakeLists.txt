@@ -57,7 +57,7 @@ CONFIGURE_FILE(package.dox.cmake package.dox)
 
 # Generating the Doxygen documentation
 ADD_CUSTOM_COMMAND(
-  OUTPUT html/index.html
+  OUTPUT ${BUILD_DIR}/html/index.html
   COMMAND ${DOXYGEN_EXECUTABLE} package.dox
   COMMENT Generating Doxygen documentation
 )
