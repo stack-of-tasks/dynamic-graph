@@ -22,7 +22,7 @@
 #
 MACRO(MANPAGE NAME)
   FIND_PROGRAM(POD2MAN pod2man)
-  CONFIGURE_FILE(${NAME}.pod.in ${NAME}.pod @ONLY)
+  CONFIGURE_FILE(${NAME}.pod.in ${BUILD_DIR}/${NAME}.pod @ONLY)
 
   ADD_CUSTOM_COMMAND(
     OUTPUT ${NAME}.1
@@ -53,7 +53,7 @@ ADD_CUSTOM_TARGET(
 
 
 # Generate Doxygen configuration file.
-CONFIGURE_FILE(package.dox.cmake package.dox)
+CONFIGURE_FILE(package.dox.cmake ${BUILD_DIR}/package.dox)
 
 # Generating the Doxygen documentation
 ADD_CUSTOM_COMMAND(
