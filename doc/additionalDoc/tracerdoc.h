@@ -1,11 +1,11 @@
 /**
 \page tracerdoc Tracer
-Generated plugin file tracer.dll or tracer.so.
 \section description Description
 The \b Tracer entity monitors a set of signals. With an input change on the entity's <trigger> signal,
 the tracked signal values are recorded and traced to a file. The behavior of the trace-to-file
 function can be changed, from printing to a file immediately after recording, to printing out
-only when asked explicitly.\n
+only when asked explicitly.
+\section commands Commands
 The \b commands that this entity exposes are (you can also type [entity name].help at the
 dynamic-graph shell command line to see this list):
 \code
@@ -13,7 +13,7 @@ open, close (a file);
 add (a signal)
 clear (recorded values);
 record (signal values)
-trace (recorded values to file)
+trace (doesn't do anything)
 start, stop (traces)
 \endcode
 \n
@@ -38,4 +38,11 @@ tr.add OpenHRP.forceRARM
 tr.add dyn.0
 tr.add jgain.gain
 \endcode
+
+\section addi Additional information
+See doxygen documentation for the class dynamicgraph::Tracer
+
+\section generates Generated plugin file
+tracer.dll or tracer.so.
+
 **/

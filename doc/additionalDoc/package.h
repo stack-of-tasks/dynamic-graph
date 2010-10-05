@@ -32,7 +32,7 @@ for a given problem. It is the basis for the stack of tasks operation.
 This code implements the factory design pattern, making creation of entities
 available to packages depending on the dynamic-graph API.
 
-Objects, which are derived from Entities, can be
+Objects, which are derived from Entities (base class dynamicgraph::Entity), can be
  declared within the code and compiled to shared libraries (.so/.dll files).
 These libraries can be loaded at run-time using the PluginLoader methods,
 and at the same time register their class names to the Factory (see the
@@ -55,11 +55,9 @@ at the command line.
 
 The public static objects (singletons) made available by including the
 corresponding headers in this module are:
-\li g_factory: FactoryStorage
-\li g_pool: PoolStorage
-\li g_shell: Interpreter
-
-\image html pictures/use-case.svg
+\li g_factory: dynamicgraph::FactoryStorage
+\li g_pool: dynamicgraph::PoolStorage
+\li g_shell: dynamicgraph::Interpreter
 
 \section entities List of entities in this package
 Since most of the functionality in projects using the dynamic-graph framework
@@ -68,13 +66,23 @@ this package. Note that most entities are contained in a binary file that closel
 the entities' names in the scripts; loading this file with the plugin loader will
 enable creation of this entity through the factory.
 \li \ref tracerdoc
-\li \link dynamicgraph::TracerRealTime TracerRealTime \endlink
+\li \ref tracerrealtimedoc
 \li ShellProcedure
-\li ShellFunctions
+\li \ref shellfunctions_doc
 \li \link dynamicgraph::Contiifstream Contiifstream \endlink
 
 The entities will be placed in ${PREFIX}/lib/plugin (since this may change, it is advised to
 check the install log or the CMakeLists.txt file to check the installation path).
+\section signals About signals
+
+Entities can output different types of signals. All signals are templated by a Time
+tick type parameter (which is used in the caching of signals) - usually \c int. Signals
+are also templated after the type of data they accept or provide. For example:
+
+\section usecase Use case
+
+\image html pictures/use-case.svg
+
 
 \defgroup dgraph Core classes and objects
 \defgroup signals Signals
