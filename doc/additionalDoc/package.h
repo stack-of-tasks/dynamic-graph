@@ -73,13 +73,18 @@ enable creation of this entity through the factory.
 
 The entities will be placed in ${PREFIX}/lib/plugin (since this may change, it is advised to
 check the install log or the CMakeLists.txt file to check the installation path).
-\section signals About signals
+\section sigintro About signals
 
 Entities can output different types of signals. All signals are templated by a Time
 tick type parameter (which is used in the caching of signals) - usually \c int. Signals
 are also templated after the type of data they accept or provide. For example:
+(example)
+For a more detailed programmer-oriented description of signals, please see \ref signals
 
-\section usecase Use case
+\section scriptingabout About the scripting language
+(...)
+
+\section usecase Programmers use case
 
 \image html pictures/use-case.svg
 
