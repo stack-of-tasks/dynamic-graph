@@ -25,7 +25,7 @@
  *
  * CNRS/AIST
  *
- * This file is part of dynamic-graph. 
+ * This file is part of dynamic-graph.
  * dynamic-graph is free software: you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public License
  * as published by the Free Software Foundation, either version 3 of
@@ -76,7 +76,7 @@ extern std::ofstream debugfile;
 int main( int argc,char** argv )
 {
   dgDEBUGIN(15);
-  
+
   dgDEBUG(5) << " Loading..." << endl;
   PluginLoader pl;
   g_shell.referencePluginLoader( &pl );
@@ -90,7 +90,7 @@ int main( int argc,char** argv )
 	  cout << "Run "<< argv[fileIdx] << endl;
 	  g_shell.cmd( "run",script,cout );
 	}
-    } 
+    }
   catch( exception& e )
     {
       cout << "!! In file <" << argv[fileIdx] << "> : "  << e.what() <<endl;
@@ -100,7 +100,7 @@ int main( int argc,char** argv )
 	  	  << "Unknown exception " << str << endl;
   }
   catch( ... ){ dgDEBUG(5) << "!! Unknown! " <<endl ; }
- 
+
   while(1)
     {
       try
@@ -109,7 +109,7 @@ int main( int argc,char** argv )
 	  g_shell.shell(cin,cout);
 	  dgDEBUG(5) << "Shell over." << endl;
       if( cin.eof() ) break;
-	} 
+	}
       catch( exception& e )
 	{
 	  cout << "!!  "  << e.what() <<endl;

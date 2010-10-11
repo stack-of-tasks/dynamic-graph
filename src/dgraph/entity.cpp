@@ -36,28 +36,28 @@ const std::string Entity::CLASS_NAME = "Entity";
 
 
 void Entity::
-entityRegistration( void ) 
+entityRegistration( void )
 {
-  
+
   //sotPool.entity[name] = this;
   g_pool.registerEntity(name,this);
 }
 
 void Entity::
-entityDeregistration( void ) 
+entityDeregistration( void )
 {
   g_pool.deregisterEntity(name);
 }
 
 Entity::
 Entity( const string& name__ )
-  : name(name__) 
+  : name(name__)
 {
   dgDEBUG(15) << "New entity <"<<name__<<">"<<endl;
-  if( name.length()==0 ) 
+  if( name.length()==0 )
     {
       stringstream oss; oss << rand();
-      name = CLASS_NAME; 
+      name = CLASS_NAME;
       name+="::";
       name+=oss.str();
     }
@@ -79,7 +79,7 @@ Entity::
 void Entity::
 signalRegistration( const SignalArray<int>& signals )
 {
-  for( unsigned int i=0;i<signals.getSize();++i ) 
+  for( unsigned int i=0;i<signals.getSize();++i )
     {
       SignalBase<int>& sig = signals[i];
       //const string& signame = sig.getName();
@@ -154,7 +154,7 @@ getSignal( const string & signame ) const
 {
   __DG_ENTITY_GET_SIGNAL__(const_iterator);
 }
-  
+
 
 std::ostream& Entity::
 displaySignalList( std::ostream& os ) const
@@ -175,7 +175,7 @@ writeGraph( std::ostream& os ) const
   const SignalMap::const_iterator iterend=signalMap.end();
   for( SignalMap::const_iterator iter = signalMap.begin();iterend!=iter;++iter )
     {
-      
+
       (*(iter->second)).writeGraph(os);
     }
   return os;
@@ -187,7 +187,7 @@ writeCompletionList( std::ostream& os ) const
   const SignalMap::const_iterator iterend=signalMap.end();
   for( SignalMap::const_iterator iter = signalMap.begin();iterend!=iter;++iter )
     {
-      
+
       os << getName() << "." << (*(iter->second)).shortName() << std::endl;
     }
 
@@ -198,7 +198,7 @@ writeCompletionList( std::ostream& os ) const
 void Entity::
 display( std::ostream& os ) const
 {
-  os<<this->getClassName()<<": "<<name; 
+  os<<this->getClassName()<<": "<<name;
 }
 
 std::ostream& dynamicgraph::operator<< (std::ostream& os, const Entity& ent )
@@ -215,7 +215,7 @@ static std::string Entity_COMMAND_LIST = "print\nsignals\nsignalDep";
 const std::string& Entity::
 getCommandList( void ) const
 {
-  return Entity_COMMAND_LIST; 
+  return Entity_COMMAND_LIST;
 }
 
 void Entity::
@@ -235,13 +235,13 @@ commandLine( const std::string& cmdLine,std::istringstream& cmdArgs,std::ostream
   else if( cmdLine == "signals")
     {      displaySignalList(os);    }
   else if( cmdLine == "signalDep")
-    {    
-      string sig; cmdArgs>>sig; 
-      cmdArgs >>  ws; int depth=-1; 
+    {
+      string sig; cmdArgs>>sig;
+      cmdArgs >>  ws; int depth=-1;
       if( cmdArgs.good() ) { cmdArgs >> depth; }
       getSignal(sig) .displayDependencies( os,depth ); os<<endl;
     }
-  else 
+  else
     {
       try{
 	SignalBase<int> & sig = getSignal( cmdLine );
@@ -250,20 +250,20 @@ commandLine( const std::string& cmdLine,std::istringstream& cmdArgs,std::ostream
 	if( cmdArgs.good() )
 	  {cmdArgs >> time;} else {time=0;}
 	sig.recompute( time );
-      
+
 	os << cmdLine << " = "; sig.get( os );
       } catch( ExceptionFactory& e ) {
 	switch( e.getCode() )
 	  {
-	  case ExceptionFactory::UNREFERED_SIGNAL: 
+	  case ExceptionFactory::UNREFERED_SIGNAL:
 	    DG_THROW ExceptionFactory( ExceptionFactory::UNREFERED_FUNCTION,
 					   "The requested function/signal :","<%s> is "
 					   "not registered.",cmdLine.c_str() );
 	    break;
 	  default:
-	    throw; 
+	    throw;
 	  }
       } catch( ... ) { throw;  }
     }
-  
+
 }

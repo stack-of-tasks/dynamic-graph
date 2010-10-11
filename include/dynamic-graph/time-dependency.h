@@ -22,7 +22,7 @@
 #define __TIME_DEPENDENCY_HH
 
 #include <list>
-#include <iostream> 
+#include <iostream>
 
 #include <dynamic-graph/signal-base.h>
 #include <dynamic-graph/signal-array.h>
@@ -36,7 +36,7 @@ class TimeDependency
  public:
   enum DependencyType
     {
-      TIME_DEPENDENT, 
+      TIME_DEPENDENT,
       BOOL_DEPENDENT,
       ALWAYS_READY
     };
@@ -65,26 +65,26 @@ class TimeDependency
   TimeDependency( SignalBase<Time>* sig,
 		     const DependencyType dep = DEPENDENCY_TYPE_DEFAULT );
   TimeDependency( SignalBase<Time>* sig,
-		     const SignalArray_const<Time>& arr, 
+		     const SignalArray_const<Time>& arr,
 		     const DependencyType dep = DEPENDENCY_TYPE_DEFAULT );
   ~TimeDependency( void ) {}
 
   void addDependency( const SignalBase<Time>& sig );
   void removeDependency( const SignalBase<Time>& sig );
   void clearDependency( void );
-  
+
 
   virtual std::ostream & writeGraph(std::ostream &os) const;
   std::ostream& displayDependencies( std::ostream& os,const int depth=-1,
 				     std::string space="",
 				     std::string next1="",std::string next2="" ) const;
-  
+
   bool needUpdate( const Time& t1 ) const;
 
   void setDependencyType( DependencyType dep ) { dependencyType = dep; }
-  
+
   void setNeedUpdateFromAllChildren( const bool b = true ){ updateFromAllChildren=b; }
-  bool getNeedUpdateFromAllChildren( void ) const { return updateFromAllChildren; } 
+  bool getNeedUpdateFromAllChildren( void ) const { return updateFromAllChildren; }
 
   void setPeriodTime( const Time& p ) { periodTime = p; }
   Time getPeriodTime( void ) const { return periodTime; }

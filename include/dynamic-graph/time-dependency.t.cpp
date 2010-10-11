@@ -25,7 +25,7 @@
  *
  * CNRS/AIST
  *
- * This file is part of dynamic-graph. 
+ * This file is part of dynamic-graph.
  * dynamic-graph is free software: you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public License
  * as published by the Free Software Foundation, either version 3 of
@@ -77,7 +77,7 @@ namespace dynamicgraph {
     ,updateFromAllChildren(ALL_READY_DEFAULT)   \
     ,dependencyType(dep)                        \
     ,periodTime(PERIOD_TIME_DEFAULT)
-                         
+
 
 template< class Time >
 TimeDependency<Time>::
@@ -93,9 +93,9 @@ TimeDependency( SignalBase<Time> * sig
 		   ,const DependencyType dep )
   :__TIME_DEPENDENCY_INIT(sig,dep)
 {
-  for( unsigned int i=0;i<ar.getSize();++i ) 
+  for( unsigned int i=0;i<ar.getSize();++i )
     {addDependency( ar[i] );  }
-  
+
   return ;
 }
 
@@ -104,26 +104,26 @@ template< class Time >
 void TimeDependency<Time>::
 addDependency( const SignalBase<Time>& sig )
 {
-  dependencies.push_front(&sig); 
+  dependencies.push_front(&sig);
 }
 
 template< class Time >
 void TimeDependency<Time>::
 removeDependency( const SignalBase<Time>& sig )
 {
-  dependencies.remove(&sig); 
+  dependencies.remove(&sig);
 }
 template< class Time >
 void TimeDependency<Time>::
 clearDependency( void )
 {
-  dependencies.clear(); 
+  dependencies.clear();
 }
 
 template< class Time >
 bool TimeDependency<Time>::
 needUpdate( const Time& t1 ) const
-{ 
+{
   dgTDEBUG(15) << "# In {" << leader.getName() << " : ("<< leader.getReady()<<") "
 		<< t1 << " >? " << leader.getTime() << std::endl;
 
@@ -132,12 +132,12 @@ needUpdate( const Time& t1 ) const
 
   switch( dependencyType )
     {
-    case ALWAYS_READY: 
+    case ALWAYS_READY:
       { dgTDEBUGOUT(15);return true; }
     case BOOL_DEPENDENT:  break;
-    case TIME_DEPENDENT: 
+    case TIME_DEPENDENT:
       {
-	if( t1<leader.getTime()+periodTime ) 
+	if( t1<leader.getTime()+periodTime )
 	  { dgTDEBUGOUT(15);return false; }
 	break;
       }
@@ -193,8 +193,8 @@ displayDependencies( std::ostream& os,const int depth,
     {
     case ALWAYS_READY: os<<"A"; break;
     case BOOL_DEPENDENT: os << "ready=" << ((leader.getReady())?"TRUE":"FALSE"); break;
-    case TIME_DEPENDENT:  
-      os  <<"t="<<leader.getTime() <<" (/"<<periodTime<<") " ; 
+    case TIME_DEPENDENT:
+      os  <<"t="<<leader.getTime() <<" (/"<<periodTime<<") " ;
       break;
     };
   os<<")"; //<<std::endl;
@@ -210,7 +210,7 @@ displayDependencies( std::ostream& os,const int depth,
 	    if( it2==dependencies.end() ) { ajout = "`"; ajout2= " "; }
 	    (*it)->displayDependencies( os,depth-1,space+next2+"   ",ajout,ajout2 );
 	  }
-	else 
+	else
 	  { os<<std::endl<<space<<"   `-- ..."; break; }
     }
   return os;

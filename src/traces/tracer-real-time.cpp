@@ -44,7 +44,7 @@ OutStringStream::
 OutStringStream( void )
   : std::ostringstream()
     ,buffer( 0 ),index(0),bufferSize(0),full(false)
-{ 
+{
   dgDEBUGINOUT(15);
 }
 
@@ -70,8 +70,8 @@ bool OutStringStream::
 addData( const char * data, const unsigned int & size )
 {
   dgDEBUGIN(15);
-  unsigned int towrite = size; 
-  if( index+towrite>bufferSize ) 
+  unsigned int towrite = size;
+  if( index+towrite>bufferSize )
     {
       dgDEBUGOUT(15);
       full=true;
@@ -92,7 +92,7 @@ dump( std::ostream& os )
 }
 
 void OutStringStream::
-empty( void ) 
+empty( void )
 {
   dgDEBUGIN(15);
   index=0; full=false;
@@ -111,7 +111,7 @@ TracerRealTime::TracerRealTime( const std::string n )
    ,bufferSize( BUFFER_SIZE_DEFAULT )
 {
   dgDEBUGINOUT(15);
-}  
+}
 
 /* --------------------------------------------------------------------- */
 /* --------------------------------------------------------------------- */
@@ -124,7 +124,7 @@ openFile( const SignalBase<int> & sig,
 {
   dgDEBUGIN(15);
   string signame;
-  if( givenname.length() )  
+  if( givenname.length() )
     { signame = givenname;  } else { signame = sig.shortName(); }
 
   string filename = rootdir + basename + signame + suffix;
@@ -156,10 +156,10 @@ closeFiles( void )
   while( files.end()!=iter )
     {
       dgDEBUG(25) << "Close the files." << endl;
-    
+
       std::stringstream * file = dynamic_cast< stringstream* >(*iter);
       std::ofstream * hardFile = *hardIter;
-      
+
       (*hardFile) <<flush; hardFile->close();
       delete file;
       delete hardFile;
@@ -202,9 +202,9 @@ trace( void )
 
       if( (hardFile.good())&&(NULL!=file) )
 	{
- 
+
 // 	  const unsigned int SIZE = 1024*8;
-// 	  char buffer[SIZE]; 
+// 	  char buffer[SIZE];
 // 	  streambuf * pbuf = file.rdbuf();
 // 	  pbuf->pubseekpos(0);
 // 	  const unsigned int NB_BYTE = pbuf->in_avail();
@@ -239,12 +239,12 @@ emptyBuffers( void )
 {
   dgDEBUGIN(15);
   for( FileList::iterator iter = files.begin();files.end()!=iter;++iter )
-    { 
+    {
       //std::stringstream & file = * dynamic_cast< stringstream* >(*iter);
       try {
-	OutStringStream & file  = * dynamic_cast< OutStringStream* >(*iter); 
+	OutStringStream & file  = * dynamic_cast< OutStringStream* >(*iter);
 	file.empty();
-	//file.str(""); 
+	//file.str("");
       }
       catch( ... ) { DG_THROW ExceptionTraces( ExceptionTraces::NOT_OPEN,
 						   "The buffer is not open",""); }
@@ -258,7 +258,7 @@ emptyBuffers( void )
 // {
 //   streambuf * pbuf = file.rdbuf();
 //   pbuf->file.rdbuf() ->pubsetbuf( fileBuffer,10 );
-  
+
 
 
 // }
@@ -269,7 +269,7 @@ recordSignal( std::ostream& os,
   dgDEBUGIN(15);
 
   try {
-    
+
     OutStringStream & file = dynamic_cast< OutStringStream& >(os);
     file.str("");
     dgDEBUG(45) << "Empty file [" << file.tellp()
@@ -283,9 +283,9 @@ recordSignal( std::ostream& os,
   } catch( ExceptionAbstract & exc ) { throw exc; }
   catch( ... ) {
     DG_THROW ExceptionTraces( ExceptionTraces::NOT_OPEN,
-				  "The buffer is not open",""); 
+				  "The buffer is not open","");
   }
-  
+
 
   dgDEBUGOUT(15);
   return ;
@@ -300,7 +300,7 @@ recordSignal( std::ostream& os,
 void TracerRealTime::
 display( std::ostream& os ) const
 {
-  os << CLASS_NAME << " " << name << " [mode=" << (play?"play":"pause") 
+  os << CLASS_NAME << " " << name << " [mode=" << (play?"play":"pause")
      << "] : "<< endl
      << "  - Dep list: "<<endl;
 
@@ -313,7 +313,7 @@ display( std::ostream& os ) const
       os << "     -> "<<(*iter)->getName();
       if( file->givenname.length() ) os << " (in " << file->givenname << ")" ;
       os << "\t";
-      if( file ) 
+      if( file )
 	{
 	  const std::streamsize PRECISION = os.precision();
 	  const unsigned int SIZE = file->index;
@@ -323,16 +323,16 @@ display( std::ostream& os ) const
 	  else if( (SIZE>>20)||(MSIZE>>20) ) { dec = 20; unit="Mo"; }
 	  else if( (SIZE>>10)||(MSIZE>>10) ) { dec = 10; unit="Ko"; }
  	  os << "[" << std::setw(1)<<std::setprecision(1)
- 	     << ((SIZE+0.0)/(1<<dec)) << unit << "/" 
- 	     << std::setprecision(2)<<((MSIZE+0.0)/(1<<dec)) 
+ 	     << ((SIZE+0.0)/(1<<dec)) << unit << "/"
+ 	     << std::setprecision(2)<<((MSIZE+0.0)/(1<<dec))
  	     << unit << "]\t";
 	  if( file->full ) os << "(FULL)";
 	  os.precision(PRECISION);
 	}
-      os<<endl;    
+      os<<endl;
       iterFile++;
     }
-  
+
 }
 
 
@@ -353,26 +353,26 @@ commandLine( const std::string& cmdLine
       os << "TracerRealTime: "<<endl
 	 << "  - empty: trash the buffers." <<endl
 	 << "  - bufferSize [<size>]: get/set the buffer size." <<endl;
-	
+
       Tracer::commandLine( cmdLine,cmdArgs,os );
     }
-  else if( cmdLine=="empty" ) 
+  else if( cmdLine=="empty" )
     {
       emptyBuffers();
     }
-  else if( cmdLine=="bufferSize" ) 
+  else if( cmdLine=="bufferSize" )
     {
       cmdArgs>>ws;
-      if( cmdArgs.good() ) 
+      if( cmdArgs.good() )
 	{
-	  int s; cmdArgs>>s; 
+	  int s; cmdArgs>>s;
 	  setBufferSize( s );
 	}
       else os << getBufferSize() << endl;
     }
 
 
-  else  
+  else
     Tracer::commandLine( cmdLine,cmdArgs,os );
 
 

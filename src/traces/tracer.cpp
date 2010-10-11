@@ -56,7 +56,7 @@ Tracer::Tracer( const std::string n )
 	   "Tracer("+n+")::triger" )
 {
   signalRegistration( triger );
-}  
+}
 
 /* --------------------------------------------------------------------- */
 /* --------------------------------------------------------------------- */
@@ -73,11 +73,11 @@ addSignalToTrace( const SignalBase<int>& sig,
   if( namesSet ) openFile( sig,filename );
   triger.addDependency( sig );
   dgDEBUGOUT(15);
-} 
+}
 
 /*! Empty the list of signals to trace. This function
  * does not modify the file list (it does not close
- * the files in particular. 
+ * the files in particular.
  */
 void Tracer::
 clearSignalToTrace( void )
@@ -101,7 +101,7 @@ openFiles( const std::string& rootdir_, const std::string& basename_,
   int n = rootdir_.length();
   rootdir=rootdir_;
   if( (0<n)&('/'!=rootdir[n-1]) ) rootdir+='/';
-  
+
   basename=basename_;
   suffix=suffix_;
 
@@ -113,7 +113,7 @@ openFiles( const std::string& rootdir_, const std::string& basename_,
     {
       dgDEBUG(15) << "Open <" << (*iter)->getName()
 		   << "> in <" << *iterName << ">." << std::endl;
-      openFile( **iter,*iterName );    
+      openFile( **iter,*iterName );
       ++iter; ++iterName;
     }
 
@@ -127,7 +127,7 @@ openFile( const SignalBase<int> & sig,
 {
   dgDEBUGIN(15);
   string signame;
-  if( givenname.length() )  
+  if( givenname.length() )
     { signame = givenname;  } else { signame = sig.shortName(); }
 
   string filename = rootdir + basename + signame + suffix;
@@ -143,7 +143,7 @@ void Tracer::
 closeFiles( void )
 {
   dgDEBUGIN(15);
-  
+
   for( FileList::iterator iter = files.begin();files.end()!=iter;++iter )
     {
       std::ostream * filePtr = *iter;
@@ -164,7 +164,7 @@ record( void )
   if(! play) { dgDEBUGINOUT(15); return;}
 
   dgDEBUGIN(15);
- 
+
   if( files.size()!=toTraceSignals.size() )
     { DG_THROW ExceptionTraces( ExceptionTraces::NOT_OPEN,
 				    "No files open for tracing"," (file=%d != %d=sig).",
@@ -176,7 +176,7 @@ record( void )
   while( toTraceSignals.end()!=iterSig )
     {
       dgDEBUG(45) << "Try..." <<endl;
-      recordSignal( **iterFile,**iterSig ); 
+      recordSignal( **iterFile,**iterSig );
       ++iterSig;      ++iterFile;
     }
   dgDEBUGOUT(15);
@@ -187,17 +187,17 @@ recordSignal(  std::ostream& os,
 	       const SignalBase<int>& sig )
 {
   dgDEBUGIN(15);
-  
-  try { 
-    if( sig.getTime()>timeStart ) 
+
+  try {
+    if( sig.getTime()>timeStart )
       {
-	os<< sig.getTime() << "\t"; 
+	os<< sig.getTime() << "\t";
 	sig.trace(os); os<<endl;
       }
   }
   catch( ExceptionAbstract& exc ) { os << exc << std::endl; }
   catch( ... ) { os << "Unknown error occured while reading signal." << std::endl; }
-  
+
    dgDEBUGOUT(15);
 
 }
@@ -226,12 +226,12 @@ trace( void )
 void Tracer::
 display( std::ostream& os ) const
 {
-  os << CLASS_NAME << " " << name << " [mode=" << (play?"play":"pause") 
+  os << CLASS_NAME << " " << name << " [mode=" << (play?"play":"pause")
      << "] : "<< endl
      << "  - Dep list: "<<endl;
   for( SignalList::const_iterator iter = toTraceSignals.begin();
        toTraceSignals.end()!=iter;++iter )
-    {      os << "     -> "<<(*iter)->getName()<<endl;    } 
+    {      os << "     -> "<<(*iter)->getName()<<endl;    }
 }
 
 
@@ -258,7 +258,7 @@ commandLine( const std::string& cmdLine
 	 << "  - trace "<<endl
 	 << "  - start/stop" << endl;
 	//	 << "  - parasite <obj.signal> "<<endl;
-	
+
       Entity::commandLine( cmdLine,cmdArgs,os );
     }
   else if( cmdLine=="add" )
@@ -268,11 +268,11 @@ commandLine( const std::string& cmdLine
       addSignalToTrace(sig,r);
       dgDEBUG(14)<<"Add <" <<sig.getName()<<"> with nick \""<<r<<"\""<<endl;
     }
-  else if( cmdLine=="clear" ) 
+  else if( cmdLine=="clear" )
     { closeFiles(); toTraceSignals.clear(); }
   else if( cmdLine=="open" )
     {
-      string n,r="",s=".dat"; 
+      string n,r="",s=".dat";
       cmdArgs>>ws>>r;
       if( cmdArgs.good() )
 	{
@@ -283,7 +283,7 @@ commandLine( const std::string& cmdLine
 	    }
 	}
 
-      //>>r>>s; 
+      //>>r>>s;
       dgDEBUGF( 15,"Close files.");
       closeFiles();
       dgDEBUGF( 15,"Open files \"%s\" \"%s\" \"%s\".",
@@ -292,26 +292,26 @@ commandLine( const std::string& cmdLine
     }
   else if( cmdLine=="close" ) { closeFiles(); }
   else if( cmdLine=="trace" ) { trace(); }
-  else if( cmdLine=="record" ) 
-    { 
+  else if( cmdLine=="record" )
+    {
       //unsigned int t;
       //cmdArgs >> ws>>t; if(! cmdArgs.good() ) t=0;
       record();
     }
-//   else if( cmdLine=="parasite" ) 
+//   else if( cmdLine=="parasite" )
 //     {
 //        SignalBase<int> &sig = g_pool.getSignal( cmdArgs );
 //        parasite(sig);
 //     }
   else if( cmdLine == "start" )    {  play=true; }
   else if( cmdLine == "stop" )    {  play=false; }
-  else if( cmdLine == "timeStart" )    
+  else if( cmdLine == "timeStart" )
     {
       cmdArgs >> std::ws; if(! cmdArgs.good() )
 	{ os << "timeStart = " << timeStart << std::endl; }
       else { cmdArgs >> timeStart; }
     }
-    
+
 
   else  //sotTaskAbstract::
     Entity::commandLine( cmdLine,cmdArgs,os );

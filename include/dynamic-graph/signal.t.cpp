@@ -25,7 +25,7 @@
  *
  * CNRS/AIST
  *
- * This file is part of dynamic-graph. 
+ * This file is part of dynamic-graph.
  * dynamic-graph is free software: you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public License
  * as published by the Free Software Foundation, either version 3 of
@@ -82,7 +82,7 @@ namespace dynamicgraph {
      ,TreferenceNonConst(TrefNC)                 \
      ,Tfunction()                                \
      ,keepReference( KEEP_REFERENCE_DEFAULT )    \
-     ,providerMutex(mutex)                    
+     ,providerMutex(mutex)
 
 template< class T,class Time >
 Signal<T,Time>::
@@ -129,16 +129,16 @@ trace( std::ostream& os ) const
 
 template< class T,class Time >
 const T& Signal<T,Time>::
-setTcopy( const T& t ) 
+setTcopy( const T& t )
 {
   if( Tcopy==&Tcopy1 )
     {
       Tcopy2 = t;
       copyInit = true;
-      Tcopy = &Tcopy2; 
+      Tcopy = &Tcopy2;
       return Tcopy2;
     }
-  else 
+  else
     {
       Tcopy1 = t;
       copyInit = true;
@@ -156,7 +156,7 @@ getTwork( void )
 
 template< class T,class Time >
 const T& Signal<T,Time>::
-getTwork( void ) const 
+getTwork( void ) const
 {
   if( Tcopy==&Tcopy1 ) return Tcopy2; else return Tcopy1;
 }
@@ -166,10 +166,10 @@ template< class T,class Time >
 const T& Signal<T,Time>::
 switchTcopy( void )
 {
-  if( Tcopy==&Tcopy1 ) 
+  if( Tcopy==&Tcopy1 )
     {
       Tcopy = &Tcopy2;
-      return Tcopy2; 
+      return Tcopy2;
       }
   else
     {
@@ -182,7 +182,7 @@ switchTcopy( void )
 
 template< class T,class Time >
 void Signal<T,Time>::
-setConstant( const T& t ) 
+setConstant( const T& t )
 {
   signalType = CONSTANT; setTcopy(t);
   setReady();
@@ -193,7 +193,7 @@ template< class T,class Time >
 void Signal<T,Time>::
 setReference( const T* t,Mutex *mutexref )
 {
-  signalType = REFERENCE; Treference = t; 
+  signalType = REFERENCE; Treference = t;
   providerMutex = mutexref;
   copyInit = false;
   setReady();
@@ -204,8 +204,8 @@ void Signal<T,Time>::
 setReferenceNonConstant( T* t,Mutex *mutexref )
 {
   signalType = REFERENCE_NON_CONST;
-  Treference = t; 
-  TreferenceNonConst = t; 
+  Treference = t;
+  TreferenceNonConst = t;
   providerMutex = mutexref;
   copyInit = false;
   setReady();
@@ -214,7 +214,7 @@ setReferenceNonConstant( T* t,Mutex *mutexref )
 template< class T,class Time >
 void Signal<T,Time>::
 setFunction( boost::function2<T&,T&,Time> t,Mutex *mutexref )
-{ 
+{
   signalType = FUNCTION;
   Tfunction = t;
   providerMutex = mutexref;
@@ -226,7 +226,7 @@ template< class T,class Time >
 const T& Signal<T,Time>::
 accessCopy( void ) const
 {
-  return *Tcopy; 
+  return *Tcopy;
 }
 
 
@@ -245,7 +245,7 @@ access(const Time& t)
 	  {
 	    copyInit=true;
 	    signalTime = t;
-	    return setTcopy( *Treference ); 
+	    return setTcopy( *Treference );
 	  }
 	else
 	  {
@@ -265,13 +265,13 @@ access(const Time& t)
 	break;
       }
 
-    case FUNCTION: 
+    case FUNCTION:
       {
 	if( NULL==providerMutex )
 	  {
 	    signalTime = t;
-	    Tfunction(getTwork(),t); 
-	    copyInit=true; 
+	    Tfunction(getTwork(),t);
+	    copyInit=true;
 	    return switchTcopy();
 	  }
 	else
@@ -282,7 +282,7 @@ access(const Time& t)
 		boost::try_mutex::scoped_try_lock lock(*providerMutex);
 #endif
 		signalTime = t;
-		Tfunction(getTwork(),t); 
+		Tfunction(getTwork(),t);
 		copyInit = true;
 		return switchTcopy();
 	      }
@@ -291,9 +291,9 @@ access(const Time& t)
 	  }
 	break;
       }
-    case CONSTANT: 
+    case CONSTANT:
     default:
-      if( this->getReady() ) 
+      if( this->getReady() )
 	{
 	  setReady(false);
 	  setTime(t);
@@ -312,7 +312,7 @@ Signal<T,Time>& Signal<T,Time>::operator= ( const T& t )
       if( NULL==providerMutex )
 	{
 	  setTcopy( t );
-	  (*TreferenceNonConst)=t; 
+	  (*TreferenceNonConst)=t;
 	}
       else
 	{
@@ -330,7 +330,7 @@ Signal<T,Time>& Signal<T,Time>::operator= ( const T& t )
     }
   else
     { setConstant( t ); }
-  return *this; 
+  return *this;
 }
 
 
@@ -339,7 +339,7 @@ std::ostream& Signal<T,Time>::
 display (std::ostream& os) const
 {
   os<<"Sig:"<<this->name<<" (Type ";
-  switch( this->signalType ) 
+  switch( this->signalType )
     {
     case Signal<T,Time>::CONSTANT: os<< "Cst";break;
     case Signal<T,Time>::REFERENCE: os<<"Ref"; break;

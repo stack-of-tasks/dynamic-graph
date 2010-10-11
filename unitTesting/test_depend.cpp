@@ -46,16 +46,16 @@ public:
 public:
   DummyClass( const std::string& n ) : proname(n),res(),appel(0),timedata(0) {}
 
-  Res& fun( Res& res,int t) 
+  Res& fun( Res& res,int t)
   {
-    appel++;  timedata=t; 
+    appel++;  timedata=t;
 
-    cout << "Inside " << proname << " -> " << this 
+    cout << "Inside " << proname << " -> " << this
 	 << endl;
     for( list< SignalTimeDependent<double,int>* >::iterator it=inputsig.begin();
 	 it!=inputsig.end();++it )
       {
-	cout << *(*it) << endl; 
+	cout << *(*it) << endl;
 	(*it)->access(timedata);
       }
     for( list< SignalTimeDependent<string,int>* >::iterator it=inputsigV.begin();
@@ -75,7 +75,7 @@ public:
   Res res;
   int appel;
   int timedata;
-  
+
 };
 
 template< class Res >
@@ -103,7 +103,7 @@ int main( void )
 
    SignalTimeDependent<double,int> sig5("Sig5");
    SignalTimeDependent<string,int> sig6("Sig6");
-   
+
    SignalTimeDependent<string,int> sig4(sig5,"Sig4");
    SignalTimeDependent<string,int> sig2(sig4<<sig4<<sig4<<sig6,"Sig2");
    SignalTimeDependent<double,int> sig3(sig2<<sig5<<sig6,"Sig3");
@@ -132,15 +132,15 @@ int main( void )
    pro2.add(sig6);
    pro3.add(sig5);
    pro3.add(sig6);
-   
+
    sig5.setDependencyType(TimeDependency<int>::ALWAYS_READY);
    sig6.setDependencyType(TimeDependency<int>::BOOL_DEPENDENT);
 
    sig6.setReady();
 
    sig1.displayDependencies(cout)<<endl;
- 
-   cout << "Needs update?"    << endl 
+
+   cout << "Needs update?"    << endl
 	<< sig1.needUpdate(2) << endl;
    dgDEBUG(1) << "Access sig1(2) "<<endl;
    sig1.access(2);

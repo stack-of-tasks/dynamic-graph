@@ -31,7 +31,7 @@ using namespace dynamicgraph;
 void ShellProcedure::
 cmdStartProcedure( const std::string& cmdLine,std::istringstream& args,std::ostream& os )
 {
-  if( cmdLine == "help" ) 
+  if( cmdLine == "help" )
     {
       os << "  - proc <name>"
 	 << "\t\t\t\tProcedure header." <<endl;
@@ -40,12 +40,12 @@ cmdStartProcedure( const std::string& cmdLine,std::istringstream& args,std::ostr
 
   args>>procName;
   dgDEBUG(5)<<"Proc <" <<procName<<">"<<endl;
-  
+
   currentProc.clear();
   args >> ws;
   while( args.good() )
     {
-      std::string next; 
+      std::string next;
       args>>next>>ws;
       currentProc.params.push_back(next);
     }
@@ -54,7 +54,7 @@ cmdStartProcedure( const std::string& cmdLine,std::istringstream& args,std::ostr
 void ShellProcedure::
 cmdContinueProcedure( const std::string& cmdLine,std::istringstream& args,std::ostream& os )
 {
-  if( cmdLine == "help" ) 
+  if( cmdLine == "help" )
     {
       os << "  - -> cmd args..."
 	 << "\t\t\t\tProcedure body." <<endl;
@@ -64,8 +64,8 @@ cmdContinueProcedure( const std::string& cmdLine,std::istringstream& args,std::o
   std::string cmd2;
   args>>ws>>cmd2;
   dgDEBUG(5)<<"Proc <" <<procName<<">: "<<cmd2<<endl;
-  
-  Instruction ins; ins.cmd=cmd2; 
+
+  Instruction ins; ins.cmd=cmd2;
   args >> ws;
   while( args.good() )
     {
@@ -83,7 +83,7 @@ cmdContinueProcedure( const std::string& cmdLine,std::istringstream& args,std::o
 void ShellProcedure::
 cmdEndProcedure( const std::string& cmdLine,std::istringstream& args,std::ostream& os )
 {
-  if( cmdLine == "help" ) 
+  if( cmdLine == "help" )
     {
       os << "  - endproc..."
 	 << "\t\t\t\tProcedure end." <<endl;
@@ -97,7 +97,7 @@ cmdEndProcedure( const std::string& cmdLine,std::istringstream& args,std::ostrea
 //   for( Procedure::iterator ins=procedureList[ toto ].begin();
 //        ins!=procedureList[ toto ].end(); ++ins )
 //     {
-//       dgDEBUG(15) << "Proc <" << procName << "> : " 
+//       dgDEBUG(15) << "Proc <" << procName << "> : "
 // 		   << ins->cmd << " -> " << ins->args <<endl;
 //     }
 
@@ -116,15 +116,15 @@ void ShellProcedure::
 cmdProcedure(   const std::string& procname,
 		const std::string& cmdLine,std::istringstream& args,std::ostream& os )
 {
-  if( cmdLine == "help" ) 
+  if( cmdLine == "help" )
     {
       os<<"  - "<<procname<<"\t\t\t\t\tUser-defined procedure"<<endl;
-      args >> ws; 
-      if( args.good() ) 
+      args >> ws;
+      if( args.good() )
 	{
 	  std::string argname;
-	  const unsigned int gc = args.tellg(); 
-	  args >> argname; 
+	  const unsigned int gc = args.tellg();
+	  args >> argname;
 	  args.seekg(gc); args.clear();
 	  if( procname==argname )
 	    {
@@ -138,7 +138,7 @@ cmdProcedure(   const std::string& procname,
 						 ": procedure <%s> not defined.",
 						 argname.c_str() );
 		}
-	      
+
 	      Procedure & proc = pair->second;
 	      unsigned int cmdnum=1;
 	      for( std::list<Instruction>::iterator ins=proc.instructions.begin();
@@ -151,7 +151,7 @@ cmdProcedure(   const std::string& procname,
 		}
 
 	    }
-	}   
+	}
       return;
     }
 
@@ -177,18 +177,18 @@ cmdProcedure(   const std::string& procname,
 
   std::vector< std::string > paramValue;
   for( unsigned int i=0;i<proc.params.size();++i )
-    { 
+    {
       args>>ws;
       if( args.good() )
-	{ 
-	  std::string next; args>>next>>ws; 
+	{
+	  std::string next; args>>next>>ws;
 	  paramValue.push_back( next );
 	  dgDEBUG(25) << "Args : <" << next << ">"<<endl;
 	}
       else { paramValue.push_back(""); }
     }
 
-  istringstream iss; ostringstream oss; 
+  istringstream iss; ostringstream oss;
   for( std::list<Instruction>::iterator ins=proc.instructions.begin();
        ins!=proc.instructions.end(); ++ins )
     {
@@ -200,7 +200,7 @@ cmdProcedure(   const std::string& procname,
 	  if( paramArg==-1 ) oss << ins->args[i] << " ";
 	  else oss << paramValue[paramArg] << " ";
 	}
-      
+
       dgDEBUG(15) << " Args = " << oss.str() << endl;
       iss.str(oss.str()); iss.clear();
       g_shell.cmd(ins->cmd,iss,os);
@@ -210,7 +210,7 @@ cmdProcedure(   const std::string& procname,
 void ShellProcedure::
 cmdFor( const std::string& cmdLine,std::istringstream& args,std::ostream& os )
 {
-  if( cmdLine == "help" ) 
+  if( cmdLine == "help" )
     {
       os << "  - for 1 5 instruction "<<endl;
       return;
@@ -221,19 +221,19 @@ cmdFor( const std::string& cmdLine,std::istringstream& args,std::ostream& os )
 
   {
     stringstream oss;
-    
+
     args >> cmd2;  oss.str( cmd2 );
     const unsigned int SIZE = 32; char b1[SIZE],b2[SIZE],b3[SIZE];
-    oss.getline( b1,SIZE,'=' ); 
-    oss.getline( b2,SIZE,':' ); 
-    oss.getline( b3,SIZE ); 
+    oss.getline( b1,SIZE,'=' );
+    oss.getline( b2,SIZE,':' );
+    oss.getline( b3,SIZE );
     dgDEBUG(15) << b1 << "/" << b2 << "/" << b3 << endl;
-    
-    idx = b1; istart = atoi(b2); iend = atoi(b3); 
+
+    idx = b1; istart = atoi(b2); iend = atoi(b3);
     args >> cmd2;
-    
-    dgDEBUG(15) << "FOR <" << idx << "> = " << istart << " TO " << iend 
-		 << " DO " << cmd2 <<endl; 
+
+    dgDEBUG(15) << "FOR <" << idx << "> = " << istart << " TO " << iend
+		 << " DO " << cmd2 <<endl;
   }
 
   string argsstr;
@@ -242,12 +242,12 @@ cmdFor( const std::string& cmdLine,std::istringstream& args,std::ostream& os )
     args.getline( buffer,SIZE );
     argsstr = buffer;
   }
-  for( int i=istart;i<=iend;++i ) 
+  for( int i=istart;i<=iend;++i )
     {
       istringstream iss; stringstream oss;
-      
+
       std::string insp;
-      istringstream issargs( argsstr ); 
+      istringstream issargs( argsstr );
       while( issargs.good() )
 	{
 	  issargs >> insp;
@@ -275,5 +275,5 @@ extern "C" {
   ShellFunctionRegisterer regFun4
   ( "for",boost::bind(&ShellProcedure::cmdFor,
 		      _1,_2,_3) );
-}                                                       
+}
 

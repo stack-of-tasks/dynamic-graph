@@ -35,12 +35,12 @@
 /* --- API ------------------------------------------------------------- */
 /* --------------------------------------------------------------------- */
 
-#if defined (WIN32) 
+#if defined (WIN32)
 #  if defined (tracer_real_time_EXPORTS)
 #    define DGTRACERREALTIME_EXPORT __declspec(dllexport)
-#  else  
+#  else
 #    define DGTRACERREALTIME_EXPORT __declspec(dllimport)
-#  endif 
+#  endif
 #else
 #  define DGTRACERREALTIME_EXPORT
 #endif
@@ -64,19 +64,19 @@ public:
 public:
 
   OutStringStream( void );
-  ~OutStringStream( void );    
+  ~OutStringStream( void );
 
   void resize( const unsigned int & size );
   bool addData( const char * data, const unsigned int & size );
   void dump( std::ostream& os );
   void empty( void );
-  
+
 };
 
 class DGTRACERREALTIME_EXPORT TracerRealTime
 : public Tracer
 {
- public: 
+ public:
   static const std::string CLASS_NAME;
   virtual const std::string& getClassName( void ) { return CLASS_NAME; }
 

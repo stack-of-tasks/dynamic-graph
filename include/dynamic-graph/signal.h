@@ -79,7 +79,7 @@ class Signal
   typedef int* Mutex;
   typedef int* MutexError;
 #endif
-  
+
 protected:
   Mutex *providerMutex;
   using SignalBase<Time>::signalTime;
@@ -99,7 +99,7 @@ protected:
   virtual void trace( std::ostream& os ) const;
 
   /* --- Generic Set function --- */
-  virtual void setConstant( const T& t ); 
+  virtual void setConstant( const T& t );
   virtual void setReference( const T* t,Mutex *mutexref=NULL );
   virtual void setReferenceNonConstant( T* t,Mutex *mutexref=NULL );
   virtual void setFunction( boost::function2<T&,T&,Time> t,
@@ -112,7 +112,7 @@ protected:
   virtual const T& access( const Time & t );
   virtual inline void recompute( const Time & t ) { access(t); }
   virtual const T& accessCopy( void ) const;
-  
+
   virtual std::ostream& display( std::ostream& os ) const;
 
   /* --- Operators --- */

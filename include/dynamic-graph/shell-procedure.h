@@ -44,12 +44,12 @@
 /* --- API ------------------------------------------------------------- */
 /* --------------------------------------------------------------------- */
 
-#if defined (WIN32) 
+#if defined (WIN32)
 #  if defined (shell_procedure_EXPORTS)
 #    define ShellProcedure_EXPORT __declspec(dllexport)
-#  else  
+#  else
 #    define ShellProcedure_EXPORT __declspec(dllimport)
-#  endif 
+#  endif
 #else
 #  define ShellProcedure_EXPORT
 #endif
@@ -87,7 +87,7 @@ class ShellProcedure_EXPORT ShellProcedure
   Procedure currentProc;
 
  public:
-  
+
   void cmdStartProcedure( const std::string& cmd,std::istringstream& args,std::ostream& os );
   void cmdContinueProcedure( const std::string& cmd,std::istringstream& args,std::ostream& os );
   void cmdEndProcedure( const std::string& cmd,std::istringstream& args,std::ostream& os );

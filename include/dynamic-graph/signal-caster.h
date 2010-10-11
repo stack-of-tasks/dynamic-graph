@@ -115,7 +115,7 @@ template<typename T> void signal_disp(const T& value, std::ostream& os)
 	{ g_caster.disp(value, os); }
 
 template<typename T> T signal_cast(std::istringstream& iss)
-	{ 
+	{
 	  return boost::any_cast<T>(g_caster.cast(typeid(T), iss));
 	}
 

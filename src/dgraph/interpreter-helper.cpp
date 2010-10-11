@@ -87,21 +87,21 @@ void InterpreterHelper::
 cmdDestroy( const std::string& objName,
 	    std::ostream& os)
 {
- 
+
   dgDEBUG(15) << "Destroy <" << objName <<"> requested."<<endl;
   delete &( g_pool.getEntity( objName ) );
 
 }
 
 void InterpreterHelper::
-cmdLoadPlugin( const std::string& directory, 
+cmdLoadPlugin( const std::string& directory,
 	       const std::string& pluginName,
 	       std::ostream& os )
 {
 
   if( directory.length() != 0 ) dlPtr.setDirectory( directory );
   dlPtr.addPlugin( pluginName );
-  
+
   try{
     dgDEBUG(15) << "Try to load  " << pluginName<< endl;
     dlPtr.loadPlugins();
@@ -130,7 +130,7 @@ cmdUnloadPlugin( const std::string& pluginName,
 }
 
 void InterpreterHelper::
-cmdSetSignal( const std::string& objname, 
+cmdSetSignal( const std::string& objname,
 	      const std::string& signame,
 	      const std::string& value,
 	      std::ostream& os )
@@ -148,8 +148,8 @@ cmdSetSignal( const std::string& objname,
 }
 
 void InterpreterHelper::
-cmdGetSignal( const std::string& objname, 
-	      const std::string& signame, 
+cmdGetSignal( const std::string& objname,
+	      const std::string& signame,
 	      std::ostream& os )
 {
   dgDEBUGIN(15);
@@ -164,8 +164,8 @@ cmdGetSignal( const std::string& objname,
 }
 
 void InterpreterHelper::
-cmdComputeSignal( const std::string& objname, 
-		  const std::string& signame, 
+cmdComputeSignal( const std::string& objname,
+		  const std::string& signame,
 		  const int &time,
 		  std::ostream& os )
 {

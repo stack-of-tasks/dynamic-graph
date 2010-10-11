@@ -40,7 +40,7 @@ class SignalBase : public boost::noncopyable
   bool ready;
 
  public:
-  
+
   virtual const Time& getTime( void ) const { return signalTime; }
   virtual void setTime( const Time& t ) { signalTime=t; }
   const bool& getReady( void ) const { return ready; }
@@ -52,8 +52,8 @@ class SignalBase : public boost::noncopyable
  public:
 
   /* --- CONSTRUCTORS ------------------------------------------------------- */
-  
-  SignalBase( std::string name ="" ) 
+
+  SignalBase( std::string name ="" )
       : name(name),signalTime(0),ready(false) {}
   virtual ~SignalBase( void ) {}
 
@@ -67,39 +67,39 @@ class SignalBase : public boost::noncopyable
   virtual bool needUpdate( const Time& t ) const {return ready;}
   inline void setReady( const bool sready = true ) { ready = sready; }
 
-  virtual std::ostream & 
+  virtual std::ostream &
       writeGraph (std::ostream & os ) const
       {
 	  return os;
       }
 
-  virtual std::ostream& 
+  virtual std::ostream&
       displayDependencies( std::ostream& os,const int depth=-1,
 			   std::string space="",
 			   std::string next1="",std::string next2="" ) const
       {
-	  os << space << next1 << "-- "; 
-	  display(os);   return os;   
+	  os << space << next1 << "-- ";
+	  display(os);   return os;
       }
-  
+
   /* --- PLUG --------------------------------------------------------------- */
 
-  /* Plug the arg-signal on the <this> object. Plug-in is always 
+  /* Plug the arg-signal on the <this> object. Plug-in is always
    * a descending operation (the actual <this> object will call the arg-signal
-   * and not the opposite). 
+   * and not the opposite).
    */
   virtual void plug( SignalBase<Time>* sigarg )
       { DG_THROW ExceptionSignal( ExceptionSignal::PLUG_IMPOSSIBLE,
 				      "Plug-in operation not possible with this signal. ",
 				      "(while trying to plug %s on %s).",sigarg->getName().c_str(),
 				      this->getName().c_str() ); }
-  virtual void unplug( void ) 
+  virtual void unplug( void )
       { DG_THROW ExceptionSignal( ExceptionSignal::PLUG_IMPOSSIBLE,
 				      "Plug-in operation not possible with this signal. ",
 				      "(while trying to unplug %s).",this->getName().c_str() );
       }
-  virtual bool isPluged( void ) const { return  false; } 
-  virtual SignalBase<Time>* getPluged( void ) const { return NULL; } 
+  virtual bool isPluged( void ) const { return  false; }
+  virtual SignalBase<Time>* getPluged( void ) const { return NULL; }
   virtual  void setConstantDefault( void )
       { DG_THROW ExceptionSignal( ExceptionSignal::PLUG_IMPOSSIBLE,
 				      "Plug-in operation not possible with this signal. ",
@@ -109,7 +109,7 @@ class SignalBase : public boost::noncopyable
 
   /* Generic set function. Should be reimplemented by the specific Signal.
    */
-  virtual void set( std::istringstream& value ) 
+  virtual void set( std::istringstream& value )
       { DG_THROW ExceptionSignal( ExceptionSignal::SET_IMPOSSIBLE,
 				      "Set operation not possible with this signal. ",
 				      "(while trying to set %s).",this->getName().c_str() );
@@ -119,7 +119,7 @@ class SignalBase : public boost::noncopyable
 				      "Get operation not possible with this signal. ",
 				      "(while trying to get %s).",this->getName().c_str() );
       }
-  virtual inline void recompute( const Time & t) 
+  virtual inline void recompute( const Time & t)
       { DG_THROW ExceptionSignal( ExceptionSignal::SET_IMPOSSIBLE,
 				      "Recompute operation not possible with this signal. ",
 				      "(while trying to recompute %s).",this->getName().c_str() );
@@ -132,7 +132,7 @@ class SignalBase : public boost::noncopyable
 
   /* --- DISPLAY ------------------------------------------------------------ */
 
-  virtual std::ostream& display( std::ostream& os ) const 
+  virtual std::ostream& display( std::ostream& os ) const
     { os<<"Sig:"<<name; return os;}
 
   std::string shortName( void ) const
@@ -149,7 +149,7 @@ class SignalBase : public boost::noncopyable
   virtual void ExtractNodeAndLocalNames(std::string & LocalName, std::string & NodeName) const
       {
 	  std::string fullname = this->getName();
-	  
+
 	  size_t IdxPosLocalName = fullname.rfind(":");
 	  LocalName = fullname.substr(IdxPosLocalName+1,fullname.length()-IdxPosLocalName+1);
 	  size_t IdxPosNodeNameStart = fullname.find("(");
@@ -158,12 +158,12 @@ class SignalBase : public boost::noncopyable
 	  /*  std::cout << "Finally "   << std:: endl
 		    << "\tLocalName: " << LocalName << std::endl
 		    << "\tNodeName: "  << NodeName  << std::endl; */
-	  
+
       }
 
   /* --- TEST TEST TEST TEST TEST TEST --- */
  public:
-  virtual void checkCompatibility( void ) 
+  virtual void checkCompatibility( void )
       {  DG_THROW ExceptionSignal( ExceptionSignal::PLUG_IMPOSSIBLE,
 				       "Abstract signal not compatible with anything.",
 				       "(while trying to plug <%s>).",
@@ -171,10 +171,10 @@ class SignalBase : public boost::noncopyable
 
 };
 
-/** Forward to a virtual fonction. 
+/** Forward to a virtual fonction.
  */
 template< class Time >
-std::ostream& operator<< (std::ostream& os,const SignalBase<Time>& sig ) 
+std::ostream& operator<< (std::ostream& os,const SignalBase<Time>& sig )
 { return sig.display(os); }
 
 } // namespace dynamicgraph

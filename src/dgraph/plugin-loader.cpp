@@ -70,13 +70,13 @@ PluginLoader::
 
 const std::string& PluginLoader::
 setDirectory( const std::string& n )
-{ 
-  return pluginDirectory = n; 
+{
+  return pluginDirectory = n;
 }
 const std::string& PluginLoader::
 getDirectory( void )
 {
-  return pluginDirectory; 
+  return pluginDirectory;
 }
 
 void PluginLoader::
@@ -84,7 +84,7 @@ loadPluginList( const std::string& configFileName, const std::string& dir )
 {
   dgDEBUGIN(15);
 
-  
+
   string name;
   //while (1)
   ifstream configFile( configFileName.c_str(),ios::in );
@@ -99,13 +99,13 @@ loadPluginList( const std::string& configFileName, const std::string& dir )
     {
       configFile>>name;
       if(configFile.eof()) break;
-      dgDEBUG(9)<<"Add <"<< name << "> to the list"<<endl; 
+      dgDEBUG(9)<<"Add <"<< name << "> to the list"<<endl;
       addPlugin( name,dir);
     }
 
   dgDEBUGOUT(15);
 }
- 
+
 void PluginLoader::
 addPlugin( const std::string& name, const std::string& dir )
 {
@@ -139,9 +139,9 @@ loadPlugins( void )
       PluginRefMap::plugin_key_type dlib = LoadLibrary ( iter->c_str());
 #endif
 
-      dgDEBUG(19)<<"Plugin <"<< *iter << "> loaded "<<endl; 
+      dgDEBUG(19)<<"Plugin <"<< *iter << "> loaded "<<endl;
 
-      if( NULL==dlib ) 
+      if( NULL==dlib )
 	{
 	  std::string wrongLib = *iter;
 	  pluginNames.erase(iter);
@@ -152,9 +152,9 @@ loadPlugins( void )
 #else
     // Retrieve the system error message for the last-error code
     LPTSTR pszMessage;
-    DWORD dwLastError = GetLastError(); 
+    DWORD dwLastError = GetLastError();
     FormatMessage(
-        FORMAT_MESSAGE_ALLOCATE_BUFFER | 
+        FORMAT_MESSAGE_ALLOCATE_BUFFER |
         FORMAT_MESSAGE_FROM_SYSTEM |
         FORMAT_MESSAGE_IGNORE_INSERTS,
         NULL,
@@ -176,7 +176,7 @@ loadPlugins( void )
 
 #endif
 	}
-      
+
       loadedPluginNames[*iter] = (*iter);
 	  pluginRefs->keyMap[*iter] = dlib;
     }
@@ -210,14 +210,14 @@ unloadPlugin( const std::string& plugname )
   if( errCode )
     {
 #ifndef WIN32
-      dgDEBUG(1) << "Error while unloading <" << plugname <<"> : " 
+      dgDEBUG(1) << "Error while unloading <" << plugname <<"> : "
 		  << dlerror() <<endl;
 #else
 		    // Retrieve the system error message for the last-error code
     LPTSTR pszMessage;
-    DWORD dwLastError = GetLastError(); 
+    DWORD dwLastError = GetLastError();
     FormatMessage(
-        FORMAT_MESSAGE_ALLOCATE_BUFFER | 
+        FORMAT_MESSAGE_ALLOCATE_BUFFER |
         FORMAT_MESSAGE_FROM_SYSTEM |
         FORMAT_MESSAGE_IGNORE_INSERTS,
         NULL,
@@ -226,7 +226,7 @@ unloadPlugin( const std::string& plugname )
         (LPTSTR)&pszMessage,
         0, NULL );
 
-		dgDEBUG(1) << "Error while unloading <" << plugname <<"> : " 
+		dgDEBUG(1) << "Error while unloading <" << plugname <<"> : "
 		  << pszMessage <<endl;
 
 	  LocalFree(pszMessage);

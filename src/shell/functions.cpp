@@ -37,7 +37,7 @@ using namespace dynamicgraph;
 void ShellFunctions::
 cmdTry( const std::string cmdLine, istringstream& cmdArg, std::ostream& os )
 {
-  if( cmdLine == "help" ) 
+  if( cmdLine == "help" )
     {
       os << "  - try <cmd...>"
 	 << "\t\t\t\tTry <cmd> and display the caught exception." <<endl;
@@ -56,7 +56,7 @@ cmdTry( const std::string cmdLine, istringstream& cmdArg, std::ostream& os )
 void ShellFunctions::
 cmdLoadPlugins( const std::string cmdLine, std::istringstream& cmdArg, std::ostream& os )
 {
-  if( cmdLine == "help" ) 
+  if( cmdLine == "help" )
     {
       os << "  - loadPlugins <file.txt> <directory>"
 	 << "\t\tLoad the plugins listed in the file." <<endl;
@@ -78,7 +78,7 @@ cmdLoadPlugins( const std::string cmdLine, std::istringstream& cmdArg, std::ostr
 void ShellFunctions::
 cmdClearPlugin( const std::string cmdLine, std::istringstream& cmdArg, std::ostream& os )
 {
-  if( cmdLine == "help" ) 
+  if( cmdLine == "help" )
     {
       os << "  - clearPlugin <className>"
 	 << "\t\tDestroy all the objects of type <className>." <<endl;
@@ -94,7 +94,7 @@ cmdClearPlugin( const std::string cmdLine, std::istringstream& cmdArg, std::ostr
 void ShellFunctions::
 cmdDisplayPlugins( const std::string cmdLine, std::istringstream& cmdArg, std::ostream& os )
 {
-   if( cmdLine == "help" ) 
+   if( cmdLine == "help" )
     {
       os << "  - displayPlugins "
 	 << "\t\t\t\tDisplay the name of the loaded plugins." <<endl;
@@ -118,15 +118,15 @@ cmdDisplayPlugins( const std::string cmdLine, std::istringstream& cmdArg, std::o
 
 
 void ShellFunctions::
-cmdDisplayFactory( const std::string cmdLine, std::istringstream& cmdArg, 
+cmdDisplayFactory( const std::string cmdLine, std::istringstream& cmdArg,
 		   std::ostream& os )
 {
-   if( cmdLine == "help" ) 
+   if( cmdLine == "help" )
     {
       os << "  - "; g_factory.commandLine(cmdLine,cmdArg,os);
       return;
     }
-   
+
    string cmd2; cmdArg >> cmd2;
    g_factory.commandLine( cmd2,cmdArg,os );
 }
@@ -143,7 +143,7 @@ cmdCommentary( const std::string cmdLine, std::istringstream& cmdArg, std::ostre
 void ShellFunctions::
 cmdUnplug( const std::string cmdLine, istringstream& cmdArg, std::ostream& os )
 {
-  if( cmdLine == "help" ) 
+  if( cmdLine == "help" )
     {
       os << "  - unplug <obj2.sig2>"
 	 << "\t\t\t\tPlug on sig2 (consumer) in sig1->sig2." <<endl;
@@ -151,7 +151,7 @@ cmdUnplug( const std::string cmdLine, istringstream& cmdArg, std::ostream& os )
     }
   string ssig;
   cmdArg>>ssig;
-  
+
   string obj2,fun2;
   istringstream str2(ssig);
   if( !Interpreter::objectNameParser(str2,obj2,fun2) )
@@ -165,7 +165,7 @@ cmdUnplug( const std::string cmdLine, istringstream& cmdArg, std::ostream& os )
   Entity& ent2 = g_pool.getEntity(obj2);
   dgDEBUG(20) << "Get Sig2 <"<<fun2<<"> ."<<endl;
   SignalBase<int> &sig2 = ent2.getSignal(fun2);
-  
+
 
   dgDEBUG(25) << "Unplug..."<<endl;
     sig2.unplug();
@@ -174,7 +174,7 @@ cmdUnplug( const std::string cmdLine, istringstream& cmdArg, std::ostream& os )
 void ShellFunctions::
 cmdSignalTime( const std::string cmdLine, istringstream& cmdArg, std::ostream& os )
 {
-  if( cmdLine == "help" ) 
+  if( cmdLine == "help" )
     {
       os << "  - signalTime <obj.sig>"
 	 << "\t\t\t\tDisplay the time of sig." <<endl;
@@ -183,7 +183,7 @@ cmdSignalTime( const std::string cmdLine, istringstream& cmdArg, std::ostream& o
 
   string ssig;
   cmdArg>>ssig;
-  
+
   string obj2,fun2;
   istringstream str2(ssig);
   if( !Interpreter::objectNameParser(str2,obj2,fun2) )
@@ -197,14 +197,14 @@ cmdSignalTime( const std::string cmdLine, istringstream& cmdArg, std::ostream& o
   Entity& ent2 = g_pool.getEntity(obj2);
   dgDEBUG(20) << "Get Sig2 <"<<fun2<<"> ."<<endl;
   SignalBase<int> &sig2 = ent2.getSignal(fun2);
-  
+
   os << sig2.getTime() << endl;
 }
 
 void ShellFunctions::
 cmdSynchroSignal( const std::string cmdLine, std::istringstream& cmdArg, std::ostream& os )
 {
-  if( cmdLine == "help" ) 
+  if( cmdLine == "help" )
     {
       os << "  - synchro <obj.sig> [<period>]"
 	 << "\t\t\t\tGet/Set the syncho of a signal <sig>." <<endl;
@@ -213,15 +213,15 @@ cmdSynchroSignal( const std::string cmdLine, std::istringstream& cmdArg, std::os
 
   SignalBase<int> & sig = g_pool.getSignal( cmdArg );
   cmdArg >>ws;
-  if( cmdArg.good() ) 
+  if( cmdArg.good() )
     {
       int period; cmdArg>>period;
       sig.setPeriodTime( period );
       cmdArg >>ws;
-      if( cmdArg.good() ) 
+      if( cmdArg.good() )
 	{
-	  /* The sig is recomputed at the given period from the 
-	   * current time, at any time T so that T%p==0, p the period. 
+	  /* The sig is recomputed at the given period from the
+	   * current time, at any time T so that T%p==0, p the period.
 	   * By modifying the current time, the sig reomputation is done
 	   * at T s.t. T%p=d, d the desynchro. */
 	  int currTime = sig.getTime ();
@@ -238,15 +238,15 @@ cmdSynchroSignal( const std::string cmdLine, std::istringstream& cmdArg, std::os
 void ShellFunctions::
 cmdEcho( const std::string cmdLine, std::istringstream& cmdArg, std::ostream& os )
 {
-  if( cmdLine == "help" ) 
+  if( cmdLine == "help" )
     {
       os << "  - echo <string>"
 	 << "\t\t\t\tPrint <string. on the standard output." <<endl;
       return;
     }
-  
-  cmdArg >>ws; 
-  while( cmdArg.good() ) 
+
+  cmdArg >>ws;
+  while( cmdArg.good() )
     {
       std::string toPrint; cmdArg>>toPrint;
       os<<toPrint<<" ";
@@ -257,7 +257,7 @@ cmdEcho( const std::string cmdLine, std::istringstream& cmdArg, std::ostream& os
 void ShellFunctions::
 cmdCopy( const std::string cmdLine, istringstream& cmdArg, std::ostream& os )
 {
-  if( cmdLine == "help" ) 
+  if( cmdLine == "help" )
     {
       os << "  - copy <obj1.sig1> <obj2.sig2>"
 	 << "\t\tCopy the value of sig1 to constant value in sig2." <<endl;
@@ -266,11 +266,11 @@ cmdCopy( const std::string cmdLine, istringstream& cmdArg, std::ostream& os )
   string ssig1,ssig2;
   cmdArg>>ssig1>>ssig2;
   istringstream str1(ssig1),str2(ssig2);
-  
+
   try {
     SignalBase<int> &sig1 = g_pool.getSignal( str1 );
     SignalBase<int> &sig2 = g_pool.getSignal( str2 );
-    
+
     dgDEBUG(25) << "Copy..."<<endl;
     sig2.plug(&sig1);
     sig2.setConstantDefault();
@@ -288,7 +288,7 @@ cmdCopy( const std::string cmdLine, istringstream& cmdArg, std::ostream& os )
 void ShellFunctions::
 cmdFreeze( const std::string cmdLine, istringstream& cmdArg, std::ostream& os )
 {
-  if( cmdLine == "help" ) 
+  if( cmdLine == "help" )
     {
       os << "  - freeze <obj.sig> "
 	 << "\t\tOn a ptr-sig: save the current value from the source "
@@ -298,10 +298,10 @@ cmdFreeze( const std::string cmdLine, istringstream& cmdArg, std::ostream& os )
   string ssig1;
   cmdArg>>ssig1;
   istringstream str1(ssig1);
-  
+
   try {
     SignalBase<int> &sig1 = g_pool.getSignal( str1 );
-    
+
     dgDEBUG(25) << "Unplug..."<<endl;
     sig1.setConstantDefault();
     sig1.plug(&sig1);
@@ -316,13 +316,13 @@ cmdFreeze( const std::string cmdLine, istringstream& cmdArg, std::ostream& os )
 void ShellFunctions::
 cmdSqueeze( const std::string cmdLine, istringstream& cmdArg, std::ostream& os )
 {
-  if( cmdLine == "help" ) 
+  if( cmdLine == "help" )
     {
       os << "  - squeeze  <mainObj.mainSig> <squeezeObj.sigIn> <squeezeObj.sigOut>"
 	 << "\t\tIntercalate squeezeObj between mainObj and its source." <<endl;
       return;
     }
-  
+
   string ssigMain,ssigIn,ssigOut;
   cmdArg>>ssigMain>>ssigIn>>ssigOut;
   istringstream strMain(ssigMain);
@@ -335,13 +335,13 @@ cmdSqueeze( const std::string cmdLine, istringstream& cmdArg, std::ostream& os )
     SignalBase<int> &sigOut = g_pool.getSignal( strOut );
 
     SignalBase<int> *sigMainSource = sigMain.getPluged();
-    if( sigMainSource==&sigMain ) 
-      { 
+    if( sigMainSource==&sigMain )
+      {
 	DG_THROW ExceptionFactory( ExceptionFactory::SYNTAX_ERROR,
 				       "The main signal is autopluged (or set constant). ",
 				       "(while calling freeze %s ).",ssigMain.c_str());
       }
-    
+
     sigMain.plug( &sigOut );
     sigIn.plug( sigMainSource );
   }
@@ -358,39 +358,39 @@ cmdSqueeze( const std::string cmdLine, istringstream& cmdArg, std::ostream& os )
 	throw;
       }
   }
-	
+
 }
 
 
 void ShellFunctions::
 cmdEnableTrace( const std::string cmdLine, istringstream& cmdArg, std::ostream& os )
 {
-  if( cmdLine == "help" ) 
+  if( cmdLine == "help" )
     {
-      os << "  - debugtrace [{true|false}] [<filename>=" 
+      os << "  - debugtrace [{true|false}] [<filename>="
 	 << DebugTrace::DEBUG_FILENAME_DEFAULT <<"]"
 	 << "\t\tOpen/close the file <filename> for debug tracing." <<endl;
       return;
     }
   string opt,filename;
-  
-  cmdArg >> ws; 
+
+  cmdArg >> ws;
   if( cmdArg.good() )
     {
       cmdArg>>opt>>ws;
       if( opt=="true" )
-	if( cmdArg.good() ) 
-	  { 
-	    cmdArg>>filename; 
+	if( cmdArg.good() )
+	  {
+	    cmdArg>>filename;
 	    DebugTrace::openFile( filename.c_str() );
 	  }
 	else { DebugTrace::openFile(); }
       else DebugTrace::closeFile();
     }
-  else 
+  else
     {
-      if( dgDEBUGFLOW.outputbuffer.good() ) os << "true" <<endl; 
-      else os << "false" <<endl; 
+      if( dgDEBUGFLOW.outputbuffer.good() ) os << "true" <<endl;
+      else os << "false" <<endl;
     }
 
 }
@@ -398,18 +398,18 @@ cmdEnableTrace( const std::string cmdLine, istringstream& cmdArg, std::ostream& 
 void ShellFunctions::
 cmdSetPrompt( const std::string cmdLine, istringstream& cmdArg, std::ostream& os )
 {
-  if( cmdLine == "help" ) 
+  if( cmdLine == "help" )
     {
-      os << "  - prompt [<string>] " 
+      os << "  - prompt [<string>] "
 	 << "\t\tSet/get the default prompt." <<endl;
       return;
     }
 
   string opt;
-  cmdArg >> ws; 
+  cmdArg >> ws;
   if( cmdArg. good() )
     {
-      char buffer [80]; cmdArg .getline(buffer,80); 
+      char buffer [80]; cmdArg .getline(buffer,80);
       g_shell .prompt = buffer;
     } else { os << "Current prompt is <" << g_shell. prompt << ">." << endl; }
 }
@@ -417,15 +417,15 @@ cmdSetPrompt( const std::string cmdLine, istringstream& cmdArg, std::ostream& os
 void ShellFunctions::
 cmdSleep( const std::string cmdLine, istringstream& cmdArg, std::ostream& os )
 {
-  if( cmdLine == "help" ) 
+  if( cmdLine == "help" )
     {
-      os << "  - sleep [<float> secs] " 
+      os << "  - sleep [<float> secs] "
 	 << "\t\tSleep (time in secs)." <<endl;
       return;
     }
 
   string opt;
-  cmdArg >> ws; 
+  cmdArg >> ws;
   if( cmdArg. good() )
     {
       double secs; cmdArg >> secs;
@@ -441,9 +441,9 @@ cmdSleep( const std::string cmdLine, istringstream& cmdArg, std::ostream& os )
 void ShellFunctions::
 cmdBeep( const std::string cmdLine, istringstream& cmdArg, std::ostream& os )
 {
-  if( cmdLine == "help" ) 
+  if( cmdLine == "help" )
     {
-      os << "  - beep [<float> secs] " 
+      os << "  - beep [<float> secs] "
 	 << "\t\tSend a bip to the std::cout." <<endl;
       return;
     }
@@ -454,13 +454,13 @@ cmdBeep( const std::string cmdLine, istringstream& cmdArg, std::ostream& os )
 void ShellFunctions::
 cmdCompletionList( const std::string cmdLine, istringstream& cmdArg, std::ostream& os )
 {
-  if( cmdLine == "help" ) 
+  if( cmdLine == "help" )
     {
       os << "  - completion <filename>"
 	 << "\t\tGenerate the completion list for current graph." <<endl;
       return;
     }
-  
+
   try {
 
     std::string aFileName; cmdArg >> aFileName;

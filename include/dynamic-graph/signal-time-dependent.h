@@ -30,7 +30,7 @@ namespace dynamicgraph {
 template< class T,class Time >
 class SignalTimeDependent
 : public virtual Signal<T,Time>
-, public TimeDependency<Time> 
+, public TimeDependency<Time>
 {
 
   //TimeDependency<Time> timeDependency;
@@ -42,12 +42,12 @@ class SignalTimeDependent
   SignalTimeDependent( boost::function2<T&,T&,Time> t
 			  ,const SignalArray_const<Time> & sig
 			  ,std::string name = "" );
-  
+
   virtual ~SignalTimeDependent( void ) {}
-  
+
   inline const T& operator() ( const Time& t1 ){ return access(t1); }
   const T& access( const Time& t1 );
-  
+
   virtual void addDependency( const SignalBase<Time>& signal ) ;
   virtual void removeDependency( const SignalBase<Time>& signal ) ;
   virtual void clearDependencies( void );
@@ -60,7 +60,7 @@ class SignalTimeDependent
 				     std::string next1="",std::string next2="" ) const
     { return TimeDependency<Time>::displayDependencies( os,depth,space,next1,next2 ); }
 
-  
+
   virtual bool needUpdate( const Time& t ) const;
   virtual void setPeriodTime( const Time& p ) ;
   virtual Time getPeriodTime( void ) const;
@@ -94,12 +94,12 @@ SignalTimeDependent<T,Time>::
     :Signal<T,Time>(name)
     ,TimeDependency<Time>(this,sig)
     { setFunction(t); }
- 
+
 template< class T,class Time>
   const T& SignalTimeDependent<T,Time>::
 access( const Time& t1 )
     {
-      const bool up = TimeDependency<Time>::needUpdate(t1); 
+      const bool up = TimeDependency<Time>::needUpdate(t1);
       //SignalBase<Time>::setReady(false);
 
 /*       std::cout << "Time before: "<< signalTime << " -- "   */
@@ -108,7 +108,7 @@ access( const Time& t1 )
 	{
 	  TimeDependency<Time>::lastAskForUpdate = false;
 	  const T& Tres = Signal<T,Time>::access(t1);
-	  SignalBase<Time>::setReady(false);    
+	  SignalBase<Time>::setReady(false);
 	  return Tres;
 	}
       else { return Signal<T,Time>::accessCopy(); }
@@ -117,12 +117,12 @@ access( const Time& t1 )
 
 template< class T,class Time>
    void SignalTimeDependent<T,Time>::
-addDependency( const SignalBase<Time>& signal ) 
+addDependency( const SignalBase<Time>& signal )
     { TimeDependency<Time>::addDependency(signal); }
 
 template< class T,class Time>
    void SignalTimeDependent<T,Time>::
-removeDependency( const SignalBase<Time>& signal ) 
+removeDependency( const SignalBase<Time>& signal )
     { TimeDependency<Time>::removeDependency(signal); }
 
 template< class T,class Time>
@@ -134,12 +134,12 @@ template< class T,class Time>
   bool SignalTimeDependent<T,Time>::
 needUpdate( const Time& t ) const
 {
-  return TimeDependency<Time>::needUpdate(t); 
+  return TimeDependency<Time>::needUpdate(t);
 }
 
 template< class T,class Time>
     void SignalTimeDependent<T,Time>::
-setPeriodTime( const Time& p ) 
+setPeriodTime( const Time& p )
     { TimeDependency<Time>::setPeriodTime( p ); }
 template< class T,class Time>
  Time SignalTimeDependent<T,Time>::

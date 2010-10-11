@@ -33,7 +33,7 @@
 
 
 // Uncomment this macros to have lines parameter on the throw display
-// #define DYNAMIC-GRAPH_EXCEPTION_PASSING_PARAM 
+// #define DYNAMIC-GRAPH_EXCEPTION_PASSING_PARAM
 
 /* --------------------------------------------------------------------- */
 /* --- CLASS ----------------------------------------------------------- */
@@ -92,12 +92,12 @@ public:
   {
     return getStringMessage().c_str();
   }
-  
+
   /** Print the error structure. */
   DYNAMICGRAPH_EXPORT friend std::ostream & operator << (std::ostream & os,
 				     const ExceptionAbstract & err);
 
-#ifdef DYNAMICGRAPH_EXCEPTION_PASSING_PARAM 
+#ifdef DYNAMICGRAPH_EXCEPTION_PASSING_PARAM
  public:
   class Param
     {
@@ -114,7 +114,7 @@ public:
       Param( const int& _line, const char * _function, const char * _file );
       Param( void ) : pointersSet(false),set(false) {}
       Param& initCopy( const Param& p );
-	
+
     };
 
  protected:
@@ -126,7 +126,7 @@ public:
   template<class Exc>
     friend Exc& operator+ ( const ExceptionAbstract::Param& p, Exc& e )
     { e.p.initCopy(p);   return e;    }
-#endif //#ifdef DYNAMICGRAPH_EXCEPTION_PASSING_PARAM 
+#endif //#ifdef DYNAMICGRAPH_EXCEPTION_PASSING_PARAM
 };
 
 } // namespace dynamicgraph
@@ -137,9 +137,9 @@ public:
 
 #ifdef DYNAMICGRAPH_EXCEPTION_PASSING_PARAM
 #  define DG_THROW throw ExceptionAbstract::Param(__LINE__,__FUNCTION__,__FILE__) +
-#else //#ifdef DYNAMICGRAPH_EXCEPTION_PASSING_PARAM 
+#else //#ifdef DYNAMICGRAPH_EXCEPTION_PASSING_PARAM
 #  define DG_THROW throw
-#endif //#ifdef DYNAMICGRAPH_EXCEPTION_PASSING_PARAM 
+#endif //#ifdef DYNAMICGRAPH_EXCEPTION_PASSING_PARAM
 
 
 #endif /* #ifndef __ABSTRACT_EXCEPTION_H */

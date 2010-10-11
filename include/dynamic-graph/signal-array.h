@@ -31,20 +31,20 @@ class SignalArray;
 
 template<class Time>
 class SignalArray_const
-{ 
+{
  public:
-  static const int DEFAULT_SIZE = 20; 
+  static const int DEFAULT_SIZE = 20;
 
  protected:
   const SignalBase<Time> ** const_array;
-  unsigned int size,rank; 
+  unsigned int size,rank;
 
  public:
-  SignalArray_const<Time>( const unsigned int& sizeARG=DEFAULT_SIZE ) 
+  SignalArray_const<Time>( const unsigned int& sizeARG=DEFAULT_SIZE )
     : const_array(NULL),size(sizeARG),rank(0)
     { createArray(); }
 
-  SignalArray_const<Time>( const SignalBase<Time>& sig) 
+  SignalArray_const<Time>( const SignalBase<Time>& sig)
     : const_array(NULL),size(1),rank(0)
     { createArray(); addElmt(&sig); }
 
@@ -72,10 +72,10 @@ class SignalArray_const
     {
       if(0<size) {  const_array = new const SignalBase<Time>* [size]; }
     }
-  void addElmt( const SignalBase<Time>* el ) 
+  void addElmt( const SignalBase<Time>* el )
     { if(rank<size) const_array[rank++] = el;  }
 
- public: 
+ public:
   virtual SignalArray_const<Time>& operator<< (const SignalBase<Time>& sig)
     { addElmt( &sig ); return *this; }
 
@@ -98,7 +98,7 @@ SignalArray_const<Time> operator<<( const SignalBase<Time>& sig1,
 template<class Time>
 class SignalArray
 :public SignalArray_const<Time>
-{ 
+{
  public:
   using SignalArray_const<Time>::DEFAULT_SIZE;
   using SignalArray_const<Time>::size;
@@ -107,11 +107,11 @@ class SignalArray
   mutable SignalBase<Time> ** array;
 
  public:
-  SignalArray<Time>( const unsigned int& sizeARG=DEFAULT_SIZE ) 
+  SignalArray<Time>( const unsigned int& sizeARG=DEFAULT_SIZE )
     :SignalArray_const<Time>(0)
     { size=sizeARG; createArray(); }
 
-  SignalArray<Time>( SignalBase<Time>& sig) 
+  SignalArray<Time>( SignalBase<Time>& sig)
     : SignalArray_const<Time>(0)
     { size=1; createArray(); addElmt(&sig); }
 
@@ -133,7 +133,7 @@ class SignalArray
     {
       if(0<size) {  array = new SignalBase<Time>* [size]; }
     }
-  void addElmt( SignalBase<Time>* el ) 
+  void addElmt( SignalBase<Time>* el )
     { if(rank<size) array[rank++] = el;  }
 
  public: //protected:
@@ -142,16 +142,16 @@ class SignalArray
 
   virtual SignalArray_const<Time> operator<< (const SignalBase<Time>& sig) const
     {
-      SignalArray_const<Time> res(size); 
-      res=*this; 
-      res<<sig; 
-      return res; 
+      SignalArray_const<Time> res(size);
+      res=*this;
+      res<<sig;
+      return res;
     }
 
 
  public:
   virtual SignalBase<Time>& operator[] ( const unsigned int& idx ) const
-    { 
+    {
       return *array[idx];
     }
 };

@@ -50,7 +50,7 @@ class PluginRefMap;
   Once loaded, the plugins register themselves to the sotFactory and the
   related objects can subsequently be instantiated by the sotInterpretor for
   example.
-  
+
  */
 class DYNAMICGRAPH_EXPORT PluginLoader
 {
@@ -63,12 +63,12 @@ class DYNAMICGRAPH_EXPORT PluginLoader
   std::list< std::string > pluginNames;
 
   /*! \brief If a plugin has been loaded then this map contains
-   the name of the plugin. 
+   the name of the plugin.
    \note This field looks useless.
   */
   std::map< std::string,std::string > loadedPluginNames;
-  
-  /*! \brief Keeps a reference to the library according to the name of the 
+
+  /*! \brief Keeps a reference to the library according to the name of the
    plugin. */
   PluginRefMap* pluginRefs;
 
@@ -77,7 +77,7 @@ class DYNAMICGRAPH_EXPORT PluginLoader
   /*! \brief Default constructor. */
   PluginLoader( void );
   ~PluginLoader( void );
-  
+
   /*! \brief Set the directory from which to load the dynamic libraries
    containing the plugins. */
   const std::string& setDirectory( const std::string& n );
@@ -87,7 +87,7 @@ class DYNAMICGRAPH_EXPORT PluginLoader
 
   /*! \brief Adds a list of plugins
   It is done by reading the file configFile which contains for each line
-  a plugin name. 
+  a plugin name.
   \par[in] configFile: The name of the file which contains the plugins name.
   \par[in] dir: The name of the directory which contains the dynamic libraries.
   */
@@ -103,7 +103,7 @@ class DYNAMICGRAPH_EXPORT PluginLoader
     void unloadAllPlugins();
 
 
-  const std::map< std::string,std::string > getLoadedPluginNames( void ) 
+  const std::map< std::string,std::string > getLoadedPluginNames( void )
   { return loadedPluginNames; }
   const std::string& searchPlugin( const std::string& plugname );
 

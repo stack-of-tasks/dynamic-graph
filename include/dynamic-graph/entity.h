@@ -87,7 +87,7 @@ class DYNAMICGRAPH_EXPORT Entity
   virtual std::ostream& writeCompletionList( std::ostream& os ) const;
 
  public: /* --- DISPLAY --- */
-  virtual void display( std::ostream& os ) const; 
+  virtual void display( std::ostream& os ) const;
 
  public: /* --- PARAMS --- */
   virtual void commandLine( const std::string& cmdLine,std::istringstream& cmdArgs,

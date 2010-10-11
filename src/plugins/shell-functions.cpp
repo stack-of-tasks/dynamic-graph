@@ -72,5 +72,5 @@ extern "C" {
     ShellFunctionRegisterer regFun19
     ( "completion",boost::bind(ShellFunctions::cmdCompletionList,_1,_2,_3) );
 
-}                                                       
+}
 

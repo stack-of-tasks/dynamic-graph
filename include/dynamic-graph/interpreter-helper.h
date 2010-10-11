@@ -90,7 +90,7 @@ class DYNAMICGRAPH_EXPORT InterpreterHelper
   /*! \brief Destroy the object.
     Destroy the object objName.
    */
-  void cmdDestroy( const std::string& objName, 
+  void cmdDestroy( const std::string& objName,
 		   std::ostream& os );
 
   /*! \brief Connect two signals.
@@ -107,20 +107,20 @@ class DYNAMICGRAPH_EXPORT InterpreterHelper
     Extracts the name first and the directory in second from cmdArg
     to load the dynamic library.
    */
-  void cmdLoadPlugin( const std::string& directory, 
-		      const std::string& pluginName, 
+  void cmdLoadPlugin( const std::string& directory,
+		      const std::string& pluginName,
 		      std::ostream& os );
 
   /*! \brief Unload a dynamic library which includes a plugin.
     Extracts the name to unload the dynamic library.
   */
-  void cmdUnloadPlugin( const std::string& pluginName, 
+  void cmdUnloadPlugin( const std::string& pluginName,
 			std::ostream& os );
 
   /*! \brief Set a signal <obj.signal> to a value <value>
     with cmdArg = "<obj.signal> <value>"
    */
-  void cmdSetSignal( const std::string& objname, 
+  void cmdSetSignal( const std::string& objname,
 		     const std::string& signame,
 		     const std::string& cmdArg,
 		     std::ostream& os);
@@ -128,15 +128,15 @@ class DYNAMICGRAPH_EXPORT InterpreterHelper
   /*! \brief Display the value of the signal <obj.signal>
     with cmdArg = "<obj.signal>"
    */
-  void cmdGetSignal( const std::string& objname, 
-		     const std::string& signame, 
+  void cmdGetSignal( const std::string& objname,
+		     const std::string& signame,
 		     std::ostream& os);
 
   /*! \brief Compute the value of the signal <obj.signal> at time <time>
     with cmdArg = "<obj.signal> <time>"
    */
   void cmdComputeSignal( const std::string& objname,
-			 const std::string& signame, 
+			 const std::string& signame,
 			 const int &time,
 			 std::ostream& os );
 

@@ -49,7 +49,7 @@
 #include <stdarg.h>
 #include <dynamic-graph/dynamic-graph-api.h>
 
- 
+
 /* -------------------------------------------------------------------------- */
 /* -------------------------------------------------------------------------- */
 /* -------------------------------------------------------------------------- */
@@ -58,7 +58,7 @@
 
 #ifndef VP_DEBUG_MODE
 #define VP_DEBUG_MODE 0
-#endif 
+#endif
 #ifndef VP_TEMPLATE_DEBUG_MODE
 #define VP_TEMPLATE_DEBUG_MODE 0
 #endif
@@ -82,14 +82,14 @@ class DYNAMICGRAPH_EXPORT DebugTrace
     std::ostream& outputbuffer;
     char charbuffer[SIZE+1];
     int traceLevel;
-    int traceLevelTemplate; 
+    int traceLevelTemplate;
 
     DebugTrace( std::ostream& os ): outputbuffer(os) {}
 
     inline void trace( const int level,const char* format,...)
 	{ if( level<=traceLevel ) DG_COMMON_TRACES; tmpbuffer.str(""); }
     inline void trace( const char* format,...){ DG_COMMON_TRACES;  tmpbuffer.str(""); }
-    inline void trace( const int level=-1 ) 
+    inline void trace( const int level=-1 )
 	{ if( level<=traceLevel ) outputbuffer << tmpbuffer.str(); tmpbuffer.str("");  }
 
     inline void traceTemplate( const int level,const char* format,...)
@@ -117,9 +117,9 @@ DYNAMICGRAPH_EXPORT extern DebugTrace dgERRORFLOW;
 
 #ifdef VP_DEBUG
 #define dgPREDEBUG  __FILE__ << ": " <<__FUNCTION__  \
-                              << "(#" << __LINE__ << ") :" 
+                              << "(#" << __LINE__ << ") :"
 #define dgPREERROR  "\t!! "<<__FILE__ << ": " <<__FUNCTION__  \
-                            << "(#" << __LINE__ << ") :" 
+                            << "(#" << __LINE__ << ") :"
 
 #  define dgDEBUG(level) if( (level>VP_DEBUG_MODE)||(!dgDEBUGFLOW.outputbuffer.good()) ) ;\
     else dgDEBUGFLOW.outputbuffer << dgPREDEBUG
@@ -138,7 +138,7 @@ inline bool dgTDEBUG_ENABLE( const int & level ) { return level<=VP_TEMPLATE_DEB
 /* -------------------------------------------------------------------------- */
 #else // #ifdef VP_DEBUG
 #define dgPREERROR  "\t!! "<<__FILE__ << ": " <<__FUNCTION__  \
-                            << "(#" << __LINE__ << ") :" 
+                            << "(#" << __LINE__ << ") :"
 #  define dgDEBUG(level) if( 1 ) ; else std::cout
 #  define dgDEBUGMUTE(level) if( 1 ) ; else std::cout
 #  define dgERROR dgERRORFLOW.outputbuffer << dgPREERROR

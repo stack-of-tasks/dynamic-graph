@@ -41,12 +41,12 @@
 /* --- API ------------------------------------------------------------- */
 /* --------------------------------------------------------------------- */
 
-#if defined (WIN32) 
+#if defined (WIN32)
 #  if defined (tracer_EXPORTS)
 #    define DGTRACER_EXPORT __declspec(dllexport)
-#  else  
+#  else
 #    define DGTRACER_EXPORT __declspec(dllimport)
-#  endif 
+#  endif
 #else
 #  define DGTRACER_EXPORT
 #endif
@@ -65,11 +65,11 @@ class DGTRACER_EXPORT Tracer
   SignalList toTraceSignals;
 
 
- public: 
+ public:
   static const std::string CLASS_NAME;
   virtual const std::string& getClassName( void ) { return CLASS_NAME; }
 
- public: 
+ public:
   enum TraceStyle
     {
       WHEN_SAID   /// Record, then trace to file only when said to.
@@ -110,7 +110,7 @@ class DGTRACER_EXPORT Tracer
  public:
   void setTraceStyle( const TraceStyle& style ){ traceStyle = style; }
   TraceStyle getTraceStyle( void ){ return traceStyle; }
-  
+
   void setFrenquency( const double& frqu ){ frequency = frqu; }
   double getFrequency( void ){ return frequency; }
 

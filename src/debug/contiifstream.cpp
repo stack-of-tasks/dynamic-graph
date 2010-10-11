@@ -40,17 +40,17 @@ loop( void )
 {
   dgDEBUGIN(25);
   bool res=false;
-  
+
   std::fstream file( filename.c_str() );
 
   file.seekg(cursor);
   file.sync();
-      
+
   while(1)
     {
       file.get(buffer,BUFFER_SIZE);
-      if( file.gcount() ) 
-	{ 
+      if( file.gcount() )
+	{
 	  res=true;
 	  std::string line(buffer);
 	  if(! first) reader.push_back(line);
@@ -66,8 +66,8 @@ loop( void )
   return res;
 }
 
-std::string 
-Contiifstream::next( void ) 
+std::string
+Contiifstream::next( void )
 {
   std::string res = *reader.begin();
   reader.pop_front();

@@ -25,7 +25,7 @@
  *
  * CNRS/AIST
  *
- * This file is part of dynamic-graph. 
+ * This file is part of dynamic-graph.
  * dynamic-graph is free software: you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public License
  * as published by the Free Software Foundation, either version 3 of
@@ -73,15 +73,15 @@ namespace dynamicgraph {
 
 template< class T,class Time >
 bool SignalPtr<T,Time>::
-isAbstractPluged( void ) const 
+isAbstractPluged( void ) const
 {
-  return ( (NULL!=signalPtr)||(abstractTransmitter) ); 
-} 
+  return ( (NULL!=signalPtr)||(abstractTransmitter) );
+}
 
 
 template< class T,class Time >
 Signal<T,Time>* SignalPtr<T,Time>::
-getPtr ( void ) 
+getPtr ( void )
 {
   dgTDEBUGIN(25);
   if(! isPluged() )
@@ -89,7 +89,7 @@ getPtr ( void )
 				  "In SignalPtr: SIN ptr not set.",
 				  " (in signal <%s>)",getName().c_str());
   dgTDEBUGOUT(25);
-  return signalPtr; 
+  return signalPtr;
 }
 
 template< class T,class Time >
@@ -104,12 +104,12 @@ getPtr ( void ) const
 				    "In SignalPtr: SIN ptr not set.",
 				    " (in signal <%s>)",getName().c_str()); }
   dgTDEBUGOUT(25);
-  return signalPtr; 
+  return signalPtr;
 }
 
 template< class T,class Time >
 SignalBase<Time>* SignalPtr<T,Time>::
-getAbstractPtr ( void ) 
+getAbstractPtr ( void )
 {
   if(! isAbstractPluged() )
     { DG_THROW ExceptionSignal( ExceptionSignal::NOT_INITIALIZED,
@@ -133,11 +133,11 @@ getAbstractPtr ( void ) const
 
 template< class T,class Time >
 void SignalPtr<T,Time>::
-plug( SignalBase<Time>* unknown_ref ) 
+plug( SignalBase<Time>* unknown_ref )
 {
   dgTDEBUGIN(5);
   if(! unknown_ref )
-    { 
+    {
       signalPtr = NULL;
       transmitAbstract = false;
       dgTDEBUGOUT(5);
@@ -147,12 +147,12 @@ plug( SignalBase<Time>* unknown_ref )
   dgTDEBUG(5) << "# In  T = "<< getName() <<" ="
 	       <<typeid( Signal<T,Time>::Tcopy1 ) .name() << "{ "<<std::endl;
 
-     
+
   Signal<T,Time> * ref = dynamic_cast< Signal<T,Time>* > (unknown_ref);
   if( NULL==ref )
     {
       try {
-	unknown_ref->checkCompatibility(); 
+	unknown_ref->checkCompatibility();
       }
       catch( T* t )
 	{
@@ -176,7 +176,7 @@ plug( SignalBase<Time>* unknown_ref )
     {
       dgTDEBUG(25) << "Cast ok."<< std::endl;
       transmitAbstract = false;
-      signalPtr = ref; 
+      signalPtr = ref;
     }
   dgTDEBUGOUT(5);
 }
@@ -184,15 +184,15 @@ plug( SignalBase<Time>* unknown_ref )
 template< class T,class Time >
 bool SignalPtr<T,Time>::
 needUpdate( const Time& t ) const
-{ 
-  if( (isAbstractPluged())&&(!autoref()) ){ return getAbstractPtr()->needUpdate(t);} 
+{
+  if( (isAbstractPluged())&&(!autoref()) ){ return getAbstractPtr()->needUpdate(t);}
   else return Signal<T,Time>::needUpdate(t);
 }
 
 template< class T,class Time >
 const Time& SignalPtr<T,Time>::getTime( void ) const
 {
-  if(  (isAbstractPluged())&&(!autoref()) ){ return getAbstractPtr()->getTime();} 
+  if(  (isAbstractPluged())&&(!autoref()) ){ return getAbstractPtr()->getTime();}
   return Signal<T,Time>::getTime();
 }
 
@@ -201,12 +201,12 @@ template< class T,class Time >
 const T& SignalPtr<T,Time>::
 operator()( const Time & t )
 {
-  return access(t); 
+  return access(t);
 }
 
 template< class T,class Time >
 const T& SignalPtr<T,Time>::
-access( const Time & t ) 
+access( const Time & t )
 {
   dgTDEBUGIN(15);
   if( modeNoThrow&&(! isPluged())&&Signal<T,Time>::copyInit )
@@ -214,7 +214,7 @@ access( const Time & t )
       dgTDEBUGOUT(15);
       return Signal<T,Time>::accessCopy();
     }
-  else if( autoref() )  
+  else if( autoref() )
     {
       dgTDEBUGOUT(15);
       return Signal<T,Time>::access(t);
@@ -253,10 +253,10 @@ writeGraph(std::ostream &os) const
       std::string itLocalName,itNodeName;
       getAbstractPtr()->ExtractNodeAndLocalNames(itLocalName,itNodeName);
       os << "\t\"" << itNodeName << "\" -> \"" << LeaderNodeName << "\"" << std::endl
-	 << "\t [ headlabel = \"" << LeaderLocalName 
-	 << "\" , taillabel = \"" << itLocalName 
+	 << "\t [ headlabel = \"" << LeaderLocalName
+	 << "\" , taillabel = \"" << itLocalName
 	 << "\", fontsize=7, fontcolor=red ]" << std::endl;
-      
+
     }
   return os;
 }
@@ -268,18 +268,18 @@ display( std::ostream& os ) const
   dgTDEBUGIN(25) << SignalBase<Time>::name << this << "||" << isPluged() << "||"<<signalPtr;
   { Signal<T,Time>::display(os); }
 
-  if( (isAbstractPluged())&&(!autoref()) ) 
+  if( (isAbstractPluged())&&(!autoref()) )
     {
       // 	    dgTDEBUG(25) << "Display pointed."<<std::endl;
-      // 	    getPtr()->display(os<<"PTR->"); 
+      // 	    getPtr()->display(os<<"PTR->");
       os << " -->-- PLUGGED";
     }
-  else 
-    { 
+  else
+    {
       if(! isAbstractPluged()) os << " UNPLUGGED";
       else if(autoref()) os << " AUTOPLUGGED";
     }
-     
+
   dgTDEBUGOUT(25);
   return os;
 }
@@ -294,9 +294,9 @@ displayDependencies( std::ostream& os,const int depth,
   if( (isAbstractPluged())&&(!autoref()) )
     { getAbstractPtr()->displayDependencies(os,depth,space,next1+"-- "
 				    +SignalBase<Time>::name+" -->",next2); }
-  else 
+  else
     {
-      SignalBase<Time>::displayDependencies(os,depth,space,next1,next2); 
+      SignalBase<Time>::displayDependencies(os,depth,space,next1,next2);
     }
   dgTDEBUGOUT(25);
   return os;

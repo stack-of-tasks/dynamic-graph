@@ -29,16 +29,16 @@
 namespace dynamicgraph {
 
 template< class T,class Time >
-class SignalPtr 
+class SignalPtr
 : public virtual Signal<T,Time>
 {
  public:
     using SignalBase<Time>::getName;
 
- protected: 
+ protected:
     Signal<T,Time>* signalPtr;
     bool modeNoThrow;
-    bool transmitAbstract; 
+    bool transmitAbstract;
     SignalBase<Time> * abstractTransmitter;
     T* transmitAbstractData;
 
@@ -52,7 +52,7 @@ class SignalPtr
 	,transmitAbstract(false)
 	,abstractTransmitter(NULL) {}
     virtual ~SignalPtr( void ) { signalPtr = NULL; }
-    
+
  public: /* --- PLUG-IN OPERATION --- */
 
     Signal<T,Time>* getPtr ( void ); // throw
@@ -61,11 +61,11 @@ class SignalPtr
     const SignalBase<Time>* getAbstractPtr ( void ) const; // throw
     virtual void plug( SignalBase<Time>* ref );
     virtual void unplug( void ) { plug(NULL); }
-    virtual bool isPluged( void ) const { return (NULL!=signalPtr); } 
-    virtual SignalBase<Time>* getPluged( void ) const { return signalPtr; } 
-    virtual bool isAbstractPluged( void ) const; 
+    virtual bool isPluged( void ) const { return (NULL!=signalPtr); }
+    virtual SignalBase<Time>* getPluged( void ) const { return signalPtr; }
+    virtual bool isAbstractPluged( void ) const;
     virtual const Time& getTime( void ) const;
-    
+
     /* Equivalent operator-like definitions. */
     inline Signal<T,Time>* operator->() { return getPtr(); }
     inline const Signal<T,Time>* operator->() const { return getPtr(); }
@@ -81,10 +81,10 @@ class SignalPtr
 
     /* For compatibility, .access() is equivalent to ->access(). For explicite
      * pointer dereference :
-     * Prefere ->() to () 
+     * Prefere ->() to ()
      */
     virtual const T& operator()( const Time & t );
-    /* Similarly, Prefere ->access to .access 
+    /* Similarly, Prefere ->access to .access
      */
     virtual const T& access( const Time & t );
     virtual const T& accessCopy( void ) const;
@@ -97,7 +97,7 @@ class SignalPtr
 
 
  public:  /* --- INHERITANCE --- */
-    
+
     /* SignalPtr could be used as a classical signal, through the normal
      * setting functions. The behavior is to plugged the signalPtr on
      * the classical mother Signal layer of the object.
@@ -122,13 +122,13 @@ class SignalPtr
 						std::string space="",
 						std::string next1="",
 						std::string next2="" ) const;
-    
+
  protected: // Interdiction of the rest of the heritage
-    
+
     virtual void addDependency( const SignalBase<Time>& signal ) {}
     virtual void removeDependency( const SignalBase<Time>& signal ) {}
     virtual void clearDependencies( void ) {}
-    
+
 };
 
 } // namespace dynamicgraph
