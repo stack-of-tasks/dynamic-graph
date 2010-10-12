@@ -1,6 +1,7 @@
 /*
  * Copyright 2010,
  * François Bleibel,
+ * Thomas Moulard,
  * Olivier Stasse,
  *
  * CNRS/AIST
@@ -28,7 +29,61 @@ together using a graph system, akin to what Simulink does. With the building
 blocks this package provides, you can easily create a full computation graph
 for a given problem. It is the basis for the stack of tasks operation.
 
+\image html pictures/entity.png
+Functionality:
+\li Built-in scripting language* for fast prototyping and testing
+\li Support for extensions and modules using dynamic link libraries
+\li Template-based signal definition, independant
+\li Type-safe connection of input and output signals
+\li On-demand signal computation as well as a caching system for signal values allow fast
+computation of signal values, which is a critical point for real-time systems\n
+* See \ref scriptingabout
+
 \section overview Code overview
+
+\section entities List of entities in this package
+Since most of the functionality in projects using the dynamic-graph framework
+is exposed from entities, here is a short description of all the entities contained in
+this package. Note that most entities are contained in a binary file that closely matches
+the entities' names in the scripts; loading this file with the plugin loader will
+enable creation of this entity through the factory.
+\li \ref tracerdoc
+\li \ref tracerrealtimedoc
+\li ShellProcedure
+\li \ref shellfunctions_doc
+
+The entities will be placed in ${PREFIX}/lib/plugin (since this may change, it is advised to
+check the install log or the CMakeLists.txt file to check the installation path).
+\section sigintro About signals
+
+Entities can output different types of signals. All signals are templated by a Time
+tick type parameter (which is used in the caching of signals) - usually \c int. Signals
+are also templated after the type of data they accept or provide. For example:
+(example)
+For a more detailed programmer-oriented description of signals, please see \ref signals
+
+\section scriptingabout Note about the scripting language
+The scripting language allows entities to define their own commands, and
+provides a basic framework for working with the dynamic-graph.
+
+A couple of functions are built-in in the interpreter and provides low-level features such as file sourcing or
+plug-in loading.\n
+These functions are:\n
+\code plug <obj1.sig1> <obj2.sig2> \endcode plugs the signal sig1 of obj1 to the signal sig2 of obj2. sig1 and sig2
+have to be of the same type. sig1 has to be an output signal and sig2 an input signal.
+\code new <class> <object> \endcode instantiates an object object of class class. object has to be a free identifier and
+class an existing entity.
+\code destroy <object> \endcode deletes an instance previously created.
+\code run <script.txt> \endcode sources (i.e. read and interpret) an external file.
+\code loadPlugin <file.so> <directory> \endcode loads a plugin called file.so and located in the directory directory.
+\code unloadPlugin <path/file.so> \endcode unloads a plugin.
+\code help \endcode lists available functions.
+\code set <obj.signal> <value> \endcode defines an input signal to a specific, constant, value.
+\code get <obj.signal> <value> \endcode
+\code compute <obj.sig> <time> \endcode computes an output signal and sets the associated time to time.
+
+\section usecase How to use this package
+1) Programmatically
 This code implements the factory design pattern, making creation of entities
 available to packages depending on the dynamic-graph API.
 
@@ -59,34 +114,22 @@ corresponding headers in this module are:
 \li g_pool: dynamicgraph::PoolStorage
 \li g_shell: dynamicgraph::Interpreter
 
-\section entities List of entities in this package
-Since most of the functionality in projects using the dynamic-graph framework
-is exposed from entities, here is a short description of all the entities contained in
-this package. Note that most entities are contained in a binary file that closely matches
-the entities' names in the scripts; loading this file with the plugin loader will
-enable creation of this entity through the factory.
-\li \ref tracerdoc
-\li \ref tracerrealtimedoc
-\li ShellProcedure
-\li \ref shellfunctions_doc
-\li \link dynamicgraph::Contiifstream Contiifstream \endlink
+For an example of a program creating entities programmatically, see the unit test
+test_pool.cpp (in your package source directory/unitTesting).
 
-The entities will be placed in ${PREFIX}/lib/plugin (since this may change, it is advised to
-check the install log or the CMakeLists.txt file to check the installation path).
-\section sigintro About signals
+2) Through scripts
+The program \ref dgshell_doc can be used to have scripting access to the dynamic-graph
+library, where you can execute scripts and commands, load plugins, create entities and connect signals.
 
-Entities can output different types of signals. All signals are templated by a Time
-tick type parameter (which is used in the caching of signals) - usually \c int. Signals
-are also templated after the type of data they accept or provide. For example:
-(example)
-For a more detailed programmer-oriented description of signals, please see \ref signals
+Here is a typical use case for programmers:
+\image html figures/use-case.svg
 
-\section scriptingabout About the scripting language
-(...)
+\section References
+\anchor Mansard2007
 
-\section usecase Programmers use case
-
-\image html pictures/use-case.svg
+<b>"Task sequencing for sensor-based control"</b>,
+<em>N. Mansard, F. Chaumette,</em>
+IEEE Trans. on Robotics, 23(1):60-72, February 2007
 
 
 \defgroup dgraph Core classes and objects
