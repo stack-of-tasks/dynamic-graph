@@ -37,7 +37,7 @@ Functionality:
 \li Type-safe connection of input and output signals
 \li On-demand signal computation as well as a caching system for signal values allow fast
 computation of signal values, which is a critical point for real-time systems\n
-* See \ref scriptingabout
+See \ref scriptingabout
 
 \section overview Code overview
 
@@ -62,7 +62,7 @@ are also templated after the type of data they accept or provide. For example:
 (example)
 For a more detailed programmer-oriented description of signals, please see \ref signals
 
-\section scriptingabout Note about the scripting language
+\section scriptingabout Notes about the scripting language
 The scripting language allows entities to define their own commands, and
 provides a basic framework for working with the dynamic-graph.
 
@@ -79,11 +79,11 @@ class an existing entity.
 \code unloadPlugin <path/file.so> \endcode unloads a plugin.
 \code help \endcode lists available functions.
 \code set <obj.signal> <value> \endcode defines an input signal to a specific, constant, value.
-\code get <obj.signal> <value> \endcode
+\code get <obj.signal> <value> \endcode prints out a signal value.
 \code compute <obj.sig> <time> \endcode computes an output signal and sets the associated time to time.
 
 \section usecase How to use this package
-1) Programmatically
+1) Programmatically\n
 This code implements the factory design pattern, making creation of entities
 available to packages depending on the dynamic-graph API.
 
@@ -95,7 +95,7 @@ examples in the SOT documentation to learn how).
 
 The Factory can then create instances of these objects and subsequently
 register them in the Pool, where they can be listed, accessed, and acted upon
-(see sotPoolStorage documentation). Basic commands defined by entities include
+(see PoolStorage documentation). Basic commands defined by entities include
 signal connection graph file generation, help and name print, and signals.
 
 Finally, a shell (command-line) interface is made available thanks to the
@@ -114,10 +114,10 @@ corresponding headers in this module are:
 \li g_pool: dynamicgraph::PoolStorage
 \li g_shell: dynamicgraph::Interpreter
 
-For an example of a program creating entities programmatically, see the unit test
+For an example of a program creating entities in C++, see the unit test
 test_pool.cpp (in your package source directory/unitTesting).
 
-2) Through scripts
+2) Through scripts\n
 The program \ref dgshell_doc can be used to have scripting access to the dynamic-graph
 library, where you can execute scripts and commands, load plugins, create entities and connect signals.
 
@@ -138,12 +138,12 @@ IEEE Trans. on Robotics, 23(1):60-72, February 2007
 \ingroup dgraph
 @{
 
-Classes that make up the core of the dynamic-graph library are listed here.
+Classes, entities and binaries that make up the core of the dynamic-graph library are listed here.
 @}
 \ingroup signals
 @{
 This part provides the mechanism to transfer information
-from one feature to another. There are three main types of signals,
+from one entity to another. There are three main types of signals,
 all deriving from the common class dynamicgraph::SignalBase :
 \li dynamicgraph::Signal
 \li dynamicgraph::SignalPtr
