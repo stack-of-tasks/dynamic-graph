@@ -5,6 +5,7 @@ SET(LIBRARY_NAME ${PROJECT_NAME})
 
 INCLUDE_DIRECTORIES(
 	${CMAKE_CURRENT_SOURCE_DIR}/../include
+	${CMAKE_CURRENT_BINARY_DIR}/../include
 )
 
 # Verbosity level

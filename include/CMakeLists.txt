@@ -1,8 +1,34 @@
-# Generate header with default script directory.
-SET(DG_IMPORT_DEFAULT_PATHS \"${CMAKE_INSTALL_PREFIX}/script\")
-CONFIGURE_FILE(${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}/import-default-paths.h.cmake
-		       ${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}/import-default-paths.h)
+# Copyright 2010, Olivier Stasse, JRL, CNRS/AIST
+#
+# This file is part of dynamic-graph.
+# dynamic-graph is free software: you can redistribute it and/or
+# modify it under the terms of the GNU Lesser General Public License
+# as published by the Free Software Foundation, either version 3 of
+# the License, or (at your option) any later version.
+#
+# dynamic-graph is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+# General Lesser Public License for more details.  You should have
+# received a copy of the GNU Lesser General Public License along with
+# dynamic-graph. If not, see <http://www.gnu.org/licenses/>.
 
+# Add default script directory.
+#  It is used by the import directive of the sot shell to locate
+#  scripts.
+SET(DG_IMPORT_DEFAULT_PATHS
+	"${CMAKE_INSTALL_PREFIX}/share/dynamic-graph/script")
+
+CONFIGURE_FILE(
+	${PROJECT_NAME}/import-default-paths.h.cmake	
+	${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}/import-default-paths.h)
+INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}/import-default-paths.h
+       DESTINATION include/${PROJECT_NAME}
+       PERMISSIONS OWNER_READ GROUP_READ WORLD_READ OWNER_WRITE
+)
+
+
+# Headers list.
 SET(${PROJECT_NAME}_HEADERS
 contiifstream.h
 debug.h
@@ -16,7 +42,6 @@ interpreter-helper.h
 plugin-loader.h
 pool.h
 import.h
-import-default-paths.h
 
 exception-abstract.h
 exception-factory.h

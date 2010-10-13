@@ -37,6 +37,14 @@
 #include <dynamic-graph/exception-factory.h>
 #include <dynamic-graph/interpreter.h>
 
+// The default import paths has to be passed from the build system
+// as a -D flag for instance.
+// It contains the absolute path to the default directory where
+// the scripts will be searched.
+#ifndef DG_IMPORT_DEFAULT_PATHS
+# error "Default import path is not defined."
+#endif //! DG_IMPORT_DEFAULT_PATHS
+
 static const char* ENV_DG_PATH = "DG_PATH";
 
 namespace dynamicgraph
@@ -182,6 +190,7 @@ namespace dynamicgraph
 	    ("failed to import module ``%1%'' (import paths: %2%).");
 	  fmt % module;
 	  fmt % scriptDirectories;
+	  std::cout << fmt.str () << std::endl;
 	  DG_THROW ExceptionFactory
 	    (ExceptionFactory::READ_FILE, fmt.str ());
 	  return;
@@ -222,6 +231,7 @@ namespace dynamicgraph
 	  boost::format fmt (" (in line %1% of file ``%2%'')");
 	  fmt % lineIdx % filename;
 	  msg = msg + fmt.str();
+	  std::cout << msg << std::endl;
 	  throw;
 	}
 
