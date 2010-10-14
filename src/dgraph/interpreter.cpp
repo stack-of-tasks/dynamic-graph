@@ -480,7 +480,7 @@ shell( std::istream& sin, std::ostream& sout, const std::string& promptUser )
 	  istringstream args (cmdArgs);
 
 	  try{ cmd(cmdLine,args,sout); }
-	  catch( exception& e ) { dgDEBUG(1) << e.what(); throw e; }
+	  catch( exception& e ) { dgDEBUG(1) << e.what(); throw; }
 	  catch(...) { dgDEBUG(1) << "!! unknow!." <<endl; throw; }
 	}
     }
