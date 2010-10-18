@@ -28,7 +28,7 @@
 /* --- STD --- */
 #include <map>
 #include <string>
-
+#include <vector>
 /* --- DYNAMIC-GRAPH --- */
 #include <dynamic-graph/exception-factory.h>
 #include <dynamic-graph/dynamic-graph-api.h>
@@ -70,7 +70,9 @@ class DYNAMICGRAPH_EXPORT FactoryStorage
   Entity* newEntity( const std::string& name,const std::string& objname );
   bool existEntity( const std::string& name, EntityMap::iterator& entPtr );
   bool existEntity( const std::string& name );
-
+  /// Return the list of Entity class names registered in the factory.
+  /// Class names are appended at end of output vector.
+  void listEntities(std::vector <std::string>& outList);
   void  commandLine( const std::string& cmdLine,std::istringstream& cmdArgs,
 		     std::ostream& os );
 

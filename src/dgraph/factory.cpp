@@ -118,6 +118,15 @@ existEntity( const std::string& name )
   EntityMap::iterator entPtr;return existEntity( name,entPtr );
 }
 
+void FactoryStorage::
+listEntities(std::vector <std::string>& outList)
+{
+  for (EntityMap::iterator it = entityMap.begin();
+       it != entityMap.end(); it++) {
+    outList.push_back(it->first);
+  }
+}
+
 /* --------------------------------------------------------------------- */
 /* --- REGISTERERS ----------------------------------------------------- */
 /* --------------------------------------------------------------------- */
