@@ -5,4 +5,4 @@
 
 version=3
 
-#http://github.com/laas/hpp-util/downloads /laas/hpp-util/tarball/v(.*)
+http://githubredir.debian.net/github/jrl-umi3218/dynamic-graph (.*).tar.gz
