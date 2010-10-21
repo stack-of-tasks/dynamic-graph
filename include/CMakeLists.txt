@@ -65,6 +65,10 @@ all-signals.h
 
 tracer.h
 tracer-real-time.h
+
+command.h
+value.h
+parameter.h
 )
 
 # Recreate correct path for the headers

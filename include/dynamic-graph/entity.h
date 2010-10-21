@@ -41,6 +41,10 @@
 
 /* NAMESPACE */
 namespace dynamicgraph {
+  // Forward declaration
+  namespace command {
+    class Command;
+  };
 
 /* --------------------------------------------------------------------- */
 /* --- CLASS ----------------------------------------------------------- */
@@ -97,6 +101,15 @@ class DYNAMIC_GRAPH_DLLAPI Entity
   virtual void test2( SignalBase<int>* ) { return ; }
 
   virtual const std::string& getCommandList( void ) const;
+  /// Return the list of command objects
+  virtual std::map<const std::string, command::Command*>
+    getNewStyleCommandMap();
+ protected:
+  /// Add a command to Entity
+  virtual void addCommand(const std::string& name,
+			  command::Command* command);
+ private:
+  std::map<const std::string, command::Command*> commandMap;
 };
 
 DYNAMIC_GRAPH_DLLAPI std::ostream& operator<< (std::ostream& os, const dynamicgraph::Entity& ent );

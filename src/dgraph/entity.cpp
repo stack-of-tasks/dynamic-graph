@@ -23,6 +23,7 @@
 #include <dynamic-graph/pool.h>
 #include <dynamic-graph/pool.h>
 #include <dynamic-graph/debug.h>
+#include <dynamic-graph/command.h>
 
 /*! System includes */
 #include <stdlib.h>
@@ -31,6 +32,7 @@
 
 using namespace std;
 using namespace dynamicgraph;
+using dynamicgraph::command::Command;
 
 const std::string Entity::CLASS_NAME = "Entity";
 
@@ -70,6 +72,10 @@ Entity::
 {
   dgDEBUG(25) << "# In (" << name << " { " << endl;
   entityDeregistration();
+  for (std::map<const std::string, Command*>::iterator it =
+	 commandMap.begin(); it != commandMap.end(); it++) {
+    delete it->second;
+  }
   dgDEBUGOUT(25);
 }
 
@@ -266,4 +272,22 @@ commandLine( const std::string& cmdLine,std::istringstream& cmdArgs,std::ostream
       } catch( ... ) { throw;  }
     }
 
+}
+
+void Entity::
+addCommand(const std::string& inName, Command* command)
+{
+  if (commandMap.count(inName) != 0) {
+    DG_THROW ExceptionFactory(ExceptionFactory::OBJECT_CONFLICT,
+			      "Command " + inName + 
+			      " already registered in Entity.");
+  }
+  std::pair<const std::string, Command*> item(inName, command);
+  commandMap.insert(item);
+}
+
+std::map<const std::string, Command*> Entity::
+getNewStyleCommandMap()
+{
+  return commandMap;
 }
