@@ -44,7 +44,7 @@ namespace dynamicgraph {
       /// Set parameter values
       void setParameterValues(const std::vector<Value>& values);
       /// Get parameter values
-      const std::vector<Value> getParameterValues();
+      const std::vector<Value>& getParameterValues() const;
       /// Execute the command after checking parameters
       Value execute();
       /// Get a reference to the Entity owning this command

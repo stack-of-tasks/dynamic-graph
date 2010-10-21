@@ -35,6 +35,7 @@ namespace dynamicgraph {
 	STRING,
 	NB_TYPES
       };
+      ~Value();
       /// template constructor
       template <class T> Value(const T& value);
       /// Copy constructor
@@ -45,32 +46,38 @@ namespace dynamicgraph {
       Type type() const;
 
       /// Return the value if it is a double and throw otherwise
-      const double& doubleValue () const;
+      double doubleValue () const;
       /// Return the value if it is a int and throw otherwise
-      const int& intValue () const;
+      int intValue () const;
       /// Return the value if it is a string and throw otherwise
-      const std::string& stringValue () const;
+      std::string stringValue () const;
       /// Return the name of the type
       static std::string typeName(Type type);
+
+      /// Output in a stream
+      friend std::ostream& operator<<(std::ostream& os, const Value& value);
     private:
       Type type_;
       const void* value_;
     };
 
     // Template constructors
-    template <> Value::Value(const int& value)
+    template <> inline Value::Value(const int& value)
     {
-      value_ = &value;
+      std::cout << "Constructor of int value" << std::endl;
+      value_ = new int(value);
       type_ = INT;
     }
-    template <> Value::Value(const double& value)
+    template <> inline Value::Value(const double& value)
     {
-      value_ = &value;
+      std::cout << "Constructor of double value" << std::endl;
+      value_ = new double(value);
       type_ = DOUBLE;
     }
-    template <> Value::Value(const std::string& value)
+    template <> inline Value::Value(const std::string& value)
     {
-      value_ = &value;
+      std::cout << "Constructor of string value" << std::endl;
+      value_ = new std::string(value);
       type_ = STRING;
     }
     template <class T> Value::Value(const T& value)

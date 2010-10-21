@@ -21,13 +21,42 @@
 namespace dynamicgraph {
   namespace command {
 
-    Value::Value(const Value& value) : type_(value.type_),
-				       value_(value.value_)
+    Value::~Value()
     {
+      switch(type_) {
+      case INT:
+	delete (int*)value_;
+	break;
+      case DOUBLE:
+	delete (double*)value_;
+	break;
+      case STRING:
+	delete (std::string*)value_;
+	break;
+      }
+    }
+
+    Value::Value(const Value& value) : type_(value.type_)
+    {
+      switch(value.type_) {
+      case INT:
+	std::cout << "Value copy constructor: int" << std::endl;
+	value_ = new int(value.intValue());
+	break;
+      case DOUBLE:
+	std::cout << "Value copy constructor: double" << std::endl;
+	value_ = new double(value.doubleValue());
+	break;
+      case STRING:
+	std::cout << "Value copy constructor: string" << std::endl;
+	value_ = new std::string(value.stringValue());
+	break;
+      }
     }
 
     Value::Value() : type_(NONE), value_(NULL)
     {
+      std::cout << "Value empty constructor" << std::endl;
     }
 
     Value::Type Value::type() const
@@ -35,30 +64,33 @@ namespace dynamicgraph {
       return type_;
     }
 
-    const double& Value::doubleValue () const 
+    double Value::doubleValue () const
     {
+      double result;
       if (type_ == DOUBLE)
-	return *(static_cast<const double*>(value_));
+	result = *((double*)value_);
+      std::cout << "Value::doubleValue = " << result << std::endl;
+      return result;
       throw ExceptionAbstract(ExceptionAbstract::TOOLS,
 			      "value is not a double");
     }
 
-    const int& Value::intValue () const
+    int Value::intValue () const
     {
       if (type_ == INT)
-	return *(static_cast<const int*>(value_));
+	return *((int*)value_);
       throw ExceptionAbstract(ExceptionAbstract::TOOLS,
 			      "value is not an int");
     }
-    
-    const std::string& Value::stringValue () const
+
+    std::string Value::stringValue () const
     {
       if (type_ == STRING)
-	return *(static_cast<const std::string*>(value_));
+	return *((std::string*)value_);
       throw ExceptionAbstract(ExceptionAbstract::TOOLS,
 			      "value is not an string");
     }
-    
+
     std::string Value::typeName(Type type)
     {
       switch (type) {
@@ -71,5 +103,24 @@ namespace dynamicgraph {
       }
       return std::string("unknown");
     }
+
+    std::ostream& operator<<(std::ostream& os, const Value& value)
+    {
+      os << "Type=" << Value::typeName(value.type_)
+	 << ", value=";
+      switch (value.type_) {
+      case Value::INT:
+	os << value.intValue();
+	break;
+      case Value::DOUBLE:
+	os << value.doubleValue();
+	break;
+      case Value::STRING:
+	os << value.stringValue();
+	break;
+      }
+      return os;
+    }
+
   } // namespace command
 } //namespace dynamicgraph
