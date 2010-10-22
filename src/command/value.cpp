@@ -21,6 +21,22 @@
 namespace dynamicgraph {
   namespace command {
 
+    AnyType::AnyType(const Value& value) : value_(value)
+    {
+    }
+    AnyType::operator int () const
+    {
+      return value_.intValue();
+    }
+    AnyType::operator double () const
+    {
+      return value_.doubleValue();
+    }
+    AnyType::operator std::string () const
+    {
+      return value_.stringValue();
+    }
+
     Value::~Value()
     {
       switch(type_) {
@@ -35,6 +51,26 @@ namespace dynamicgraph {
 	break;
       }
     }
+
+    Value::Value(const int& value)
+    {
+      std::cout << "Constructor of int value" << std::endl;
+      value_ = new int(value);
+      type_ = INT;
+    }
+    Value::Value(const double& value)
+    {
+      std::cout << "Constructor of double value" << std::endl;
+      value_ = new double(value);
+      type_ = DOUBLE;
+    }
+    Value::Value(const std::string& value)
+    {
+      std::cout << "Constructor of string value" << std::endl;
+      value_ = new std::string(value);
+      type_ = STRING;
+    }
+
 
     Value::Value(const Value& value) : type_(value.type_)
     {
@@ -59,12 +95,17 @@ namespace dynamicgraph {
       std::cout << "Value empty constructor" << std::endl;
     }
 
+    const AnyType Value::value() const
+    {
+      return AnyType(*this);
+    }
+
     Value::Type Value::type() const
     {
       return type_;
     }
 
-    double Value::doubleValue () const
+    const double Value::doubleValue () const
     {
       double result;
       if (type_ == DOUBLE)
@@ -75,7 +116,7 @@ namespace dynamicgraph {
 			      "value is not a double");
     }
 
-    int Value::intValue () const
+    const int Value::intValue () const
     {
       if (type_ == INT)
 	return *((int*)value_);
@@ -83,7 +124,7 @@ namespace dynamicgraph {
 			      "value is not an int");
     }
 
-    std::string Value::stringValue () const
+    const std::string Value::stringValue () const
     {
       if (type_ == STRING)
 	return *((std::string*)value_);

@@ -26,6 +26,17 @@
 
 namespace dynamicgraph {
   namespace command {
+    class Value;
+    class AnyType {
+    public:
+      AnyType(const Value& value);
+      operator int () const;
+      operator double () const;
+      operator std::string () const;
+    private:
+      const Value& value_;
+    };
+
     class DYNAMICGRAPH_EXPORT Value {
     public:
       enum Type {
@@ -36,8 +47,9 @@ namespace dynamicgraph {
 	NB_TYPES
       };
       ~Value();
-      /// template constructor
-      template <class T> Value(const T& value);
+      Value(const int& value);
+      Value(const double& value);
+      Value(const std::string& value);
       /// Copy constructor
       Value(const Value& value);
       // Construct an empty value (None)
@@ -45,46 +57,23 @@ namespace dynamicgraph {
       /// Return the type of the value
       Type type() const;
 
-      /// Return the value if it is a double and throw otherwise
-      double doubleValue () const;
-      /// Return the value if it is a int and throw otherwise
-      int intValue () const;
-      /// Return the value if it is a string and throw otherwise
-      std::string stringValue () const;
+      /// Return the value as a castable value into the approriate type
+      /// double x = value();
+      const AnyType value () const;
       /// Return the name of the type
       static std::string typeName(Type type);
 
       /// Output in a stream
       friend std::ostream& operator<<(std::ostream& os, const Value& value);
     private:
+      friend class AnyType;
+      const double doubleValue() const;
+      const int intValue() const;
+      const std::string stringValue() const;
       Type type_;
       const void* value_;
     };
-
-    // Template constructors
-    template <> inline Value::Value(const int& value)
-    {
-      std::cout << "Constructor of int value" << std::endl;
-      value_ = new int(value);
-      type_ = INT;
-    }
-    template <> inline Value::Value(const double& value)
-    {
-      std::cout << "Constructor of double value" << std::endl;
-      value_ = new double(value);
-      type_ = DOUBLE;
-    }
-    template <> inline Value::Value(const std::string& value)
-    {
-      std::cout << "Constructor of string value" << std::endl;
-      value_ = new std::string(value);
-      type_ = STRING;
-    }
-    template <class T> Value::Value(const T& value)
-    {
-      assert(false);
-    }
-  } // namespace command
+} // namespace command
 } //namespace dynamicgraph
 
 #endif //DYNAMIC_GRAPH_VALUE_H
