@@ -68,7 +68,8 @@ tracer-real-time.h
 
 command.h
 value.h
-parameter.h
+command-setter.h
+command-setter.t.cpp
 )
 
 # Recreate correct path for the headers

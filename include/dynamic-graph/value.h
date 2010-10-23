@@ -58,7 +58,16 @@ namespace dynamicgraph {
       Type type() const;
 
       /// Return the value as a castable value into the approriate type
-      /// double x = value();
+      ///
+      /// For instance,
+      /// \code
+      /// Value v1(5.0); // v1 is of type double
+      /// Value v2(3);   // v2 is of type int
+      /// double x1 = v1.value();
+      /// double x2 = v2.value();
+      /// \endcode
+      /// The first assignment will succeed, while the second one will throw
+      /// an exception.
       const AnyType value () const;
       /// Return the name of the type
       static std::string typeName(Type type);
