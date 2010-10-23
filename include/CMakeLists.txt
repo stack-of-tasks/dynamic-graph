@@ -70,6 +70,8 @@ command.h
 value.h
 command-setter.h
 command-setter.t.cpp
+command-getter.h
+command-getter.t.cpp
 )
 
 # Recreate correct path for the headers
