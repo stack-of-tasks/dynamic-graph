@@ -1,0 +1,6 @@
+[submodule "jrl-cmakemodules"]
+	path = jrl-cmakemodules
+	url = git://github.com/jrl-umi3218/jrl-cmakemodules.git
+[submodule "cmake"]
+	path = cmake
+	url = git://github.com/jrl-umi3218/jrl-cmakemodules.git
