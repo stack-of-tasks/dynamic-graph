@@ -21,20 +21,26 @@
 namespace dynamicgraph {
   namespace command {
 
-    AnyType::AnyType(const Value& value) : value_(value)
+    EitherType::EitherType(const Value& value) : value_(new Value(value))
     {
     }
-    AnyType::operator int () const
+
+    EitherType::~EitherType()
     {
-      return value_.intValue();
+      delete value_;
     }
-    AnyType::operator double () const
+
+    EitherType::operator int () const
     {
-      return value_.doubleValue();
+      return value_->intValue();
     }
-    AnyType::operator std::string () const
+    EitherType::operator double () const
     {
-      return value_.stringValue();
+      return value_->doubleValue();
+    }
+    EitherType::operator std::string () const
+    {
+      return value_->stringValue();
     }
 
     Value::~Value()
@@ -87,6 +93,9 @@ namespace dynamicgraph {
 	std::cout << "Value copy constructor: string" << std::endl;
 	value_ = new std::string(value.stringValue());
 	break;
+      default:
+	type_ = NONE;
+	value_ = NULL;
       }
     }
 
@@ -95,9 +104,9 @@ namespace dynamicgraph {
       std::cout << "Value empty constructor" << std::endl;
     }
 
-    const AnyType Value::value() const
+    const EitherType Value::value() const
     {
-      return AnyType(*this);
+      return EitherType(*this);
     }
 
     Value::Type Value::type() const
@@ -110,7 +119,6 @@ namespace dynamicgraph {
       double result;
       if (type_ == DOUBLE)
 	result = *((double*)value_);
-      std::cout << "Value::doubleValue = " << result << std::endl;
       return result;
       throw ExceptionAbstract(ExceptionAbstract::TOOLS,
 			      "value is not a double");

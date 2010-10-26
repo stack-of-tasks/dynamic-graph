@@ -27,14 +27,15 @@
 namespace dynamicgraph {
   namespace command {
     class Value;
-    class AnyType {
+    class EitherType {
     public:
-      AnyType(const Value& value);
+      EitherType(const Value& value);
+      ~EitherType();
       operator int () const;
       operator double () const;
       operator std::string () const;
     private:
-      const Value& value_;
+      const Value* value_;
     };
 
     class DYNAMICGRAPH_EXPORT Value {
@@ -68,14 +69,14 @@ namespace dynamicgraph {
       /// \endcode
       /// The first assignment will succeed, while the second one will throw
       /// an exception.
-      const AnyType value () const;
+      const EitherType value () const;
       /// Return the name of the type
       static std::string typeName(Type type);
 
       /// Output in a stream
       friend std::ostream& operator<<(std::ostream& os, const Value& value);
     private:
-      friend class AnyType;
+      friend class EitherType;
       const double doubleValue() const;
       const int intValue() const;
       const std::string stringValue() const;
