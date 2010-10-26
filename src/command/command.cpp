@@ -29,7 +29,7 @@ namespace dynamicgraph {
     {
     }
 
-    const std::vector<Value::Type>& Command::valueTypes() const
+    const std::vector<Value::Type> Command::valueTypes() const
     {
       return valueTypeVector_;
     }
@@ -62,7 +62,7 @@ namespace dynamicgraph {
       }
     }
 
-    const std::vector<Value>& Command::getParameterValues() const
+    const std::vector<Value> Command::getParameterValues() const
     {
       return valueVector_;
     }
