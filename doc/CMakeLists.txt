@@ -13,6 +13,11 @@
 # received a copy of the GNU Lesser General Public License along with
 # dynamic-graph. If not, see <http://www.gnu.org/licenses/>.
 
+
+SET(BUILD_DIR ${CMAKE_BINARY_DIR}/doc)
+SET(DOCDIR share/doc/${PROJECT_NAME})
+SET(HTMLDIR ${DOCDIR}/doxygen-html)
+
 # MANPAGE
 # -------
 #
@@ -40,12 +45,6 @@ MACRO(MANPAGE NAME)
 ENDMACRO(MANPAGE)
 
 
-
-SET(BUILD_DIR ${CMAKE_BINARY_DIR}/doc)
-
-SET(DOCDIR share/doc/${PROJECT_NAME})
-SET(HTMLDIR ${DOCDIR}/doxygen-html)
-
 # Generate Doxygen configuration file.
 CONFIGURE_FILE(package.dox.cmake ${BUILD_DIR}/package.dox)
 
@@ -54,6 +53,7 @@ CONFIGURE_FILE(package.dox.cmake ${BUILD_DIR}/package.dox)
 ADD_CUSTOM_TARGET(doc
 	COMMAND ${DOXYGEN_EXECUTABLE} package.dox
 	WORKING_DIRECTORY doc
+	DEPENDS ${BUILD_DIR}/dg-shell.1.gz ${BUILD_DIR}/dg-shell-plugin.1.gz
 )
 
 ADD_CUSTOM_COMMAND(
