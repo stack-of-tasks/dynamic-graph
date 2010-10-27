@@ -44,27 +44,35 @@ ENDMACRO(MANPAGE)
 SET(BUILD_DIR ${CMAKE_BINARY_DIR}/doc)
 
 SET(DOCDIR share/doc/${PROJECT_NAME})
-SET(HTMLDIR ${DOCDIR}/html)
-
-# Add `doc' target.
-ADD_CUSTOM_TARGET(
-  doc ALL
-  DEPENDS html/index.html dg-shell.1.gz dg-shell-plugin.1.gz)
-
+SET(HTMLDIR ${DOCDIR}/doxygen-html)
 
 # Generate Doxygen configuration file.
 CONFIGURE_FILE(package.dox.cmake ${BUILD_DIR}/package.dox)
 
-# Generating the Doxygen documentation
+
+# Teach CMake how to generate the documentation.
+ADD_CUSTOM_TARGET(doc
+	COMMAND ${DOXYGEN_EXECUTABLE} package.dox
+	WORKING_DIRECTORY doc
+)
+
 ADD_CUSTOM_COMMAND(
-  OUTPUT ${BUILD_DIR}/html/index.html
-  COMMAND ${DOXYGEN_EXECUTABLE} package.dox
-  COMMENT Generating Doxygen documentation
+	OUTPUT
+	${BUILD_DIR}/${PROJECT_NAME}.doxytag
+	${BUILD_DIR}/doxygen-html
+	COMMAND ${DOXYGEN_EXECUTABLE} package.dox
+	WORKING_DIRECTORY doc
+	COMMENT "Generating Doxygen documentation"
 )
 
 # Doxygen documentation installation rules.
-INSTALL(DIRECTORY ${BUILD_DIR}/html DESTINATION ${DOCDIR})
-INSTALL(FILES ${BUILD_DIR}/${PROJECT_NAME}.doxytag DESTINATION ${HTMLDIR})
+  # Install generated files.
+INSTALL(
+	CODE "EXECUTE_PROCESS(COMMAND make doc)"
+	FILES ${BUILD_DIR}/${PROJECT_NAME}.doxytag
+	DESTINATION share/doc/${PROJECT_NAME}/doxygen-html)
+INSTALL(DIRECTORY ${BUILD_DIR}/doxygen-html
+	DESTINATION share/doc/${PROJECT_NAME})
 INSTALL(DIRECTORY pictures DESTINATION ${HTMLDIR})
 
 
