@@ -28,9 +28,18 @@ namespace dynamicgraph {
     /// Abstract class for entity commands
     ///
     /// This class provide a mean to control entities from external python script.
-    /// A command has several parameters (dynamicgraph::parameter) that can take
-    /// various types of values (dynamicgraph::Value).
-
+    ///
+    /// A command
+    /// \li is owned by an entity,
+    /// \li takes parameters of type Value,
+    /// \li return an instance of Value when calling Command::execute()
+    ///
+    /// At construction, the prototype of the command is defined by providing
+    /// a vector of Value::Type.
+    ///
+    /// Parameters are set by calling Command::setParameterValues with a
+    /// vector of Values the types of which should fit the vector specified
+    /// at construction.
     class DYNAMICGRAPH_EXPORT Command
     {
     public:
