@@ -1,9 +1,9 @@
 <map id="G" name="G">
-<area shape="rect" href="$signal_8h.html" title="dynamic&#45;graph/signal.h" alt="" coords="381,161,555,188"/>
-<area shape="rect" href="$time-dependency_8h.html" title="dynamic&#45;graph/time&#45;dependency.h" alt="" coords="617,84,873,111"/>
-<area shape="rect" href="$exception-signal_8h.html" title="dynamic&#45;graph/exception&#45;signal.h" alt="" coords="652,316,900,343"/>
-<area shape="rect" href="$signal-base_8h.html" title="dynamic&#45;graph/signal&#45;base.h" alt="" coords="857,239,1068,265"/>
-<area shape="rect" href="$exception-abstract_8h.html" title="dynamic&#45;graph/exception&#45;abstract.h" alt="" coords="652,393,919,420"/>
-<area shape="rect" href="$dynamic-graph-api_8h.html" title="dynamic&#45;graph/dynamic&#45;graph&#45;api.h" alt="" coords="835,471,1093,497"/>
-<area shape="rect" href="$signal-array_8h.html" title="dynamic&#45;graph/signal&#45;array.h" alt="" coords="1000,161,1211,188"/>
+<area shape="rect" href="$signal_8h.html" title="dynamic&#45;graph/signal.h" alt="" coords="373,161,544,188"/>
+<area shape="rect" href="$time&#45;dependency_8h.html" title="dynamic&#45;graph/time&#45;dependency.h" alt="" coords="607,84,849,111"/>
+<area shape="rect" href="$exception&#45;signal_8h.html" title="dynamic&#45;graph/exception&#45;signal.h" alt="" coords="637,316,875,343"/>
+<area shape="rect" href="$signal&#45;base_8h.html" title="dynamic&#45;graph/signal&#45;base.h" alt="" coords="833,239,1039,265"/>
+<area shape="rect" href="$exception&#45;abstract_8h.html" title="dynamic&#45;graph/exception&#45;abstract.h" alt="" coords="637,393,891,420"/>
+<area shape="rect" href="$dynamic&#45;graph&#45;api_8h.html" title="dynamic&#45;graph/dynamic&#45;graph&#45;api.h" alt="" coords="812,471,1065,497"/>
+<area shape="rect" href="$signal&#45;array_8h.html" title="dynamic&#45;graph/signal&#45;array.h" alt="" coords="973,161,1179,188"/>
 </map>
