@@ -65,6 +65,8 @@ For a more detailed programmer-oriented description of signals, please see \ref 
 \section scriptingabout Notes about the scripting language
 The scripting language allows entities to define their own commands, and
 provides a basic framework for working with the dynamic-graph.
+At the time of writing, there is talk about replacing (or complementing) this limited
+language with a python interpreter.
 
 A couple of functions are built-in in the interpreter and provides low-level features such as file sourcing or
 plug-in loading.\n
