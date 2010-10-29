@@ -151,7 +151,7 @@ from one entity to another. There are three main types of signals,
 all deriving from the common class dynamicgraph::SignalBase :
 \li dynamicgraph::Signal : a "normal" signal, passing data around \bby \bvalue
 \li dynamicgraph::SignalPtr : a signal used for efficient passing of large data, by reference (or rather, C pointers)*
-\li dynamicgraph::SignalTimeDependent : a signal that enforces a time dependence between other signals,
+\li dynamicgraph::SignalTimeDependent : a signal that enforces a time dependency between other signals,
 making sure its inputs are up to date, using a incrementing time tick as reference.
 
 \n* Note: this may cause a problem if this package is used in a multithreaded program.
@@ -161,6 +161,21 @@ Signals can be grouped together using dynamicgraph::SignalArray.
 Signals implement a caching mechanism by storing the last computation time tick.
 
 Signals can be plugged ("plug" script command) into one another or set through shell commands.
+\section samp Samples
+
+\li The following code ensures the jacobian uses a
+\code
+  //! \brief This signal returns the Jacobian of the current value
+  //  according to the robot state: \f$ J(t) = \frac{\delta{\bf s}^*(t)}{\delta {\bf q}(t)}\f$ 
+  dg::SignalTimeDependent<ml::Matrix,int> jacobianSOUT;
+
+  (...)
+
+  jacobianSOUT.addDependency( positionSIN );
+  jacobianSOUT.addDependency( articularJacobianSIN );
+
+\endcode
+
 @}
 
 \namespace dynamicgraph This is the namespace where every object and class of this library is located.
