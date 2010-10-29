@@ -15,179 +15,62 @@
 
 CMAKE_MINIMUM_REQUIRED(VERSION 2.6)
 
+INCLUDE(cmake/base.cmake)
+
 SET(PROJECT_NAME dynamic-graph)
-project(${PROJECT_NAME})
+SET(PROJECT_VERSION 1.0.0.99)
+SET(PROJECT_DESCRIPTION "Dynamic graph library")
+SET(PROJECT_URL "http://github.com/jrl-umi3218/dynamic-graph")
 
-# --- PROJECT VERSION -----------------------
-SET(${PROJECT_NAME}_VERSION_MAJOR "1")
-SET(${PROJECT_NAME}_VERSION_MINOR "0")
-SET(${PROJECT_NAME}_VERSION_PATCH "0")
-SET(${PROJECT_NAME}_VERSION "${${PROJECT_NAME}_VERSION_MAJOR}.${${PROJECT_NAME}_VERSION_MINOR}.${${PROJECT_NAME}_VERSION_PATCH}")
-SET(PROJECT_VERSION ${${PROJECT_NAME}_VERSION}.99)
-
-SET(CMAKE_VERBOSE_MAKEFILE true)
-
+# Defines paths.
 SET(LIBRARY_OUTPUT_PATH ${PROJECT_BINARY_DIR}/lib)
 
-# Get the OS
-SET(OS ${CMAKE_SYSTEM_NAME})
+# Disable -Werror on Unix for now.
+SET(CXX_DISABLE_WERROR True)
 
-#----------------------------------------------------
-# --- GENERIC FLAGS ---------------------------------
-#----------------------------------------------------
-# For CMAKE Modules
-SET(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/CMakeModules")
+SETUP_PROJECT()
 
-# Specify the compile flags for the overall library.
-IF(WIN32)
-  SET(LIBDIR_KW "/LIBPATH:")
-  SET(LIBINCL_KW "")
-  SET(LIB_EXT ".lib")
-ENDIF(WIN32)
+# FIXME: to be changed into lib/dynamic-graph
+# to avoid name collision when installing dynamic-graph in /usr.
+SET(PLUGINDIR "lib/plugin")
 
+# Add extra keys to pkg-config file to export the location of the
+# plug-in directory in a robust manner.
+SET(PKG_CONFIG_EXTRA
+  "plugindirname=${PLUGINDIR}
+plugindir=${CMAKE_INSTALL_PREFIX}/${PLUGINDIR}")
+
+# Add dependency toward dynamic graph library in pkg-config file.
+SET(PKG_CONFIG_LIBS "${PKG_CONFIG_LIBS} ${LIBINCL_KW}dynamic-graph${LIB_EXT}")
+
+# Search for Boost.
+SET(Boost_USE_STATIC_LIBS OFF)
+SET(Boost_USE_MULTITHREAD ON)
+FIND_PACKAGE(Boost 1.33 COMPONENTS thread REQUIRED)
+SET(PKG_CONFIG_CFLAGS "${PKG_CONFIG_CFLAGS} -I${Boost_INCLUDE_DIR}")
+SET(PKG_CONFIG_LIBS "${PKG_CONFIG_LIBS} ${LIBDIR_KW}${Boost_LIBRARY_DIRS}")
+
+ADD_DEFINITIONS(-DHAVE_LIBBOOST_THREAD)
+
+# Search for Pthread.
+INCLUDE(FindThreads)
 IF(UNIX)
-  SET(LIBDIR_KW "-L")
-  SET(LIBINCL_KW "-l")
-  SET(LIB_EXT "")
+  IF(CMAKE_USE_PTHREADS_INIT)
+    ADD_DEFINITIONS(-pthread)
+  ELSE(CMAKE_USE_PTHREADS_INIT)
+    MESSAGE(FATAL_ERROR
+      "Pthread is required on Unix, but "
+      ${CMAKE_THREAD_LIBS_INIT} " has been detected.")
+  ENDIF(CMAKE_USE_PTHREADS_INIT)
+ELSEIF(WIN32)
+  # Nothing to do.
+ELSE(UNIX)
+  MESSAGE(FATAL_ERROR "Thread support for this platform is not implemented.")
 ENDIF(UNIX)
 
-# Link flags
-SET(${PROJECT_NAME}_LINK_SRC_FLAGS "")
-SET(${PROJECT_NAME}_LINK_FLAGS "${LIBDIR_KW}${${PROJECT_NAME}_BINARY_DIR}/lib ")
-SET(${PROJECT_NAME}_LINK_FLAGS "${${PROJECT_NAME}_LINK_FLAGS} ${LIBINCLUSION_KW}${${PROJECT_NAME}_INTERN_LIBS}${LIBINCLUSION_EXT}")
-IF(UNIX)
-  SET(${PROJECT_NAME}_LINK_SRC_FLAGS "${${PROJECT_NAME}_LINK_SRC_FLAGS} -ldl")
-  SET(${PROJECT_NAME}_LINK_FLAGS "${${PROJECT_NAME}_LINK_FLAGS} -ldl")
-ENDIF(UNIX)
-
-# Release flags
-IF(\"${CMAKE_BUILD_TYPE}\" STREQUAL \"\" )
-ELSE(\"${CMAKE_BUILD_TYPE}\" STREQUAL \"\" )
-  IF(${CMAKE_BUILD_TYPE} STREQUAL DEBUG)
-    SET(${PROJECT_NAME}_CXXFLAGS ${CMAKE_CXX_FLAGS_DEBUG}) # Useless since CXX_FLAGS, not CXXFLAGS.
-  ENDIF(${CMAKE_BUILD_TYPE} STREQUAL DEBUG)
-  IF(${CMAKE_BUILD_TYPE} STREQUAL RELEASE)
-    SET(${PROJECT_NAME}_CXXFLAGS ${CMAKE_CXX_FLAGS_RELEASE}) # Same here.
-  ENDIF(${CMAKE_BUILD_TYPE} STREQUAL RELEASE)
-ENDIF (\"${CMAKE_BUILD_TYPE}\" STREQUAL \"\")
-
-# --- Default options -------------------------------------------------
-OPTION(BUILD_SHARED_LIBS "Build ${PROJECT_NAME} with shared libraries." ON)
-OPTION(GENERATE_DOC "Generate html documentation" ON)
-
-# --- BOOST ---------------------------------------------------
-SET(Boost_THREAD_FOUND 0)
-FIND_PACKAGE(Boost COMPONENTS thread REQUIRED)
-IF(Boost_THREAD_FOUND)
-  #MESSAGE(STATUS "Boost_THREAD_LIBRARY:" ${Boost_THREAD_LIBRARY})
-  #MESSAGE(STATUS "Boost_THREAD_LIBRARY_RELEASE:" ${Boost_THREAD_LIBRARY_RELEASE})
-  #MESSAGE(STATUS "Boost_THREAD_LIBRARY_DEBUG:" ${Boost_THREAD_LIBRARY_DEBUG})
-	
-	ADD_DEFINITIONS(-DHAVE_LIBBOOST_THREAD)
-
-  # Look for the type of pattern to find.
-  SET(BOOST_PATTERN_TOFIND "")
-  IF(${CMAKE_BUILD_TYPE} MATCHES RELEASE)
-    SET(BOOST_PATTERN_TOFIND optimized)
-  ENDIF(${CMAKE_BUILD_TYPE} MATCHES RELEASE)
-  IF(${CMAKE_BUILD_TYPE} MATCHES DEBUG)
-    SET(BOOST_PATTERN_TOFIND debug)
-  ENDIF(${CMAKE_BUILD_TYPE} MATCHES DEBUG)
-
-  IF(BOOST_PATTERN_TOFIND)
-    SET(BOOST_THREAD_LIST_LENGTH 0)
-    LIST(LENGTH Boost_THREAD_LIBRARY BOOST_THREAD_LIST_LENGTH)
-    # Debug or optimized library.
-    IF(${BOOST_THREAD_LIST_LENGTH} MATCHES 4)
-      LIST(FIND Boost_THREAD_LIBRARY ${BOOST_PATTERN_TOFIND} BTLB_index)
-      LIST(REMOVE_AT Boost_THREAD_LIBRARY ${BTLB_index})
-      LIST(GET Boost_THREAD_LIBRARY ${BTLB_index} BOOST_THREAD_LIB_NAME)
-    # Default strategy
-    ELSE(${BOOST_THREAD_LIST_LENGTH} MATCHES 4)
-      SET(BOOST_THREAD_LIB_NAME ${Boost_THREAD_LIBRARY})
-    ENDIF(${BOOST_THREAD_LIST_LENGTH} MATCHES 4)
-  # Default strategy
-  ELSE(BOOST_PATTERN_TOFIND)
-    SET(BOOST_THREAD_LIB_NAME  ${Boost_THREAD_LIBRARY})
-  ENDIF(BOOST_PATTERN_TOFIND)
-
-  # --- PTHREAD -------------------------------------------------------
-  FIND_PACKAGE(PTHREAD REQUIRED)
-  IF(PTHREAD_FOUND)
-    ADD_DEFINITIONS(-DHAVE_PTHREAD)
-    IF(UNIX)
-    	ADD_DEFINITIONS(-pthread)
-    ENDIF(UNIX)
-    INCLUDE_DIRECTORIES(${PTHREAD_INCLUDE_DIRS})
-	LINK_DIRECTORIES(${PTHREAD_LIBRARY_DIRS})
-  ENDIF(PTHREAD_FOUND)
-  
-ELSE(Boost_THREAD_FOUND)
-  MESSAGE("WARNING: Boost thread not found. Trying without the thread library")
-  FIND_PACKAGE(Boost)
-  IF(NOT Boost_FOUND)
-	MESSAGE(SEND_ERROR "!! ERROR: Boost not found.")
-  ENDIF(NOT Boost_FOUND)
-ENDIF(Boost_THREAD_FOUND)
-MESSAGE(STATUS "Boost thread lib name: ${BOOST_THREAD_LIB_NAME} ${Boost_THREAD_LIBRARY}")
-
-INCLUDE_DIRECTORIES(${Boost_INCLUDE_DIRS})
-LINK_DIRECTORIES(${Boost_LIBRARY_DIRS})
-
-#
-# Look for dependencies
-#
-
-# Load Pkgconfig macros
-INCLUDE(FindPkgConfig)
-SET(PACKAGE_REQUIREMENTS "")
-
-# Documentation.
-INCLUDE(cmake/doxygen.cmake)
-_SETUP_PROJECT_DOCUMENTATION()
-
-#
-# pkg-config file
-#
-
-SET(install_pkg_prefix "\${prefix}")
-SET(install_pkg_exec_prefix "\${exec_prefix}")
-SET(install_pkg_libdir "\${libdir}")
-SET(install_pkg_datarootdir "\${datarootdir}")
-SET(install_pkg_include_dir "\${includedir}")
-
-IF(UNIX)
-  SET (${PROJECT_NAME}_LDFLAGS "-Wl,-R${install_pkg_libdir} ${LIBINCL_KW}${PROJECT_NAME}${LIB_EXT} ${${PROJECT_NAME}_LDFLAGS}")
-ENDIF(UNIX)
-
+# Remove additional warnings.
 IF(WIN32)
-  SET (${PROJECT_NAME}_LDFLAGS "${LIBINCL_KW}${PROJECT_NAME}${LIB_EXT} ${${PROJECT_NAME}_LDFLAGS}")
-ENDIF(WIN32)
-
-# Install the file in the appropriate place.
-SET(install_libdir_pkgconfig ${CMAKE_INSTALL_PREFIX}/lib/pkgconfig)
-
-CONFIGURE_FILE(${CMAKE_CURRENT_SOURCE_DIR}/dynamic-graph.pc.cmake
-  ${CMAKE_CURRENT_BINARY_DIR}/dynamic-graph.pc)
-
-INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/dynamic-graph.pc
-  DESTINATION ${install_libdir_pkgconfig}	
-  PERMISSIONS OWNER_READ GROUP_READ WORLD_READ OWNER_WRITE)
-
-# Uninstall target.
-CONFIGURE_FILE(
-  "${CMAKE_CURRENT_SOURCE_DIR}/cmake_uninstall.cmake.in"
-  "${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake"
-  IMMEDIATE @ONLY)
-
-ADD_CUSTOM_TARGET(uninstall
-  "${CMAKE_COMMAND}" -P "${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake")
-
-# Testing 
-ENABLE_TESTING()
-
-IF(WIN32)
-  ADD_DEFINITIONS("-D_CRT_SECURE_NO_WARNINGS -D_SCL_SECURE_NO_WARNINGS /wd4251 /wd4275 /wd4101 /wd4355")
+  ADD_DEFINITIONS("/wd4251 /wd4275 /wd4101 /wd4355")
 ENDIF(WIN32)
 
 ADD_SUBDIRECTORY(src)
@@ -195,3 +78,5 @@ ADD_SUBDIRECTORY(include)
 ADD_SUBDIRECTORY(tools)
 ADD_SUBDIRECTORY(doc)
 ADD_SUBDIRECTORY(unitTesting)
+
+SETUP_PROJECT_FINALIZE()
