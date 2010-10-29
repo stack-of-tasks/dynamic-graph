@@ -135,26 +135,32 @@ IEEE Trans. on Robotics, 23(1):60-72, February 2007
 
 
 \defgroup dgraph Core classes and objects
-\defgroup signals Signals
 
 \ingroup dgraph
 @{
 
 Classes, entities and binaries that make up the core of the dynamic-graph library are listed here.
 @}
+
+\defgroup signals Signals
+
 \ingroup signals
 @{
 This part provides the mechanism to transfer information
 from one entity to another. There are three main types of signals,
 all deriving from the common class dynamicgraph::SignalBase :
-\li dynamicgraph::Signal
-\li dynamicgraph::SignalPtr
-\li dynamicgraph::SignalTimeDependent
+\li dynamicgraph::Signal : a "normal" signal, passing data around \bby \bvalue
+\li dynamicgraph::SignalPtr : a signal used for efficient passing of large data, by reference (or rather, C pointers)*
+\li dynamicgraph::SignalTimeDependent : a signal that enforces a time dependence between other signals,
+making sure its inputs are up to date, using a incrementing time tick as reference.
+
+\n* Note: this may cause a problem if this package is used in a multithreaded program.
 
 Signals can be grouped together using dynamicgraph::SignalArray.
 
 Signals implement a caching mechanism by storing the last computation time tick.
-Signals can be plugged into one another or set through shell commands.
+
+Signals can be plugged ("plug" script command) into one another or set through shell commands.
 @}
 
 \namespace dynamicgraph This is the namespace where every object and class of this library is located.
