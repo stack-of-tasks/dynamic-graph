@@ -17,9 +17,7 @@ INCLUDE(../cmake/man.cmake)
 
 IF(UNIX)
   # Add `man' target.
-  ADD_CUSTOM_TARGET(
-    man ALL
-    DEPENDS dg-shell.1.gz dg-shell-plugin.1.gz)
+  ADD_CUSTOM_TARGET(man DEPENDS dg-shell.1.gz dg-shell-plugin.1.gz)
 
   # Man page generation.
   MANPAGE(dg-shell)
