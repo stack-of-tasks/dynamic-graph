@@ -1,6 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" href="$classdynamicgraph_1_1_signal.html" title="Signals link I/O ports of entities. They can be constant&#45;valued signals, or copy the value of a heap ..." alt="" coords="13,161,248,188"/>
-<area shape="rect" href="$classdynamicgraph_1_1_signal_base.html" title="dynamicgraph::SignalBase\&lt; Time \&gt;" alt="" coords="5,84,256,111"/>
-<area shape="rect" href="$classboost_1_1noncopyable.html" title="noncopyable" alt="" coords="80,7,181,33"/>
-<area shape="rect" href="$classdynamicgraph_1_1_time_dependency.html" title="dynamicgraph::TimeDependency\&lt; Time \&gt;" alt="" coords="272,161,563,188"/>
-</map>

@@ -1,7 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" href="$signal&#45;base_8h.html" title="dynamic&#45;graph/signal&#45;base.h" alt="" coords="211,162,416,188"/>
-<area shape="rect" href="$signal&#45;array_8h.html" title="dynamic&#45;graph/signal&#45;array.h" alt="" coords="211,84,416,111"/>
-<area shape="rect" href="$exception&#45;signal_8h.html" title="dynamic&#45;graph/exception&#45;signal.h" alt="" coords="523,239,760,266"/>
-<area shape="rect" href="$exception&#45;abstract_8h.html" title="dynamic&#45;graph/exception&#45;abstract.h" alt="" coords="515,316,768,343"/>
-<area shape="rect" href="$dynamic&#45;graph&#45;api_8h.html" title="dynamic&#45;graph/dynamic&#45;graph&#45;api.h" alt="" coords="679,394,932,420"/>
-</map>
