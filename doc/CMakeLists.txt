@@ -13,69 +13,15 @@
 # received a copy of the GNU Lesser General Public License along with
 # dynamic-graph. If not, see <http://www.gnu.org/licenses/>.
 
+INCLUDE(../cmake/man.cmake)
 
-SET(BUILD_DIR ${CMAKE_BINARY_DIR}/doc)
-SET(DOCDIR share/doc/${PROJECT_NAME})
-SET(HTMLDIR ${DOCDIR}/doxygen-html)
+IF(UNIX)
+  # Add `man' target.
+  ADD_CUSTOM_TARGET(
+    man ALL
+    DEPENDS dg-shell.1.gz dg-shell-plugin.1.gz)
 
-# MANPAGE
-# -------
-#
-# Generate a pod man page from a template, then
-# generate the man page and compress it.
-# This macro also adds the installation rules.
-#
-MACRO(MANPAGE NAME)
-  FIND_PROGRAM(POD2MAN pod2man)
-  CONFIGURE_FILE(${NAME}.pod.in ${BUILD_DIR}/${NAME}.pod @ONLY)
-
-  ADD_CUSTOM_COMMAND(
-    OUTPUT ${NAME}.1
-    COMMAND ${POD2MAN} --section=1
-            --center="LOCAL USER COMMANDS"
-	    --release ${PROJECT_NAME} ${NAME}.pod
-	    > ${NAME}.1
-    DEPENDS ${BUILD_DIR}/${NAME}.pod)
-
-  ADD_CUSTOM_COMMAND(
-    OUTPUT ${NAME}.1.gz
-    COMMAND gzip -c ${NAME}.1 > ${NAME}.1.gz
-    DEPENDS ${BUILD_DIR}/${NAME}.1)
-  INSTALL(FILES ${BUILD_DIR}/${NAME}.1.gz DESTINATION share/man/man1)
-ENDMACRO(MANPAGE)
-
-
-# Generate Doxygen configuration file.
-CONFIGURE_FILE(package.dox.cmake ${BUILD_DIR}/package.dox)
-
-
-# Teach CMake how to generate the documentation.
-ADD_CUSTOM_TARGET(doc
-	COMMAND ${DOXYGEN_EXECUTABLE} package.dox
-	WORKING_DIRECTORY doc
-	DEPENDS ${BUILD_DIR}/dg-shell.1.gz ${BUILD_DIR}/dg-shell-plugin.1.gz
-)
-
-ADD_CUSTOM_COMMAND(
-	OUTPUT
-	${BUILD_DIR}/${PROJECT_NAME}.doxytag
-	${BUILD_DIR}/doxygen-html
-	COMMAND ${DOXYGEN_EXECUTABLE} package.dox
-	WORKING_DIRECTORY doc
-	COMMENT "Generating Doxygen documentation"
-)
-
-# Doxygen documentation installation rules.
-  # Install generated files.
-INSTALL(
-	CODE "EXECUTE_PROCESS(COMMAND make doc)"
-	FILES ${BUILD_DIR}/${PROJECT_NAME}.doxytag
-	DESTINATION share/doc/${PROJECT_NAME}/doxygen-html)
-INSTALL(DIRECTORY ${BUILD_DIR}/doxygen-html
-	DESTINATION share/doc/${PROJECT_NAME})
-INSTALL(DIRECTORY pictures DESTINATION ${HTMLDIR})
-
-
-# Man page generation.
-MANPAGE(dg-shell)
-MANPAGE(dg-shell-plugin)
+  # Man page generation.
+  MANPAGE(dg-shell)
+  MANPAGE(dg-shell-plugin)
+ENDIF(UNIX)

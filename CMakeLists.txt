@@ -142,6 +142,10 @@ LINK_DIRECTORIES(${Boost_LIBRARY_DIRS})
 INCLUDE(FindPkgConfig)
 SET(PACKAGE_REQUIREMENTS "")
 
+# Documentation.
+INCLUDE(cmake/doxygen.cmake)
+_SETUP_PROJECT_DOCUMENTATION()
+
 #
 # pkg-config file
 #
@@ -190,14 +194,3 @@ ADD_SUBDIRECTORY(src)
 ADD_SUBDIRECTORY(include)
 ADD_SUBDIRECTORY(tools)
 ADD_SUBDIRECTORY(unitTesting)
-
-#
-# Documentation produced by doxygen
-#
-IF(GENERATE_DOC)
-  INCLUDE(FindDoxygen)
-  IF(DOXYGEN_FOUND)
-    MESSAGE(STATUS "Doxygen found")
-    add_subdirectory(doc)
-  ENDIF(DOXYGEN_FOUND)
-ENDIF(GENERATE_DOC)
