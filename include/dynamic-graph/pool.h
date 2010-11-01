@@ -120,8 +120,8 @@ class DYNAMICGRAPH_EXPORT PoolStorage
     If the method of the object displays some information this will
     be done on os.
 
-    The commands specific to the <b>g_pool<\b> object are:
-    \li <b>list</b> : List all the entities registered in the g_pool.s
+    The commands specific to the \b g_pool object are:
+    \li \b list : List all the entities registered in the pool
   */
   void commandLine( const std::string& objectName,const std::string& functionName,
 		    std::istringstream& cmdArg, std::ostream& os );

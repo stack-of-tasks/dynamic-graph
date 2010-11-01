@@ -142,18 +142,18 @@ class DYNAMICGRAPH_EXPORT Interpreter
   /*! \brief Run a script */
   void cmdRun( const std::string& cmdLine, std::istringstream& cmdArg, std::ostream& os );
 
-  /*! \brief Set a signal <obj.signal> to a value <value>
-    with cmdArg = "<obj.signal> <value>"
+  /*! \brief Set a signal [obj.signal] to a value [value]
+    with cmdArg = "[obj.signal] [value]"
    */
   void cmdSetSignal( const std::string& cmdLine, std::istringstream& cmdArg, std::ostream& os );
 
-  /*! \brief Display the value of the signal <obj.signal>
-    with cmdArg = "<obj.signal>"
+  /*! \brief Display the value of the signal [obj.signal]
+    with cmdArg = "[obj.signal]"
    */
   void cmdGetSignal( const std::string& cmdLine, std::istringstream& cmdArg, std::ostream& os );
 
-  /*! \brief Compute the value of the signal <obj.signal> at time <time>
-    with cmdArg = "<obj.signal> <time>"
+  /*! \brief Compute the value of the signal [obj.signal] at time [time]
+    with cmdArg = "[obj.signal] [time]"
    */
   void cmdComputeSignal( const std::string& cmdLine, std::istringstream& cmdArg, std::ostream& os );
 

@@ -28,6 +28,10 @@
 
 namespace dynamicgraph {
 
+/** \brief This is the only type of signal that can be plugged to, using the plug() command.
+ In that sense, when plugged into, it acts as a "pointer" to the input signal, hence
+ the name. Operator -> is also overloaded and can be used to access the pointed signal.
+ */
 template< class T,class Time >
 class SignalPtr
 : public virtual Signal<T,Time>
@@ -79,7 +83,7 @@ class SignalPtr
     virtual std::ostream& writeGraph(std::ostream& os) const;
     virtual std::ostream& display( std::ostream& os ) const;
 
-    /* For compatibility, .access() is equivalent to ->access(). For explicite
+    /* For compatibility, .access() is equivalent to ->access(). For explicit
      * pointer dereference :
      * Prefere ->() to ()
      */
