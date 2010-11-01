@@ -59,7 +59,7 @@ namespace dynamicgraph {
   \li get a signal,
   \li compute a signal,
 */
-class DYNAMICGRAPH_EXPORT InterpreterHelper
+class DYNAMIC_GRAPH_DLLAPI InterpreterHelper
 {
 
  public:

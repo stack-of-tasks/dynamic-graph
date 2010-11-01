@@ -61,7 +61,7 @@ class PluginLoader;
   \li compute a signal,
   \li act as a proxy for the commands of the plugins.
 */
-class DYNAMICGRAPH_EXPORT Interpreter
+class DYNAMIC_GRAPH_DLLAPI Interpreter
 {
 
  public:
@@ -187,7 +187,7 @@ class DYNAMICGRAPH_EXPORT Interpreter
  * Use the macro DYNAMIC-GRAPH_SHELL_FUNCTION_REGISTERER(name, fun) in a .cpp file
  * to register functions on plugin load.
  */
-class DYNAMICGRAPH_EXPORT ShellFunctionRegisterer
+class DYNAMIC_GRAPH_DLLAPI ShellFunctionRegisterer
 
 {
 public:
@@ -200,7 +200,7 @@ public:
 	ShellFunctionRegisterer reg( name,boost::bind(fun,_1,_2,_3) );\
   }
 
-DYNAMICGRAPH_EXPORT extern Interpreter g_shell;
+DYNAMIC_GRAPH_DLLAPI extern Interpreter g_shell;
 
 } // namespace dynamicgraph
 

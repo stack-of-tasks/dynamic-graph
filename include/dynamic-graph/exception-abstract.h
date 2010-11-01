@@ -43,7 +43,7 @@ namespace dynamicgraph {
 
 /* \class ExceptionAbstract
  */
-class DYNAMICGRAPH_EXPORT ExceptionAbstract : public std::exception
+class DYNAMIC_GRAPH_DLLAPI ExceptionAbstract : public std::exception
 {
 
  public:
@@ -94,7 +94,7 @@ public:
   }
 
   /** Print the error structure. */
-  DYNAMICGRAPH_EXPORT friend std::ostream & operator << (std::ostream & os,
+  DYNAMIC_GRAPH_DLLAPI friend std::ostream & operator << (std::ostream & os,
 				     const ExceptionAbstract & err);
 
 #ifdef DYNAMICGRAPH_EXCEPTION_PASSING_PARAM

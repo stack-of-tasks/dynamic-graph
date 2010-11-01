@@ -42,7 +42,7 @@ namespace dynamicgraph {
  * complex than a typical template-based compile-time resolve. So disp, cast and
  * trace are costly functions and should be used as such.
  */
-class DYNAMICGRAPH_EXPORT SignalCaster {
+class DYNAMIC_GRAPH_DLLAPI SignalCaster {
 public:
 	SignalCaster();
 	virtual ~SignalCaster();
@@ -78,7 +78,7 @@ private:
 
 
 /// The library-wide instance of SignalCaster
-extern DYNAMICGRAPH_EXPORT SignalCaster g_caster;
+extern DYNAMIC_GRAPH_DLLAPI SignalCaster g_caster;
 
 /*!
  * The SignalCast registerer class. Can be used to automatically register a cast when

@@ -50,7 +50,7 @@ class Entity;
  *
  *
  */
-class DYNAMICGRAPH_EXPORT FactoryStorage
+class DYNAMIC_GRAPH_DLLAPI FactoryStorage
 {
  public:
 
@@ -79,7 +79,7 @@ class DYNAMICGRAPH_EXPORT FactoryStorage
 
 };
 
-DYNAMICGRAPH_EXPORT extern FactoryStorage g_factory;
+DYNAMIC_GRAPH_DLLAPI extern FactoryStorage g_factory;
 
 /* --- REGISTERER ----------------------------------------------------------- */
 /* --- REGISTERER ----------------------------------------------------------- */
@@ -92,7 +92,7 @@ DYNAMICGRAPH_EXPORT extern FactoryStorage g_factory;
 /*! A helper class to register an entity.
  *
  */
-class DYNAMICGRAPH_EXPORT EntityRegisterer
+class DYNAMIC_GRAPH_DLLAPI EntityRegisterer
 {
  private:
   EntityRegisterer( void );

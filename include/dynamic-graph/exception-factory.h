@@ -37,7 +37,7 @@ namespace dynamicgraph {
 
 /* \class sotExceptionFactory
  */
-class DYNAMICGRAPH_EXPORT ExceptionFactory
+class DYNAMIC_GRAPH_DLLAPI ExceptionFactory
 :public ExceptionAbstract
 
 {

@@ -54,7 +54,7 @@
   and user interaction commands such as display and beep commands.
   For more information, load the plugin and type help on a sot shell.
  */
-class DYNAMICGRAPH_EXPORT ShellFunctions
+class DYNAMIC_GRAPH_DLLAPI ShellFunctions
 {
  public:
 

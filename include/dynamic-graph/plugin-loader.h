@@ -52,7 +52,7 @@ class PluginRefMap;
   example.
 
  */
-class DYNAMICGRAPH_EXPORT PluginLoader
+class DYNAMIC_GRAPH_DLLAPI PluginLoader
 {
  protected:
 
