@@ -22,6 +22,8 @@ SET(PROJECT_VERSION 1.0.0.99)
 SET(PROJECT_DESCRIPTION "Dynamic graph library")
 SET(PROJECT_URL "http://github.com/jrl-umi3218/dynamic-graph")
 
+SET(CUSTOM_HEADER_DIR "${PROJECT_NAME}")
+
 # Defines paths.
 SET(LIBRARY_OUTPUT_PATH ${PROJECT_BINARY_DIR}/lib)
 
