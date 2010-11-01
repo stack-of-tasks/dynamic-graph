@@ -9,6 +9,6 @@ There is also a linux shell script available, dg-shell-plugin, that creates a
 and loads a default script whose goal is to load useful plugins at startup
 (shell-functions and shell-procedure).
 
-For an example of shell commands and scripts, see \ref scriptingabout .
+For an example of shell commands and scripts, see \ref scriptingabout.
 
 **/

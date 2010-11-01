@@ -30,6 +30,11 @@
 
 namespace dynamicgraph {
 
+/** \brief The base class for signals: not to be used as such.
+ Signal values can be accessed programmatically using the access() or accessCopy()
+ methods; the former directly accesses the value of the signal, which can involve an
+ extra computation, while the latter accesses a cached value, or 'copy'.
+ */
 template< class Time >
 class SignalBase : public boost::noncopyable
 {
@@ -108,6 +113,7 @@ class SignalBase : public boost::noncopyable
   /* --- SET ---------------------------------------------------------------- */
 
   /* Generic set function. Should be reimplemented by the specific Signal.
+   * Sets a signal value
    */
   virtual void set( std::istringstream& value )
       { DG_THROW ExceptionSignal( ExceptionSignal::SET_IMPOSSIBLE,

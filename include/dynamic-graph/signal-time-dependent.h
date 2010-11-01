@@ -27,6 +27,14 @@
 
 namespace dynamicgraph {
 
+/*!  \brief A type of signal that enforces a time dependency between other signals,
+making sure its inputs are up to date on access, using a incrementing time tick as reference.
+It works this way: for a given SignalTimeDependent S, the user manually adds dependent signals through the
+use of the addDependency function. On access (calling the signal S operator () or access(Time) function),
+if the dependent signals are not up-to-date, i.e. if their [last update] time is less than the
+current time, their value will be access()'ed to bring them up-to-date. Thus, the value of dependent
+signals can be accessed \b quickly and \b repeatedly through the accessCopy() function.
+ */
 template< class T,class Time >
 class SignalTimeDependent
 : public virtual Signal<T,Time>

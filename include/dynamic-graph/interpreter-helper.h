@@ -79,7 +79,7 @@ class DYNAMICGRAPH_EXPORT InterpreterHelper
   /*! \name Implements the commands.
     @{
    */
-  /*! \brief Instanciante an object
+  /*! \brief Instanciate an object
     Extracts the name and the class of the object, verifies it is unique,
     and creates the instance if this is the case.
    */
@@ -96,8 +96,11 @@ class DYNAMICGRAPH_EXPORT InterpreterHelper
   /*! \brief Connect two signals.
     Connect the input signal obj1.signame1 to the output signal
     obj2.signame2.
-    \param[in] obj1.signame1: the input signal.
-    \param[in] obj2.signame2: the output signal.
+    \param[in] obj1  The input object.
+    \param[in] obj2  The output object.
+    \param[in] signame1 The input object's signal name
+    \param[in] signame2 The output object's signal name
+    \param[out] os The output stream for logging and error output
   */
   void cmdPlug( const std::string& obj1, const std::string & signame1,
 		const std::string& obj2, const std::string & signame2,
@@ -117,23 +120,23 @@ class DYNAMICGRAPH_EXPORT InterpreterHelper
   void cmdUnloadPlugin( const std::string& pluginName,
 			std::ostream& os );
 
-  /*! \brief Set a signal <obj.signal> to a value <value>
-    with cmdArg = "<obj.signal> <value>"
+  /*! \brief Set a signal [obj.signal] to a value [value]
+    with cmdArg = "[obj.signal] [value]"
    */
   void cmdSetSignal( const std::string& objname,
 		     const std::string& signame,
 		     const std::string& cmdArg,
 		     std::ostream& os);
 
-  /*! \brief Display the value of the signal <obj.signal>
-    with cmdArg = "<obj.signal>"
+  /*! \brief Display the value of the signal [obj.signal]
+    with cmdArg = "[obj.signal]"
    */
   void cmdGetSignal( const std::string& objname,
 		     const std::string& signame,
 		     std::ostream& os);
 
-  /*! \brief Compute the value of the signal <obj.signal> at time <time>
-    with cmdArg = "<obj.signal> <time>"
+  /*! \brief Compute the value of the signal [signame=obj.signal] at time [time]
+    with cmdArg = "[obj.signal] [time]"
    */
   void cmdComputeSignal( const std::string& objname,
 			 const std::string& signame,

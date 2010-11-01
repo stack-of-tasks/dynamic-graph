@@ -29,7 +29,8 @@
 
 namespace dynamicgraph {
 
-
+/** \brief A helper class for setting and specifying dependencies between signals.
+ */
 template< class Time >
 class TimeDependency
 {

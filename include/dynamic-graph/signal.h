@@ -43,6 +43,13 @@ namespace dynamicgraph {
   or evaluated as a function.
   See SignalPtr and SignalTimeDependent for other types of signals,
   and SignalArray for a way of grouping them.
+
+  There are several ways to specify the value output by a signal:
+  \li using the function setConstant(T) to set the value of the signal to T;
+  \li using the function setReference(mutex, T*) to set the value from a pointer,
+  whose access is restricted by a mutex;
+  \li using the function setFunction(boost::function2) that will be called when the
+  signal's value is accessed.
  */
 template< class T,class Time >
 class Signal
