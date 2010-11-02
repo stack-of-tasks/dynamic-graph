@@ -81,7 +81,7 @@ cmdContinueProcedure( const std::string& cmdLine,std::istringstream& args,std::o
 }
 
 void ShellProcedure::
-cmdEndProcedure( const std::string& cmdLine,std::istringstream& args,std::ostream& os )
+cmdEndProcedure( const std::string& cmdLine,std::istringstream&, std::ostream& os )
 {
   if( cmdLine == "help" )
     {

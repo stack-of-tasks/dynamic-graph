@@ -52,7 +52,7 @@ using namespace std;
 void InterpreterHelper::
 cmdPlug( const std::string& obj1, const std::string & signame1,
 	 const std::string& obj2, const std::string & signame2,
-	 std::ostream& os )
+	 std::ostream& )
 {
   dgDEBUG(20) << "Get Ent1 <"<<obj1<<"> ."<<endl;
   Entity& ent1 = g_pool.getEntity(obj1);
@@ -85,7 +85,7 @@ cmdNew( const std::string& className,
 
 void InterpreterHelper::
 cmdDestroy( const std::string& objName,
-	    std::ostream& os)
+	    std::ostream& )
 {
 
   dgDEBUG(15) << "Destroy <" << objName <<"> requested."<<endl;
@@ -96,7 +96,7 @@ cmdDestroy( const std::string& objName,
 void InterpreterHelper::
 cmdLoadPlugin( const std::string& directory,
 	       const std::string& pluginName,
-	       std::ostream& os )
+	       std::ostream& )
 {
 
   if( directory.length() != 0 ) dlPtr.setDirectory( directory );
@@ -110,7 +110,7 @@ cmdLoadPlugin( const std::string& directory,
 
 void InterpreterHelper::
 cmdUnloadPlugin( const std::string& pluginName,
-		 std::ostream& os )
+		 std::ostream& )
 {
 
   dgDEBUGIN(15);
@@ -133,7 +133,7 @@ void InterpreterHelper::
 cmdSetSignal( const std::string& objname,
 	      const std::string& signame,
 	      const std::string& value,
-	      std::ostream& os )
+	      std::ostream& )
 {
   dgDEBUGIN(15);
 
@@ -167,7 +167,7 @@ void InterpreterHelper::
 cmdComputeSignal( const std::string& objname,
 		  const std::string& signame,
 		  const int &time,
-		  std::ostream& os )
+		  std::ostream& )
 {
   dgDEBUGIN(15);
 

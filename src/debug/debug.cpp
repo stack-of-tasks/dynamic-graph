@@ -63,7 +63,7 @@ void DebugTrace::openFile( const char * filename )
   //std::cout << filename << dg_debugfile.good() << dg_debugfile.is_open() << std::endl;
 }
 
-void DebugTrace::closeFile( const char * filename )
+void DebugTrace::closeFile(const char *)
 {
   if( dg_debugfile.good()&&dg_debugfile.is_open() ) { dg_debugfile.close(); }
   dg_debugfile.setstate( std::ios::failbit ) ;

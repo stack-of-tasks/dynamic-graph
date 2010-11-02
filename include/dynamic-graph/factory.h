@@ -109,16 +109,17 @@ class DYNAMICGRAPH_EXPORT EntityRegisterer
  * of classType to the g_factory. It is then possible to create it
  * with the g_factory.
  */
-#define DYNAMICGRAPH_FACTORY_ENTITY_PLUGIN(classType,className) \
-  const std::string classType::CLASS_NAME = className; \
-  extern "C" {                                            \
-    Entity *EntityMaker##_##classType( const std::string& objname )    \
-    {                                                     \
-      return new classType( objname );                 \
-    }                                                     \
-  EntityRegisterer reg##_##classType( className,    \
-					    &EntityMaker##_##classType );   \
-  }                                                       \
+#define DYNAMICGRAPH_FACTORY_ENTITY_PLUGIN(classType,className)		\
+  const std::string classType::CLASS_NAME = className;			\
+  extern "C" {								\
+    Entity *EntityMaker##_##classType( const std::string& objname )	\
+    {									\
+      return new classType( objname );					\
+    }									\
+    EntityRegisterer reg##_##classType( className,			\
+					&EntityMaker##_##classType );   \
+  }									\
+  struct e_n_d__w_i_t_h__s_e_m_i_c_o_l_o_n
 
 }  // namespace dynamicgraph
 

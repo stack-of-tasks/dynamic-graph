@@ -92,7 +92,7 @@ cmdClearPlugin( const std::string cmdLine, std::istringstream& cmdArg, std::ostr
 }
 
 void ShellFunctions::
-cmdDisplayPlugins( const std::string cmdLine, std::istringstream& cmdArg, std::ostream& os )
+cmdDisplayPlugins( const std::string cmdLine, std::istringstream&, std::ostream& os )
 {
    if( cmdLine == "help" )
     {
@@ -132,7 +132,7 @@ cmdDisplayFactory( const std::string cmdLine, std::istringstream& cmdArg,
 }
 
 void ShellFunctions::
-cmdCommentary( const std::string cmdLine, std::istringstream& cmdArg, std::ostream& os )
+cmdCommentary( const std::string cmdLine, std::istringstream&, std::ostream& os )
 {
   if( cmdLine == "help" )
     { os << "  # comment with '#': ignore the end of the line." <<endl; }
@@ -439,7 +439,7 @@ cmdSleep( const std::string cmdLine, istringstream& cmdArg, std::ostream& os )
 }
 
 void ShellFunctions::
-cmdBeep( const std::string cmdLine, istringstream& cmdArg, std::ostream& os )
+cmdBeep( const std::string cmdLine, std::istringstream&, std::ostream& os )
 {
   if( cmdLine == "help" )
     {
