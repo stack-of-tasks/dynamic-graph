@@ -17,6 +17,7 @@ CMAKE_MINIMUM_REQUIRED(VERSION 2.6)
 
 INCLUDE(cmake/base.cmake)
 INCLUDE(cmake/boost.cmake)
+INCLUDE(cmake/pthread.cmake)
 
 SET(PROJECT_NAME dynamic-graph)
 SET(PROJECT_VERSION 1.0.0.99)
@@ -44,26 +45,11 @@ SET(PKG_CONFIG_EXTRA
 plugindir=${CMAKE_INSTALL_PREFIX}/${PLUGINDIR}")
 
 # Add dependency toward dynamic graph library in pkg-config file.
-SET(PKG_CONFIG_LIBS "${PKG_CONFIG_LIBS} ${LIBINCL_KW}dynamic-graph${LIB_EXT}")
+PKG_CONFIG_APPEND_LIBS("dynamic-graph")
 
 # Search for Boost.
 SEARCH_FOR_BOOST()
-
-# Search for Pthread.
-INCLUDE(FindThreads)
-IF(UNIX)
-  IF(CMAKE_USE_PTHREADS_INIT)
-    ADD_DEFINITIONS(-pthread)
-  ELSE(CMAKE_USE_PTHREADS_INIT)
-    MESSAGE(FATAL_ERROR
-      "Pthread is required on Unix, but "
-      ${CMAKE_THREAD_LIBS_INIT} " has been detected.")
-  ENDIF(CMAKE_USE_PTHREADS_INIT)
-ELSEIF(WIN32)
-  # Nothing to do.
-ELSE(UNIX)
-  MESSAGE(FATAL_ERROR "Thread support for this platform is not implemented.")
-ENDIF(UNIX)
+SEARCH_FOR_PTHREAD()
 
 # Remove additional warnings.
 IF(WIN32)
