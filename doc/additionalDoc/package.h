@@ -124,7 +124,7 @@ The program \ref dgshell_doc can be used to have scripting access to the dynamic
 library, where you can execute scripts and commands, load plugins, create entities and connect signals.
 
 Here is a typical use case for programmers:
-\image html figures/use-case.svg
+\image html figures/use-case.png
 
 \section References
 \anchor Mansard2007
