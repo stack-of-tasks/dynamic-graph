@@ -29,7 +29,7 @@ together using a graph system, akin to what Simulink does. With the building
 blocks this package provides, you can easily create a full computation graph
 for a given problem. It is the basis for the stack of tasks operation.
 
-\image html pictures/entity.png
+\image html entity.png
 Functionality:
 \li Built-in scripting language* for fast prototyping and testing
 \li Support for extensions and modules using dynamic link libraries
@@ -135,16 +135,12 @@ IEEE Trans. on Robotics, 23(1):60-72, February 2007
 
 
 \defgroup dgraph Core classes and objects
-
-\ingroup dgraph
 @{
 
 Classes, entities and binaries that make up the core of the dynamic-graph library are listed here.
 @}
 
 \defgroup signals Signals
-
-\ingroup signals
 @{
 This part provides the mechanism to transfer information
 from one entity to another. There are three main types of signals,
