@@ -28,6 +28,7 @@
 /* DYNAMIC-GRAPH */
 #include <dynamic-graph/exception-factory.h>
 #include <dynamic-graph/interpreter.h>
+#include <dynamic-graph/config-shell-procedure.hh>
 
 /* --- STD --- */
 #include <string>
@@ -41,20 +42,6 @@
 #include <boost/bind.hpp>
 
 /* --------------------------------------------------------------------- */
-/* --- API ------------------------------------------------------------- */
-/* --------------------------------------------------------------------- */
-
-#if defined (WIN32)
-#  if defined (shell_procedure_EXPORTS)
-#    define ShellProcedure_EXPORT __declspec(dllexport)
-#  else
-#    define ShellProcedure_EXPORT __declspec(dllimport)
-#  endif
-#else
-#  define ShellProcedure_EXPORT
-#endif
-
-/* --------------------------------------------------------------------- */
 /* --- CLASS ----------------------------------------------------------- */
 /* --------------------------------------------------------------------- */
 
@@ -64,7 +51,7 @@
 
   For more information, load the plugin and type help on a sot shell.
  */
-class ShellProcedure_EXPORT ShellProcedure
+class DG_SHELLPROCEDURE_DLLAPI ShellProcedure
 {
  public:
   struct Instruction

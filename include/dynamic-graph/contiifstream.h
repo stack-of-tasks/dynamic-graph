@@ -30,33 +30,21 @@
 #include <fstream>
 #include <sstream>
 #ifndef WIN32
-#include <unistd.h>
+# include <unistd.h>
 #endif
 #include <list>
 
 #include <dynamic-graph/interpreter.h>
+#include <dynamic-graph/config-contiifstream.hh>
 #ifndef WIN32
-#include <pthread.h>
-#endif
-/* --------------------------------------------------------------------- */
-/* --- API ------------------------------------------------------------- */
-/* --------------------------------------------------------------------- */
-
-#if defined (WIN32)
-#  if defined (contiifstream_EXPORTS)
-#    define DYNAMICGRAPHCONTIIFSTREAM_EXPORT __declspec(dllexport)
-#  else
-#    define DYNAMICGRAPHCONTIIFSTREAM_EXPORT __declspec(dllimport)
-#  endif
-#else
-#  define DYNAMICGRAPHCONTIIFSTREAM_EXPORT
+# include <pthread.h>
 #endif
 
 namespace dynamicgraph {
   /* --------------------------------------------------------------------- */
   /* --- CLASS ----------------------------------------------------------- */
   /* --------------------------------------------------------------------- */
-  class DYNAMICGRAPHCONTIIFSTREAM_EXPORT Contiifstream
+  class DG_CONTIIFSTREAM_DLLAPI Contiifstream
   {
   protected:
     std::string filename;

@@ -34,6 +34,19 @@ SET(CXX_DISABLE_WERROR True)
 
 SETUP_PROJECT()
 
+# Add configuration headers for plug-ins.
+GENERATE_CONFIGURATION_HEADER(
+  ${HEADER_DIR} config-tracer.hh DG_TRACER tracer_EXPORTS)
+GENERATE_CONFIGURATION_HEADER(
+  ${HEADER_DIR}
+  config-tracer-real-time.hh DG_TRACERREALTIME tracer_real_time_EXPORTS)
+GENERATE_CONFIGURATION_HEADER(
+  ${HEADER_DIR}
+  config-shell-procedure.hh DG_SHELLPROCEDURE shell_procedure_EXPORTS)
+GENERATE_CONFIGURATION_HEADER(
+  ${HEADER_DIR}
+  config-contiifstream.hh DG_CONTIIFSTREAM contiifstream_EXPORTS)
+
 # FIXME: to be changed into lib/dynamic-graph
 # to avoid name collision when installing dynamic-graph in /usr.
 SET(PLUGINDIR "lib/plugin")
