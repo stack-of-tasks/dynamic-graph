@@ -248,7 +248,7 @@ cmdHelp( const std::string& cmdLine, std::istringstream& cmdArg, std::ostream& o
   cmdArg >> ws;
   if( cmdArg.good() )
     {
-      const unsigned int gc = cmdArg.tellg();
+      const std::streamoff gc = cmdArg.tellg();
       cmdArg >> procname;
       cmdArg.seekg(gc); cmdArg.clear();
       personalizedHelp = true;
@@ -314,9 +314,10 @@ cmdRun( const std::string& cmdLine, std::istringstream& cmdArg, std::ostream& os
 	    }
       }
   } catch( ExceptionAbstract& exc ) {
-    std::string& msg = (std::string&)exc.getStringMessage();
-    std::ostringstream oss;
-    oss <<" (in line " << lineIdx <<" of file <" << filename << ">)";
+    //FIXME: exception should be changed instead.
+    std::string& msg = const_cast<std::string&>(exc.getStringMessage());
+    std::stringstream oss;
+    oss << " (in line " << lineIdx <<" of file <" << filename << ">)";
     msg = msg + oss.str();
     throw exc;
   }

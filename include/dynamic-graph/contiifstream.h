@@ -60,7 +60,7 @@ namespace dynamicgraph {
   {
   protected:
     std::string filename;
-    unsigned int cursor;
+    std::streamoff cursor;
     static const unsigned int BUFFER_SIZE = 256;
     char buffer[BUFFER_SIZE];
     std::list< std::string > reader;

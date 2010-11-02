@@ -464,7 +464,7 @@ cmdCompletionList( const std::string cmdLine, istringstream& cmdArg, std::ostrea
   try {
 
     std::string aFileName; cmdArg >> aFileName;
-    std::ofstream completionFile((char *)aFileName.c_str());
+    std::ofstream completionFile(aFileName.c_str());
     g_pool.writeCompletionList( completionFile );
 
 

@@ -56,8 +56,8 @@ class DGTRACERREALTIME_EXPORT OutStringStream
 {
 public:
   char * buffer;
-  unsigned int index;
-  unsigned int bufferSize;
+  size_t index;
+  size_t bufferSize;
   bool full;
   std::string givenname;
 
@@ -67,7 +67,7 @@ public:
   ~OutStringStream( void );
 
   void resize( const unsigned int & size );
-  bool addData( const char * data, const unsigned int & size );
+  bool addData( const char * data, const std::streamoff& size );
   void dump( std::ostream& os );
   void empty( void );
 

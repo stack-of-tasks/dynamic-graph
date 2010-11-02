@@ -123,7 +123,7 @@ cmdProcedure(   const std::string& procname,
       if( args.good() )
 	{
 	  std::string argname;
-	  const unsigned int gc = args.tellg();
+	  const std::streamoff gc = args.tellg();
 	  args >> argname;
 	  args.seekg(gc); args.clear();
 	  if( procname==argname )
