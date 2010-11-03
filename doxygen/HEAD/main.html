@@ -12,6 +12,7 @@
     <ul class="tablist">
       <li class="current"><a href="main.html"><span>Main&#160;Page</span></a></li>
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
+      <li><a href="modules.html"><span>Modules</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
@@ -23,7 +24,88 @@
 <h1>dynamic-graph library Documentation</h1>  </div>
 </div>
 <div class="contents">
-<h3 class="version">1.0.0.99 </h3></div>
+<h3 class="version">1.0.0.99 </h3><h2><a class="anchor" id="intro_dynamicGraph"></a>
+Introduction</h2>
+<p>The dynamic-graph package is used to connect computation nodes, "entities" together using a graph system, akin to what Simulink does. With the building blocks this package provides, you can easily create a full computation graph for a given problem. It is the basis for the stack of tasks operation.</p>
+<div align="center">
+<img src="entity.png" alt="entity.png"/>
+</div>
+<p> Functionality: </p>
+<ul>
+<li>Built-in scripting language* for fast prototyping and testing </li>
+<li>Support for extensions and modules using dynamic link libraries </li>
+<li>Template-based signal definition, independant </li>
+<li>Type-safe connection of input and output signals </li>
+<li>On-demand signal computation as well as a caching system for signal values allow fast computation of signal values, which is a critical point for real-time systems<br/>
+ See <a class="el" href="main.html#scriptingabout">Notes about the scripting language</a></li>
+</ul>
+<h2><a class="anchor" id="overview"></a>
+Code overview</h2>
+<h2><a class="anchor" id="entities"></a>
+List of entities in this package</h2>
+<p>Since most of the functionality in projects using the dynamic-graph framework is exposed from entities, here is a short description of all the entities contained in this package. Note that most entities are contained in a binary file that closely matches the entities' names in the scripts; loading this file with the plugin loader will enable creation of this entity through the factory. </p>
+<ul>
+<li><a class="el" href="tracerdoc.html">Tracer</a> </li>
+<li><a class="el" href="tracerrealtimedoc.html">TracerRealTime</a> </li>
+<li><a class="el" href="class_shell_procedure.html" title="This plugin exposes shell commands relative to the script language constructs such as procedures and ...">ShellProcedure</a> </li>
+<li><a class="el" href="shellfunctions_doc.html">ShellFunctions</a></li>
+</ul>
+<p>The entities will be placed in ${PREFIX}/lib/plugin (since this may change, it is advised to check the install log or the CMakeLists.txt file to check the installation path). </p>
+<h2><a class="anchor" id="sigintro"></a>
+About signals</h2>
+<p>Entities can output different types of signals. All signals are templated by a Time tick type parameter (which is used in the caching of signals) - usually <code>int</code>. Signals are also templated after the type of data they accept or provide. For example: (example) For a more detailed programmer-oriented description of signals, please see <a class="el" href="group__signals.html">Signals</a></p>
+<h2><a class="anchor" id="scriptingabout"></a>
+Notes about the scripting language</h2>
+<p>The scripting language allows entities to define their own commands, and provides a basic framework for working with the dynamic-graph. At the time of writing, there is talk about replacing (or complementing) this limited language with a python interpreter.</p>
+<p>A couple of functions are built-in in the interpreter and provides low-level features such as file sourcing or plug-in loading.<br/>
+ These functions are:<br/>
+ </p>
+<div class="fragment"><pre class="fragment"> plug &lt;obj1.sig1&gt; &lt;obj2.sig2&gt; 
+</pre></div><p> plugs the signal sig1 of obj1 to the signal sig2 of obj2. sig1 and sig2 have to be of the same type. sig1 has to be an output signal and sig2 an input signal. </p>
+<div class="fragment"><pre class="fragment"> new &lt;class&gt; &lt;<span class="keywordtype">object</span>&gt; 
+</pre></div><p> instantiates an object object of class class. object has to be a free identifier and class an existing entity. </p>
+<div class="fragment"><pre class="fragment"> destroy &lt;object&gt; 
+</pre></div><p> deletes an instance previously created. </p>
+<div class="fragment"><pre class="fragment"> run &lt;script.txt&gt; 
+</pre></div><p> sources (i.e. read and interpret) an external file. </p>
+<div class="fragment"><pre class="fragment"> loadPlugin &lt;file.so&gt; &lt;directory&gt; 
+</pre></div><p> loads a plugin called file.so and located in the directory directory. </p>
+<div class="fragment"><pre class="fragment"> unloadPlugin &lt;path/file.so&gt; 
+</pre></div><p> unloads a plugin. </p>
+<div class="fragment"><pre class="fragment"> help 
+</pre></div><p> lists available functions. </p>
+<div class="fragment"><pre class="fragment"> <span class="keyword">set</span> &lt;obj.signal&gt; &lt;value&gt; 
+</pre></div><p> defines an input signal to a specific, constant, value. </p>
+<div class="fragment"><pre class="fragment"> <span class="keyword">get</span> &lt;obj.signal&gt; &lt;value&gt; 
+</pre></div><p> prints out a signal value. </p>
+<div class="fragment"><pre class="fragment"> compute &lt;obj.sig&gt; &lt;time&gt; 
+</pre></div><p> computes an output signal and sets the associated time to time.</p>
+<h2><a class="anchor" id="usecase"></a>
+How to use this package</h2>
+<p>1) Programmatically<br/>
+ This code implements the factory design pattern, making creation of entities available to packages depending on the dynamic-graph API.</p>
+<p>Objects, which are derived from Entities (base class <a class="el" href="classdynamicgraph_1_1_entity.html" title="This class represents an entity, i.e. a generic computational unit that provides input and output sig...">dynamicgraph::Entity</a>), can be declared within the code and compiled to shared libraries (.so/.dll files). These libraries can be loaded at run-time using the PluginLoader methods, and at the same time register their class names to the Factory (see the examples in the SOT documentation to learn how).</p>
+<p>The Factory can then create instances of these objects and subsequently register them in the Pool, where they can be listed, accessed, and acted upon (see PoolStorage documentation). Basic commands defined by entities include signal connection graph file generation, help and name print, and signals.</p>
+<p>Finally, a shell (command-line) interface is made available thanks to the Interpreter class (see the file test_shell.cpp for an example). Objects deriving from Entity can expose their own commands by overriding the Entity's default commandLine() method. It is possible to load a plugin to register custom shell commands; see shell-functions and shell-procedure for an example.</p>
+<p>Some basic shell functions, and support for procedures, are also included. For a complete list of those, load the plugin shell-functions.so and type 'help' at the command line.</p>
+<p>The public static objects (singletons) made available by including the corresponding headers in this module are: </p>
+<ul>
+<li>g_factory: <a class="el" href="classdynamicgraph_1_1_factory_storage.html" title="The Factory class is responsible for creating Entity objects.">dynamicgraph::FactoryStorage</a> </li>
+<li>g_pool: <a class="el" href="classdynamicgraph_1_1_pool_storage.html" title="This class keep tracks of all the objects in the stack of Tasks.">dynamicgraph::PoolStorage</a> </li>
+<li>g_shell: <a class="el" href="classdynamicgraph_1_1_interpreter.html" title="This class implements the first level interpretor to control basic functionnalities of the plugins...">dynamicgraph::Interpreter</a></li>
+</ul>
+<p>For an example of a program creating entities in C++, see the unit test test_pool.cpp (in your package source directory/unitTesting).</p>
+<p>2) Through scripts<br/>
+ The program <a class="el" href="dgshell_doc.html">dg-shell executable</a> can be used to have scripting access to the dynamic-graph library, where you can execute scripts and commands, load plugins, create entities and connect signals.</p>
+<p>Here is a typical use case for programmers: </p>
+<div align="center">
+<img src="use-case.png" alt="use-case.png"/>
+</div>
+<h2><a class="anchor" id="References"></a>
+References</h2>
+<p><a class="anchor" id="Mansard2007"></a></p>
+<p><b>"Task sequencing for sensor-based control"</b>, <em>N. Mansard, F. Chaumette,</em> IEEE Trans. on Robotics, 23(1):60-72, February 2007 </p>
+</div>
  <br><br>
  <hr>
  <center>

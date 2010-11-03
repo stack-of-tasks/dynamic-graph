@@ -12,6 +12,7 @@
     <ul class="tablist">
       <li><a href="main.html"><span>Main&#160;Page</span></a></li>
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
+      <li><a href="modules.html"><span>Modules</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
@@ -50,9 +51,14 @@ This graph shows which files directly or indirectly include this file:<!-- endSe
 <tr><td colspan="2"><h2><a name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdynamicgraph_1_1_signal_time_dependent.html">dynamicgraph::SignalTimeDependent&lt; T, Time &gt;</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">A type of signal that enforces a time dependency between other signals, making sure its inputs are up to date on access, using a incrementing time tick as reference. It works this way: for a given <a class="el" href="classdynamicgraph_1_1_signal_time_dependent.html" title="A type of signal that enforces a time dependency between other signals, making sure its inputs are up...">SignalTimeDependent</a> S, the user manually adds dependent signals through the use of the addDependency function. On access (calling the signal S operator () or access(Time) function), if the dependent signals are not up-to-date, i.e. if their [last update] time is less than the current time, their value will be <a class="el" href="classdynamicgraph_1_1_signal_time_dependent.html#aa4df5a0ace7d7470c48a6e1d4c5fcecf">access()</a>'ed to bring them up-to-date. Thus, the value of dependent signals can be accessed <b>quickly</b> and <b>repeatedly</b> through the <a class="el" href="classdynamicgraph_1_1_signal.html#a4be0f7ad96ea144015899c159460606a">accessCopy()</a> function.  <a href="classdynamicgraph_1_1_signal_time_dependent.html#_details">More...</a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="namespaces"></a>
 Namespaces</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacedynamicgraph.html">dynamicgraph</a></td></tr>
+
+<p><tr><td class="mdescLeft">&#160;</td><td class="mdescRight"><p>This is the namespace where every object and class of this library is located. </p>
+<br/></td></tr>
+</p>
 </table>
 </div>
  <br><br>

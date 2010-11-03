@@ -12,6 +12,7 @@
     <ul class="tablist">
       <li><a href="main.html"><span>Main&#160;Page</span></a></li>
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
+      <li><a href="modules.html"><span>Modules</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
@@ -38,12 +39,15 @@
 <h1>dynamicgraph::SignalTimeDependent&lt; T, Time &gt; Class Template Reference</h1>  </div>
 </div>
 <div class="contents">
-<!-- doxytag: class="dynamicgraph::SignalTimeDependent" --><!-- doxytag: inherits="dynamicgraph::Signal,dynamicgraph::TimeDependency" --><!-- startSectionHeader --><div class="dynheader">
+<!-- doxytag: class="dynamicgraph::SignalTimeDependent" --><!-- doxytag: inherits="dynamicgraph::Signal,dynamicgraph::TimeDependency" -->
+<p>A type of signal that enforces a time dependency between other signals, making sure its inputs are up to date on access, using a incrementing time tick as reference. It works this way: for a given <a class="el" href="classdynamicgraph_1_1_signal_time_dependent.html" title="A type of signal that enforces a time dependency between other signals, making sure its inputs are up...">SignalTimeDependent</a> S, the user manually adds dependent signals through the use of the addDependency function. On access (calling the signal S operator () or access(Time) function), if the dependent signals are not up-to-date, i.e. if their [last update] time is less than the current time, their value will be <a class="el" href="classdynamicgraph_1_1_signal_time_dependent.html#aa4df5a0ace7d7470c48a6e1d4c5fcecf">access()</a>'ed to bring them up-to-date. Thus, the value of dependent signals can be accessed <b>quickly</b> and <b>repeatedly</b> through the <a class="el" href="classdynamicgraph_1_1_signal.html#a4be0f7ad96ea144015899c159460606a">accessCopy()</a> function.  
+<a href="#_details">More...</a></p>
+<!-- startSectionHeader --><div class="dynheader">
 Collaboration diagram for dynamicgraph::SignalTimeDependent&lt; T, Time &gt;:<!-- endSectionHeader --></div>
 <!-- startSectionSummary --><!-- endSectionSummary --><!-- startSectionContent --><div class="dyncontent">
 <div class="center"><img src="classdynamicgraph_1_1_signal_time_dependent__coll__graph.png" border="0" usemap="#dynamicgraph_1_1_signal_time_dependent_3_01_t_00_01_time_01_4_coll__map" alt="Collaboration graph"/></div>
 <map name="dynamicgraph_1_1_signal_time_dependent_3_01_t_00_01_time_01_4_coll__map" id="dynamicgraph_1_1_signal_time_dependent_3_01_t_00_01_time_01_4_coll__map">
-<area shape="rect" href="classdynamicgraph_1_1_signal.html" title="Signals link I/O ports of entities. They can be constant&#45;valued signals, or copy the value of a heap ..." alt="" coords="13,161,248,188"/><area shape="rect" href="classdynamicgraph_1_1_signal_base.html" title="dynamicgraph::SignalBase\&lt; Time \&gt;" alt="" coords="5,84,256,111"/><area shape="rect" href="classboost_1_1noncopyable.html" title="noncopyable" alt="" coords="80,7,181,33"/><area shape="rect" href="classdynamicgraph_1_1_time_dependency.html" title="dynamicgraph::TimeDependency\&lt; Time \&gt;" alt="" coords="272,161,563,188"/></map>
+<area shape="rect" href="classdynamicgraph_1_1_signal.html" title="Signals link I/O ports of entities. They can be constant&#45;valued signals, or copy the value of a heap ..." alt="" coords="13,161,248,188"/><area shape="rect" href="classdynamicgraph_1_1_signal_base.html" title="The base class for signals: not to be used as such." alt="" coords="5,84,256,111"/><area shape="rect" href="classboost_1_1noncopyable.html" title="noncopyable" alt="" coords="80,7,181,33"/><area shape="rect" href="classdynamicgraph_1_1_time_dependency.html" title="A helper class for setting and specifying dependencies between signals." alt="" coords="272,161,563,188"/></map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center><!-- endSectionContent --></div>
 
 <p><a href="classdynamicgraph_1_1_signal_time_dependent-members.html">List of all members.</a></p>
@@ -65,9 +69,11 @@ Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdynamicgraph_1_1_signal_time_dependent.html#a7916848f29411e8f2ef8e00ff9c4cee4">setPeriodTime</a> (const Time &amp;p)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">virtual Time&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdynamicgraph_1_1_signal_time_dependent.html#a769eb548dd054d031bb75e16559b6032">getPeriodTime</a> (void) const </td></tr>
 </table>
+<hr/><a name="_details"></a><h2>Detailed Description</h2>
 <h3>template&lt;class T, class Time&gt;<br/>
  class dynamicgraph::SignalTimeDependent&lt; T, Time &gt;</h3>
 
+<p>A type of signal that enforces a time dependency between other signals, making sure its inputs are up to date on access, using a incrementing time tick as reference. It works this way: for a given <a class="el" href="classdynamicgraph_1_1_signal_time_dependent.html" title="A type of signal that enforces a time dependency between other signals, making sure its inputs are up...">SignalTimeDependent</a> S, the user manually adds dependent signals through the use of the addDependency function. On access (calling the signal S operator () or access(Time) function), if the dependent signals are not up-to-date, i.e. if their [last update] time is less than the current time, their value will be <a class="el" href="classdynamicgraph_1_1_signal_time_dependent.html#aa4df5a0ace7d7470c48a6e1d4c5fcecf">access()</a>'ed to bring them up-to-date. Thus, the value of dependent signals can be accessed <b>quickly</b> and <b>repeatedly</b> through the <a class="el" href="classdynamicgraph_1_1_signal.html#a4be0f7ad96ea144015899c159460606a">accessCopy()</a> function. </p>
 <hr/><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="ab9848918e907a071b0ffdf30200dde0a"></a><!-- doxytag: member="dynamicgraph::SignalTimeDependent::SignalTimeDependent" ref="ab9848918e907a071b0ffdf30200dde0a" args="(std::string name=&quot;&quot;)" -->
 <div class="memitem">

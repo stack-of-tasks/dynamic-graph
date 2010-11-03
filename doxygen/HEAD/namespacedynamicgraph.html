@@ -12,6 +12,7 @@
     <ul class="tablist">
       <li><a href="main.html"><span>Main&#160;Page</span></a></li>
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
+      <li><a href="modules.html"><span>Modules</span></a></li>
       <li class="current"><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
@@ -34,6 +35,9 @@
 <h1>dynamicgraph Namespace Reference</h1>  </div>
 </div>
 <div class="contents">
+
+<p>This is the namespace where every object and class of this library is located.  
+<a href="#_details">More...</a></p>
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="namespaces"></a>
 Namespaces</h2></td></tr>
@@ -64,14 +68,18 @@ Classes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdynamicgraph_1_1_signal_array__const.html">SignalArray_const</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdynamicgraph_1_1_signal_array.html">SignalArray</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdynamicgraph_1_1_signal_base.html">SignalBase</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The base class for signals: not to be used as such.  <a href="classdynamicgraph_1_1_signal_base.html#_details">More...</a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdynamicgraph_1_1_signal_caster.html">SignalCaster</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdynamicgraph_1_1_signal_cast_registerer.html">SignalCastRegisterer</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdynamicgraph_1_1_default_cast_registerer.html">DefaultCastRegisterer</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdynamicgraph_1_1_signal_ptr.html">SignalPtr</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">This is the only type of signal that can be plugged to, using the <a class="el" href="classdynamicgraph_1_1_signal_ptr.html#a6ecaa58ff0f0fbd81416ef81b0a9a758">plug()</a> command.  <a href="classdynamicgraph_1_1_signal_ptr.html#_details">More...</a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdynamicgraph_1_1_signal_time_dependent.html">SignalTimeDependent</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">A type of signal that enforces a time dependency between other signals, making sure its inputs are up to date on access, using a incrementing time tick as reference. It works this way: for a given <a class="el" href="classdynamicgraph_1_1_signal_time_dependent.html" title="A type of signal that enforces a time dependency between other signals, making sure its inputs are up...">SignalTimeDependent</a> S, the user manually adds dependent signals through the use of the addDependency function. On access (calling the signal S operator () or access(Time) function), if the dependent signals are not up-to-date, i.e. if their [last update] time is less than the current time, their value will be <a class="el" href="classdynamicgraph_1_1_signal_time_dependent.html#aa4df5a0ace7d7470c48a6e1d4c5fcecf">access()</a>'ed to bring them up-to-date. Thus, the value of dependent signals can be accessed <b>quickly</b> and <b>repeatedly</b> through the <a class="el" href="classdynamicgraph_1_1_signal.html#a4be0f7ad96ea144015899c159460606a">accessCopy()</a> function.  <a href="classdynamicgraph_1_1_signal_time_dependent.html#_details">More...</a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdynamicgraph_1_1_signal.html">Signal</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Signals link I/O ports of entities. They can be constant-valued signals, or copy the value of a heap variable, or evaluated as a function. See <a class="el" href="classdynamicgraph_1_1_signal_ptr.html">SignalPtr</a> and <a class="el" href="classdynamicgraph_1_1_signal_time_dependent.html">SignalTimeDependent</a> for other types of signals, and <a class="el" href="classdynamicgraph_1_1_signal_array.html">SignalArray</a> for a way of grouping them.  <a href="classdynamicgraph_1_1_signal.html#_details">More...</a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Signals link I/O ports of entities. They can be constant-valued signals, or copy the value of a heap variable, or evaluated as a function. See <a class="el" href="classdynamicgraph_1_1_signal_ptr.html" title="This is the only type of signal that can be plugged to, using the plug() command.">SignalPtr</a> and <a class="el" href="classdynamicgraph_1_1_signal_time_dependent.html" title="A type of signal that enforces a time dependency between other signals, making sure its inputs are up...">SignalTimeDependent</a> for other types of signals, and <a class="el" href="classdynamicgraph_1_1_signal_array.html">SignalArray</a> for a way of grouping them.  <a href="classdynamicgraph_1_1_signal.html#_details">More...</a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdynamicgraph_1_1_time_dependency.html">TimeDependency</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">A helper class for setting and specifying dependencies between signals.  <a href="classdynamicgraph_1_1_time_dependency.html#_details">More...</a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdynamicgraph_1_1_out_string_stream.html">OutStringStream</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdynamicgraph_1_1_tracer_real_time.html">TracerRealTime</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdynamicgraph_1_1_tracer.html">Tracer</a></td></tr>
@@ -104,6 +112,8 @@ Variables</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">DYNAMICGRAPH_EXPORT <a class="el" href="classdynamicgraph_1_1_signal_caster.html">SignalCaster</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacedynamicgraph.html#ae904be901c79dff31f6a18f79af793e4">g_caster</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The library-wide instance of <a class="el" href="classdynamicgraph_1_1_signal_caster.html">SignalCaster</a>.  <a href="#ae904be901c79dff31f6a18f79af793e4"></a><br/></td></tr>
 </table>
+<hr/><a name="_details"></a><h2>Detailed Description</h2>
+<p>This is the namespace where every object and class of this library is located. </p>
 <hr/><h2>Function Documentation</h2>
 <a class="anchor" id="aaeb8f2fdb281799f9bcbe9a2de34e469"></a><!-- doxytag: member="dynamicgraph::operator&lt;&lt;" ref="aaeb8f2fdb281799f9bcbe9a2de34e469" args="(std::ostream &amp;os, const dynamicgraph::Entity &amp;ent)" -->
 <div class="memitem">

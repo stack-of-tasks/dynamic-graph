@@ -12,6 +12,7 @@
     <ul class="tablist">
       <li><a href="main.html"><span>Main&#160;Page</span></a></li>
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
+      <li><a href="modules.html"><span>Modules</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
@@ -40,18 +41,21 @@
 <a href="#pro-static-attribs">Static Protected Attributes</a> &#124;
 <a href="#pri-methods">Private Member Functions</a>  </div>
   <div class="headertitle">
-<h1>dynamicgraph::Signal&lt; T, Time &gt; Class Template Reference</h1>  </div>
+<h1>dynamicgraph::Signal&lt; T, Time &gt; Class Template Reference<br/>
+<small>
+[<a class="el" href="group__dgraph.html">Core classes and objects</a>]</small>
+</h1>  </div>
 </div>
 <div class="contents">
 <!-- doxytag: class="dynamicgraph::Signal" --><!-- doxytag: inherits="dynamicgraph::SignalBase" -->
-<p>Signals link I/O ports of entities. They can be constant-valued signals, or copy the value of a heap variable, or evaluated as a function. See <a class="el" href="classdynamicgraph_1_1_signal_ptr.html">SignalPtr</a> and <a class="el" href="classdynamicgraph_1_1_signal_time_dependent.html">SignalTimeDependent</a> for other types of signals, and <a class="el" href="classdynamicgraph_1_1_signal_array.html">SignalArray</a> for a way of grouping them.  
+<p>Signals link I/O ports of entities. They can be constant-valued signals, or copy the value of a heap variable, or evaluated as a function. See <a class="el" href="classdynamicgraph_1_1_signal_ptr.html" title="This is the only type of signal that can be plugged to, using the plug() command.">SignalPtr</a> and <a class="el" href="classdynamicgraph_1_1_signal_time_dependent.html" title="A type of signal that enforces a time dependency between other signals, making sure its inputs are up...">SignalTimeDependent</a> for other types of signals, and <a class="el" href="classdynamicgraph_1_1_signal_array.html">SignalArray</a> for a way of grouping them.  
 <a href="#_details">More...</a></p>
 <!-- startSectionHeader --><div class="dynheader">
 Collaboration diagram for dynamicgraph::Signal&lt; T, Time &gt;:<!-- endSectionHeader --></div>
 <!-- startSectionSummary --><!-- endSectionSummary --><!-- startSectionContent --><div class="dyncontent">
 <div class="center"><img src="classdynamicgraph_1_1_signal__coll__graph.png" border="0" usemap="#dynamicgraph_1_1_signal_3_01_t_00_01_time_01_4_coll__map" alt="Collaboration graph"/></div>
 <map name="dynamicgraph_1_1_signal_3_01_t_00_01_time_01_4_coll__map" id="dynamicgraph_1_1_signal_3_01_t_00_01_time_01_4_coll__map">
-<area shape="rect" href="classdynamicgraph_1_1_signal_base.html" title="dynamicgraph::SignalBase\&lt; Time \&gt;" alt="" coords="5,84,256,111"/><area shape="rect" href="classboost_1_1noncopyable.html" title="noncopyable" alt="" coords="80,7,181,34"/></map>
+<area shape="rect" href="classdynamicgraph_1_1_signal_base.html" title="The base class for signals: not to be used as such." alt="" coords="5,84,256,111"/><area shape="rect" href="classboost_1_1noncopyable.html" title="noncopyable" alt="" coords="80,7,181,34"/></map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center><!-- endSectionContent --></div>
 
 <p><a href="classdynamicgraph_1_1_signal-members.html">List of all members.</a></p>
@@ -120,7 +124,13 @@ Private Member Functions</h2></td></tr>
 <h3>template&lt;class T, class Time&gt;<br/>
  class dynamicgraph::Signal&lt; T, Time &gt;</h3>
 
-<p>Signals link I/O ports of entities. They can be constant-valued signals, or copy the value of a heap variable, or evaluated as a function. See <a class="el" href="classdynamicgraph_1_1_signal_ptr.html">SignalPtr</a> and <a class="el" href="classdynamicgraph_1_1_signal_time_dependent.html">SignalTimeDependent</a> for other types of signals, and <a class="el" href="classdynamicgraph_1_1_signal_array.html">SignalArray</a> for a way of grouping them. </p>
+<p>Signals link I/O ports of entities. They can be constant-valued signals, or copy the value of a heap variable, or evaluated as a function. See <a class="el" href="classdynamicgraph_1_1_signal_ptr.html" title="This is the only type of signal that can be plugged to, using the plug() command.">SignalPtr</a> and <a class="el" href="classdynamicgraph_1_1_signal_time_dependent.html" title="A type of signal that enforces a time dependency between other signals, making sure its inputs are up...">SignalTimeDependent</a> for other types of signals, and <a class="el" href="classdynamicgraph_1_1_signal_array.html">SignalArray</a> for a way of grouping them. </p>
+<p>There are several ways to specify the value output by a signal: </p>
+<ul>
+<li>using the function setConstant(T) to set the value of the signal to T; </li>
+<li>using the function setReference(mutex, T*) to set the value from a pointer, whose access is restricted by a mutex; </li>
+<li>using the function setFunction(boost::function2) that will be called when the signal's value is accessed. </li>
+</ul>
 <hr/><h2>Member Typedef Documentation</h2>
 <a class="anchor" id="a20378c06ed76b81c26f631002baa9380"></a><!-- doxytag: member="dynamicgraph::Signal::Mutex" ref="a20378c06ed76b81c26f631002baa9380" args="" -->
 <div class="memitem">

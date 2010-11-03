@@ -12,6 +12,7 @@
     <ul class="tablist">
       <li><a href="main.html"><span>Main&#160;Page</span></a></li>
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
+      <li><a href="modules.html"><span>Modules</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
@@ -40,7 +41,10 @@
 <a href="#pro-types">Protected Types</a> &#124;
 <a href="#pro-attribs">Protected Attributes</a>  </div>
   <div class="headertitle">
-<h1>dynamicgraph::Interpreter Class Reference</h1>  </div>
+<h1>dynamicgraph::Interpreter Class Reference<br/>
+<small>
+[<a class="el" href="group__dgraph.html">Core classes and objects</a>]</small>
+</h1>  </div>
 </div>
 <div class="contents">
 <!-- doxytag: class="dynamicgraph::Interpreter" -->
@@ -110,11 +114,11 @@ Implements the commands.</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdynamicgraph_1_1_interpreter.html#a2e0f3dba4e1874c50deae22888e8b5a3">cmdRun</a> (const std::string &amp;cmdLine, std::istringstream &amp;cmdArg, std::ostream &amp;os)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Run a script.  <a href="#a2e0f3dba4e1874c50deae22888e8b5a3"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdynamicgraph_1_1_interpreter.html#a5a7171c2d4cc923e1f2b55ba9856b66c">cmdSetSignal</a> (const std::string &amp;cmdLine, std::istringstream &amp;cmdArg, std::ostream &amp;os)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a signal &lt;obj.signal&gt; to a value with cmdArg = "&lt;obj.signal&gt; &lt;value&gt;".  <a href="#a5a7171c2d4cc923e1f2b55ba9856b66c"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a signal [obj.signal] to a value [value] with cmdArg = "[obj.signal] [value]".  <a href="#a5a7171c2d4cc923e1f2b55ba9856b66c"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdynamicgraph_1_1_interpreter.html#afb2615fd44e3453590b9115e647b737e">cmdGetSignal</a> (const std::string &amp;cmdLine, std::istringstream &amp;cmdArg, std::ostream &amp;os)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Display the value of the signal &lt;obj.signal&gt; with cmdArg = "&lt;obj.signal&gt;".  <a href="#afb2615fd44e3453590b9115e647b737e"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Display the value of the signal [obj.signal] with cmdArg = "[obj.signal]".  <a href="#afb2615fd44e3453590b9115e647b737e"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdynamicgraph_1_1_interpreter.html#a249ae339236034d0ffa72c3fa50586b5">cmdComputeSignal</a> (const std::string &amp;cmdLine, std::istringstream &amp;cmdArg, std::ostream &amp;os)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute the value of the signal &lt;obj.signal&gt; at time &lt;time&gt; with cmdArg = "&lt;obj.signal&gt; &lt;time&gt;".  <a href="#a249ae339236034d0ffa72c3fa50586b5"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute the value of the signal [obj.signal] at time [time] with cmdArg = "[obj.signal] [time]".  <a href="#a249ae339236034d0ffa72c3fa50586b5"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdynamicgraph_1_1_interpreter.html#a47579a33b03aad9da9acdbece2fd7932">cmd</a> (const std::string &amp;cmdLine, std::istringstream &amp;cmdArg, std::ostream &amp;os)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Entry point to treat a command.  <a href="#a47579a33b03aad9da9acdbece2fd7932"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdynamicgraph_1_1_interpreter.html#a977580347f53771d9e49f5a1bd7cd3cf">objectNameParser</a> (std::istringstream &amp;cmdparse, std::string &amp;objName, std::string &amp;funName)</td></tr>
@@ -271,7 +275,7 @@ Implements the commands.</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Compute the value of the signal &lt;obj.signal&gt; at time &lt;time&gt; with cmdArg = "&lt;obj.signal&gt; &lt;time&gt;". </p>
+<p>Compute the value of the signal [obj.signal] at time [time] with cmdArg = "[obj.signal] [time]". </p>
 
 </div>
 </div>
@@ -341,7 +345,7 @@ Implements the commands.</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Display the value of the signal &lt;obj.signal&gt; with cmdArg = "&lt;obj.signal&gt;". </p>
+<p>Display the value of the signal [obj.signal] with cmdArg = "[obj.signal]". </p>
 
 </div>
 </div>
@@ -551,7 +555,7 @@ Implements the commands.</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Set a signal &lt;obj.signal&gt; to a value with cmdArg = "&lt;obj.signal&gt; &lt;value&gt;". </p>
+<p>Set a signal [obj.signal] to a value [value] with cmdArg = "[obj.signal] [value]". </p>
 
 </div>
 </div>

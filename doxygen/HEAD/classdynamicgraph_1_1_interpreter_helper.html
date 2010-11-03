@@ -12,6 +12,7 @@
     <ul class="tablist">
       <li><a href="main.html"><span>Main&#160;Page</span></a></li>
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
+      <li><a href="modules.html"><span>Modules</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
@@ -36,7 +37,10 @@
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pro-attribs">Protected Attributes</a>  </div>
   <div class="headertitle">
-<h1>dynamicgraph::InterpreterHelper Class Reference</h1>  </div>
+<h1>dynamicgraph::InterpreterHelper Class Reference<br/>
+<small>
+[<a class="el" href="group__dgraph.html">Core classes and objects</a>]</small>
+</h1>  </div>
 </div>
 <div class="contents">
 <!-- doxytag: class="dynamicgraph::InterpreterHelper" -->
@@ -58,7 +62,7 @@ Public Member Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Default constructor.  <a href="#a215d2ee4b2a397fae568e0c8cf6ae247"></a><br/></td></tr>
 <tr><td colspan="2"><div class="groupHeader">Implements the commands.</div></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdynamicgraph_1_1_interpreter_helper.html#aebc57d1cef301ce488c52cabb028d612">cmdNew</a> (const std::string &amp;className, const std::string &amp;objName, std::ostream &amp;os)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Instanciante an object Extracts the name and the class of the object, verifies it is unique, and creates the instance if this is the case.  <a href="#aebc57d1cef301ce488c52cabb028d612"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Instanciate an object Extracts the name and the class of the object, verifies it is unique, and creates the instance if this is the case.  <a href="#aebc57d1cef301ce488c52cabb028d612"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdynamicgraph_1_1_interpreter_helper.html#af7c8c26d5ed3b8f330a1d6badc1200ff">cmdDestroy</a> (const std::string &amp;objName, std::ostream &amp;os)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy the object. Destroy the object objName.  <a href="#af7c8c26d5ed3b8f330a1d6badc1200ff"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdynamicgraph_1_1_interpreter_helper.html#a75e12292263cc468b7be3c896b4b1faa">cmdPlug</a> (const std::string &amp;obj1, const std::string &amp;signame1, const std::string &amp;obj2, const std::string &amp;signame2, std::ostream &amp;os)</td></tr>
@@ -68,11 +72,11 @@ Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdynamicgraph_1_1_interpreter_helper.html#a3c487e4e1b3469dd77b258ac32c44fd6">cmdUnloadPlugin</a> (const std::string &amp;pluginName, std::ostream &amp;os)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Unload a dynamic library which includes a plugin. Extracts the name to unload the dynamic library.  <a href="#a3c487e4e1b3469dd77b258ac32c44fd6"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdynamicgraph_1_1_interpreter_helper.html#ac93342ed27898cac43fcd8e762e49f98">cmdSetSignal</a> (const std::string &amp;objname, const std::string &amp;signame, const std::string &amp;cmdArg, std::ostream &amp;os)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a signal &lt;obj.signal&gt; to a value with cmdArg = "&lt;obj.signal&gt; &lt;value&gt;".  <a href="#ac93342ed27898cac43fcd8e762e49f98"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a signal [obj.signal] to a value [value] with cmdArg = "[obj.signal] [value]".  <a href="#ac93342ed27898cac43fcd8e762e49f98"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdynamicgraph_1_1_interpreter_helper.html#a68679f74baec6f9e1f87e4057cf53d7a">cmdGetSignal</a> (const std::string &amp;objname, const std::string &amp;signame, std::ostream &amp;os)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Display the value of the signal &lt;obj.signal&gt; with cmdArg = "&lt;obj.signal&gt;".  <a href="#a68679f74baec6f9e1f87e4057cf53d7a"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Display the value of the signal [obj.signal] with cmdArg = "[obj.signal]".  <a href="#a68679f74baec6f9e1f87e4057cf53d7a"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdynamicgraph_1_1_interpreter_helper.html#ad5eb950b1e52ff62043f82bdb6a07307">cmdComputeSignal</a> (const std::string &amp;objname, const std::string &amp;signame, const int &amp;time, std::ostream &amp;os)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute the value of the signal &lt;obj.signal&gt; at time &lt;time&gt; with cmdArg = "&lt;obj.signal&gt; &lt;time&gt;".  <a href="#ad5eb950b1e52ff62043f82bdb6a07307"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute the value of the signal [signame=obj.signal] at time [time] with cmdArg = "[obj.signal] [time]".  <a href="#ad5eb950b1e52ff62043f82bdb6a07307"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classdynamicgraph_1_1_plugin_loader.html">PluginLoader</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdynamicgraph_1_1_interpreter_helper.html#a72984dabbb9b72f3c089265e88957ff3">dlPtr</a></td></tr>
@@ -148,7 +152,7 @@ Protected Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Compute the value of the signal &lt;obj.signal&gt; at time &lt;time&gt; with cmdArg = "&lt;obj.signal&gt; &lt;time&gt;". </p>
+<p>Compute the value of the signal [signame=obj.signal] at time [time] with cmdArg = "[obj.signal] [time]". </p>
 
 </div>
 </div>
@@ -212,7 +216,7 @@ Protected Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Display the value of the signal &lt;obj.signal&gt; with cmdArg = "&lt;obj.signal&gt;". </p>
+<p>Display the value of the signal [obj.signal] with cmdArg = "[obj.signal]". </p>
 
 </div>
 </div>
@@ -282,7 +286,7 @@ Protected Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Instanciante an object Extracts the name and the class of the object, verifies it is unique, and creates the instance if this is the case. </p>
+<p>Instanciate an object Extracts the name and the class of the object, verifies it is unique, and creates the instance if this is the case. </p>
 
 </div>
 </div>
@@ -332,8 +336,11 @@ Protected Attributes</h2></td></tr>
 <p>Connect two signals. Connect the input signal obj1.signame1 to the output signal obj2.signame2. </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">obj1.signame1,:</td><td>the input signal. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">obj2.signame2,:</td><td>the output signal. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">obj1</td><td>The input object. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">obj2</td><td>The output object. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">signame1</td><td>The input object's signal name </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">signame2</td><td>The output object's signal name </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">os</td><td>The output stream for logging and error output </td></tr>
   </table>
   </dd>
 </dl>
@@ -377,7 +384,7 @@ Protected Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Set a signal &lt;obj.signal&gt; to a value with cmdArg = "&lt;obj.signal&gt; &lt;value&gt;". </p>
+<p>Set a signal [obj.signal] to a value [value] with cmdArg = "[obj.signal] [value]". </p>
 
 </div>
 </div>
