@@ -40,6 +40,11 @@ computation of signal values, which is a critical point for real-time systems\n
 See \ref scriptingabout
 
 \section overview Code overview
+This code implements the factory design pattern, making creation of entities
+(as C++ classes) available to packages depending on the dynamic-graph API.
+For more information on this package's code or how to develop your own entities,
+see \ref usecase.
+
 
 \section entities List of entities in this package
 Since most of the functionality in projects using the dynamic-graph framework
@@ -86,9 +91,6 @@ class an existing entity.
 
 \section usecase How to use this package
 1) Programmatically\n
-This code implements the factory design pattern, making creation of entities
-available to packages depending on the dynamic-graph API.
-
 Objects, which are derived from Entities (base class dynamicgraph::Entity), can be
  declared within the code and compiled to shared libraries (.so/.dll files).
 These libraries can be loaded at run-time using the PluginLoader methods,
