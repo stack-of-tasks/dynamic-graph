@@ -31,7 +31,10 @@ namespace dynamicgraph {
     public:
       EitherType(const Value& value);
       ~EitherType();
+      operator bool () const;
+      operator unsigned () const;
       operator int () const;
+      operator float () const;
       operator double () const;
       operator std::string () const;
     private:
@@ -42,13 +45,19 @@ namespace dynamicgraph {
     public:
       enum Type {
 	NONE,
+	BOOL,
+	UNSIGNED,
 	INT,
+	FLOAT,
 	DOUBLE,
 	STRING,
 	NB_TYPES
       };
       ~Value();
+      Value(const bool& value);
+      Value(const unsigned& value);
       Value(const int& value);
+      Value(const float& value);
       Value(const double& value);
       Value(const std::string& value);
       /// Copy constructor
@@ -77,8 +86,11 @@ namespace dynamicgraph {
       friend std::ostream& operator<<(std::ostream& os, const Value& value);
     private:
       friend class EitherType;
-      const double doubleValue() const;
+      const bool boolValue() const;
+      const unsigned unsignedValue() const;
       const int intValue() const;
+      const float floatValue() const;
+      const double doubleValue() const;
       const std::string stringValue() const;
       Type type_;
       const void* value_;

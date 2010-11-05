@@ -64,7 +64,6 @@ namespace dynamicgraph {
       virtual Value doExecute();
 
     private:
-      static const std::vector<Value::Type> typeVector();
       SetterMethod setterMethod_;
     };
   } // namespace command

@@ -30,9 +30,21 @@ namespace dynamicgraph {
       delete value_;
     }
 
+    EitherType::operator bool () const
+    {
+      return value_->boolValue();
+    }
+    EitherType::operator unsigned () const
+    {
+      return value_->unsignedValue();
+    }
     EitherType::operator int () const
     {
       return value_->intValue();
+    }
+    EitherType::operator float () const
+    {
+      return value_->floatValue();
     }
     EitherType::operator double () const
     {
@@ -46,8 +58,17 @@ namespace dynamicgraph {
     Value::~Value()
     {
       switch(type_) {
+      case BOOL:
+	delete (bool*)value_;
+	break;
+      case UNSIGNED:
+	delete (unsigned*)value_;
+	break;
       case INT:
 	delete (int*)value_;
+	break;
+      case FLOAT:
+	delete (float*)value_;
 	break;
       case DOUBLE:
 	delete (double*)value_;
@@ -58,21 +79,33 @@ namespace dynamicgraph {
       }
     }
 
+    Value::Value(const bool& value)
+    {
+      value_ = new bool(value);
+      type_ = BOOL;
+    }
+    Value::Value(const unsigned& value)
+    {
+      value_ = new unsigned(value);
+      type_ = UNSIGNED;
+    }
     Value::Value(const int& value)
     {
-      std::cout << "Constructor of int value" << std::endl;
       value_ = new int(value);
       type_ = INT;
     }
+    Value::Value(const float& value)
+    {
+      value_ = new float(value);
+      type_ = FLOAT;
+    }
     Value::Value(const double& value)
     {
-      std::cout << "Constructor of double value" << std::endl;
       value_ = new double(value);
       type_ = DOUBLE;
     }
     Value::Value(const std::string& value)
     {
-      std::cout << "Constructor of string value" << std::endl;
       value_ = new std::string(value);
       type_ = STRING;
     }
@@ -81,16 +114,22 @@ namespace dynamicgraph {
     Value::Value(const Value& value) : type_(value.type_)
     {
       switch(value.type_) {
+      case BOOL:
+	value_ = new bool(value.intValue());
+	break;
+      case UNSIGNED:
+	value_ = new unsigned(value.intValue());
+	break;
       case INT:
-	std::cout << "Value copy constructor: int" << std::endl;
 	value_ = new int(value.intValue());
 	break;
+      case FLOAT:
+	value_ = new float(value.intValue());
+	break;
       case DOUBLE:
-	std::cout << "Value copy constructor: double" << std::endl;
 	value_ = new double(value.doubleValue());
 	break;
       case STRING:
-	std::cout << "Value copy constructor: string" << std::endl;
 	value_ = new std::string(value.stringValue());
 	break;
       default:
@@ -101,7 +140,6 @@ namespace dynamicgraph {
 
     Value::Value() : type_(NONE), value_(NULL)
     {
-      std::cout << "Value empty constructor" << std::endl;
     }
 
     const EitherType Value::value() const
@@ -114,6 +152,40 @@ namespace dynamicgraph {
       return type_;
     }
 
+    const bool Value::boolValue () const
+    {
+      if (type_ == BOOL)
+	return *((bool*)value_);
+      throw ExceptionAbstract(ExceptionAbstract::TOOLS,
+			      "value is not an bool");
+    }
+
+    const unsigned Value::unsignedValue () const
+    {
+      if (type_ == UNSIGNED)
+	return *((unsigned*)value_);
+      throw ExceptionAbstract(ExceptionAbstract::TOOLS,
+			      "value is not an unsigned int");
+    }
+
+    const int Value::intValue () const
+    {
+      if (type_ == INT)
+	return *((int*)value_);
+      throw ExceptionAbstract(ExceptionAbstract::TOOLS,
+			      "value is not an int int");
+    }
+
+    const float Value::floatValue () const
+    {
+      float result;
+      if (type_ == FLOAT)
+	result = *((float*)value_);
+      return result;
+      throw ExceptionAbstract(ExceptionAbstract::TOOLS,
+			      "value is not a float");
+    }
+
     const double Value::doubleValue () const
     {
       double result;
@@ -122,14 +194,6 @@ namespace dynamicgraph {
       return result;
       throw ExceptionAbstract(ExceptionAbstract::TOOLS,
 			      "value is not a double");
-    }
-
-    const int Value::intValue () const
-    {
-      if (type_ == INT)
-	return *((int*)value_);
-      throw ExceptionAbstract(ExceptionAbstract::TOOLS,
-			      "value is not an int");
     }
 
     const std::string Value::stringValue () const
@@ -143,8 +207,14 @@ namespace dynamicgraph {
     std::string Value::typeName(Type type)
     {
       switch (type) {
+      case BOOL:
+	return std::string("bool");
+      case UNSIGNED:
+	return std::string("unsigned int");
       case INT:
 	return std::string("int");
+      case FLOAT:
+	return std::string("float");
       case DOUBLE:
 	return std::string("double");
       case STRING:
@@ -158,11 +228,20 @@ namespace dynamicgraph {
       os << "Type=" << Value::typeName(value.type_)
 	 << ", value=";
       switch (value.type_) {
+      case Value::BOOL:
+	os << value.boolValue();
+	break;
+      case Value::UNSIGNED:
+	os << value.unsignedValue();
+	break;
       case Value::INT:
 	os << value.intValue();
 	break;
       case Value::DOUBLE:
 	os << value.doubleValue();
+	break;
+      case Value::FLOAT:
+	os << value.floatValue();
 	break;
       case Value::STRING:
 	os << value.stringValue();

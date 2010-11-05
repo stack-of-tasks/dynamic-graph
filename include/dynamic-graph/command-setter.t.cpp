@@ -19,47 +19,228 @@
 #define DYNAMIC_GRAPH_COMMAND_SETTER_T_CPP
 
 #include <sstream>
+#include <boost/assign/list_of.hpp>
 
 namespace dynamicgraph {
   class Entity;
   namespace command {
 
-    template <class E, typename T>
-    const std::vector<Value::Type>  Setter<E, T>::typeVector()
-    {
-      std::vector<Value::Type> result;
-      if (typeid(T) == typeid(int)) {
-	result.push_back(Value::INT);
-      } else if (typeid(T) == typeid(double)) {
-	result.push_back(Value::DOUBLE);
-      } else if (typeid(T) == typeid(std::string)) {
-	result.push_back(Value::STRING);
-      } else {
-	std::stringstream ss;
-	ss << "Type " << typeid(T).name() << " not supported.";
-	throw ExceptionAbstract(ExceptionAbstract::TOOLS,
-				ss.str());
-      }
-      return result;
-    }
+    // 
+    // Template specialization: bool
+    //
+    template <class E>
+    class Setter<E, bool> : public Command {
+    public:
+      /// Pointer to method that sets paramter of type bool
+      typedef void (E::*SetterMethod) (const bool&);
+      /// Constructor
+      Setter(E& entity, SetterMethod);
 
-    template <class E, typename T>
-    Setter<E, T>::Setter(E& entity, SetterMethod setterMethod) :
-      Command(entity, typeVector()),
+    protected:
+      virtual Value doExecute();
+
+    private:
+      SetterMethod setterMethod_;
+    }; // Class Setter
+
+    template <class E>
+    Setter<E, bool>::Setter(E& entity, SetterMethod setterMethod) :
+      Command(entity, boost::assign::list_of(Value::BOOL)),
       setterMethod_(setterMethod)
     {
     }
 
-    template <class E, typename T>
-    Value Setter<E, T>::doExecute()
+    template <class E>
+    Value Setter<E, bool>::doExecute()
     {
       const std::vector<Value>& values = getParameterValues();
       // Get parameter
-      T value = values[0].value();
+      bool value = values[0].value();
       E& entity = static_cast<E&>(owner());
       (entity.*setterMethod_)(value);
       return Value();
     }
+
+    // 
+    // Template specialization: unsigned
+    //
+    template <class E>
+    class Setter<E, unsigned> : public Command {
+    public:
+      /// Pointer to method that sets paramter of type unsigned
+      typedef void (E::*SetterMethod) (const unsigned&);
+      /// Constructor
+      Setter(E& entity, SetterMethod);
+
+    protected:
+      virtual Value doExecute();
+
+    private:
+      SetterMethod setterMethod_;
+    }; // Class Setter
+
+    template <class E>
+    Setter<E, unsigned>::Setter(E& entity, SetterMethod setterMethod) :
+      Command(entity, boost::assign::list_of(Value::UNSIGNED)),
+      setterMethod_(setterMethod)
+    {
+    }
+
+    template <class E>
+    Value Setter<E, unsigned>::doExecute()
+    {
+      const std::vector<Value>& values = getParameterValues();
+      // Get parameter
+      unsigned value = values[0].value();
+      E& entity = static_cast<E&>(owner());
+      (entity.*setterMethod_)(value);
+      return Value();
+    }
+
+    // 
+    // Template specialization: int
+    //
+    template <class E>
+    class Setter<E, int> : public Command {
+    public:
+      /// Pointer to method that sets paramter of type int
+      typedef void (E::*SetterMethod) (const int&);
+      /// Constructor
+      Setter(E& entity, SetterMethod);
+
+    protected:
+      virtual Value doExecute();
+
+    private:
+      SetterMethod setterMethod_;
+    }; // Class Setter
+
+    template <class E>
+    Setter<E, int>::Setter(E& entity, SetterMethod setterMethod) :
+      Command(entity, boost::assign::list_of(Value::INT)),
+      setterMethod_(setterMethod)
+    {
+    }
+
+    template <class E>
+    Value Setter<E, int>::doExecute()
+    {
+      const std::vector<Value>& values = getParameterValues();
+      // Get parameter
+      int value = values[0].value();
+      E& entity = static_cast<E&>(owner());
+      (entity.*setterMethod_)(value);
+      return Value();
+    }
+
+    // 
+    // Template specialization: float
+    //
+    template <class E>
+    class Setter<E, float> : public Command {
+    public:
+      /// Pointer to method that sets paramter of type float
+      typedef void (E::*SetterMethod) (const float&);
+      /// Constructor
+      Setter(E& entity, SetterMethod);
+
+    protected:
+      virtual Value doExecute();
+
+    private:
+      SetterMethod setterMethod_;
+    }; // Class Setter
+
+    template <class E>
+    Setter<E, float>::Setter(E& entity, SetterMethod setterMethod) :
+      Command(entity, boost::assign::list_of(Value::FLOAT)),
+      setterMethod_(setterMethod)
+    {
+    }
+
+    template <class E>
+    Value Setter<E, float>::doExecute()
+    {
+      const std::vector<Value>& values = getParameterValues();
+      // Get parameter
+      float value = values[0].value();
+      E& entity = static_cast<E&>(owner());
+      (entity.*setterMethod_)(value);
+      return Value();
+    }
+
+    // 
+    // Template specialization: double
+    //
+    template <class E>
+    class Setter<E, double> : public Command {
+    public:
+      /// Pointer to method that sets paramter of type double
+      typedef void (E::*SetterMethod) (const double&);
+      /// Constructor
+      Setter(E& entity, SetterMethod);
+
+    protected:
+      virtual Value doExecute();
+
+    private:
+      SetterMethod setterMethod_;
+    }; // Class Setter
+
+    template <class E>
+    Setter<E, double>::Setter(E& entity, SetterMethod setterMethod) :
+      Command(entity, boost::assign::list_of(Value::DOUBLE)),
+      setterMethod_(setterMethod)
+    {
+    }
+
+    template <class E>
+    Value Setter<E, double>::doExecute()
+    {
+      const std::vector<Value>& values = getParameterValues();
+      // Get parameter
+      double value = values[0].value();
+      E& entity = static_cast<E&>(owner());
+      (entity.*setterMethod_)(value);
+      return Value();
+    }
+
+    // 
+    // Template specialization: std::string
+    //
+    template <class E>
+    class Setter<E, std::string> : public Command {
+    public:
+      /// Pointer to method that sets paramter of type std::string
+      typedef void (E::*SetterMethod) (const std::string&);
+      /// Constructor
+      Setter(E& entity, SetterMethod);
+
+    protected:
+      virtual Value doExecute();
+
+    private:
+      SetterMethod setterMethod_;
+    }; // Class Setter
+
+    template <class E>
+    Setter<E, std::string>::Setter(E& entity, SetterMethod setterMethod) :
+      Command(entity, boost::assign::list_of(Value::STRING)),
+      setterMethod_(setterMethod)
+    {
+    }
+
+    template <class E>
+    Value Setter<E, std::string>::doExecute()
+    {
+      const std::vector<Value>& values = getParameterValues();
+      // Get parameter
+      std::string value = values[0].value();
+      E& entity = static_cast<E&>(owner());
+      (entity.*setterMethod_)(value);
+      return Value();
+    }
+
   } // namespace command
 } // namespace dynamicgraph
 
