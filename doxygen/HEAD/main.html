@@ -41,6 +41,7 @@ Introduction</h2>
 </ul>
 <h2><a class="anchor" id="overview"></a>
 Code overview</h2>
+<p>This code implements the factory design pattern, making creation of entities (as C++ classes) available to packages depending on the dynamic-graph API. For more information on this package's code or how to develop your own entities, see <a class="el" href="main.html#usecase">How to use this package</a>.</p>
 <h2><a class="anchor" id="entities"></a>
 List of entities in this package</h2>
 <p>Since most of the functionality in projects using the dynamic-graph framework is exposed from entities, here is a short description of all the entities contained in this package. Note that most entities are contained in a binary file that closely matches the entities' names in the scripts; loading this file with the plugin loader will enable creation of this entity through the factory. </p>
@@ -83,8 +84,7 @@ Notes about the scripting language</h2>
 <h2><a class="anchor" id="usecase"></a>
 How to use this package</h2>
 <p>1) Programmatically<br/>
- This code implements the factory design pattern, making creation of entities available to packages depending on the dynamic-graph API.</p>
-<p>Objects, which are derived from Entities (base class <a class="el" href="classdynamicgraph_1_1_entity.html" title="This class represents an entity, i.e. a generic computational unit that provides input and output sig...">dynamicgraph::Entity</a>), can be declared within the code and compiled to shared libraries (.so/.dll files). These libraries can be loaded at run-time using the PluginLoader methods, and at the same time register their class names to the Factory (see the examples in the SOT documentation to learn how).</p>
+ Objects, which are derived from Entities (base class <a class="el" href="classdynamicgraph_1_1_entity.html" title="This class represents an entity, i.e. a generic computational unit that provides input and output sig...">dynamicgraph::Entity</a>), can be declared within the code and compiled to shared libraries (.so/.dll files). These libraries can be loaded at run-time using the PluginLoader methods, and at the same time register their class names to the Factory (see the examples in the SOT documentation to learn how).</p>
 <p>The Factory can then create instances of these objects and subsequently register them in the Pool, where they can be listed, accessed, and acted upon (see PoolStorage documentation). Basic commands defined by entities include signal connection graph file generation, help and name print, and signals.</p>
 <p>Finally, a shell (command-line) interface is made available thanks to the Interpreter class (see the file test_shell.cpp for an example). Objects deriving from Entity can expose their own commands by overriding the Entity's default commandLine() method. It is possible to load a plugin to register custom shell commands; see shell-functions and shell-procedure for an example.</p>
 <p>Some basic shell functions, and support for procedures, are also included. For a complete list of those, load the plugin shell-functions.so and type 'help' at the command line.</p>
