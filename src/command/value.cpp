@@ -115,16 +115,16 @@ namespace dynamicgraph {
     {
       switch(value.type_) {
       case BOOL:
-	value_ = new bool(value.intValue());
+	value_ = new bool(value.boolValue());
 	break;
       case UNSIGNED:
-	value_ = new unsigned(value.intValue());
+	value_ = new unsigned(value.unsignedValue());
 	break;
       case INT:
 	value_ = new int(value.intValue());
 	break;
       case FLOAT:
-	value_ = new float(value.intValue());
+	value_ = new float(value.floatValue());
 	break;
       case DOUBLE:
 	value_ = new double(value.doubleValue());
