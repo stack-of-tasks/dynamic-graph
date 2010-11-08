@@ -30,20 +30,7 @@
 
 /* DG */
 #include <dynamic-graph/tracer.h>
-
-/* --------------------------------------------------------------------- */
-/* --- API ------------------------------------------------------------- */
-/* --------------------------------------------------------------------- */
-
-#if defined (WIN32)
-#  if defined (tracer_real_time_EXPORTS)
-#    define DGTRACERREALTIME_EXPORT __declspec(dllexport)
-#  else
-#    define DGTRACERREALTIME_EXPORT __declspec(dllimport)
-#  endif
-#else
-#  define DGTRACERREALTIME_EXPORT
-#endif
+#include <dynamic-graph/config-tracer-real-time.hh>
 
 /* --------------------------------------------------------------------- */
 /* --- TRACER ---------------------------------------------------------- */
@@ -51,7 +38,7 @@
 
 namespace dynamicgraph {
 
-class DGTRACERREALTIME_EXPORT OutStringStream
+class DG_TRACERREALTIME_DLLAPI OutStringStream
   : public std::ostringstream
 {
 public:
@@ -73,7 +60,7 @@ public:
 
 };
 
-class DGTRACERREALTIME_EXPORT TracerRealTime
+class DG_TRACERREALTIME_DLLAPI TracerRealTime
 : public Tracer
 {
  public:
@@ -108,7 +95,8 @@ class DGTRACERREALTIME_EXPORT TracerRealTime
 
   /* --- DISPLAY ------------------------------------------------------------ */
   void display( std::ostream& os ) const;
-  DGTRACERREALTIME_EXPORT friend std::ostream& operator<< ( std::ostream& os,const TracerRealTime& t );
+  DG_TRACERREALTIME_DLLAPI friend std::ostream& operator<<
+    (std::ostream& os, const TracerRealTime& t);
 
   /* --- PARAMS --- */
   virtual void commandLine( const std::string& cmdLine
@@ -121,5 +109,3 @@ class DGTRACERREALTIME_EXPORT TracerRealTime
 
 
 #endif /* #ifndef __TRACER_RT_H__ */
-
-

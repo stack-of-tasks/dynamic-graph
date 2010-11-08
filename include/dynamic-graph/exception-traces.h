@@ -37,7 +37,7 @@ namespace dynamicgraph {
 
 /* \class ExceptionTraces
  */
-class DYNAMICGRAPH_EXPORT ExceptionTraces
+class DYNAMIC_GRAPH_DLLAPI ExceptionTraces
 :public ExceptionAbstract
 
 {

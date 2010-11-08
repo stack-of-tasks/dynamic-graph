@@ -56,7 +56,7 @@ namespace dynamicgraph {
   call methods from entities and display the result of their execution.
   Classes that derive from Entity can customize the command-line by overriding commandLine().
  */
-class DYNAMICGRAPH_EXPORT Entity
+class DYNAMIC_GRAPH_DLLAPI Entity
 : private boost::noncopyable
 {
 
@@ -99,7 +99,7 @@ class DYNAMICGRAPH_EXPORT Entity
   virtual const std::string& getCommandList( void ) const;
 };
 
-DYNAMICGRAPH_EXPORT std::ostream& operator<< (std::ostream& os, const dynamicgraph::Entity& ent );
+DYNAMIC_GRAPH_DLLAPI std::ostream& operator<< (std::ostream& os, const dynamicgraph::Entity& ent );
 
 } // namespace dynamicgraph
 #endif /* #ifndef __ENTITY_HH__ */

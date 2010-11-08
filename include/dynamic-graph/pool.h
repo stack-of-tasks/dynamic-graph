@@ -64,7 +64,7 @@ class Entity;
   It also returns signal.
 
  */
-class DYNAMICGRAPH_EXPORT PoolStorage
+class DYNAMIC_GRAPH_DLLAPI PoolStorage
 {
  public:
   /*! \name Define types to simplify the writing
@@ -131,7 +131,7 @@ class DYNAMICGRAPH_EXPORT PoolStorage
   void writeCompletionList(std::ostream& os);
 };
 
-DYNAMICGRAPH_EXPORT extern dynamicgraph::PoolStorage g_pool;
+DYNAMIC_GRAPH_DLLAPI extern dynamicgraph::PoolStorage g_pool;
 
 }  // namespace dynamicgraph
 

@@ -73,7 +73,7 @@
 
 namespace dynamicgraph {
 
-class DYNAMICGRAPH_EXPORT DebugTrace
+class DYNAMIC_GRAPH_DLLAPI DebugTrace
 {
  public:
     static const int SIZE = 512;
@@ -110,8 +110,8 @@ class DYNAMICGRAPH_EXPORT DebugTrace
 
 };
 
-DYNAMICGRAPH_EXPORT extern DebugTrace dgDEBUGFLOW;
-DYNAMICGRAPH_EXPORT extern DebugTrace dgERRORFLOW;
+DYNAMIC_GRAPH_DLLAPI extern DebugTrace dgDEBUGFLOW;
+DYNAMIC_GRAPH_DLLAPI extern DebugTrace dgERRORFLOW;
 
 } // namespace dynamicgraph
 

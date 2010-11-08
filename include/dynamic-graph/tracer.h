@@ -37,19 +37,7 @@
 #include <dynamic-graph/entity.h>
 #include <dynamic-graph/exception-traces.h>
 
-/* --------------------------------------------------------------------- */
-/* --- API ------------------------------------------------------------- */
-/* --------------------------------------------------------------------- */
-
-#if defined (WIN32)
-#  if defined (tracer_EXPORTS)
-#    define DGTRACER_EXPORT __declspec(dllexport)
-#  else
-#    define DGTRACER_EXPORT __declspec(dllimport)
-#  endif
-#else
-#  define DGTRACER_EXPORT
-#endif
+#include <dynamic-graph/config-tracer.hh>
 
 /* --------------------------------------------------------------------- */
 /* --- TRACER ---------------------------------------------------------- */
@@ -57,8 +45,7 @@
 
 namespace dynamicgraph {
 
-class DGTRACER_EXPORT Tracer
-: public Entity
+class DG_TRACER_DLLAPI Tracer : public Entity
 {
  protected:
   typedef std::list< const SignalBase<int>* > SignalList;
@@ -126,7 +113,8 @@ class DGTRACER_EXPORT Tracer
   SignalTimeDependent<int,int> triger;
 
   /* --- DISPLAY ------------------------------------------------------------ */
-  DGTRACER_EXPORT friend std::ostream& operator<< ( std::ostream& os,const Tracer& t );
+  DG_TRACER_DLLAPI friend std::ostream& operator<<
+    (std::ostream& os,const Tracer& t);
 
   /* --- PARAMS --- */
   void display( std::ostream& os ) const;
@@ -140,5 +128,3 @@ class DGTRACER_EXPORT Tracer
 
 
 #endif /* #ifndef __TRACER_H__ */
-
-
