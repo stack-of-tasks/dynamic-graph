@@ -29,9 +29,6 @@ SET(CUSTOM_HEADER_DIR "${PROJECT_NAME}")
 # Defines paths.
 SET(LIBRARY_OUTPUT_PATH ${PROJECT_BINARY_DIR}/lib)
 
-# Disable -Werror on Unix for now.
-SET(CXX_DISABLE_WERROR True)
-
 SETUP_PROJECT()
 
 # Add configuration headers for plug-ins.
