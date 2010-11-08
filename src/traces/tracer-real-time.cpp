@@ -67,10 +67,10 @@ resize( const unsigned int & size )
 }
 
 bool OutStringStream::
-addData( const char * data, const unsigned int & size )
+addData( const char * data, const std::streamoff& size )
 {
   dgDEBUGIN(15);
-  unsigned int towrite = size;
+  size_t towrite = static_cast<size_t> (size);
   if( index+towrite>bufferSize )
     {
       dgDEBUGOUT(15);

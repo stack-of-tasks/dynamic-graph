@@ -238,7 +238,7 @@ namespace dynamicgraph
       dgDEBUGOUT(15);
     }
 
-    void pushImportPaths (dynamicgraph::Interpreter& interpreter,
+    void pushImportPaths (dynamicgraph::Interpreter&,
 			  const std::string& cmdLine,
 			  std::istringstream& cmdArg,
 			  std::ostream& os)
@@ -256,9 +256,9 @@ namespace dynamicgraph
       importPaths.push_back (path);
     }
 
-    void popImportPaths (dynamicgraph::Interpreter& interpreter,
+    void popImportPaths (dynamicgraph::Interpreter&,
 			 const std::string& cmdLine,
-			 std::istringstream& cmdArg,
+			 std::istringstream&,
 			 std::ostream& os)
     {
       if (cmdLine == "help")

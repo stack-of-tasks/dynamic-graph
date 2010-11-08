@@ -97,8 +97,8 @@ class DYNAMICGRAPH_EXPORT DebugTrace
     inline void traceTemplate( const char* format,...)
 	{ DG_COMMON_TRACES; tmpbuffer.str("");  }
 
-    inline DebugTrace& pre( const std::ostream& dummy ) { return *this; }
-    inline DebugTrace& pre( const std::ostream& dummy,int level )
+    inline DebugTrace& pre( const std::ostream&) { return *this; }
+    inline DebugTrace& pre( const std::ostream&, int level)
 	{ traceLevel = level; return *this; }
 /*     inline DebugTrace& preTemplate( const std::ostream& dummy,int level )  */
 /* 	{ traceLevelTemplate = level; return *this; } */
@@ -142,14 +142,14 @@ inline bool dgTDEBUG_ENABLE( const int & level ) { return level<=VP_TEMPLATE_DEB
 #  define dgDEBUG(level) if( 1 ) ; else std::cout
 #  define dgDEBUGMUTE(level) if( 1 ) ; else std::cout
 #  define dgERROR dgERRORFLOW.outputbuffer << dgPREERROR
-inline void dgDEBUGF( const int level,const char* format,...) { return; }
-inline void dgDEBUGF( const char* format,...) { return; }
-inline void dgERRORF( const int level,const char* format,...) { return; }
-inline void dgERRORF( const char* format,...) { return; }
+inline void dgDEBUGF( const int, const char*,...) { return; }
+inline void dgDEBUGF( const char*, ...) { return; }
+inline void dgERRORF( const int, const char*,...) { return; }
+inline void dgERRORF( const char*, ...) { return; }
 // TEMPLATE
 #  define dgTDEBUG(level) if( 1 ) ; else std::cout
-inline void dgTDEBUGF( const int level,const char* format,...) { return; }
-inline void dgTDEBUGF( const char* format,...) { return; }
+inline void dgTDEBUGF( const int, const char*,...) { return; }
+inline void dgTDEBUGF( const char*,...) { return; }
 #define dgDEBUG_ENABLE(level) false
 #define dgTDEBUG_ENABLE(level) false
 

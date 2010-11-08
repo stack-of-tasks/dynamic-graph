@@ -87,7 +87,7 @@ namespace dynamicgraph {
 template< class T,class Time >
 Signal<T,Time>::
 Signal( std::string name )
-  :__SIGNAL_INIT(name,,NULL,NULL,NULL)
+  :__SIGNAL_INIT(name,T(),NULL,NULL,NULL)
 {
   return;
 }

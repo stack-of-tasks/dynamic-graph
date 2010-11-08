@@ -94,7 +94,7 @@ class DYNAMICGRAPH_EXPORT Entity
 			    std::ostream& os );
 
   virtual SignalBase<int>* test(void) { return 0; }
-  virtual void test2( SignalBase<int>* ptr ) { return ; }
+  virtual void test2( SignalBase<int>* ) { return ; }
 
   virtual const std::string& getCommandList( void ) const;
 };

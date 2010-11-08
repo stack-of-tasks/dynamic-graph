@@ -51,7 +51,7 @@ class SignalBase : public boost::noncopyable
   const bool& getReady( void ) const { return ready; }
   const std::string& getName( void ) const { return name; }
 
-  virtual  void setPeriodTime( const Time& p ) {}
+  virtual  void setPeriodTime( const Time& ) {}
   virtual Time getPeriodTime( void ) const { return 1; }
 
  public:
@@ -65,11 +65,11 @@ class SignalBase : public boost::noncopyable
 
   /* --- DEPENDENCIES ------------------------------------------------------- */
 
-  virtual void addDependency( const SignalBase<Time>& signal ) {}
-  virtual void removeDependency( const SignalBase<Time>& signal ) {}
+  virtual void addDependency( const SignalBase<Time>& ) {}
+  virtual void removeDependency( const SignalBase<Time>& ) {}
   virtual void clearDependencies( void ) {}
 
-  virtual bool needUpdate( const Time& t ) const {return ready;}
+  virtual bool needUpdate( const Time& ) const {return ready;}
   inline void setReady( const bool sready = true ) { ready = sready; }
 
   virtual std::ostream &
@@ -79,9 +79,9 @@ class SignalBase : public boost::noncopyable
       }
 
   virtual std::ostream&
-      displayDependencies( std::ostream& os,const int depth=-1,
+      displayDependencies( std::ostream& os,const int=-1,
 			   std::string space="",
-			   std::string next1="",std::string next2="" ) const
+			   std::string next1="",std::string ="" ) const
       {
 	  os << space << next1 << "-- ";
 	  display(os);   return os;
@@ -115,22 +115,22 @@ class SignalBase : public boost::noncopyable
   /* Generic set function. Should be reimplemented by the specific Signal.
    * Sets a signal value
    */
-  virtual void set( std::istringstream& value )
+  virtual void set( std::istringstream&)
       { DG_THROW ExceptionSignal( ExceptionSignal::SET_IMPOSSIBLE,
 				      "Set operation not possible with this signal. ",
 				      "(while trying to set %s).",this->getName().c_str() );
       }
-  virtual void get( std::ostream& os ) const
+  virtual void get(std::ostream&) const
       { DG_THROW ExceptionSignal( ExceptionSignal::SET_IMPOSSIBLE,
 				      "Get operation not possible with this signal. ",
 				      "(while trying to get %s).",this->getName().c_str() );
       }
-  virtual inline void recompute( const Time & t)
+  virtual inline void recompute( const Time &)
       { DG_THROW ExceptionSignal( ExceptionSignal::SET_IMPOSSIBLE,
 				      "Recompute operation not possible with this signal. ",
 				      "(while trying to recompute %s).",this->getName().c_str() );
       }
-  virtual void trace( std::ostream& os ) const
+  virtual void trace( std::ostream& ) const
       { DG_THROW ExceptionSignal( ExceptionSignal::SET_IMPOSSIBLE,
 				      "Trace operation not possible with this signal. ",
 				      "(while trying to trace %s).",this->getName().c_str() );

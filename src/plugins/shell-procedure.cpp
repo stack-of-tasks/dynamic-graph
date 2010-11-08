@@ -81,7 +81,7 @@ cmdContinueProcedure( const std::string& cmdLine,std::istringstream& args,std::o
 }
 
 void ShellProcedure::
-cmdEndProcedure( const std::string& cmdLine,std::istringstream& args,std::ostream& os )
+cmdEndProcedure( const std::string& cmdLine,std::istringstream&, std::ostream& os )
 {
   if( cmdLine == "help" )
     {
@@ -123,7 +123,7 @@ cmdProcedure(   const std::string& procname,
       if( args.good() )
 	{
 	  std::string argname;
-	  const unsigned int gc = args.tellg();
+	  const std::streamoff gc = args.tellg();
 	  args >> argname;
 	  args.seekg(gc); args.clear();
 	  if( procname==argname )
