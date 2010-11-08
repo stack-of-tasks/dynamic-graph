@@ -1,7 +1,8 @@
 <map id="G" name="G">
-<area shape="rect" href="$exception&#45;factory_8h.html" title="dynamic&#45;graph/exception&#45;factory.h" alt="" coords="131,161,373,188"/>
-<area shape="rect" href="$dynamic&#45;graph&#45;api_8h.html" title="dynamic&#45;graph/dynamic&#45;graph&#45;api.h" alt="" coords="167,316,420,342"/>
-<area shape="rect" href="$signal&#45;base_8h.html" title="dynamic&#45;graph/signal&#45;base.h" alt="" coords="725,84,931,110"/>
-<area shape="rect" href="$exception&#45;abstract_8h.html" title="dynamic&#45;graph/exception&#45;abstract.h" alt="" coords="381,238,635,265"/>
-<area shape="rect" href="$exception&#45;signal_8h.html" title="dynamic&#45;graph/exception&#45;signal.h" alt="" coords="397,161,635,188"/>
+<area shape="rect" href="$exception-factory_8h.html" title="dynamic&#45;graph/exception&#45;factory.h" alt="" coords="125,160,344,189"/>
+<area shape="rect" href="$dynamic-graph-api_8h.html" title="dynamic&#45;graph/dynamic&#45;graph&#45;api.h" alt="" coords="161,315,383,344"/>
+<area shape="rect" href="$signal-base_8h.html" title="dynamic&#45;graph/signal&#45;base.h" alt="" coords="671,83,855,112"/>
+<area shape="rect" href="$exception-abstract_8h.html" title="dynamic&#45;graph/exception&#45;abstract.h" alt="" coords="355,237,579,267"/>
+<area shape="rect" href="$config_8hh.html" title="dynamic&#45;graph/config.hh" alt="" coords="100,392,260,421"/>
+<area shape="rect" href="$exception-signal_8h.html" title="dynamic&#45;graph/exception&#45;signal.h" alt="" coords="368,160,579,189"/>
 </map>

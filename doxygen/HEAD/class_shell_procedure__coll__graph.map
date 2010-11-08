@@ -1,3 +1,6 @@
 <map id="G" name="G">
-<area shape="rect" href="$struct_shell_procedure_1_1_procedure.html" title="ShellProcedure::Procedure" alt="" coords="5,6,195,33"/>
+<area shape="rect" href="$struct_shell_procedure_1_1_procedure.html" title="ShellProcedure::Procedure" alt="" coords="109,469,285,499"/>
+<area shape="rect" href="$struct_shell_procedure_1_1_instruction.html" title="ShellProcedure::Instruction" alt="" coords="17,277,196,307"/>
+<area shape="rect" title="STL class." alt="" coords="300,85,380,115"/>
+<area shape="rect" title="STL class." alt="" coords="257,5,423,35"/>
 </map>

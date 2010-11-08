@@ -1,3 +1,3 @@
 <map id="G" name="G">
-<area shape="rect" href="$classdynamicgraph_1_1_pool_storage.html" title="This class keep tracks of all the objects in the stack of Tasks." alt="" coords="7,5,204,32"/>
+<area shape="rect" href="$classdynamicgraph_1_1_plugin_loader.html" title="Loads plugins from dynamic libraries (usually .so or .dll files)." alt="" coords="5,5,189,35"/>
 </map>

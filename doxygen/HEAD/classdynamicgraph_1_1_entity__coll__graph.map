@@ -1,3 +1,7 @@
 <map id="G" name="G">
-<area shape="rect" href="$classboost_1_1noncopyable.html" title="noncopyable" alt="" coords="32,6,133,33"/>
+<area shape="rect" href="$classboost_1_1noncopyable.html" title="noncopyable" alt="" coords="5,296,99,325"/>
+<area shape="rect" title="STL class." alt="" coords="204,85,284,115"/>
+<area shape="rect" href="$classdynamicgraph_1_1_signal_base.html" title="dynamicgraph::SignalBase\&lt; int \&gt;" alt="" coords="296,181,509,211"/>
+<area shape="rect" title="STL class." alt="" coords="161,5,327,35"/>
+<area shape="rect" href="$classboost_1_1noncopyable.html" title="boost::noncopyable" alt="" coords="336,85,469,115"/>
 </map>

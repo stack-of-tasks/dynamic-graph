@@ -1,7 +1,9 @@
 <map id="G" name="G">
-<area shape="rect" href="$all&#45;signals_8h.html" title="all&#45;signals.h" alt="" coords="19,161,115,188"/>
-<area shape="rect" href="$signal&#45;ptr_8h.html" title="signal&#45;ptr.h" alt="" coords="21,84,112,111"/>
-<area shape="rect" href="$signal&#45;time&#45;dependent_8h.html" title="signal&#45;time&#45;dependent.h" alt="" coords="136,84,315,111"/>
-<area shape="rect" href="$tracer_8h.html" title="tracer.h" alt="" coords="191,161,260,188"/>
-<area shape="rect" href="$tracer&#45;real&#45;time_8h.html" title="tracer&#45;real&#45;time.h" alt="" coords="159,239,292,265"/>
+<area shape="rect" href="$all-signals_8h.html" title="all&#45;signals.h" alt="" coords="205,160,293,189"/>
+<area shape="rect" href="$signal_8t_8cpp.html" title="signal.t.cpp" alt="" coords="124,83,212,112"/>
+<area shape="rect" href="$signal-ptr_8h.html" title="signal&#45;ptr.h" alt="" coords="17,83,100,112"/>
+<area shape="rect" href="$signal-time-dependent_8h.html" title="signal&#45;time&#45;dependent.h" alt="" coords="287,83,444,112"/>
+<area shape="rect" href="$signal-ptr_8t_8cpp.html" title="signal&#45;ptr.t.cpp" alt="" coords="5,160,112,189"/>
+<area shape="rect" href="$tracer_8h.html" title="tracer.h" alt="" coords="333,160,397,189"/>
+<area shape="rect" href="$tracer-real-time_8h.html" title="tracer&#45;real&#45;time.h" alt="" coords="307,237,424,267"/>
 </map>

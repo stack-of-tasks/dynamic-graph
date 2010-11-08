@@ -1,5 +1,6 @@
 <map id="G" name="G">
-<area shape="rect" href="$dynamic&#45;graph&#45;api_8h.html" title="dynamic&#45;graph/dynamic&#45;graph&#45;api.h" alt="" coords="1165,239,1419,265"/>
-<area shape="rect" href="$exception&#45;signal_8h.html" title="dynamic&#45;graph/exception&#45;signal.h" alt="" coords="1003,84,1240,111"/>
-<area shape="rect" href="$exception&#45;abstract_8h.html" title="dynamic&#45;graph/exception&#45;abstract.h" alt="" coords="995,161,1248,188"/>
+<area shape="rect" href="$dynamic-graph-api_8h.html" title="dynamic&#45;graph/dynamic&#45;graph&#45;api.h" alt="" coords="1081,237,1303,267"/>
+<area shape="rect" href="$exception-signal_8h.html" title="dynamic&#45;graph/exception&#45;signal.h" alt="" coords="932,83,1143,112"/>
+<area shape="rect" href="$config_8hh.html" title="dynamic&#45;graph/config.hh" alt="" coords="1020,315,1180,344"/>
+<area shape="rect" href="$exception-abstract_8h.html" title="dynamic&#45;graph/exception&#45;abstract.h" alt="" coords="925,160,1149,189"/>
 </map>
