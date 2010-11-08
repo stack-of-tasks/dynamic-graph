@@ -129,9 +129,9 @@ class SignalPtr
 
  protected: // Interdiction of the rest of the heritage
 
-    virtual void addDependency( const SignalBase<Time>& signal ) {}
-    virtual void removeDependency( const SignalBase<Time>& signal ) {}
-    virtual void clearDependencies( void ) {}
+    virtual void addDependency() {}
+    virtual void removeDependency() {}
+    virtual void clearDependencies() {}
 
 };
 
