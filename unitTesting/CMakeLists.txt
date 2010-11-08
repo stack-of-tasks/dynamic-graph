@@ -28,7 +28,7 @@ SET(test_signalcast_additional_libs ${test_libs})
 
 ADD_DEFINITIONS(-DDEBUG=2)
 
-LINK_DIRECTORIES(../src)
+LINK_DIRECTORIES(${CMAKE_SOURCE_DIR}/src)
 
 # Additional tests
 FOREACH(test_name ${tests_libs})
