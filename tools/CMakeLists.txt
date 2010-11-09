@@ -15,6 +15,8 @@
 
 SET(tools dg-shell)
 
+include_directories(${Boost_INCLUDE_DIRS})
+
 # Configure shell launch script.
 CONFIGURE_FILE(${CMAKE_CURRENT_SOURCE_DIR}/dg-shell-plugin.cmake
 	       ${${PROJECT_NAME}_BINARY_DIR}/tools/dg-shell-plugin)
