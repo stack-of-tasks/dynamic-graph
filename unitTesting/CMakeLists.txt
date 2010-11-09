@@ -13,6 +13,9 @@
 # received a copy of the GNU Lesser General Public License along with
 # dynamic-graph. If not, see <http://www.gnu.org/licenses/>.
 
+# Declare boost include directories
+include_directories(${Boost_INCLUDE_DIRS})
+
 ### tests
 SET(tests_exe
 	test_pool

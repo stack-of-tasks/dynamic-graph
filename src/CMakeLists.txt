@@ -25,6 +25,8 @@ ENDIF (NOT (\"${CMAKE_VERBOSITY_LEVEL}\" STREQUAL \"\"))
 
 # Declare that dynamic-graph shared library is being built.
 ADD_DEFINITIONS(-DBUILDING_DYNAMIC_GRAPH)
+# Declare boost include directories
+include_directories(${Boost_INCLUDE_DIRS})
 
 ADD_LIBRARY(${LIBRARY_NAME}
   SHARED
