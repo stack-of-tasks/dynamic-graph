@@ -23,8 +23,6 @@ IF (NOT (\"${CMAKE_VERBOSITY_LEVEL}\" STREQUAL \"\"))
   ADD_DEFINITIONS(-DVP_DEBUG_MODE=${CMAKE_VERBOSITY_LEVEL} -DVP_DEBUG)
 ENDIF (NOT (\"${CMAKE_VERBOSITY_LEVEL}\" STREQUAL \"\"))
 
-# Declare that dynamic-graph shared library is being built.
-ADD_DEFINITIONS(-DBUILDING_DYNAMIC_GRAPH)
 # Declare boost include directories
 include_directories(${Boost_INCLUDE_DIRS})
 
