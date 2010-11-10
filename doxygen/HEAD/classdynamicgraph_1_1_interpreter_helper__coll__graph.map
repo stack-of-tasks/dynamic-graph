@@ -1,5 +1,5 @@
 <map id="G" name="G">
-<area shape="rect" href="$classdynamicgraph_1_1_plugin_loader.html" title="Loads plugins from dynamic libraries (usually .so or .dll files)." alt="" coords="121,296,305,325"/>
-<area shape="rect" title="STL class." alt="" coords="173,85,253,115"/>
-<area shape="rect" title="STL class." alt="" coords="131,5,296,35"/>
+<area shape="rect" href="$classdynamicgraph_1_1_plugin_loader.html" title="Loads plugins from dynamic libraries (usually .so or .dll files)." alt="" coords="181,292,384,319"/>
+<area shape="rect" title="STL class." alt="" coords="240,87,325,114"/>
+<area shape="rect" title="STL class." alt="" coords="191,7,375,34"/>
 </map>

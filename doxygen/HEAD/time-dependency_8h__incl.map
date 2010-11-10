@@ -1,10 +1,10 @@
 <map id="G" name="G">
-<area shape="rect" href="$signal-base_8h.html" title="dynamic&#45;graph/signal&#45;base.h" alt="" coords="268,160,452,189"/>
-<area shape="rect" href="$signal-array_8h.html" title="dynamic&#45;graph/signal&#45;array.h" alt="" coords="333,83,517,112"/>
-<area shape="rect" href="$time-dependency_8t_8cpp.html" title="dynamic&#45;graph/time&#45;dependency.t.cpp" alt="" coords="541,83,781,112"/>
-<area shape="rect" href="$exception-signal_8h.html" title="dynamic&#45;graph/exception&#45;signal.h" alt="" coords="539,237,749,267"/>
-<area shape="rect" href="$exception-abstract_8h.html" title="dynamic&#45;graph/exception&#45;abstract.h" alt="" coords="445,315,669,344"/>
-<area shape="rect" href="$dynamic-graph-api_8h.html" title="dynamic&#45;graph/dynamic&#45;graph&#45;api.h" alt="" coords="645,392,867,421"/>
-<area shape="rect" href="$config_8hh.html" title="dynamic&#45;graph/config.hh" alt="" coords="584,469,744,499"/>
-<area shape="rect" href="$debug_8h.html" title="dynamic&#45;graph/debug.h" alt="" coords="709,160,864,189"/>
+<area shape="rect" href="$signal&#45;base_8h.html" title="dynamic&#45;graph/signal&#45;base.h" alt="" coords="276,161,481,188"/>
+<area shape="rect" href="$signal&#45;array_8h.html" title="dynamic&#45;graph/signal&#45;array.h" alt="" coords="347,84,552,111"/>
+<area shape="rect" href="$time&#45;dependency_8t_8cpp.html" title="dynamic&#45;graph/time&#45;dependency.t.cpp" alt="" coords="576,84,843,111"/>
+<area shape="rect" href="$exception&#45;signal_8h.html" title="dynamic&#45;graph/exception&#45;signal.h" alt="" coords="565,239,803,265"/>
+<area shape="rect" href="$exception&#45;abstract_8h.html" title="dynamic&#45;graph/exception&#45;abstract.h" alt="" coords="468,316,721,343"/>
+<area shape="rect" href="$dynamic&#45;graph&#45;api_8h.html" title="dynamic&#45;graph/dynamic&#45;graph&#45;api.h" alt="" coords="683,393,936,420"/>
+<area shape="rect" href="$config_8hh.html" title="dynamic&#45;graph/config.hh" alt="" coords="619,471,797,497"/>
+<area shape="rect" href="$debug_8h.html" title="dynamic&#45;graph/debug.h" alt="" coords="753,161,927,188"/>
 </map>

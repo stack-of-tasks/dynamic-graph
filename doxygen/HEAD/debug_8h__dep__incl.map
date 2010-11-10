@@ -1,12 +1,12 @@
 <map id="G" name="G">
-<area shape="rect" href="$signal_8t_8cpp.html" title="signal.t.cpp" alt="" coords="100,83,188,112"/>
-<area shape="rect" href="$signal-ptr_8t_8cpp.html" title="signal&#45;ptr.t.cpp" alt="" coords="5,315,112,344"/>
-<area shape="rect" href="$time-dependency_8t_8cpp.html" title="time&#45;dependency.t.cpp" alt="" coords="212,83,364,112"/>
-<area shape="rect" href="$signal_8h.html" title="signal.h" alt="" coords="111,160,177,189"/>
-<area shape="rect" href="$all-signals_8h.html" title="all&#45;signals.h" alt="" coords="136,315,224,344"/>
-<area shape="rect" href="$signal-ptr_8h.html" title="signal&#45;ptr.h" alt="" coords="39,237,121,267"/>
-<area shape="rect" href="$signal-time-dependent_8h.html" title="signal&#45;time&#45;dependent.h" alt="" coords="196,237,353,267"/>
-<area shape="rect" href="$tracer_8h.html" title="tracer.h" alt="" coords="300,315,364,344"/>
-<area shape="rect" href="$tracer-real-time_8h.html" title="tracer&#45;real&#45;time.h" alt="" coords="273,392,391,421"/>
-<area shape="rect" href="$time-dependency_8h.html" title="time&#45;dependency.h" alt="" coords="223,160,353,189"/>
+<area shape="rect" href="$signal_8t_8cpp.html" title="signal.t.cpp" alt="" coords="108,84,201,111"/>
+<area shape="rect" href="$signal&#45;ptr_8t_8cpp.html" title="signal&#45;ptr.t.cpp" alt="" coords="5,316,120,343"/>
+<area shape="rect" href="$time&#45;dependency_8t_8cpp.html" title="time&#45;dependency.t.cpp" alt="" coords="225,84,393,111"/>
+<area shape="rect" href="$signal_8h.html" title="signal.h" alt="" coords="120,162,189,188"/>
+<area shape="rect" href="$all&#45;signals_8h.html" title="all&#45;signals.h" alt="" coords="144,316,240,343"/>
+<area shape="rect" href="$signal&#45;ptr_8h.html" title="signal&#45;ptr.h" alt="" coords="41,239,132,266"/>
+<area shape="rect" href="$signal&#45;time&#45;dependent_8h.html" title="signal&#45;time&#45;dependent.h" alt="" coords="207,239,385,266"/>
+<area shape="rect" href="$tracer_8h.html" title="tracer.h" alt="" coords="324,316,393,343"/>
+<area shape="rect" href="$tracer&#45;real&#45;time_8h.html" title="tracer&#45;real&#45;time.h" alt="" coords="292,394,425,420"/>
+<area shape="rect" href="$time&#45;dependency_8h.html" title="time&#45;dependency.h" alt="" coords="237,162,381,188"/>
 </map>

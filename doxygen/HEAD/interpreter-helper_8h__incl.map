@@ -1,10 +1,10 @@
 <map id="G" name="G">
-<area shape="rect" href="$signal-base_8h.html" title="dynamic&#45;graph/signal&#45;base.h" alt="" coords="185,160,369,189"/>
-<area shape="rect" href="$dynamic-graph-api_8h.html" title="dynamic&#45;graph/dynamic&#45;graph&#45;api.h" alt="" coords="717,392,939,421"/>
-<area shape="rect" href="$exception-factory_8h.html" title="dynamic&#45;graph/exception&#45;factory.h" alt="" coords="528,160,747,189"/>
-<area shape="rect" href="$pool_8h.html" title="dynamic&#45;graph/pool.h" alt="" coords="419,83,563,112"/>
-<area shape="rect" href="$plugin-loader_8h.html" title="dynamic&#45;graph/plugin&#45;loader.h" alt="" coords="741,83,933,112"/>
-<area shape="rect" href="$exception-signal_8h.html" title="dynamic&#45;graph/exception&#45;signal.h" alt="" coords="444,237,655,267"/>
-<area shape="rect" href="$exception-abstract_8h.html" title="dynamic&#45;graph/exception&#45;abstract.h" alt="" coords="440,315,664,344"/>
-<area shape="rect" href="$config_8hh.html" title="dynamic&#45;graph/config.hh" alt="" coords="656,469,816,499"/>
+<area shape="rect" href="$signal&#45;base_8h.html" title="dynamic&#45;graph/signal&#45;base.h" alt="" coords="189,161,395,188"/>
+<area shape="rect" href="$dynamic&#45;graph&#45;api_8h.html" title="dynamic&#45;graph/dynamic&#45;graph&#45;api.h" alt="" coords="756,393,1009,420"/>
+<area shape="rect" href="$exception&#45;factory_8h.html" title="dynamic&#45;graph/exception&#45;factory.h" alt="" coords="553,161,796,188"/>
+<area shape="rect" href="$pool_8h.html" title="dynamic&#45;graph/pool.h" alt="" coords="436,84,596,111"/>
+<area shape="rect" href="$plugin&#45;loader_8h.html" title="dynamic&#45;graph/plugin&#45;loader.h" alt="" coords="781,84,997,111"/>
+<area shape="rect" href="$exception&#45;signal_8h.html" title="dynamic&#45;graph/exception&#45;signal.h" alt="" coords="469,239,707,265"/>
+<area shape="rect" href="$exception&#45;abstract_8h.html" title="dynamic&#45;graph/exception&#45;abstract.h" alt="" coords="465,316,719,343"/>
+<area shape="rect" href="$config_8hh.html" title="dynamic&#45;graph/config.hh" alt="" coords="692,471,871,497"/>
 </map>
