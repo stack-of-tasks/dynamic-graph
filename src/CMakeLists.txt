@@ -47,6 +47,9 @@ ADD_LIBRARY(${LIBRARY_NAME}
 
   signal/signal-array.cpp
   signal/signal-caster.cpp
+
+  command/value.cpp
+  command/command.cpp
   )
 
 SET_TARGET_PROPERTIES(${LIBRARY_NAME} PROPERTIES SOVERSION ${PROJECT_VERSION})
