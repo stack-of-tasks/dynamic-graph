@@ -44,7 +44,7 @@ namespace dynamicgraph {
   // Forward declaration
   namespace command {
     class Command;
-  };
+  }
 
 /* --------------------------------------------------------------------- */
 /* --- CLASS ----------------------------------------------------------- */

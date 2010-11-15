@@ -76,6 +76,7 @@ namespace dynamicgraph {
       case STRING:
 	delete (std::string*)value_;
 	break;
+      default:;
       }
     }
 
@@ -152,7 +153,7 @@ namespace dynamicgraph {
       return type_;
     }
 
-    const bool Value::boolValue () const
+    bool Value::boolValue () const
     {
       if (type_ == BOOL)
 	return *((bool*)value_);
@@ -160,7 +161,7 @@ namespace dynamicgraph {
 			      "value is not an bool");
     }
 
-    const unsigned Value::unsignedValue () const
+    unsigned Value::unsignedValue () const
     {
       if (type_ == UNSIGNED)
 	return *((unsigned*)value_);
@@ -168,7 +169,7 @@ namespace dynamicgraph {
 			      "value is not an unsigned int");
     }
 
-    const int Value::intValue () const
+    int Value::intValue () const
     {
       if (type_ == INT)
 	return *((int*)value_);
@@ -176,7 +177,7 @@ namespace dynamicgraph {
 			      "value is not an int int");
     }
 
-    const float Value::floatValue () const
+    float Value::floatValue () const
     {
       float result;
       if (type_ == FLOAT)
@@ -186,7 +187,7 @@ namespace dynamicgraph {
 			      "value is not a float");
     }
 
-    const double Value::doubleValue () const
+    double Value::doubleValue () const
     {
       double result;
       if (type_ == DOUBLE)
@@ -196,7 +197,7 @@ namespace dynamicgraph {
 			      "value is not a double");
     }
 
-    const std::string Value::stringValue () const
+    std::string Value::stringValue () const
     {
       if (type_ == STRING)
 	return *((std::string*)value_);
@@ -219,8 +220,9 @@ namespace dynamicgraph {
 	return std::string("double");
       case STRING:
 	return std::string("string");
+      default:
+	return std::string("unknown");
       }
-      return std::string("unknown");
     }
 
     std::ostream& operator<<(std::ostream& os, const Value& value)
@@ -246,6 +248,8 @@ namespace dynamicgraph {
       case Value::STRING:
 	os << value.stringValue();
 	break;
+      default:
+	return os;
       }
       return os;
     }

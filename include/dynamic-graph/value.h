@@ -41,7 +41,7 @@ namespace dynamicgraph {
       const Value* value_;
     };
 
-    class DYNAMICGRAPH_EXPORT Value {
+    class DYNAMIC_GRAPH_DLLEXPORT Value {
     public:
       enum Type {
 	NONE,
@@ -86,12 +86,12 @@ namespace dynamicgraph {
       friend std::ostream& operator<<(std::ostream& os, const Value& value);
     private:
       friend class EitherType;
-      const bool boolValue() const;
-      const unsigned unsignedValue() const;
-      const int intValue() const;
-      const float floatValue() const;
-      const double doubleValue() const;
-      const std::string stringValue() const;
+      bool boolValue() const;
+      unsigned unsignedValue() const;
+      int intValue() const;
+      float floatValue() const;
+      double doubleValue() const;
+      std::string stringValue() const;
       Type type_;
       const void* value_;
     };

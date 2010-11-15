@@ -36,7 +36,6 @@ namespace dynamicgraph {
 
     void Command::setParameterValues(const std::vector<Value>& values)
     {
-      unsigned int size = values.size();
       const std::vector<Value::Type>& paramTypes = valueTypes();
       // Check that number of parameters is correct
       if (values.size() != paramTypes.size()) {

@@ -40,7 +40,7 @@ namespace dynamicgraph {
     /// Parameters are set by calling Command::setParameterValues with a
     /// vector of Values the types of which should fit the vector specified
     /// at construction.
-    class DYNAMICGRAPH_EXPORT Command
+    class DYNAMIC_GRAPH_DLLEXPORT Command
     {
     public:
       virtual ~Command();

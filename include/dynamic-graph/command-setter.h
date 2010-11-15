@@ -53,7 +53,7 @@ namespace dynamicgraph {
     /// \li prototype of E::setParameter should be exactly as specified in this
     /// example.
     template <class E, typename T>
-    class Setter : public Command {
+    class DYNAMIC_GRAPH_DLLEXPORT Setter : public Command {
     public:
       /// Pointer to method that sets paramter of type T
       typedef void (E::*SetterMethod) (const T&);
