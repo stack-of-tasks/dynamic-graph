@@ -20,7 +20,6 @@ INCLUDE(cmake/boost.cmake)
 INCLUDE(cmake/pthread.cmake)
 
 SET(PROJECT_NAME dynamic-graph)
-SET(PROJECT_VERSION 1.0.0.99)
 SET(PROJECT_DESCRIPTION "Dynamic graph library")
 SET(PROJECT_URL "http://github.com/jrl-umi3218/dynamic-graph")
 
