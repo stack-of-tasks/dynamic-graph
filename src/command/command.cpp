@@ -54,11 +54,6 @@ namespace dynamicgraph {
       }
       // Copy vector of values in private part
       valueVector_ = values;
-      std::cout << "Command::SetParameterValues" << std::endl;
-      for (unsigned int i=0; i<valueVector_.size(); i++) {
-	std::cout << ", value[" << i << "]=(" << valueVector_[i]
-		  << ")" << std::endl;
-      }
     }
 
     const std::vector<Value> Command::getParameterValues() const
