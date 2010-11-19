@@ -15,6 +15,7 @@
 // have received a copy of the GNU Lesser General Public License along
 // with dynamic-graph.  If not, see <http://www.gnu.org/licenses/>.
 
+#include <boost/numeric/ublas/io.hpp>
 #include "dynamic-graph/value.h"
 #include "dynamic-graph/exception-abstract.h"
 
@@ -54,6 +55,14 @@ namespace dynamicgraph {
     {
       return value_->stringValue();
     }
+    EitherType::operator Vector () const
+    {
+      return value_->vectorValue();
+    }
+    EitherType::operator Matrix () const
+    {
+      return value_->matrixValue();
+    }
 
     Value::~Value()
     {
@@ -75,6 +84,12 @@ namespace dynamicgraph {
 	break;
       case STRING:
 	delete (std::string*)value_;
+	break;
+      case VECTOR:
+	delete (Vector*)value_;
+	break;
+      case MATRIX:
+	delete (Matrix*)value_;
 	break;
       default:;
       }
@@ -110,6 +125,16 @@ namespace dynamicgraph {
       value_ = new std::string(value);
       type_ = STRING;
     }
+    Value::Value(const Vector& value)
+    {
+      value_ = new Vector(value);
+      type_ = VECTOR;
+    }
+    Value::Value(const Matrix& value)
+    {
+      value_ = new Matrix(value);
+      type_ = MATRIX;
+    }
 
 
     Value::Value(const Value& value) : type_(value.type_)
@@ -132,6 +157,12 @@ namespace dynamicgraph {
 	break;
       case STRING:
 	value_ = new std::string(value.stringValue());
+	break;
+      case VECTOR:
+	value_ = new Vector(value.vectorValue());
+	break;
+      case MATRIX:
+	value_ = new Matrix(value.matrixValue());
 	break;
       default:
 	type_ = NONE;
@@ -205,6 +236,22 @@ namespace dynamicgraph {
 			      "value is not an string");
     }
 
+    Vector Value::vectorValue () const
+    {
+      if (type_ == VECTOR)
+	return *((Vector*)value_);
+      throw ExceptionAbstract(ExceptionAbstract::TOOLS,
+			      "value is not an vector");
+    }
+
+    Matrix Value::matrixValue () const
+    {
+      if (type_ == MATRIX)
+	return *((Matrix*)value_);
+      throw ExceptionAbstract(ExceptionAbstract::TOOLS,
+			      "value is not a matrix");
+    }
+
     std::string Value::typeName(Type type)
     {
       switch (type) {
@@ -220,6 +267,10 @@ namespace dynamicgraph {
 	return std::string("double");
       case STRING:
 	return std::string("string");
+      case VECTOR:
+	return std::string("vector");
+      case MATRIX:
+	return std::string("matrix");
       default:
 	return std::string("unknown");
       }
@@ -247,6 +298,12 @@ namespace dynamicgraph {
 	break;
       case Value::STRING:
 	os << value.stringValue();
+	break;
+      case Value::VECTOR:
+	os << value.vectorValue();
+	break;
+      case Value::MATRIX:
+	os << value.matrixValue();
 	break;
       default:
 	return os;

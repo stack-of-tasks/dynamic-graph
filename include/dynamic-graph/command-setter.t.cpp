@@ -20,6 +20,7 @@
 
 #include <sstream>
 #include <boost/assign/list_of.hpp>
+#include "dynamic-graph/linear-algebra.h"
 
 namespace dynamicgraph {
   class Entity;
@@ -236,6 +237,78 @@ namespace dynamicgraph {
       const std::vector<Value>& values = getParameterValues();
       // Get parameter
       std::string value = values[0].value();
+      E& entity = static_cast<E&>(owner());
+      (entity.*setterMethod_)(value);
+      return Value();
+    }
+
+    // 
+    // Template specialization: Vector
+    //
+    template <class E>
+    class Setter<E, Vector> : public Command {
+    public:
+      /// Pointer to method that sets paramter of type Vector
+      typedef void (E::*SetterMethod) (const Vector&);
+      /// Constructor
+      Setter(E& entity, SetterMethod);
+
+    protected:
+      virtual Value doExecute();
+
+    private:
+      SetterMethod setterMethod_;
+    }; // Class Setter
+
+    template <class E>
+    Setter<E, Vector>::Setter(E& entity, SetterMethod setterMethod) :
+      Command(entity, boost::assign::list_of(Value::VECTOR)),
+      setterMethod_(setterMethod)
+    {
+    }
+
+    template <class E>
+    Value Setter<E, Vector>::doExecute()
+    {
+      const std::vector<Value>& values = getParameterValues();
+      // Get parameter
+      Vector value = values[0].value();
+      E& entity = static_cast<E&>(owner());
+      (entity.*setterMethod_)(value);
+      return Value();
+    }
+
+    // 
+    // Template specialization: Matrix
+    //
+    template <class E>
+    class Setter<E, Matrix> : public Command {
+    public:
+      /// Pointer to method that sets paramter of type Matrix
+      typedef void (E::*SetterMethod) (const Matrix&);
+      /// Constructor
+      Setter(E& entity, SetterMethod);
+
+    protected:
+      virtual Value doExecute();
+
+    private:
+      SetterMethod setterMethod_;
+    }; // Class Setter
+
+    template <class E>
+    Setter<E, Matrix>::Setter(E& entity, SetterMethod setterMethod) :
+      Command(entity, boost::assign::list_of(Value::MATRIX)),
+      setterMethod_(setterMethod)
+    {
+    }
+
+    template <class E>
+    Value Setter<E, Matrix>::doExecute()
+    {
+      const std::vector<Value>& values = getParameterValues();
+      // Get parameter
+      Matrix value = values[0].value();
       E& entity = static_cast<E&>(owner());
       (entity.*setterMethod_)(value);
       return Value();

@@ -67,6 +67,7 @@ tracer.h
 tracer-real-time.h
 
 command.h
+linear-algebra.h
 value.h
 command-setter.h
 command-setter.t.cpp

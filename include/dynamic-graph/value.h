@@ -23,6 +23,7 @@
 #include <cassert>
 #include <typeinfo>
 #include "dynamic-graph/dynamic-graph-api.h"
+#include "dynamic-graph/linear-algebra.h"
 
 namespace dynamicgraph {
   namespace command {
@@ -37,6 +38,8 @@ namespace dynamicgraph {
       operator float () const;
       operator double () const;
       operator std::string () const;
+      operator Vector () const;
+      operator Matrix () const;
     private:
       const Value* value_;
     };
@@ -51,19 +54,23 @@ namespace dynamicgraph {
 	FLOAT,
 	DOUBLE,
 	STRING,
+	VECTOR,
+	MATRIX,
 	NB_TYPES
       };
       ~Value();
-      Value(const bool& value);
-      Value(const unsigned& value);
-      Value(const int& value);
-      Value(const float& value);
-      Value(const double& value);
-      Value(const std::string& value);
+      explicit Value(const bool& value);
+      explicit Value(const unsigned& value);
+      explicit Value(const int& value);
+      explicit Value(const float& value);
+      explicit Value(const double& value);
+      explicit Value(const std::string& value);
+      explicit Value(const Vector& value);
+      explicit Value(const Matrix& value);
       /// Copy constructor
       Value(const Value& value);
       // Construct an empty value (None)
-      Value();
+      explicit Value();
       /// Return the type of the value
       Type type() const;
 
@@ -92,6 +99,8 @@ namespace dynamicgraph {
       float floatValue() const;
       double doubleValue() const;
       std::string stringValue() const;
+      Vector vectorValue() const;
+      Matrix matrixValue() const;
       Type type_;
       const void* value_;
     };
