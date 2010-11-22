@@ -69,91 +69,65 @@ namespace dynamicgraph {
 
     Value::~Value()
     {
-      std::cout << "Deleting Value at " << this ;
       switch(type_) {
       case BOOL:
-	std::cout << " type bool at " << value_;
 	delete(bool*)value_;
 	break;
       case UNSIGNED:
 	delete(unsigned*)value_;
-	std::cout << " type unsigned at " << value_;
 	break;
       case INT:
 	delete(int*)value_;
-	std::cout << " type int at " << value_;
 	break;
       case FLOAT:
 	delete(float*)value_;
-	std::cout << " type float at " << value_;
 	break;
       case DOUBLE:
 	delete(double*)value_;
-	std::cout << " type double at " << value_;
 	break;
       case STRING:
 	delete(std::string*)value_;
-	std::cout << " type std::string at " << value_;
 	break;
       case VECTOR:
 	delete(Vector*)value_;
-	std::cout << " type vector at " << value_;
 	break;
       case MATRIX:
 	delete(Matrix*)value_;
-	std::cout << " type matrix at " << value_;
 	break;
       default:;
       }
-      std::cout << std::endl;
     }
 
     Value::Value(const bool& value) : type_(BOOL), value_(new bool(value))
     {
-      std::cout << "New Value bool at " << this 
-		<< " pointing at " << value_ << std::endl;
     }
     Value::Value(const unsigned& value) : type_(UNSIGNED),
 					  value_(new unsigned(value))
     {
-      std::cout << "New Value unsigned at " 
-		<< " pointing at " << value_ << this << std::endl;
     }
     Value::Value(const int& value) : type_(INT),
 				     value_(new int(value))
     {
-      std::cout << "New Value int at " << this 
-		<< " pointing at " << value_ << std::endl;
     }
     Value::Value(const float& value) : type_(FLOAT),
 				       value_(new float(value))
     {
-      std::cout << "New Value float at " << this 
-		<< " pointing at " << value_ << std::endl;
     }
     Value::Value(const double& value) : type_(DOUBLE),
 					value_(new double(value))
     {
-      std::cout << "New Value double at " << this 
-		<< " pointing at " << value_ << std::endl;
     }
     Value::Value(const std::string& value) : type_(STRING),
 					     value_(new std::string(value))
     {
-      std::cout << "New Value string at " << this 
-		<< " pointing at " << value_ << std::endl;
     }
     Value::Value(const Vector& value) : type_(VECTOR),
 					value_(new Vector(value))
     {
-      std::cout << "New Value Vector at " << this << " pointing at "
-		<< value_ << std::endl;
     }
     Value::Value(const Matrix& value) : type_(MATRIX),
 					value_(new Matrix(value))
     {
-      std::cout << "New Value Matrix at " << this 
-		<< " pointing at " << value_ << std::endl;
     }
 
 
@@ -165,51 +139,32 @@ namespace dynamicgraph {
     void* copyValue(const Value& value)
     {
       void* copy;
-      std::cout << "copy: ";
       switch(value.type()) {
       case Value::NONE:
 	copy = NULL;
-	std::cout << "New Value None at " << copy 
-		  << " pointing at " << copy << std::endl;
       case Value::BOOL:
 	copy = new bool(value.boolValue());
-	std::cout << "New Value bool at " << copy 
-		  << " pointing at " << copy << std::endl;
 	break;
       case Value::UNSIGNED:
 	copy = new unsigned(value.unsignedValue());
-	std::cout << "New Value unsigned at " << copy 
-		  << " pointing at " << copy << std::endl;
 	break;
       case Value::INT:
 	copy = new int(value.intValue());
-	std::cout << "New Value int at " << copy 
-		  <<" pointing at " << copy << std::endl;
 	break;
       case Value::FLOAT:
 	copy = new float(value.floatValue());
-	std::cout << "New Value float at " << copy 
-		  << " pointing at " << copy << std::endl;
 	break;
       case Value::DOUBLE:
 	copy = new double(value.doubleValue());
-	std::cout << "New Value double at " << copy 
-		  << " pointing at " << copy << std::endl;
 	break;
       case Value::STRING:
 	copy = new std::string(value.stringValue());
-	std::cout << "New Value string at " << copy 
-		  << " pointing at " << copy << std::endl;
 	break;
       case Value::VECTOR:
 	copy = new Vector(value.vectorValue());
-	std::cout << "New Value vector at " << copy 
-		  << " pointing at " << copy << std::endl;
 	break;
       case Value::MATRIX:
 	copy = new Matrix(value.matrixValue());
-	std::cout << "New Value matrix at " << copy 
-		  << " pointing at " << copy << std::endl;
 	break;
       default:
 	abort();
@@ -219,8 +174,6 @@ namespace dynamicgraph {
 
     Value::Value() : type_(NONE), value_(NULL)
     {
-      std::cout << "New Value none at " << this 
-		<< " pointing at " << value_ << std::endl;
     }
 
     Value Value::operator=(const Value& value)
