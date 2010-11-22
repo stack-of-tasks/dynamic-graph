@@ -71,6 +71,8 @@ namespace dynamicgraph {
       Value(const Value& value);
       // Construct an empty value (None)
       explicit Value();
+      // operator assignement
+      Value operator=(const Value& value);
       /// Return the type of the value
       Type type() const;
 
@@ -91,7 +93,7 @@ namespace dynamicgraph {
 
       /// Output in a stream
       friend std::ostream& operator<<(std::ostream& os, const Value& value);
-    private:
+    public:
       friend class EitherType;
       bool boolValue() const;
       unsigned unsignedValue() const;
@@ -102,7 +104,7 @@ namespace dynamicgraph {
       Vector vectorValue() const;
       Matrix matrixValue() const;
       Type type_;
-      const void* value_;
+      const void* const value_;
     };
 } // namespace command
 } //namespace dynamicgraph

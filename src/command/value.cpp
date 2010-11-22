@@ -22,6 +22,8 @@
 namespace dynamicgraph {
   namespace command {
 
+    static void* copyValue(const Value& value);
+
     EitherType::EitherType(const Value& value) : value_(new Value(value))
     {
     }
@@ -29,149 +31,201 @@ namespace dynamicgraph {
     EitherType::~EitherType()
     {
       delete value_;
+      value_ = NULL;
     }
 
-    EitherType::operator bool () const
+    EitherType::operator bool() const
     {
       return value_->boolValue();
     }
-    EitherType::operator unsigned () const
+    EitherType::operator unsigned() const
     {
       return value_->unsignedValue();
     }
-    EitherType::operator int () const
+    EitherType::operator int() const
     {
       return value_->intValue();
     }
-    EitherType::operator float () const
+    EitherType::operator float() const
     {
       return value_->floatValue();
     }
-    EitherType::operator double () const
+    EitherType::operator double() const
     {
       return value_->doubleValue();
     }
-    EitherType::operator std::string () const
+    EitherType::operator std::string() const
     {
       return value_->stringValue();
     }
-    EitherType::operator Vector () const
+    EitherType::operator Vector() const
     {
       return value_->vectorValue();
     }
-    EitherType::operator Matrix () const
+    EitherType::operator Matrix() const
     {
       return value_->matrixValue();
     }
 
     Value::~Value()
     {
+      std::cout << "Deleting Value at " << this ;
       switch(type_) {
       case BOOL:
-	delete (bool*)value_;
+	std::cout << " type bool at " << value_;
+	delete(bool*)value_;
 	break;
       case UNSIGNED:
-	delete (unsigned*)value_;
+	delete(unsigned*)value_;
+	std::cout << " type unsigned at " << value_;
 	break;
       case INT:
-	delete (int*)value_;
+	delete(int*)value_;
+	std::cout << " type int at " << value_;
 	break;
       case FLOAT:
-	delete (float*)value_;
+	delete(float*)value_;
+	std::cout << " type float at " << value_;
 	break;
       case DOUBLE:
-	delete (double*)value_;
+	delete(double*)value_;
+	std::cout << " type double at " << value_;
 	break;
       case STRING:
-	delete (std::string*)value_;
+	delete(std::string*)value_;
+	std::cout << " type std::string at " << value_;
 	break;
       case VECTOR:
-	delete (Vector*)value_;
+	delete(Vector*)value_;
+	std::cout << " type vector at " << value_;
 	break;
       case MATRIX:
-	delete (Matrix*)value_;
+	delete(Matrix*)value_;
+	std::cout << " type matrix at " << value_;
 	break;
       default:;
       }
+      std::cout << std::endl;
     }
 
-    Value::Value(const bool& value)
+    Value::Value(const bool& value) : type_(BOOL), value_(new bool(value))
     {
-      value_ = new bool(value);
-      type_ = BOOL;
+      std::cout << "New Value bool at " << this 
+		<< " pointing at " << value_ << std::endl;
     }
-    Value::Value(const unsigned& value)
+    Value::Value(const unsigned& value) : type_(UNSIGNED),
+					  value_(new unsigned(value))
     {
-      value_ = new unsigned(value);
-      type_ = UNSIGNED;
+      std::cout << "New Value unsigned at " 
+		<< " pointing at " << value_ << this << std::endl;
     }
-    Value::Value(const int& value)
+    Value::Value(const int& value) : type_(INT),
+				     value_(new int(value))
     {
-      value_ = new int(value);
-      type_ = INT;
+      std::cout << "New Value int at " << this 
+		<< " pointing at " << value_ << std::endl;
     }
-    Value::Value(const float& value)
+    Value::Value(const float& value) : type_(FLOAT),
+				       value_(new float(value))
     {
-      value_ = new float(value);
-      type_ = FLOAT;
+      std::cout << "New Value float at " << this 
+		<< " pointing at " << value_ << std::endl;
     }
-    Value::Value(const double& value)
+    Value::Value(const double& value) : type_(DOUBLE),
+					value_(new double(value))
     {
-      value_ = new double(value);
-      type_ = DOUBLE;
+      std::cout << "New Value double at " << this 
+		<< " pointing at " << value_ << std::endl;
     }
-    Value::Value(const std::string& value)
+    Value::Value(const std::string& value) : type_(STRING),
+					     value_(new std::string(value))
     {
-      value_ = new std::string(value);
-      type_ = STRING;
+      std::cout << "New Value string at " << this 
+		<< " pointing at " << value_ << std::endl;
     }
-    Value::Value(const Vector& value)
+    Value::Value(const Vector& value) : type_(VECTOR),
+					value_(new Vector(value))
     {
-      value_ = new Vector(value);
-      type_ = VECTOR;
+      std::cout << "New Value Vector at " << this << " pointing at "
+		<< value_ << std::endl;
     }
-    Value::Value(const Matrix& value)
+    Value::Value(const Matrix& value) : type_(MATRIX),
+					value_(new Matrix(value))
     {
-      value_ = new Matrix(value);
-      type_ = MATRIX;
+      std::cout << "New Value Matrix at " << this 
+		<< " pointing at " << value_ << std::endl;
     }
 
 
-    Value::Value(const Value& value) : type_(value.type_)
+    Value::Value(const Value& value) : type_(value.type_),
+				       value_(copyValue(value))
     {
-      switch(value.type_) {
-      case BOOL:
-	value_ = new bool(value.boolValue());
+    }
+
+    void* copyValue(const Value& value)
+    {
+      void* copy;
+      std::cout << "copy: ";
+      switch(value.type()) {
+      case Value::NONE:
+	copy = NULL;
+	std::cout << "New Value None at " << copy 
+		  << " pointing at " << copy << std::endl;
+      case Value::BOOL:
+	copy = new bool(value.boolValue());
+	std::cout << "New Value bool at " << copy 
+		  << " pointing at " << copy << std::endl;
 	break;
-      case UNSIGNED:
-	value_ = new unsigned(value.unsignedValue());
+      case Value::UNSIGNED:
+	copy = new unsigned(value.unsignedValue());
+	std::cout << "New Value unsigned at " << copy 
+		  << " pointing at " << copy << std::endl;
 	break;
-      case INT:
-	value_ = new int(value.intValue());
+      case Value::INT:
+	copy = new int(value.intValue());
+	std::cout << "New Value int at " << copy 
+		  <<" pointing at " << copy << std::endl;
 	break;
-      case FLOAT:
-	value_ = new float(value.floatValue());
+      case Value::FLOAT:
+	copy = new float(value.floatValue());
+	std::cout << "New Value float at " << copy 
+		  << " pointing at " << copy << std::endl;
 	break;
-      case DOUBLE:
-	value_ = new double(value.doubleValue());
+      case Value::DOUBLE:
+	copy = new double(value.doubleValue());
+	std::cout << "New Value double at " << copy 
+		  << " pointing at " << copy << std::endl;
 	break;
-      case STRING:
-	value_ = new std::string(value.stringValue());
+      case Value::STRING:
+	copy = new std::string(value.stringValue());
+	std::cout << "New Value string at " << copy 
+		  << " pointing at " << copy << std::endl;
 	break;
-      case VECTOR:
-	value_ = new Vector(value.vectorValue());
+      case Value::VECTOR:
+	copy = new Vector(value.vectorValue());
+	std::cout << "New Value vector at " << copy 
+		  << " pointing at " << copy << std::endl;
 	break;
-      case MATRIX:
-	value_ = new Matrix(value.matrixValue());
+      case Value::MATRIX:
+	copy = new Matrix(value.matrixValue());
+	std::cout << "New Value matrix at " << copy 
+		  << " pointing at " << copy << std::endl;
 	break;
       default:
-	type_ = NONE;
-	value_ = NULL;
+	abort();
       }
+      return copy;
     }
 
     Value::Value() : type_(NONE), value_(NULL)
     {
+      std::cout << "New Value none at " << this 
+		<< " pointing at " << value_ << std::endl;
+    }
+
+    Value Value::operator=(const Value& value)
+    {
+      return Value (value);
     }
 
     const EitherType Value::value() const
@@ -184,69 +238,69 @@ namespace dynamicgraph {
       return type_;
     }
 
-    bool Value::boolValue () const
+    bool Value::boolValue() const
     {
-      if (type_ == BOOL)
+      if(type_ == BOOL)
 	return *((bool*)value_);
       throw ExceptionAbstract(ExceptionAbstract::TOOLS,
 			      "value is not an bool");
     }
 
-    unsigned Value::unsignedValue () const
+    unsigned Value::unsignedValue() const
     {
-      if (type_ == UNSIGNED)
+      if(type_ == UNSIGNED)
 	return *((unsigned*)value_);
       throw ExceptionAbstract(ExceptionAbstract::TOOLS,
 			      "value is not an unsigned int");
     }
 
-    int Value::intValue () const
+    int Value::intValue() const
     {
-      if (type_ == INT)
+      if(type_ == INT)
 	return *((int*)value_);
       throw ExceptionAbstract(ExceptionAbstract::TOOLS,
 			      "value is not an int int");
     }
 
-    float Value::floatValue () const
+    float Value::floatValue() const
     {
       float result;
-      if (type_ == FLOAT)
+      if(type_ == FLOAT)
 	result = *((float*)value_);
       return result;
       throw ExceptionAbstract(ExceptionAbstract::TOOLS,
 			      "value is not a float");
     }
 
-    double Value::doubleValue () const
+    double Value::doubleValue() const
     {
       double result;
-      if (type_ == DOUBLE)
+      if(type_ == DOUBLE)
 	result = *((double*)value_);
       return result;
       throw ExceptionAbstract(ExceptionAbstract::TOOLS,
 			      "value is not a double");
     }
 
-    std::string Value::stringValue () const
+    std::string Value::stringValue() const
     {
-      if (type_ == STRING)
+      if(type_ == STRING)
 	return *((std::string*)value_);
       throw ExceptionAbstract(ExceptionAbstract::TOOLS,
 			      "value is not an string");
     }
 
-    Vector Value::vectorValue () const
+    Vector Value::vectorValue() const
     {
-      if (type_ == VECTOR)
+      if(type_ == VECTOR)
 	return *((Vector*)value_);
       throw ExceptionAbstract(ExceptionAbstract::TOOLS,
 			      "value is not an vector");
     }
 
-    Matrix Value::matrixValue () const
+    Matrix Value::matrixValue() const
     {
-      if (type_ == MATRIX)
+      if(type_ == MATRIX)
 	return *((Matrix*)value_);
       throw ExceptionAbstract(ExceptionAbstract::TOOLS,
 			      "value is not a matrix");
@@ -254,7 +308,7 @@ namespace dynamicgraph {
 
     std::string Value::typeName(Type type)
     {
-      switch (type) {
+      switch(type) {
       case BOOL:
 	return std::string("bool");
       case UNSIGNED:
@@ -280,7 +334,7 @@ namespace dynamicgraph {
     {
       os << "Type=" << Value::typeName(value.type_)
 	 << ", value=";
-      switch (value.type_) {
+      switch(value.type_) {
       case Value::BOOL:
 	os << value.boolValue();
 	break;
