@@ -24,8 +24,9 @@ namespace dynamicgraph {
 
     Command::~Command() {}
     Command::Command(Entity& entity,
-		     const std::vector<Value::Type>& valueTypes) : 
-      owner_(entity), valueTypeVector_(valueTypes)
+		     const std::vector<Value::Type>& valueTypes,
+		     const std::string& docstring) :
+      owner_(entity), valueTypeVector_(valueTypes), docstring_(docstring)
     {
     }
 
@@ -62,13 +63,17 @@ namespace dynamicgraph {
     }
 
     Value Command::execute()
-    { 
+    {
       return doExecute();
     }
 
     Entity& Command::owner()
     {
       return owner_;
+    }
+    std::string Command::getDocstring() const
+    {
+      return docstring_;
     }
   } // namespace command
 } //namespace dynamicgraph

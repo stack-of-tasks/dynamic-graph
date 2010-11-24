@@ -47,7 +47,9 @@ namespace dynamicgraph {
       /// Store the owner entity and a vector of value types
       /// \param entity reference to Entity owning this command.
       /// \param valueTypes vector specifying the number and types of parameters
-      Command(Entity& entity, const std::vector<Value::Type>& valueTypes);
+      /// \param docstring documentation of the command
+      Command(Entity& entity, const std::vector<Value::Type>& valueTypes,
+	      const std::string& docstring);
       /// Return the value type of all parameters
       const std::vector<Value::Type> valueTypes() const;
       /// Set parameter values
@@ -58,6 +60,8 @@ namespace dynamicgraph {
       Value execute();
       /// Get a reference to the Entity owning this command
       Entity& owner();
+      /// Get documentation string
+      std::string getDocstring() const;
     protected:
       /// Specific action performed by the command
       virtual Value doExecute() = 0;
@@ -65,6 +69,7 @@ namespace dynamicgraph {
       Entity& owner_;
       std::vector<Value::Type> valueTypeVector_;
       std::vector<Value> valueVector_;
+      std::string docstring_;
     };
   } // namespace command
 } // namespace dynamicgraph

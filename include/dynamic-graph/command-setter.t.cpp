@@ -35,7 +35,8 @@ namespace dynamicgraph {
       /// Pointer to method that sets paramter of type bool
       typedef void (E::*SetterMethod) (const bool&);
       /// Constructor
-      Setter(E& entity, SetterMethod);
+      Setter(E& entity, SetterMethod setterMethod,
+	     const std::string& docString);
 
     protected:
       virtual Value doExecute();
@@ -45,8 +46,9 @@ namespace dynamicgraph {
     }; // Class Setter
 
     template <class E>
-    Setter<E, bool>::Setter(E& entity, SetterMethod setterMethod) :
-      Command(entity, boost::assign::list_of(Value::BOOL)),
+    Setter<E, bool>::Setter(E& entity, SetterMethod setterMethod,
+			    const std::string& docString) :
+      Command(entity, boost::assign::list_of(Value::BOOL), docString),
       setterMethod_(setterMethod)
     {
     }
@@ -71,7 +73,8 @@ namespace dynamicgraph {
       /// Pointer to method that sets paramter of type unsigned
       typedef void (E::*SetterMethod) (const unsigned&);
       /// Constructor
-      Setter(E& entity, SetterMethod);
+      Setter(E& entity, SetterMethod setterMethod,
+	     const std::string& docString);
 
     protected:
       virtual Value doExecute();
@@ -81,8 +84,9 @@ namespace dynamicgraph {
     }; // Class Setter
 
     template <class E>
-    Setter<E, unsigned>::Setter(E& entity, SetterMethod setterMethod) :
-      Command(entity, boost::assign::list_of(Value::UNSIGNED)),
+    Setter<E, unsigned>::Setter(E& entity, SetterMethod setterMethod,
+				const std::string& docString) :
+      Command(entity, boost::assign::list_of(Value::UNSIGNED), docString),
       setterMethod_(setterMethod)
     {
     }
@@ -107,7 +111,8 @@ namespace dynamicgraph {
       /// Pointer to method that sets paramter of type int
       typedef void (E::*SetterMethod) (const int&);
       /// Constructor
-      Setter(E& entity, SetterMethod);
+      Setter(E& entity, SetterMethod setterMethod,
+	     const std::string& docString);
 
     protected:
       virtual Value doExecute();
@@ -117,8 +122,9 @@ namespace dynamicgraph {
     }; // Class Setter
 
     template <class E>
-    Setter<E, int>::Setter(E& entity, SetterMethod setterMethod) :
-      Command(entity, boost::assign::list_of(Value::INT)),
+    Setter<E, int>::Setter(E& entity, SetterMethod setterMethod,
+			   const std::string& docString) :
+      Command(entity, boost::assign::list_of(Value::INT), docString),
       setterMethod_(setterMethod)
     {
     }
@@ -143,7 +149,8 @@ namespace dynamicgraph {
       /// Pointer to method that sets paramter of type float
       typedef void (E::*SetterMethod) (const float&);
       /// Constructor
-      Setter(E& entity, SetterMethod);
+      Setter(E& entity, SetterMethod setterMethod,
+	     const std::string& docString);
 
     protected:
       virtual Value doExecute();
@@ -153,8 +160,9 @@ namespace dynamicgraph {
     }; // Class Setter
 
     template <class E>
-    Setter<E, float>::Setter(E& entity, SetterMethod setterMethod) :
-      Command(entity, boost::assign::list_of(Value::FLOAT)),
+    Setter<E, float>::Setter(E& entity, SetterMethod setterMethod,
+			     const std::string& docString) :
+      Command(entity, boost::assign::list_of(Value::FLOAT), docString),
       setterMethod_(setterMethod)
     {
     }
@@ -179,7 +187,8 @@ namespace dynamicgraph {
       /// Pointer to method that sets paramter of type double
       typedef void (E::*SetterMethod) (const double&);
       /// Constructor
-      Setter(E& entity, SetterMethod);
+      Setter(E& entity, SetterMethod setterMethod,
+	     const std::string& docString);
 
     protected:
       virtual Value doExecute();
@@ -189,8 +198,9 @@ namespace dynamicgraph {
     }; // Class Setter
 
     template <class E>
-    Setter<E, double>::Setter(E& entity, SetterMethod setterMethod) :
-      Command(entity, boost::assign::list_of(Value::DOUBLE)),
+    Setter<E, double>::Setter(E& entity, SetterMethod setterMethod,
+			      const std::string& docString) :
+      Command(entity, boost::assign::list_of(Value::DOUBLE), docString),
       setterMethod_(setterMethod)
     {
     }
@@ -215,7 +225,8 @@ namespace dynamicgraph {
       /// Pointer to method that sets paramter of type std::string
       typedef void (E::*SetterMethod) (const std::string&);
       /// Constructor
-      Setter(E& entity, SetterMethod);
+      Setter(E& entity, SetterMethod setterMethod,
+	     const std::string& docString);
 
     protected:
       virtual Value doExecute();
@@ -225,8 +236,9 @@ namespace dynamicgraph {
     }; // Class Setter
 
     template <class E>
-    Setter<E, std::string>::Setter(E& entity, SetterMethod setterMethod) :
-      Command(entity, boost::assign::list_of(Value::STRING)),
+    Setter<E, std::string>::Setter(E& entity, SetterMethod setterMethod,
+				   const std::string& docString) :
+      Command(entity, boost::assign::list_of(Value::STRING), docString),
       setterMethod_(setterMethod)
     {
     }
@@ -251,7 +263,8 @@ namespace dynamicgraph {
       /// Pointer to method that sets paramter of type Vector
       typedef void (E::*SetterMethod) (const Vector&);
       /// Constructor
-      Setter(E& entity, SetterMethod);
+      Setter(E& entity, SetterMethod setterMethod,
+	     const std::string& docString);
 
     protected:
       virtual Value doExecute();
@@ -261,8 +274,9 @@ namespace dynamicgraph {
     }; // Class Setter
 
     template <class E>
-    Setter<E, Vector>::Setter(E& entity, SetterMethod setterMethod) :
-      Command(entity, boost::assign::list_of(Value::VECTOR)),
+    Setter<E, Vector>::Setter(E& entity, SetterMethod setterMethod,
+			      const std::string& docString) :
+      Command(entity, boost::assign::list_of(Value::VECTOR), docString),
       setterMethod_(setterMethod)
     {
     }
@@ -287,7 +301,8 @@ namespace dynamicgraph {
       /// Pointer to method that sets paramter of type Matrix
       typedef void (E::*SetterMethod) (const Matrix&);
       /// Constructor
-      Setter(E& entity, SetterMethod);
+      Setter(E& entity, SetterMethod setterMethod,
+	     const std::string& docString);
 
     protected:
       virtual Value doExecute();
@@ -297,8 +312,9 @@ namespace dynamicgraph {
     }; // Class Setter
 
     template <class E>
-    Setter<E, Matrix>::Setter(E& entity, SetterMethod setterMethod) :
-      Command(entity, boost::assign::list_of(Value::MATRIX)),
+    Setter<E, Matrix>::Setter(E& entity, SetterMethod setterMethod,
+			      const std::string& docString) :
+      Command(entity, boost::assign::list_of(Value::MATRIX), docString),
       setterMethod_(setterMethod)
     {
     }

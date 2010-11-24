@@ -58,7 +58,8 @@ namespace dynamicgraph {
       /// Pointer to method that sets paramter of type T
       typedef void (E::*SetterMethod) (const T&);
       /// Constructor
-      Setter(E& entity, SetterMethod);
+      Setter(E& entity, SetterMethod setterMethod,
+	     const std::string& docString);
 
     protected:
       virtual Value doExecute();

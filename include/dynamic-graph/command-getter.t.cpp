@@ -25,8 +25,9 @@ namespace dynamicgraph {
   namespace command {
 
     template <class E, typename T>
-    Getter<E, T>::Getter(E& entity, GetterMethod getterMethod) :
-      Command(entity, std::vector<Value::Type>()),
+    Getter<E, T>::Getter(E& entity, GetterMethod getterMethod,
+			 const std::string& docstring) :
+      Command(entity, std::vector<Value::Type>(), docstring),
       getterMethod_(getterMethod)
     {
     }
