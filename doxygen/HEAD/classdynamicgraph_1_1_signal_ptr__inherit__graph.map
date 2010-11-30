@@ -1,5 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" href="$classdynamicgraph_1_1_signal.html" title="Signals link I/O ports of entities. They can be constant&#45;valued signals, or copy the value of a heap ..." alt="" coords="15,161,249,188"/>
-<area shape="rect" href="$classdynamicgraph_1_1_signal_base.html" title="The base class for signals: not to be used as such." alt="" coords="7,84,257,111"/>
-<area shape="rect" href="$classboost_1_1noncopyable.html" title="noncopyable" alt="" coords="81,7,183,33"/>
-</map>

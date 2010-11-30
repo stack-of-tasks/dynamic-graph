@@ -1,9 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" href="$time&#45;dependency_8h.html" title="time&#45;dependency.h" alt="" coords="263,84,407,110"/>
-<area shape="rect" href="$entity_8h.html" title="entity.h" alt="" coords="431,84,497,110"/>
-<area shape="rect" href="$signal&#45;time&#45;dependent_8h.html" title="signal&#45;time&#45;dependent.h" alt="" coords="5,161,184,188"/>
-<area shape="rect" href="$tracer_8h.html" title="tracer.h" alt="" coords="187,238,256,265"/>
-<area shape="rect" href="$time&#45;dependency_8t_8cpp.html" title="time&#45;dependency.t.cpp" alt="" coords="259,161,427,188"/>
-<area shape="rect" href="$all&#45;signals_8h.html" title="all&#45;signals.h" alt="" coords="47,238,143,265"/>
-<area shape="rect" href="$tracer&#45;real&#45;time_8h.html" title="tracer&#45;real&#45;time.h" alt="" coords="155,316,288,342"/>
-</map>

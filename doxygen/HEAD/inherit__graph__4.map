@@ -1,6 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" href="$classdynamicgraph_1_1_exception_abstract.html" title="dynamicgraph::ExceptionAbstract" alt="" coords="7,56,241,83"/>
-<area shape="rect" href="$classdynamicgraph_1_1_exception_factory.html" title="dynamicgraph::ExceptionFactory" alt="" coords="292,6,519,32"/>
-<area shape="rect" href="$classdynamicgraph_1_1_exception_signal.html" title="dynamicgraph::ExceptionSignal" alt="" coords="295,56,516,83"/>
-<area shape="rect" href="$classdynamicgraph_1_1_exception_traces.html" title="dynamicgraph::ExceptionTraces" alt="" coords="295,107,516,134"/>
-</map>
