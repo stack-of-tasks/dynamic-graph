@@ -18,11 +18,12 @@
 #ifndef DYNAMIC_GRAPH_LINEAR_ALGEBRA_H
 #define DYNAMIC_GRAPH_LINEAR_ALGEBRA_H
 
-#include <boost/numeric/ublas/vector.hpp>
+#include <jrl/mal/boost.hh>
 #include <boost/numeric/ublas/matrix.hpp>
+
 namespace dynamicgraph {
-  typedef ::boost::numeric::ublas::vector<double> Vector;
-  typedef ::boost::numeric::ublas::matrix<double> Matrix;
+  typedef maal::boost::Vector Vector;
+  typedef maal::boost::Matrix Matrix;
 }
 
 #endif //DYNAMIC_GRAPH_LINEAR_ALGEBRA_H

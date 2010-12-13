@@ -31,6 +31,9 @@ SET(LIBRARY_OUTPUT_PATH ${PROJECT_BINARY_DIR}/lib)
 
 SETUP_PROJECT()
 
+# Trigger dependency to jrl-mal
+ADD_REQUIRED_DEPENDENCY("jrl-mal >= 1.8.0")
+
 # Add configuration headers for plug-ins.
 GENERATE_CONFIGURATION_HEADER(
   ${HEADER_DIR} config-tracer.hh DG_TRACER tracer_EXPORTS)
