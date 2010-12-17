@@ -178,7 +178,11 @@ namespace dynamicgraph {
 
     Value Value::operator=(const Value& value)
     {
-      return Value (value);
+      type_ = value.type_;
+      void** ptValue = const_cast<void**>(&value_);
+      *ptValue = copyValue(value);
+
+      return *this;
     }
 
     const EitherType Value::value() const
