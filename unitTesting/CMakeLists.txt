@@ -20,7 +20,8 @@ include_directories(${Boost_INCLUDE_DIRS})
 SET(tests_exe
 	test_pool
 	test_depend
-	test_signalcast)
+	test_signalcast
+	test-value)
 
 SET(tests_libs
 	test_signalcast_libA
@@ -40,7 +41,7 @@ FOREACH(test_name ${tests_libs})
 	ADD_LIBRARY(${LIBRARY_NAME}
 	  SHARED
 	  ${test_name}.cpp)
-
+	PKG_CONFIG_USE_DEPENDENCY(${LIBRARY_NAME} jrl-mal)
 	TARGET_LINK_LIBRARIES(${LIBRARY_NAME}
 	  ${PROJECT_NAME})
 	ADD_DEPENDENCIES(${LIBRARY_NAME}
@@ -57,7 +58,7 @@ FOREACH(test_name ${tests_exe})
 	  ${PROJECT_NAME})
 	ADD_DEPENDENCIES(${EXECUTABLE_NAME}
 	  ${PROJECT_NAME})
-
+	PKG_CONFIG_USE_DEPENDENCY(${EXECUTABLE_NAME} jrl-mal)
 	TARGET_LINK_LIBRARIES(${EXECUTABLE_NAME}
 		${${test_name}_additional_libs})
 
