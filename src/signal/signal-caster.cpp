@@ -26,7 +26,7 @@
 #include <sstream>
 #include <algorithm>
 #include <dynamic-graph/exception-signal.h>
-
+#include "dynamic-graph/linear-algebra.h"
 using namespace std;
 using namespace boost;
 
@@ -107,6 +107,8 @@ namespace {
 	DefaultCastRegisterer<double> double_reg;
 	DefaultCastRegisterer<int> int_reg;
 	DefaultCastRegisterer<unsigned int> uint_reg;
+  DefaultCastRegisterer<dynamicgraph::Vector> vectorCastRegisterer;
+  DefaultCastRegisterer<dynamicgraph::Matrix> matrixCastRegisterer;
 }
 
 } // namespace dynamicgraph
