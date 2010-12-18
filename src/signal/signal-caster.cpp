@@ -89,8 +89,10 @@ any SignalCaster::cast(const type_info& type, istringstream& iss) {
 
 	if ( it == functions_.end() )
 	  {
+	    std::string msg("type " + std::string(type_name) +
+			    " not in functions_ map.");
 	    throw ExceptionSignal(ExceptionSignal::BAD_CAST,
-				  "caster not in functions_ map.");
+				  msg);
 	  }
 	//TODO: throw "cast not registered" exception
 	return (*it).second.get<1>()(iss); // call cast function (tuple index 1)
