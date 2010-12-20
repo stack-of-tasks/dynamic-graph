@@ -55,3 +55,6 @@ FOREACH(lib ${signalcast_libs})
 ENDFOREACH()
 DYNAMIC_GRAPH_TEST(test_signalcast)
 TARGET_LINK_LIBRARIES(${EXECUTABLE_NAME} ${signalcast_libs})
+
+# Unit testing.
+DYNAMIC_GRAPH_TEST(entity)
