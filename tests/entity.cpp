@@ -159,6 +159,28 @@ BOOST_AUTO_TEST_CASE (commandLine_signalDep)
   BOOST_CHECK (output.is_empty ());
 }
 
+BOOST_AUTO_TEST_CASE (commandLine_unknown)
+{
+  dynamicgraph::Entity entity ("my-entity");
+
+  output_test_stream output;
+
+  std::istringstream args;
+
+  try
+    {
+      entity.commandLine("unknown", args, output);
+    }
+  catch (dynamicgraph::ExceptionFactory& exception)
+    {
+      //FIXME: getCode should be const.
+      BOOST_CHECK_EQUAL (exception.getCode (),
+			 dynamicgraph::ExceptionFactory::UNREFERED_FUNCTION);
+    }
+
+  BOOST_CHECK (output.is_empty ());
+}
+
 BOOST_AUTO_TEST_CASE (writeGraph)
 {
   dynamicgraph::Entity entity ("my-entity");
