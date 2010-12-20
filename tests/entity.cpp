@@ -88,8 +88,6 @@ BOOST_AUTO_TEST_CASE (display)
 BOOST_AUTO_TEST_CASE (getCommandList)
 {
   dynamicgraph::Entity entity ("my-entity");
-
-  //FIXME: this is wrong, another available command is help.
   BOOST_CHECK_EQUAL (entity.getCommandList (), "print\nsignals\nsignalDep");
 }
 
