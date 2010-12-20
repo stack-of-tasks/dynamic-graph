@@ -190,7 +190,6 @@ namespace dynamicgraph
 	    ("failed to import module ``%1%'' (import paths: %2%).");
 	  fmt % module;
 	  fmt % scriptDirectories;
-	  std::cout << fmt.str () << std::endl;
 	  DG_THROW ExceptionFactory
 	    (ExceptionFactory::READ_FILE, fmt.str ());
 	  return;
