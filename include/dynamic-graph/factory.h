@@ -108,17 +108,17 @@ class DYNAMIC_GRAPH_DLLAPI EntityRegisterer
  * of classType to the g_factory. It is then possible to create it
  * with the g_factory.
  */
-#define DYNAMICGRAPH_FACTORY_ENTITY_PLUGIN(classType, className)	\
-  const std::string classType::CLASS_NAME = className;			\
+#define DYNAMICGRAPH_FACTORY_ENTITY_PLUGIN(CLASSTYPE, CLASSNAME)	\
+  const std::string CLASSTYPE::CLASS_NAME = CLASSNAME;			\
   extern "C" {								\
     ::dynamicgraph::Entity*						\
-    EntityMaker##_##classType(const std::string& objname)		\
+    EntityMaker_##CLASSTYPE(const std::string& objname)			\
     {									\
-      return new classType (objname);					\
+      return new CLASSTYPE (objname);					\
     }									\
     ::dynamicgraph::EntityRegisterer					\
-    reg##_##classType (className,					\
-		       &EntityMaker##_##classType);			\
+    reg_##CLASSTYPE (CLASSNAME,						\
+		     &EntityMaker_##CLASSTYPE);				\
   }									\
   struct e_n_d__w_i_t_h__s_e_m_i_c_o_l_o_n
 
