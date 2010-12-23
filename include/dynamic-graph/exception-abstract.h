@@ -78,7 +78,7 @@ public:
   virtual ~ExceptionAbstract( void ) throw() {}
 
   /**  Access to the error code. */
-  int getCode (void);
+  int getCode () const;
 
   /** Reference access to the error message (can be empty). */
   const std::string& getStringMessage (void) const;

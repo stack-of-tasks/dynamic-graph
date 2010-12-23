@@ -59,8 +59,8 @@ getStringMessage (void) const
     return this->message;
 }
 
-int ExceptionAbstract::
-getCode (void)
+int
+ExceptionAbstract::getCode () const
 {
     return this->code;
 }
