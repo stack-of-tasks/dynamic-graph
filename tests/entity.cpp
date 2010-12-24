@@ -43,10 +43,10 @@ BOOST_AUTO_TEST_CASE (signal)
   try
     {
       entity.getSignal ("I do not exist");
+      BOOST_ERROR ("Should never happen.");
     }
-  catch (dynamicgraph::ExceptionFactory& exception)
+  catch (const dynamicgraph::ExceptionFactory& exception)
     {
-      //FIXME: getCode should be const.
       BOOST_CHECK_EQUAL (exception.getCode (),
 			 dynamicgraph::ExceptionFactory::UNREFERED_SIGNAL);
     }
@@ -56,10 +56,10 @@ BOOST_AUTO_TEST_CASE (signal)
     {
       const dynamicgraph::Entity& entityConst = entity;
       entityConst.getSignal ("I do not exist");
+      BOOST_ERROR ("Should never happen.");
     }
-  catch (dynamicgraph::ExceptionFactory& exception)
+  catch (const dynamicgraph::ExceptionFactory& exception)
     {
-      //FIXME: getCode should be const.
       BOOST_CHECK_EQUAL (exception.getCode (),
 			 dynamicgraph::ExceptionFactory::UNREFERED_SIGNAL);
     }
@@ -146,10 +146,10 @@ BOOST_AUTO_TEST_CASE (commandLine_signalDep)
   try
     {
       entity.commandLine("signalDep", args, output);
+      BOOST_ERROR ("Should never happen.");
     }
-  catch (dynamicgraph::ExceptionFactory& exception)
+  catch (const dynamicgraph::ExceptionFactory& exception)
     {
-      //FIXME: getCode should be const.
       BOOST_CHECK_EQUAL (exception.getCode (),
 			 dynamicgraph::ExceptionFactory::UNREFERED_SIGNAL);
     }
@@ -168,10 +168,10 @@ BOOST_AUTO_TEST_CASE (commandLine_unknown)
   try
     {
       entity.commandLine("unknown", args, output);
+      BOOST_ERROR ("Should never happen.");
     }
-  catch (dynamicgraph::ExceptionFactory& exception)
+  catch (const dynamicgraph::ExceptionFactory& exception)
     {
-      //FIXME: getCode should be const.
       BOOST_CHECK_EQUAL (exception.getCode (),
 			 dynamicgraph::ExceptionFactory::UNREFERED_FUNCTION);
     }

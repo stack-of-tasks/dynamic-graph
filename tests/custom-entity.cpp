@@ -143,10 +143,10 @@ BOOST_AUTO_TEST_CASE (commandLine_unknown)
   try
     {
       entity.commandLine("unknown", args, output);
+      BOOST_ERROR ("Should never happen.");
     }
-  catch (dynamicgraph::ExceptionFactory& exception)
+  catch (const dynamicgraph::ExceptionFactory& exception)
     {
-      //FIXME: getCode should be const.
       BOOST_CHECK_EQUAL (exception.getCode (),
 			 dynamicgraph::ExceptionFactory::UNREFERED_FUNCTION);
     }
