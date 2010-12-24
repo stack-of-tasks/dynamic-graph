@@ -59,3 +59,4 @@ TARGET_LINK_LIBRARIES(${EXECUTABLE_NAME} ${signalcast_libs})
 # Unit testing.
 DYNAMIC_GRAPH_TEST(entity)
 DYNAMIC_GRAPH_TEST(custom-entity)
+DYNAMIC_GRAPH_TEST(factory)
