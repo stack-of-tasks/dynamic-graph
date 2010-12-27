@@ -23,6 +23,13 @@ namespace dynamicgraph
   class FactoryStorage;
   class EntityRegisterer;
 
+  class SignalCaster;
+
+  class SignalCastRegisterer;
+
+  template<typename T>
+  class DefaultCastRegisterer;
+
 } // end of namespace dynamicgraph.
 
 #endif //! DYNAMIC_GRAPH_FWD_HH
