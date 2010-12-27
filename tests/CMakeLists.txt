@@ -39,7 +39,6 @@ MACRO(DYNAMIC_GRAPH_TEST NAME)
   # Link against Boost.
   TARGET_LINK_LIBRARIES(${NAME} ${Boost_LIBRARIES})
 ENDMACRO(DYNAMIC_GRAPH_TEST)
-DYNAMIC_GRAPH_TEST(test_depend)
 
 
 # Signal cast test.
@@ -59,3 +58,4 @@ DYNAMIC_GRAPH_TEST(entity)
 DYNAMIC_GRAPH_TEST(custom-entity)
 DYNAMIC_GRAPH_TEST(factory)
 DYNAMIC_GRAPH_TEST(pool)
+DYNAMIC_GRAPH_TEST(signal-time-dependent)
