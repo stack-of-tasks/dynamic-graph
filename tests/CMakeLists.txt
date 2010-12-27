@@ -42,7 +42,7 @@ ENDMACRO(DYNAMIC_GRAPH_TEST)
 
 
 # Signal cast test.
-SET(signalcast_libs test_signalcast_libA test_signalcast_libB)
+SET(signalcast_libs signal-cast-registerer-libA signal-cast-registerer-libB)
 
 FOREACH(lib ${signalcast_libs})
   ADD_LIBRARY(${lib} SHARED ${lib}.cpp)
@@ -50,7 +50,7 @@ FOREACH(lib ${signalcast_libs})
   TARGET_LINK_LIBRARIES(${lib} ${PROJECT_NAME})
   ADD_DEPENDENCIES(${lib} ${PROJECT_NAME})
 ENDFOREACH()
-DYNAMIC_GRAPH_TEST(test_signalcast)
+DYNAMIC_GRAPH_TEST(signal-cast-registerer)
 TARGET_LINK_LIBRARIES(${EXECUTABLE_NAME} ${signalcast_libs})
 
 # Unit testing.
