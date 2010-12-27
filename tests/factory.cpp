@@ -105,7 +105,7 @@ BOOST_AUTO_TEST_CASE (newEntity)
       (factory.newEntity ("myEntity", "foo"));
 
     boost::shared_ptr<dynamicgraph::Entity> entity2
-      (factory.newEntity ("myEntity", "foo"));
+      (factory.newEntity ("myEntity", "foo2"));
 
     boost::shared_ptr<dynamicgraph::Entity> entity3
       (factory.newEntity ("myEntity", ""));
@@ -119,7 +119,7 @@ BOOST_AUTO_TEST_CASE (newEntity)
   catch (const dynamicgraph::ExceptionFactory& exception)
     {
       BOOST_CHECK_EQUAL (exception.getCode (),
-			 dynamicgraph::ExceptionFactory::OBJECT_CONFLICT);
+			 dynamicgraph::ExceptionFactory::UNREFERED_OBJECT);
     }
 }
 
