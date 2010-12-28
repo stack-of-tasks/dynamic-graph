@@ -21,8 +21,10 @@
 # include <iostream>
 
 # include <boost/any.hpp>
+# include <boost/format.hpp>
 # include <boost/function/function1.hpp>
 # include <boost/function/function2.hpp>
+# include <boost/lexical_cast.hpp>
 # include <boost/tuple/tuple.hpp>
 
 # include <dynamic-graph/dynamic-graph-api.h>
@@ -68,12 +70,15 @@ namespace dynamicgraph
     /// Unregister a cast.
     void unregisterCast (const std::type_info& type);
     /// Checks if there is a displayer registered with type_name.
-    bool existsCast (const std::type_info& type);
+    bool existsCast (const std::type_info& type) const;
 
   private:
     /// Container for the three cast functions.
     typedef boost::tuple<displayer_type, caster_type, tracer_type>
       cast_functions_type;
+
+    /// \brief Retrieve cast structure from its name.
+    cast_functions_type& getCast (const std::string& type_name);
 
     /// This map associates the typename of objects and the corresponding
     /// using boost::function with 'compatible' syntax
@@ -111,14 +116,9 @@ namespace dynamicgraph
       : SignalCastRegisterer (typeid(T), disp, cast, trace)
     {}
 
-    static boost::any cast(std::istringstream& iss)
-    {
-      T inst;
-      iss >> inst;
-      return inst;
-    }
+    static boost::any cast (std::istringstream& iss);
 
-    static void disp(const boost::any& object, std::ostream& os)
+    static void disp (const boost::any& object, std::ostream& os)
     {
       os << boost::any_cast<T> (object) << std::endl;
     }
@@ -128,6 +128,61 @@ namespace dynamicgraph
       disp(object,os);
     }
   };
+
+
+  // Define a custom implementation of the DefaultCastRegisterer
+  // to workaround the limitations of the stream based approach.
+  // When dealing with double: displaying a double on a stream
+  // is *NOT* the opposite of reading a double from a stream.
+  //
+  // In practice, it means that there is no way to read
+  // a NaN, +inf, -inf from a stream!
+  //
+  // To workaround this problem, parse special values manually
+  // (the strings used are the one produces by displaying special
+  // values on a stream).
+  template <>
+  inline boost::any
+  DefaultCastRegisterer<double>::cast (std::istringstream& iss)
+    {
+      std::string tmp;
+      iss >> tmp;
+
+      if (tmp == "nan")
+	return std::numeric_limits<double>::quiet_NaN ();
+      else if (tmp == "inf" || tmp == "+inf")
+	return std::numeric_limits<double>::infinity ();
+      else if (tmp == "-inf")
+	return -1. * std::numeric_limits<double>::infinity ();
+
+      try
+	{
+	  return boost::lexical_cast<double> (tmp);
+	}
+      catch (boost::bad_lexical_cast&)
+	{
+	  boost::format fmt ("failed to serialize %s (to double)");
+	  fmt % tmp;
+	  throw ExceptionSignal(ExceptionSignal::GENERIC, fmt.str ());
+	}
+    }
+
+  template <typename T>
+  boost::any
+  DefaultCastRegisterer<T>::cast (std::istringstream& iss)
+    {
+      T inst;
+      iss >> inst;
+      if (iss.fail ())
+	{
+	  boost::format fmt ("failed to serialize %s ");
+	  fmt % iss.str ();
+	  throw ExceptionSignal(ExceptionSignal::GENERIC, fmt.str ());
+	}
+      return inst;
+    }
+
+
 
   /// Global signal cast template (helper) functions
   ///
