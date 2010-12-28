@@ -108,21 +108,17 @@ void PoolStorage::
 clearPlugin( const std::string& name )
 {
   dgDEBUGIN(5);
-  std::list< Entity* > toDelete;
+  std::list<Entity*> toDelete;
 
-  for( Entities::iterator entPtr=entity.begin(); entPtr!=entity.end(); entPtr++ )
-    {
-      if( entPtr->second->getClassName() == name )
-	{ toDelete.push_back( entPtr->second ); }
-    }
+  for (Entities::iterator entPtr = entity.begin ();
+       entPtr != entity.end (); ++entPtr)
+    if (entPtr->second->getClassName() == name)
+      toDelete.push_back (entPtr->second);
 
-  for( std::list< Entity* >::iterator iter=toDelete.begin();
-       iter!=toDelete.end(); ++iter )
-    {
-      delete (Entity*) *iter;
-    }
+  for (std::list< Entity* >::iterator iter = toDelete.begin ();
+       iter != toDelete.end (); ++iter)
+    delete (Entity*) *iter;
   dgDEBUGOUT(5);
-  return;
 }
 
 
@@ -174,7 +170,7 @@ writeGraph(const std::string &aFileName)
   GraphFile << "\t} " << std::endl;
 
   for( Entities::iterator iter=entity.begin();
-       iter!=entity.end();iter++ )
+       iter!=entity.end(); ++iter)
     {
       Entity* ent = iter->second;
       GraphFile << ent->getName()
@@ -193,7 +189,7 @@ void PoolStorage::
 writeCompletionList(std::ostream& os)
 {
   for( Entities::iterator iter=entity.begin();
-       iter!=entity.end();iter++ )
+       iter!=entity.end(); ++iter)
     {
       Entity* ent = iter->second;
       ent->writeCompletionList(os);
@@ -221,7 +217,7 @@ commandLine( const std::string& objectName,const std::string& functionName,
       else if( functionName=="list" )
 	{
 	  for( Entities::iterator iter=entity.begin();
-	       iter!=entity.end();iter++ )
+	       iter!=entity.end(); ++iter)
 	    {
 	      Entity* ent = iter->second;
 	      os << ent->getName()

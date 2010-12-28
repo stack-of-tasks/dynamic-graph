@@ -372,11 +372,13 @@ cmdEnableTrace( const std::string cmdLine, istringstream& cmdArg, std::ostream& 
 	 << "\t\tOpen/close the file <filename> for debug tracing." <<endl;
       return;
     }
-  string opt,filename;
 
   cmdArg >> ws;
   if( cmdArg.good() )
     {
+      std::string opt;
+      std::string filename;
+
       cmdArg>>opt>>ws;
       if( opt=="true" )
 	if( cmdArg.good() )

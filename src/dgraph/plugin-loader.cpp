@@ -145,6 +145,18 @@ loadPlugins( void )
 	{
 	  std::string wrongLib = *iter;
 	  pluginNames.erase(iter);
+
+	  // FIXME: this line has been added to avoid, since erasing
+	  // an element from a list invalidates the underlying
+	  // iterator.  However I am not sure whether loading twice
+	  // the plug-ins is safe or not and should be thoroughly
+	  // tested.
+	  //
+	  // Under Linux this line should have no effect as an
+	  // exception is thrown just after. MS Windows do not raise
+	  // an exception here and must have an incoherent behavior
+	  // anyway...
+	  iter = pluginNames.begin();
 #ifndef WIN32
 	  dgDEBUG(5) << "Failure while loading: " <<dlerror() <<endl;
 	  DG_THROW ExceptionFactory( ExceptionFactory::DYNAMIC_LOADING,

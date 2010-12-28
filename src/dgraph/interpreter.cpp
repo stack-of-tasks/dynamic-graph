@@ -291,37 +291,44 @@ cmdRun( const std::string& cmdLine, std::istringstream& cmdArg, std::ostream& os
     }
 
   const int SIZE = 16384;
-  char line[SIZE];int lineIdx;
-  string name;
-  try{
-    for( lineIdx=1;;lineIdx++ )
-      {
-	dgDEBUGIN(15);
+  char line[SIZE];
+  int lineIdx = 0;
+  try
+    {
+      for (lineIdx = 1;; ++lineIdx)
+	{
+	  dgDEBUGIN(15);
+	  
+	  script.getline (line, SIZE);
+	  if (!script.good ())
+	    break;
 
-	script.getline(line,SIZE);
-	if(! script.good() ) break;
-
-	istringstream issTmp(line);
-	if( issTmp >> name )
+	  std::string name;	  
+	  istringstream issTmp (line);
+	  if (issTmp >> name)
 	    {
-	issTmp.getline(line,SIZE);
-	istringstream iss(line);
-
-	dgDEBUG(25) << "Run <"<<name<<"> with args <"<<line<<">"<<endl;
-	cmd( name,iss,os );
-
-	dgDEBUGOUT(15);
+	      issTmp.getline (line,SIZE);
+	      std::istringstream iss (line);
+	      
+	      dgDEBUG(25)
+		<< "Run <" << name << "> with args <" << line << ">"
+		<< std::endl;
+	      cmd (name, iss, os);
+	      
+	      dgDEBUGOUT(15);
 	    }
-      }
-  } catch( ExceptionAbstract& exc ) {
-    //FIXME: exception should be changed instead.
-    std::string& msg = const_cast<std::string&>(exc.getStringMessage());
-    std::stringstream oss;
-    oss << " (in line " << lineIdx <<" of file <" << filename << ">)";
-    msg = msg + oss.str();
-    throw exc;
+	}
   }
-
+  catch (ExceptionAbstract& exc)
+    {
+      //FIXME: exception should be changed instead.
+      std::string& msg = const_cast<std::string&>(exc.getStringMessage());
+      std::stringstream oss;
+      oss << " (in line " << lineIdx <<" of file <" << filename << ">)";
+      msg = msg + oss.str();
+      throw exc;
+    }
+  
   dgDEBUGOUT(15);
 
 }
@@ -499,19 +506,16 @@ ShellFunctionRegisterer( const std::string& funName,
 
 void Interpreter::writeCompletionList(std::ostream& os)
 {
-  for( FunctionMap::iterator iter=functionMap.begin();
-       iter!=functionMap.end();iter++ )
+  for (FunctionMap::iterator iter=functionMap.begin ();
+       iter != functionMap.end (); ++iter)
     {
       const std::string & name = iter->first;
       os << name << std::endl;
     }
-
-
-
 }
 
-namespace dynamicgraph {
-//! The global g_shell object.
-	Interpreter g_shell;
-}
-
+namespace dynamicgraph
+{
+  //! The global g_shell object.
+  Interpreter g_shell;
+} // end of namespace dynamicgraph

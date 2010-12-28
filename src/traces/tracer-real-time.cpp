@@ -52,7 +52,7 @@ OutStringStream::
 ~OutStringStream( void )
 {
   dgDEBUGIN(15);
-  if( buffer ) delete [] buffer ;
+  delete[] buffer;
   dgDEBUGOUT(15);
 }
 
@@ -60,9 +60,14 @@ void OutStringStream::
 resize( const unsigned int & size )
 {
   dgDEBUGIN(15);
-  index=0; bufferSize = size;  full=false;
-  if( 0!=buffer ) delete [] buffer;
+
+  index=0;
+  bufferSize = size;
+  full=false;
+
+  delete[] buffer;
   buffer = new char [size];
+
   dgDEBUGOUT(15);
 }
 
