@@ -74,6 +74,7 @@ private:
 	 * using boost::function with 'compatible' syntax
 	 */
 	std::map<std::string, cast_functions_type> functions_;
+	std::map<std::string, const std::type_info*> type_info_;
 };
 
 

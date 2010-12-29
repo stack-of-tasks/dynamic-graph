@@ -43,13 +43,22 @@ SignalCaster::~SignalCaster() {
 void SignalCaster::registerCast(const type_info& type, SignalCaster::displayer_type displayer,
 		SignalCaster::caster_type caster, SignalCaster::tracer_type tracer) {
   if ( existsCast(type) ) {
-    std::string typeName(type.name());
-    std::ostringstream os;
-    os << "cast already registered for type " << typeName << ".";
-    throw ExceptionSignal(ExceptionSignal::GENERIC,
-			  os.str()); //TODO: throw "cast already registered for type" exception
+    // If type name has already been registered for same type, do not throw.
+    if ( type_info_[type.name()] != &type) {
+      std::string typeName(type.name());
+      std::ostringstream os;
+      os << "cast already registered for typename " << typeName << "\n"
+	 << "and types differ: " << &type << " != " << type_info_[type.name()]
+	 << ".\n"
+	 << "A possible reason is that the dynamic library defining this type\n"
+	 << "has been loaded several times, defining different symbols"
+	 << " for the same type.";
+      throw ExceptionSignal(ExceptionSignal::GENERIC,
+			    os.str());
+    }
   }
 	functions_[type.name()] = cast_functions_type(displayer,caster, tracer);
+	type_info_[type.name()] = &type;
 }
 
 void SignalCaster::unregisterCast(const std::type_info& type) {
