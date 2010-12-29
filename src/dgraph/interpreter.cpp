@@ -196,12 +196,18 @@ cmdLoadPlugin( const std::string& cmdLine, std::istringstream& cmdArg, std::ostr
       if( directory.length() != 0 ) dlPtr->setDirectory( directory );
       dlPtr ->addPlugin( pluginName );
 
-      try{
-	dgDEBUG(15) << "Try to load  " << pluginName<< endl;
-	dgDEBUG(25)<<"sotShell.dlPtr ="<< this->dlPtr <<endl;
-	dlPtr->loadPlugins();
-	dgDEBUG(25)<<"sotShell.dlPtr ="<< this->dlPtr <<endl;
-      }catch( ExceptionAbstract& e ) { dgDEBUG(5) << "ExceptionAbstract " << e << endl; throw e; }
+      try
+	{
+	  dgDEBUG(15) << "Try to load  " << pluginName<< endl;
+	  dgDEBUG(25)<<"sotShell.dlPtr ="<< this->dlPtr <<endl;
+	  dlPtr->loadPlugins();
+	  dgDEBUG(25)<<"sotShell.dlPtr ="<< this->dlPtr <<endl;
+	}
+      catch (const ExceptionAbstract& e)
+	{
+	  dgDEBUG(5) << "ExceptionAbstract " << e << endl;
+	  throw;
+	}
     }
   else { os << "!!  Dynamic loading functionalities not accessible through the shell." <<endl; }
 }
