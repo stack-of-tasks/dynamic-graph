@@ -31,6 +31,22 @@ using boost::test_tools::output_test_stream;
 // becomes too big.
 
 
+#define RUN_COMMAND(CMD, ARGS)			\
+    output_test_stream output;			\
+    std::stringstream ss;			\
+    std::string cmd = CMD;			\
+    ss << ARGS;					\
+    std::istringstream args (ss.str ());	\
+    shell.cmd (cmd, args, output)
+
+#define RUN_COMMAND_NOARG(CMD)			\
+    output_test_stream output;			\
+    std::stringstream ss;			\
+    std::string cmd = CMD;			\
+    std::istringstream args (ss.str ());	\
+    shell.cmd (cmd, args, output)
+
+
 // Simple test to check the shell default constructor.
 BOOST_AUTO_TEST_CASE (constructor)
 {
@@ -41,10 +57,8 @@ BOOST_AUTO_TEST_CASE (constructor)
 // Check that an empty command is valid.
 BOOST_AUTO_TEST_CASE (cmd_empty)
 {
-  output_test_stream output;
-  std::istringstream args;
   dynamicgraph::Interpreter shell;
-  shell.cmd ("", args, output);
+  RUN_COMMAND_NOARG ("");
   BOOST_CHECK (output.is_empty ());
 }
 
@@ -53,12 +67,10 @@ BOOST_AUTO_TEST_CASE (cmd_empty)
 // the appropriate error.
 BOOST_AUTO_TEST_CASE (cmd_notexist)
 {
-  output_test_stream output;
-  std::istringstream args;
   dynamicgraph::Interpreter shell;
   try
     {
-      shell.cmd ("I DO NOT EXIST", args, output);
+      RUN_COMMAND_NOARG ("I DO NOT EXIST");
     }
   catch (const dynamicgraph::ExceptionFactory& exception)
     {
@@ -71,10 +83,10 @@ BOOST_AUTO_TEST_CASE (cmd_notexist)
 // Check that the "help" command works.
 BOOST_AUTO_TEST_CASE (cmd_help)
 {
-  output_test_stream output;
-  std::istringstream args;
   dynamicgraph::Interpreter shell;
-  shell.cmd ("help", args, output);
+
+  RUN_COMMAND_NOARG ("help");
+
   BOOST_CHECK
     (output.is_equal
      (
@@ -99,16 +111,8 @@ BOOST_AUTO_TEST_CASE (cmd_help)
 // Check that an empty file can be parsed successfully.
 BOOST_AUTO_TEST_CASE (cmd_run_emptyfile)
 {
-  output_test_stream output;
   dynamicgraph::Interpreter shell;
-
-  std::stringstream ss;
-
-  std::string cmd = "run";
-  ss << TESTS_DATADIR "/empty.sot";
-
-  std::istringstream args (ss.str ());
-  shell.cmd (cmd, args, output);
+  RUN_COMMAND ("run", TESTS_DATADIR "/empty.sot");
   BOOST_CHECK (output.is_empty ());
 }
 
@@ -116,18 +120,11 @@ BOOST_AUTO_TEST_CASE (cmd_run_emptyfile)
 // error.
 BOOST_AUTO_TEST_CASE (cmd_run_notexist)
 {
-  output_test_stream output;
   dynamicgraph::Interpreter shell;
 
-  std::stringstream ss;
-
-  std::string cmd = "run";
-  ss << "idonotexist";
-
-  std::istringstream args (ss.str ());
   try
     {
-      shell.cmd (cmd, args, output);
+      RUN_COMMAND ("run", "idonotexist");
       BOOST_ERROR ("Should never happen");
     }
   catch (const dynamicgraph::ExceptionFactory& exception)
@@ -140,18 +137,10 @@ BOOST_AUTO_TEST_CASE (cmd_run_notexist)
 // Check that import a non existing file returns an appropriate error.
 BOOST_AUTO_TEST_CASE (cmd_import_notexist)
 {
-  output_test_stream output;
   dynamicgraph::Interpreter shell;
-
-  std::stringstream ss;
-
-  std::string cmd = "import";
-  ss << "idonotexist";
-
-  std::istringstream args (ss.str ());
   try
     {
-      shell.cmd (cmd, args, output);
+      RUN_COMMAND ("import", "idonotexist");
       BOOST_ERROR ("Should never happen");
     }
   catch (const dynamicgraph::ExceptionFactory& exception)
@@ -168,36 +157,19 @@ BOOST_AUTO_TEST_CASE (cmd_import_push)
 
   // Push path.
   {
-    output_test_stream output;
-    std::stringstream ss;
-    
-    std::string cmd = "pushImportPaths";
-    ss << TESTS_DATADIR;
-    std::istringstream args (ss.str ());
-    shell.cmd (cmd, args, output);
+    RUN_COMMAND ("pushImportPaths", TESTS_DATADIR);
     BOOST_CHECK (output.is_empty ());
   }
 
   // Import empty file.
   {
-    output_test_stream output;
-    std::stringstream ss;
-    
-    std::string cmd = "import";
-    ss << "empty.sot";
-    std::istringstream args (ss.str ());
-    shell.cmd (cmd, args, output);
+    RUN_COMMAND ("import", "empty.sot");
     BOOST_CHECK (output.is_empty ());
   }
 
   // Pop path.
   {
-    output_test_stream output;
-    std::stringstream ss;
-    
-    std::string cmd = "popImportPaths";
-    std::istringstream args (ss.str ());
-    shell.cmd (cmd, args, output);
+    RUN_COMMAND_NOARG ("popImportPaths");
     BOOST_CHECK (output.is_empty ());
   }
 
@@ -206,13 +178,11 @@ BOOST_AUTO_TEST_CASE (cmd_import_push)
   {
     output_test_stream output;
     std::stringstream ss;
-    
-    std::string cmd = "import";
     ss << "empty.sot";
     std::istringstream args (ss.str ());
     
     // Make sure this trigger an error.
-    BOOST_CHECK_THROW (shell.cmd (cmd, args, output),
+    BOOST_CHECK_THROW (shell.cmd ("import", args, output),
 		       dynamicgraph::ExceptionFactory);
   }
 
