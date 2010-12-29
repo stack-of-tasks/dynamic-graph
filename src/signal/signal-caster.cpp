@@ -40,8 +40,10 @@ SignalCaster::~SignalCaster() {
 	// no special cleanup to do
 }
 
-void SignalCaster::registerCast(const type_info& type, SignalCaster::displayer_type displayer,
-		SignalCaster::caster_type caster, SignalCaster::tracer_type tracer) {
+void SignalCaster::registerCast(const type_info& type,
+				SignalCaster::displayer_type displayer,
+				SignalCaster::caster_type caster,
+				SignalCaster::tracer_type tracer) {
   if ( existsCast(type) ) {
     // If type name has already been registered for same type, do not throw.
     if ( type_info_[type.name()] != &type) {
