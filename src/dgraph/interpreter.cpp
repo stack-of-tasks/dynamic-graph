@@ -22,6 +22,8 @@
 /* --- INCLUDE --------------------------------------------------------- */
 /* --------------------------------------------------------------------- */
 
+#include <boost/format.hpp>
+
 /* DYNAMIC-GRAPH */
 #include <dynamic-graph/interpreter.h>
 #include <dynamic-graph/plugin-loader.h>
@@ -285,9 +287,10 @@ cmdRun( const std::string& cmdLine, std::istringstream& cmdArg, std::ostream& os
   ifstream script( filename.c_str(),ios::in );
   if(! script.is_open() )
     {
-      DG_THROW ExceptionFactory( ExceptionFactory::READ_FILE,
-				     "File is not open."," (while reading <%s>).",
-				     filename.c_str() );
+      boost::format fmt
+	("failed to run file ``%1%'' (file does not exist or is not readable).");
+      fmt % filename;
+      DG_THROW ExceptionFactory (ExceptionFactory::READ_FILE, fmt.str ());
     }
 
   const int SIZE = 16384;
