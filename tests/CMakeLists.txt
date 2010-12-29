@@ -21,6 +21,8 @@ INCLUDE_DIRECTORIES(${Boost_INCLUDE_DIRS})
 # Make Boost.Test generates the main function in test cases.
 ADD_DEFINITIONS(-DBOOST_TEST_DYN_LINK -DBOOST_TEST_MAIN)
 
+ADD_DEFINITIONS(-DTESTS_DATADIR="${CMAKE_CURRENT_SOURCE_DIR}/data")
+
 # DYNAMIC_GRAPH_TEST(NAME)
 # ------------------------
 #
@@ -59,3 +61,4 @@ DYNAMIC_GRAPH_TEST(custom-entity)
 DYNAMIC_GRAPH_TEST(factory)
 DYNAMIC_GRAPH_TEST(pool)
 DYNAMIC_GRAPH_TEST(signal-time-dependent)
+DYNAMIC_GRAPH_TEST(interpreter)
