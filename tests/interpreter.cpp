@@ -16,6 +16,7 @@
 #include <sstream>
 #include <dynamic-graph/exception-factory.h>
 #include <dynamic-graph/interpreter.h>
+#include <dynamic-graph/plugin-loader.h>
 
 #define BOOST_TEST_MODULE interpreter
 
@@ -186,4 +187,52 @@ BOOST_AUTO_TEST_CASE (cmd_import_push)
 		       dynamicgraph::ExceptionFactory);
   }
 
+}
+
+// Check that plug-in loading/unloading is working.
+BOOST_AUTO_TEST_CASE (cmd_loadPlugin)
+{
+  dynamicgraph::PluginLoader pl;
+  dynamicgraph::Interpreter shell (&pl);
+
+  {
+    RUN_COMMAND ("loadPlugin", "shell-functions.so" " " TESTS_PLUGINDIR);
+    BOOST_CHECK (output.is_empty ());
+  }
+  {
+    RUN_COMMAND ("loadPlugin", "shell-procedure.so" " " TESTS_PLUGINDIR);
+    BOOST_CHECK (output.is_empty ());
+  }
+
+  {
+    RUN_COMMAND ("unloadPlugin", TESTS_PLUGINDIR "/shell-procedure.so");
+    BOOST_CHECK (output.is_empty ());
+  }
+
+  {
+    RUN_COMMAND ("unloadPlugin", TESTS_PLUGINDIR "/shell-functions.so");
+    BOOST_CHECK (output.is_empty ());
+  }
+  
+  try
+    {
+      RUN_COMMAND ("loadPlugin", "idonotexist .");
+      BOOST_ERROR ("Should never happen");
+    }
+  catch (const dynamicgraph::ExceptionFactory& exception)
+    {
+      BOOST_CHECK_EQUAL (exception.getCode (),
+			 dynamicgraph::ExceptionFactory::DYNAMIC_LOADING);
+    }
+
+  try
+    {
+      RUN_COMMAND ("unloadPlugin", "idonotexist");
+      BOOST_ERROR ("Should never happen");
+    }
+  catch (const dynamicgraph::ExceptionFactory& exception)
+    {
+      BOOST_CHECK_EQUAL (exception.getCode (),
+			 dynamicgraph::ExceptionFactory::OBJECT_CONFLICT);
+    }
 }
