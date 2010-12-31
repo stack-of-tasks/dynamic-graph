@@ -141,13 +141,11 @@ namespace dynamicgraph
 	    pathPlugin.replace_extension (SHARED_LIBRARY_EXT);
 
 	    if (boost::filesystem::exists (pathPlugin)
-		&& (boost::filesystem::is_regular_file (pathPlugin)
-		    || boost::filesystem::is_symlink (pathPlugin)))
+		&& !boost::filesystem::is_directory (pathPlugin))
 	      return pathPlugin;
 
 	    if (boost::filesystem::exists (path)
-		&& (boost::filesystem::is_regular_file (path)
-		    || boost::filesystem::is_symlink (path)))
+		&& !boost::filesystem::is_directory (path))
 	      return path;
 	  }
 
