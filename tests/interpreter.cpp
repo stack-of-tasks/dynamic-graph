@@ -113,7 +113,7 @@ BOOST_AUTO_TEST_CASE (cmd_help)
 BOOST_AUTO_TEST_CASE (cmd_run_emptyfile)
 {
   dynamicgraph::Interpreter shell;
-  RUN_COMMAND ("run", TESTS_DATADIR "/empty.sot");
+  RUN_COMMAND ("run", TESTS_DATADIR "/empty.dg");
   BOOST_CHECK (output.is_empty ());
 }
 
@@ -164,7 +164,7 @@ BOOST_AUTO_TEST_CASE (cmd_import_push)
 
   // Import empty file.
   {
-    RUN_COMMAND ("import", "empty.sot");
+    RUN_COMMAND ("import", "empty.dg");
     BOOST_CHECK (output.is_empty ());
   }
 
@@ -175,11 +175,11 @@ BOOST_AUTO_TEST_CASE (cmd_import_push)
   }
 
   // Import empty file again: this will fail
-  // as empty.sot is *NOT* in a standard location.
+  // as empty.dg is *NOT* in a standard location.
   {
     output_test_stream output;
     std::stringstream ss;
-    ss << "empty.sot";
+    ss << "empty.dg";
     std::istringstream args (ss.str ());
     
     // Make sure this trigger an error.

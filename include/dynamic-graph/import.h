@@ -21,6 +21,8 @@
 # include <string>
 # include <vector>
 
+# include <boost/filesystem/path.hpp>
+
 namespace dynamicgraph
 {
   class Interpreter;
@@ -28,7 +30,13 @@ namespace dynamicgraph
   {
     namespace
     {
-      extern std::vector<std::string> importPaths;
+      /// \brief Vector of Boost.Filesystem paths.
+      ///
+      /// Used to store paths where the import statement
+      /// will look for scripts or plug-ins.
+      typedef std::vector<boost::filesystem::path> paths_t;
+
+      extern paths_t importPaths;
     } // end of anonymous namespace.
 
     /// \brief Implement sot interpretor import command.
