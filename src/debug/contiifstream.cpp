@@ -29,32 +29,32 @@ Contiifstream( const std::string& n )
 
 
 Contiifstream::
-~Contiifstream( void )
+~Contiifstream  ()
 {
   dgDEBUGINOUT(5);
 }
 
 
 bool Contiifstream::
-loop( void )
+loop  ()
 {
   dgDEBUGIN(25);
   bool res=false;
 
-  std::fstream file( filename.c_str() );
+  std::fstream file( filename.c_str () );
 
   file.seekg(cursor);
-  file.sync();
+  file.sync ();
 
   while(1)
     {
       file.get(buffer,BUFFER_SIZE);
-      if( file.gcount() )
+      if( file.gcount () )
 	{
 	  res=true;
 	  std::string line(buffer);
 	  if(! first) reader.push_back(line);
-	  cursor=file.tellg(); cursor++;
+	  cursor=file.tellg (); cursor++;
 	  file.get(*buffer); // get the last char ( = '\n')
 	  dgDEBUG(15) << "line: "<< line<<std::endl;
 	}
@@ -67,10 +67,10 @@ loop( void )
 }
 
 std::string
-Contiifstream::next( void )
+Contiifstream::next  ()
 {
-  std::string res = *reader.begin();
-  reader.pop_front();
+  std::string res = *reader.begin ();
+  reader.pop_front ();
   return res;
 }
 

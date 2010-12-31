@@ -54,7 +54,7 @@ namespace dynamicgraph
     namespace
     {
       /// Initialize import paths list (called during static initialization).
-      std::vector<std::string> initializePaths ();
+      std::vector<std::string> initializePaths  ();
 
       /// \brief Import paths list.
       ///
@@ -68,7 +68,7 @@ namespace dynamicgraph
       ///
       /// When typing ``import foo'', C will be searched first then B
       /// and A. The search stops when the file is found.
-      std::vector<std::string> importPaths = initializePaths ();
+      std::vector<std::string> importPaths = initializePaths  ();
 
       /// Search for a module.
       ///
@@ -81,7 +81,7 @@ namespace dynamicgraph
       /// Transform strings such as "foo" or 'foo' into foo.
       void removeQuotes (std::string& msg);
 
-      std::vector<std::string> initializePaths ()
+      std::vector<std::string> initializePaths  ()
       {
 	std::vector<std::string> importPaths;
 	importPaths.push_back (DG_IMPORT_DEFAULT_PATHS);
@@ -108,8 +108,8 @@ namespace dynamicgraph
 
         // Insert it back.
         std::back_insert_iterator<std::vector<std::string> > bi (importPaths);
-        std::copy (splittedEnvironmentVariable.begin (),
-		   splittedEnvironmentVariable.end (), bi);
+        std::copy (splittedEnvironmentVariable.begin  (),
+		   splittedEnvironmentVariable.end  (), bi);
         return importPaths;
       }
 
@@ -118,29 +118,29 @@ namespace dynamicgraph
 	// Make sure the traversal is right to left to enforce
 	// correct priorities.
 	typedef std::vector<std::string>::const_reverse_iterator citer_t;
-	for (citer_t it = importPaths.rbegin ();
-	     it != importPaths.rend (); ++it)
+	for (citer_t it = importPaths.rbegin  ();
+	     it != importPaths.rend  (); ++it)
 	  {
 	    const std::string& path = *it;
 
-	    assert (!path.empty ());
+	    assert (!path.empty  ());
 
 	    std::string filename (path);
-	    if (filename[filename.length () - 1] != '/')
+	    if (filename[filename.length  () - 1] != '/')
 	      filename += "/";
 	    filename += module;
-	    std::ifstream file (filename.c_str ());
-	    if (file.is_open () && file.good ())
+	    std::ifstream file (filename.c_str  ());
+	    if (file.is_open  () && file.good  ())
 	      return filename;
 	  }
-	return std::string ();
+	return std::string  ();
       }
 
       void removeQuotes (std::string& msg)
       {
-	if ((msg[0] == '"' && msg[msg.length () - 1] == '"')
-	    || (msg[0] == '\'' && msg[msg.length () - 1] == '\''))
-	  msg = msg.substr (1, msg.length () - 2);
+	if ((msg[0] == '"' && msg[msg.length  () - 1] == '"')
+	    || (msg[0] == '\'' && msg[msg.length  () - 1] == '\''))
+	  msg = msg.substr (1, msg.length  () - 2);
       }
     } // end of anonymous namespace.
 
@@ -168,12 +168,12 @@ namespace dynamicgraph
       removeQuotes (module);
 
       std::string filename = searchModule (module);
-      std::ifstream file (filename.c_str ());
-      if (filename.empty () || !file.is_open () || !file.good ())
+      std::ifstream file (filename.c_str  ());
+      if (filename.empty  () || !file.is_open  () || !file.good  ())
 	{
 	  std::string scriptDirectories;
 
-	  if (importPaths.empty ())
+	  if (importPaths.empty  ())
 	    scriptDirectories = "empty";
 	  else
 	    {
@@ -183,7 +183,7 @@ namespace dynamicgraph
 		  scriptDirectories += ", ";
 		}
 	      scriptDirectories = scriptDirectories.substr
-		(0, scriptDirectories.length () - 2);
+		(0, scriptDirectories.length  () - 2);
 	    }
 
 	  boost::format fmt
@@ -191,21 +191,21 @@ namespace dynamicgraph
 	  fmt % module;
 	  fmt % scriptDirectories;
 	  DG_THROW ExceptionFactory
-	    (ExceptionFactory::READ_FILE, fmt.str ());
+	    (ExceptionFactory::READ_FILE, fmt.str  ());
 	  return;
 	}
 
       int lineIdx = 0;
       try
 	{
-	  while (file.good ())
+	  while (file.good  ())
 	    {
 	      ++lineIdx;
 	      dgDEBUGIN (15);
 
 	      std::string line;
 	      std::getline (file, line);
-	      if (line.empty ())
+	      if (line.empty  ())
 		continue;
 
 	      std::istringstream iss (line);
@@ -216,7 +216,7 @@ namespace dynamicgraph
 		  std::getline (iss, currentCmdArgs);
 		  boost::format fmt ("Run ``%1%'' with args ``%2%''");
 		  fmt % currentCmdName % currentCmdArgs;
-		  dgDEBUG(25) << fmt.str () << std::endl;
+		  dgDEBUG(25) << fmt.str  () << std::endl;
 		  std::istringstream issArgs (currentCmdArgs);
 		  interpreter.cmd (currentCmdName, issArgs, os);
 		}
@@ -226,10 +226,10 @@ namespace dynamicgraph
       catch (ExceptionAbstract& exc)
 	{
 	  // FIXME: come on...
-	  std::string& msg = const_cast<std::string&> (exc.getStringMessage ());
+	  std::string& msg = const_cast<std::string&> (exc.getStringMessage  ());
 	  boost::format fmt (" (in line %1% of file ``%2%'')");
 	  fmt % lineIdx % filename;
-	  msg = msg + fmt.str();
+	  msg = msg + fmt.str ();
 	  std::cout << msg << std::endl;
 	  throw;
 	}
@@ -266,8 +266,8 @@ namespace dynamicgraph
 	     << std::endl;
 	  return;
 	}
-      if (!importPaths.empty ())
-	importPaths.pop_back ();
+      if (!importPaths.empty  ())
+	importPaths.pop_back  ();
     }
 
   } // end of namespace command.

@@ -46,8 +46,8 @@ namespace dynamicgraph
   class DYNAMIC_GRAPH_DLLAPI SignalCaster
   {
   public:
-    explicit SignalCaster ();
-    virtual ~SignalCaster ();
+    explicit SignalCaster  ();
+    virtual ~SignalCaster  ();
 
     /// Typedef of displayer functions that take an encapsulated 'any'
     /// object and displays, cast, or trace it on an output stream
@@ -90,7 +90,7 @@ namespace dynamicgraph
 
   ///The SignalCast registerer class. Can be used to automatically
   /// register a cast when instanced somewhere in a cpp file. Pass the
-  /// typeid() of the type you want to register a cast to as the first
+  /// typeid () of the type you want to register a cast to as the first
   /// argument. The code is provided here so the class does not need
   /// to be exported.
   class DYNAMIC_GRAPH_DLLAPI SignalCastRegisterer
@@ -112,7 +112,7 @@ namespace dynamicgraph
   class DefaultCastRegisterer : public SignalCastRegisterer
   {
   public:
-    DefaultCastRegisterer ()
+    DefaultCastRegisterer  ()
       : SignalCastRegisterer (typeid(T), disp, cast, trace)
     {}
 
@@ -149,11 +149,11 @@ namespace dynamicgraph
       iss >> tmp;
 
       if (tmp == "nan")
-	return std::numeric_limits<double>::quiet_NaN ();
+	return std::numeric_limits<double>::quiet_NaN  ();
       else if (tmp == "inf" || tmp == "+inf")
-	return std::numeric_limits<double>::infinity ();
+	return std::numeric_limits<double>::infinity  ();
       else if (tmp == "-inf")
-	return -1. * std::numeric_limits<double>::infinity ();
+	return -1. * std::numeric_limits<double>::infinity  ();
 
       try
 	{
@@ -163,7 +163,7 @@ namespace dynamicgraph
 	{
 	  boost::format fmt ("failed to serialize %s (to double)");
 	  fmt % tmp;
-	  throw ExceptionSignal(ExceptionSignal::GENERIC, fmt.str ());
+	  throw ExceptionSignal(ExceptionSignal::GENERIC, fmt.str  ());
 	}
     }
 
@@ -173,11 +173,11 @@ namespace dynamicgraph
     {
       T inst;
       iss >> inst;
-      if (iss.fail ())
+      if (iss.fail  ())
 	{
 	  boost::format fmt ("failed to serialize %s ");
-	  fmt % iss.str ();
-	  throw ExceptionSignal(ExceptionSignal::GENERIC, fmt.str ());
+	  fmt % iss.str  ();
+	  throw ExceptionSignal(ExceptionSignal::GENERIC, fmt.str  ());
 	}
       return inst;
     }
@@ -186,7 +186,7 @@ namespace dynamicgraph
 
   /// Global signal cast template (helper) functions
   ///
-  /// Using these avoid using the typeid() operator and keeps the
+  /// Using these avoid using the typeid () operator and keeps the
   /// implementation details hidden.
   template<typename T>
   void signal_disp (const T& value, std::ostream& os)

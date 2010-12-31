@@ -67,15 +67,15 @@ registerFunction( const string& funname,
 {
   if( initDone ) {dgDEBUG(15) << "Register " << funname << std::endl;}
   FunctionMap::iterator funkey = functionMap.find(funname);
-  if( funkey != functionMap.end() ) // key does exist
+  if( funkey != functionMap.end () ) // key does exist
     {
       if( initDone )
 		{
 		  dgDEBUG(15) << "!! Another function already defined with the same name. Overloading "
-				   << "Funname is" <<funname.c_str() << endl;
+				   << "Funname is" <<funname.c_str () << endl;
 		  throw ExceptionFactory( ExceptionFactory::FUNCTION_CONFLICT,
 						 "Another function already defined with the same name. ",
-						 "Funname is <%s>.",funname.c_str() );
+						 "Funname is <%s>.",funname.c_str () );
 
 		}
     }
@@ -123,8 +123,8 @@ cmdPlug( const std::string& cmdLine, istringstream& cmdArg, std::ostream& os )
     {
       DG_THROW ExceptionFactory( ExceptionFactory::SYNTAX_ERROR,
 				     "Plug function: syntax is plug OBJ1.SIG1 OBJ2.SIG2.",
-				     "(while calling plug %s %s).",ssig1.c_str(),
-				     ssig2.c_str() );
+				     "(while calling plug %s %s).",ssig1.c_str (),
+				     ssig2.c_str () );
     }
 
   dgDEBUG(20) << "Get Ent1 <"<<obj1<<"> ."<<endl;
@@ -193,14 +193,14 @@ cmdLoadPlugin( const std::string& cmdLine, std::istringstream& cmdArg, std::ostr
      string pluginName,directory;
       cmdArg >> pluginName;
       cmdArg >> directory;
-      if( directory.length() != 0 ) dlPtr->setDirectory( directory );
+      if( directory.length () != 0 ) dlPtr->setDirectory( directory );
       dlPtr ->addPlugin( pluginName );
 
       try
 	{
 	  dgDEBUG(15) << "Try to load  " << pluginName<< endl;
 	  dgDEBUG(25)<<"sotShell.dlPtr ="<< this->dlPtr <<endl;
-	  dlPtr->loadPlugins();
+	  dlPtr->loadPlugins ();
 	  dgDEBUG(25)<<"sotShell.dlPtr ="<< this->dlPtr <<endl;
 	}
       catch (const ExceptionAbstract& e)
@@ -254,18 +254,18 @@ cmdHelp( const std::string& cmdLine, std::istringstream& cmdArg, std::ostream& o
 
   std::string procname; bool personalizedHelp = false;
   cmdArg >> ws;
-  if( cmdArg.good() )
+  if( cmdArg.good () )
     {
-      const std::streamoff gc = cmdArg.tellg();
+      const std::streamoff gc = cmdArg.tellg ();
       cmdArg >> procname;
-      cmdArg.seekg(gc); cmdArg.clear();
+      cmdArg.seekg(gc); cmdArg.clear ();
       personalizedHelp = true;
       dgDEBUG(15)<< "Personalized help on <"<< procname<<">"<<gc<<endl;
     }
 
   bool procfund = !personalizedHelp;
-  for( FunctionMap::const_iterator iter=functionMap.begin();
-       iter!=functionMap.end();++iter )
+  for( FunctionMap::const_iterator iter=functionMap.begin ();
+       iter!=functionMap.end ();++iter )
     {
       if( iter->first!="help" )
 	if( (! personalizedHelp) || ( procname==iter->first ) )
@@ -290,13 +290,13 @@ cmdRun( const std::string& cmdLine, std::istringstream& cmdArg, std::ostream& os
   string filename; cmdArg>>filename;
   dgDEBUG(25) << "Script <" <<filename<<">"<<endl;
 
-  ifstream script( filename.c_str(),ios::in );
-  if(! script.is_open() )
+  ifstream script( filename.c_str (),ios::in );
+  if(! script.is_open () )
     {
       boost::format fmt
 	("failed to run file ``%1%'' (file does not exist or is not readable).");
       fmt % filename;
-      DG_THROW ExceptionFactory (ExceptionFactory::READ_FILE, fmt.str ());
+      DG_THROW ExceptionFactory (ExceptionFactory::READ_FILE, fmt.str  ());
     }
 
   const int SIZE = 16384;
@@ -309,7 +309,7 @@ cmdRun( const std::string& cmdLine, std::istringstream& cmdArg, std::ostream& os
 	  dgDEBUGIN(15);
 	  
 	  script.getline (line, SIZE);
-	  if (!script.good ())
+	  if (!script.good  ())
 	    break;
 
 	  std::string name;	  
@@ -331,10 +331,10 @@ cmdRun( const std::string& cmdLine, std::istringstream& cmdArg, std::ostream& os
   catch (ExceptionAbstract& exc)
     {
       //FIXME: exception should be changed instead.
-      std::string& msg = const_cast<std::string&>(exc.getStringMessage());
+      std::string& msg = const_cast<std::string&>(exc.getStringMessage ());
       std::stringstream oss;
       oss << " (in line " << lineIdx <<" of file <" << filename << ">)";
-      msg = msg + oss.str();
+      msg = msg + oss.str ();
       throw exc;
     }
   
@@ -405,7 +405,7 @@ cmdComputeSignal( const std::string& cmdLine, std::istringstream& cmdArg, std::o
   SignalBase<int>& sig = obj.getSignal( signame );
 
   int time; cmdArg >> std::ws;
-  if( cmdArg.good() )
+  if( cmdArg.good () )
     {cmdArg >> time;} else {time=0;}
   sig.recompute( time );
 
@@ -422,7 +422,7 @@ cmdComputeSignal( const std::string& cmdLine, std::istringstream& cmdArg, std::o
 void Interpreter::
 cmd( const std::string& cmdLine, istringstream& cmdArg, std::ostream& os )
 {
-  istringstream cmdparse(cmdLine.c_str());
+  istringstream cmdparse(cmdLine.c_str ());
   string obj,fun;
   if (cmdLine.find_first_not_of(" ") == string::npos)
   {}
@@ -435,11 +435,11 @@ cmd( const std::string& cmdLine, istringstream& cmdArg, std::ostream& os )
     {
      dgDEBUG(15) << "Function <" << cmdLine <<">"<< endl;
       FunctionMap::iterator funPtr = functionMap .find( cmdLine );
-      if( funPtr == functionMap.end() )
+      if( funPtr == functionMap.end () )
 	{
 	  DG_THROW ExceptionFactory( ExceptionFactory::UNREFERED_FUNCTION,
 					 "Unknown function."," (while calling <%s>)",
-					 cmdLine.c_str() );
+					 cmdLine.c_str () );
 	}
       funPtr->second(cmdLine,cmdArg,os);
     }
@@ -455,7 +455,7 @@ objectNameParser( istringstream& cmdparse,std::string& objName,std::string& funN
   char buffer[SIZE];
   cmdparse >> ws;
   cmdparse.getline( buffer,SIZE,'.' );
-  if(! cmdparse.good() ) // The callback is not an object method
+  if(! cmdparse.good () ) // The callback is not an object method
     return false;
 
   objName = buffer;
@@ -473,21 +473,21 @@ shell( std::istream& sin, std::ostream& sout, const std::string& promptUser )
 {
   while( 1 )
     {
-      if( promptUser.length() ) sout << promptUser; else sout << prompt;
+      if( promptUser.length () ) sout << promptUser; else sout << prompt;
       string cmdLine;
       const int SIZE = 16384;
       char cmdArgs[SIZE];
       sin >>skipws>> cmdLine ;
       dgDEBUG(15) << "Cmd <" <<cmdLine<<">"<<endl;
       if( cmdLine == "exit" ) break;
-      if( sin.eof() ) break;
+      if( sin.eof () ) break;
 
       sin.getline( cmdArgs,SIZE-1 );
 
-      if( sin.gcount() >= SIZE-2 )
+      if( sin.gcount () >= SIZE-2 )
 	{
 	  sout << "!! Line size exceeded" << endl;
-	  do{ sin.getline( cmdArgs,SIZE-1 ); } while ( sin.gcount() >= SIZE-2 );
+	  do{ sin.getline( cmdArgs,SIZE-1 ); } while ( sin.gcount () >= SIZE-2 );
 	  sout << cmdArgs << endl;
 	}
       else
@@ -497,7 +497,7 @@ shell( std::istream& sin, std::ostream& sout, const std::string& promptUser )
 	  istringstream args (cmdArgs);
 
 	  try{ cmd(cmdLine,args,sout); }
-	  catch( exception& e ) { dgDEBUG(1) << e.what(); throw; }
+	  catch( exception& e ) { dgDEBUG(1) << e.what (); throw; }
 	  catch(...) { dgDEBUG(1) << "!! unknow!." <<endl; throw; }
 	}
     }
@@ -515,8 +515,8 @@ ShellFunctionRegisterer( const std::string& funName,
 
 void Interpreter::writeCompletionList(std::ostream& os)
 {
-  for (FunctionMap::iterator iter=functionMap.begin ();
-       iter != functionMap.end (); ++iter)
+  for (FunctionMap::iterator iter=functionMap.begin  ();
+       iter != functionMap.end  (); ++iter)
     {
       const std::string & name = iter->first;
       os << name << std::endl;

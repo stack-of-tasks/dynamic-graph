@@ -26,10 +26,10 @@
 namespace dynamicgraph
 {
 
-  SignalCaster::SignalCaster ()
+  SignalCaster::SignalCaster  ()
   {}
 
-  SignalCaster::~SignalCaster ()
+  SignalCaster::~SignalCaster  ()
   {}
 
   void
@@ -40,20 +40,20 @@ namespace dynamicgraph
   {
     if (existsCast(type))
       {
-	std::string typeName (type.name ());
+	std::string typeName (type.name  ());
 	std::ostringstream os;
 	os << "cast already registered for type " << typeName << ".";
 	//TODO: throw "cast already registered for type" exception
 	throw ExceptionSignal
-	  (ExceptionSignal::GENERIC, os.str());
+	  (ExceptionSignal::GENERIC, os.str ());
       }
-    functions_[type.name()] = cast_functions_type(displayer,caster, tracer);
+    functions_[type.name ()] = cast_functions_type(displayer,caster, tracer);
   }
 
   void
   SignalCaster::unregisterCast (const std::type_info& type)
   {
-    size_t n = functions_.erase(type.name());
+    size_t n = functions_.erase(type.name ());
     if (0 == n) // erase did not find element
       // TODO: throw Cast not registered exception
       throw ExceptionSignal(ExceptionSignal::GENERIC);
@@ -62,7 +62,7 @@ namespace dynamicgraph
   bool
   SignalCaster::existsCast (const std::type_info& type) const
   {
-    return functions_.find (type.name ()) != functions_.end ();
+    return functions_.find (type.name  ()) != functions_.end  ();
   }
 
   SignalCaster::cast_functions_type&
@@ -71,7 +71,7 @@ namespace dynamicgraph
     std::map<std::string, cast_functions_type>::iterator it =
       functions_.find(type_name);
 
-    if (it == functions_.end ())
+    if (it == functions_.end  ())
       //TODO: throw "cast not registered" exception
       throw ExceptionSignal(ExceptionSignal::BAD_CAST, "bad cast");
     return it->second;
@@ -80,19 +80,19 @@ namespace dynamicgraph
 
   void SignalCaster::disp (const boost::any& object, std::ostream& os)
   {
-    getCast(object.type ().name ()).get<0> () (object, os);
+    getCast(object.type  ().name  ()).get<0>  () (object, os);
   }
 
   void
   SignalCaster::trace(const boost::any& object, std::ostream& os)
   {
-    getCast(object.type ().name ()).get<2> () (object, os);
+    getCast(object.type  ().name  ()).get<2>  () (object, os);
   }
 
   boost::any
   SignalCaster::cast (const std::type_info& type, std::istringstream& iss)
   {
-    return getCast(type.name ()).get<1> () (iss);
+    return getCast(type.name  ()).get<1>  () (iss);
   }
 
 

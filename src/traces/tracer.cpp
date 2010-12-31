@@ -40,15 +40,15 @@ DYNAMICGRAPH_FACTORY_ENTITY_PLUGIN(Tracer,"Tracer");
 
 Tracer::Tracer( const std::string n )
   :Entity(n)
-   ,toTraceSignals()
+   ,toTraceSignals ()
    ,traceStyle(TRACE_STYLE_DEFAULT)
    ,frequency(1)
-   ,basename()
+   ,basename ()
    ,suffix(".dat")
-   ,rootdir()
+   ,rootdir ()
    ,namesSet( false )
-   ,files()
-   ,names()
+   ,files ()
+   ,names ()
    ,play(false)
    ,timeStart(0)
    ,triger( boost::bind(&Tracer::recordTrigger,this,_1,_2),
@@ -80,10 +80,10 @@ addSignalToTrace( const SignalBase<int>& sig,
  * the files in particular.
  */
 void Tracer::
-clearSignalToTrace( void )
+clearSignalToTrace  ()
 {
-  toTraceSignals.clear();
-  triger.clearDependencies();
+  toTraceSignals.clear ();
+  triger.clearDependencies ();
 }
 
 
@@ -98,20 +98,20 @@ openFiles( const std::string& rootdir_, const std::string& basename_,
 	   const std::string& suffix_  )
 {
   dgDEBUGIN(15);
-  int n = rootdir_.length();
+  int n = rootdir_.length ();
   rootdir=rootdir_;
   if( (0<n)&('/'!=rootdir[n-1]) ) rootdir+='/';
 
   basename=basename_;
   suffix=suffix_;
 
-  if( files.size() ) closeFiles();
+  if( files.size () ) closeFiles ();
 
-  SignalList::const_iterator iter = toTraceSignals.begin();
-  NameList::const_iterator iterName = names.begin();
-  while( toTraceSignals.end()!=iter )
+  SignalList::const_iterator iter = toTraceSignals.begin ();
+  NameList::const_iterator iterName = names.begin ();
+  while( toTraceSignals.end ()!=iter )
     {
-      dgDEBUG(15) << "Open <" << (*iter)->getName()
+      dgDEBUG(15) << "Open <" << (*iter)->getName ()
 		   << "> in <" << *iterName << ">." << std::endl;
       openFile( **iter,*iterName );
       ++iter; ++iterName;
@@ -127,29 +127,29 @@ openFile( const SignalBase<int> & sig,
 {
   dgDEBUGIN(15);
   string signame;
-  if( givenname.length() )
-    { signame = givenname;  } else { signame = sig.shortName(); }
+  if( givenname.length () )
+    { signame = givenname;  } else { signame = sig.shortName (); }
 
   string filename = rootdir + basename + signame + suffix;
 
-  dgDEBUG(5) << "Sig <"<< sig.getName() << ">: new file "<< filename << endl;
-  std::ofstream * newfile = new std::ofstream( filename.c_str() );
+  dgDEBUG(5) << "Sig <"<< sig.getName () << ">: new file "<< filename << endl;
+  std::ofstream * newfile = new std::ofstream( filename.c_str () );
   files.push_back( newfile );
   dgDEBUGOUT(15);
 }
 
 
 void Tracer::
-closeFiles( void )
+closeFiles  ()
 {
   dgDEBUGIN(15);
 
-  for( FileList::iterator iter = files.begin();files.end()!=iter;++iter )
+  for( FileList::iterator iter = files.begin ();files.end ()!=iter;++iter )
     {
       std::ostream * filePtr = *iter;
       delete filePtr;
     }
-  files.clear();
+  files.clear ();
 
   dgDEBUGOUT(15);
 }
@@ -159,21 +159,21 @@ closeFiles( void )
 /* --------------------------------------------------------------------- */
 
 void Tracer::
-record( void )
+record  ()
 {
   if(! play) { dgDEBUGINOUT(15); return;}
 
   dgDEBUGIN(15);
 
-  if( files.size()!=toTraceSignals.size() )
+  if( files.size ()!=toTraceSignals.size () )
     { DG_THROW ExceptionTraces( ExceptionTraces::NOT_OPEN,
 				    "No files open for tracing"," (file=%d != %d=sig).",
-				    files.size(),toTraceSignals.size()); }
+				    files.size (),toTraceSignals.size ()); }
 
-  FileList::iterator iterFile = files.begin();
-  SignalList::iterator iterSig = toTraceSignals.begin();
+  FileList::iterator iterFile = files.begin ();
+  SignalList::iterator iterSig = toTraceSignals.begin ();
 
-  while( toTraceSignals.end()!=iterSig )
+  while( toTraceSignals.end ()!=iterSig )
     {
       dgDEBUG(45) << "Try..." <<endl;
       recordSignal( **iterFile,**iterSig );
@@ -189,9 +189,9 @@ recordSignal(  std::ostream& os,
   dgDEBUGIN(15);
 
   try {
-    if( sig.getTime()>timeStart )
+    if( sig.getTime ()>timeStart )
       {
-	os<< sig.getTime() << "\t";
+	os<< sig.getTime () << "\t";
 	sig.trace(os); os<<endl;
       }
   }
@@ -207,14 +207,14 @@ int& Tracer::
 recordTrigger( int& dummy, const int& time )
 {
   dgDEBUGIN(15) << "    time="<<time <<endl;
-  record();
+  record ();
   dgDEBUGOUT(15);
   return dummy;
 }
 
 
 void Tracer::
-trace( void )
+trace  ()
 {
 }
 
@@ -229,9 +229,9 @@ display( std::ostream& os ) const
   os << CLASS_NAME << " " << name << " [mode=" << (play?"play":"pause")
      << "] : "<< endl
      << "  - Dep list: "<<endl;
-  for( SignalList::const_iterator iter = toTraceSignals.begin();
-       toTraceSignals.end()!=iter;++iter )
-    {      os << "     -> "<<(*iter)->getName()<<endl;    }
+  for( SignalList::const_iterator iter = toTraceSignals.begin ();
+       toTraceSignals.end ()!=iter;++iter )
+    {      os << "     -> "<<(*iter)->getName ()<<endl;    }
 }
 
 
@@ -266,18 +266,18 @@ commandLine( const std::string& cmdLine
       SignalBase<int> &sig = g_pool.getSignal(cmdArgs);
       string r; cmdArgs>>ws>>r;
       addSignalToTrace(sig,r);
-      dgDEBUG(14)<<"Add <" <<sig.getName()<<"> with nick \""<<r<<"\""<<endl;
+      dgDEBUG(14)<<"Add <" <<sig.getName ()<<"> with nick \""<<r<<"\""<<endl;
     }
   else if( cmdLine=="clear" )
-    { closeFiles(); toTraceSignals.clear(); }
+    { closeFiles (); toTraceSignals.clear (); }
   else if( cmdLine=="open" )
     {
       string n,r="",s=".dat";
       cmdArgs>>ws>>r;
-      if( cmdArgs.good() )
+      if( cmdArgs.good () )
 	{
 	  cmdArgs>>ws>>n;
-	  if( cmdArgs.good() )
+	  if( cmdArgs.good () )
 	    {
 	      cmdArgs>>ws>>s;
 	    }
@@ -285,18 +285,18 @@ commandLine( const std::string& cmdLine
 
       //>>r>>s;
       dgDEBUGF( 15,"Close files.");
-      closeFiles();
+      closeFiles ();
       dgDEBUGF( 15,"Open files \"%s\" \"%s\" \"%s\".",
-		r.c_str(),n.c_str(),s.c_str());
+		r.c_str (),n.c_str (),s.c_str ());
       openFiles(r,n,s);
     }
-  else if( cmdLine=="close" ) { closeFiles(); }
-  else if( cmdLine=="trace" ) { trace(); }
+  else if( cmdLine=="close" ) { closeFiles (); }
+  else if( cmdLine=="trace" ) { trace (); }
   else if( cmdLine=="record" )
     {
       //unsigned int t;
-      //cmdArgs >> ws>>t; if(! cmdArgs.good() ) t=0;
-      record();
+      //cmdArgs >> ws>>t; if(! cmdArgs.good () ) t=0;
+      record ();
     }
 //   else if( cmdLine=="parasite" )
 //     {
@@ -307,7 +307,7 @@ commandLine( const std::string& cmdLine
   else if( cmdLine == "stop" )    {  play=false; }
   else if( cmdLine == "timeStart" )
     {
-      cmdArgs >> std::ws; if(! cmdArgs.good() )
+      cmdArgs >> std::ws; if(! cmdArgs.good () )
 	{ os << "timeStart = " << timeStart << std::endl; }
       else { cmdArgs >> timeStart; }
     }

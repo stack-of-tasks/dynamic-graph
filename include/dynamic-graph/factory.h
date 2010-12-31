@@ -1,4 +1,4 @@
-// -*- c++-mode -*-
+// -*- mode: c++ -*-
 // Copyright 2010, François Bleibel, Thomas Moulard, Olivier Stasse,
 // JRL, CNRS/AIST.
 //
@@ -107,9 +107,9 @@ namespace dynamicgraph
     /// After the initialization, no entities will be available.
     /// registerEntity has to be used to add new entities to the
     /// object.
-    explicit FactoryStorage ();
+    explicit FactoryStorage  ();
 
-    ~FactoryStorage ();
+    ~FactoryStorage  ();
 
     /// \brief Add a new entity to the factory.
     ///
@@ -223,13 +223,13 @@ namespace dynamicgraph
 			       FactoryStorage::EntityConstructor_ptr maker);
 
     /// \brief Unregister entity to the global factory.
-    ~EntityRegisterer ();
+    ~EntityRegisterer  ();
   private:
     /// \brief Name of the entity registered when the instance has
     /// been initialized.
     const std::string entityName;
   };
-}  // namespace dynamicgraph
+}  // end of namespace dynamicgraph
 
 #endif //! DYNAMIC_GRAPH_FACTORY_HH
 

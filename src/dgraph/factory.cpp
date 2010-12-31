@@ -24,11 +24,11 @@ using namespace dynamicgraph;
 
 namespace dynamicgraph
 {
-  FactoryStorage::FactoryStorage ()
-    : entityMap ()
+  FactoryStorage::FactoryStorage  ()
+    : entityMap  ()
   {}
 
-  FactoryStorage::~FactoryStorage ()
+  FactoryStorage::~FactoryStorage  ()
   {
     dgDEBUGINOUT (25);
   }
@@ -44,10 +44,10 @@ namespace dynamicgraph
 	  (ExceptionFactory::OBJECT_CONFLICT,
 	   "Another entity class already defined with the same name. ",
 	   "(while adding entity class <%s> inside the g_factory).",
-	   entname.c_str ());
+	   entname.c_str  ());
 	dgERRORF ("Another entity class already defined with the same name. "
 		  "(while adding entity class <%s> inside the factory).",
-		  entname.c_str ());
+		  entname.c_str  ());
       }
     else
       {
@@ -75,11 +75,11 @@ namespace dynamicgraph
 	DG_THROW ExceptionFactory( ExceptionFactory::OBJECT_CONFLICT,
 				   "Entity class not defined yet. ",
 				   "(while removing entity class <%s>).",
-				   entname.c_str() );
+				   entname.c_str () );
 	dgERRORF(ExceptionFactory::OBJECT_CONFLICT,
 		 "Entity class not defined yet. "
 		 "(while removing entity class <%s>).",
-		 entname.c_str() );
+		 entname.c_str () );
       }
     else
       {
@@ -98,13 +98,13 @@ namespace dynamicgraph
 		 << objname << ">" << std::endl;
 
     EntityMap::const_iterator entPtr = entityMap.find (classname);
-    if (entPtr == entityMap.end ())
+    if (entPtr == entityMap.end  ())
       {
 	DG_THROW ExceptionFactory
 	  (ExceptionFactory::UNREFERED_OBJECT,
 	   "Unknown entity.",
 	   " (while calling new_entity <%s>)",
-	   classname.c_str ());
+	   classname.c_str  ());
       }
     return entPtr->second (objname);
   }
@@ -116,8 +116,8 @@ namespace dynamicgraph
   FactoryStorage::existEntity (const std::string& name) const
   {
     EntityMap::const_iterator lb = entityMap.lower_bound (name);
-    return lb != entityMap.end ()
-      && !(entityMap.key_comp () (name, lb->first));
+    return lb != entityMap.end  ()
+      && !(entityMap.key_comp  () (name, lb->first));
   }
 
   //FIXME: this should be removed at some point.
@@ -141,7 +141,7 @@ namespace dynamicgraph
 	std::string cmd2;
 	cmdArgs >> cmd2;
 
-	if (!cmdArgs.good ())
+	if (!cmdArgs.good  ())
 	  os
 	    << " <arg>\t\t\t\taccess to the factory (help <arg> for more detail)"
 	    << std::endl;
@@ -177,7 +177,7 @@ namespace dynamicgraph
     dgDEBUGOUT (15);
   }
 
-  EntityRegisterer::~EntityRegisterer()
+  EntityRegisterer::~EntityRegisterer ()
   {
     dgDEBUGIN(15);
     g_factory.deregisterEntity (entityName);

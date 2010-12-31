@@ -41,9 +41,9 @@ cmdStartProcedure( const std::string& cmdLine,std::istringstream& args,std::ostr
   args>>procName;
   dgDEBUG(5)<<"Proc <" <<procName<<">"<<endl;
 
-  currentProc.clear();
+  currentProc.clear ();
   args >> ws;
-  while( args.good() )
+  while( args.good () )
     {
       std::string next;
       args>>next>>ws;
@@ -67,11 +67,11 @@ cmdContinueProcedure( const std::string& cmdLine,std::istringstream& args,std::o
 
   Instruction ins; ins.cmd=cmd2;
   args >> ws;
-  while( args.good() )
+  while( args.good () )
     {
       std::string next; int param=-1;
       args>>next>>ws;
-      for( unsigned int i=0;i<currentProc.params.size();++i )
+      for( unsigned int i=0;i<currentProc.params.size ();++i )
 	{ if( next==currentProc.params[i] ) { param=i; break; } }
       ins.args.push_back(next);
       ins.params.push_back( param );
@@ -94,20 +94,20 @@ cmdEndProcedure( const std::string& cmdLine,std::istringstream&, std::ostream& o
   procedureList[ procName ] = currentProc;
 
 //   std::string toto="toto";
-//   for( Procedure::iterator ins=procedureList[ toto ].begin();
-//        ins!=procedureList[ toto ].end(); ++ins )
+//   for( Procedure::iterator ins=procedureList[ toto ].begin ();
+//        ins!=procedureList[ toto ].end (); ++ins )
 //     {
 //       dgDEBUG(15) << "Proc <" << procName << "> : "
 // 		   << ins->cmd << " -> " << ins->args <<endl;
 //     }
 
-  currentProc.clear();
+  currentProc.clear ();
 
   if( g_shell.deregisterFunction( procName ))
     {      os<< "Redefining proc <"<<procName<<">: procedure already defined. "
 	     << "Overwrite it."<<endl;    }
   ShellFunctionRegisterer registration
-  ( procName.c_str(),boost::bind(&ShellProcedure::cmdProcedure,
+  ( procName.c_str (),boost::bind(&ShellProcedure::cmdProcedure,
 				 this,procName,_1,_2,_3) );
 
 }
@@ -120,32 +120,32 @@ cmdProcedure(   const std::string& procname,
     {
       os<<"  - "<<procname<<"\t\t\t\t\tUser-defined procedure"<<endl;
       args >> ws;
-      if( args.good() )
+      if( args.good () )
 	{
 	  std::string argname;
-	  const std::streamoff gc = args.tellg();
+	  const std::streamoff gc = args.tellg ();
 	  args >> argname;
-	  args.seekg(gc); args.clear();
+	  args.seekg(gc); args.clear ();
 	  if( procname==argname )
 	    {
 	      /* if cmdline = "Help <procname>", then display
 	       * the proc instruction. */
 	      ProcedureList::iterator pair = procedureList.find( argname );
-	      if( pair==procedureList.end() )
+	      if( pair==procedureList.end () )
 		{
 		  DG_THROW ExceptionFactory( ExceptionFactory::UNREFERED_FUNCTION,
 						 "Undefined procedure",
 						 ": procedure <%s> not defined.",
-						 argname.c_str() );
+						 argname.c_str () );
 		}
 
 	      Procedure & proc = pair->second;
 	      unsigned int cmdnum=1;
-	      for( std::list<Instruction>::iterator ins=proc.instructions.begin();
-		   ins!=proc.instructions.end(); ++ins )
+	      for( std::list<Instruction>::iterator ins=proc.instructions.begin ();
+		   ins!=proc.instructions.end (); ++ins )
 		{
 		  os<<"\t#" <<cmdnum++<<"  "<<ins->cmd; // <<" "<<ins->args <<endl;
-		  for( unsigned int i=0;i<ins->args.size();++i )
+		  for( unsigned int i=0;i<ins->args.size ();++i )
 		    { os << " " << ins->args[i]; }
 		  os << endl;
 		}
@@ -158,11 +158,11 @@ cmdProcedure(   const std::string& procname,
 
   dgDEBUG(15) << " Calling procedure <" <<cmdLine<<"> " <<endl;
   ProcedureList::iterator pair = procedureList.find( cmdLine );
-  if( pair==procedureList.end() )
+  if( pair==procedureList.end () )
     {
       DG_THROW ExceptionFactory( ExceptionFactory::UNREFERED_FUNCTION,
 				     "Undefined procedure",
-				     ": procedure <%s> not defined.",cmdLine.c_str() );
+				     ": procedure <%s> not defined.",cmdLine.c_str () );
     }
 
   /* You need a copy here, in case the proc is removed from the
@@ -176,10 +176,10 @@ cmdProcedure(   const std::string& procname,
   Procedure proc = pair->second;
 
   std::vector< std::string > paramValue;
-  for( unsigned int i=0;i<proc.params.size();++i )
+  for( unsigned int i=0;i<proc.params.size ();++i )
     {
       args>>ws;
-      if( args.good() )
+      if( args.good () )
 	{
 	  std::string next; args>>next>>ws;
 	  paramValue.push_back( next );
@@ -189,20 +189,20 @@ cmdProcedure(   const std::string& procname,
     }
 
   istringstream iss; ostringstream oss;
-  for( std::list<Instruction>::iterator ins=proc.instructions.begin();
-       ins!=proc.instructions.end(); ++ins )
+  for( std::list<Instruction>::iterator ins=proc.instructions.begin ();
+       ins!=proc.instructions.end (); ++ins )
     {
       dgDEBUG(15) << "Proc <" << cmdLine << "> : " << ins->cmd << endl;
-      oss.clear(); oss.str("");
-      for( unsigned int i=0;i<ins->params.size();++i )
+      oss.clear (); oss.str("");
+      for( unsigned int i=0;i<ins->params.size ();++i )
 	{
 	  int paramArg = ins->params[i];
 	  if( paramArg==-1 ) oss << ins->args[i] << " ";
 	  else oss << paramValue[paramArg] << " ";
 	}
 
-      dgDEBUG(15) << " Args = " << oss.str() << endl;
-      iss.str(oss.str()); iss.clear();
+      dgDEBUG(15) << " Args = " << oss.str () << endl;
+      iss.str(oss.str ()); iss.clear ();
       g_shell.cmd(ins->cmd,iss,os);
     }
 }
@@ -248,12 +248,12 @@ cmdFor( const std::string& cmdLine,std::istringstream& args,std::ostream& os )
 
       std::string insp;
       istringstream issargs( argsstr );
-      while( issargs.good() )
+      while( issargs.good () )
 	{
 	  issargs >> insp;
 	  if( insp == idx ) { oss << i << " "; } else { oss<<insp<< " "; }
 	}
-      iss.str( oss.str() );
+      iss.str( oss.str () );
       g_shell.cmd(cmd2,iss,os);
     }
 }

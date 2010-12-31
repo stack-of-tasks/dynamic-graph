@@ -30,6 +30,13 @@ namespace dynamicgraph
   template<typename T>
   class DefaultCastRegisterer;
 
+  class Contiifstream;
+
+  class PluginLoader;
+  class PluginRefMap;
+
+  template<class Time>
+  class SignalArray;
 } // end of namespace dynamicgraph.
 
 #endif //! DYNAMIC_GRAPH_FWD_HH

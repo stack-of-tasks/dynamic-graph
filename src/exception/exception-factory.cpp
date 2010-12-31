@@ -36,7 +36,7 @@ ExceptionFactory ( const ExceptionFactory::ErrorCodeEnum& errcode,
 		      const std::string & msg )
   :ExceptionAbstract(errcode,msg)
 {
-  dgDEBUGF( 15,"Created with message <%s>.",msg.c_str());
+  dgDEBUGF( 15,"Created with message <%s>.",msg.c_str ());
   dgDEBUG( 1) <<"Created with message <%s>."<<msg<<std::endl;
 }
 
