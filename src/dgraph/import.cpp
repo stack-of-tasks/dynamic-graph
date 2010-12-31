@@ -314,6 +314,15 @@ namespace dynamicgraph
       std::string path;
       cmdArg >> path;
       removeQuotes (path);
+      if (path.empty ())
+	DG_THROW ExceptionFactory
+	  (ExceptionFactory::SYNTAX_ERROR,
+	   "pushImportPaths expects exactly one argument.");
+
+      if (!cmdArg.eof ())
+	DG_THROW ExceptionFactory
+	  (ExceptionFactory::SYNTAX_ERROR,
+	   "pushImportPaths expects exactly one argument.");
 
       importPaths.push_back (path);
     }
@@ -331,6 +340,11 @@ namespace dynamicgraph
 	}
       if (!importPaths.empty ())
 	importPaths.pop_back ();
+      else
+	//FIXME: get a better error code for this.
+	DG_THROW ExceptionFactory
+	  (ExceptionFactory::SYNTAX_ERROR,
+	   "Vector is already empty.");
     }
 
   } // end of namespace command.
