@@ -68,22 +68,8 @@ namespace dynamicgraph
       /// Initialize import paths list (called during static initialization).
       paths_t initializePaths ();
 
-      /// \brief Import paths list.
-      ///
-      /// This vector of string is similar to Unix variables such as
-      /// PATH. It contains all paths that are used to search when
-      /// importing a script.
-      ///
-      /// The look-up is made from right to left:
-      ///
-      /// On Unix:
-      /// importPaths = A:B:C
-      /// On Microsoft Windows:
-      /// importPaths = A;B;C
-      ///
-      /// When typing ``import foo'', C will be searched first then B
-      /// and A. The search stops when the file is found.
       paths_t importPaths = initializePaths ();
+      paths_t alreadyImportedPaths;
 
       /// Search for a module.
       ///
@@ -268,6 +254,7 @@ namespace dynamicgraph
       // Get the absolute path of the module.
       boost::filesystem::path path = searchModule (module);
 
+      // Check that the module can be opened.
       std::ifstream file (path.file_string ().c_str ());
       if (!boost::filesystem::is_regular_file (path)
 	  || !file.is_open () || !file.good ())
@@ -296,10 +283,19 @@ namespace dynamicgraph
 	  return;
 	}
 
+      // If the module has already been imported, do not import it
+      // again.
+      if (std::find (alreadyImportedPaths.begin (),
+		     alreadyImportedPaths.end (),
+		     path) != alreadyImportedPaths.end ())
+	return;
+
       if (path.extension () != SHARED_LIBRARY_EXT)
 	importScript (interpreter, path, file, os);
       else
 	importPlugin (interpreter, path, os);
+
+      alreadyImportedPaths.push_back (path);
 
       dgDEBUGOUT(15);
     }

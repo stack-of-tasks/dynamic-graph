@@ -23,9 +23,10 @@
 
 # include <boost/filesystem/path.hpp>
 
+# include <dynamic-graph/fwd.hh>
+
 namespace dynamicgraph
 {
-  class Interpreter;
   namespace command
   {
     namespace
@@ -36,7 +37,26 @@ namespace dynamicgraph
       /// will look for scripts or plug-ins.
       typedef std::vector<boost::filesystem::path> paths_t;
 
+      /// \brief Import paths list.
+      ///
+      /// This vector of string is similar to Unix variables such as
+      /// PATH. It contains all paths that are used to search when
+      /// importing a script.
+      ///
+      /// The look-up is made from right to left:
+      ///
+      /// On Unix:
+      ///  importPaths = A:B:C
+      /// On Microsoft Windows:
+      ///  importPaths = A;B;C
+      ///
+      /// When typing "import foo", C will be searched first then B
+      /// and A. The search stops when the file is found.
       extern paths_t importPaths;
+
+      /// \brief Already imported paths to avoid multiple inclusion.
+      extern paths_t alreadyImportedPaths;
+
     } // end of anonymous namespace.
 
     /// \brief Implement sot interpretor import command.

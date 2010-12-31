@@ -37,6 +37,8 @@ namespace dynamicgraph
 
   template<class Time>
   class SignalArray;
+
+  class Interpreter;
 } // end of namespace dynamicgraph.
 
 #endif //! DYNAMIC_GRAPH_FWD_HH
