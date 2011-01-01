@@ -38,7 +38,8 @@ using namespace dynamicgraph;
 static const char* NO_PLUGINLOADER_ERROR_MSG =
   "!!  Dynamic loading functionalities not accessible through the shell.";
 
-static void sleep (int secs)
+static void sleep_ (unsigned int secs);
+static void sleep_ (unsigned int secs)
 {
 #ifndef WIN32
   usleep(secs * 1000000);
@@ -541,11 +542,11 @@ ShellFunctions::cmdSleep (const std::string cmdLine,
   double secs = 0.;
   cmdArg >> secs;
 
-  typedef boost::numeric::converter<int, double> Double2Int;
-  int secs_ = Double2Int::convert (secs);
+  typedef boost::numeric::converter<unsigned int, double> Double2Int;
+  unsigned int secs_ = Double2Int::convert (secs);
 
   if (secs_ > 0)
-    sleep (secs_);
+    sleep_ (secs_);
 }
 
 void

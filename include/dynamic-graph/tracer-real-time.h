@@ -29,8 +29,8 @@ namespace dynamicgraph
   {
   public:
     char* buffer;
-    size_t index;
-    size_t bufferSize;
+    std::streamsize index;
+    std::streamsize bufferSize;
     bool full;
     std::string givenname;
 
@@ -38,7 +38,7 @@ namespace dynamicgraph
     OutStringStream  ();
     ~OutStringStream  ();
 
-    void resize (const unsigned int & size);
+    void resize (const std::streamsize& size);
     bool addData (const char * data, const std::streamoff& size);
     void dump (std::ostream& os);
     void empty ();

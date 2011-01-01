@@ -142,7 +142,7 @@ BOOST_AUTO_TEST_CASE (custom_vector_registerer)
     BOOST_CHECK (output.is_equal ("Sig:vector (Type Cst)"));
   }
 
-  for (int i = 0; i < 5; ++i)
+  for (unsigned int i = 0; i < 5; ++i)
     {
       ublas::unit_vector<double> v (5, i);
       std::ostringstream os;

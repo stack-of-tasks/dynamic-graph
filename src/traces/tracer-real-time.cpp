@@ -57,7 +57,7 @@ OutStringStream::
 }
 
 void OutStringStream::
-resize( const unsigned int & size )
+resize (const std::streamsize& size)
 {
   dgDEBUGIN(15);
 
@@ -66,27 +66,27 @@ resize( const unsigned int & size )
   full=false;
 
   delete[] buffer;
-  buffer = new char [size];
+  buffer = new char[static_cast<size_t> (size)];
 
   dgDEBUGOUT(15);
 }
 
 bool OutStringStream::
-addData( const char * data, const std::streamoff& size )
+addData (const char * data, const std::streamoff& size)
 {
   dgDEBUGIN(15);
-  size_t towrite = static_cast<size_t> (size);
-  if( index+towrite>bufferSize )
+  std::streamsize towrite = static_cast<std::streamsize> (size);
+  if (index + towrite > bufferSize)
     {
       dgDEBUGOUT(15);
-      full=true;
+      full = true;
       return false;
-    }//towrite=bufferSize-index;
-  memcpy( buffer+index,data,towrite );
-  index+=towrite;
+    }
+  memcpy (buffer + index, data, static_cast<size_t> (towrite));
+  index += towrite;
   dgDEBUGOUT(15);
   return true;
-  }
+}
 
 void OutStringStream::
 dump( std::ostream& os )
@@ -321,8 +321,8 @@ display( std::ostream& os ) const
       if( file )
 	{
 	  const std::streamsize PRECISION = os.precision ();
-	  const unsigned int SIZE = file->index;
-	  const unsigned int MSIZE = file->bufferSize;
+	  const std::streamsize SIZE = file->index;
+	  const std::streamsize MSIZE = file->bufferSize;
 	  unsigned int dec=0; std::string unit ="";
 	  if( (SIZE>>30)||(MSIZE>>30) ) { dec = 30; unit="Go"; }
 	  else if( (SIZE>>20)||(MSIZE>>20) ) { dec = 20; unit="Mo"; }

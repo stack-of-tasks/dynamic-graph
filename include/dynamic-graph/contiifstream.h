@@ -33,16 +33,20 @@
 
 namespace dynamicgraph
 {
+  /// \ingroup debug
+  ///
+  /// \brief TODO
+  ///
   class DG_CONTIIFSTREAM_DLLAPI Contiifstream
   {
   public:
-    explicit Contiifstream (const std::string& n="");
+    explicit Contiifstream (const std::string& n = "");
     ~Contiifstream  ();
 
     inline void open (const std::string& n)
     {
-      filename=n;
-      cursor=0;
+      filename = n;
+      cursor = 0;
     }
 
     bool loop ();

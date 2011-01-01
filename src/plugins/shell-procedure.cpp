@@ -69,12 +69,19 @@ cmdContinueProcedure( const std::string& cmdLine,std::istringstream& args,std::o
   args >> ws;
   while( args.good () )
     {
-      std::string next; int param=-1;
-      args>>next>>ws;
-      for( unsigned int i=0;i<currentProc.params.size ();++i )
-	{ if( next==currentProc.params[i] ) { param=i; break; } }
-      ins.args.push_back(next);
-      ins.params.push_back( param );
+      std::string next;
+      int param = -1;
+      args >> next >> ws;
+      for (unsigned int i = 0; i < currentProc.params.size (); ++i)
+	{
+	  if (next == currentProc.params[i])
+	    {
+	      param = (int) i;
+	      break;
+	    }
+	}
+      ins.args.push_back (next);
+      ins.params.push_back (param);
     }
 
   currentProc.instructions.push_back( ins );
@@ -198,7 +205,7 @@ cmdProcedure(   const std::string& procname,
 	{
 	  int paramArg = ins->params[i];
 	  if( paramArg==-1 ) oss << ins->args[i] << " ";
-	  else oss << paramValue[paramArg] << " ";
+	  else oss << paramValue[(size_t) paramArg] << " ";
 	}
 
       dgDEBUG(15) << " Args = " << oss.str () << endl;

@@ -252,7 +252,7 @@ namespace dynamicgraph
 	if( this->getReady () )
 	  {
 	    setReady(false);
-	    setTime(t);
+	    this->setTime(t);
 	  }
 	return accessCopy ();
       };

@@ -98,8 +98,8 @@ openFiles( const std::string& rootdir_, const std::string& basename_,
 	   const std::string& suffix_  )
 {
   dgDEBUGIN(15);
-  int n = rootdir_.length ();
-  rootdir=rootdir_;
+  unsigned int n = rootdir_.length ();
+  rootdir = rootdir_;
   if( (0<n)&('/'!=rootdir[n-1]) ) rootdir+='/';
 
   basename=basename_;

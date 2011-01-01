@@ -96,7 +96,7 @@ namespace dynamicgraph
 			 ,std::string name )
     :Signal<T,Time>(name)
     ,TimeDependency<Time>(this,sig)
-    { setFunction(t); }
+    { this->setFunction(t); }
 
   template< class T,class Time>
     const T& SignalTimeDependent<T,Time>::
