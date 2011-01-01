@@ -18,27 +18,57 @@
 
 namespace dynamicgraph
 {
-  class Entity;
+  class Contiifstream;
+  class DebugTrace;
 
-  class FactoryStorage;
+  class PluginRefMap;
+  class Entity;
   class EntityRegisterer;
+  class ExceptionAbstract;
+  class ExceptionFactory;
+  class ExceptionSignal;
+  class ExceptionTraces;
+  class FactoryStorage;
+  class Interpreter;
+  class InterpreterHelper;
+  class OutStringStream;
+  class PluginLoader;
+  class PoolStorage;
+  class ShellFunctionRegisterer;
 
   class SignalCaster;
-
   class SignalCastRegisterer;
 
-  template<typename T>
+  class Tracer;
+  class TracerRealTime;
+
+  template <typename T>
   class DefaultCastRegisterer;
 
-  class Contiifstream;
+  template <typename T, typename Time>
+  class Signal;
 
-  class PluginLoader;
-  class PluginRefMap;
-
-  template<class Time>
+  template <typename Time>
   class SignalArray;
 
-  class Interpreter;
+  template <typename Time>
+  class SignalArray_const;
+
+  template <typename Time>
+  class SignalBase;
+
+
+  template <typename T, typename Time>
+  class SignalPtr;
+  template <typename T, typename Time>
+  class SignalTimeDependent;
+  template <typename Time>
+  class TimeDependency;
+
 } // end of namespace dynamicgraph.
+
+
+class ShellFunctions;
+class ShellProcedure;
 
 #endif //! DYNAMIC_GRAPH_FWD_HH
