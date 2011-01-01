@@ -64,7 +64,24 @@ namespace dynamicgraph
       /// Initialize import paths list (called during static initialization).
       paths_t initializePaths ();
 
+      /// \brief Import paths list.
+      ///
+      /// This vector of string is similar to Unix variables such as
+      /// PATH. It contains all paths that are used to search when
+      /// importing a script.
+      ///
+      /// The look-up is made from right to left:
+      ///
+      /// On Unix:
+      ///  importPaths = A:B:C
+      /// On Microsoft Windows:
+      ///  importPaths = A;B;C
+      ///
+      /// When typing "import foo", C will be searched first then B
+      /// and A. The search stops when the file is found.
       paths_t importPaths = initializePaths ();
+
+      /// \brief Already imported paths to avoid multiple inclusion.
       paths_t alreadyImportedPaths;
 
       /// Search for a module.

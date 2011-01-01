@@ -22,6 +22,7 @@
 
 #include <boost/foreach.hpp>
 #include <boost/format.hpp>
+#include <boost/numeric/conversion/converter.hpp>
 
 #include <dynamic-graph/debug.h>
 #include <dynamic-graph/entity.h>
@@ -345,7 +346,7 @@ ShellFunctions::cmdCopy (const std::string cmdLine,
       sig2.setConstantDefault ();
       sig2.plug (&sig2);
     }
-  catch (ExceptionAbstract& err)
+  catch (const ExceptionAbstract&)
     {
       throw;
     }
@@ -539,8 +540,12 @@ ShellFunctions::cmdSleep (const std::string cmdLine,
 
   double secs = 0.;
   cmdArg >> secs;
-  if (secs > 0)
-    sleep (int (secs));
+
+  typedef boost::numeric::converter<int, double> Double2Int;
+  int secs_ = Double2Int::convert (secs);
+
+  if (secs_ > 0)
+    sleep (secs_);
 }
 
 void
@@ -578,7 +583,7 @@ ShellFunctions::cmdCompletionList (const std::string cmdLine,
       std::ofstream completionFile (aFileName.c_str ());
       g_pool.writeCompletionList (completionFile);
     }
-  catch (const ExceptionAbstract & err)
+  catch (const ExceptionAbstract &)
     {
       throw;
     }

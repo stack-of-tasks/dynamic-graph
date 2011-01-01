@@ -214,7 +214,7 @@ namespace dynamicgraph
 		  signalTime = t;
 		  return setTcopy(*Treference);
 		}
-	      catch( MutexError le )
+	      catch(const MutexError&)
 		{ return accessCopy (); }
 	    }
 
@@ -242,7 +242,7 @@ namespace dynamicgraph
 		  copyInit = true;
 		  return switchTcopy ();
 		}
-	      catch( MutexError le )
+	      catch(const MutexError&)
 		{ return accessCopy (); }
 	    }
 	  break;
@@ -280,7 +280,7 @@ namespace dynamicgraph
 		setTcopy(t);
 		(*TreferenceNonConst)=t;
 	      }
-	    catch( MutexError le )
+	    catch(const MutexError&)
 	      { /* TODO ERROR */ }
 	  }
       }
