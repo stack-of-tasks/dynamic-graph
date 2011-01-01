@@ -15,24 +15,6 @@
 // received a copy of the GNU Lesser General Public License along with
 // dynamic-graph. If not, see <http://www.gnu.org/licenses/>.
 
-/*
- * Macro de trace et de debugage
- *
- *   - TRACAGE:    TRACE et ERROR_TRACE fonctionnent comme des printf
- * avec retour chariot en fin de fonction.
- *                 CERROR et CTRACE fonctionnent comme les flux de sortie
- * C++ cout et cerr.
- *   - DEBUGAGE:   DEBUG_TRACE(niv,  et DERROR_TRACE(niv, fonctionnent
- * comme des printf, n'imprimant que si le niveau de trace 'niv' est
- * superieur au mode de debugage VP_DEBUG_MODE.
- *                 CDEBUG(niv) fonctionne comme le flux de sortie C++ cout.
- *                 DEBUG_ENABLE(niv) vaut 1 ssi le niveau de tracage 'niv'
- * est superieur au  mode de debugage DEBUG_MODE. Il vaut 0 sinon.
- *   - PROG DEFENSIVE: DEFENSIF(a) vaut a ssi le mode defensif est active,
- * et vaut 0 sinon.
- *
- * ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
-
 #ifndef DYNAMIC_GRAPH_DEBUG_HH
 # define DYNAMIC_GRAPH_DEBUG_HH
 # include <cstdio>
