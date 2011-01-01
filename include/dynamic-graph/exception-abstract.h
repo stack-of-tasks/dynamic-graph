@@ -44,9 +44,15 @@
 
 namespace dynamicgraph
 {
+  /// \ingroup error
+  ///
+  /// \brief Abstract root class for all dynamic-graph exceptions.
   class DYNAMIC_GRAPH_DLLAPI ExceptionAbstract : public std::exception
   {
   public:
+    /// \ingroup error
+    ///
+    /// \brief Class owned by exceptions to store error locations.
     class Param
     {
     public:
@@ -73,7 +79,13 @@ namespace dynamicgraph
       bool set;
     };
 
-
+    /// \brief Categories error code.
+    ///
+    /// Each value matches categories used by a subclass of
+    /// ExceptionAbstract.
+    ///
+    /// This is the programmer responsibility to make sure there is
+    /// enough room between two categories error code.
     enum ExceptionEnum
     {
       ABSTRACT = 0,
@@ -94,16 +106,16 @@ namespace dynamicgraph
       return EXCEPTION_NAME;
     }
 
-    /**  Access to the error code. */
+    /// \brief Access to the error code.
     int getCode () const;
 
-    /** Reference access to the error message (can be empty). */
+    /// \brief Reference access to the error message (can be empty).
     const std::string& getStringMessage () const;
 
-    /** Access to the pointer on the array of \e char related to the
-     * error string.
-     * Cannot be \e NULL.
-     */
+    /// \brief Access to the pointer on the array of \e char related
+    /// to the error string.
+    ///
+    /// Cannot be \e NULL.
     const char* getMessage () const;
 
     virtual const char* what () const throw ()
@@ -111,20 +123,24 @@ namespace dynamicgraph
       return getStringMessage ().c_str ();
     }
 
-    /** Print the error structure. */
-    DYNAMIC_GRAPH_DLLAPI friend std::ostream &
+    /// \brief Print the error structure.
+    DYNAMIC_GRAPH_DLLAPI friend std::ostream&
       operator << (std::ostream & os, const ExceptionAbstract & err);
 
 
   protected:
-    /** Error code.
-     * \sa ErrorCodeEnum */
+    /// \brief Error code.
+    /// \sa ErrorCodeEnum
     int code;
 
-    /**  Error message (can be empty). */
+    /// \brief Error message (can be empty).
     std::string message;
 
 # ifdef DYNAMICGRAPH_EXCEPTION_PASSING_PARAM
+    /// \brief Optional mutable attribute to store exception location.
+    ///
+    /// Only present if DYNAMICGRAPH_EXCEPTION_PASSING_PARAM
+    /// preprocessor symbol exists.
     mutable Param p;
 
     template<class Exc>
@@ -146,7 +162,7 @@ namespace dynamicgraph
 # endif // DYNAMICGRAPH_EXCEPTION_PASSING_PARAM
 
   private:
-    /// forbid the empty constructor (private).
+    /// \brief Forbid the empty constructor (private).
     ExceptionAbstract ();
   };
 } // end of namespace dynamicgraph

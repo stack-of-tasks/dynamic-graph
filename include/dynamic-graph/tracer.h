@@ -31,6 +31,9 @@
 
 namespace dynamicgraph
 {
+  /// \ingroup plugin
+  ///
+  /// \brief Tracer plug-in main class.
   class DG_TRACER_DLLAPI Tracer : public Entity
   {
   protected:

@@ -25,6 +25,9 @@
 
 namespace dynamicgraph
 {
+  /// \ingroup error
+  ///
+  /// \brief Exceptions raised when an error related to traces happen.
   class DYNAMIC_GRAPH_DLLAPI ExceptionTraces : public ExceptionAbstract
   {
   public:

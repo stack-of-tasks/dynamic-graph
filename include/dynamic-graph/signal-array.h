@@ -22,6 +22,9 @@
 
 namespace dynamicgraph
 {
+  /// \ingroup dgraph
+  ///
+  /// \brief TODO
   template<class Time>
   class SignalArray_const
   {
@@ -118,7 +121,9 @@ namespace dynamicgraph
     return res;
   }
 
-
+  /// \ingroup dgraph
+  ///
+  /// \brief TODO
   template<class Time>
   class SignalArray : public SignalArray_const<Time>
   {

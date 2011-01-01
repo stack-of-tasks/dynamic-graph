@@ -99,15 +99,6 @@ cmdEndProcedure( const std::string& cmdLine,std::istringstream&, std::ostream& o
 
   dgDEBUG(5)<<"Proc <" <<procName<<">: endproc"<<endl;
   procedureList[ procName ] = currentProc;
-
-//   std::string toto="toto";
-//   for( Procedure::iterator ins=procedureList[ toto ].begin ();
-//        ins!=procedureList[ toto ].end (); ++ins )
-//     {
-//       dgDEBUG(15) << "Proc <" << procName << "> : "
-// 		   << ins->cmd << " -> " << ins->args <<endl;
-//     }
-
   currentProc.clear ();
 
   if( g_shell.deregisterFunction( procName ))

@@ -27,7 +27,8 @@
 # include <dynamic-graph/exception-factory.h>
 # include <dynamic-graph/dynamic-graph-api.h>
 
-
+/// \ingroup dgraph
+///
 /// \brief Automatically register a class to the global factory
 /// by relying on the static initialization.
 ///
@@ -192,6 +193,8 @@ namespace dynamicgraph
     EntityMap entityMap;
   };
 
+  /// \ingroup dgraph
+  ///
   /// \brief Global factory.
   ///
   /// This global variable is the only valid instance of the
@@ -208,6 +211,8 @@ namespace dynamicgraph
   DYNAMIC_GRAPH_DLLAPI extern FactoryStorage g_factory;
 
 
+  /// \ingroup dgraph
+  ///
   /// \brief This class automatically register an Entity to the
   /// global factory at initialization and unregister it during
   /// instance destruction.

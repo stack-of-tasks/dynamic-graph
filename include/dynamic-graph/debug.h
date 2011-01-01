@@ -46,67 +46,73 @@
 
 namespace dynamicgraph
 {
-    class DYNAMIC_GRAPH_DLLAPI DebugTrace
+  /// \ingroup debug
+  ///
+  /// \brief Logging class.
+  ///
+  /// This class should never be used directly, please use the
+  /// debugging macro instead.
+  class DYNAMIC_GRAPH_DLLAPI DebugTrace
+  {
+  public:
+    static const int SIZE = 512;
+
+    std::stringstream tmpbuffer;
+    std::ostream& outputbuffer;
+    char charbuffer[SIZE+1];
+    int traceLevel;
+    int traceLevelTemplate;
+
+    DebugTrace (std::ostream& os)
+      : outputbuffer (os)
+      {}
+
+    inline void trace (const int level, const char* format, ...)
     {
-    public:
-      static const int SIZE = 512;
+      if (level <= traceLevel)
+	DG_COMMON_TRACES; tmpbuffer.str("");
+    }
 
-      std::stringstream tmpbuffer;
-      std::ostream& outputbuffer;
-      char charbuffer[SIZE+1];
-      int traceLevel;
-      int traceLevelTemplate;
+    inline void trace (const char* format, ...)
+    {
+      DG_COMMON_TRACES;
+      tmpbuffer.str("");
+    }
 
-      DebugTrace (std::ostream& os)
-	: outputbuffer (os)
-	{}
+    inline void trace (const int level=-1)
+    {
+      if (level <= traceLevel)
+	outputbuffer << tmpbuffer.str (); tmpbuffer.str("");
+    }
 
-      inline void trace (const int level, const char* format, ...)
-      {
-	if (level <= traceLevel)
-	  DG_COMMON_TRACES; tmpbuffer.str("");
-      }
-
-      inline void trace (const char* format, ...)
-      {
+    inline void traceTemplate (const int level, const char* format, ...)
+    {
+      if (level <= traceLevelTemplate)
 	DG_COMMON_TRACES;
-	tmpbuffer.str("");
-      }
+      tmpbuffer.str("");
+    }
 
-      inline void trace (const int level=-1)
-      {
-	if (level <= traceLevel)
-	  outputbuffer << tmpbuffer.str (); tmpbuffer.str("");
-      }
+    inline void traceTemplate (const char* format, ...)
+    {
+      DG_COMMON_TRACES;
+      tmpbuffer.str("");
+    }
 
-      inline void traceTemplate (const int level, const char* format, ...)
-      {
-	if (level <= traceLevelTemplate)
-	  DG_COMMON_TRACES;
-	tmpbuffer.str("");
-      }
+    inline DebugTrace& pre (const std::ostream&)
+    {
+      return *this;
+    }
 
-      inline void traceTemplate (const char* format, ...)
-      {
-	DG_COMMON_TRACES;
-	tmpbuffer.str("");
-      }
+    inline DebugTrace& pre (const std::ostream&, int level)
+    {
+      traceLevel = level;
+      return *this;
+    }
 
-      inline DebugTrace& pre (const std::ostream&)
-      {
-	return *this;
-      }
-
-      inline DebugTrace& pre (const std::ostream&, int level)
-      {
-	traceLevel = level;
-	return *this;
-      }
-
-      static const char* DEBUG_FILENAME_DEFAULT;
-      static void openFile (const char* filename = DEBUG_FILENAME_DEFAULT);
-      static void closeFile( const char* filename = DEBUG_FILENAME_DEFAULT);
-    };
+    static const char* DEBUG_FILENAME_DEFAULT;
+    static void openFile (const char* filename = DEBUG_FILENAME_DEFAULT);
+    static void closeFile( const char* filename = DEBUG_FILENAME_DEFAULT);
+  };
 
   DYNAMIC_GRAPH_DLLAPI extern DebugTrace dgDEBUGFLOW;
   DYNAMIC_GRAPH_DLLAPI extern DebugTrace dgERRORFLOW;

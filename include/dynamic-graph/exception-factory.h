@@ -25,7 +25,10 @@
 
 namespace dynamicgraph
 {
-  class DYNAMIC_GRAPH_DLLAPI ExceptionFactory :public ExceptionAbstract
+  /// \ingroup error
+  ///
+  /// \brief Generic error class.
+  class DYNAMIC_GRAPH_DLLAPI ExceptionFactory : public ExceptionAbstract
   {
   public:
     enum ErrorCodeEnum
@@ -46,10 +49,10 @@ namespace dynamicgraph
 
     explicit ExceptionFactory (const ExceptionFactory::ErrorCodeEnum& errcode,
 			       const std::string & msg = "");
-    
+
     ExceptionFactory (const ExceptionFactory::ErrorCodeEnum& errcode,
 		      const std::string& msg, const char* format, ...);
-    
+
     virtual ~ExceptionFactory () throw ()
     {}
 

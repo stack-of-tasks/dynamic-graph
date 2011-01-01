@@ -25,6 +25,9 @@
 
 namespace dynamicgraph
 {
+  /// \ingroup plugin
+  ///
+  /// \brief Stream for the tracer real-time.
   class DG_TRACERREALTIME_DLLAPI OutStringStream : public std::ostringstream
   {
   public:
@@ -44,6 +47,9 @@ namespace dynamicgraph
     void empty ();
   };
 
+  /// \ingroup plugin
+  ///
+  /// \brief Main class of the tracer real-time plug-in.
   class DG_TRACERREALTIME_DLLAPI TracerRealTime : public Tracer
   {
   public:
@@ -53,20 +59,21 @@ namespace dynamicgraph
       return CLASS_NAME;
     }
 
-  protected:
-    int bufferSize;
-    static const int BUFFER_SIZE_DEFAULT = 1048576; //  1Mo
-    typedef std::list<std::ofstream*> HardFileList;
-    HardFileList hardFiles;
-
-  public:
     TracerRealTime (const std::string n);
     virtual ~TracerRealTime ()
     {}
 
-  public:
     virtual void closeFiles ();
     virtual void trace ();
+
+    void display (std::ostream& os) const;
+    DG_TRACERREALTIME_DLLAPI friend std::ostream& operator<<
+      (std::ostream& os, const TracerRealTime& t);
+
+    virtual void commandLine (const std::string& cmdLine,
+			      std::istringstream& cmdArgs,
+			      std::ostream& os);
+
   protected:
     virtual void openFile (const SignalBase<int>& sig,
 			   const std::string& filename);
@@ -75,7 +82,6 @@ namespace dynamicgraph
 			       const SignalBase<int>& sig);
     void emptyBuffers ();
 
-  public:
     void setBufferSize (const int& SIZE)
     {
       bufferSize=SIZE;
@@ -86,16 +92,11 @@ namespace dynamicgraph
       return bufferSize;
     }
 
-  public:
-    /* --- DISPLAY ---------------------------------------------------------- */
-    void display (std::ostream& os) const;
-    DG_TRACERREALTIME_DLLAPI friend std::ostream& operator<<
-      (std::ostream& os, const TracerRealTime& t);
+    typedef std::list<std::ofstream*> HardFileList;
+    static const int BUFFER_SIZE_DEFAULT = 1048576; //  1Mo
 
-    /* --- PARAMS --- */
-    virtual void commandLine (const std::string& cmdLine
-			      ,std::istringstream& cmdArgs
-			      ,std::ostream& os);
+    int bufferSize;
+    HardFileList hardFiles;
   };
 } // end of namespace dynamicgraph
 

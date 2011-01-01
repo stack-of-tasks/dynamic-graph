@@ -24,6 +24,10 @@
 
 namespace dynamicgraph
 {
+  /// \ingroup error
+  ///
+  /// \brief Exceptions raised when an error related to signals
+  /// happen.
   class DYNAMIC_GRAPH_DLLAPI ExceptionSignal : public ExceptionAbstract
   {
   public:

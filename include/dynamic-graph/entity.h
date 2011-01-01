@@ -32,18 +32,18 @@
 
 namespace dynamicgraph
 {
-  /*! \ingroup dgraph
-    \brief This class represents an entity, i.e. a generic
-    computational unit that provides input and output signals.
-
-    These signals link the entities together to form a complete
-    computation graph.  To declare a new entity, please see the
-    DYNAMICGRAPH_FACTORY_ENTITY_PLUGIN macro in g_factory.h. A
-    command-line interface provided by the entity can be used by a sot
-    shell to call methods from entities and display the result of
-    their execution.  Classes that derive from Entity can customize
-    the command-line by overriding commandLine ().
-  */
+  /// \ingroup dgraph
+  ///
+  /// \brief This class represents an entity, i.e. a generic
+  /// computational unit that provides input and output signals.
+  /// 
+  /// These signals link the entities together to form a complete
+  /// computation graph.  To declare a new entity, please see the
+  /// DYNAMICGRAPH_FACTORY_ENTITY_PLUGIN macro in g_factory.h. A
+  /// command-line interface provided by the entity can be used by a
+  /// sot shell to call methods from entities and display the result
+  /// of their execution.  Classes that derive from Entity can
+  /// customize the command-line by overriding commandLine ().
   class DYNAMIC_GRAPH_DLLAPI Entity : private boost::noncopyable
   {
   public:
