@@ -122,7 +122,7 @@ namespace dynamicgraph
     /// will be raised with the code OBJECT_CONFLICT.
     ///
     /// \param entname the name used to subscribe the entity.
-    /// \param pointer to a function allocating an entity from an
+    /// \param ent pointer to a function allocating an entity from an
     /// instance name.
     void registerEntity (const std::string& entname,
 			 EntityConstructor_ptr ent);
