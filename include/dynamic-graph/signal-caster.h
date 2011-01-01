@@ -22,6 +22,7 @@
 #define SIGNALCASTER_H_
 
 #include <map>
+#include <vector>
 #include <typeinfo>
 #include <boost/function/function1.hpp>
 #include <boost/function/function2.hpp>
@@ -67,6 +68,9 @@ public:
 	void unregisterCast(const std::type_info& type);
 	/// Checks if there is a displayer registered with type_name
 	bool existsCast(const std::type_info& type);
+	/// Return the list of type names registered.
+	std::vector<std::string> listTypenames() const;
+	
 private:
 	/// Container for the three cast functions
 	typedef boost::tuple<displayer_type, caster_type, tracer_type> cast_functions_type;

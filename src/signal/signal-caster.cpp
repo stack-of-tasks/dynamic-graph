@@ -114,6 +114,15 @@ any SignalCaster::cast(const type_info& type, istringstream& iss) {
 	return (*it).second.get<1>()(iss); // call cast function (tuple index 1)
 }
 
+  std::vector<std::string> SignalCaster::listTypenames() const
+  {
+    std::vector<std::string> typeList;
+    for (std::map<std::string, cast_functions_type>::const_iterator iter =
+	   functions_.begin(); iter != functions_.end(); iter++) {
+      typeList.push_back(iter->first);
+    }
+    return typeList;
+  }
 
 /// The global instance of the caster class.
 SignalCaster g_caster;
