@@ -1,4 +1,4 @@
-import shell-functions
+import "shell-functions"
 # DO NOT MOVE THIS LINE: comments are not implemented before.
 
 # Copyright 2010, Thomas Moulard, JRL, CNRS/AIST.
@@ -20,4 +20,4 @@ import shell-functions
 # This file should ALWAYS be imported as it provides core features
 # such as comments.
 
-import shell-procedure
+import "shell-procedure"

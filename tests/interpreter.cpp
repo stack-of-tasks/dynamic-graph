@@ -23,6 +23,8 @@
 #include <boost/test/unit_test.hpp>
 #include <boost/test/output_test_stream.hpp>
 
+#include "interpreter.h"
+
 using boost::test_tools::output_test_stream;
 
 // This unit test checks the dynamic-graph interpreter
@@ -30,23 +32,6 @@ using boost::test_tools::output_test_stream;
 //
 // It may be split in several tests in the future if this
 // becomes too big.
-
-
-#define RUN_COMMAND(CMD, ARGS)			\
-    output_test_stream output;			\
-    std::stringstream ss;			\
-    std::string cmd = CMD;			\
-    ss << ARGS;					\
-    std::istringstream args (ss.str ());	\
-    shell.cmd (cmd, args, output)
-
-#define RUN_COMMAND_NOARG(CMD)			\
-    output_test_stream output;			\
-    std::stringstream ss;			\
-    std::string cmd = CMD;			\
-    std::istringstream args (ss.str ());	\
-    shell.cmd (cmd, args, output)
-
 
 // Simple test to check the shell default constructor.
 BOOST_AUTO_TEST_CASE (constructor)

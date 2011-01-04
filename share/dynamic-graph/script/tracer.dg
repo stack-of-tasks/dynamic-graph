@@ -1,4 +1,4 @@
-import shell.dg
+import "shell.dg"
 # Copyright 2010, Thomas Moulard, JRL, CNRS/AIST.
 # .
 # This file is part of dynamic-graph.
@@ -19,5 +19,5 @@ import shell.dg
 # The tracer can be used to log signal values without
 # intefering with the real-time properties of dynamic-graph.
 
-import tracer-real-time
-import tracer
+import "tracer-real-time"
+import "tracer"
