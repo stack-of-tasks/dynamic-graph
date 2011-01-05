@@ -36,11 +36,11 @@ using namespace dynamicgraph;
 /* --------------------------------------------------------------------- */
 
 PoolStorage::
-~PoolStorage( void )
+~PoolStorage  ()
 {
   dgDEBUGIN(15);
 
-  for( Entities::iterator iter=entity.begin();iter!=entity.end(); iter=entity.begin())
+  for( Entities::iterator iter=entity.begin ();iter!=entity.end (); iter=entity.begin ())
     {
       dgDEBUG(15) << "Delete \""
 		   << (iter->first) <<"\""<<std::endl;
@@ -58,11 +58,11 @@ void PoolStorage::
 registerEntity( const std::string& entname,Entity* ent )
 {
   Entities::iterator entkey = entity.find(entname);
-  if( entkey != entity.end() ) // key does exist
+  if( entkey != entity.end () ) // key does exist
     {
       throw ExceptionFactory( ExceptionFactory::OBJECT_CONFLICT,
 				 "Another entity already defined with the same name. ",
-				 "Entity name is <%s>.",entname.c_str() );
+				 "Entity name is <%s>.",entname.c_str () );
     }
   else
     {
@@ -76,11 +76,11 @@ void PoolStorage::
 deregisterEntity( const std::string& entname )
 {
   Entities::iterator entkey = entity.find(entname);
-  if( entkey == entity.end() ) // key doesnot exist
+  if( entkey == entity.end () ) // key doesnot exist
     {
       throw ExceptionFactory( ExceptionFactory::OBJECT_CONFLICT,
 				 "Entity not defined yet. ",
-				 "Entity name is <%s>.",entname.c_str() );
+				 "Entity name is <%s>.",entname.c_str () );
     }
   else
     {
@@ -95,11 +95,11 @@ getEntity( const std::string& name )
 {
   dgDEBUG(25) << "Get <" << name << ">"<<std::endl;
   Entities::iterator entPtr = entity .find( name );
-  if( entPtr == entity.end() )
+  if( entPtr == entity.end () )
     {
       DG_THROW ExceptionFactory( ExceptionFactory::UNREFERED_OBJECT,
 				     "Unknown entity."," (while calling <%s>)",
-				     name.c_str() );
+				     name.c_str () );
     }
   else return *entPtr->second;
 }
@@ -108,21 +108,17 @@ void PoolStorage::
 clearPlugin( const std::string& name )
 {
   dgDEBUGIN(5);
-  std::list< Entity* > toDelete;
+  std::list<Entity*> toDelete;
 
-  for( Entities::iterator entPtr=entity.begin(); entPtr!=entity.end(); entPtr++ )
-    {
-      if( entPtr->second->getClassName() == name )
-	{ toDelete.push_back( entPtr->second ); }
-    }
+  for (Entities::iterator entPtr = entity.begin  ();
+       entPtr != entity.end  (); ++entPtr)
+    if (entPtr->second->getClassName () == name)
+      toDelete.push_back (entPtr->second);
 
-  for( std::list< Entity* >::iterator iter=toDelete.begin();
-       iter!=toDelete.end(); ++iter )
-    {
-      delete (Entity*) *iter;
-    }
+  for (std::list< Entity* >::iterator iter = toDelete.begin  ();
+       iter != toDelete.end  (); ++iter)
+    delete (Entity*) *iter;
   dgDEBUGOUT(5);
-  return;
 }
 
 
@@ -143,7 +139,7 @@ writeGraph(const std::string &aFileName)
   size_t IdxSeparatorFound = aFileName.rfind("/");
   std::string GenericName;
   if (IdxSeparatorFound!=std::string::npos)
-    GenericName = tmp1.substr(IdxSeparatorFound,tmp1.length());
+    GenericName = tmp1.substr(IdxSeparatorFound,tmp1.length ());
   else
     GenericName = tmp1;
 
@@ -158,7 +154,7 @@ writeGraph(const std::string &aFileName)
 #endif /*WIN32*/
 
   /* Opening the file and writing the first comment. */
-  std::ofstream GraphFile (aFileName.c_str(),std::ofstream::out);
+  std::ofstream GraphFile (aFileName.c_str (),std::ofstream::out);
   GraphFile << "/* This graph has been automatically generated. " << std::endl;
   GraphFile << "   " << 1900+ltimeformatted.tm_year
 	    << " Month: " << 1+ltimeformatted.tm_mon
@@ -173,12 +169,12 @@ writeGraph(const std::string &aFileName)
 
   GraphFile << "\t} " << std::endl;
 
-  for( Entities::iterator iter=entity.begin();
-       iter!=entity.end();iter++ )
+  for( Entities::iterator iter=entity.begin ();
+       iter!=entity.end (); ++iter)
     {
       Entity* ent = iter->second;
-      GraphFile << ent->getName()
-		<<" [ label = \"" << ent->getName() << "\" ," << std::endl
+      GraphFile << ent->getName ()
+		<<" [ label = \"" << ent->getName () << "\" ," << std::endl
 		<<"   fontcolor = black, color = black, fillcolor=cyan, style=filled, shape=box ]" << std::endl;
       ent->writeGraph(GraphFile);
     }
@@ -186,14 +182,14 @@ writeGraph(const std::string &aFileName)
 
   GraphFile << "}"<< std::endl;
 
-  GraphFile.close();
+  GraphFile.close ();
 }
 
 void PoolStorage::
 writeCompletionList(std::ostream& os)
 {
-  for( Entities::iterator iter=entity.begin();
-       iter!=entity.end();iter++ )
+  for( Entities::iterator iter=entity.begin ();
+       iter!=entity.end (); ++iter)
     {
       Entity* ent = iter->second;
       ent->writeCompletionList(os);
@@ -220,12 +216,12 @@ commandLine( const std::string& objectName,const std::string& functionName,
 	}
       else if( functionName=="list" )
 	{
-	  for( Entities::iterator iter=entity.begin();
-	       iter!=entity.end();iter++ )
+	  for( Entities::iterator iter=entity.begin ();
+	       iter!=entity.end (); ++iter)
 	    {
 	      Entity* ent = iter->second;
-	      os << ent->getName()
-		 <<" (" << ent->getClassName() << ")" << std::endl;
+	      os << ent->getName ()
+		 <<" (" << ent->getClassName () << ")" << std::endl;
 	    }
 
 	}

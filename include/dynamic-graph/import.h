@@ -1,38 +1,41 @@
-/*
- * Copyright 2010,
- * François Bleibel,
- * Olivier Stasse,
- *
- * CNRS/AIST
- *
- * This file is part of sot-core.
- * sot-core is free software: you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public License
- * as published by the Free Software Foundation, either version 3 of
- * the License, or (at your option) any later version.
- * sot-core is distributed in the hope that it will be
- * useful, but WITHOUT ANY WARRANTY; without even the implied warranty
- * of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.  You should
- * have received a copy of the GNU Lesser General Public License along
- * with sot-core.  If not, see <http://www.gnu.org/licenses/>.
- */
+// -*- c++-mode -*-
+// Copyright 2010, François Bleibel, Thomas Moulard, Olivier Stasse,
+// JRL, CNRS/AIST.
+//
+// This file is part of dynamic-graph.
+// dynamic-graph is free software: you can redistribute it and/or
+// modify it under the terms of the GNU Lesser General Public License
+// as published by the Free Software Foundation, either version 3 of
+// the License, or (at your option) any later version.
+//
+// dynamic-graph is distributed in the hope that it will be useful, but
+// WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+// General Lesser Public License for more details.  You should have
+// received a copy of the GNU Lesser General Public License along with
+// dynamic-graph. If not, see <http://www.gnu.org/licenses/>.
 
-// -*- c++ -*-
 #ifndef SOT_FACTORY_COMMAND_IMPORT_H
 # define SOT_FACTORY_COMMAND_IMPORT_H
 # include <iosfwd>
 # include <string>
 # include <vector>
 
+# include <boost/filesystem/path.hpp>
+
+# include <dynamic-graph/fwd.hh>
+
 namespace dynamicgraph
 {
-  class Interpreter;
   namespace command
   {
     namespace
     {
-      extern std::vector<std::string> importPaths;
+      /// \brief Vector of Boost.Filesystem paths.
+      ///
+      /// Used to store paths where the import statement
+      /// will look for scripts or plug-ins.
+      typedef std::vector<boost::filesystem::path> paths_t;
     } // end of anonymous namespace.
 
     /// \brief Implement sot interpretor import command.

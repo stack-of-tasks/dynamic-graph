@@ -43,8 +43,8 @@ std::ofstream dg_debugfile; //( "/dev/null", std::ios::trunc&std::ios::out );
  class dgDebug_init
  {
  public:
-   dgDebug_init( void )
-     { dg_debugfile.setstate( std::ios::failbit ) ; /* dg_debugfile.close(); */ }
+   dgDebug_init  ()
+     { dg_debugfile.setstate( std::ios::failbit ) ; /* dg_debugfile.close (); */ }
  };
  dgDebug_init dgDebug_initialisator;
 
@@ -57,15 +57,15 @@ namespace dynamicgraph {
 
 void DebugTrace::openFile( const char * filename )
 {
-  if( dg_debugfile.good()&&dg_debugfile.is_open() ) dg_debugfile.close();
-  dg_debugfile.clear();
+  if( dg_debugfile.good ()&&dg_debugfile.is_open () ) dg_debugfile.close ();
+  dg_debugfile.clear ();
   dg_debugfile.open( filename, std::ios::trunc&std::ios::out );
-  //std::cout << filename << dg_debugfile.good() << dg_debugfile.is_open() << std::endl;
+  //std::cout << filename << dg_debugfile.good () << dg_debugfile.is_open () << std::endl;
 }
 
 void DebugTrace::closeFile(const char *)
 {
-  if( dg_debugfile.good()&&dg_debugfile.is_open() ) { dg_debugfile.close(); }
+  if( dg_debugfile.good ()&&dg_debugfile.is_open () ) { dg_debugfile.close (); }
   dg_debugfile.setstate( std::ios::failbit ) ;
 }
 

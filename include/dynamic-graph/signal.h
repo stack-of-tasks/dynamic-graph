@@ -98,7 +98,7 @@ protected:
 
   /* --- Constructor/destrusctor --- */
   Signal( std::string name );
-  virtual ~Signal( void ) {}
+  virtual ~Signal  () {}
 
   /* --- Generic In/Out function --- */
   virtual void get( std::ostream& value ) const;
@@ -112,34 +112,34 @@ protected:
   virtual void setFunction( boost::function2<T&,T&,Time> t,
 			    Mutex *mutexref=NULL);
 
-  inline bool getKeepReference( void ){ return keepReference; }
+  inline bool getKeepReference  (){ return keepReference; }
   inline void setKeepReference( const bool& b ){ keepReference=b; }
 
   /* --- Signal computation --- */
   virtual const T& access( const Time & t );
   virtual inline void recompute( const Time & t ) { access(t); }
-  virtual const T& accessCopy( void ) const;
+  virtual const T& accessCopy  () const;
 
   virtual std::ostream& display( std::ostream& os ) const;
 
   /* --- Operators --- */
-  virtual inline const T& operator()( const Time & t ){ return access(t); }
+  virtual inline const T& operator ()( const Time & t ){ return access(t); }
   virtual Signal<T,Time>& operator= ( const T& t );
-  inline operator const T& ( void ) const { return accessCopy(); }
+  inline operator const T&   () const { return accessCopy (); }
 
 
  public:
-  virtual void checkCompatibility( void ) { throw Tcopy; }
+  virtual void checkCompatibility  () { throw Tcopy; }
 
  private:
   const T& setTcopy( const T& t );
-  T& getTwork( void );
-  const T& getTwork( void ) const ;
-  const T& switchTcopy( void );
+  T& getTwork  ();
+  const T& getTwork  () const ;
+  const T& switchTcopy  ();
 
 };
 
-} // namespace dynamicgraph
+} // end of namespace dynamicgraph
 
 #include <dynamic-graph/signal.t.cpp>
 

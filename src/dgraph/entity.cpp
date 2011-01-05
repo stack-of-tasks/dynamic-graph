@@ -38,7 +38,7 @@ const std::string Entity::CLASS_NAME = "Entity";
 
 
 void Entity::
-entityRegistration( void )
+entityRegistration  ()
 {
 
   //sotPool.entity[name] = this;
@@ -46,7 +46,7 @@ entityRegistration( void )
 }
 
 void Entity::
-entityDeregistration( void )
+entityDeregistration  ()
 {
   g_pool.deregisterEntity(name);
 }
@@ -56,19 +56,19 @@ Entity( const string& name__ )
   : name(name__)
 {
   dgDEBUG(15) << "New entity <"<<name__<<">"<<endl;
-  if( name.length()==0 )
+  if( name.length ()==0 )
     {
-      stringstream oss; oss << rand();
+      stringstream oss; oss << rand ();
       name = CLASS_NAME;
       name+="::";
-      name+=oss.str();
+      name+=oss.str ();
     }
 
-  entityRegistration();
+  entityRegistration ();
 }
 
 Entity::
-~Entity( void )
+~Entity  ()
 {
   dgDEBUG(25) << "# In (" << name << " { " << endl;
   entityDeregistration();
@@ -85,32 +85,32 @@ Entity::
 void Entity::
 signalRegistration( const SignalArray<int>& signals )
 {
-  for( unsigned int i=0;i<signals.getSize();++i )
+  for( unsigned int i=0;i<signals.getSize ();++i )
     {
       SignalBase<int>& sig = signals[i];
-      //const string& signame = sig.getName();
-      istringstream iss( sig.getName() );
+      //const string& signame = sig.getName ();
+      istringstream iss( sig.getName () );
       const int SIZE = 128;
       char buffer[SIZE];
-      while( iss.good() )
+      while( iss.good () )
 	{ iss.getline(buffer,SIZE,':'); }
       const string& signame( buffer );
 
       SignalMap::iterator sigkey = signalMap.find(signame);
-      if( sigkey != signalMap.end() ) // key does exist
+      if( sigkey != signalMap.end () ) // key does exist
 	{
-	  dgERRORF( "Key %s already exist in the signalMap.",signame.c_str() );
+	  dgERRORF( "Key %s already exist in the signalMap.",signame.c_str () );
 	  if( sigkey->second!=&sig )
 	    {
 	      throw ExceptionFactory( ExceptionFactory::SIGNAL_CONFLICT,
 					 "Another signal already defined with the same name. ",
-					 "Signame is <%s>.",signame.c_str() );
+					 "Signame is <%s>.",signame.c_str () );
 	    }
 	}
       else
 	{
 	  dgDEBUG(10) << "Register signal <"<< signame << "> for entity <"
-		        << getName() << "> ."<<endl;
+		        << getName () << "> ."<<endl;
 	  signalMap[signame] = &sig;
 	}
     }
@@ -121,17 +121,17 @@ void Entity::
 signalDeregistration( const std::string& signame )
 {
   SignalMap::iterator sigkey = signalMap.find(signame);
-  if( sigkey == signalMap.end() ) // key does not exist
+  if( sigkey == signalMap.end () ) // key does not exist
     {
-      dgERRORF( "Key %s does not exist in the signalMap.",signame.c_str() );
+      dgERRORF( "Key %s does not exist in the signalMap.",signame.c_str () );
       throw ExceptionFactory( ExceptionFactory::UNREFERED_SIGNAL,
 				 "No signal defined with the given name. ",
-				 " (while erasing <%s>).",signame.c_str() );
+				 " (while erasing <%s>).",signame.c_str () );
     }
   else
     {
       dgDEBUG(10) << "Deregister signal <"<< signame << "> for entity <"
-		   << getName() << "> ."<<endl;
+		   << getName () << "> ."<<endl;
       signalMap.erase(signame);
     }
 }
@@ -139,11 +139,11 @@ signalDeregistration( const std::string& signame )
 
 #define __DG_ENTITY_GET_SIGNAL__(ITER_TYPE) \
   SignalMap::ITER_TYPE sigkey = signalMap.find(signame); \
-  if( sigkey == signalMap.end() ) /* key does NOT exist */ \
+  if( sigkey == signalMap.end () ) /* key does NOT exist */ \
     { \
       throw ExceptionFactory( ExceptionFactory::UNREFERED_SIGNAL,\
 				 "The requested signal is not registered",\
-				 ": %s",signame.c_str() );\
+				 ": %s",signame.c_str () );\
     }\
   return *(sigkey ->second) ;
 
@@ -165,9 +165,9 @@ getSignal( const string & signame ) const
 std::ostream& Entity::
 displaySignalList( std::ostream& os ) const
 {
-  os << "--- <" << getName() << "> signal list: "<<endl;
-  const SignalMap::const_iterator iterend=signalMap.end();
-  for( SignalMap::const_iterator iter = signalMap.begin();iterend!=iter;++iter )
+  os << "--- <" << getName () << "> signal list: "<<endl;
+  const SignalMap::const_iterator iterend=signalMap.end ();
+  for( SignalMap::const_iterator iter = signalMap.begin ();iterend!=iter;++iter )
     {
       os << "    "; if( (++iter)--==iterend ) os << "`"; else os <<"|";
       os << "-- <" << *(iter->second) << endl;
@@ -178,8 +178,8 @@ displaySignalList( std::ostream& os ) const
 std::ostream& Entity::
 writeGraph( std::ostream& os ) const
 {
-  const SignalMap::const_iterator iterend=signalMap.end();
-  for( SignalMap::const_iterator iter = signalMap.begin();iterend!=iter;++iter )
+  const SignalMap::const_iterator iterend=signalMap.end ();
+  for( SignalMap::const_iterator iter = signalMap.begin ();iterend!=iter;++iter )
     {
 
       (*(iter->second)).writeGraph(os);
@@ -190,21 +190,21 @@ writeGraph( std::ostream& os ) const
 std::ostream& Entity::
 writeCompletionList( std::ostream& os ) const
 {
-  const SignalMap::const_iterator iterend=signalMap.end();
-  for( SignalMap::const_iterator iter = signalMap.begin();iterend!=iter;++iter )
+  const SignalMap::const_iterator iterend=signalMap.end ();
+  for( SignalMap::const_iterator iter = signalMap.begin ();iterend!=iter;++iter )
     {
 
-      os << getName() << "." << (*(iter->second)).shortName() << std::endl;
+      os << getName () << "." << (*(iter->second)).shortName () << std::endl;
     }
 
-  os << getCommandList() << std::endl;
+  os << getCommandList () << std::endl;
   return os;
 }
 
 void Entity::
 display( std::ostream& os ) const
 {
-  os<<this->getClassName()<<": "<<name;
+  os<<this->getClassName ()<<": "<<name;
 }
 
 std::ostream& dynamicgraph::operator<< (std::ostream& os, const Entity& ent )
@@ -219,7 +219,7 @@ std::ostream& dynamicgraph::operator<< (std::ostream& os, const Entity& ent )
 
 static std::string Entity_COMMAND_LIST = "print\nsignals\nsignalDep";
 const std::string& Entity::
-getCommandList( void ) const
+getCommandList  () const
 {
   return Entity_COMMAND_LIST;
 }
@@ -244,7 +244,7 @@ commandLine( const std::string& cmdLine,std::istringstream& cmdArgs,std::ostream
     {
       string sig; cmdArgs>>sig;
       cmdArgs >>  ws; int depth=-1;
-      if( cmdArgs.good() ) { cmdArgs >> depth; }
+      if( cmdArgs.good () ) { cmdArgs >> depth; }
       getSignal(sig) .displayDependencies( os,depth ); os<<endl;
     }
   else
@@ -253,18 +253,18 @@ commandLine( const std::string& cmdLine,std::istringstream& cmdArgs,std::ostream
 	SignalBase<int> & sig = getSignal( cmdLine );
 
 	int time; cmdArgs>>ws;
-	if( cmdArgs.good() )
+	if( cmdArgs.good () )
 	  {cmdArgs >> time;} else {time=0;}
 	sig.recompute( time );
 
 	os << cmdLine << " = "; sig.get( os );
       } catch( ExceptionFactory& e ) {
-	switch( e.getCode() )
+	switch( e.getCode () )
 	  {
 	  case ExceptionFactory::UNREFERED_SIGNAL:
 	    DG_THROW ExceptionFactory( ExceptionFactory::UNREFERED_FUNCTION,
 					   "The requested function/signal :","<%s> is "
-					   "not registered.",cmdLine.c_str() );
+					   "not registered.",cmdLine.c_str () );
 	    break;
 	  default:
 	    throw;

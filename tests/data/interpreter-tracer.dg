@@ -1,0 +1,10 @@
+import "tracer"
+
+new Tracer tracer
+tracer.open /tmp debug.dat
+tracer.add tracer.triger
+tracer.start
+tracer.stop
+tracer.clear
+tracer.record
+tracer.close

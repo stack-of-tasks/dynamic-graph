@@ -29,8 +29,10 @@
 #endif
 
 /* --- DYNAMIC-GRAPH --- */
+#include <dynamic-graph/exception-factory.h>
 #include <dynamic-graph/plugin-loader.h>
 #include <dynamic-graph/debug.h>
+
 
 /* --- STD --- */
 #include <fstream>
@@ -57,13 +59,13 @@ public:
 
 
 PluginLoader::
-PluginLoader( void )
+PluginLoader  ()
 {
-  pluginRefs = new PluginRefMap();
+  pluginRefs = new PluginRefMap ();
 }
 
 PluginLoader::
-~PluginLoader( void )
+~PluginLoader  ()
 {
   delete pluginRefs;
 }
@@ -74,7 +76,7 @@ setDirectory( const std::string& n )
   return pluginDirectory = n;
 }
 const std::string& PluginLoader::
-getDirectory( void )
+getDirectory () const
 {
   return pluginDirectory;
 }
@@ -87,18 +89,18 @@ loadPluginList( const std::string& configFileName, const std::string& dir )
 
   string name;
   //while (1)
-  ifstream configFile( configFileName.c_str(),ios::in );
-  if(! configFile.is_open())
+  ifstream configFile( configFileName.c_str (),ios::in );
+  if(! configFile.is_open ())
     {
       DG_THROW ExceptionFactory( ExceptionFactory::READ_FILE,
 				     "File is not open."," (while reading <%s>).",
-				     configFileName.c_str() );
+				     configFileName.c_str () );
     }
 
   for(;;)
     {
       configFile>>name;
-      if(configFile.eof()) break;
+      if(configFile.eof ()) break;
       dgDEBUG(9)<<"Add <"<< name << "> to the list"<<endl;
       addPlugin( name,dir);
     }
@@ -110,7 +112,7 @@ void PluginLoader::
 addPlugin( const std::string& name, const std::string& dir )
 {
   dgDEBUGIN(15);
-  if( dir.length() )
+  if( dir.length () )
     pluginNames.push_back(  dir +"/"+name );
   else
     {      pluginNames.push_back(  pluginDirectory +"/"+name );    }
@@ -125,18 +127,18 @@ addPlugin( const std::string& name, const std::string& dir )
 /* --- DYNAMIC LOADER LIB --------------------------------------------------- */
 /* -------------------------------------------------------------------------- */
 void PluginLoader::
-loadPlugins( void )
+loadPlugins  ()
 {
   dgDEBUGIN(15);
 
-  for( list<string>::iterator iter = pluginNames.begin();
-       iter!=pluginNames.end();++iter )
+  for( list<string>::iterator iter = pluginNames.begin ();
+       iter!=pluginNames.end ();++iter )
     {
       dgDEBUG(9)<<"Load <"<< *iter << "> plugin"<<endl;
 #ifndef WIN32
-      PluginRefMap::plugin_key_type dlib = dlopen( iter->c_str(),RTLD_NOW|RTLD_GLOBAL);
+      PluginRefMap::plugin_key_type dlib = dlopen( iter->c_str (),RTLD_NOW|RTLD_GLOBAL);
 #else
-      PluginRefMap::plugin_key_type dlib = LoadLibrary ( iter->c_str());
+      PluginRefMap::plugin_key_type dlib = LoadLibrary ( iter->c_str ());
 #endif
 
       dgDEBUG(19)<<"Plugin <"<< *iter << "> loaded "<<endl;
@@ -145,14 +147,26 @@ loadPlugins( void )
 	{
 	  std::string wrongLib = *iter;
 	  pluginNames.erase(iter);
+
+	  // FIXME: this line has been added to avoid, since erasing
+	  // an element from a list invalidates the underlying
+	  // iterator.  However I am not sure whether loading twice
+	  // the plug-ins is safe or not and should be thoroughly
+	  // tested.
+	  //
+	  // Under Linux this line should have no effect as an
+	  // exception is thrown just after. MS Windows do not raise
+	  // an exception here and must have an incoherent behavior
+	  // anyway...
+	  iter = pluginNames.begin ();
 #ifndef WIN32
-	  dgDEBUG(5) << "Failure while loading: " <<dlerror() <<endl;
+	  dgDEBUG(5) << "Failure while loading: " <<dlerror () <<endl;
 	  DG_THROW ExceptionFactory( ExceptionFactory::DYNAMIC_LOADING,
-	  				 "Error while dlopen. ","<%s>",dlerror() );
+	  				 "Error while dlopen. ","<%s>",dlerror () );
 #else
     // Retrieve the system error message for the last-error code
     LPTSTR pszMessage;
-    DWORD dwLastError = GetLastError();
+    DWORD dwLastError = GetLastError ();
     FormatMessage(
         FORMAT_MESSAGE_ALLOCATE_BUFFER |
         FORMAT_MESSAGE_FROM_SYSTEM |
@@ -170,7 +184,7 @@ loadPlugins( void )
 	  error_of << "Error while LoadLibrary (" << wrongLib << ") ";
 
 	  DG_THROW ExceptionFactory( ExceptionFactory::DYNAMIC_LOADING,
-		  error_of.str().c_str(), pszMessage );
+		  error_of.str ().c_str (), pszMessage );
 
 	  LocalFree(pszMessage);
 
@@ -180,7 +194,7 @@ loadPlugins( void )
       loadedPluginNames[*iter] = (*iter);
 	  pluginRefs->keyMap[*iter] = dlib;
     }
-  pluginNames.clear();
+  pluginNames.clear ();
 
   dgDEBUGOUT(15);
 }
@@ -196,10 +210,10 @@ unloadPlugin( const std::string& plugname )
   dgDEBUGIN( 15 );
 
   PluginRefMap::KeyMap::iterator plugkey = pluginRefs->keyMap.find(plugname);
-  if( plugkey==pluginRefs->keyMap.end() ) // key does exist
+  if( plugkey==pluginRefs->keyMap.end () ) // key does exist
     {
       throw ExceptionFactory( ExceptionFactory::OBJECT_CONFLICT,
-				 "Plugin not loaded",": <%s>.",plugname.c_str() );
+				 "Plugin not loaded",": <%s>.",plugname.c_str () );
     }
 
 #ifndef WIN32
@@ -211,11 +225,11 @@ unloadPlugin( const std::string& plugname )
     {
 #ifndef WIN32
       dgDEBUG(1) << "Error while unloading <" << plugname <<"> : "
-		  << dlerror() <<endl;
+		  << dlerror () <<endl;
 #else
 		    // Retrieve the system error message for the last-error code
     LPTSTR pszMessage;
-    DWORD dwLastError = GetLastError();
+    DWORD dwLastError = GetLastError ();
     FormatMessage(
         FORMAT_MESSAGE_ALLOCATE_BUFFER |
         FORMAT_MESSAGE_FROM_SYSTEM |
@@ -243,8 +257,8 @@ searchPlugin( const std::string& plugname )
 {
   unsigned int refFound = 0;
   const std::string *plugFullName =0;
-  for( PluginRefMap::KeyMap::iterator iter = pluginRefs->keyMap.begin();
-       iter!=pluginRefs->keyMap.end();++iter )
+  for( PluginRefMap::KeyMap::iterator iter = pluginRefs->keyMap.begin ();
+       iter!=pluginRefs->keyMap.end ();++iter )
     {
       const std::string &str = iter->first;
       size_t found = str.find_last_of("/\\");
@@ -264,13 +278,13 @@ searchPlugin( const std::string& plugname )
 
 
 void PluginLoader::
-unloadAllPlugins()
+unloadAllPlugins ()
 {
   dgDEBUGIN( 15 );
 
-  PluginRefMap::KeyMap::iterator plugkey = pluginRefs->keyMap.begin();
+  PluginRefMap::KeyMap::iterator plugkey = pluginRefs->keyMap.begin ();
 
-  while( plugkey!=pluginRefs->keyMap.end() )
+  while( plugkey!=pluginRefs->keyMap.end () )
     {
 #ifndef WIN32
       const int errCode = dlclose(plugkey->second);
@@ -281,11 +295,11 @@ unloadAllPlugins()
 	{
 #ifndef WIN32
 	  dgDEBUG(1) << "Error while unloading <" << plugkey->first <<"> : "
-		      << dlerror() <<endl;
+		      << dlerror () <<endl;
 #else
 	  // Retrieve the system error message for the last-error code
 	  LPTSTR pszMessage;
-	  DWORD dwLastError = GetLastError();
+	  DWORD dwLastError = GetLastError ();
 	  FormatMessage(
 			FORMAT_MESSAGE_ALLOCATE_BUFFER |
 			FORMAT_MESSAGE_FROM_SYSTEM |

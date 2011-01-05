@@ -1,130 +1,241 @@
-/*
- * Copyright 2010,
- * François Bleibel,
- * Olivier Stasse,
- *
- * CNRS/AIST
- *
- * This file is part of dynamic-graph.
- * dynamic-graph is free software: you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public License
- * as published by the Free Software Foundation, either version 3 of
- * the License, or (at your option) any later version.
- * dynamic-graph is distributed in the hope that it will be
- * useful, but WITHOUT ANY WARRANTY; without even the implied warranty
- * of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.  You should
- * have received a copy of the GNU Lesser General Public License along
- * with dynamic-graph.  If not, see <http://www.gnu.org/licenses/>.
- */
+// -*- mode: c++ -*-
+// Copyright 2010, François Bleibel, Thomas Moulard, Olivier Stasse,
+// JRL, CNRS/AIST.
+//
+// This file is part of dynamic-graph.
+// dynamic-graph is free software: you can redistribute it and/or
+// modify it under the terms of the GNU Lesser General Public License
+// as published by the Free Software Foundation, either version 3 of
+// the License, or (at your option) any later version.
+//
+// dynamic-graph is distributed in the hope that it will be useful, but
+// WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+// General Lesser Public License for more details.  You should have
+// received a copy of the GNU Lesser General Public License along with
+// dynamic-graph. If not, see <http://www.gnu.org/licenses/>.
 
-#ifndef __FACTORY_HH__
-#define __FACTORY_HH__
+#ifndef DYNAMIC_GRAPH_FACTORY_HH
+# define DYNAMIC_GRAPH_FACTORY_HH
+# include <map>
+# include <string>
+# include <vector>
 
-/* --------------------------------------------------------------------- */
-/* --- INCLUDE --------------------------------------------------------- */
-/* --------------------------------------------------------------------- */
+# include <boost/noncopyable.hpp>
 
-/* --- STD --- */
-#include <map>
-#include <string>
-#include <vector>
-/* --- DYNAMIC-GRAPH --- */
-#include <dynamic-graph/exception-factory.h>
-#include <dynamic-graph/dynamic-graph-api.h>
+# include <dynamic-graph/fwd.hh>
+# include <dynamic-graph/exception-factory.h>
+# include <dynamic-graph/dynamic-graph-api.h>
 
-namespace dynamicgraph {
-
-class Entity;
-
-/* --------------------------------------------------------------------- */
-/* --- FACTORY ---------------------------------------------------------- */
-/* --------------------------------------------------------------------- */
-
-/*! \class FactoryStorage
- *  \ingroup dgraph
- *  \brief The Factory class is responsible for creating Entity objects.
- *
- *  Entities can register themselves through the helper class EntityRegisterer.
- *  This object also provides access to command-line functions.
- *
- *
- */
-class DYNAMIC_GRAPH_DLLAPI FactoryStorage
-{
- public:
-
-  typedef Entity* (*EntityConstructor_ptr)( const std::string& );
-
- protected:
-  typedef std::map< std::string,EntityConstructor_ptr > EntityMap;
-
-  EntityMap entityMap;
-
- public:
-
-  ~FactoryStorage( void );
-
-  void registerEntity( const std::string& entname,EntityConstructor_ptr ent );
-  void deregisterEntity( const std::string& entname );
-  Entity* newEntity( const std::string& name,const std::string& objname );
-  bool existEntity( const std::string& name, EntityMap::iterator& entPtr );
-  bool existEntity( const std::string& name );
-  /// Return the list of Entity class names registered in the factory.
-  /// Class names are appended at end of output vector.
-  void listEntities(std::vector <std::string>& outList);
-  void  commandLine( const std::string& cmdLine,std::istringstream& cmdArgs,
-		     std::ostream& os );
-
-
-};
-
-DYNAMIC_GRAPH_DLLAPI extern FactoryStorage g_factory;
-
-/* --- REGISTERER ----------------------------------------------------------- */
-/* --- REGISTERER ----------------------------------------------------------- */
-/* --- REGISTERER ----------------------------------------------------------- */
-
-/* -------------------------------------------------------------------------- */
-/* --- ENTITY REGISTERER ---------------------------------------------------- */
-/* -------------------------------------------------------------------------- */
-
-/*! A helper class to register an entity.
- *
- */
-class DYNAMIC_GRAPH_DLLAPI EntityRegisterer
-{
- private:
-  EntityRegisterer( void );
-  std::string entityName;
-
- public:
-  EntityRegisterer( const std::string& entityClassName,
-		       FactoryStorage::EntityConstructor_ptr maker);
-
-  ~EntityRegisterer( void );
-};
-
-/*! This macro should be used to automatically register an entity
- * of classType to the g_factory. It is then possible to create it
- * with the g_factory.
- */
-#define DYNAMICGRAPH_FACTORY_ENTITY_PLUGIN(classType,className)		\
-  const std::string classType::CLASS_NAME = className;			\
+/// \ingroup dgraph
+///
+/// \brief Automatically register a class to the global factory
+/// by relying on the static initialization.
+///
+/// \param CLASSTYPE the Entity type to be registered
+/// \param CLASSNAME the name of the Entity to be registered (this must
+///        be a std::string or a type implicitly castable into a std::string
+///        such as classic C string delimited by double quotes).
+# define DYNAMICGRAPH_FACTORY_ENTITY_PLUGIN(CLASSTYPE, CLASSNAME)	\
+  const std::string CLASSTYPE::CLASS_NAME = CLASSNAME;			\
   extern "C" {								\
-    Entity *EntityMaker##_##classType( const std::string& objname )	\
+    ::dynamicgraph::Entity*						\
+    EntityMaker_##CLASSTYPE(const std::string& objname)			\
     {									\
-      return new classType( objname );					\
+      return new CLASSTYPE (objname);					\
     }									\
-    EntityRegisterer reg##_##classType( className,			\
-					&EntityMaker##_##classType );   \
+    ::dynamicgraph::EntityRegisterer					\
+    reg_##CLASSTYPE (CLASSNAME,						\
+		     &EntityMaker_##CLASSTYPE);				\
   }									\
   struct e_n_d__w_i_t_h__s_e_m_i_c_o_l_o_n
 
-}  // namespace dynamicgraph
 
-#endif /* #ifndef __FACTORY_HH__ */
+namespace dynamicgraph
+{
+  /// \ingroup dgraph
+  ///
+  /// \brief Provides a way to create Entity objects from their class
+  /// name.
+  ///
+  /// The dynamic graph frameworks relies on entities (see Entity)
+  /// which defines atomic processing units. This class provides a
+  /// robust way to enumerate and instantiate these entities.
+  /// Each entity has a name (its type name) and can be instantiated.
+  /// Each instance also has a name.
+  ///
+  /// For instance one can define a C++ class called MyEntity which
+  /// inherits from dynamicgraph::Entity. This type can be registered
+  /// into the factory to teach the framework that:
+  /// - this entity exists
+  /// - this entity can be instantiated (and how to instantiate it).
+  ///
+  /// To achieve this, one must pass an entity name and a function pointer.
+  ///
+  /// The entity name will identify the class <b>at run-time</b>
+  /// (be careful: this may not be equivalent to the C++ class name
+  /// even if it is recommended to do so).
+  ///
+  /// The function pointer must point on a function taking a string as
+  /// input and returning an instance of the Entity (the concrete
+  /// subclass, not directly the upper Entity class).
+  ///
+  /// The instances returned by this function <b>must</b> be
+  /// dynamically allocated and the caller <b>must</b> get the
+  /// ownership of the instance (i.e. it will free it when required).
+  ///
+  /// To finish, please note that the instance name indicates to the
+  /// entity how the instance itself is called at run-time.  This name
+  /// does not need to be unique and no check is done on it.  It is
+  /// the caller responsibility to make sure that the instance name is
+  /// appropriate and to check for uniqueness if required.
+  ///
+  ///
+  /// This class should <b>never</b> be used directly.  Use the
+  /// g_factory global variable instead.  The rationale is that each
+  /// unique name must identify a unique Entity. The use of a single
+  /// instance of this class enforces this behavior, instantiating one
+  /// yourself would break this property.
+  class DYNAMIC_GRAPH_DLLAPI FactoryStorage : private boost::noncopyable
+  {
+  public:
+    /// \brief Function pointer providing an entity instance from its
+    /// name.
+    typedef Entity* (*EntityConstructor_ptr) (const std::string&);
+
+    /// \brief Constructor the factory.
+    ///
+    /// After the initialization, no entities will be available.
+    /// registerEntity has to be used to add new entities to the
+    /// object.
+    explicit FactoryStorage  ();
+
+    ~FactoryStorage  ();
+
+    /// \brief Add a new entity to the factory.
+    ///
+    /// It is not allowed to have several entities using the same
+    /// name. If this is the case, an ExceptionFactory exception will
+    /// be raised with the code OBJECT_CONFLICT.
+    ///
+    /// If the function pointer is null, an ExceptionFactory exception
+    /// will be raised with the code OBJECT_CONFLICT.
+    ///
+    /// \param entname the name used to subscribe the entity.
+    /// \param ent pointer to a function allocating an entity from an
+    /// instance name.
+    void registerEntity (const std::string& entname,
+			 EntityConstructor_ptr ent);
+
+    /// \brief Delete an entity from the factory.
+    ///
+    /// If the provided entity name does not exist in the factory,
+    /// an ExceptionFactory exception will be raised with the code
+    /// OBJECT_CONFLICT.
+    ///
+    /// \param entname the entity name (as passed to registerEntity before)
+    void deregisterEntity (const std::string& entname);
+
+    /// \brief Instantiate (and allocate) an entity.
+    ///
+    /// An instance called objname of the entity which type is classname
+    /// will be allocated by this method.
+    ///
+    /// It is <b>the caller</b> responsibility to free the
+    /// returned object.
+    ///
+    /// If the class name does not exist, an ExceptionFactory
+    /// exception will be raised with the code UNREFERED_OBJECT.
+    ///
+    /// The instance name (objname) is passed to the Entity
+    /// constructor and it is the caller responsibility to avoid
+    /// instance name conflicts if necessary.
+    ///
+    /// \param classname the name of the Entity type
+    /// \param objname the instance name
+    /// \return Dynamically allocated instance of classname.
+    Entity* newEntity (const std::string& classname,
+		       const std::string& objname) const;
+
+    /// \brief Check if an Entity associated with a particular name
+    /// has already been registered.
+    ///
+    /// \param name entity name
+    /// \return Do the entity exist?
+    bool existEntity (const std::string& name) const;
+
+    /// \brief List the available entities.
+    ///
+    /// Available entities are appended to the method argument.
+    ///
+    /// \param list Available entities will be appended to list.
+    void listEntities (std::vector <std::string>& list) const;
+
+    /// \brief Define FactoryStorage commands.
+    ///
+    /// Define two equivalent commands:
+    /// - list
+    /// - listEntities
+    /// listing the available entities.
+    void commandLine (const std::string& cmdLine,
+		      std::istringstream& cmdArgs,
+		      std::ostream& os);
+
+  private:
+    /// \brief Entity map type.
+    ///
+    /// This maps entity names to functions pointers which can be
+    /// used to instantiate an Entity.
+    typedef std::map<std::string, EntityConstructor_ptr> EntityMap;
+
+    /// \brief The entity map storing information about how to
+    /// instantiate an Entity.
+    EntityMap entityMap;
+  };
+
+  /// \ingroup dgraph
+  ///
+  /// \brief Global factory.
+  ///
+  /// This global variable is the only valid instance of the
+  /// FactoryStorage class.
+  ///
+  /// This unique instance is to make sure that only only one entity
+  /// list is built.
+  ///
+  /// This global variable must be used to search for entities and
+  /// to instantiate them.
+  ///
+  /// Please use the DYNAMICGRAPH_FACTORY_ENTITY_PLUGIN macro if
+  /// possible to register an entity to this factory.
+  DYNAMIC_GRAPH_DLLAPI extern FactoryStorage g_factory;
 
 
+  /// \ingroup dgraph
+  ///
+  /// \brief This class automatically register an Entity to the
+  /// global factory at initialization and unregister it during
+  /// instance destruction.
+  ///
+  /// This class is mainly used by the
+  /// DYNAMICGRAPH_FACTORY_ENTITY_PLUGIN macro and is of little interest
+  /// by itself.
+  class DYNAMIC_GRAPH_DLLAPI EntityRegisterer : private boost::noncopyable
+  {
+  public:
+    /// \brief Register entity to the global factory.
+    explicit EntityRegisterer (const std::string& entityClassName,
+			       FactoryStorage::EntityConstructor_ptr maker);
 
+    /// \brief Unregister entity to the global factory.
+    ~EntityRegisterer  ();
+  private:
+    /// \brief Name of the entity registered when the instance has
+    /// been initialized.
+    const std::string entityName;
+  };
+}  // end of namespace dynamicgraph
 
+#endif //! DYNAMIC_GRAPH_FACTORY_HH
+
+//  LocalWords:  unregister
