@@ -25,6 +25,7 @@ ENDIF (NOT (\"${CMAKE_VERBOSITY_LEVEL}\" STREQUAL \"\"))
 
 # Declare boost include directories
 include_directories(${Boost_INCLUDE_DIRS})
+link_directories(${Boost_LIBRARY_DIRS})
 
 ADD_LIBRARY(${LIBRARY_NAME}
   SHARED
