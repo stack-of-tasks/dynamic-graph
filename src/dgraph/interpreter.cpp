@@ -22,6 +22,9 @@
 /* --- INCLUDE --------------------------------------------------------- */
 /* --------------------------------------------------------------------- */
 
+/* PYTHON */
+#include <Python.h>
+
 #include <boost/format.hpp>
 
 /* DYNAMIC-GRAPH */
@@ -38,7 +41,13 @@ using namespace dynamicgraph;
 /* --- CLASS ----------------------------------------------------------- */
 /* --------------------------------------------------------------------- */
 
-const std::string Interpreter::PROMPT_DEFAULT = "> ";
+namespace dynamicgraph {
+  const std::string Interpreter::PROMPT_DEFAULT = "> ";
+  static const std::string pythonPrefix[2] = {
+    "import sys",
+    "if '' not in sys.path: sys.path.append('')"
+  };
+}
 
 Interpreter::
 Interpreter( PluginLoader* dl__ )
@@ -501,6 +510,52 @@ shell( std::istream& sin, std::ostream& sout, const std::string& promptUser )
 	  catch(...) { dgDEBUG(1) << "!! unknow!." <<endl; throw; }
 	}
     }
+}
+
+void Interpreter::
+python( std::istream& sin, std::ostream& sout, const std::string& promptUser )
+{
+  Py_Initialize();
+  PyRun_SimpleString(pythonPrefix[0].c_str());
+  PyRun_SimpleString(pythonPrefix[1].c_str());
+  while( 1 )
+    {
+      if( promptUser.length() ) sout << promptUser; else sout << prompt;
+      const int SIZE = 16384;
+      char pythonLine[SIZE];
+      if( sin.eof() ) break;
+
+      sin.getline( pythonLine,SIZE-1 );
+
+      if( sin.gcount () >= SIZE-2 )
+	{
+	  sout << "!! Line size exceeded" << endl;
+	  do{ 
+	    sin.getline( pythonLine,SIZE-1 );
+	  }
+	  while ( sin.gcount () >= SIZE-2 );
+	}
+      else
+	{
+	  try{ 
+	    PyRun_SimpleString(pythonLine);
+	  }
+	  catch( exception& e ) { dgDEBUG(1) << e.what(); throw; }
+	  catch(...) { dgDEBUG(1) << "!! unknow!." <<endl; throw; }
+	}
+    }
+  Py_Finalize();
+  sout << std::endl;
+}
+
+void Interpreter::
+runPythonFile( std::string filename )
+{
+  Py_Initialize();
+  PyRun_SimpleString(pythonPrefix[0].c_str());
+  PyRun_SimpleString(pythonPrefix[1].c_str());
+  PyRun_SimpleFile(NULL, filename.c_str());
+  Py_Finalize();
 }
 
 ShellFunctionRegisterer::
