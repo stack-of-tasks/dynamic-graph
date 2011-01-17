@@ -222,21 +222,21 @@ namespace dynamicgraph {
     float Value::floatValue() const
     {
       float result;
-      if(type_ == FLOAT)
-	result = *((float*)value_);
+      if(FLOAT != type_)
+	throw ExceptionAbstract(ExceptionAbstract::TOOLS,
+				"value is not a float");
+      result = *((float*)value_);
       return result;
-      throw ExceptionAbstract(ExceptionAbstract::TOOLS,
-			      "value is not a float");
     }
 
     double Value::doubleValue() const
     {
       double result;
-      if(type_ == DOUBLE)
-	result = *((double*)value_);
+      if(DOUBLE != type_)
+	throw ExceptionAbstract(ExceptionAbstract::TOOLS,
+				"value is not a double");
+      result = *((double*)value_);
       return result;
-      throw ExceptionAbstract(ExceptionAbstract::TOOLS,
-			      "value is not a double");
     }
 
     std::string Value::stringValue() const
