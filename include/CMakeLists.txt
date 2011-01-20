@@ -79,6 +79,7 @@ command-getter.t.cpp
 
 command-direct-getter.h
 command-direct-setter.h
+command-bind.h
 )
 
 # Recreate correct path for the headers
