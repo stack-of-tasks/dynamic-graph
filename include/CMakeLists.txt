@@ -76,6 +76,9 @@ command-setter.h
 command-setter.t.cpp
 command-getter.h
 command-getter.t.cpp
+
+command-direct-getter.h
+command-direct-setter.h
 )
 
 # Recreate correct path for the headers
