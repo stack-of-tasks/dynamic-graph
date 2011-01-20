@@ -47,6 +47,8 @@ namespace dynamicgraph
   class DYNAMIC_GRAPH_DLLAPI Entity : private boost::noncopyable
   {
   public:
+    typedef std::map< std::string,SignalBase<int>* > SignalMap;
+
     static const std::string CLASS_NAME;
 
     explicit Entity (const std::string& name);
@@ -90,10 +92,8 @@ namespace dynamicgraph
     virtual std::map<const std::string, command::Command*>
       getNewStyleCommandMap();
 
-
+    virtual SignalMap getSignalMap() const;
   protected:
-    typedef std::map< std::string,SignalBase<int>* > SignalMap;
-
     /// Add a command to Entity
     virtual void addCommand(const std::string& name,
 			    command::Command* command);

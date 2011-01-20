@@ -213,6 +213,11 @@ std::ostream& dynamicgraph::operator<< (std::ostream& os, const Entity& ent )
   return os;
 }
 
+Entity::SignalMap Entity::getSignalMap() const
+{
+  return signalMap;
+}
+
 /* --- PARAMS --------------------------------------------------------------- */
 /* --- PARAMS --------------------------------------------------------------- */
 /* --- PARAMS --------------------------------------------------------------- */
