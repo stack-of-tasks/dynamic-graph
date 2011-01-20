@@ -106,7 +106,15 @@ namespace dynamicgraph {
       Type type_;
       const void* const value_;
     };
-} // namespace command
+
+    /* ---- HELPER ---------------------------------------------------------- */
+    template< typename T >
+      struct ValueHelper
+      {
+	static const Value::Type TypeID;
+      };
+
+  } // namespace command
 } //namespace dynamicgraph
 
 #endif //DYNAMIC_GRAPH_VALUE_H
