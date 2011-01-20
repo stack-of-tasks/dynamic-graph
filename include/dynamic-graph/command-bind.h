@@ -38,15 +38,13 @@
 namespace dynamicgraph {
   namespace command {
 
-#define COMMAND_EMPTY_ARG std::vector<Value::Type>()
-
     template <class E >
       struct CommandVoid0
       : public Command
     {
     CommandVoid0(E& entity, boost::function<void(void)> function,
 		 const std::string& docString)
-      :Command(entity, COMMAND_EMPTY_ARG, docString)
+      :Command(entity, EMPTY_ARG, docString)
 	,fptr(function)
       {}
 
@@ -96,8 +94,6 @@ namespace dynamicgraph {
 /* --- FUNCTION 1 ARGS ------------------------------------------------------ */
 namespace dynamicgraph {
   namespace command {
-
-#define COMMAND_EMPTY_ARG std::vector<Value::Type>()
 
     template <class E,typename T >
       struct CommandVoid1

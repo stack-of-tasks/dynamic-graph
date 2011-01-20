@@ -22,6 +22,9 @@
 namespace dynamicgraph {
   namespace command {
 
+    const std::vector<Value::Type> Command::EMPTY_ARG = std::vector<Value::Type>();
+
+
     Command::~Command() {}
     Command::Command(Entity& entity,
 		     const std::vector<Value::Type>& valueTypes,

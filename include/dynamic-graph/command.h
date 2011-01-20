@@ -70,6 +70,8 @@ namespace dynamicgraph {
       std::vector<Value::Type> valueTypeVector_;
       std::vector<Value> valueVector_;
       std::string docstring_;
+    public:
+      static const std::vector<Value::Type> EMPTY_ARG;
     };
   } // namespace command
 } // namespace dynamicgraph
