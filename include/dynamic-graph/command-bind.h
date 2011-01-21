@@ -33,6 +33,8 @@
 
 #include "dynamic-graph/command.h"
 #include <boost/assign/list_of.hpp>
+#include <boost/function.hpp>
+#include <boost/bind.hpp>
 
 /* --- FUNCTION 0 ARGS ------------------------------------------------------ */
 namespace dynamicgraph {
