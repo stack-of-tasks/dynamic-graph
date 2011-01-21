@@ -136,10 +136,13 @@ namespace dynamicgraph {
     template <class E,typename T >
       CommandVoid1<E,T>*
       makeCommandVoid1(E& entity,
-		       typename CommandVoid1<E,T>::memberFunction_t function ,
+		       // The following syntaxt don't compile when not specializing the template
+		       // arg... why ???
+		       //typename CommandVoid1<E,T>::memberFunction_t function ,
+		       boost::function<void(E*,const T&)> function,
 		       const std::string& docString)
       {
-    	return new CommandVoid1<E,T>( entity,
+	return new CommandVoid1<E,T>( entity,
 				      boost::bind(function,&entity,_1),docString );
       }
 
@@ -157,6 +160,72 @@ namespace dynamicgraph {
     std::string docCommandVoid1( const std::string& doc, const std::string& type )
       {
 	return 	std::string("\n")+doc +"\n\nInput:\n - A "+type+".\nVoid return.\n\n";
+      }
+
+  } // namespace command
+} // namespace dynamicgraph
+
+
+/* --- FUNCTION VERBOSE ----------------------------------------------------- */
+/* This bind a function void f( ostream& ) that display some results into
+ * a string f( void ) that return some string results. */
+
+namespace dynamicgraph {
+  namespace command {
+
+    template <class E >
+      struct CommandVerbose
+      : public Command
+    {
+      typedef boost::function<void(std::ostream&)> function_t;
+      typedef boost::function<void(E*,std::ostream&)> memberFunction_t;
+      typedef void (E::*memberFunctionConst_ptr_t) (std::ostream&) const;
+      typedef void (E::*memberFunction_ptr_t) (std::ostream&);
+
+    CommandVerbose(E& entity, function_t function,
+		   const std::string& docString)
+      :Command(entity, boost::assign::list_of(ValueHelper<std::string>::TypeID), docString)
+	,fptr(function)
+      {}
+
+    protected:
+      virtual Value doExecute()
+      {
+	assert( getParameterValues().size() == 0 );
+	std::ostringstream oss;
+	fptr(oss);
+	return Value( oss.str() ); // return string
+      }
+    private:
+      function_t fptr;
+    };
+
+    template <class E >
+      CommandVerbose<E>*
+      makeCommandVerbose(E& entity,
+			 //void (E::*function) (std::ostream&) const,
+			 typename CommandVerbose<E>::memberFunctionConst_ptr_t function,
+			 const std::string& docString)
+      {
+	return new CommandVerbose<E>( entity,
+				      boost::bind(function,&entity,_1),docString );
+    	return NULL;
+      }
+
+    template <class E >
+      CommandVerbose<E>*
+      makeCommandVerbose(E& entity,
+			 typename CommandVerbose<E>::memberFunction_ptr_t function,
+			 const std::string& docString)
+      {
+	return new CommandVerbose<E>( entity,
+				      boost::bind(function,&entity,_1),docString );
+    	return NULL;
+      }
+
+    std::string docCommandVerbose( const std::string& doc )
+      {
+	return 	std::string("\n")+doc +"\n\nNo input.\n Return a string.\n\n";
       }
 
   } // namespace command
