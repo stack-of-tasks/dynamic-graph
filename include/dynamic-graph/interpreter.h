@@ -168,22 +168,7 @@ namespace dynamicgraph
       \par[in] prompt: The prompt to be displayed.
 
     */
-    void shell( std::istream& sin, std::ostream& sout,
-		const std::string& prompt="");
-    /*! \brief Method to start python interperter.
-      \par[in] sin: The input stream from which the command will be extracted.
-      \par[out] sout: The output stream to which the result will be displayed.
-      \par[in] prompt: The prompt to be displayed.
-
-    */
-    void python( std::istream& sin, std::ostream& sout,
-		 const std::string& prompt="" );
-
-    /*! \brief Method to exectue a python script.
-      \par[in] sin: The filename
-    */
-    void runPythonFile( std::string filename );
-
+    void shell( std::istream& sin, std::ostream& sout, const std::string& prompt="" );
     void writeCompletionList(std::ostream& os);
 
 

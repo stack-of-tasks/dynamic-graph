@@ -13,17 +13,7 @@
 # received a copy of the GNU Lesser General Public License along with
 # dynamic-graph. If not, see <http://www.gnu.org/licenses/>.
 
-SET(tools dg-shell dg-python)
-
-#
-# Python
-#
-INCLUDE(FindPythonLibs)
-IF (NOT ${PYTHONLIBS_FOUND} STREQUAL TRUE)
-   MESSAGE(FATAL_ERROR "Python has not been found.")
-ELSE (NOT ${PYTHONLIBS_FOUND} STREQUAL TRUE)
-  MESSAGE(STATUS "PYTHON_LIBRARY="${PYTHON_LIBRARY})
-ENDIF (NOT ${PYTHONLIBS_FOUND} STREQUAL TRUE)
+SET(tools dg-shell)
 
 include_directories(${Boost_INCLUDE_DIRS})
 
@@ -48,14 +38,12 @@ FOREACH(tool_name ${tools})
 
 	INCLUDE_DIRECTORIES(
 		${CMAKE_CURRENT_SOURCE_DIR}/../include
-		${PYTHON_INCLUDE_PATH}
 	)
 
 	LINK_DIRECTORIES(${${PROJECT_NAME}_BINARY_DIR}/lib)
 
 	TARGET_LINK_LIBRARIES(${EXECUTABLE_NAME}
 	  ${PROJECT_NAME})
-	TARGET_LINK_LIBRARIES(${EXECUTABLE_NAME} ${PYTHON_LIBRARY})
 
 	IF(UNIX)
 		TARGET_LINK_LIBRARIES(${EXECUTABLE_NAME} dl)
