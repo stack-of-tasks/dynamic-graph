@@ -263,10 +263,6 @@ commandLine( const std::string& cmdLine
     }
   else if( cmdLine=="add" )
     {
-      SignalBase<int> &sig = g_pool.getSignal(cmdArgs);
-      string r; cmdArgs>>ws>>r;
-      addSignalToTrace(sig,r);
-      dgDEBUG(14)<<"Add <" <<sig.getName ()<<"> with nick \""<<r<<"\""<<endl;
     }
   else if( cmdLine=="clear" )
     { closeFiles (); toTraceSignals.clear (); }

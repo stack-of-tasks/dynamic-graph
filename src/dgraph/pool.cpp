@@ -240,25 +240,6 @@ commandLine( const std::string& objectName,const std::string& functionName,
     }
 }
 
-
-
-#include <dynamic-graph/interpreter.h>
-
-SignalBase<int>&
-PoolStorage::
-getSignal( std::istringstream& sigpath )
-{
-  std::string objname,signame;
-  if(! Interpreter::objectNameParser( sigpath,objname,signame ) )
-    { DG_THROW ExceptionFactory( ExceptionFactory::UNREFERED_SIGNAL,
-				     "Parse error in signal name" ); }
-
-  Entity& ent = getEntity( objname );
-  return ent.getSignal( signame );
-}
-
-
-
 namespace dynamicgraph {
 	//! The global g_pool object.
 	PoolStorage g_pool;

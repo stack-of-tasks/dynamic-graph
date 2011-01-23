@@ -40,19 +40,12 @@ dynamic-graph-api.h
 
 entity.h
 factory.h
-interpreter.h
-interpreter-helper.h
-plugin-loader.h
 pool.h
-import.h
 
 exception-abstract.h
 exception-factory.h
 exception-signal.h
 exception-traces.h
-
-functions.h
-shell-procedure.h
 
 signal.h
 signal-array.h

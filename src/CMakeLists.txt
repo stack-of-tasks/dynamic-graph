@@ -32,18 +32,12 @@ ADD_LIBRARY(${LIBRARY_NAME}
 
   dgraph/entity.cpp
   dgraph/factory.cpp
-  dgraph/interpreter.cpp
-  dgraph/interpreter-helper.cpp
-  dgraph/plugin-loader.cpp
   dgraph/pool.cpp
-  dgraph/import.cpp
 
   exception/exception-abstract.cpp
   exception/exception-factory.cpp
   exception/exception-signal.cpp
   exception/exception-traces.cpp
-
-  shell/functions.cpp
 
   signal/signal-array.cpp
   signal/signal-caster.cpp
@@ -69,9 +63,6 @@ INSTALL(TARGETS ${LIBRARY_NAME}
 ### Plugins
 ####################################
 SET(plugins_list
-	plugins/shell-procedure
-	plugins/shell-functions
-	debug/contiifstream
 	traces/tracer
 	traces/tracer-real-time
 )
