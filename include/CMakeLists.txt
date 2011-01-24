@@ -72,14 +72,15 @@ tracer-real-time.h
 command.h
 linear-algebra.h
 value.h
+
 command-setter.h
 command-setter.t.cpp
 command-getter.h
 command-getter.t.cpp
-
 command-direct-getter.h
 command-direct-setter.h
 command-bind.h
+all-commands.h
 )
 
 # Recreate correct path for the headers
