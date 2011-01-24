@@ -23,11 +23,14 @@
 /* --------------------------------------------------------------------- */
 
 /* --- DYNAMIC-GRAPH --- */
-#include <dynamic-graph/pool.h>
-#include <dynamic-graph/debug.h>
-#include <dynamic-graph/entity.h>
 #include <list>
 #include <typeinfo>
+#include <iostream>
+#include <sstream>
+#include <string>
+#include "dynamic-graph/pool.h"
+#include "dynamic-graph/debug.h"
+#include "dynamic-graph/entity.h"
 
 using namespace dynamicgraph;
 
@@ -240,24 +243,37 @@ commandLine( const std::string& objectName,const std::string& functionName,
     }
 }
 
+static bool
+objectNameParser( std::istringstream& cmdparse,
+		  std::string& objName,
+		  std::string& funName  )
+{
+  const int SIZE=128;
+  char buffer[SIZE];
+  cmdparse >> std::ws;
+  cmdparse.getline( buffer,SIZE,'.' );
+  if(! cmdparse.good () ) // The callback is not an object method
+    return false;
 
-
-#include <dynamic-graph/interpreter.h>
+  objName = buffer;
+  //cmdparse.getline( buffer,SIZE );
+  //funName = buffer;
+  cmdparse >> funName;
+  return true;
+}
 
 SignalBase<int>&
 PoolStorage::
 getSignal( std::istringstream& sigpath )
 {
   std::string objname,signame;
-  if(! Interpreter::objectNameParser( sigpath,objname,signame ) )
+  if(! objectNameParser( sigpath,objname,signame ) )
     { DG_THROW ExceptionFactory( ExceptionFactory::UNREFERED_SIGNAL,
 				     "Parse error in signal name" ); }
 
   Entity& ent = getEntity( objname );
   return ent.getSignal( signame );
 }
-
-
 
 namespace dynamicgraph {
 	//! The global g_pool object.

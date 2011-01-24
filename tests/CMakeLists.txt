@@ -66,6 +66,3 @@ DYNAMIC_GRAPH_TEST(factory)
 DYNAMIC_GRAPH_TEST(pool)
 DYNAMIC_GRAPH_TEST(signal-time-dependent)
 DYNAMIC_GRAPH_TEST(value)
-
-DYNAMIC_GRAPH_TEST(interpreter)
-DYNAMIC_GRAPH_TEST(interpreter-tracer)
