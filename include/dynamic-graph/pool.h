@@ -88,6 +88,12 @@ namespace dynamicgraph
     void clearPlugin (const std::string& name);
     /*! @} */
 
+    ///
+    /// \brief Get a signal by name
+    ///
+    /// \param sigpath stream containing a string of the form "entity.signal"
+    SignalBase<int>& getSignal( std::istringstream& sigpath );
+
     /*! \brief This method looks for the object named objectName,
       and ask to provide the function functionName with the arguments cmdArg.
       If the method of the object displays some information this will
