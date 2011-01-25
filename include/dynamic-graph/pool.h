@@ -76,6 +76,10 @@ namespace dynamicgraph
     */
     void deregisterEntity (const std::string& entname);
 
+    /*! \brief Unregister an entity.
+      \par[in] entity: iterator in the map,
+    */
+    void deregisterEntity( const Entities::iterator& entity );
     /*! \brief Get an entity.
       \par[in] entname: The name of the entity,
       \return Pointer towards the entity.

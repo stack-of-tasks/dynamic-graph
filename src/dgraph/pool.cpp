@@ -48,11 +48,12 @@ PoolStorage::
     {
       dgDEBUG(15) << "Delete \""
 		   << (iter->first) <<"\""<<std::endl;
-      delete ((Entity*)iter->second);
+      Entity* entity = iter->second;
+      deregisterEntity(iter);
+      delete (entity);
     }
 
   dgDEBUGOUT(15);
-  return;
 }
 
 
