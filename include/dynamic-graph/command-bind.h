@@ -247,6 +247,93 @@ namespace dynamicgraph {
   } // namespace command
 } // namespace dynamicgraph
 
+
+/* --- FUNCTION 3 ARGS ------------------------------------------------------ */
+namespace dynamicgraph {
+  namespace command {
+
+    template <class E,typename T1,typename T2,typename T3 >
+      struct CommandVoid3
+      : public Command
+    {
+      typedef boost::function<void(const T1&,const T2&,const T3&)> function_t;
+      typedef boost::function<void(E*,const T1&,const T2&,const T3&)> memberFunction_t;
+      typedef void (E::*memberFunction_ptr_t) (const T1&,const T2&,const T3);
+
+    CommandVoid3(E& entity, function_t function,
+		 const std::string& docString)
+      :Command(entity,
+	       boost::assign::list_of
+	       (ValueHelper<T1>::TypeID)
+	       (ValueHelper<T2>::TypeID)
+	       (ValueHelper<T3>::TypeID), docString)
+	,fptr(function)
+      {}
+
+    protected:
+      virtual Value doExecute()
+      {
+	assert( getParameterValues().size() == 3 );
+	T1 val1 = getParameterValues()[0].value();
+	T2 val2 = getParameterValues()[1].value();
+	T3 val3 = getParameterValues()[2].value();
+	fptr(val1,val2,val3);
+	return Value(); // void
+      }
+    private:
+      function_t fptr;
+    };
+
+
+    template <class E,typename T1,typename T2,typename T3 >
+      CommandVoid3<E,T1,T2,T3>*
+      makeCommandVoid3(E& entity,
+		       typename CommandVoid3<E,T1,T2,T3>::function_t function ,
+		       const std::string& docString)
+      {
+    	return new CommandVoid3<E,T1,T2,T3>( entity,function,docString );
+      }
+
+    template <class E,typename T1,typename T2,typename T3 >
+    CommandVoid3<E,T1,T2,T3>*
+      makeCommandVoid3(E& entity,
+		       // The following syntaxt don't compile when not specializing the template
+		       // arg... why ???
+		       //typename CommandVoid3<E,T1,T2>::memberFunction_t function ,
+		       boost::function<void(E*,const T1&,const T2&,const T3&)> function,
+		       const std::string& docString)
+      {
+	return new CommandVoid3<E,T1,T2,T3>( entity,
+					  boost::bind(function,&entity,_1,_2,_3),docString );
+      }
+
+    template <class E,typename T1,typename T2,typename T3 >
+    CommandVoid3<E,T1,T2,T3>*
+      makeCommandVoid3(E& entity,
+		       void (E::*function) (const T1&,const T2&,const T3&),
+		       const std::string& docString)
+      {
+	return new CommandVoid3<E,T1,T2,T3>( entity,
+					     boost::bind(function,&entity,_1,_2,_3),
+					     docString );
+    	return NULL;
+      }
+
+    std::string docCommandVoid3( const std::string& doc,
+				 const std::string& type1,
+				 const std::string& type2,
+				 const std::string& type3 )
+      {
+	return (std::string("\n")+doc+"\n\n"
+		+"Input:\n - A "+type1+".\n"
+		+"Input:\n - A "+type2+".\n"
+		+"Input:\n - A "+type3+".\n"
+		+"Void return.\n\n" );
+      }
+
+  } // namespace command
+} // namespace dynamicgraph
+
 /* --- FUNCTION VERBOSE ----------------------------------------------------- */
 /* This bind a function void f( ostream& ) that display some results into
  * a string f( void ) that return some string results. */
