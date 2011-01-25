@@ -279,6 +279,7 @@ commandLine( const std::string& cmdLine,std::istringstream& cmdArgs,std::ostream
 
 }
 
+/// Add a command to Entity
 void Entity::
 addCommand(const std::string& inName, Command* command)
 {

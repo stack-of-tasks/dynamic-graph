@@ -87,16 +87,13 @@ namespace dynamicgraph
       return ;
     }
 
-    virtual const std::string& getCommandList () const;
-    virtual CommandMap_t getNewStyleCommandMap();
+    const std::string& getCommandList () const;
+    CommandMap_t getNewStyleCommandMap();
     command::Command* getNewStyleCommand( const std::string& cmdName );
 
-    virtual SignalMap getSignalMap() const;
+    SignalMap getSignalMap() const;
   protected:
-    /// Add a command to Entity
-    virtual void addCommand(const std::string& name,
-			    command::Command* command);
-
+    void addCommand(const std::string& name,command::Command* command);
 
     void entityRegistration ();
     void entityDeregistration ();
