@@ -48,6 +48,7 @@ namespace dynamicgraph
   {
   public:
     typedef std::map< std::string,SignalBase<int>* > SignalMap;
+    typedef std::map<const std::string, command::Command*> CommandMap_t;
 
     static const std::string CLASS_NAME;
 
@@ -87,10 +88,8 @@ namespace dynamicgraph
     }
 
     virtual const std::string& getCommandList () const;
-
-    /// Return the list of command objects
-    virtual std::map<const std::string, command::Command*>
-      getNewStyleCommandMap();
+    virtual CommandMap_t getNewStyleCommandMap();
+    command::Command* getNewStyleCommand( const std::string& cmdName );
 
     virtual SignalMap getSignalMap() const;
   protected:
@@ -107,7 +106,7 @@ namespace dynamicgraph
 
     std::string name;
     SignalMap signalMap;
-    std::map<const std::string, command::Command*> commandMap;
+    CommandMap_t commandMap;
   };
 
   DYNAMIC_GRAPH_DLLAPI std::ostream&

@@ -284,15 +284,29 @@ addCommand(const std::string& inName, Command* command)
 {
   if (commandMap.count(inName) != 0) {
     DG_THROW ExceptionFactory(ExceptionFactory::OBJECT_CONFLICT,
-			      "Command " + inName + 
+			      "Command " + inName +
 			      " already registered in Entity.");
   }
   std::pair<const std::string, Command*> item(inName, command);
   commandMap.insert(item);
 }
 
+/// Return the list of command objects
 std::map<const std::string, Command*> Entity::
 getNewStyleCommandMap()
 {
   return commandMap;
 }
+
+Command* Entity::
+getNewStyleCommand( const std::string& commandName )
+{
+  if (commandMap.count(commandName) != 1)
+    {
+      DG_THROW ExceptionFactory(ExceptionFactory::UNREFERED_FUNCTION,
+				"Command <" + commandName +
+				"> is not registered in Entity.");
+    }
+  return commandMap[commandName];
+}
+
