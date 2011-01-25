@@ -118,7 +118,7 @@ namespace dynamicgraph
       @{
     */
     /*! \brief Set of basic objects of the SoT */
-    Entities entity;
+    Entities entityMap;
   };
 
 

@@ -43,7 +43,8 @@ PoolStorage::
 {
   dgDEBUGIN(15);
 
-  for( Entities::iterator iter=entity.begin ();iter!=entity.end (); iter=entity.begin ())
+  for( Entities::iterator iter=entityMap.begin (); iter!=entityMap.end ();
+       iter=entityMap.begin ())
     {
       dgDEBUG(15) << "Delete \""
 		   << (iter->first) <<"\""<<std::endl;
@@ -60,8 +61,8 @@ PoolStorage::
 void PoolStorage::
 registerEntity( const std::string& entname,Entity* ent )
 {
-  Entities::iterator entkey = entity.find(entname);
-  if( entkey != entity.end () ) // key does exist
+  Entities::iterator entkey = entityMap.find(entname);
+  if( entkey != entityMap.end () ) // key does exist
     {
       throw ExceptionFactory( ExceptionFactory::OBJECT_CONFLICT,
 				 "Another entity already defined with the same name. ",
@@ -71,15 +72,15 @@ registerEntity( const std::string& entname,Entity* ent )
     {
       dgDEBUG(10) << "Register entity <"<< entname
 		   << "> in the pool." <<std::endl;
-      entity[entname] = ent;
+      entityMap[entname] = ent;
     }
 }
 
 void PoolStorage::
 deregisterEntity( const std::string& entname )
 {
-  Entities::iterator entkey = entity.find(entname);
-  if( entkey == entity.end () ) // key doesnot exist
+  Entities::iterator entkey = entityMap.find(entname);
+  if( entkey == entityMap.end () ) // key doesnot exist
     {
       throw ExceptionFactory( ExceptionFactory::OBJECT_CONFLICT,
 				 "Entity not defined yet. ",
@@ -89,16 +90,22 @@ deregisterEntity( const std::string& entname )
     {
       dgDEBUG(10) << "Deregister entity <"<< entname
 		   << "> from the pool." <<std::endl;
-      entity.erase( entkey );
+      deregisterEntity(entkey);
     }
+}
+
+void PoolStorage::
+deregisterEntity( const Entities::iterator& entity )
+{
+  entityMap.erase( entity );
 }
 
 Entity& PoolStorage::
 getEntity( const std::string& name )
 {
   dgDEBUG(25) << "Get <" << name << ">"<<std::endl;
-  Entities::iterator entPtr = entity .find( name );
-  if( entPtr == entity.end () )
+  Entities::iterator entPtr = entityMap.find( name );
+  if( entPtr == entityMap.end () )
     {
       DG_THROW ExceptionFactory( ExceptionFactory::UNREFERED_OBJECT,
 				     "Unknown entity."," (while calling <%s>)",
@@ -113,8 +120,8 @@ clearPlugin( const std::string& name )
   dgDEBUGIN(5);
   std::list<Entity*> toDelete;
 
-  for (Entities::iterator entPtr = entity.begin  ();
-       entPtr != entity.end  (); ++entPtr)
+  for (Entities::iterator entPtr = entityMap.begin  ();
+       entPtr != entityMap.end  (); ++entPtr)
     if (entPtr->second->getClassName () == name)
       toDelete.push_back (entPtr->second);
 
@@ -172,8 +179,8 @@ writeGraph(const std::string &aFileName)
 
   GraphFile << "\t} " << std::endl;
 
-  for( Entities::iterator iter=entity.begin ();
-       iter!=entity.end (); ++iter)
+  for( Entities::iterator iter=entityMap.begin ();
+       iter!=entityMap.end (); ++iter)
     {
       Entity* ent = iter->second;
       GraphFile << ent->getName ()
@@ -191,8 +198,8 @@ writeGraph(const std::string &aFileName)
 void PoolStorage::
 writeCompletionList(std::ostream& os)
 {
-  for( Entities::iterator iter=entity.begin ();
-       iter!=entity.end (); ++iter)
+  for( Entities::iterator iter=entityMap.begin ();
+       iter!=entityMap.end (); ++iter)
     {
       Entity* ent = iter->second;
       ent->writeCompletionList(os);
@@ -219,8 +226,8 @@ commandLine( const std::string& objectName,const std::string& functionName,
 	}
       else if( functionName=="list" )
 	{
-	  for( Entities::iterator iter=entity.begin ();
-	       iter!=entity.end (); ++iter)
+	  for( Entities::iterator iter=entityMap.begin ();
+	       iter!=entityMap.end (); ++iter)
 	    {
 	      Entity* ent = iter->second;
 	      os << ent->getName ()
