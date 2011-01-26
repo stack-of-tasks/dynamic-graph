@@ -71,7 +71,6 @@ Entity::
 ~Entity  ()
 {
   dgDEBUG(25) << "# In (" << name << " { " << endl;
-  entityDeregistration();
   for (std::map<const std::string, Command*>::iterator it =
 	 commandMap.begin(); it != commandMap.end(); it++) {
     delete it->second;
