@@ -59,7 +59,7 @@ Entity( const string& name__ )
   if( name.length ()==0 )
     {
       stringstream oss; oss << rand ();
-      name = CLASS_NAME;
+      name = this->getClassName();
       name+="::";
       name+=oss.str ();
     }
