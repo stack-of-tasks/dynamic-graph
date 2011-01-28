@@ -23,7 +23,6 @@ INCLUDE(cmake/cpack.cmake)
 SET(PROJECT_NAME dynamic-graph)
 SET(PROJECT_DESCRIPTION "Dynamic graph library")
 SET(PROJECT_URL "http://github.com/jrl-umi3218/dynamic-graph")
-SET(PROJECT_VERSION 1.99)
 
 SET(CUSTOM_HEADER_DIR "${PROJECT_NAME}")
 
