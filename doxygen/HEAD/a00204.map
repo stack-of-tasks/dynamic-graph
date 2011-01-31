@@ -1,8 +1,4 @@
 <map id="G" name="G">
-<area shape="rect" href="$a00009.html" title="This class represents an entity, i.e. a generic computational unit that provides input and output sig..." alt="" coords="145,385,300,412"/>
-<area shape="rect" href="$a00019.html" title="noncopyable" alt="" coords="123,292,224,318"/>
-<area shape="rect" title="STL class." alt="" coords="272,86,357,113"/>
-<area shape="rect" href="$a00030.html" title="dynamicgraph::SignalBase\&lt; int \&gt;" alt="" coords="421,180,659,206"/>
-<area shape="rect" title="STL class." alt="" coords="223,6,407,33"/>
-<area shape="rect" href="$a00019.html" title="boost::noncopyable" alt="" coords="467,86,613,113"/>
+<area shape="rect" title="STL class." alt="" coords="192,87,277,113"/>
+<area shape="rect" title="STL class." alt="" coords="143,7,327,33"/>
 </map>

@@ -1,11 +1,15 @@
 <map id="G" name="G">
-<area shape="rect" title="STL class." alt="" coords="341,446,472,473"/>
-<area shape="rect" title="STL class." alt="" coords="253,353,483,380"/>
-<area shape="rect" title="STL class." alt="" coords="225,246,431,273"/>
-<area shape="rect" title="STL class." alt="" coords="5,166,203,193"/>
-<area shape="rect" title="STL class." alt="" coords="244,86,412,113"/>
-<area shape="rect" title="STL class." alt="" coords="227,166,429,193"/>
-<area shape="rect" title="STL class." alt="" coords="453,166,653,193"/>
-<area shape="rect" title="STL class." alt="" coords="276,6,380,33"/>
-<area shape="rect" title="STL class." alt="" coords="480,300,584,326"/>
+<area shape="rect" href="$a00008.html" title="This class represents an entity, i.e." alt="" coords="1477,224,1632,251"/>
+<area shape="rect" title="STL class." alt="" coords="271,197,356,224"/>
+<area shape="rect" href="$a00030.html" title="dynamicgraph::SignalBase\&lt; int \&gt;" alt="" coords="512,320,749,347"/>
+<area shape="rect" href="$a00030.html" title="The base class for signals: not to be used as such." alt="" coords="505,463,756,489"/>
+<area shape="rect" title="STL class." alt="" coords="5,197,189,224"/>
+<area shape="rect" href="$a00035.html" title="dynamicgraph::TimeDependency\&lt; int \&gt;" alt="" coords="1416,344,1693,371"/>
+<area shape="rect" href="$a00018.html" title="boost::noncopyable" alt="" coords="240,357,387,384"/>
+<area shape="rect" title="STL class." alt="" coords="1503,468,1607,495"/>
+<area shape="rect" title="STL class." alt="" coords="1023,489,1223,516"/>
+<area shape="rect" title="STL class." alt="" coords="547,513,715,540"/>
+<area shape="rect" title="STL class." alt="" coords="261,513,365,540"/>
+<area shape="rect" href="$a00034.html" title="dynamicgraph::SignalTimeDependent\&lt; int, int \&gt;" alt="" coords="1836,344,2167,371"/>
+<area shape="rect" href="$a00027.html" title="Signals link I/O ports of entities. They can be constant&#45;valued signals, or copy..." alt="" coords="1011,425,1235,452"/>
 </map>

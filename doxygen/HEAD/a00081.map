@@ -1,17 +1,2 @@
 <map id="G" name="G">
-<area shape="rect" href="$a00064.html" title="dynamic&#45;graph/signal.h" alt="" coords="1089,162,1260,188"/>
-<area shape="rect" href="$a00061.html" title="dynamic&#45;graph/signal&#45;ptr.h" alt="" coords="1764,84,1956,111"/>
-<area shape="rect" href="$a00063.html" title="dynamic&#45;graph/signal&#45;time&#45;dependent.h" alt="" coords="1427,84,1704,111"/>
-<area shape="rect" href="$a00046.html" title="dynamic&#45;graph/exception&#45;signal.h" alt="" coords="1083,394,1320,420"/>
-<area shape="rect" href="$a00059.html" title="dynamic&#45;graph/signal&#45;base.h" alt="" coords="1397,316,1603,343"/>
-<area shape="rect" href="$a00065.html" title="dynamic&#45;graph/signal.t.cpp" alt="" coords="1077,239,1272,266"/>
-<area shape="rect" href="$a00044.html" title="dynamic&#45;graph/exception&#45;abstract.h" alt="" coords="1133,471,1387,498"/>
-<area shape="rect" href="$a00042.html" title="dynamic&#45;graph/dynamic&#45;graph&#45;api.h" alt="" coords="1133,548,1387,575"/>
-<area shape="rect" href="$a00080.html" title="dynamic&#45;graph/config.hh" alt="" coords="1069,626,1248,652"/>
-<area shape="rect" href="$a00060.html" title="dynamic&#45;graph/signal&#45;caster.h" alt="" coords="437,316,651,343"/>
-<area shape="rect" href="$a00040.html" title="dynamic&#45;graph/debug.h" alt="" coords="1887,316,2060,343"/>
-<area shape="rect" href="$a00062.html" title="dynamic&#45;graph/signal&#45;ptr.t.cpp" alt="" coords="1788,162,2004,188"/>
-<area shape="rect" href="$a00066.html" title="dynamic&#45;graph/time&#45;dependency.h" alt="" coords="1521,162,1764,188"/>
-<area shape="rect" href="$a00058.html" title="dynamic&#45;graph/signal&#45;array.h" alt="" coords="1347,239,1552,266"/>
-<area shape="rect" href="$a00067.html" title="dynamic&#45;graph/time&#45;dependency.t.cpp" alt="" coords="1792,239,2059,266"/>
 </map>

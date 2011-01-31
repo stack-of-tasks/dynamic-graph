@@ -1,6 +1,9 @@
 <map id="G" name="G">
-<area shape="rect" href="$a00045.html" title="dynamic&#45;graph/exception&#45;factory.h" alt="" coords="195,84,437,110"/>
-<area shape="rect" href="$a00042.html" title="dynamic&#45;graph/dynamic&#45;graph&#45;api.h" alt="" coords="303,238,556,265"/>
-<area shape="rect" href="$a00044.html" title="dynamic&#45;graph/exception&#45;abstract.h" alt="" coords="123,161,376,188"/>
-<area shape="rect" href="$a00080.html" title="dynamic&#45;graph/config.hh" alt="" coords="239,316,417,342"/>
+<area shape="rect" href="$a00050.html" title="dynamic&#45;graph/fwd.hh" alt="" coords="720,393,883,420"/>
+<area shape="rect" href="$a00060.html" title="dynamic&#45;graph/signal&#45;base.h" alt="" coords="851,161,1056,188"/>
+<area shape="rect" href="$a00042.html" title="dynamic&#45;graph/dynamic&#45;graph&#45;api.h" alt="" coords="220,393,473,420"/>
+<area shape="rect" href="$a00045.html" title="dynamic&#45;graph/exception&#45;factory.h" alt="" coords="144,239,387,265"/>
+<area shape="rect" href="$a00056.html" title="dynamic&#45;graph/pool.h" alt="" coords="496,84,656,111"/>
+<area shape="rect" href="$a00046.html" title="dynamic&#45;graph/exception&#45;signal.h" alt="" coords="539,239,776,265"/>
+<area shape="rect" href="$a00044.html" title="dynamic&#45;graph/exception&#45;abstract.h" alt="" coords="384,316,637,343"/>
 </map>

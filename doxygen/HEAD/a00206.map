@@ -1,3 +1,7 @@
 <map id="G" name="G">
-<area shape="rect" href="$a00028.html" title="dynamicgraph::SignalArray\&lt; Time \&gt;" alt="" coords="27,84,280,110"/>
+<area shape="rect" href="$a00008.html" title="This class represents an entity, i.e." alt="" coords="273,391,428,417"/>
+<area shape="rect" title="STL class." alt="" coords="281,87,367,113"/>
+<area shape="rect" href="$a00030.html" title="dynamicgraph::SignalBase\&lt; int \&gt;" alt="" coords="5,183,243,209"/>
+<area shape="rect" title="STL class." alt="" coords="232,7,416,33"/>
+<area shape="rect" href="$a00018.html" title="boost::noncopyable" alt="" coords="51,87,197,113"/>
 </map>

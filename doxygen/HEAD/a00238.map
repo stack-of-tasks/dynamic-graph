@@ -1,5 +1,9 @@
 <map id="G" name="G">
-<area shape="rect" href="$a00036.html" title="dynamicgraph::Tracer" alt="" coords="35,161,192,188"/>
-<area shape="rect" href="$a00009.html" title="This class represents an entity, i.e. a generic computational unit that provides input and output sig..." alt="" coords="36,84,191,111"/>
-<area shape="rect" href="$a00019.html" title="noncopyable" alt="" coords="63,7,164,33"/>
+<area shape="rect" title="STL class." alt="" coords="92,327,231,353"/>
+<area shape="rect" title="STL class." alt="" coords="5,247,243,273"/>
+<area shape="rect" title="STL class." alt="" coords="23,167,225,193"/>
+<area shape="rect" title="STL class." alt="" coords="40,87,208,113"/>
+<area shape="rect" title="STL class." alt="" coords="72,7,176,33"/>
+<area shape="rect" title="STL class." alt="" coords="304,327,389,353"/>
+<area shape="rect" title="STL class." alt="" coords="267,247,451,273"/>
 </map>

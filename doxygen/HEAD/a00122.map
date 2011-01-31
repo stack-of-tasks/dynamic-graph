@@ -1,10 +1,4 @@
 <map id="G" name="G">
-<area shape="rect" href="$a00046.html" title="dynamic&#45;graph/exception&#45;signal.h" alt="" coords="408,239,645,265"/>
-<area shape="rect" href="$a00059.html" title="dynamic&#45;graph/signal&#45;base.h" alt="" coords="629,161,835,188"/>
-<area shape="rect" href="$a00065.html" title="dynamic&#45;graph/signal.t.cpp" alt="" coords="888,84,1083,111"/>
-<area shape="rect" href="$a00044.html" title="dynamic&#45;graph/exception&#45;abstract.h" alt="" coords="440,316,693,343"/>
-<area shape="rect" href="$a00042.html" title="dynamic&#45;graph/dynamic&#45;graph&#45;api.h" alt="" coords="719,393,972,420"/>
-<area shape="rect" href="$a00080.html" title="dynamic&#45;graph/config.hh" alt="" coords="655,471,833,497"/>
-<area shape="rect" href="$a00060.html" title="dynamic&#45;graph/signal&#45;caster.h" alt="" coords="1108,161,1321,188"/>
-<area shape="rect" href="$a00040.html" title="dynamic&#45;graph/debug.h" alt="" coords="2031,161,2204,188"/>
+<area shape="rect" href="$a00069.html" title="tracer&#45;real&#45;time.h" alt="" coords="5,84,139,111"/>
+<area shape="rect" href="$a00071.html" title="tracer.h" alt="" coords="187,84,256,111"/>
 </map>

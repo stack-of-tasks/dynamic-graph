@@ -1,11 +1,2 @@
 <map id="G" name="G">
-<area shape="rect" href="$a00052.html" title="dynamic&#45;graph/interpreter.h" alt="" coords="384,84,584,110"/>
-<area shape="rect" href="$a00082.html" title="dynamic&#45;graph/config&#45;contiifstream.hh" alt="" coords="1336,84,1603,110"/>
-<area shape="rect" href="$a00059.html" title="dynamic&#45;graph/signal&#45;base.h" alt="" coords="353,238,559,265"/>
-<area shape="rect" href="$a00042.html" title="dynamic&#45;graph/dynamic&#45;graph&#45;api.h" alt="" coords="600,470,853,497"/>
-<area shape="rect" href="$a00045.html" title="dynamic&#45;graph/exception&#45;factory.h" alt="" coords="648,238,891,265"/>
-<area shape="rect" href="$a00055.html" title="dynamic&#45;graph/pool.h" alt="" coords="156,161,316,188"/>
-<area shape="rect" href="$a00046.html" title="dynamic&#45;graph/exception&#45;signal.h" alt="" coords="565,316,803,342"/>
-<area shape="rect" href="$a00044.html" title="dynamic&#45;graph/exception&#45;abstract.h" alt="" coords="600,393,853,420"/>
-<area shape="rect" href="$a00080.html" title="dynamic&#45;graph/config.hh" alt="" coords="536,548,715,574"/>
 </map>

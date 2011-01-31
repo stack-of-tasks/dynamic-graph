@@ -1,7 +1,4 @@
 <map id="G" name="G">
-<area shape="rect" href="$a00019.html" title="noncopyable" alt="" coords="5,292,107,319"/>
-<area shape="rect" title="STL class." alt="" coords="209,87,295,114"/>
-<area shape="rect" href="$a00030.html" title="dynamicgraph::SignalBase\&lt; int \&gt;" alt="" coords="304,180,541,207"/>
-<area shape="rect" title="STL class." alt="" coords="160,7,344,34"/>
-<area shape="rect" href="$a00019.html" title="boost::noncopyable" alt="" coords="349,87,496,114"/>
+<area shape="rect" href="$a00036.html" title="Tracer plug&#45;in main class." alt="" coords="35,84,192,111"/>
+<area shape="rect" href="$a00037.html" title="Main class of the tracer real&#45;time plug&#45;in." alt="" coords="5,161,221,188"/>
 </map>

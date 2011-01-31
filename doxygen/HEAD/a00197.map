@@ -1,5 +1,4 @@
 <map id="G" name="G">
-<area shape="rect" href="$a00021.html" title="Loads plugins from dynamic libraries (usually .so or .dll files)." alt="" coords="181,292,384,319"/>
-<area shape="rect" title="STL class." alt="" coords="240,87,325,114"/>
-<area shape="rect" title="STL class." alt="" coords="191,7,375,34"/>
+<area shape="rect" title="STL class." alt="" coords="72,87,157,113"/>
+<area shape="rect" title="STL class." alt="" coords="23,7,207,33"/>
 </map>

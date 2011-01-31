@@ -1,3 +1,5 @@
 <map id="G" name="G">
-<area shape="rect" href="$a00034.html" title="A type of signal that enforces a time dependency between other signals, making sure its inputs are up..." alt="" coords="5,84,328,110"/>
+<area shape="rect" href="$a00030.html" title="The base class for signals: not to be used as such." alt="" coords="29,183,280,209"/>
+<area shape="rect" title="STL class." alt="" coords="55,87,140,113"/>
+<area shape="rect" title="STL class." alt="" coords="5,7,189,33"/>
 </map>
