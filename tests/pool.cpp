@@ -54,6 +54,7 @@ BOOST_AUTO_TEST_CASE (pool_list)
   output_test_stream output;
   dynamicgraph::g_pool.commandLine("pool", "list", in, output);
   BOOST_CHECK (output.is_equal ("MyEntityInst (MyEntity)\n"));
+  dynamicgraph::g_pool.deregisterEntity(myEntity.getName());
 }
 
 BOOST_AUTO_TEST_CASE (pool_display)
@@ -63,4 +64,5 @@ BOOST_AUTO_TEST_CASE (pool_display)
   dynamicgraph::Entity& e = dynamicgraph::g_pool.getEntity("MyEntityInst");
   e.display(output);
   BOOST_CHECK (output.is_equal ("Hello! My name is MyEntityInst !\n"));
+  dynamicgraph::g_pool.deregisterEntity(myEntity.getName());
 }
