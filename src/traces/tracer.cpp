@@ -75,6 +75,17 @@ addSignalToTrace( const SignalBase<int>& sig,
   dgDEBUGOUT(15);
 }
 
+void Tracer::
+addSignalToTraceByName( const string& signame,
+			const string& filename )
+{
+  dgDEBUGIN(15);
+  istringstream iss( signame );
+  SignalBase<int> &sig = g_pool.getSignal(iss);
+  addSignalToTrace(sig,filename);
+  dgDEBUGOUT(15);
+}
+
 /*! Empty the list of signals to trace. This function
  * does not modify the file list (it does not close
  * the files in particular.
@@ -263,6 +274,10 @@ commandLine( const std::string& cmdLine
     }
   else if( cmdLine=="add" )
     {
+      SignalBase<int> &sig = g_pool.getSignal(cmdArgs);
+      string r; cmdArgs>>ws>>r;
+      addSignalToTrace(sig,r);
+      dgDEBUG(14)<<"Add <" <<sig.getName ()<<"> with nick \""<<r<<"\""<<endl;
     }
   else if( cmdLine=="clear" )
     { closeFiles (); toTraceSignals.clear (); }
@@ -279,7 +294,6 @@ commandLine( const std::string& cmdLine
 	    }
 	}
 
-      //>>r>>s;
       dgDEBUGF( 15,"Close files.");
       closeFiles ();
       dgDEBUGF( 15,"Open files \"%s\" \"%s\" \"%s\".",
@@ -290,15 +304,8 @@ commandLine( const std::string& cmdLine
   else if( cmdLine=="trace" ) { trace (); }
   else if( cmdLine=="record" )
     {
-      //unsigned int t;
-      //cmdArgs >> ws>>t; if(! cmdArgs.good () ) t=0;
       record ();
     }
-//   else if( cmdLine=="parasite" )
-//     {
-//        SignalBase<int> &sig = g_pool.getSignal( cmdArgs );
-//        parasite(sig);
-//     }
   else if( cmdLine == "start" )    {  play=true; }
   else if( cmdLine == "stop" )    {  play=false; }
   else if( cmdLine == "timeStart" )

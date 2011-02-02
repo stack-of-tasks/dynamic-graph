@@ -73,6 +73,8 @@ namespace dynamicgraph
 
     void addSignalToTrace( const SignalBase<int>& sig,
 			   const std::string& filename="" );
+    void addSignalToTraceByName( const std::string& signame,
+				 const std::string& filename="" );
     void clearSignalToTrace  ();
     //void parasite( SignalBase<int>& sig );
     void openFiles( const std::string& rootdir, const std::string& basename,
