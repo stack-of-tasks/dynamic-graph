@@ -27,6 +27,7 @@
 #include <dynamic-graph/debug.h>
 #include <dynamic-graph/pool.h>
 #include <dynamic-graph/factory.h>
+#include <dynamic-graph/all-commands.h>
 #include <boost/bind.hpp>
 
 using namespace std;
@@ -56,6 +57,57 @@ Tracer::Tracer( const std::string n )
 	   "Tracer("+n+")::triger" )
 {
   signalRegistration( triger );
+
+
+  /* --- Commands --- */
+  {
+    using namespace dynamicgraph::command;
+    std::string doc;
+
+    doc = docCommandVoid2("Add a new signal to trace.",
+			  "string (signal name)","string (filename, empty for default");
+    addCommand("add",
+	       makeCommandVoid2(*this,&Tracer::addSignalToTraceByName,doc ));
+
+    doc = docCommandVoid0("Remove all signals. If necessary, close open files.");
+    addCommand("clear",
+	       makeCommandVoid0(*this,&Tracer::clearSignalToTrace,doc ));
+
+    doc = docCommandVoid3("Gives the args for file opening, and "
+			  "if signals have been set, open the corresponding files.",
+			  "string (dirname)","string (prefix)","string (suffix)");
+    addCommand("open",
+	       makeCommandVoid3(*this,&Tracer::openFiles,doc ));
+
+    doc = docCommandVoid0("Close all the open files.");
+    addCommand("close",
+	       makeCommandVoid0(*this,&Tracer::closeFiles,doc ));
+
+    doc = docCommandVoid0("If necessary, dump "
+			  "(can be done automatically for some traces type).");
+    addCommand("dump",
+	       makeCommandVoid0(*this,&Tracer::trace,doc ));
+
+    doc = docCommandVoid0("Start the tracing process.");
+    addCommand("start",
+	       makeCommandVoid0(*this,&Tracer::start,doc ));
+
+    doc = docCommandVoid0("Stop temporarily the tracing process.");
+    addCommand("stop",
+	       makeCommandVoid0(*this,&Tracer::stop,doc ));
+
+
+    doc = docCommandVoid0("Stop temporarily the tracing process.");
+    addCommand("stop",
+	       makeCommandVoid0(*this,&Tracer::stop,doc ));
+
+    addCommand("getTimeStart",
+	       makeDirectGetter(*this,&timeStart,
+				docDirectGetter("timeStart","int")));
+    addCommand("setTimeStart",
+	       makeDirectSetter(*this,&timeStart,
+				docDirectSetter("timeStart","int")));
+  } // using namespace command
 }
 
 /* --------------------------------------------------------------------- */
@@ -93,10 +145,10 @@ addSignalToTraceByName( const string& signame,
 void Tracer::
 clearSignalToTrace  ()
 {
+  closeFiles ();
   toTraceSignals.clear ();
   triger.clearDependencies ();
 }
-
 
 // void Tracer::
 // parasite( SignalBase<int>& sig )
@@ -314,8 +366,6 @@ commandLine( const std::string& cmdLine
 	{ os << "timeStart = " << timeStart << std::endl; }
       else { cmdArgs >> timeStart; }
     }
-
-
   else  //sotTaskAbstract::
     Entity::commandLine( cmdLine,cmdArgs,os );
 

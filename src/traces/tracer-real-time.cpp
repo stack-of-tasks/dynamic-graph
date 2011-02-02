@@ -30,6 +30,7 @@
 #include <dynamic-graph/debug.h>
 #include <dynamic-graph/pool.h>
 #include <dynamic-graph/factory.h>
+#include <dynamic-graph/all-commands.h>
 
 using namespace std;
 using namespace dynamicgraph;
@@ -116,6 +117,24 @@ TracerRealTime::TracerRealTime( const std::string n )
    ,bufferSize( BUFFER_SIZE_DEFAULT )
 {
   dgDEBUGINOUT(15);
+
+  /* --- Commands --- */
+  {
+    using namespace dynamicgraph::command;
+    std::string doc
+      = docCommandVoid0("Trash the current content of the buffers, without saving it.");
+    addCommand("empty",
+	       makeCommandVoid0(*this,&TracerRealTime::emptyBuffers,doc ));
+
+    addCommand("getBufferSize",
+	       makeDirectGetter(*this,&bufferSize,
+				docDirectGetter("bufferSize","int")));
+    addCommand("setBufferSize",
+	       makeDirectSetter(*this,&bufferSize,
+				docDirectSetter("bufferSize","int")));
+  } // using namespace command
+
+  dgDEBUGOUT(15);
 }
 
 /* --------------------------------------------------------------------- */

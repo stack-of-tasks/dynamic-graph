@@ -98,6 +98,8 @@ namespace dynamicgraph
     int& recordTrigger( int& dummy, const int& time );
 
     virtual void trace  ();
+    void start() { play = true ; }
+    void stop()  { play = false; }
 
   public:
     //SignalTrigerer<int> triger;
