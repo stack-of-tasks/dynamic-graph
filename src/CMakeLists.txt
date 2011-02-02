@@ -41,6 +41,7 @@ ADD_LIBRARY(${LIBRARY_NAME}
 
   signal/signal-array.cpp
   signal/signal-caster.cpp
+  signal/signal-cast-helper.cpp
 
   command/value.cpp
   command/command.cpp

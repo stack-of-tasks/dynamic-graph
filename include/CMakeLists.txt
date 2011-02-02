@@ -57,6 +57,7 @@ signal.t.cpp
 time-dependency.h
 time-dependency.t.cpp
 signal-caster.h
+signal-cast-helper.h
 all-signals.h
 
 tracer.h
