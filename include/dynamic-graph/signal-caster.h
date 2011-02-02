@@ -47,7 +47,6 @@ namespace dynamicgraph
   class DYNAMIC_GRAPH_DLLAPI SignalCaster
   {
   public:
-    explicit SignalCaster ();
     virtual ~SignalCaster ();
 
     /// Typedef of displayer functions that take an encapsulated 'any'
@@ -87,10 +86,14 @@ namespace dynamicgraph
     std::map<std::string, cast_functions_type> functions_;
 
     std::map<std::string, const std::type_info*> type_info_;
+
+  private:
+    explicit SignalCaster ();
+    friend SignalCaster& g_caster(void);
   };
 
-  /// The library-wide instance of SignalCaster
-  extern DYNAMIC_GRAPH_DLLAPI SignalCaster g_caster;
+  /// Access on the library wide caster instance (simple singleton design).
+  DYNAMIC_GRAPH_DLLAPI SignalCaster& g_caster(void);
 
   ///The SignalCast registerer class. Can be used to automatically
   /// register a cast when instanced somewhere in a cpp file. Pass the
@@ -105,7 +108,7 @@ namespace dynamicgraph
 				 SignalCaster::caster_type caster,
 				 SignalCaster::tracer_type tracer)
     {
-      g_caster.registerCast(type, displayer, caster, tracer);
+      g_caster().registerCast(type, displayer, caster, tracer);
     }
   };
 
@@ -117,19 +120,19 @@ namespace dynamicgraph
   template<typename T>
   void signal_disp (const T& value, std::ostream& os)
   {
-    g_caster.disp(value, os);
+    g_caster().disp(value, os);
   }
 
   template<typename T>
   T signal_cast(std::istringstream& iss)
   {
-    return boost::any_cast<T>(g_caster.cast(typeid(T), iss));
+    return boost::any_cast<T>(g_caster().cast(typeid(T), iss));
   }
 
   template<typename T>
   void signal_trace (const T& value, std::ostream& os)
   {
-    g_caster.trace(value, os);
+    g_caster().trace(value, os);
   }
 } // end of namespace dynamicgraph.
 
