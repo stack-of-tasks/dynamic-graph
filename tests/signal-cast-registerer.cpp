@@ -26,6 +26,7 @@
 #include <dynamic-graph/pool.h>
 #include <dynamic-graph/signal-caster.h>
 #include <dynamic-graph/signal.h>
+#include <dynamic-graph/signal-cast-helper.h>
 
 #include "signal-cast-registerer-libA.hh"
 #include "signal-cast-registerer-libB.hh"
