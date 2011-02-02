@@ -96,11 +96,6 @@ Tracer::Tracer( const std::string n )
     addCommand("stop",
 	       makeCommandVoid0(*this,&Tracer::stop,doc ));
 
-
-    doc = docCommandVoid0("Stop temporarily the tracing process.");
-    addCommand("stop",
-	       makeCommandVoid0(*this,&Tracer::stop,doc ));
-
     addCommand("getTimeStart",
 	       makeDirectGetter(*this,&timeStart,
 				docDirectGetter("timeStart","int")));
