@@ -92,6 +92,10 @@ namespace dynamicgraph
    *          SignalCast<TYPE>::disp_,
    *          SignalCast<TYPE>::cast_,
    *          SignalCast<TYPE>::trace_);
+
+   * NMSD: I don't really understand the use of this additional class. IMHO
+   * (comme on dit), it should be possible to rewrite the same-spec macros
+   * using specialization of the template class DefaultCastRegisterer. No?
    */
   template< class T >
     class SignalCast
@@ -142,27 +146,27 @@ namespace dynamicgraph
 /* Standard definition macros: the three functions can be specified
  * in the macros. To define then in the cpp, just put ';' in the args.
  */
-#define DG_SIGNAL_CAST_FULL_DEFINITION(TYPE,CAST,DISP,TRACE)                                    \
-template<>                                                                                      \
- class SignalCast<TYPE>					                                        \
-{                                                                                               \
-public:                                                                                         \
-        static TYPE cast( std::istringstream& iss )         CAST                                \
-	static void disp( TYPE const& t,std::ostream& os )  DISP	                        \
-	static void trace( TYPE const& t,std::ostream& os ) TRACE                               \
-public:            		                                                                \
-       DYNAMIC_GRAPH_DLLEXPORT                                                                  \
-	static boost::any cast_( std::istringstream& stringValue ) {           	                \
- 		  return boost::any_cast<TYPE>(cast(stringValue));           	                \
-	}                                                                                       \
-       DYNAMIC_GRAPH_DLLEXPORT                                                                  \
-	static void disp_( const boost::any& t,std::ostream& os )  {       	                \
-	  disp(boost::any_cast<TYPE>(t), os);         				                \
-	}            										\
-       DYNAMIC_GRAPH_DLLEXPORT                                                                  \
-	static void trace_( const boost::any& t,std::ostream& os ) {      			\
-		  trace(boost::any_cast<TYPE>(t),os);      					\
-	}          										\
+#define DG_SIGNAL_CAST_FULL_DEFINITION(TYPE,CAST,DISP,TRACE)                          \
+template<>                                                                            \
+ class SignalCast<TYPE>					                              \
+{                                                                                     \
+public:                                                                               \
+        static TYPE cast( std::istringstream& iss )         CAST                      \
+	static void disp( TYPE const& t,std::ostream& os )  DISP	              \
+	static void trace( TYPE const& t,std::ostream& os ) TRACE                     \
+public:            		                                                      \
+       DYNAMIC_GRAPH_DLLEXPORT                                                        \
+	static boost::any cast_( std::istringstream& stringValue ) {           	      \
+ 		  return boost::any_cast<TYPE>(cast(stringValue));           	      \
+	}                                                                             \
+       DYNAMIC_GRAPH_DLLEXPORT                                                        \
+	static void disp_( const boost::any& t,std::ostream& os )  {       	      \
+	  disp(boost::any_cast<TYPE>(t), os);         				      \
+	}            								      \
+       DYNAMIC_GRAPH_DLLEXPORT                                                        \
+	static void trace_( const boost::any& t,std::ostream& os ) {      	      \
+		  trace(boost::any_cast<TYPE>(t),os);      			      \
+	}          								      \
 }
 
 /* Standard definition macros: the functions <cast> and <disp> have

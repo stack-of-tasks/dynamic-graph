@@ -119,8 +119,6 @@ namespace dynamicgraph
     return getCast(type.name ()).get<1> () (iss);
   }
 
-  /// The global instance of the caster class.
-  //SignalCaster g_caster;
   /// Singleton on the library-wide instance of SignalCaster
   SignalCaster& g_caster(void)
   {
@@ -129,12 +127,3 @@ namespace dynamicgraph
   }
 
 } // namespace dynamicgraph
-
-
-
-
-struct sigcastint
-{
-  sigcastint() { std::cout << "sigcastint!" << std::endl; }
-};
-sigcastint sigcastint_init;

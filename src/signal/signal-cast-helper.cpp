@@ -66,14 +66,37 @@ namespace dynamicgraph
 	}
     }
 
+  /* Specialize Matrix and Vector traces. */
+  template <>
+  void
+  DefaultCastRegisterer<dynamicgraph::Vector>::
+  trace(const boost::any& object, std::ostream& os)
+  {
+    const dynamicgraph::Vector & v = boost::any_cast<dynamicgraph::Vector> (object);
+    for( unsigned int i=0;i<v.size();++i )
+      { os << "\t" << v(i); }
+  }
+  template <>
+  void
+  DefaultCastRegisterer<dynamicgraph::Matrix>::
+  trace(const boost::any& object, std::ostream& os)
+  {
+    const dynamicgraph::Matrix & m = boost::any_cast<dynamicgraph::Matrix> (object);
+    for( unsigned int i=0;i<m.nbRows();++i )
+      for( unsigned int j=0;j<m.nbCols();++j )
+	{ os << "\t" << m(i,j); }
+  }
+
+
+
   /// Registers useful casts
   namespace
   {
     DefaultCastRegisterer<double> double_reg;
-    // DefaultCastRegisterer<int> int_reg;
-    // DefaultCastRegisterer<unsigned int> uint_reg;
-    // DefaultCastRegisterer<dynamicgraph::Vector> vectorCastRegisterer;
-    // DefaultCastRegisterer<dynamicgraph::Matrix> matrixCastRegisterer;
+    DefaultCastRegisterer<int> int_reg;
+    DefaultCastRegisterer<unsigned int> uint_reg;
+    DefaultCastRegisterer<dynamicgraph::Vector> vectorCastRegisterer;
+    DefaultCastRegisterer<dynamicgraph::Matrix> matrixCastRegisterer;
   } // end of anonymous namespace.
 
 } // namespace dynamicgraph
