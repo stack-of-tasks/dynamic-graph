@@ -181,21 +181,45 @@ BOOST_AUTO_TEST_CASE (cmd_loadPlugin)
   dynamicgraph::Interpreter shell (&pl);
 
   {
+#ifdef WIN32
+    RUN_COMMAND ("loadPlugin", "shell-functions.dll" " " TESTS_PLUGINDIR);
+#elif __APPLE__
+    RUN_COMMAND ("loadPlugin", "shell-functions.dylib" " " TESTS_PLUGINDIR);
+#else
     RUN_COMMAND ("loadPlugin", "shell-functions.so" " " TESTS_PLUGINDIR);
+#endif
     BOOST_CHECK (output.is_empty ());
   }
   {
+#ifdef WIN32
+    RUN_COMMAND ("loadPlugin", "shell-procedure.dll" " " TESTS_PLUGINDIR);
+#elif __APPLE__
+    RUN_COMMAND ("loadPlugin", "shell-procedure.dylib" " " TESTS_PLUGINDIR);
+#else
     RUN_COMMAND ("loadPlugin", "shell-procedure.so" " " TESTS_PLUGINDIR);
+#endif
     BOOST_CHECK (output.is_empty ());
   }
 
   {
+#ifdef WIN32
+    RUN_COMMAND ("unloadPlugin", TESTS_PLUGINDIR "/shell-procedure.dll");
+#elif __APPLE__
+    RUN_COMMAND ("unloadPlugin", TESTS_PLUGINDIR "/shell-procedure.dylib");
+#else
     RUN_COMMAND ("unloadPlugin", TESTS_PLUGINDIR "/shell-procedure.so");
+#endif
     BOOST_CHECK (output.is_empty ());
   }
 
   {
+#ifdef WIN32
+    RUN_COMMAND ("unloadPlugin", TESTS_PLUGINDIR "/shell-functions.dll");
+#elif __APPLE__
+    RUN_COMMAND ("unloadPlugin", TESTS_PLUGINDIR "/shell-functions.dylib");
+#else
     RUN_COMMAND ("unloadPlugin", TESTS_PLUGINDIR "/shell-functions.so");
+#endif
     BOOST_CHECK (output.is_empty ());
   }
   
