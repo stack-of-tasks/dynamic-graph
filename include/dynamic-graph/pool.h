@@ -86,6 +86,11 @@ namespace dynamicgraph
     */
     Entity& getEntity (const std::string& name);
 
+    /*! \brief Test if the entity exists. */
+    bool existEntity (const std::string& name);
+    /*! \brief Test if the entity exists. If it does, return a pointer on it. */
+    bool existEntity (const std::string& name, Entity*& ptr);
+
     /*! \brief Disallocate an entity.
       \par[in] entname: The name of the entity,
     */

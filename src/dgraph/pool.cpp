@@ -115,6 +115,24 @@ getEntity( const std::string& name )
   else return *entPtr->second;
 }
 
+bool PoolStorage::
+existEntity (const std::string& name)
+{
+  return entityMap.find( name ) != entityMap.end();
+}
+bool PoolStorage::
+existEntity (const std::string& name, Entity*& ptr)
+{
+  Entities::iterator entPtr = entityMap.find( name );
+  if( entPtr == entityMap.end () ) return false;
+  else
+    {
+      ptr = entPtr->second;
+      return true;
+    }
+}
+
+
 void PoolStorage::
 clearPlugin( const std::string& name )
 {
