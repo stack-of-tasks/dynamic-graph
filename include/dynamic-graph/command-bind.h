@@ -85,7 +85,7 @@ namespace dynamicgraph {
     				    boost::bind(function,&entity),docString );
       }
 
-    std::string docCommandVoid0( const std::string& doc )
+    inline std::string docCommandVoid0( const std::string& doc )
       {
 	return 	std::string("\n")+doc +"\n\nNo input.\nVoid return.\n\n";
       }
@@ -127,7 +127,8 @@ namespace dynamicgraph {
     template <class E,typename T >
       CommandVoid1<E,T>*
       makeCommandVoid1(E& entity,
-		       typename CommandVoid1<E,T>::function_t function ,
+		       boost::function<void(const T&)> function,
+		       //typename CommandVoid1<E,T>::function_t function ,
 		       const std::string& docString)
       {
     	return new CommandVoid1<E,T>( entity,function,docString );
@@ -157,7 +158,7 @@ namespace dynamicgraph {
     	return NULL;
       }
 
-    std::string docCommandVoid1( const std::string& doc, const std::string& type )
+    inline std::string docCommandVoid1( const std::string& doc, const std::string& type )
       {
 	return 	std::string("\n")+doc +"\n\nInput:\n - A "+type+".\nVoid return.\n\n";
       }
@@ -234,9 +235,9 @@ namespace dynamicgraph {
     	return NULL;
       }
 
-    std::string docCommandVoid2( const std::string& doc,
-				 const std::string& type1,
-				 const std::string& type2 )
+    inline std::string docCommandVoid2( const std::string& doc,
+					const std::string& type1,
+					const std::string& type2 )
       {
 	return (std::string("\n")+doc+"\n\n"
 		+"Input:\n - A "+type1+".\n"
@@ -319,10 +320,10 @@ namespace dynamicgraph {
     	return NULL;
       }
 
-    std::string docCommandVoid3( const std::string& doc,
-				 const std::string& type1,
-				 const std::string& type2,
-				 const std::string& type3 )
+    inline std::string docCommandVoid3( const std::string& doc,
+					const std::string& type1,
+					const std::string& type2,
+					const std::string& type3 )
       {
 	return (std::string("\n")+doc+"\n\n"
 		+"Input:\n - A "+type1+".\n"
@@ -352,7 +353,7 @@ namespace dynamicgraph {
 
     CommandVerbose(E& entity, function_t function,
 		   const std::string& docString)
-      :Command(entity, boost::assign::list_of(ValueHelper<std::string>::TypeID), docString)
+      :Command(entity, EMPTY_ARG, docString)
 	,fptr(function)
       {}
 
@@ -367,6 +368,16 @@ namespace dynamicgraph {
     private:
       function_t fptr;
     };
+
+    template <class E >
+      CommandVerbose<E>*
+      makeCommandVerbose(E& entity,
+			 typename CommandVerbose<E>::function_t function,
+			 const std::string& docString)
+      {
+	return new CommandVerbose<E>( entity,function,docString );
+    	return NULL;
+      }
 
     template <class E >
       CommandVerbose<E>*
@@ -391,7 +402,7 @@ namespace dynamicgraph {
     	return NULL;
       }
 
-    std::string docCommandVerbose( const std::string& doc )
+    inline std::string docCommandVerbose( const std::string& doc )
       {
 	return 	std::string("\n")+doc +"\n\nNo input.\n Return a string.\n\n";
       }

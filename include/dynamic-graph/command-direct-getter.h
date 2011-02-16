@@ -59,8 +59,8 @@ namespace dynamicgraph {
 			const std::string& docString)
       { return  new DirectGetter<E,T>(entity,ptr,docString); }
 
-    std::string docDirectGetter( const std::string& name,
-				 const std::string& type )
+    inline std::string docDirectGetter( const std::string& name,
+					const std::string& type )
       {
 	return std::string("\nGet the ")+name+".\n\nNo input.\nReturn an "+type+".\n\n";
       }

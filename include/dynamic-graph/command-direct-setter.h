@@ -61,8 +61,8 @@ namespace dynamicgraph {
 			const std::string& docString)
       { return  new DirectSetter<E,T>(entity,ptr,docString); }
 
-    std::string docDirectSetter( const std::string& name,
-				 const std::string& type )
+    inline std::string docDirectSetter( const std::string& name,
+					const std::string& type )
       {
 	return std::string("\nSet the ")+name+".\n\nInput:\n - a "
 	  +type+".\nVoid return.\n\n";
