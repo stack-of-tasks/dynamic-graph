@@ -33,6 +33,7 @@ INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}/import-default-paths.h
 # Headers list.
 SET(${PROJECT_NAME}_HEADERS
 fwd.hh
+null-ptr.hh
 contiifstream.h
 debug.h
 
