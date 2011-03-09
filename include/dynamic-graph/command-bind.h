@@ -204,7 +204,7 @@ namespace dynamicgraph {
     template <class E,typename T1,typename T2 >
     CommandVoid2<E,T1,T2>*
       makeCommandVoid2(E& entity,
-		       typename CommandVoid2<E,T1,T2>::function_t function ,
+		       boost::function<void(const T1&,const T2&)> function,
 		       const std::string& docString)
       {
     	return new CommandVoid2<E,T1,T2>( entity,function,docString );
