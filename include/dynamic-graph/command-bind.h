@@ -335,6 +335,95 @@ namespace dynamicgraph {
   } // namespace command
 } // namespace dynamicgraph
 
+
+/* --- FUNCTION 4 ARGS ------------------------------------------------------ */
+namespace dynamicgraph {
+  namespace command {
+
+    template <class E,typename T1,typename T2,typename T3,typename T4 >
+      struct CommandVoid4
+      : public Command
+    {
+      typedef boost::function<void(const T1&,const T2&,const T3&,const T4&)> function_t;
+      typedef boost::function<void(E*,const T1&,const T2&,const T3&,const T4&)> memberFunction_t;
+      typedef void (E::*memberFunction_ptr_t) (const T1&,const T2&,const T3&,const T4&);
+
+    CommandVoid4(E& entity, function_t function,
+		 const std::string& docString)
+      :Command(entity,
+	       boost::assign::list_of
+	       (ValueHelper<T1>::TypeID)
+	       (ValueHelper<T2>::TypeID)
+	       (ValueHelper<T3>::TypeID)
+	       (ValueHelper<T4>::TypeID)
+	       , docString)
+	,fptr(function)
+      {}
+
+    protected:
+      virtual Value doExecute()
+      {
+	assert( getParameterValues().size() == 4 );
+	T1 val1 = getParameterValues()[0].value();
+	T2 val2 = getParameterValues()[1].value();
+	T3 val3 = getParameterValues()[2].value();
+	T4 val4 = getParameterValues()[3].value();
+	fptr(val1,val2,val3,val4);
+	return Value(); // void
+      }
+    private:
+      function_t fptr;
+    };
+
+
+    template <class E,typename T1,typename T2,typename T3,typename T4 >
+      CommandVoid4<E,T1,T2,T3,T4>*
+      makeCommandVoid4(E& entity,
+		       typename CommandVoid4<E,T1,T2,T3,T4>::function_t function ,
+		       const std::string& docString)
+      {
+    	return new CommandVoid4<E,T1,T2,T3,T4>( entity,function,docString );
+      }
+
+    template <class E,typename T1,typename T2,typename T3,typename T4 >
+      CommandVoid4<E,T1,T2,T3,T4>*
+      makeCommandVoid4(E& entity,
+		       boost::function<void(E*,const T1&,const T2&,const T3&,const T4&)> function,
+		       const std::string& docString)
+      {
+	return new CommandVoid4<E,T1,T2,T3,T4>( entity,
+						boost::bind(function,&entity,_1,_2,_3,_4),docString );
+      }
+
+    template <class E,typename T1,typename T2,typename T3,typename T4 >
+      CommandVoid4<E,T1,T2,T3,T4>*
+      makeCommandVoid4(E& entity,
+		       void (E::*function) (const T1&,const T2&,const T3&,const T4&),
+		       const std::string& docString)
+      {
+	return new CommandVoid4<E,T1,T2,T3,T4>( entity,
+						boost::bind(function,&entity,_1,_2,_4),
+						docString );
+    	return NULL;
+      }
+
+    inline std::string docCommandVoid4( const std::string& doc,
+					const std::string& type1,
+					const std::string& type2,
+					const std::string& type3,
+					const std::string& type4 )
+      {
+	return (std::string("\n")+doc+"\n\n"
+		+"Input:\n - A "+type1+".\n"
+		+"Input:\n - A "+type2+".\n"
+		+"Input:\n - A "+type3+".\n"
+		+"Input:\n - A "+type4+".\n"
+		+"Void return.\n\n" );
+      }
+
+  } // namespace command
+} // namespace dynamicgraph
+
 /* --- FUNCTION VERBOSE ----------------------------------------------------- */
 /* This bind a function void f( ostream& ) that display some results into
  * a string f( void ) that return some string results. */
