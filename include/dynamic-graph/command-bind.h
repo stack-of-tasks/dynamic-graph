@@ -402,7 +402,7 @@ namespace dynamicgraph {
 		       const std::string& docString)
       {
 	return new CommandVoid4<E,T1,T2,T3,T4>( entity,
-						boost::bind(function,&entity,_1,_2,_4),
+						boost::bind(function,&entity,_1,_2,_3,_4),
 						docString );
     	return NULL;
       }
