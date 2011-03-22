@@ -54,7 +54,7 @@ namespace dynamicgraph
   {
   public:
     static const std::string CLASS_NAME;
-    virtual const std::string& getClassName ()
+    virtual const std::string& getClassName  () const
     {
       return CLASS_NAME;
     }

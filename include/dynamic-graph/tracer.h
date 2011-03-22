@@ -43,7 +43,10 @@ namespace dynamicgraph
 
   public:
     static const std::string CLASS_NAME;
-    virtual const std::string& getClassName  () { return CLASS_NAME; }
+    virtual const std::string& getClassName () const
+    {
+      return CLASS_NAME;
+    }
 
   public:
     enum TraceStyle
