@@ -56,7 +56,6 @@ FOREACH(lib ${signalcast_libs})
   ADD_DEPENDENCIES(${lib} ${PROJECT_NAME})
 ENDFOREACH()
 DYNAMIC_GRAPH_TEST(signal-cast-registerer)
-TARGET_LINK_LIBRARIES(${EXECUTABLE_NAME} ${signalcast_libs})
 
 # Unit testing.
 DYNAMIC_GRAPH_TEST(entity)
