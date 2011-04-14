@@ -25,6 +25,7 @@
 /* DG */
 #include <dynamic-graph/tracer.h>
 #include <dynamic-graph/debug.h>
+#include <dynamic-graph/value.h>
 #include <dynamic-graph/pool.h>
 #include <dynamic-graph/factory.h>
 #include <dynamic-graph/all-commands.h>
@@ -32,6 +33,7 @@
 
 using namespace std;
 using namespace dynamicgraph;
+using namespace dynamicgraph::command;
 
 DYNAMICGRAPH_FACTORY_ENTITY_PLUGIN(Tracer,"Tracer");
 
