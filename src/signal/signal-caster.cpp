@@ -86,7 +86,7 @@ namespace dynamicgraph
 
     if (it == functions_.end ())
       //TODO: throw "cast not registered" exception
-      throw ExceptionSignal(ExceptionSignal::BAD_CAST, "bad cast");
+      throw ExceptionSignal(ExceptionSignal::BAD_CAST, "Cast not registered");
     return it->second;
   }
 
