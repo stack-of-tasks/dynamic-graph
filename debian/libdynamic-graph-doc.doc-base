@@ -5,5 +5,5 @@ Abstract: Doxygen documentation of dynamic-graph.
 Section: Programming
 
 Format: HTML
-Index: /usr/share/doc/dynamic-graph/html/index.html
-Files: /usr/share/doc/dynamic-graph/html/*.html
+Index: /opt/openrobots/share/doc/dynamic-graph/html/index.html
+Files: /opt/openrobots/share/doc/dynamic-graph/html/*.html
