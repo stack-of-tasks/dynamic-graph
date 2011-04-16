@@ -1,3 +1,9 @@
+dynamic-graph (1.2.1-1) lucid; urgency=low
+
+  * First package test for Launchpad.
+
+ -- olivier-stasse <olivier.stasse@aist.go.jp>  Sun, 17 Apr 2011 03:03:54 +0900
+
 dynamic-graph (1.0.0.99-3) lucid; urgency=low
 
   * Add plug-ins to libdynamic-graph1.0.0.99.
