@@ -52,13 +52,8 @@ namespace dynamicgraph
   /// \brief Main class of the tracer real-time plug-in.
   class DG_TRACERREALTIME_DLLAPI TracerRealTime : public Tracer
   {
+    DYNAMIC_GRAPH_ENTITY_DECL ();
   public:
-    static const std::string CLASS_NAME;
-    virtual const std::string& getClassName  () const
-    {
-      return CLASS_NAME;
-    }
-
     TracerRealTime (const std::string n);
     virtual ~TracerRealTime ()
     {}
