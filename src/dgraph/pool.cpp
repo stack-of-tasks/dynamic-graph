@@ -38,6 +38,22 @@ using namespace dynamicgraph;
 /* --- CLASS ----------------------------------------------------------- */
 /* --------------------------------------------------------------------- */
 
+PoolStorage* PoolStorage::
+getInstance()
+{
+  if (instance_ == 0) {
+    instance_ = new PoolStorage;
+  }
+  return instance_;
+}
+
+void PoolStorage::
+destroy()
+{
+  delete instance_;
+  instance_ = NULL;
+}
+
 PoolStorage::
 ~PoolStorage  ()
 {
@@ -52,7 +68,7 @@ PoolStorage::
       deregisterEntity(iter);
       delete (entity);
     }
-
+  instance_ = 0;
   dgDEBUGOUT(15);
 }
 
@@ -301,8 +317,5 @@ getSignal( std::istringstream& sigpath )
   return ent.getSignal( signame );
 }
 
-namespace dynamicgraph {
-	//! The global g_pool object.
-	PoolStorage g_pool;
-}
+PoolStorage* PoolStorage::instance_ = 0;
 

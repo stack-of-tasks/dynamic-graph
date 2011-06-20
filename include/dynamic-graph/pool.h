@@ -29,7 +29,7 @@
 namespace dynamicgraph
 {
   /*! @ingroup dgraph
-    \brief This class keep tracks of all the objects in the stack of Tasks.
+    \brief Singleton that keeps track of all the entities.
 
     This class gives access to and remembers all the entities created
     during its life.
@@ -42,11 +42,6 @@ namespace dynamicgraph
     \note From the code it is not very clear why we should not unregister
     from the tasks and the features...
 
-    The role of this class is also to look for the object supporting
-    a command, and to apply this command.
-
-    It also returns signal.
-
   */
   class DYNAMIC_GRAPH_DLLAPI PoolStorage
   {
@@ -56,6 +51,12 @@ namespace dynamicgraph
     */
     /*! \brief Sorted set of entities with unique key (name). */
     typedef std::map< std::string,Entity* > Entities;
+
+    /// \brief Get unique instance of the class.
+    static PoolStorage *getInstance();
+
+    /// \brief Destroy the unique instance of the class
+    static void destroy();
 
     /*! @} */
 
@@ -108,7 +109,7 @@ namespace dynamicgraph
       If the method of the object displays some information this will
       be done on os.
 
-      The commands specific to the \b g_pool object are:
+      The commands specific to the \b PoolStorage singleton are:
       \li \b list : List all the entities registered in the pool
     */
     void commandLine (const std::string& objectName,
@@ -128,11 +129,11 @@ namespace dynamicgraph
     */
     /*! \brief Set of basic objects of the SoT */
     Entities entityMap;
+
+  private:
+    PoolStorage () {}
+    static PoolStorage* instance_;
   };
-
-
-  DYNAMIC_GRAPH_DLLAPI extern dynamicgraph::PoolStorage g_pool;
-
 }  // end of namespace dynamicgraph.
 
 #endif //! DYNAMIC_GRAPH_POOL_H

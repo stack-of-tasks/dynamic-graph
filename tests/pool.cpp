@@ -52,17 +52,21 @@ BOOST_AUTO_TEST_CASE (pool_list)
   MyEntity myEntity("MyEntityInst");
   std::istringstream in;
   output_test_stream output;
-  dynamicgraph::g_pool.commandLine("pool", "list", in, output);
+  dynamicgraph::PoolStorage::getInstance()->commandLine
+    ("pool", "list", in, output);
   BOOST_CHECK (output.is_equal ("MyEntityInst (MyEntity)\n"));
-  dynamicgraph::g_pool.deregisterEntity(myEntity.getName());
+  dynamicgraph::PoolStorage::getInstance()->deregisterEntity
+    (myEntity.getName());
 }
 
 BOOST_AUTO_TEST_CASE (pool_display)
 {
   MyEntity myEntity("MyEntityInst");
   output_test_stream output;
-  dynamicgraph::Entity& e = dynamicgraph::g_pool.getEntity("MyEntityInst");
+  dynamicgraph::Entity& e = dynamicgraph::PoolStorage::getInstance()->getEntity
+    ("MyEntityInst");
   e.display(output);
   BOOST_CHECK (output.is_equal ("Hello! My name is MyEntityInst !\n"));
-  dynamicgraph::g_pool.deregisterEntity(myEntity.getName());
+  dynamicgraph::PoolStorage::getInstance()->deregisterEntity
+    (myEntity.getName());
 }

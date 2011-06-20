@@ -128,7 +128,7 @@ addSignalToTraceByName( const string& signame,
 {
   dgDEBUGIN(15);
   istringstream iss( signame );
-  SignalBase<int> &sig = g_pool.getSignal(iss);
+  SignalBase<int> &sig = PoolStorage::getInstance()->getSignal(iss);
   addSignalToTrace(sig,filename);
   dgDEBUGOUT(15);
 }
@@ -321,7 +321,7 @@ commandLine( const std::string& cmdLine
     }
   else if( cmdLine=="add" )
     {
-      SignalBase<int> &sig = g_pool.getSignal(cmdArgs);
+      SignalBase<int> &sig = PoolStorage::getInstance()->getSignal(cmdArgs);
       string r; cmdArgs>>ws>>r;
       addSignalToTrace(sig,r);
       dgDEBUG(14)<<"Add <" <<sig.getName ()<<"> with nick \""<<r<<"\""<<endl;

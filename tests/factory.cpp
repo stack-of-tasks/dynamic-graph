@@ -34,17 +34,18 @@ dynamicgraph::Entity* makeEntity(const std::string& objectName)
 
 BOOST_AUTO_TEST_CASE (constructor)
 {
-  dynamicgraph::FactoryStorage factory;
+  dynamicgraph::FactoryStorage::getInstance();
 }
 
 BOOST_AUTO_TEST_CASE (registerEntity)
 {
-  dynamicgraph::FactoryStorage factory;
-  factory.registerEntity ("myEntity", &makeEntity);
+  dynamicgraph::FactoryStorage::getInstance()->registerEntity
+    ("myEntity", &makeEntity);
 
   try
     {
-      factory.registerEntity ("myEntity", &makeEntity);
+      dynamicgraph::FactoryStorage::getInstance()->registerEntity
+	("myEntity", &makeEntity);
       BOOST_ERROR ("Should never happen.");
     }
   catch (const dynamicgraph::ExceptionFactory& exception)
@@ -55,7 +56,8 @@ BOOST_AUTO_TEST_CASE (registerEntity)
 
   try
     {
-      factory.registerEntity ("myEntity", 0);
+      dynamicgraph::FactoryStorage::getInstance()->registerEntity
+	("myEntity", 0);
       BOOST_ERROR ("Should never happen.");
     }
   catch (const dynamicgraph::ExceptionFactory& exception)
@@ -68,13 +70,12 @@ BOOST_AUTO_TEST_CASE (registerEntity)
 
 BOOST_AUTO_TEST_CASE (unregisterEntity)
 {
-  dynamicgraph::FactoryStorage factory;
-  factory.registerEntity ("myEntity", &makeEntity);
-  factory.deregisterEntity ("myEntity");
+  dynamicgraph::FactoryStorage::getInstance()->registerEntity ("myEntity", &makeEntity);
+  dynamicgraph::FactoryStorage::getInstance()->deregisterEntity ("myEntity");
 
   try
     {
-      factory.deregisterEntity ("myEntity");
+      dynamicgraph::FactoryStorage::getInstance()->deregisterEntity("myEntity");
       BOOST_ERROR ("Should never happen.");
     }
   catch (const dynamicgraph::ExceptionFactory& exception)
@@ -85,7 +86,8 @@ BOOST_AUTO_TEST_CASE (unregisterEntity)
 
   try
     {
-      factory.deregisterEntity ("I do not exist.");
+      dynamicgraph::FactoryStorage::getInstance()->deregisterEntity
+	("I do not exist.");
       BOOST_ERROR ("Should never happen.");
     }
   catch (const dynamicgraph::ExceptionFactory& exception)
@@ -97,23 +99,27 @@ BOOST_AUTO_TEST_CASE (unregisterEntity)
 
 BOOST_AUTO_TEST_CASE (newEntity)
 {
-  dynamicgraph::FactoryStorage factory;
-  factory.registerEntity ("myEntity", &makeEntity);
+  dynamicgraph::FactoryStorage::getInstance()->registerEntity
+    ("myEntity", &makeEntity);
 
   {
     boost::shared_ptr<dynamicgraph::Entity> entity
-      (factory.newEntity ("myEntity", "foo"));
+      (dynamicgraph::FactoryStorage::getInstance()->newEntity
+       ("myEntity", "foo"));
 
     boost::shared_ptr<dynamicgraph::Entity> entity2
-      (factory.newEntity ("myEntity", "foo2"));
+      (dynamicgraph::FactoryStorage::getInstance()->newEntity
+       ("myEntity", "foo2"));
 
     boost::shared_ptr<dynamicgraph::Entity> entity3
-      (factory.newEntity ("myEntity", ""));
+      (dynamicgraph::FactoryStorage::getInstance()->newEntity
+       ("myEntity", ""));
   }
 
   try
     {
-      factory.newEntity ("I do not exist.", "");
+      dynamicgraph::FactoryStorage::getInstance()->newEntity
+	("I do not exist.", "");
       BOOST_ERROR ("Should never happen.");
     }
   catch (const dynamicgraph::ExceptionFactory& exception)
@@ -125,10 +131,12 @@ BOOST_AUTO_TEST_CASE (newEntity)
 
 BOOST_AUTO_TEST_CASE (existEntity)
 {
-  dynamicgraph::FactoryStorage factory;
-  factory.registerEntity ("myEntity", &makeEntity);
+  dynamicgraph::FactoryStorage::getInstance()->registerEntity
+    ("myEntity", &makeEntity);
 
-  BOOST_CHECK (factory.existEntity ("myEntity"));
-  BOOST_CHECK (!factory.existEntity ("myEntity2"));
-  BOOST_CHECK (!factory.existEntity (""));
+  BOOST_CHECK (dynamicgraph::FactoryStorage::getInstance()->existEntity
+	       ("myEntity"));
+  BOOST_CHECK (!dynamicgraph::FactoryStorage::getInstance()->existEntity
+	       ("myEntity2"));
+  BOOST_CHECK (!dynamicgraph::FactoryStorage::getInstance()->existEntity (""));
 }

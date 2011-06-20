@@ -42,13 +42,13 @@ entityRegistration  ()
 {
 
   //sotPool.entity[name] = this;
-  g_pool.registerEntity(name,this);
+  PoolStorage::getInstance()->registerEntity(name,this);
 }
 
 void Entity::
 entityDeregistration  ()
 {
-  g_pool.deregisterEntity(name);
+  PoolStorage::getInstance()->deregisterEntity(name);
 }
 
 Entity::

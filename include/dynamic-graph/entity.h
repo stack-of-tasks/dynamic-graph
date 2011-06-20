@@ -64,7 +64,7 @@ namespace dynamicgraph
   ///
   /// These signals link the entities together to form a complete
   /// computation graph.  To declare a new entity, please see the
-  /// DYNAMICGRAPH_FACTORY_ENTITY_PLUGIN macro in g_factory.h. A
+  /// DYNAMICGRAPH_FACTORY_ENTITY_PLUGIN macro in factory.h. A
   /// command-line interface provided by the entity can be used by a
   /// sot shell to call methods from entities and display the result
   /// of their execution.  Classes that derive from Entity can

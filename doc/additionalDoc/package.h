@@ -112,11 +112,10 @@ Some basic shell functions, and support for procedures, are also included.
 For a complete list of those, load the plugin shell-functions.so and type 'help'
 at the command line.
 
-The public static objects (singletons) made available by including the
-corresponding headers in this module are:
-\li g_factory: dynamicgraph::FactoryStorage
-\li g_pool: dynamicgraph::PoolStorage
-\li g_shell: dynamicgraph::Interpreter
+The (singletons made available by including the corresponding headers in this
+module are:
+\li dynamicgraph::FactoryStorage
+\li dynamicgraph::PoolStorage
 
 For an example of a program creating entities in C++, see the unit test
 test_pool.cpp (in your package source directory/unitTesting).

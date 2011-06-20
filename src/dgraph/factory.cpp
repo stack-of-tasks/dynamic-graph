@@ -24,12 +24,27 @@ using namespace dynamicgraph;
 
 namespace dynamicgraph
 {
+  FactoryStorage* FactoryStorage::getInstance ()
+  {
+    if (instance_ == 0) {
+      instance_ = new FactoryStorage;
+    }
+    return instance_;
+  }
+  
+  void FactoryStorage::destroy()
+  {
+    delete instance_;
+    instance_ = NULL;
+  }
+
   FactoryStorage::FactoryStorage  ()
     : entityMap  ()
   {}
 
   FactoryStorage::~FactoryStorage  ()
   {
+    instance_ = 0;
     dgDEBUGINOUT (25);
   }
 
@@ -43,7 +58,7 @@ namespace dynamicgraph
 	DG_THROW ExceptionFactory
 	  (ExceptionFactory::OBJECT_CONFLICT,
 	   "Another entity class already defined with the same name. ",
-	   "(while adding entity class <%s> inside the g_factory).",
+	   "(while adding entity class <%s> inside the factory).",
 	   entname.c_str  ());
 	dgERRORF ("Another entity class already defined with the same name. "
 		  "(while adding entity class <%s> inside the factory).",
@@ -173,18 +188,18 @@ namespace dynamicgraph
     : entityName (entityClassName)
   {
     dgDEBUGIN (15);
-    g_factory.registerEntity (entityClassName, maker);
+    FactoryStorage::getInstance()->registerEntity (entityClassName, maker);
     dgDEBUGOUT (15);
   }
 
   EntityRegisterer::~EntityRegisterer ()
   {
     dgDEBUGIN(15);
-    g_factory.deregisterEntity (entityName);
+    FactoryStorage::getInstance()->deregisterEntity (entityName);
     dgDEBUGOUT (15);
   }
 
 
   // The global factory.
-  FactoryStorage g_factory;
+  FactoryStorage* FactoryStorage::instance_ = NULL;
 } // end of namespace dynamicgraph.

@@ -91,8 +91,7 @@ namespace dynamicgraph
   /// appropriate and to check for uniqueness if required.
   ///
   ///
-  /// This class should <b>never</b> be used directly.  Use the
-  /// g_factory global variable instead.  The rationale is that each
+  /// This class is a singleton. The rationale is that each
   /// unique name must identify a unique Entity. The use of a single
   /// instance of this class enforces this behavior, instantiating one
   /// yourself would break this property.
@@ -103,14 +102,13 @@ namespace dynamicgraph
     /// name.
     typedef Entity* (*EntityConstructor_ptr) (const std::string&);
 
-    /// \brief Constructor the factory.
-    ///
-    /// After the initialization, no entities will be available.
-    /// registerEntity has to be used to add new entities to the
-    /// object.
-    explicit FactoryStorage  ();
-
     ~FactoryStorage  ();
+
+    /// \brief Get pointer to unique object of the class
+    static FactoryStorage* getInstance();
+
+    /// \brief Destroy the unique instance of the class
+    static void destroy();
 
     /// \brief Add a new entity to the factory.
     ///
@@ -182,6 +180,14 @@ namespace dynamicgraph
 		      std::ostream& os);
 
   private:
+
+    /// \brief Constructor the factory.
+    ///
+    /// After the initialization, no entities will be available.
+    /// registerEntity has to be used to add new entities to the
+    /// object.
+    explicit FactoryStorage  ();
+
     /// \brief Entity map type.
     ///
     /// This maps entity names to functions pointers which can be
@@ -191,25 +197,10 @@ namespace dynamicgraph
     /// \brief The entity map storing information about how to
     /// instantiate an Entity.
     EntityMap entityMap;
+    
+    /// \pointer to the unique object of the class
+    static FactoryStorage* instance_;
   };
-
-  /// \ingroup dgraph
-  ///
-  /// \brief Global factory.
-  ///
-  /// This global variable is the only valid instance of the
-  /// FactoryStorage class.
-  ///
-  /// This unique instance is to make sure that only only one entity
-  /// list is built.
-  ///
-  /// This global variable must be used to search for entities and
-  /// to instantiate them.
-  ///
-  /// Please use the DYNAMICGRAPH_FACTORY_ENTITY_PLUGIN macro if
-  /// possible to register an entity to this factory.
-  DYNAMIC_GRAPH_DLLAPI extern FactoryStorage g_factory;
-
 
   /// \ingroup dgraph
   ///
