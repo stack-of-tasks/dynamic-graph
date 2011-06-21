@@ -33,14 +33,14 @@
 
 namespace dynamicgraph
 {
-  /// This class allows serialization of a number of objects into
+  /// This singleton class allows serialization of a number of objects into
   /// (disp) and from (cast) std i/o streams.
   ///
   /// The transformation is done at run-time, i.e. SignalCaster
   /// doesn't know about the type of objects it casts to.
   ///
   /// It also allows registering of user-defined casts. A cast is
-  /// identified by the compiler The mapping from a type to a
+  /// identified by the compiler. The mapping from a type to a
   /// serialization function is dynamic, hence it is more complex than
   /// a typical template-based compile-time resolve. So disp, cast and
   /// trace are costly functions and should be used as such.
@@ -48,7 +48,8 @@ namespace dynamicgraph
   {
   public:
     virtual ~SignalCaster ();
-
+    /// Destroy the unique instance.
+    static void destroy();
     /// Typedef of displayer functions that take an encapsulated 'any'
     /// object and displays, cast, or trace it on an output stream
     /// (serialization).
@@ -58,6 +59,8 @@ namespace dynamicgraph
     typedef boost::function2<void, const boost::any&, std::ostream&>
       tracer_type;
 
+    /// Get a reference to the unique object of the class.
+    static SignalCaster* getInstance(void);
     /// Displays an object using a registered displayer function.
     void disp (const boost::any& object, std::ostream& os);
     /// Traces an object using a registered trace function.
@@ -89,11 +92,9 @@ namespace dynamicgraph
 
   private:
     explicit SignalCaster ();
-    friend SignalCaster& g_caster(void);
+    /// Pointer to the unique instance of the class.
+    static SignalCaster* instance_;
   };
-
-  /// Access on the library wide caster instance (simple singleton design).
-  DYNAMIC_GRAPH_DLLAPI SignalCaster& g_caster(void);
 
   ///The SignalCast registerer class. Can be used to automatically
   /// register a cast when instanced somewhere in a cpp file. Pass the
@@ -108,7 +109,8 @@ namespace dynamicgraph
 				 SignalCaster::caster_type caster,
 				 SignalCaster::tracer_type tracer)
     {
-      g_caster().registerCast(type, displayer, caster, tracer);
+      SignalCaster::getInstance()->registerCast(type, displayer,
+						caster, tracer);
     }
   };
 
@@ -120,19 +122,20 @@ namespace dynamicgraph
   template<typename T>
   void signal_disp (const T& value, std::ostream& os)
   {
-    g_caster().disp(value, os);
+    SignalCaster::getInstance()->disp(value, os);
   }
 
   template<typename T>
   T signal_cast(std::istringstream& iss)
   {
-    return boost::any_cast<T>(g_caster().cast(typeid(T), iss));
+    return boost::any_cast<T>(SignalCaster::getInstance()->cast(typeid(T),
+								iss));
   }
 
   template<typename T>
   void signal_trace (const T& value, std::ostream& os)
   {
-    g_caster().trace(value, os);
+    SignalCaster::getInstance()->trace(value, os);
   }
 } // end of namespace dynamicgraph.
 

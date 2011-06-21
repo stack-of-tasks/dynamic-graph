@@ -34,6 +34,12 @@ namespace dynamicgraph
   SignalCaster::~SignalCaster ()
   {}
 
+  void SignalCaster::destroy()
+  {
+    delete instance_;
+    instance_ = 0;
+  }
+
   void
   SignalCaster::registerCast (const std::type_info& type,
 			      SignalCaster::displayer_type displayer,
@@ -120,10 +126,13 @@ namespace dynamicgraph
   }
 
   /// Singleton on the library-wide instance of SignalCaster
-  SignalCaster& g_caster(void)
+  SignalCaster* SignalCaster::getInstance(void)
   {
-    static SignalCaster staticptr;
-    return staticptr;
+    if (instance_ == 0) {
+      instance_ = new SignalCaster;
+    }
+    return instance_;
   }
+  SignalCaster* SignalCaster::instance_ = 0;
 
 } // namespace dynamicgraph
