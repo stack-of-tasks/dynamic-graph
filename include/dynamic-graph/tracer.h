@@ -36,18 +36,10 @@ namespace dynamicgraph
   /// \brief Tracer plug-in main class.
   class DG_TRACER_DLLAPI Tracer : public Entity
   {
+    DYNAMIC_GRAPH_ENTITY_DECL ();
   protected:
     typedef std::list< const SignalBase<int>* > SignalList;
     SignalList toTraceSignals;
-
-
-  public:
-    static const std::string CLASS_NAME;
-    virtual const std::string& getClassName () const
-    {
-      return CLASS_NAME;
-    }
-
   public:
     enum TraceStyle
     {
