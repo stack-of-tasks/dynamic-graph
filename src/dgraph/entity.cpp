@@ -34,9 +34,6 @@ using namespace std;
 using namespace dynamicgraph;
 using dynamicgraph::command::Command;
 
-const std::string Entity::CLASS_NAME = "Entity";
-
-
 void Entity::
 entityRegistration  ()
 {

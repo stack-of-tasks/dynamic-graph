@@ -50,7 +50,8 @@ BOOST_AUTO_TEST_CASE (constructor)
 
    dynamicgraph::CustomEntity entity ("my-entity");
    BOOST_CHECK_EQUAL (entity.getName (), "my-entity");
-   BOOST_CHECK_EQUAL (entity.getClassName (), dynamicgraph::Entity::CLASS_NAME);
+   BOOST_CHECK_EQUAL (entity.getClassName (),
+		      dynamicgraph::CustomEntity::CLASS_NAME);
 
    dynamicgraph::CustomEntity entity2 ("");
 }
