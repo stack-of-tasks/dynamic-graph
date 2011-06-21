@@ -41,7 +41,6 @@ void Entity::
 entityRegistration  ()
 {
 
-  //sotPool.entity[name] = this;
   PoolStorage::getInstance()->registerEntity(name,this);
 }
 
