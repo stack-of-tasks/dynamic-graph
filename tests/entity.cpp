@@ -16,6 +16,8 @@
 #include <sstream>
 #include <dynamic-graph/entity.h>
 #include <dynamic-graph/exception-factory.h>
+#include "dynamic-graph/factory.h"
+#include "dynamic-graph/pool.h"
 
 #define BOOST_TEST_MODULE entity
 
@@ -24,11 +26,23 @@
 
 using boost::test_tools::output_test_stream;
 
+extern "C" {
+  dynamicgraph::Entity* EntityMaker_Entity(const std::string& objname)
+  {
+    return new dynamicgraph::Entity (objname);
+  }
+}
+
 BOOST_AUTO_TEST_CASE (constructor)
 {
+  dynamicgraph::FactoryStorage::getInstance()->registerEntity
+    (dynamicgraph::Entity::CLASS_NAME, &EntityMaker_Entity);
+
   BOOST_CHECK_EQUAL (dynamicgraph::Entity::CLASS_NAME, "Entity");
 
-  dynamicgraph::Entity entity ("my-entity");
+  dynamicgraph::Entity& entity =
+    *dynamicgraph::FactoryStorage::getInstance()->newEntity("Entity",
+							    "my-entity");
   BOOST_CHECK_EQUAL (entity.getName (), "my-entity");
   BOOST_CHECK_EQUAL (entity.getClassName (), dynamicgraph::Entity::CLASS_NAME);
 
@@ -37,7 +51,8 @@ BOOST_AUTO_TEST_CASE (constructor)
 
 BOOST_AUTO_TEST_CASE (signal)
 {
-  dynamicgraph::Entity entity ("");
+  dynamicgraph::Entity& entity =
+    *dynamicgraph::FactoryStorage::getInstance()->newEntity("Entity", "");
 
   // Non const getter.
   try
@@ -67,7 +82,8 @@ BOOST_AUTO_TEST_CASE (signal)
 
 BOOST_AUTO_TEST_CASE (displaySignalList)
 {
-  dynamicgraph::Entity entity ("my-entity");
+  dynamicgraph::Entity& entity =
+    dynamicgraph::PoolStorage::getInstance()->getEntity("my-entity");
 
   output_test_stream output;
 
@@ -77,7 +93,8 @@ BOOST_AUTO_TEST_CASE (displaySignalList)
 
 BOOST_AUTO_TEST_CASE (display)
 {
-  dynamicgraph::Entity entity ("my-entity");
+  dynamicgraph::Entity& entity =
+    dynamicgraph::PoolStorage::getInstance()->getEntity("my-entity");
 
   output_test_stream output;
 
@@ -87,13 +104,16 @@ BOOST_AUTO_TEST_CASE (display)
 
 BOOST_AUTO_TEST_CASE (getCommandList)
 {
-  dynamicgraph::Entity entity ("my-entity");
+  dynamicgraph::Entity& entity =
+    dynamicgraph::PoolStorage::getInstance()->getEntity("my-entity");
+
   BOOST_CHECK_EQUAL (entity.getCommandList (), "print\nsignals\nsignalDep");
 }
 
 BOOST_AUTO_TEST_CASE (commandLine_help)
 {
-  dynamicgraph::Entity entity ("my-entity");
+  dynamicgraph::Entity& entity =
+    dynamicgraph::PoolStorage::getInstance()->getEntity("my-entity");
 
   output_test_stream output;
 
@@ -112,7 +132,8 @@ BOOST_AUTO_TEST_CASE (commandLine_help)
 
 BOOST_AUTO_TEST_CASE (commandLine_print)
 {
-  dynamicgraph::Entity entity ("my-entity");
+  dynamicgraph::Entity& entity =
+    dynamicgraph::PoolStorage::getInstance()->getEntity("my-entity");
 
   output_test_stream output;
 
@@ -124,7 +145,8 @@ BOOST_AUTO_TEST_CASE (commandLine_print)
 
 BOOST_AUTO_TEST_CASE (commandLine_signals)
 {
-  dynamicgraph::Entity entity ("my-entity");
+  dynamicgraph::Entity& entity =
+    dynamicgraph::PoolStorage::getInstance()->getEntity("my-entity");
 
   output_test_stream output;
 
@@ -137,7 +159,8 @@ BOOST_AUTO_TEST_CASE (commandLine_signals)
 // FIXME: is it what we should expect?
 BOOST_AUTO_TEST_CASE (commandLine_signalDep)
 {
-  dynamicgraph::Entity entity ("my-entity");
+  dynamicgraph::Entity& entity =
+    dynamicgraph::PoolStorage::getInstance()->getEntity("my-entity");
 
   output_test_stream output;
 
@@ -159,7 +182,8 @@ BOOST_AUTO_TEST_CASE (commandLine_signalDep)
 
 BOOST_AUTO_TEST_CASE (commandLine_unknown)
 {
-  dynamicgraph::Entity entity ("my-entity");
+  dynamicgraph::Entity& entity =
+    dynamicgraph::PoolStorage::getInstance()->getEntity("my-entity");
 
   output_test_stream output;
 
@@ -181,7 +205,8 @@ BOOST_AUTO_TEST_CASE (commandLine_unknown)
 
 BOOST_AUTO_TEST_CASE (writeGraph)
 {
-  dynamicgraph::Entity entity ("my-entity");
+  dynamicgraph::Entity& entity =
+    dynamicgraph::PoolStorage::getInstance()->getEntity("my-entity");
 
   output_test_stream output;
   entity.writeGraph (output);
@@ -191,7 +216,8 @@ BOOST_AUTO_TEST_CASE (writeGraph)
 
 BOOST_AUTO_TEST_CASE (writeCompletionList)
 {
-  dynamicgraph::Entity entity ("my-entity");
+  dynamicgraph::Entity& entity =
+    dynamicgraph::PoolStorage::getInstance()->getEntity("my-entity");
 
   output_test_stream output;
   entity.writeGraph (output);
@@ -202,7 +228,9 @@ BOOST_AUTO_TEST_CASE (writeCompletionList)
 // WTF?
 BOOST_AUTO_TEST_CASE (wtf)
 {
-  dynamicgraph::Entity entity ("my-entity");
+  dynamicgraph::Entity& entity =
+    dynamicgraph::PoolStorage::getInstance()->getEntity("my-entity");
+
   BOOST_CHECK_EQUAL (entity.test (),
 		     static_cast<dynamicgraph::SignalBase<int>*> (0));
 

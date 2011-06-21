@@ -15,6 +15,7 @@
 
 #include <sstream>
 #include <dynamic-graph/factory.h>
+#include <dynamic-graph/pool.h>
 #include <dynamic-graph/entity.h>
 #include <dynamic-graph/exception-factory.h>
 
@@ -29,7 +30,7 @@ struct CustomEntity : public dynamicgraph::Entity
 {
   static const std::string CLASS_NAME;
 
-  virtual const std::string& getClassName ()
+  virtual const std::string& getClassName () const
   {
     return CLASS_NAME;
   }
@@ -71,85 +72,27 @@ BOOST_AUTO_TEST_CASE (constructor)
 {
   BOOST_CHECK_EQUAL (CustomEntity::CLASS_NAME, "CustomEntity");
 
-  CustomEntity entity ("my-entity");
-  BOOST_CHECK_EQUAL (entity.getName (), "my-entity");
-  BOOST_CHECK_EQUAL (entity.getClassName (), CustomEntity::CLASS_NAME);
+  dynamicgraph::Entity* entity =
+    dynamicgraph::FactoryStorage::getInstance()->
+    newEntity("CustomEntity", "my-entity");
+  BOOST_CHECK_EQUAL (entity->getName (), "my-entity");
+  BOOST_CHECK_EQUAL (entity->getClassName (), CustomEntity::CLASS_NAME);
 
-  CustomEntity entity2 ("");
+  //CustomEntity entity2 ("");
+  // Deregister entities before destroying them
+  dynamicgraph::PoolStorage::destroy();
 }
 
 BOOST_AUTO_TEST_CASE (display)
 {
-  CustomEntity entity ("my-entity");
+  dynamicgraph::Entity* entity = dynamicgraph::FactoryStorage::getInstance()->
+    newEntity("CustomEntity", "my-entity");
 
   output_test_stream output;
 
-  entity.display(output);
+  entity->display(output);
   BOOST_CHECK (output.is_equal ("custom entity"));
+  // Deregister entities before destroying them
+  dynamicgraph::PoolStorage::destroy();
 }
 
-BOOST_AUTO_TEST_CASE (commandLine_help)
-{
-  CustomEntity entity ("my-entity");
-
-  output_test_stream output;
-
-  std::istringstream args;
-
-  entity.commandLine("help", args, output);
-  BOOST_CHECK
-    (output.is_equal
-     (
-      "This is a custom help.\n"
-      "Entity : \n"
-      "  - print\t\t\tWhat d'you think?\n"
-      "  - signals\t\t\tDisplay the signals list.\n"
-      "  - signalDep <signame> \tDisplay the dependency graph for signal signame.\n"
-      ));
-}
-
-BOOST_AUTO_TEST_CASE (commandLine_print)
-{
-  CustomEntity entity ("my-entity");
-
-  output_test_stream output;
-
-  std::istringstream args;
-
-  entity.commandLine("print", args, output);
-  BOOST_CHECK (output.is_equal ("custom entity\n"));
-}
-
-BOOST_AUTO_TEST_CASE (commandLine_nothing)
-{
-  CustomEntity entity ("my-entity");
-
-  output_test_stream output;
-
-  std::istringstream args;
-
-  entity.commandLine("nothing", args, output);
-  BOOST_CHECK (output.is_empty ());
-}
-
-BOOST_AUTO_TEST_CASE (commandLine_unknown)
-{
-  CustomEntity entity ("my-entity");
-
-  output_test_stream output;
-
-  std::istringstream args;
-
-  try
-    {
-      entity.commandLine("unknown", args, output);
-      BOOST_ERROR ("Should never happen.");
-    }
-  catch (const dynamicgraph::ExceptionFactory& exception)
-    {
-      BOOST_CHECK_EQUAL (exception.getCode (),
-			 dynamicgraph::ExceptionFactory::UNREFERED_FUNCTION);
-    }
-
-  BOOST_CHECK (output.is_empty ());
-}

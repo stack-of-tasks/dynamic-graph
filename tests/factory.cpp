@@ -65,12 +65,10 @@ BOOST_AUTO_TEST_CASE (registerEntity)
       BOOST_CHECK_EQUAL (exception.getCode (),
 			 dynamicgraph::ExceptionFactory::OBJECT_CONFLICT);
     }
-
 }
 
 BOOST_AUTO_TEST_CASE (unregisterEntity)
 {
-  dynamicgraph::FactoryStorage::getInstance()->registerEntity ("myEntity", &makeEntity);
   dynamicgraph::FactoryStorage::getInstance()->deregisterEntity ("myEntity");
 
   try
@@ -131,9 +129,6 @@ BOOST_AUTO_TEST_CASE (newEntity)
 
 BOOST_AUTO_TEST_CASE (existEntity)
 {
-  dynamicgraph::FactoryStorage::getInstance()->registerEntity
-    ("myEntity", &makeEntity);
-
   BOOST_CHECK (dynamicgraph::FactoryStorage::getInstance()->existEntity
 	       ("myEntity"));
   BOOST_CHECK (!dynamicgraph::FactoryStorage::getInstance()->existEntity
