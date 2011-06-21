@@ -59,7 +59,7 @@ Entity( const string& name__ )
   if( name.length ()==0 )
     {
       stringstream oss; oss << rand ();
-      name = this->getClassName();
+      //name = this->getClassName(); Cannot call a virtual function from the constructor
       name+="::";
       name+=oss.str ();
     }

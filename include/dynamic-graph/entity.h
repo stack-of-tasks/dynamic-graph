@@ -60,10 +60,7 @@ namespace dynamicgraph
       return name;
     }
 
-    virtual const std::string& getClassName  () const
-    {
-      return CLASS_NAME;
-    }
+    virtual const std::string& getClassName  () const = 0;
 
     SignalBase<int>& getSignal (const std::string& signalName);
     const SignalBase<int>& getSignal (const std::string& signalName) const;
