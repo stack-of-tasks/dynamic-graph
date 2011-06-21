@@ -26,33 +26,43 @@
 
 using boost::test_tools::output_test_stream;
 
-extern "C" {
-  dynamicgraph::Entity* EntityMaker_Entity(const std::string& objname)
+namespace dynamicgraph
+{
+  class CustomEntity : public Entity
   {
-    return new dynamicgraph::Entity (objname);
-  }
+  public:
+    static const std::string CLASS_NAME;
+    virtual const std::string& getClassName () const
+    {
+      return CLASS_NAME;
+    }
+    CustomEntity (const std::string n)
+      : Entity (n)
+    {
+    }
+  };
+  DYNAMICGRAPH_FACTORY_ENTITY_PLUGIN (CustomEntity,"CustomEntity");
 }
+
 
 BOOST_AUTO_TEST_CASE (constructor)
 {
-  dynamicgraph::FactoryStorage::getInstance()->registerEntity
-    (dynamicgraph::Entity::CLASS_NAME, &EntityMaker_Entity);
-
-  BOOST_CHECK_EQUAL (dynamicgraph::Entity::CLASS_NAME, "Entity");
+  BOOST_CHECK_EQUAL (dynamicgraph::CustomEntity::CLASS_NAME, "CustomEntity");
 
   dynamicgraph::Entity& entity =
-    *dynamicgraph::FactoryStorage::getInstance()->newEntity("Entity",
+    *dynamicgraph::FactoryStorage::getInstance()->newEntity("CustomEntity",
 							    "my-entity");
   BOOST_CHECK_EQUAL (entity.getName (), "my-entity");
-  BOOST_CHECK_EQUAL (entity.getClassName (), dynamicgraph::Entity::CLASS_NAME);
+  BOOST_CHECK_EQUAL (entity.getClassName (),
+		     dynamicgraph::CustomEntity::CLASS_NAME);
 
-  dynamicgraph::Entity entity2 ("");
+   dynamicgraph::CustomEntity entity2 ("");
 }
 
 BOOST_AUTO_TEST_CASE (signal)
 {
   dynamicgraph::Entity& entity =
-    *dynamicgraph::FactoryStorage::getInstance()->newEntity("Entity", "");
+    dynamicgraph::PoolStorage::getInstance()->getEntity("my-entity");
 
   // Non const getter.
   try
@@ -99,7 +109,7 @@ BOOST_AUTO_TEST_CASE (display)
   output_test_stream output;
 
   entity.display(output);
-  BOOST_CHECK (output.is_equal ("Entity: my-entity"));
+  BOOST_CHECK (output.is_equal ("CustomEntity: my-entity"));
 }
 
 BOOST_AUTO_TEST_CASE (getCommandList)
@@ -140,7 +150,7 @@ BOOST_AUTO_TEST_CASE (commandLine_print)
   std::istringstream args;
 
   entity.commandLine("print", args, output);
-  BOOST_CHECK (output.is_equal ("Entity: my-entity\n"));
+  BOOST_CHECK (output.is_equal ("CustomEntity: my-entity\n"));
 }
 
 BOOST_AUTO_TEST_CASE (commandLine_signals)

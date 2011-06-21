@@ -26,9 +26,29 @@
 using boost::test_tools::output_test_stream;
 
 
+
+namespace dynamicgraph
+{
+  class CustomEntity : public Entity
+  {
+  public:
+    static const std::string CLASS_NAME;
+    virtual const std::string& getClassName () const
+    {
+      return CLASS_NAME;
+    }
+    CustomEntity (const std::string n)
+      : Entity (n)
+    {
+    }
+  };
+  const std::string CustomEntity::CLASS_NAME = "CustomEntity";
+}
+
+
 dynamicgraph::Entity* makeEntity(const std::string& objectName)
 {
-  return new dynamicgraph::Entity (objectName);
+  return new dynamicgraph::CustomEntity (objectName);
 }
 
 

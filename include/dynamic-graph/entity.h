@@ -71,7 +71,6 @@ namespace dynamicgraph
   /// customize the command-line by overriding commandLine ().
   class DYNAMIC_GRAPH_DLLAPI Entity : private boost::noncopyable
   {
-    DYNAMIC_GRAPH_ENTITY_DECL ();
   public:
     typedef std::map< std::string,SignalBase<int>* > SignalMap;
     typedef std::map<const std::string, command::Command*> CommandMap_t;
@@ -83,6 +82,7 @@ namespace dynamicgraph
     {
       return name;
     }
+    virtual const std::string& getClassName  () const = 0;
 
     SignalBase<int>& getSignal (const std::string& signalName);
     const SignalBase<int>& getSignal (const std::string& signalName) const;
