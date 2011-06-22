@@ -134,6 +134,9 @@ namespace dynamicgraph
     PoolStorage () {}
     static PoolStorage* instance_;
   };
+
+  inline PoolStorage& g_pool() { return *PoolStorage::getInstance(); }
+
 }  // end of namespace dynamicgraph.
 
 #endif //! DYNAMIC_GRAPH_POOL_H
