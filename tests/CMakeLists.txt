@@ -60,7 +60,9 @@ ENDFOREACH()
 DYNAMIC_GRAPH_TEST(signal-cast-registerer)
 
 # Unit testing.
-DYNAMIC_GRAPH_TEST(entity)
+IF(NOT APPLE)
+  DYNAMIC_GRAPH_TEST(entity)
+ENDIF(NOT APPLE)
 DYNAMIC_GRAPH_TEST(custom-entity)
 DYNAMIC_GRAPH_TEST(factory)
 DYNAMIC_GRAPH_TEST(pool)
