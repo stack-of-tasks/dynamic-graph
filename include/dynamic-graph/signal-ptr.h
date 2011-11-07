@@ -107,6 +107,7 @@ namespace dynamicgraph
     { setConstantDefault( accessCopy () ); }
     inline void unsetConstantDefault (){ modeNoThrow = false; }
 
+    virtual void checkCompatibility();
 
   public:  /* --- INHERITANCE --- */
 

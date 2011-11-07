@@ -136,6 +136,17 @@ namespace dynamicgraph
   }
 
   template< class T,class Time >
+  void SignalPtr<T,Time>::
+  checkCompatibility  ()
+  {
+    if( isPluged()&&(!autoref ()) )
+      { getPtr()->checkCompatibility(); }
+    else if( isAbstractPluged()&&(!autoref ()) )
+      { abstractTransmitter->checkCompatibility(); }
+    else Signal<T,Time>::checkCompatibility();
+  }
+
+  template< class T,class Time >
   bool SignalPtr<T,Time>::
   needUpdate( const Time& t ) const
   {
