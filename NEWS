@@ -1,3 +1,12 @@
+New in version 2.5.1 - 2011-12-07
+      Make destructor of TimeDependency virtual.
+      Do not hardcode dl, use ${CMAKE_DL_LIBS}.
+      Win32: Correct the importation/exportation of symbols
+      Win32: Correct a wrong macro
+      Add missing header inclusion
+      Disable a test for mac.
+      For compatibility, added a static function to bind the singleton.
+New in version 2.5 - 2011-06-21
 New in version 1.1 - 2010-09-30
       Configured dynamicGraph package and cmake files. Last-minute adjustment to code for SOT separation (SOT Break)
       Added forgotten files.
