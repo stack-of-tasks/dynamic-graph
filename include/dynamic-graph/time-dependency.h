@@ -65,7 +65,7 @@ namespace dynamicgraph
     TimeDependency( SignalBase<Time>* sig,
 		    const SignalArray_const<Time>& arr,
 		    const DependencyType dep = DEPENDENCY_TYPE_DEFAULT );
-    ~TimeDependency  () {}
+    virtual ~TimeDependency  () {}
 
     void addDependency( const SignalBase<Time>& sig );
     void removeDependency( const SignalBase<Time>& sig );
