@@ -95,6 +95,7 @@ namespace dynamicgraph
     DefaultCastRegisterer<double> double_reg;
     DefaultCastRegisterer<int> int_reg;
     DefaultCastRegisterer<unsigned int> uint_reg;
+    DefaultCastRegisterer<bool> bool_reg;
     DefaultCastRegisterer<dynamicgraph::Vector> vectorCastRegisterer;
     DefaultCastRegisterer<dynamicgraph::Matrix> matrixCastRegisterer;
   } // end of anonymous namespace.
