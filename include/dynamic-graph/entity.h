@@ -83,7 +83,7 @@ namespace dynamicgraph
       return name;
     }
     virtual const std::string& getClassName  () const = 0;
-
+    virtual std::string getDocString () const;
     SignalBase<int>& getSignal (const std::string& signalName);
     const SignalBase<int>& getSignal (const std::string& signalName) const;
     std::ostream& displaySignalList(std::ostream& os) const;

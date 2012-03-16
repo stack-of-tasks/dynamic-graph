@@ -132,6 +132,12 @@ signalDeregistration( const std::string& signame )
 }
 
 
+std::string Entity::getDocString () const
+{
+  std::string docString ("No header documentation.");
+  return docString;
+}
+
 #define __DG_ENTITY_GET_SIGNAL__(ITER_TYPE) \
   SignalMap::ITER_TYPE sigkey = signalMap.find(signame); \
   if( sigkey == signalMap.end () ) /* key does NOT exist */ \
