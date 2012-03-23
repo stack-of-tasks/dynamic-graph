@@ -131,6 +131,12 @@ getEntity( const std::string& name )
   else return *entPtr->second;
 }
 
+const PoolStorage::Entities& PoolStorage::
+getEntityMap () const
+{
+  return entityMap;
+}
+
 bool PoolStorage::
 existEntity (const std::string& name)
 {
