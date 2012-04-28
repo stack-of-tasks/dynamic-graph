@@ -14,6 +14,7 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with dynamic-graph.  If not, see <http://www.gnu.org/licenses/>.
 
+#include <boost/date_time/posix_time/posix_time.hpp>
 #include <dynamic-graph/signal-caster.h>
 #include <dynamic-graph/signal-cast-helper.h>
 #include <dynamic-graph/dynamic-graph-api.h>
@@ -98,6 +99,7 @@ namespace dynamicgraph
     DefaultCastRegisterer<bool> bool_reg;
     DefaultCastRegisterer<dynamicgraph::Vector> vectorCastRegisterer;
     DefaultCastRegisterer<dynamicgraph::Matrix> matrixCastRegisterer;
+    DefaultCastRegisterer <boost::posix_time::ptime> ptimeCastRegisterer;
   } // end of anonymous namespace.
 
 } // namespace dynamicgraph
