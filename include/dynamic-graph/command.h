@@ -51,11 +51,11 @@ namespace dynamicgraph {
       Command(Entity& entity, const std::vector<Value::Type>& valueTypes,
 	      const std::string& docstring);
       /// Return the value type of all parameters
-      const std::vector<Value::Type> valueTypes() const;
+      const std::vector<Value::Type>& valueTypes() const;
       /// Set parameter values
       void setParameterValues(const std::vector<Value>& values);
       /// Get parameter values
-      const std::vector<Value> getParameterValues() const;
+      const std::vector<Value>& getParameterValues() const;
       /// Execute the command after checking parameters
       Value execute();
       /// Get a reference to the Entity owning this command

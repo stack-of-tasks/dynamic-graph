@@ -54,7 +54,7 @@ namespace dynamicgraph
   {
     DYNAMIC_GRAPH_ENTITY_DECL ();
   public:
-    TracerRealTime (const std::string n);
+    TracerRealTime (const std::string & n);
     virtual ~TracerRealTime ()
     {}
 

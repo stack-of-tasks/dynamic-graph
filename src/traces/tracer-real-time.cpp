@@ -112,7 +112,7 @@ empty  ()
 /* --------------------------------------------------------------------- */
 
 
-TracerRealTime::TracerRealTime( const std::string n )
+TracerRealTime::TracerRealTime( const std::string & n )
   :Tracer(n)
    ,bufferSize( BUFFER_SIZE_DEFAULT )
 {
