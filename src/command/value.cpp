@@ -180,6 +180,8 @@ namespace dynamicgraph {
     {
       if (&value != this) {
 	type_ = value.type_;
+	if(value_ != 0x0)
+		delete value_;
 	void** ptValue = const_cast<void**>(&value_);
 	*ptValue = copyValue(value);
       }
