@@ -59,6 +59,7 @@ namespace dynamicgraph {
 	NB_TYPES
       };
       ~Value();
+      void deleteValue ();
       explicit Value(const bool& value);
       explicit Value(const unsigned& value);
       explicit Value(const int& value);

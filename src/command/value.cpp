@@ -67,7 +67,7 @@ namespace dynamicgraph {
       return value_->matrixValue();
     }
 
-    Value::~Value()
+    void Value::deleteValue ()
     {
       switch(type_) {
       case BOOL:
@@ -96,6 +96,11 @@ namespace dynamicgraph {
 	break;
       default:;
       }
+    }
+
+    Value::~Value()
+    {
+      deleteValue ();
     }
 
     Value::Value(const bool& value) : type_(BOOL), value_(new bool(value))
@@ -179,9 +184,9 @@ namespace dynamicgraph {
     Value Value::operator=(const Value& value)
     {
       if (&value != this) {
-	type_ = value.type_;
 	if(value_ != 0x0)
-		delete value_;
+	  deleteValue ();
+	type_ = value.type_;
 	void** ptValue = const_cast<void**>(&value_);
 	*ptValue = copyValue(value);
       }
