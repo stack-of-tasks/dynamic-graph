@@ -347,8 +347,8 @@ display( std::ostream& os ) const
 	  else if( (SIZE>>20)||(MSIZE>>20) ) { dec = 20; unit="Mo"; }
 	  else if( (SIZE>>10)||(MSIZE>>10) ) { dec = 10; unit="Ko"; }
  	  os << "[" << std::setw(1)<<std::setprecision(1)
- 	     << ((SIZE+0.0)/(1<<dec)) << unit << "/"
- 	     << std::setprecision(2)<<((MSIZE+0.0)/(1<<dec))
+ 	     << (((double)SIZE+0.0)/(1<<dec)) << unit << "/"
+ 	     << std::setprecision(2)<<(((double)MSIZE+0.0)/(1<<dec))
  	     << unit << "]\t";
 	  if( file->full ) os << "(FULL)";
 	  os.precision(PRECISION);
