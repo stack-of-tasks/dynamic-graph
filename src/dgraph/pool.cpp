@@ -213,7 +213,7 @@ writeGraph(const std::string &aFileName)
 	    << " Time: " << ltimeformatted.tm_hour
 	    << ":" << ltimeformatted.tm_min;
   GraphFile << " */" << std::endl;
-  GraphFile << "digraph " << GenericName << " { ";
+  GraphFile << "digraph \"" << GenericName << "\" { ";
   GraphFile << "\t graph [ label=\"" << GenericName << "\" bgcolor = white rankdir=LR ]" << std::endl
 	    << "\t node [ fontcolor = black, color = black, fillcolor = gold1, style=filled, shape=box ] ; " << std::endl;
   GraphFile << "\tsubgraph cluster_Entities { " << std::endl;
@@ -224,7 +224,7 @@ writeGraph(const std::string &aFileName)
        iter!=entityMap.end (); ++iter)
     {
       Entity* ent = iter->second;
-      GraphFile << ent->getName ()
+      GraphFile << "\"" << ent->getName () << "\""
 		<<" [ label = \"" << ent->getName () << "\" ," << std::endl
 		<<"   fontcolor = black, color = black, fillcolor=cyan, style=filled, shape=box ]" << std::endl;
       ent->writeGraph(GraphFile);
