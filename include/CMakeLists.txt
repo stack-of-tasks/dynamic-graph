@@ -60,6 +60,8 @@ time-dependency.t.cpp
 signal-caster.h
 signal-cast-helper.h
 all-signals.h
+signal-helper.h
+entity-helper.h
 
 tracer.h
 tracer-real-time.h
