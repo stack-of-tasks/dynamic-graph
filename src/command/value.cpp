@@ -71,28 +71,28 @@ namespace dynamicgraph {
     {
       switch(type_) {
       case BOOL:
-	delete(bool*)value_;
+	delete(const bool*)value_;
 	break;
       case UNSIGNED:
-	delete(unsigned*)value_;
+	delete(const unsigned*)value_;
 	break;
       case INT:
-	delete(int*)value_;
+	delete(const int*)value_;
 	break;
       case FLOAT:
-	delete(float*)value_;
+	delete(const float*)value_;
 	break;
       case DOUBLE:
-	delete(double*)value_;
+	delete(const double*)value_;
 	break;
       case STRING:
-	delete(std::string*)value_;
+	delete(const std::string*)value_;
 	break;
       case VECTOR:
-	delete(Vector*)value_;
+	delete(const Vector*)value_;
 	break;
       case MATRIX:
-	delete(Matrix*)value_;
+	delete(const Matrix*)value_;
 	break;
       default:;
       }
@@ -206,7 +206,7 @@ namespace dynamicgraph {
     bool Value::boolValue() const
     {
       if(type_ == BOOL)
-	return *((bool*)value_);
+	return *((const bool*)value_);
       throw ExceptionAbstract(ExceptionAbstract::TOOLS,
 			      "value is not an bool");
     }
@@ -214,7 +214,7 @@ namespace dynamicgraph {
     unsigned Value::unsignedValue() const
     {
       if(type_ == UNSIGNED)
-	return *((unsigned*)value_);
+	return *((const unsigned*)value_);
       throw ExceptionAbstract(ExceptionAbstract::TOOLS,
 			      "value is not an unsigned int");
     }
@@ -222,7 +222,7 @@ namespace dynamicgraph {
     int Value::intValue() const
     {
       if(type_ == INT)
-	return *((int*)value_);
+	return *((const int*)value_);
       throw ExceptionAbstract(ExceptionAbstract::TOOLS,
 			      "value is not an int int");
     }
@@ -233,7 +233,7 @@ namespace dynamicgraph {
       if(FLOAT != type_)
 	throw ExceptionAbstract(ExceptionAbstract::TOOLS,
 				"value is not a float");
-      result = *((float*)value_);
+      result = *((const float*)value_);
       return result;
     }
 
@@ -243,14 +243,14 @@ namespace dynamicgraph {
       if(DOUBLE != type_)
 	throw ExceptionAbstract(ExceptionAbstract::TOOLS,
 				"value is not a double");
-      result = *((double*)value_);
+      result = *((const double*)value_);
       return result;
     }
 
     std::string Value::stringValue() const
     {
       if(type_ == STRING)
-	return *((std::string*)value_);
+	return *((const std::string*)value_);
       throw ExceptionAbstract(ExceptionAbstract::TOOLS,
 			      "value is not an string");
     }
@@ -258,7 +258,7 @@ namespace dynamicgraph {
     Vector Value::vectorValue() const
     {
       if(type_ == VECTOR)
-	return *((Vector*)value_);
+	return *((const Vector*)value_);
       throw ExceptionAbstract(ExceptionAbstract::TOOLS,
 			      "value is not an vector");
     }
@@ -266,7 +266,7 @@ namespace dynamicgraph {
     Matrix Value::matrixValue() const
     {
       if(type_ == MATRIX)
-	return *((Matrix*)value_);
+	return *((const Matrix*)value_);
       throw ExceptionAbstract(ExceptionAbstract::TOOLS,
 			      "value is not a matrix");
     }
