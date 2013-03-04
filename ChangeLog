@@ -1,1 +1,369 @@
-Write in this file the modifications you commit.
+CHANGELOG
+----------------------
+
+[Current]
+ * Synchronization
+ * IVIGIT, added signal-helper (macros to ease the declaration of signals) and entity helper (macros to make the macros of signal-helper possible).
+ * IVIGIT, added signal-helper (macros to ease the declaration of signals) and entity helper (macros to make the macros of signal-helper possible).
+ * Fix bug in method PoolStorage::writeGraph.
+ * Synchronize.
+ * MacOSX compatibility: avoid dangerous TARGET_LINK_LIBRARIES
+ * Fix portability issues with Ubuntu 12.04 (64 bits).
+ * Do not try to delete void*, behavior is undefined.
+ * Avoid memory loss when calling Value::operator =
+ * Passing and returning elmt by const reference.
+ * Add boost::posix_time::ptime as a basic type for signals.
+ * Add missing include.
+ * Provide const access to entity map in the pool.
+ * Add method Entity::getDocString.
+ * Synchronize.
+ * Fix build for binutils > 2.22
+ * Synchronize cmake submodule.
+ * Added a caster for signal<bool>.
+ * Added the cmake to compile signal-ptr test.
+ * Modify the policy for plugin a sigptr in input.
+ * ivigit.
+
+[v2.5.1]
+ * Update NEWS.
+ * Do not hardcode dl, use ${CMAKE_DL_LIBS}.
+ * Make destructor of TimeDependency virtual.
+ * Disable a test for mac.
+ * Revert "Move the definition of some ValueHelper<...>::TypeId to avoid link issues"
+ * Move the definition of some ValueHelper<...>::TypeId to avoid link issues
+ * Add missing header inclusion
+ * Win32: Correct a wrong macro
+ * Win32: Correct the importation/exportation of symbols
+ * For compatibility, added a static function to bind the singleton.
+
+[v2.5]
+ * Entity has no more CLASS_NAME static member.
+ * Account for the Entity::getClassName becoming pure virtual.
+ * Pass the getclassName to pure virtual.
+ * Make package pass tests successfully.
+ * Cosmetic change.
+ * SignalCaster class is now a singleton.
+ * FactoryStorage and PoolStorage are now singletons.
+ * Add helper macro for entity declaration. Use it when possible.
+ * Rewrite an error message.
+ * Win32: Correct a link issue
+ * A cleaner way to define the suffix of the dynamic libraries according to each OS
+ * Add missing link directory command (f-kiss).
+ * Make getClassName method const
+ * Correct a bug in previous commit.
+ * Added command 4.
+ * Problem of automatic typing with templates.
+ * Add nullptr class.
+ * Corrected function to inline to avoid multiple symbole definition.
+ * Added a function to test for the existence of a named entity.
+ * Code cleaning after rewriting (marginal) of sig-cast. Introduction of a specific tracer behaviour for matrix and vector.
+ * Corrected a segfault problem in the test pool. The problem at the global level remains. At least, the test passes now.
+ * Modify the g_caster object with a singleton design.
+ * Reforge the caster for signals.
+ * Remove a duplicated command.
+ * IVIGIT: transfert some code and automatic-code-generation macros from sot-core to dg.
+ * Added new-style command for the two entities.
+ * Put back the dirty removal of Florent.
+ * Revert "Set version number as 1.99."
+ * Value::operator== does nothing when a = a.
+ * Do not deregister entity in entity destructor. It is deregistered by the pool.
+ * Use getClassName() instead of CLASS_NAME in Entity constructor.
+ * Set version number as 1.99.
+ * Modify deallocation of poolStorage object in order to fix a memory bug.
+ * Rename poolStorage::entity -> poolStorage::entityMap.
+ * Added command 3 params.
+ * Remove unnecessary virtual keyword.
+ * Added a function to access directly a given command, with protection.
+ * Added the command 2 args (what a funny code to write).
+ * Put back mistakenly removed method pool::getSignal.
+ * Added all-commnds in the cmake list.
+ * IVIGIT.
+ * Clean up: remove interpreter.
+ * Revert "Add method to interprete a string as a python command in class Interpreter."
+ * Revert "Link libdynamicgraph.so with libpython"
+ * Added a bind for commands on std::ostream.
+ * Added missing include.
+ * Added an alias for EMPTY_ARG for readibility.
+ * IVIGIT.
+ * Add read access to Entity::signalMap.
+ * IVIGIT.
+ * Added an helper to get the Value::TypeID directly from the type.
+ * Link libdynamicgraph.so with libpython
+ * Corrected a warning uninitialized value.
+ * Add method to interprete a string as a python command in class Interpreter.
+ * Add a method returning the list of type names registered for signals.
+ * Cosmetic changes.
+ * Make exception messages more explicit.
+ * When registering a type, store pointer to type_info in a map
+ * Add cast registerer for maal matrix and vector types
+ * Make error message more explicit.
+ * Synchronize cmake submodule
+ * Add a test to check Value assignment operator.
+ * Fix Value::operator=.
+ * Add dependency to jrl-mal
+ * Command constructor takes a documentation string as input.
+ * Remove debug output
+ * Fix double free error
+ * Remove debug output
+ * Add support for vector and matrix
+ * Synchronize
+ * Fix compilation error messages after rebase
+ * Re-introduce files in CMakeLists.txt that were lost in rebase
+ * Fix bug in copy constructor of Value class
+ * Support more type for command parameters
+ * Add some documentation
+ * Make function return values instead of reference to values.
+ * Fix memory issue and changed class name AnyType -> EitherType.
+ * Add template getter command
+ * Fix implementation of command-setter.
+ * Re-implement value getter in a nicer way.
+ * Fix several memory errors
+ * Implement command
+
+[v1.2.1]
+ * Add install files for building debian package.
+ * Modify changelog.
+ * [debian] First round of fixes for binary package generation.
+ * Win32: Correct a link issue
+ * A cleaner way to define the suffix of the dynamic libraries according to each OS
+ * Correct library name for mac and windows in the test for interpreter
+ * Add missing link_directories command
+ * Synchronize.
+ * Add tracer test.
+ * Fix method documentation in factory.h.
+ * Comment classes.
+ * Complete forward declarations list in fwd.hh.
+ * Remove obsolete documentation.
+ * Fix warnings detected by clang.
+ * Update man pages.
+ * Update dg-shell-plugin to match new dg-shell usage.
+ * Remove warnings found by Clang.
+ * Install dynamic-graph scripts.
+ * Add dynamic-graph scripts.
+ * Enhance dg-shell.
+ * Use modern C++ comment style for headers.
+ * Improve error management in import.
+ * Enhance import to avoid importing a module twice.
+ * Enhance import to support plug-in, use Boost.Filesytem.
+ * Clean code.
+ * Add tests for plug-in loading/unloading.
+ * Fix bad exception rethrow.
+ * Enhance run command error message.
+ * Clean interpreter test.
+ * Add tests for interpreter.
+ * Fix cppcheck errors.
+ * Make cast registerer more robust.
+ * Clean signal-caster.h.
+ * Convert test_signalcast into unit test.
+ * Convert test_depend example into depend unit test.
+ * Fix factory test.
+ * Convert test_pool.cpp example in pool.cpp unit test.
+ * Test FactoryStorage.
+ * Make tests more robust.
+ * Clean and document factoryStorage.
+ * Make ExceptionAbstract::getCode() const.
+ * Clean DYNAMICGRAPH_FACTORY_ENTITY_PLUGIN macro.
+ * Add custom entity test.
+ * Make DYNAMICGRAPH_FACTORY_ENTITY_PLUGIN more robust.
+ * Remove wrong comment.
+ * Enhance Entity test case.
+ * Add unit test for Entity class.
+ * Clean unit tests compilation.
+
+[v1.2.0]
+ * Remove unwanted debug call.
+ * Synchronize.
+ * Synchronize
+ * Synchronize
+ * Synchronize
+ * Synchronize
+ * Synchronize.
+ * Synchronize
+ * Add missing SETUP_PROJECT_CPACK.
+ * Include cpack to geneate 8.04 Ubuntu package.
+ * Synchronize.
+ * Synchronize
+ * Synchronize
+ * Remove the macro BUILDING_'PKG' and use the one defined by header.cmake instead
+ * Add missing Boost flags for the projects in tools
+ * Correct dependencies between projects
+ * Lighten CMakelists by removing win32 flags (now in cmake)
+ * Declare boost include directories for proper boost detection. Sometimes, the boost install path is *different* from the default include paths!
+ * Fix relative path in link_directories.
+ * Fix warnings.
+ * Enable -Werror.
+ * Synchronize.
+ * Synchronize.
+ * Small documentation update.
+ * Synchronize.
+ * Synchronize.
+ * Synchronize.
+ * Fix pedantic, -Wextra warnings.
+ * Fix GCC warnings.
+ * Fix visibility management for all plug-ins.
+ * Synchronize.
+ * Switch to generic pthread detection macro.
+ * Synchronize.
+ * Switch to new Boost detection macro.
+ * Convert figure to png.
+ * Convert figure to png.
+ * Synchronize.
+ * * Moved entity.png to doc/figures so that it can be found by doxygen (cannot use the svg version because it breaks the layout in my browser - Chrome). * Corrected some doxygen errors.
+ * Add extra image path for Doxygen documentation.
+ * Synchronize.
+ * Synchronize.
+ * Use generated config.hh header file for symbol visibility management.
+ * Set CUSTOM_HEADER_DIR in CMakeLists.txt.
+ * Synchronize.
+ * Corrected doxygen errors. Complemented documentation on signals.
+ * Simplify CMakeLists.txt in unitTesting and add copyright header.
+ * Switch completely to submodule.
+ * Add doc as root CMake subdirectory, do not always generate the man page.
+ * Remove unwanted file.
+ * Switch documentation to submodule.
+ * Get rid of generated Makefile.
+ * Get rid of generated documentation.
+ * More documentation.
+ * Updated documentation
+ * Update HEAD Doxygen documentation. Source commit id: 241e52083f7159ba66f2866c931d51efefd5cfba
+ * Additional doc.
+ * Update HEAD Doxygen documentation. Source commit id: 241e52083f7159ba66f2866c931d51efefd5cfba
+ * Update HEAD Doxygen documentation. Source commit id: 241e52083f7159ba66f2866c931d51efefd5cfba
+ * Force generation of man pages.
+ * Modified documentation output dir.
+ * Added cmake submodule.
+ * Add a method that return the list of entity types registered in factory
+ * Fix debian/watch file.
+ * Add Doxygen documentation for HEAD.
+ * github generated gh-pages branch
+ * Fixed bad rethrow.
+ * Fix import directive (default include path was wrong).
+ * Expanded documentation.
+ * Work on documentation.
+ * Remove trailing whitespaces.
+ * More documentation stubs.
+ * Added documentation for most classes in dynamicgraph. Updated css.
+ * [doc] Files generated from templates are located in BUILD_DIR.
+ * Separated Tracer entity documentation.
+ * Updated doxygen configuration file; added documentation for entity Tracer.
+ * Added import functions for scripts to dynamic-graph (from Thomas Moulard)
+ * Added preliminary documentation on entities exposed by the package.
+
+[v1.1]
+
+[release.1.1]
+ * Corrected authors file.
+ * Release 1.1
+ * Fix man page list in CMakeLists.txt
+ * Add mailmap file.
+ * Add man pages to Debian pacakge.
+ * Add man pages.
+ * Rename tools dg- instead of sot-.
+
+[release-1-1]
+ * Add plug-ins to package.
+ * Increment build number for the Debian package.
+ * Add missing build requirement in Debian package.
+ * Remove .sh extension to installed shell scripts.
+ * Use mktemp to create temporary file in sot-shell-plugin.sh.
+ * Install binaries in bin directory.
+ * Fix shell.sh.cmake.
+ * Add newline at end of file.
+ * Fix Debian package (main binary pacakge was missing).
+ * Update project version to 1.0.0.99
+ * Debianize package.
+ * Add license header.
+ * Add LGPL-3 license.
+ * Rewrite AUTHORS file.
+ * Rewrite NEWS file.
+ * Rewrite README using Markdown syntax.
+ * Remove INSTALL file.
+ * Rename README into README.md.
+ * Getting rid of obsolete autogen.sh file.
+ * Revert "Added libraries rpath."
+ * Added libraries rpath.
+ * Removed automatic definition of VP_DEBUG.
+ * Added more exception catch codes in interpreter. Should now link correctly with boost libraries. Small debug output changes.
+ * Correct the exception raised by signalTime
+ * Changed name of the traces file.
+ * Changed parts of documentation.
+ * Removed CMAKE_INSTALL_PREFIX in INSTALL directives.
+ * Re-added shell-functions plugin (exports functions defined in dynamic-graph to the shell).
+ * Added support for TOOLS exceptions
+ * Port Olivier's changes in SOT commit eacfd9544ca
+ * Enabled thread support (was disabled before because HAVE_LIBBOOST_THREAD was not defined)
+ * Added SignalCaster tests with shared libraries.
+ * Add message in exception when a signal type is already registered.
+ * Adding documentation to cmdPlug.
+ * Make exception message more explicit
+ * Do not rethrow exception, since boost exceptions derive from std::exception
+ * Make ExceptionAbstract derive from std::exception.
+ * Use stringstream to pass values in set/get test.
+ * Add message in exception
+ * Make ExceptionAbstract::getStringMessage const
+ * Added an example of caster construction for type vector (dummy cast, similar to the default one, just for the tuto).
+ * Made DefaultSignalCaster public (exported). Added boost::ublas::vector example to test_signalcast.
+ * Use the correct macro for import/export in functions.h
+ * Put shell functions firmly into dynamicgraph. Removed plugin. Corrected headers inclusion.
+ * Removed the EXTRA_LIBRARIES.
+ * Fix compilation of tests
+ * Win32: Add some definitions to avoid some verbose warnings
+ * Win32: Correct API name for contiifstream
+ * Add the missing "int" in "int main (void)"
+ * The dependency in dl is unix-specific
+ * Win32: Correct exportation of g_caster
+ * Win32: Add the exportation of SignalCast
+ * Add a missing dependency between tracer-RT and tracer
+ * Win32: typo in the API
+ * Win32: Correct typo in the macro name for the API
+ * Add uninstall target to dynamic-graph.
+ * Changed linking of exceptions and traces.
+ * Removed default definition of VP_DEBUG_MODE in cmake (already in header).
+ * Added tracer plugin to source.
+ * Reinforce the dependant->dependent policy.
+ * Reinforce the dependant->dependent policy. Merge the florent branch. Makes the test_depend.cpp test works.
+ * Reintroduce file that mysteriously disappeared in commit 41e11cc3776c29c91ef
+ * Cosmetic changes
+ * Move class Contiifstream into namespace dynamicgraph.
+ * First version for the interpreter-helper.
+ * Add -DVP_DEBUG in debug mode.
+ * Corrected typo 'dependant' -> 'dependent'
+ * Added auto-generated script to start shell with default plugins loaded.
+ * Migrate code of plugin shell-functions to main library
+ * Remove trailing white spaces
+ * Activate debug tracing by configuration option CMAKE_VERBOSITY_LEVEL 	 * src/CMakeLists.txt.
+ * Fix documentation generation
+ * Added UNIX guard for inclusion of dynamic load library in CMakeFiles.
+ * Add detection of boost.
+ * Removed all using namespace directives from headers. Some minor resulting bugfixes.
+ * Separated unit tests and tools. Added ADD_TEST cmake command.
+ * Added README information. Read me! Removed the test test_factory (need to design a new one)
+ * Re-added shell functions and procedures.
+ * Removed all 'sot' references.
+ * Cosmetic change in CMakeLists.txt
+ * Now only generated documentation if GENERATE_DOC is ON.
+ * Added forgotten file all-signals.h
+ * Added forgotten test file test_signalcast.cpp
+ * Used signal exceptions for the exceptions thrown by SignalCast.
+ * Forgot to include some code in the last commit.
+ * Cast: Unit testing
+ * Bug fixes following the reintroduction of casts in dynamicgraph.
+ * Implemented dynamic casting facility from signals to std::streams
+ * Added two unit tests.
+ * Added a new test (test_pool).
+ * Changed CMakeLists to cope for the new headers location. Renamed dynamic-graph-API.h to dynamic-graph-api.h in every header file.
+ * Rename file according to standard
+ * Added forgotten header dynamic-graph-API.h
+ * The package name is now dynamic-graph (this still needs to be changed in the git repository). Updated source files to reflect that change. Clarified CMakeLists, explicited cpp source files for libraries.
+ * Added two unit tests.
+ * Added documentation, renamed header paths, corrected CMakeLists accordingly.
+ * Renamed pkg-config definition file to adhere standards.
+ * Removed dependencies on all other packages.
+ * Removed debug hack left in the last commit.
+ * Type in symbol dgDEBUGFLOW resulted in not being able to load shared libraries. Fixed. Preliminary documentation changes. Re-added INSTALL file.
+ * dynamicGraph now compiles shared libraries.
+ * Removed SOT reference (<sot/*.h> --> <dynamicGraph/*.h>)
+ * Changed version number to 1.0.0
+ * Wrong file added to git repository (corrected).
+ * Added forgotten files.
+ * Configured dynamicGraph package and cmake files. Last-minute adjustment to code for SOT separation (SOT Break)
