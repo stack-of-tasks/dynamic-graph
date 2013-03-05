@@ -2,6 +2,14 @@ CHANGELOG
 ----------------------
 
 [Current]
+
+[v2.5.3]
+ * Synchronize.
+ * Synchronize.
+ * Fix -Wcast-qual pulled by -Werror of gcc-4.7
+
+[v2.5.2]
+ * Update ChangeLog.
  * Synchronization
  * IVIGIT, added signal-helper (macros to ease the declaration of signals) and entity helper (macros to make the macros of signal-helper possible).
  * IVIGIT, added signal-helper (macros to ease the declaration of signals) and entity helper (macros to make the macros of signal-helper possible).
