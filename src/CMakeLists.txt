@@ -63,7 +63,7 @@ IF (UNIX AND NOT APPLE)
 ENDIF (UNIX AND NOT APPLE)
 
 INSTALL(TARGETS ${LIBRARY_NAME}
-  DESTINATION lib)
+  DESTINATION ${CMAKE_INSTALL_LIBDIR})
 
 ####################################
 ### Plugins
