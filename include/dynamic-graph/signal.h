@@ -30,7 +30,6 @@
 #include <dynamic-graph/exception-signal.h>
 #include <dynamic-graph/signal-base.h>
 
-
 #ifdef HAVE_LIBBOOST_THREAD
 #include <boost/thread.hpp>
 #endif
@@ -126,7 +125,9 @@ protected:
   virtual inline const T& operator ()( const Time & t ){ return access(t); }
   virtual Signal<T,Time>& operator= ( const T& t );
   inline operator const T&   () const { return accessCopy (); }
-
+  virtual void getClassName(std::string & aClassName) const
+  { aClassName = typeid(this).name(); }
+      
 
  public:
   virtual void checkCompatibility  () { throw Tcopy; }

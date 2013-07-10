@@ -20,7 +20,7 @@
 # include <string>
 # include <sstream>
 # include <iostream>
-
+# include <typeinfo>
 # include <boost/noncopyable.hpp>
 
 # include <dynamic-graph/fwd.hh>
@@ -71,6 +71,9 @@ namespace dynamicgraph
     {
       return name;
     }
+
+    void getClassName(std::string & aClassName) const
+    { aClassName = typeid(this).name(); }
 
     virtual void setPeriodTime (const Time&)
     {}
