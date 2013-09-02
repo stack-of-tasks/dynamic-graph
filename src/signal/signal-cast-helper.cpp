@@ -74,7 +74,7 @@ namespace dynamicgraph
   trace(const boost::any& object, std::ostream& os)
   {
     const dynamicgraph::Vector & v = boost::any_cast<dynamicgraph::Vector> (object);
-    for( unsigned int i=0;i<v.size();++i )
+    for( int i=0;i<v.size();++i )
       { os << "\t" << v(i); }
   }
   template <>
@@ -83,8 +83,8 @@ namespace dynamicgraph
   trace(const boost::any& object, std::ostream& os)
   {
     const dynamicgraph::Matrix & m = boost::any_cast<dynamicgraph::Matrix> (object);
-    for( unsigned int i=0;i<m.nbRows();++i )
-      for( unsigned int j=0;j<m.nbCols();++j )
+    for( int i=0;i<m.rows();++i )
+      for( int j=0;j<m.cols();++j )
 	{ os << "\t" << m(i,j); }
   }
 
