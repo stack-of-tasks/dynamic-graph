@@ -21,6 +21,8 @@
 # include <iostream>
 # include <vector>
 
+#include <Eigen/Dense>
+
 # include <boost/any.hpp>
 # include <boost/format.hpp>
 # include <boost/function/function1.hpp>
@@ -136,6 +138,67 @@ namespace dynamicgraph
   void signal_trace (const T& value, std::ostream& os)
   {
     SignalCaster::getInstance()->trace(value, os);
+  }
+  
+  // operator >> between istringstream and Matrix
+  template<typename _Scalar, int _Rows, int _Cols, int _Options, int _MaxRows, int _MaxCols>
+  Eigen::Matrix<_Scalar, _Rows, _Cols, _Options, _MaxRows, _MaxCols>& 
+    operator>> (const std::istringstream& iss, Eigen::Matrix<_Scalar, _Rows, _Cols, _Options, _MaxRows, _MaxCols>& a)
+  {
+    const std::string s = iss.str();
+    int row, col;
+    unsigned int i=1,j;
+    bool isMatrix = true;
+	
+    // init row and col
+    row = atoi(&s.at(i));
+    for(j=i; s.at(j)!=',';j++){}
+    i=j+1;
+    col = atoi(&s.at(i));
+	
+    if(col==1)
+      isMatrix = false;
+	  
+    a.resize(row,col);
+	
+    if(isMatrix)
+    {
+      for(j=i; s.at(j)!='(';j++){}
+      i=j+1;
+      for(int rowIt=0; rowIt<row; rowIt++)
+      {
+        if(rowIt==0)
+        {
+          i=j+1;
+        }else{
+          for(j=i; s.at(j)!='(';j++){}
+          i=j+1;
+        }
+        for(int colIt=0; colIt<col; colIt++)
+        {
+          a(rowIt,colIt)=atof(&s.at(i));
+          if(rowIt != row-1 && colIt != col-1)
+          {
+            for(j=i; s.at(j)!=',';j++){}
+            i=j+1;
+          }
+        }
+      }
+    }else{	// vector
+      for(j=i; s.at(j)!='(';j++){}
+      i=j+1;
+      for(int rowIt=0;rowIt<row;rowIt++)
+      {
+        a(rowIt,0)=atof(&s.at(i));
+        if(rowIt!=row-1)
+        {
+          for(j=i; s.at(j)!=',';j++){}
+          i=j+1;
+        }
+      }
+    }
+	
+    return a;
   }
 } // end of namespace dynamicgraph.
 
