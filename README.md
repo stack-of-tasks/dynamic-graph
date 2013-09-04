@@ -1,6 +1,10 @@
 dynamic-graph
 =============
 
+[![Build Status](https://travis-ci.org/stack-of-tasks/dynamic-graph.png)](https://travis-ci.org/stack-of-tasks/dynamic-graph)
+[![Coverage Status](https://coveralls.io/repos/stack-of-tasks/dynamic-graph/badge.png)](https://coveralls.io/r/stack-of-tasks/dynamic-graph)
+
+
 This software provides an efficient way to modelize a C++ data-flow.
 
 A dynamic graph data-flow is composed of:
