@@ -1,6 +1,6 @@
 <map id="G" name="G">
-<area shape="rect" href="$a00010.html" title="Abstract root class for all dynamic&#45;graph exceptions." alt="" coords="5,199,240,225"/>
-<area shape="rect" title="STL class." alt="" coords="53,87,165,113"/>
-<area shape="rect" title="STL class." alt="" coords="217,87,303,113"/>
-<area shape="rect" title="STL class." alt="" coords="168,7,352,33"/>
+<area shape="rect" id="node5" href="$a00022.html" title="Generic error class." alt="" coords="431,5,647,35"/>
+<area shape="rect" id="node7" href="$a00023.html" title="Exceptions raised when an error related to signals happen." alt="" coords="433,58,644,89"/>
+<area shape="rect" id="node9" href="$a00024.html" title="Exceptions raised when an error related to traces happen." alt="" coords="432,111,645,142"/>
+<area shape="rect" id="node2" title="STL class." alt="" coords="5,58,112,89"/>
 </map>

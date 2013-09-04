@@ -1,2 +1,8 @@
 <map id="G" name="G">
+<area shape="rect" id="node3" href="$a00069.html" title="entity.h" alt="" coords="85,86,147,117"/>
+<area shape="rect" id="node11" href="$a00074.html" title="factory.h" alt="" coords="171,86,243,117"/>
+<area shape="rect" id="node13" href="$a00079.html" title="pool.h" alt="" coords="267,86,325,117"/>
+<area shape="rect" id="node5" href="$a00085.html" title="signal&#45;helper.h" alt="" coords="5,166,115,197"/>
+<area shape="rect" id="node7" href="$a00095.html" title="tracer.h" alt="" coords="139,166,205,197"/>
+<area shape="rect" id="node9" href="$a00093.html" title="tracer&#45;real&#45;time.h" alt="" coords="112,246,232,277"/>
 </map>

@@ -1,3 +1,8 @@
 <map id="G" name="G">
-<area shape="rect" href="$a00026.html" title="This plugin exposes shell commands relative to the script language constructs such..." alt="" coords="5,5,123,32"/>
+<area shape="rect" id="node3" href="$a00091.html" title="time&#45;dependency.h" alt="" coords="163,86,299,117"/>
+<area shape="rect" id="node5" href="$a00088.html" title="signal&#45;time&#45;dependent.h" alt="" coords="91,166,253,197"/>
+<area shape="rect" id="node11" href="$a00095.html" title="tracer.h" alt="" coords="255,246,321,277"/>
+<area shape="rect" id="node7" href="$a00055.html" title="all&#45;signals.h" alt="" coords="5,246,96,277"/>
+<area shape="rect" id="node9" href="$a00085.html" title="signal&#45;helper.h" alt="" coords="120,246,229,277"/>
+<area shape="rect" id="node13" href="$a00093.html" title="tracer&#45;real&#45;time.h" alt="" coords="228,326,348,357"/>
 </map>

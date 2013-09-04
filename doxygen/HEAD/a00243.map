@@ -1,19 +1,5 @@
 <map id="G" name="G">
-<area shape="rect" href="$a00036.html" title="Tracer plug&#45;in main class." alt="" coords="2296,255,2453,281"/>
-<area shape="rect" href="$a00008.html" title="This class represents an entity, i.e." alt="" coords="1477,316,1632,343"/>
-<area shape="rect" title="STL class." alt="" coords="271,305,356,332"/>
-<area shape="rect" href="$a00030.html" title="dynamicgraph::SignalBase\&lt; int \&gt;" alt="" coords="512,463,749,489"/>
-<area shape="rect" href="$a00030.html" title="The base class for signals: not to be used as such." alt="" coords="505,544,756,571"/>
-<area shape="rect" title="STL class." alt="" coords="5,305,189,332"/>
-<area shape="rect" href="$a00035.html" title="dynamicgraph::TimeDependency\&lt; int \&gt;" alt="" coords="1416,480,1693,507"/>
-<area shape="rect" href="$a00018.html" title="boost::noncopyable" alt="" coords="240,496,387,523"/>
-<area shape="rect" title="STL class." alt="" coords="1503,56,1607,83"/>
-<area shape="rect" title="STL class." alt="" coords="1023,56,1223,83"/>
-<area shape="rect" title="STL class." alt="" coords="547,32,715,59"/>
-<area shape="rect" title="STL class." alt="" coords="1021,5,1224,32"/>
-<area shape="rect" title="STL class." alt="" coords="261,32,365,59"/>
-<area shape="rect" href="$a00034.html" title="dynamicgraph::SignalTimeDependent\&lt; int, int \&gt;" alt="" coords="1836,480,2167,507"/>
-<area shape="rect" href="$a00027.html" title="Signals link I/O ports of entities. They can be constant&#45;valued signals, or copy..." alt="" coords="1011,568,1235,595"/>
-<area shape="rect" title="STL class." alt="" coords="1948,8,2055,35"/>
-<area shape="rect" title="STL class." alt="" coords="1452,5,1657,32"/>
+<area shape="rect" id="node2" href="$a00050.html" title="Tracer plug&#45;in main class." alt="" coords="35,166,189,197"/>
+<area shape="rect" id="node4" href="$a00018.html" title="This class represents an entity, i.e." alt="" coords="40,86,184,117"/>
+<area shape="rect" id="node6" href="$a00027.html" title="noncopyable" alt="" coords="63,6,161,37"/>
 </map>

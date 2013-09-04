@@ -1,4 +1,5 @@
 <map id="G" name="G">
-<area shape="rect" href="$a00062.html" title="signal&#45;ptr.h" alt="" coords="17,84,108,111"/>
-<area shape="rect" href="$a00038.html" title="all&#45;signals.h" alt="" coords="15,161,111,188"/>
+<area shape="rect" id="node5" href="$a00097.html" title="dynamic&#45;graph/value.h" alt="" coords="224,86,379,117"/>
+<area shape="rect" id="node15" href="$a00067.html" title="dynamic&#45;graph/dynamic&#45;graph&#45;api.h" alt="" coords="592,166,821,197"/>
+<area shape="rect" id="node19" href="$a00076.html" title="dynamic&#45;graph/linear&#45;algebra.h" alt="" coords="363,166,568,197"/>
 </map>

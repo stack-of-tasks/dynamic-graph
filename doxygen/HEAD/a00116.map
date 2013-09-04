@@ -1,10 +1,7 @@
 <map id="G" name="G">
-<area shape="rect" href="$a00066.html" title="signal.t.cpp" alt="" coords="157,84,251,111"/>
-<area shape="rect" href="$a00065.html" title="signal.h" alt="" coords="169,161,239,188"/>
-<area shape="rect" href="$a00038.html" title="all&#45;signals.h" alt="" coords="5,316,101,343"/>
-<area shape="rect" href="$a00062.html" title="signal&#45;ptr.h" alt="" coords="159,239,249,265"/>
-<area shape="rect" href="$a00064.html" title="signal&#45;time&#45;dependent.h" alt="" coords="273,239,452,265"/>
-<area shape="rect" href="$a00063.html" title="signal&#45;ptr.t.cpp" alt="" coords="149,316,264,343"/>
-<area shape="rect" href="$a00069.html" title="tracer&#45;real&#45;time.h" alt="" coords="293,316,427,343"/>
-<area shape="rect" href="$a00071.html" title="tracer.h" alt="" coords="475,316,544,343"/>
+<area shape="rect" id="node3" href="$a00063.html" title="dynamic&#45;graph/command.h" alt="" coords="271,86,452,117"/>
+<area shape="rect" id="node28" href="$a00062.html" title="dynamic&#45;graph/command&#45;setter.t.cpp" alt="" coords="563,86,800,117"/>
+<area shape="rect" id="node7" href="$a00097.html" title="dynamic&#45;graph/value.h" alt="" coords="247,166,401,197"/>
+<area shape="rect" id="node17" href="$a00067.html" title="dynamic&#45;graph/dynamic&#45;graph&#45;api.h" alt="" coords="363,246,592,277"/>
+<area shape="rect" id="node21" href="$a00076.html" title="dynamic&#45;graph/linear&#45;algebra.h" alt="" coords="616,246,821,277"/>
 </map>

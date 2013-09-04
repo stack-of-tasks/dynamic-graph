@@ -1,3 +1,7 @@
 <map id="G" name="G">
-<area shape="rect" href="$a00034.html" title="A type of signal that enforces a time dependency between other signals, making sure..." alt="" coords="5,84,328,111"/>
+<area shape="rect" id="node7" href="$a00047.html" title="This is the only type of signal that can be plugged to, using the plug () command." alt="" coords="756,5,999,35"/>
+<area shape="rect" id="node9" href="$a00048.html" title="A type of signal that enforces a time dependency between other signals, making sure its inputs are up..." alt="" coords="716,58,1039,89"/>
+<area shape="rect" id="node11" href="$a00048.html" title="SignalTimeDependent\&lt; int, int \&gt;" alt="" coords="769,111,985,142"/>
+<area shape="rect" id="node2" href="$a00043.html" title="The base class for signals: not to be used as such." alt="" coords="152,58,392,89"/>
+<area shape="rect" id="node4" href="$a00027.html" title="noncopyable" alt="" coords="5,58,104,89"/>
 </map>

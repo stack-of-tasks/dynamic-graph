@@ -1,10 +1,4 @@
 <map id="G" name="G">
-<area shape="rect" href="$a00046.html" title="dynamic&#45;graph/exception&#45;signal.h" alt="" coords="805,239,1043,265"/>
-<area shape="rect" href="$a00060.html" title="dynamic&#45;graph/signal&#45;base.h" alt="" coords="492,161,697,188"/>
-<area shape="rect" href="$a00066.html" title="dynamic&#45;graph/signal.t.cpp" alt="" coords="1168,84,1363,111"/>
-<area shape="rect" href="$a00050.html" title="dynamic&#45;graph/fwd.hh" alt="" coords="663,393,825,420"/>
-<area shape="rect" href="$a00042.html" title="dynamic&#45;graph/dynamic&#45;graph&#45;api.h" alt="" coords="849,393,1103,420"/>
-<area shape="rect" href="$a00044.html" title="dynamic&#45;graph/exception&#45;abstract.h" alt="" coords="567,316,820,343"/>
-<area shape="rect" href="$a00061.html" title="dynamic&#45;graph/signal&#45;caster.h" alt="" coords="1461,161,1675,188"/>
-<area shape="rect" href="$a00040.html" title="dynamic&#45;graph/debug.h" alt="" coords="1168,316,1341,343"/>
+<area shape="rect" id="node13" href="$a00075.html" title="dynamic&#45;graph/fwd.hh" alt="" coords="461,86,611,117"/>
+<area shape="rect" id="node15" href="$a00067.html" title="dynamic&#45;graph/dynamic&#45;graph&#45;api.h" alt="" coords="635,86,864,117"/>
 </map>

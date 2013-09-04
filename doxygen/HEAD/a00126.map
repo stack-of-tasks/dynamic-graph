@@ -1,9 +1,33 @@
 <map id="G" name="G">
-<area shape="rect" href="$a00065.html" title="signal.h" alt="" coords="169,84,239,111"/>
-<area shape="rect" href="$a00038.html" title="all&#45;signals.h" alt="" coords="5,239,101,265"/>
-<area shape="rect" href="$a00062.html" title="signal&#45;ptr.h" alt="" coords="159,161,249,188"/>
-<area shape="rect" href="$a00064.html" title="signal&#45;time&#45;dependent.h" alt="" coords="273,161,452,188"/>
-<area shape="rect" href="$a00063.html" title="signal&#45;ptr.t.cpp" alt="" coords="149,239,264,265"/>
-<area shape="rect" href="$a00069.html" title="tracer&#45;real&#45;time.h" alt="" coords="293,239,427,265"/>
-<area shape="rect" href="$a00071.html" title="tracer.h" alt="" coords="475,239,544,265"/>
+<area shape="rect" id="node3" href="$a00097.html" title="value.h" alt="" coords="714,86,778,117"/>
+<area shape="rect" id="node5" href="$a00063.html" title="command.h" alt="" coords="480,166,571,197"/>
+<area shape="rect" id="node25" href="$a00072.html" title="exception&#45;signal.h" alt="" coords="1128,166,1256,197"/>
+<area shape="rect" id="node60" href="$a00081.html" title="signal&#45;array.h" alt="" coords="1348,326,1450,357"/>
+<area shape="rect" id="node63" href="$a00069.html" title="entity.h" alt="" coords="1463,406,1524,437"/>
+<area shape="rect" id="node68" href="$a00079.html" title="pool.h" alt="" coords="1626,326,1684,357"/>
+<area shape="rect" id="node71" href="$a00084.html" title="signal&#45;caster.h" alt="" coords="952,246,1062,277"/>
+<area shape="rect" id="node74" href="$a00083.html" title="signal&#45;cast&#45;helper.h" alt="" coords="938,326,1076,357"/>
+<area shape="rect" id="node78" href="$a00070.html" title="exception&#45;abstract.h" alt="" coords="1280,86,1419,117"/>
+<area shape="rect" id="node81" href="$a00071.html" title="exception&#45;factory.h" alt="" coords="1494,166,1627,197"/>
+<area shape="rect" id="node84" href="$a00074.html" title="factory.h" alt="" coords="1628,246,1700,277"/>
+<area shape="rect" id="node87" href="$a00073.html" title="exception&#45;traces.h" alt="" coords="1284,166,1415,197"/>
+<area shape="rect" id="node91" href="$a00065.html" title="debug.h" alt="" coords="787,326,856,357"/>
+<area shape="rect" id="node7" href="$a00056.html" title="command&#45;bind.h" alt="" coords="24,246,144,277"/>
+<area shape="rect" id="node9" href="$a00054.html" title="all&#45;commands.h" alt="" coords="287,326,404,357"/>
+<area shape="rect" id="node11" href="$a00057.html" title="command&#45;direct&#45;getter.h" alt="" coords="168,246,334,277"/>
+<area shape="rect" id="node14" href="$a00058.html" title="command&#45;direct&#45;setter.h" alt="" coords="358,246,523,277"/>
+<area shape="rect" id="node17" href="$a00059.html" title="command&#45;getter.h" alt="" coords="547,246,675,277"/>
+<area shape="rect" id="node21" href="$a00061.html" title="command&#45;setter.h" alt="" coords="699,246,827,277"/>
+<area shape="rect" id="node27" href="$a00089.html" title="signal.h" alt="" coords="1152,326,1219,357"/>
+<area shape="rect" id="node34" href="$a00086.html" title="signal&#45;ptr.h" alt="" coords="967,406,1052,437"/>
+<area shape="rect" id="node50" href="$a00082.html" title="signal&#45;base.h" alt="" coords="1260,246,1362,277"/>
+<area shape="rect" id="node29" href="$a00055.html" title="all&#45;signals.h" alt="" coords="862,566,952,597"/>
+<area shape="rect" id="node31" href="$a00090.html" title="signal.t.cpp" alt="" coords="855,406,943,437"/>
+<area shape="rect" id="node42" href="$a00088.html" title="signal&#45;time&#45;dependent.h" alt="" coords="1174,486,1336,517"/>
+<area shape="rect" id="node37" href="$a00087.html" title="signal&#45;ptr.t.cpp" alt="" coords="715,486,819,517"/>
+<area shape="rect" id="node40" href="$a00085.html" title="signal&#45;helper.h" alt="" coords="1200,566,1310,597"/>
+<area shape="rect" id="node46" href="$a00095.html" title="tracer.h" alt="" coords="1391,566,1458,597"/>
+<area shape="rect" id="node48" href="$a00093.html" title="tracer&#45;real&#45;time.h" alt="" coords="1364,646,1484,677"/>
+<area shape="rect" id="node53" href="$a00091.html" title="time&#45;dependency.h" alt="" coords="1203,406,1339,437"/>
+<area shape="rect" id="node56" href="$a00092.html" title="time&#45;dependency.t.cpp" alt="" coords="995,486,1150,517"/>
 </map>

@@ -1,6 +1,4 @@
 <map id="G" name="G">
-<area shape="rect" href="$a00042.html" title="dynamic&#45;graph/dynamic&#45;graph&#45;api.h" alt="" coords="475,239,728,265"/>
-<area shape="rect" href="$a00046.html" title="dynamic&#45;graph/exception&#45;signal.h" alt="" coords="315,84,552,111"/>
-<area shape="rect" href="$a00050.html" title="dynamic&#45;graph/fwd.hh" alt="" coords="208,239,371,265"/>
-<area shape="rect" href="$a00044.html" title="dynamic&#45;graph/exception&#45;abstract.h" alt="" coords="277,161,531,188"/>
+<area shape="rect" id="node3" href="$a00059.html" title="command&#45;getter.h" alt="" coords="16,86,144,117"/>
+<area shape="rect" id="node5" href="$a00054.html" title="all&#45;commands.h" alt="" coords="21,166,139,197"/>
 </map>

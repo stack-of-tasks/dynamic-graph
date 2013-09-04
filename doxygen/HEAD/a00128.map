@@ -1,7 +1,5 @@
 <map id="G" name="G">
-<area shape="rect" href="$a00038.html" title="all&#45;signals.h" alt="" coords="5,84,101,111"/>
-<area shape="rect" href="$a00064.html" title="signal&#45;time&#45;dependent.h" alt="" coords="200,84,379,111"/>
-<area shape="rect" href="$a00069.html" title="tracer&#45;real&#45;time.h" alt="" coords="121,161,255,188"/>
-<area shape="rect" href="$a00071.html" title="tracer.h" alt="" coords="355,161,424,188"/>
-<area shape="rect" href="$a00068.html" title="time&#45;dependency.t.cpp" alt="" coords="453,84,621,111"/>
+<area shape="rect" id="node3" href="$a00085.html" title="signal&#45;helper.h" alt="" coords="5,86,115,117"/>
+<area shape="rect" id="node5" href="$a00095.html" title="tracer.h" alt="" coords="139,86,205,117"/>
+<area shape="rect" id="node7" href="$a00093.html" title="tracer&#45;real&#45;time.h" alt="" coords="112,166,232,197"/>
 </map>

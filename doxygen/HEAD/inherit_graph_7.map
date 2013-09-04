@@ -1,0 +1,6 @@
+<map id="G" name="G">
+<area shape="rect" id="node1" href="$a00021.html" title="Abstract root class for all dynamic&#45;graph exceptions." alt="" coords="7,58,225,89"/>
+<area shape="rect" id="node3" href="$a00022.html" title="Generic error class." alt="" coords="276,5,492,35"/>
+<area shape="rect" id="node5" href="$a00023.html" title="Exceptions raised when an error related to signals happen." alt="" coords="279,58,489,89"/>
+<area shape="rect" id="node7" href="$a00024.html" title="Exceptions raised when an error related to traces happen." alt="" coords="277,111,491,142"/>
+</map>

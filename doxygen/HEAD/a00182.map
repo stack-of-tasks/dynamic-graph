@@ -1,6 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" href="$a00011.html" title="Generic error class." alt="" coords="452,5,679,32"/>
-<area shape="rect" href="$a00012.html" title="Exceptions raised when an error related to signals happen." alt="" coords="455,56,676,83"/>
-<area shape="rect" href="$a00013.html" title="Exceptions raised when an error related to traces happen." alt="" coords="455,107,676,133"/>
-<area shape="rect" title="STL class." alt="" coords="5,56,117,83"/>
-</map>

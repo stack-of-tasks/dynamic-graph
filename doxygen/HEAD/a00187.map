@@ -1,6 +1,8 @@
 <map id="G" name="G">
-<area shape="rect" href="$a00010.html" title="Abstract root class for all dynamic&#45;graph exceptions." alt="" coords="5,199,240,225"/>
-<area shape="rect" title="STL class." alt="" coords="53,87,165,113"/>
-<area shape="rect" title="STL class." alt="" coords="217,87,303,113"/>
-<area shape="rect" title="STL class." alt="" coords="168,7,352,33"/>
+<area shape="rect" id="node2" href="$a00027.html" title="noncopyable" alt="" coords="1221,5,1320,35"/>
+<area shape="rect" id="node6" href="$a00005.html" title="Abstract class for entity commands." alt="" coords="325,30,571,61"/>
+<area shape="rect" id="node10" title="STL class." alt="" coords="408,151,488,182"/>
+<area shape="rect" id="node18" href="$a00043.html" title="dynamicgraph::SignalBase\&lt; int \&gt;" alt="" coords="740,242,961,273"/>
+<area shape="rect" id="node12" title="STL class." alt="" coords="13,151,181,182"/>
+<area shape="rect" id="node20" href="$a00027.html" title="boost::noncopyable" alt="" coords="379,262,517,293"/>
 </map>

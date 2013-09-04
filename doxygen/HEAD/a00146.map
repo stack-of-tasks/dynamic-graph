@@ -1,5 +1,7 @@
 <map id="G" name="G">
-<area shape="rect" href="$a00008.html" title="This class represents an entity, i.e." alt="" coords="7,5,161,32"/>
-<area shape="rect" href="$a00036.html" title="Tracer plug&#45;in main class." alt="" coords="212,5,369,32"/>
-<area shape="rect" href="$a00037.html" title="Main class of the tracer real&#45;time plug&#45;in." alt="" coords="419,5,635,32"/>
+<area shape="rect" id="node23" href="$a00067.html" title="dynamic&#45;graph/dynamic&#45;graph&#45;api.h" alt="" coords="1318,326,1548,357"/>
+<area shape="rect" id="node27" href="$a00072.html" title="dynamic&#45;graph/exception&#45;signal.h" alt="" coords="1452,166,1670,197"/>
+<area shape="rect" id="node39" href="$a00084.html" title="dynamic&#45;graph/signal&#45;caster.h" alt="" coords="493,86,693,117"/>
+<area shape="rect" id="node29" href="$a00075.html" title="dynamic&#45;graph/fwd.hh" alt="" coords="1681,326,1830,357"/>
+<area shape="rect" id="node32" href="$a00070.html" title="dynamic&#45;graph/exception&#45;abstract.h" alt="" coords="1502,246,1732,277"/>
 </map>
