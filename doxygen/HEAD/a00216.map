@@ -1,7 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" id="node5" href="$a00040.html" title="Signals link I/O ports of entities. They can be constant&#45;valued signals, or copy the value of a heap ..." alt="" coords="440,58,648,89"/>
-<area shape="rect" id="node2" href="$a00027.html" title="noncopyable" alt="" coords="5,58,104,89"/>
-<area shape="rect" id="node7" href="$a00047.html" title="This is the only type of signal that can be plugged to, using the plug () command." alt="" coords="737,5,980,35"/>
-<area shape="rect" id="node9" href="$a00048.html" title="A type of signal that enforces a time dependency between other signals, making sure its inputs are up..." alt="" coords="697,58,1020,89"/>
-<area shape="rect" id="node11" href="$a00048.html" title="SignalTimeDependent\&lt; int, int \&gt;" alt="" coords="751,111,967,142"/>
-</map>

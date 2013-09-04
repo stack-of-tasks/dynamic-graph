@@ -1,9 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" id="node4" href="$a00018.html" title="This class represents an entity, i.e." alt="" coords="1525,123,1669,154"/>
-<area shape="rect" id="node6" href="$a00027.html" title="noncopyable" alt="" coords="1221,5,1320,35"/>
-<area shape="rect" id="node10" href="$a00005.html" title="Abstract class for entity commands." alt="" coords="325,30,571,61"/>
-<area shape="rect" id="node14" title="STL class." alt="" coords="408,179,488,210"/>
-<area shape="rect" id="node22" href="$a00043.html" title="dynamicgraph::SignalBase\&lt; int \&gt;" alt="" coords="740,242,961,273"/>
-<area shape="rect" id="node16" title="STL class." alt="" coords="13,179,181,210"/>
-<area shape="rect" id="node24" href="$a00027.html" title="boost::noncopyable" alt="" coords="379,262,517,293"/>
-</map>

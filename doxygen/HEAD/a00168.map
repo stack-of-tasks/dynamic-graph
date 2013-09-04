@@ -1,9 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" id="node3" href="$a00063.html" title="command.h" alt="" coords="332,86,423,117"/>
-<area shape="rect" id="node5" href="$a00056.html" title="command&#45;bind.h" alt="" coords="5,166,125,197"/>
-<area shape="rect" id="node7" href="$a00054.html" title="all&#45;commands.h" alt="" coords="319,246,436,277"/>
-<area shape="rect" id="node9" href="$a00057.html" title="command&#45;direct&#45;getter.h" alt="" coords="200,166,365,197"/>
-<area shape="rect" id="node12" href="$a00058.html" title="command&#45;direct&#45;setter.h" alt="" coords="389,166,555,197"/>
-<area shape="rect" id="node15" href="$a00059.html" title="command&#45;getter.h" alt="" coords="579,166,707,197"/>
-<area shape="rect" id="node19" href="$a00061.html" title="command&#45;setter.h" alt="" coords="731,166,859,197"/>
-</map>

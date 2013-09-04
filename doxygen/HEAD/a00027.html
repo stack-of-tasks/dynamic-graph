@@ -38,7 +38,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
       <li><a href="classes.html"><span>Class&#160;Index</span></a></li>
-      <li><a href="inherits.html"><span>Class&#160;Hierarchy</span></a></li>
+      <li><a href="hierarchy.html"><span>Class&#160;Hierarchy</span></a></li>
       <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
     </ul>
   </div>
@@ -64,10 +64,20 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <!-- doxytag: class="boost::noncopyable" --><div class="dynheader">
 Inheritance diagram for noncopyable:</div>
 <div class="dyncontent">
-<div class="center"><img src="a00170.png" border="0" usemap="#noncopyable_inherit__map" alt="Inheritance graph"/></div>
-<map name="noncopyable_inherit__map" id="noncopyable_inherit__map">
-<area shape="rect" id="node3" href="a00018.html" title="This class represents an entity, i.e." alt="" coords="200,5,344,35"/><area shape="rect" id="node9" href="a00020.html" title="This class automatically register an Entity to the global factory at initialization and unregister it..." alt="" coords="169,58,375,89"/><area shape="rect" id="node11" href="a00025.html" title="Provides a way to create Entity objects from their class name." alt="" coords="169,111,375,142"/><area shape="rect" id="node13" href="a00043.html" title="The base class for signals: not to be used as such." alt="" coords="152,165,392,195"/><area shape="rect" id="node23" href="a00043.html" title="dynamicgraph::SignalBase\&lt; int \&gt;" alt="" coords="161,218,383,249"/><area shape="rect" id="node5" href="a00050.html" title="Tracer plug&#45;in main class." alt="" coords="468,5,623,35"/><area shape="rect" id="node7" href="a00051.html" title="Main class of the tracer real&#45;time plug&#45;in." alt="" coords="755,5,968,35"/><area shape="rect" id="node15" href="a00040.html" title="Signals link I/O ports of entities. They can be constant&#45;valued signals, or copy the value of a heap ..." alt="" coords="441,165,649,195"/><area shape="rect" id="node17" href="a00047.html" title="This is the only type of signal that can be plugged to, using the plug () command." alt="" coords="740,111,983,142"/><area shape="rect" id="node19" href="a00048.html" title="A type of signal that enforces a time dependency between other signals, making sure its inputs are up..." alt="" coords="700,165,1023,195"/><area shape="rect" id="node21" href="a00048.html" title="SignalTimeDependent\&lt; int, int \&gt;" alt="" coords="753,218,969,249"/><area shape="rect" id="node25" href="a00040.html" title="dynamicgraph::Signal\&lt; int, int \&gt;" alt="" coords="440,218,651,249"/></map>
-<center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
+ <div class="center">
+  <img src="a00027.png" usemap="#noncopyable_map" alt=""/>
+  <map id="noncopyable_map" name="noncopyable_map">
+<area href="a00018.html" title="This class represents an entity, i.e." alt="dynamicgraph::Entity" shape="rect" coords="0,56,286,80"/>
+<area href="a00020.html" title="This class automatically register an Entity to the global factory at initialization and unregister it..." alt="dynamicgraph::EntityRegisterer" shape="rect" coords="296,56,582,80"/>
+<area href="a00025.html" title="Provides a way to create Entity objects from their class name." alt="dynamicgraph::FactoryStorage" shape="rect" coords="592,56,878,80"/>
+<area href="a00043.html" title="The base class for signals: not to be used as such." alt="dynamicgraph::SignalBase&lt; Time &gt;" shape="rect" coords="888,56,1174,80"/>
+<area href="a00050.html" title="Tracer plug-in main class." alt="dynamicgraph::Tracer" shape="rect" coords="0,112,286,136"/>
+<area href="a00040.html" title="Signals link I/O ports of entities. They can be constant-valued signals, or copy the value of a heap ..." alt="dynamicgraph::Signal&lt; T, Time &gt;" shape="rect" coords="888,112,1174,136"/>
+<area href="a00051.html" title="Main class of the tracer real-time plug-in." alt="dynamicgraph::TracerRealTime" shape="rect" coords="0,168,286,192"/>
+<area href="a00047.html" title="This is the only type of signal that can be plugged to, using the plug () command." alt="dynamicgraph::SignalPtr&lt; T, Time &gt;" shape="rect" coords="740,168,1026,192"/>
+<area href="a00048.html" title="A type of signal that enforces a time dependency between other signals, making sure its inputs are up..." alt="dynamicgraph::SignalTimeDependent&lt; T, Time &gt;" shape="rect" coords="1036,168,1322,192"/>
+</map>
+ </div></div>
 </div><!-- contents -->
 </div>
 <!-- window showing the filter options -->
