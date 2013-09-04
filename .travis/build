@@ -5,8 +5,6 @@ set -ev
 root_dir=`pwd`
 build_dir="$root_dir/_travis/build"
 install_dir="$root_dir/_travis/install"
-jrl_mathtools_dir="$build_dir/jrl-mathtools"
-jrl_mal_dir="$build_dir/jrl-mal"
 
 # Shortcuts.
 git_clone="git clone --quiet --recursive"
@@ -22,23 +20,22 @@ export LD_LIBRARY_PATH="$install_dir/lib/`dpkg-architecture -qDEB_BUILD_MULTIARC
 export PKG_CONFIG_PATH="$install_dir/lib/pkgconfig:$PKG_CONFIG_PATH"
 export PKG_CONFIG_PATH="$install_dir/lib/`dpkg-architecture -qDEB_BUILD_MULTIARCH`/pkgconfig:$PKG_CONFIG_PATH"
 
+install_dependency()
+{
+    echo "--> Compiling $1"
+    mkdir -p "$build_dir/$1"
+    cd "$build_dir"
+    $git_clone "git://github.com/$1" "$1"
+    cd "$build_dir/$1"
+    cmake . -DCMAKE_INSTALL_PREFIX:STRING="$install_dir"
+    make install
+}
+
 # Retrieve jrl-mathtools
-echo "--> Compiling jrl-mathtools"
-cd "$build_dir"
-$git_clone "git://github.com/jrl-umi3218/jrl-mathtools.git"
-cd "$jrl_mathtools_dir"
-cmake . -DCMAKE_INSTALL_PREFIX:STRING="$install_dir"
-make install
+install_dependency jrl-umi3218/jrl-mathtools
+install_dependency jrl-umi3218/jrl-mal
 
-# Retrieve jrl-mal
-echo "--> Compiling jrl-mal"
-cd "$build_dir"
-$git_clone "git://github.com/jrl-umi3218/jrl-mal.git"
-cd "$jrl_mal_dir"
-cmake . -DCMAKE_INSTALL_PREFIX:STRING="$install_dir"
-make install
-
-# Compile metapod and run tests
+# Compile and run tests
 cd "$build_dir"
 cmake "$root_dir" -DCMAKE_INSTALL_PREFIX="$install_dir"		\
 		  -DCMAKE_CXX_FLAGS="--coverage"		\
