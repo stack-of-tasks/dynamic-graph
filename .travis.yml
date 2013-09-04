@@ -6,7 +6,7 @@ script: "./.travis/build"
 before_install:
   - git submodule update --init --recursive
   - sudo apt-get update -qq
-  - sudo apt-get install -qq doxygen doxygen-latex libboost-all-dev libeigen3-dev
+  - sudo apt-get install -qq doxygen doxygen-latex libboost-all-dev libeigen3-dev liblapack-dev libblas-dev gfortran
   - sudo pip install cpp-coveralls --use-mirrors
 after_success:
   - coveralls -e _travis/install -e tests
