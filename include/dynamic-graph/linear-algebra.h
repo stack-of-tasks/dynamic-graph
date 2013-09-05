@@ -18,6 +18,8 @@
 #ifndef DYNAMIC_GRAPH_LINEAR_ALGEBRA_H
 #define DYNAMIC_GRAPH_LINEAR_ALGEBRA_H
 
+#define EIGEN_INITIALIZE_MATRICES_BY_NAN 	// initialize all matrix and vectors to NAN
+
 #include <Eigen/Dense>
 
 namespace dynamicgraph {
