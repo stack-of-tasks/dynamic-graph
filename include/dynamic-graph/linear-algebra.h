@@ -16,9 +16,7 @@
 // with dynamic-graph.  If not, see <http://www.gnu.org/licenses/>.
 
 #ifndef DYNAMIC_GRAPH_LINEAR_ALGEBRA_H
-#define DYNAMIC_GRAPH_LINEAR_ALGEBRA_H
-
-#define EIGEN_INITIALIZE_MATRICES_BY_NAN 	// initialize all matrix and vectors to NAN
+#define DYNAMIC_GRAPH_LINEAR_ALGEBRA_H	
 
 #include <Eigen/Dense>
 
