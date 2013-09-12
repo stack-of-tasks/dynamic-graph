@@ -1,0 +1,29 @@
+script: ./.travis/build
+after_success: 
+- coveralls -e _travis/install -e tests
+- git config --global user.name "Travis CI"
+- git config --global user.email "thomas.moulard+travis@gmail.com"
+- git remote set-url origin https://thomas-moulard:${GH_TOKEN}@github.com/stack-of-tasks/dynamic-graph.git
+- git fetch origin gh-pages:gh-pages
+- cd _travis/build/doc && ../../../cmake/github/update-doxygen-doc.sh
+before_install: 
+- git submodule update --init --recursive
+- sudo apt-get update -qq
+- sudo apt-get install -qq doxygen doxygen-latex libboost-all-dev libeigen3-dev liblapack-dev libblas-dev gfortran
+- sudo pip install cpp-coveralls --use-mirrors
+compiler: 
+- clang
+- gcc
+env: 
+  global: 
+    secure: VZsHMEVQT5ugtPedZE8bbqEEvnN9KqatLzfmlWIZ9rH0twzDw1xsNMlyIsBZzCe7VeiyUZQinCLWC3eWRSElk8ePqL9ZFl+Ddc17ngPjXqcf3YK9u3XJZvHqFPoLEPO9bh5nlBT+iMFdlqN3GG8SJMUzUuzu07X3CZy5e4RsqQo=
+notifications: 
+  email: 
+  - hpp-source@laas.fr
+branches: 
+  only: 
+  - master
+language: cpp
+matrix: 
+  allow_failures: 
+  - compiler: clang
