@@ -121,9 +121,12 @@ namespace dynamicgraph
 	    transmitAbstract = false;
 	    DG_THROW ExceptionSignal( ExceptionSignal::PLUG_IMPOSSIBLE,
 				      "Compl. Uncompatible types for plugin.",
-				      "(while trying to plug <%s> on <%s>).",
+				      "(while trying to plug <%s> on <%s>)" 
+                                      " with types <%s> on <%s>.",
 				      unknown_ref->getName ().c_str (),
-				      this->getName ().c_str ());
+				      this->getName ().c_str (),
+                                      typeid(T).name(),
+                                      typeid(unknown_ref).name());
 	  }
       }
     else

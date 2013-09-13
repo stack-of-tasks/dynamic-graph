@@ -49,13 +49,11 @@ GENERATE_CONFIGURATION_HEADER(
 
 # FIXME: to be changed into lib/dynamic-graph
 # to avoid name collision when installing dynamic-graph in /usr.
-SET(PLUGINDIR "${CMAKE_INSTALL_LIBDIR}/plugin")
+SET(PLUGINDIR "${CMAKE_INSTALL_FULL_LIBDIR}/plugin")
 
 # Add extra keys to pkg-config file to export the location of the
 # plug-in directory in a robust manner.
-SET(PKG_CONFIG_EXTRA
-  "plugindirname=${PLUGINDIR}
-plugindir=${CMAKE_INSTALL_PREFIX}/${PLUGINDIR}")
+SET(PKG_CONFIG_EXTRA "plugindir=${PLUGINDIR}")
 
 # Add dependency toward dynamic graph library in pkg-config file.
 PKG_CONFIG_APPEND_LIBS("dynamic-graph")
