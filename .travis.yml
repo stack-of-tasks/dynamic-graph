@@ -9,7 +9,7 @@ env:
   - secure: "QTw5QQDaeQWBz6APcUCyl9P9UPI/T3j1++9o9fPxygS9R/7bQYNCrSH++owcAVCJgUI5oY3RmnYk/PjVygOLM0vbFqB2mMySibAhO/U3pSLtZ/HyPjqI9fX0TV/Cf7ji7soeXKk8p6kI2InMILpODLBaLdfm/jgCdAfecr5sGQI="
   - secure: "JEcGQsUgEND64cAGVEHSxg8j7SlwofuYtLamANszs/h8FGYZ82rEjmG7r2zqSfBj/i1WsnSbTSsh8WJuXzvV8fw8enkcLEuJG9scQJzuzY8hnLe81o1fhEkclML0SLkLQ2Fu6rIqlKKeYwmJFFhSIj69ESRIkDhkjA1OrV7szzc="
   - APT_DEPENDENCIES="doxygen libboost-dev libboost-test-dev libboost-filesystem-dev libboost-system-dev libboost-thread-dev libboost-program-options-dev liblapack-dev gfortran libeigen3-dev"
-  - GIT_DEPENDENCIES="jrl-mathtools jrl-mal"
+  - GIT_DEPENDENCIES="jrl-umi3218/jrl-mathtools jrl-umi3218/jrl-mal"
   - PPA_URI="stack-of-tasks/snapshot"
   - NSIQCPPSTYLE_FILEFILTERPATH=cmake/filefilter.txt
 notifications:
