@@ -1,4 +1,0 @@
-usr/bin/*
-usr/lib/*.so.*
-usr/lib/plugin/*.so
-usr/share/man/*
