@@ -3,6 +3,14 @@ CHANGELOG
 
 [Current]
 
+[v2.5.5]
+ * Improve Travis support
+
+[v2.5.4]
+ * Update lib installation path (multiarch portability).
+ * Allow to access class name of a signal.
+ * Add Travis and coveralls.io support.
+
 [v2.5.3]
  * Synchronize.
  * Synchronize.
