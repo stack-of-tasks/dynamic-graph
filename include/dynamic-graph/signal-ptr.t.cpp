@@ -38,7 +38,7 @@ namespace dynamicgraph
   getPtr   ()
   {
     dgTDEBUGIN(25);
-    if(! isPluged () )
+    if(! isPlugged () )
       DG_THROW ExceptionSignal( ExceptionSignal::NOT_INITIALIZED,
 				"In SignalPtr: SIN ptr not set.",
 				" (in signal <%s>)",getName ().c_str ());
@@ -50,10 +50,10 @@ namespace dynamicgraph
   const Signal<T,Time>* SignalPtr<T,Time>::
   getPtr   () const
   {
-    dgTDEBUGIN(25) << SignalBase<Time>::name <<"("<< isPluged () <<")"
+    dgTDEBUGIN(25) << SignalBase<Time>::name <<"("<< isPlugged () <<")"
 		   << this << "->"<<signalPtr <<std::endl;
     dgTDEBUGIN(25);
-    if(! isPluged () )
+    if(! isPlugged () )
       { DG_THROW ExceptionSignal( ExceptionSignal::NOT_INITIALIZED,
 				  "In SignalPtr: SIN ptr not set.",
 				  " (in signal <%s>)",getName ().c_str ()); }
@@ -142,7 +142,7 @@ namespace dynamicgraph
   void SignalPtr<T,Time>::
   checkCompatibility  ()
   {
-    if( isPluged()&&(!autoref ()) )
+    if( isPlugged()&&(!autoref ()) )
       { getPtr()->checkCompatibility(); }
     else if( isAbstractPluged()&&(!autoref ()) )
       { abstractTransmitter->checkCompatibility(); }
@@ -177,7 +177,7 @@ namespace dynamicgraph
   access( const Time & t )
   {
     dgTDEBUGIN(15);
-    if( modeNoThrow&&(! isPluged ())&&Signal<T,Time>::copyInit )
+    if( modeNoThrow&&(! isPlugged ())&&Signal<T,Time>::copyInit )
       {
 	dgTDEBUGOUT(15);
 	return Signal<T,Time>::accessCopy ();
@@ -203,7 +203,7 @@ namespace dynamicgraph
   const T& SignalPtr<T,Time>::
   accessCopy  () const
   {
-    if( modeNoThrow&&(! isPluged ())&&Signal<T,Time>::copyInit )
+    if( modeNoThrow&&(! isPlugged ())&&Signal<T,Time>::copyInit )
       return Signal<T,Time>::accessCopy ();
     else if( autoref () ) return Signal<T,Time>::accessCopy ();
     else if( transmitAbstract ) return *transmitAbstractData;
@@ -233,7 +233,7 @@ namespace dynamicgraph
   std::ostream& SignalPtr<T,Time>::
   display( std::ostream& os ) const
   {
-    dgTDEBUGIN(25) << SignalBase<Time>::name << this << "||" << isPluged () << "||"<<signalPtr;
+    dgTDEBUGIN(25) << SignalBase<Time>::name << this << "||" << isPlugged () << "||"<<signalPtr;
     { Signal<T,Time>::display(os); }
 
     if( (isAbstractPluged ())&&(!autoref ()) )

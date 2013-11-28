@@ -152,7 +152,7 @@ namespace dynamicgraph
 	 "(while trying to unplug %s).",this->getName ().c_str ());
     }
 
-    virtual bool isPluged () const
+    virtual bool isPlugged () const
     {
       return  false;
     }
