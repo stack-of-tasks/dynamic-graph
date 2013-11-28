@@ -95,6 +95,7 @@ Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00047.html#a2c408f7845c6a922572f9749fb1c3b0f">plug</a> (<a class="el" href="a00043.html">SignalBase</a>&lt; Time &gt; *ref)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00047.html#a5c0f53b13623e90555445de36776142a">unplug</a> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00047.html#a04de0c41600b76a1fadd5e1c5009b7fe">isPluged</a> () const </td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00047.html#a68b1b2dd817972dd94641dbc0161f98a">isPlugged</a> () const </td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="a00043.html">SignalBase</a>&lt; Time &gt; *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00047.html#a7f20508027e2ea227896578aa8c43522">getPluged</a> () const </td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00047.html#aedb6c67d879b901c7b6295cf616f4d74">isAbstractPluged</a> () const </td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">virtual const Time &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00047.html#ab2eeaddcb47c3c8be6a6737ed88998dc">getTime</a> () const </td></tr>
@@ -550,11 +551,31 @@ template&lt;class T , class Time &gt; </div>
 </div>
 <div class="memdoc">
 
-<p>Reimplemented from <a class="el" href="a00043.html#a49fdc398e93018db08c8aa588ba4507c">dynamicgraph::SignalBase&lt; Time &gt;</a>.</p>
+<p>References <a class="el" href="a00047.html#a68b1b2dd817972dd94641dbc0161f98a">dynamicgraph::SignalPtr&lt; T, Time &gt;::isPlugged()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a68b1b2dd817972dd94641dbc0161f98a"></a><!-- doxytag: member="dynamicgraph::SignalPtr::isPlugged" ref="a68b1b2dd817972dd94641dbc0161f98a" args="() const " -->
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T , class Time &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool <a class="el" href="a00047.html">dynamicgraph::SignalPtr</a>&lt; T, Time &gt;::<a class="el" href="a00047.html#a68b1b2dd817972dd94641dbc0161f98a">isPlugged</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const<code> [inline, virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Reimplemented from <a class="el" href="a00043.html#a83de599744dd02fcba44b8a4c687c45d">dynamicgraph::SignalBase&lt; Time &gt;</a>.</p>
 
 <p>References <a class="el" href="a00047.html#a257dba50afbe9efe0fde532062eeb536">dynamicgraph::SignalPtr&lt; T, Time &gt;::signalPtr</a>.</p>
 
-<p>Referenced by <a class="el" href="a00047.html#a902c73167b237f824edd4bf0ca077b2a">dynamicgraph::SignalPtr&lt; T, Time &gt;::operator bool()</a>.</p>
+<p>Referenced by <a class="el" href="a00047.html#a04de0c41600b76a1fadd5e1c5009b7fe">dynamicgraph::SignalPtr&lt; T, Time &gt;::isPluged()</a>, and <a class="el" href="a00047.html#a902c73167b237f824edd4bf0ca077b2a">dynamicgraph::SignalPtr&lt; T, Time &gt;::operator bool()</a>.</p>
 
 </div>
 </div>
@@ -597,7 +618,7 @@ template&lt;class T , class Time &gt; </div>
 </div>
 <div class="memdoc">
 
-<p>References <a class="el" href="a00047.html#a04de0c41600b76a1fadd5e1c5009b7fe">dynamicgraph::SignalPtr&lt; T, Time &gt;::isPluged()</a>.</p>
+<p>References <a class="el" href="a00047.html#a68b1b2dd817972dd94641dbc0161f98a">dynamicgraph::SignalPtr&lt; T, Time &gt;::isPlugged()</a>.</p>
 
 </div>
 </div>
@@ -1011,7 +1032,7 @@ template&lt;class T , class Time &gt; </div>
 </div>
 <div class="memdoc">
 
-<p>Referenced by <a class="el" href="a00047.html#a0fabde9aa248f9e558147f97868997df">dynamicgraph::SignalPtr&lt; T, Time &gt;::autoref()</a>, <a class="el" href="a00047.html#a7f20508027e2ea227896578aa8c43522">dynamicgraph::SignalPtr&lt; T, Time &gt;::getPluged()</a>, <a class="el" href="a00047.html#a04de0c41600b76a1fadd5e1c5009b7fe">dynamicgraph::SignalPtr&lt; T, Time &gt;::isPluged()</a>, and <a class="el" href="a00047.html#a64a023c1808c6251fc3c742986fbba28">dynamicgraph::SignalPtr&lt; T, Time &gt;::~SignalPtr()</a>.</p>
+<p>Referenced by <a class="el" href="a00047.html#a0fabde9aa248f9e558147f97868997df">dynamicgraph::SignalPtr&lt; T, Time &gt;::autoref()</a>, <a class="el" href="a00047.html#a7f20508027e2ea227896578aa8c43522">dynamicgraph::SignalPtr&lt; T, Time &gt;::getPluged()</a>, <a class="el" href="a00047.html#a68b1b2dd817972dd94641dbc0161f98a">dynamicgraph::SignalPtr&lt; T, Time &gt;::isPlugged()</a>, and <a class="el" href="a00047.html#a64a023c1808c6251fc3c742986fbba28">dynamicgraph::SignalPtr&lt; T, Time &gt;::~SignalPtr()</a>.</p>
 
 </div>
 </div>

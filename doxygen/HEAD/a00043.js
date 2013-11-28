@@ -15,7 +15,7 @@ var a00043 =
     [ "getPluged", "a00043.html#a505588db3697cac9b6e36b7085ef92f2", null ],
     [ "getReady", "a00043.html#a3a8496883b00b8ce249ccc9ef1eb1db2", null ],
     [ "getTime", "a00043.html#ab4fa5d68fa38ffb86805a0d8d9d41cec", null ],
-    [ "isPluged", "a00043.html#a49fdc398e93018db08c8aa588ba4507c", null ],
+    [ "isPlugged", "a00043.html#a83de599744dd02fcba44b8a4c687c45d", null ],
     [ "needUpdate", "a00043.html#abc852ac55dd5322330817c176870045e", null ],
     [ "plug", "a00043.html#ad5558c80e899fb1b7a884b629f5d4984", null ],
     [ "recompute", "a00043.html#a32b65fa6e14c4e504952bb6d9989c034", null ],

@@ -18,6 +18,7 @@ var a00047 =
     [ "getTime", "a00047.html#ab2eeaddcb47c3c8be6a6737ed88998dc", null ],
     [ "isAbstractPluged", "a00047.html#aedb6c67d879b901c7b6295cf616f4d74", null ],
     [ "isPluged", "a00047.html#a04de0c41600b76a1fadd5e1c5009b7fe", null ],
+    [ "isPlugged", "a00047.html#a68b1b2dd817972dd94641dbc0161f98a", null ],
     [ "needUpdate", "a00047.html#aba660f5b2bf955e680b46a7465775445", null ],
     [ "operator bool", "a00047.html#a902c73167b237f824edd4bf0ca077b2a", null ],
     [ "operator()", "a00047.html#aeb0ade18b2ce9412f8cb6339aedd7bc8", null ],

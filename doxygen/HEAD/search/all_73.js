@@ -31,7 +31,7 @@ var searchData=
   ['shellfunctions_5fdoc_2eh',['shellfunctions_doc.h',['../a00080.html',1,'']]],
   ['shortname',['shortName',['../a00043.html#aa95969e3206868363a97dd1f78f9636e',1,'dynamicgraph::SignalBase']]],
   ['signal',['Signal',['../a00040.html',1,'dynamicgraph']]],
-  ['signal',['Signal',['../a00040.html#a629a88006a73c05534c300bb7b950820',1,'dynamicgraph::Signal::Signal()'],['../a00021.html#a19678de05600e82a1eaa2e70c0ad6fe0a252baa19235309f051576f0d0e508098',1,'dynamicgraph::ExceptionAbstract::SIGNAL()']]],
+  ['signal',['SIGNAL',['../a00021.html#a19678de05600e82a1eaa2e70c0ad6fe0a252baa19235309f051576f0d0e508098',1,'dynamicgraph::ExceptionAbstract::SIGNAL()'],['../a00040.html#a629a88006a73c05534c300bb7b950820',1,'dynamicgraph::Signal::Signal()']]],
   ['signal_2darray_2eh',['signal-array.h',['../a00081.html',1,'']]],
   ['signal_2dbase_2eh',['signal-base.h',['../a00082.html',1,'']]],
   ['signal_2dcast_2dhelper_2eh',['signal-cast-helper.h',['../a00083.html',1,'']]],

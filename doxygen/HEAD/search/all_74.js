@@ -31,7 +31,7 @@ var searchData=
   ['tracerrealtime',['TracerRealTime',['../a00051.html',1,'dynamicgraph']]],
   ['tracerrealtime',['TracerRealTime',['../a00051.html#ad26191a1f9c432f544c589de4e848399',1,'dynamicgraph::TracerRealTime']]],
   ['traces',['TRACES',['../a00021.html#a19678de05600e82a1eaa2e70c0ad6fe0af27cffde588c14a95c26fc79314ec08c',1,'dynamicgraph::ExceptionAbstract']]],
-  ['tracestyle',['TraceStyle',['../a00050.html#a37c51af38aff797e4460d16db35c25b8',1,'dynamicgraph::Tracer::TraceStyle()'],['../a00050.html#a6117c74df4c4487d5a1804df22ac1dc0',1,'dynamicgraph::Tracer::traceStyle()']]],
+  ['tracestyle',['traceStyle',['../a00050.html#a6117c74df4c4487d5a1804df22ac1dc0',1,'dynamicgraph::Tracer::traceStyle()'],['../a00050.html#a37c51af38aff797e4460d16db35c25b8',1,'dynamicgraph::Tracer::TraceStyle()']]],
   ['tracetemplate',['traceTemplate',['../a00013.html#a2ca1aff52f81391a3feb34622265126a',1,'dynamicgraph::DebugTrace::traceTemplate(const int level, const char *format,...)'],['../a00013.html#a2e1c4a66d6147a7f4d1fa3c948829d2a',1,'dynamicgraph::DebugTrace::traceTemplate(const char *format,...)']]],
   ['transmitabstract',['transmitAbstract',['../a00047.html#aa4beea137403194d072eeb73ba55415b',1,'dynamicgraph::SignalPtr']]],
   ['transmitabstractdata',['transmitAbstractData',['../a00047.html#afabedd4999d7e3ea81ccd37c95754fbd',1,'dynamicgraph::SignalPtr']]],

@@ -5,5 +5,6 @@ var searchData=
   ['int',['INT',['../a00052.html#a8b1ad07088898b7d8e530682e589576fab265227d95036f0568ad2428cbf2850c',1,'dynamicgraph::command::Value']]],
   ['intvalue',['intValue',['../a00052.html#a09103abaaf332315e1687dcd83c15143',1,'dynamicgraph::command::Value']]],
   ['isabstractpluged',['isAbstractPluged',['../a00047.html#aedb6c67d879b901c7b6295cf616f4d74',1,'dynamicgraph::SignalPtr']]],
-  ['ispluged',['isPluged',['../a00043.html#a49fdc398e93018db08c8aa588ba4507c',1,'dynamicgraph::SignalBase::isPluged()'],['../a00047.html#a04de0c41600b76a1fadd5e1c5009b7fe',1,'dynamicgraph::SignalPtr::isPluged()']]]
+  ['ispluged',['isPluged',['../a00047.html#a04de0c41600b76a1fadd5e1c5009b7fe',1,'dynamicgraph::SignalPtr']]],
+  ['isplugged',['isPlugged',['../a00043.html#a83de599744dd02fcba44b8a4c687c45d',1,'dynamicgraph::SignalBase::isPlugged()'],['../a00047.html#a68b1b2dd817972dd94641dbc0161f98a',1,'dynamicgraph::SignalPtr::isPlugged()']]]
 ];
