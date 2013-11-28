@@ -73,7 +73,12 @@ namespace dynamicgraph
     const SignalBase<Time>* getAbstractPtr () const; // throw
     virtual void plug( SignalBase<Time>* ref );
     virtual void unplug () { plug(NULL); }
-    virtual bool isPluged () const { return (NULL!=signalPtr); }
+    virtual bool isPluged () const {
+      std::cerr << "The method isPluged is deprecated.";
+      std::cerr << " Please use isPlugged instead" << std::endl;
+      return isPlugged ();
+    }
+    virtual bool isPlugged () const { return (NULL!=signalPtr); }
     virtual SignalBase<Time>* getPluged () const { return signalPtr; }
     virtual bool isAbstractPluged () const;
     virtual const Time& getTime () const;
@@ -83,7 +88,7 @@ namespace dynamicgraph
     inline const Signal<T,Time>* operator-> () const { return getPtr (); }
     inline Signal<T,Time>& operator* () { return *getPtr (); }
     inline const Signal<T,Time>& operator* () const { return *getPtr (); }
-    inline operator bool () const { return isPluged (); }
+    inline operator bool () const { return isPlugged (); }
 
   public: /* --- INHERITANCE --- */
 
