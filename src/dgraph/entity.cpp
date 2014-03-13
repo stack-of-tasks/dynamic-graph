@@ -149,6 +149,11 @@ std::string Entity::getDocString () const
   return *(sigkey ->second) ;
 
 
+bool Entity::
+hasSignal( const string & signame ) const
+{
+  return (!(signalMap.find(signame) == signalMap.end ()));
+}
 
 SignalBase<int>& Entity::
 getSignal( const string & signame )
