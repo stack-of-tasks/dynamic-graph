@@ -48,8 +48,7 @@ namespace dynamicgraph
       : SignalCastRegisterer (typeid(T), disp, cast, trace)
     {}
 
-    DYNAMIC_GRAPH_DLLAPI
-      static boost::any cast (std::istringstream& iss);
+    static boost::any cast (std::istringstream& iss);
 
     DYNAMIC_GRAPH_DLLAPI
       static void disp (const boost::any& object, std::ostream& os)
