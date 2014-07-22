@@ -28,7 +28,7 @@
 namespace dynamicgraph {
   namespace command {
     class Value;
-    class DYNAMIC_GRAPH_DLLEXPORT EitherType {
+    class DYNAMIC_GRAPH_DLLAPI EitherType {
     public:
       EitherType(const Value& value);
       ~EitherType();
@@ -44,7 +44,7 @@ namespace dynamicgraph {
       const Value* value_;
     };
 
-    class DYNAMIC_GRAPH_DLLEXPORT Value {
+    class DYNAMIC_GRAPH_DLLAPI Value {
     public:
       enum Type {
 	NONE,
@@ -93,9 +93,9 @@ namespace dynamicgraph {
       static std::string typeName(Type type);
 
       /// Output in a stream
-      DYNAMIC_GRAPH_DLLEXPORT friend std::ostream& operator<<(std::ostream& os, const Value& value);
+      DYNAMIC_GRAPH_DLLAPI friend std::ostream& operator<<(std::ostream& os, const Value& value);
     public:
-      DYNAMIC_GRAPH_DLLEXPORT friend class EitherType;
+      friend class EitherType;
       bool boolValue() const;
       unsigned unsignedValue() const;
       int intValue() const;

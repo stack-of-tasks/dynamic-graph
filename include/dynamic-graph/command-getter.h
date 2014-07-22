@@ -53,7 +53,7 @@ namespace dynamicgraph {
     /// \li prototype of E::getParameter should be exactly as specified in this
     /// example.
     template <class E, typename T>
-    class DYNAMIC_GRAPH_DLLEXPORT Getter : public Command {
+    class DYNAMIC_GRAPH_DLLAPI Getter : public Command {
     public:
       /// Pointer to method that sets paramter of type T
       typedef T (E::*GetterMethod) () const;
