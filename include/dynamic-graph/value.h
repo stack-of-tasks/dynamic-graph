@@ -115,14 +115,14 @@ namespace dynamicgraph {
 	static const Value::Type TypeID;
       };
 
-    template<> const Value::Type ValueHelper<bool>::TypeID = Value::BOOL;
-    template<> const Value::Type ValueHelper<unsigned>::TypeID = Value::UNSIGNED;
-    template<> const Value::Type ValueHelper<int>::TypeID = Value::INT;
-    template<> const Value::Type ValueHelper<float>::TypeID = Value::FLOAT;
-    template<> const Value::Type ValueHelper<double>::TypeID = Value::DOUBLE;
-    template<> const Value::Type ValueHelper<std::string>::TypeID = Value::STRING;
-    template<> const Value::Type ValueHelper<Vector>::TypeID = Value::VECTOR;
-    template<> const Value::Type ValueHelper<Matrix>::TypeID = Value::MATRIX;
+    template<> const Value::Type ValueHelper<bool>::TypeID;
+    template<> const Value::Type ValueHelper<unsigned>::TypeID;
+    template<> const Value::Type ValueHelper<int>::TypeID;
+    template<> const Value::Type ValueHelper<float>::TypeID;
+    template<> const Value::Type ValueHelper<double>::TypeID;
+    template<> const Value::Type ValueHelper<std::string>::TypeID;
+    template<> const Value::Type ValueHelper<Vector>::TypeID;
+    template<> const Value::Type ValueHelper<Matrix>::TypeID;
 
   } // namespace command
 } //namespace dynamicgraph
