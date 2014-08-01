@@ -330,7 +330,6 @@ namespace dynamicgraph {
       return os;
     }
 
-    /* ---- HELPER ---------------------------------------------------------- */
     template<> const Value::Type ValueHelper<bool>::TypeID = Value::BOOL;
     template<> const Value::Type ValueHelper<unsigned>::TypeID = Value::UNSIGNED;
     template<> const Value::Type ValueHelper<int>::TypeID = Value::INT;

@@ -28,7 +28,7 @@
 namespace dynamicgraph {
   namespace command {
     class Value;
-    class DYNAMIC_GRAPH_DLLEXPORT EitherType {
+    class DYNAMIC_GRAPH_DLLAPI EitherType {
     public:
       EitherType(const Value& value);
       ~EitherType();
@@ -44,7 +44,7 @@ namespace dynamicgraph {
       const Value* value_;
     };
 
-    class DYNAMIC_GRAPH_DLLEXPORT Value {
+    class DYNAMIC_GRAPH_DLLAPI Value {
     public:
       enum Type {
 	NONE,
@@ -93,9 +93,9 @@ namespace dynamicgraph {
       static std::string typeName(Type type);
 
       /// Output in a stream
-      DYNAMIC_GRAPH_DLLEXPORT friend std::ostream& operator<<(std::ostream& os, const Value& value);
+      DYNAMIC_GRAPH_DLLAPI friend std::ostream& operator<<(std::ostream& os, const Value& value);
     public:
-      DYNAMIC_GRAPH_DLLEXPORT friend class EitherType;
+      friend class EitherType;
       bool boolValue() const;
       unsigned unsignedValue() const;
       int intValue() const;
@@ -109,12 +109,14 @@ namespace dynamicgraph {
     };
 
     /* ---- HELPER ---------------------------------------------------------- */
+    // Note: to ensure the WIN32 compatibility, it is necessary to export 
+    // the template specialization. Also, it is forbidden to do the template
+    // specialization declaration in the header file, for the same reason.
     template< typename T >
-      struct ValueHelper
+      struct DYNAMIC_GRAPH_DLLAPI ValueHelper
       {
 	static const Value::Type TypeID;
       };
-
   } // namespace command
 } //namespace dynamicgraph
 
