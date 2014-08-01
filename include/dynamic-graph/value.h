@@ -109,21 +109,14 @@ namespace dynamicgraph {
     };
 
     /* ---- HELPER ---------------------------------------------------------- */
+    // Note: to ensure the WIN32 compatibility, it is necessary to export 
+    // the template specialization. Also, it is forbidden to do the template
+    // specialization declaration in the header file, for the same reason.
     template< typename T >
-      struct ValueHelper
+      struct DYNAMIC_GRAPH_DLLAPI ValueHelper
       {
 	static const Value::Type TypeID;
       };
-
-    template<> const Value::Type ValueHelper<bool>::TypeID;
-    template<> const Value::Type ValueHelper<unsigned>::TypeID;
-    template<> const Value::Type ValueHelper<int>::TypeID;
-    template<> const Value::Type ValueHelper<float>::TypeID;
-    template<> const Value::Type ValueHelper<double>::TypeID;
-    template<> const Value::Type ValueHelper<std::string>::TypeID;
-    template<> const Value::Type ValueHelper<Vector>::TypeID;
-    template<> const Value::Type ValueHelper<Matrix>::TypeID;
-
   } // namespace command
 } //namespace dynamicgraph
 
