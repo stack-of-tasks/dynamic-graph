@@ -48,17 +48,14 @@ namespace dynamicgraph
       : SignalCastRegisterer (typeid(T), disp, cast, trace)
     {}
 
-    DYNAMIC_GRAPH_DLLEXPORT
-      static boost::any cast (std::istringstream& iss);
+    static boost::any cast (std::istringstream& iss);
 
-    DYNAMIC_GRAPH_DLLEXPORT
-      static void disp (const boost::any& object, std::ostream& os)
+    static void disp (const boost::any& object, std::ostream& os)
     {
       os << boost::any_cast<T> (object) << std::endl;
     }
 
-    DYNAMIC_GRAPH_DLLEXPORT
-      static void trace (const boost::any& object, std::ostream& os)
+    static void trace (const boost::any& object, std::ostream& os)
     {
       disp(object,os);
     }
@@ -156,15 +153,12 @@ public:                                                                         
 	static void disp( TYPE const& t,std::ostream& os )  DISP	              \
 	static void trace( TYPE const& t,std::ostream& os ) TRACE                     \
 public:            		                                                      \
-       DYNAMIC_GRAPH_DLLEXPORT                                                        \
 	static boost::any cast_( std::istringstream& stringValue ) {           	      \
  		  return boost::any_cast<TYPE>(cast(stringValue));           	      \
 	}                                                                             \
-       DYNAMIC_GRAPH_DLLEXPORT                                                        \
 	static void disp_( const boost::any& t,std::ostream& os )  {       	      \
 	  disp(boost::any_cast<TYPE>(t), os);         				      \
 	}            								      \
-       DYNAMIC_GRAPH_DLLEXPORT                                                        \
 	static void trace_( const boost::any& t,std::ostream& os ) {      	      \
 		  trace(boost::any_cast<TYPE>(t),os);      			      \
 	}          								      \
