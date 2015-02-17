@@ -20,6 +20,7 @@
 # include <dynamic-graph/signal-base.h>
 # include <dynamic-graph/dynamic-graph-api.h>
 # include <vector>
+#include <stdio.h>
 
 namespace dynamicgraph
 {
@@ -135,15 +136,15 @@ namespace dynamicgraph
 
     SignalArray<Time> (SignalBase<Time>& sig)
     : SignalArray_const<Time> (0),
-      array(1)
+      array(DEFAULT_SIZE)
     {
-      size=1;
+      size=DEFAULT_SIZE;
       addElmt(&sig);
     }
 
     SignalArray<Time> (const SignalArray<Time>& siga)
     : SignalArray_const<Time> (siga.getSize()),
-      array ()
+      array (siga.getSize())
     {
       rank = siga.getSize ();
       for (unsigned int i = 0; i < rank; ++i)
