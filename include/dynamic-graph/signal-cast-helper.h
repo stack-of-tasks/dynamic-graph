@@ -28,6 +28,8 @@
 # include <boost/lexical_cast.hpp>
 # include <boost/tuple/tuple.hpp>
 
+# include <dynamic-graph/eigen-io.h>
+
 # include <dynamic-graph/dynamic-graph-api.h>
 # include "dynamic-graph/exception-signal.h"
 # include "dynamic-graph/signal-caster.h"
