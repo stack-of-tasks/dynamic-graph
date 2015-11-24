@@ -22,15 +22,21 @@
 #include <Eigen/Dense>
 
 #include <boost/format.hpp>
+#include <boost/numeric/conversion/cast.hpp>
 
 #include <dynamic-graph/exception-signal.h>
 #include <dynamic-graph/linear-algebra.h>
 
 using dynamicgraph::ExceptionSignal;
 
+//TODO: Eigen 3.3 onwards has a global Eigen::Index definition.
+//If Eigen version is updated, use Eigen::Index instead of this macro.
+
+typedef EIGEN_DEFAULT_DENSE_INDEX_TYPE eigen_index;
+
   /* \brief Eigen Vector input from istream
    *
-   * Input Vector format: [val1 val2 val3 ... valN]
+   * Input Vector format: val1 val2 val3 ... valN
    * e.g. 1 23 32.2 12.12 32
    */
 
@@ -46,7 +52,14 @@ std::istringstream& operator >> (std::istringstream &iss,
   while(iss >> _dbl_val && !iss.fail()) {
     _stdvec.push_back(_dbl_val);
   }
-  inst = Eigen::VectorXd::Map(_stdvec.data(), _stdvec.size());
+  try {
+    inst = Eigen::VectorXd::Map (_stdvec.data(),
+				 boost::numeric_cast<eigen_index> (_stdvec.size()) );
+  }
+  catch (boost::bad_numeric_cast&) {
+    throw ExceptionSignal(ExceptionSignal::GENERIC, fmt.str() );
+  }
+    
   return iss;
 }
 //Should not reach here.
@@ -107,7 +120,12 @@ std::istringstream& operator >> (std::istringstream &iss,
 	dynamicgraph::Vector _eigvec;
 	while(iss >> _eigvec && !iss.fail()){
 	  if (!_vec_size_set) {
-	    _vec_size = _eigvec.size();
+	    try {
+	      _vec_size = boost::numeric_cast <int> (_eigvec.size());
+	    }
+	    catch (boost::bad_numeric_cast&) {
+	      throw ExceptionSignal(ExceptionSignal::GENERIC, fmt.str());
+	  }
 	    _vec_size_set = true;
 	  }
 	  else {
@@ -121,7 +139,12 @@ std::istringstream& operator >> (std::istringstream &iss,
 	  throw ExceptionSignal(ExceptionSignal::GENERIC, fmt.str());
 	}
 	else {
-	  inst.resize(_stdmat.size(),_vec_size);
+	  try {
+	    inst.resize(boost::numeric_cast<eigen_index> (_stdmat.size()), _vec_size);
+	  }
+	  catch (boost::bad_numeric_cast&) {
+	    throw ExceptionSignal(ExceptionSignal::GENERIC, fmt.str());
+	  }
 	  for (unsigned int i =0;i<_stdmat.size(); i++) {
 	    inst.row(i) = _stdmat[i];
 	  }
