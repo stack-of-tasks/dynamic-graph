@@ -67,6 +67,7 @@ tracer.h
 tracer-real-time.h
 
 command.h
+eigen-io.h
 linear-algebra.h
 value.h
 
