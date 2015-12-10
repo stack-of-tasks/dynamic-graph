@@ -23,13 +23,15 @@
 #include <cassert>
 #include <typeinfo>
 #include "dynamic-graph/dynamic-graph-api.h"
-#include "dynamic-graph/linear-algebra.h"
+#include <dynamic-graph/linear-algebra.h>
 
 namespace dynamicgraph {
   namespace command {
     class Value;
     class DYNAMIC_GRAPH_DLLAPI EitherType {
     public:
+      EIGEN_MAKE_ALIGNED_OPERATOR_NEW
+
       EitherType(const Value& value);
       ~EitherType();
       operator bool () const;
@@ -46,6 +48,9 @@ namespace dynamicgraph {
 
     class DYNAMIC_GRAPH_DLLAPI Value {
     public:
+
+      EIGEN_MAKE_ALIGNED_OPERATOR_NEW
+
       enum Type {
 	NONE,
 	BOOL,
