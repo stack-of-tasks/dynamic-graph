@@ -149,7 +149,7 @@ BOOST_AUTO_TEST_CASE (custom_vector_registerer)
       Vector  v = Vector::Unit(5,i) ;
       std::ostringstream os;
       os << v;
-      std::istringstream ss (os.str ());
+      std::istringstream ss ("[5]("+os.str ()+")");
 
       // Set signal value.
       myVectorSignal.set (ss);
