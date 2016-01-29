@@ -50,7 +50,7 @@ namespace dynamicgraph {
       for (unsigned int iParam=0; iParam < values.size(); iParam++) {
 	if (values[iParam].type() != paramTypes[iParam]) {
 	  std::stringstream ss;
-	  ss << "argument " << iParam << "is of wrong type: "
+	  ss << "argument " << iParam << " is of wrong type: "
 	     << Value::typeName(paramTypes[iParam]) << " expected, got "
 	     << Value::typeName(values[iParam].type());
 	  throw ExceptionAbstract(ExceptionAbstract::TOOLS, ss.str());
