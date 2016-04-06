@@ -138,9 +138,21 @@ namespace Eigen {
   
   
   
+
+  /* \brief Eigen Homogeneous Matrix output
+   *
+   * Matrix format: [M,N]((val11,val12,val13,...,val1N),...,(valM1,valM2,...,valMN))
+   * e.g. [2,5]((1 23 32.2 12.12 32),(2 32 23 92.01 19.2))
+   */
+
   inline std::ostream& operator << (std::ostream &os, 
 				    Transform<double,3,Affine> MH) {
-    os << MH.matrix();      return os;   }
+    IOFormat boostFmt(StreamPrecision, DontAlignCols,
+		      ",", ",",
+		      "(",")",
+		      "(",")");
+    
+    os << "[4,4]"<< MH.matrix().format(boostFmt);      return os;   }
   
   
   inline std::ostream& operator << (std::ostream &os, 
