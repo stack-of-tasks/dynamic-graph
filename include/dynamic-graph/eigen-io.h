@@ -39,6 +39,7 @@ using dynamicgraph::ExceptionSignal;
    */
 namespace Eigen {
   typedef EIGEN_DEFAULT_DENSE_INDEX_TYPE eigen_index;
+
   inline std::istringstream& operator >> (std::istringstream &iss, 
 					  dynamicgraph::Vector &inst) {
     unsigned int _size;
@@ -88,7 +89,8 @@ namespace Eigen {
     unsigned int _rowsize;
     double _dbl_val;
     char _ch;
-    boost::format fmt ("Failed to enter %s as vector. Reenter as [N](val1,val2,val3,...,valN)");
+    boost::format fmt ("Failed to enter %s as matrix. Reenter as ((val11,val12,val13,...,val1N),...,(valM1,valM2,...,valMN))");
+    MatrixXd _tmp_matrix;
     fmt %iss.str();
     if(iss>> _ch && _ch != '['){
       throw ExceptionSignal(ExceptionSignal::GENERIC, fmt.str());
@@ -101,7 +103,7 @@ namespace Eigen {
       if (iss.fail())
 	throw ExceptionSignal(ExceptionSignal::GENERIC,fmt.str());
       else {
-	inst.resize(_rowsize,_colsize);
+	_tmp_matrix.resize(_rowsize,_colsize);
 	if(iss >> _ch && _ch != ']')
 	  throw ExceptionSignal(ExceptionSignal::GENERIC, fmt.str());
 	else {
@@ -115,7 +117,7 @@ namespace Eigen {
 		iss >> _dbl_val;
 		if (iss.peek() == ',' || iss.peek() == ' ')
 		  iss.ignore();
-		inst(j,i) = _dbl_val;
+		_tmp_matrix(j,i) = _dbl_val;
 	      }
 	      if(iss >> _ch && _ch != ')')
 		throw ExceptionSignal(ExceptionSignal::GENERIC, fmt.str());
@@ -128,13 +130,14 @@ namespace Eigen {
 	}
       }
     }
+    inst = _tmp_matrix;
     return iss;
   }
 
   
   inline std::istringstream& operator >> (std::istringstream &iss, 
 					  Transform<double,3,Affine> &inst) {
-    Matrix4d M;    iss >> M;    inst = M;    return iss;  }
+    MatrixXd M;    iss >> M;    inst.matrix() = M;    return iss;  }
   
   
   
@@ -157,12 +160,12 @@ namespace Eigen {
   
   inline std::ostream& operator << (std::ostream &os, 
 				    AngleAxisd quat) {
-    Vector4d v;      v(0) = quat.angle();      v.tail<3>() = quat.axis();
+    VectorXd v(4);      v(0) = quat.angle();      v.tail<3>() = quat.axis();
     os << v;      return os;   }
   
   inline std::istringstream& operator >> (std::istringstream &iss, 
 					  AngleAxisd &inst) {
-    Vector4d v;    iss >>v;
+    VectorXd v(4);    iss >>v;
     inst.angle() = v(0);    inst.axis() = v.tail<3>();
     return iss;  }
   
