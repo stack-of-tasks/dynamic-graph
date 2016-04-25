@@ -1,7 +1,3 @@
-# Watch control file for uscan
-# Rename this file to "watch" and then you can run the "uscan" command
-# to check for upstream updates and more.
-# See uscan(1) for format
-
-#version=3
-#http://githubredir.debian.net/github/jrl-umi3218/dynamic-graph (.*).tar.gz
+version=3
+opts=filenamemangle=s/.+\/v?(\d\S*)\.tar\.gz/dynamic-graph-$1\.tar\.gz/ \
+  https://github.com/proyan/dynamic-graph/releases .*/v?(\d\S*)\.tar\.gz
