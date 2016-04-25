@@ -1,0 +1,29 @@
+This work was packaged for Debian by:
+
+    Rohan Budhiraja <budhiraja.rohan@gmail.com> on Fri, 22 Apr 2016 12:30:14 +0200
+
+Upstream Authors:
+
+    Thomas Moulard <thomas.moulard@gmail.com>
+    François Bleibel <fbleibel@gmail.com>
+    François Keith <francois.keith@aist.go.jp>
+    Nicolas Mansard <nicolas.mansard@laas.fr>
+    Olivier Stasse <olivier.stasse@aist.go.jp>
+
+Maintainer:
+
+    Rohan Budhiraja <budhiraja.rohan@gmail.com>
+
+Copyright:
+
+    Copyright (C) 2010 François Bleibel, Olivier Stasse, JRL, CNRS/AIST.
+
+License:
+
+    See `/usr/share/common-licenses/LGPL-3'.
+
+The Debian packaging is:
+
+    Copyright (C) 2016 Rohan Budhiraja <budhiraja.rohan@gmail.com>
+    and is licensed under the LGPL version 3,
+    see `/usr/share/common-licenses/LGPL-3'.
