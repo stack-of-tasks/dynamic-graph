@@ -1,29 +1,14 @@
-This work was packaged for Debian by:
+Format: http://dep.debian.net/deps/dep5/
+Upstream-Name: dynamic-graph
+Upstream-Contact: HPP mailing list <hpp@laas.fr>
+Source: https://github.com/proyan/dynamic-graph
 
-    Rohan Budhiraja <budhiraja.rohan@gmail.com> on Fri, 22 Apr 2016 12:30:14 +0200
+Files: *
+Copyright: 2010-2016 JRL, CNRS/AIST.
+License: LGPL-3
+  See `/usr/share/common-licenses/LGPL-3'.	 
 
-Upstream Authors:
-
-    Thomas Moulard <thomas.moulard@gmail.com>
-    François Bleibel <fbleibel@gmail.com>
-    François Keith <francois.keith@aist.go.jp>
-    Nicolas Mansard <nicolas.mansard@laas.fr>
-    Olivier Stasse <olivier.stasse@aist.go.jp>
-
-Maintainer:
-
-    Rohan Budhiraja <budhiraja.rohan@gmail.com>
-
-Copyright:
-
-    Copyright (C) 2010 François Bleibel, Olivier Stasse, JRL, CNRS/AIST.
-
-License:
-
-    See `/usr/share/common-licenses/LGPL-3'.
-
-The Debian packaging is:
-
-    Copyright (C) 2016 Rohan Budhiraja <budhiraja.rohan@gmail.com>
-    and is licensed under the LGPL version 3,
-    see `/usr/share/common-licenses/LGPL-3'.
+Files: debian/*
+Copyright: 2016 Rohan Budhiraja
+License: LGPL-3
+  See `/usr/share/common-licenses/LGPL-3'.

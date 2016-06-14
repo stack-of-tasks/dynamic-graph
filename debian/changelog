@@ -1,5 +1,5 @@
-dynamic-graph (3.0.0-1) unstable; urgency=low
+dynamic-graph (3.0.0-0ubuntu1ppa0~precise1) precise; urgency=low
 
-  * Initial release (Closes: #822608)
+  * Initial release
 
  -- Rohan Budhiraja <budhiraja.rohan@gmail.com>  Fri, 22 Apr 2016 12:30:14 +0200
