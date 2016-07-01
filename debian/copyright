@@ -1,4 +1,4 @@
-Format: http://dep.debian.net/deps/dep5/
+Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: dynamic-graph
 Upstream-Contact: HPP mailing list <hpp@laas.fr>
 Source: https://github.com/proyan/dynamic-graph
@@ -6,9 +6,10 @@ Source: https://github.com/proyan/dynamic-graph
 Files: *
 Copyright: 2010-2016 JRL, CNRS/AIST.
 License: LGPL-3
-  See `/usr/share/common-licenses/LGPL-3'.	 
 
 Files: debian/*
 Copyright: 2016 Rohan Budhiraja
+License: LGPL-3
+
 License: LGPL-3
   See `/usr/share/common-licenses/LGPL-3'.

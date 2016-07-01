@@ -256,7 +256,7 @@ recordSignal(  std::ostream& os,
       }
   }
   catch( ExceptionAbstract& exc ) { os << exc << std::endl; }
-  catch( ... ) { os << "Unknown error occured while reading signal." << std::endl; }
+  catch( ... ) { os << "Unknown error occurred while reading signal." << std::endl; }
 
    dgDEBUGOUT(15);
 

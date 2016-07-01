@@ -1,9 +1,8 @@
 Source: dynamic-graph
 Section: libs
 Priority: extra
-Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
-Uploaders: Rohan Budhiraja <budhiraja.rohan@gmail.com>
-Build-Depends: debhelper (>= 8.0.0),
+Maintainer: Rohan Budhiraja <budhiraja.rohan@gmail.com>
+Build-Depends: debhelper (>= 9.0.0),
 	       cmake (>= 2.6),
 	       doxygen (>=1.6.3),
 	       pkg-config (>=0.22),
@@ -16,7 +15,7 @@ Build-Depends: debhelper (>= 8.0.0),
       	       libboost-program-options-dev (>=1.46),
 	       libpthread-stubs0-dev (>=0.3),
 	       libeigen3-dev (>=3.0.5)
-Standards-Version: 3.9.7
+Standards-Version: 3.9.8
 Homepage: http://stack-of-tasks.github.io
 Vcs-Git: https://github.com/proyan/dynamic-graph.git
 
@@ -46,7 +45,6 @@ Package: libdynamic-graph-doc
 Section: doc
 Architecture: all
 Depends: ${misc:Depends}
-Suggests: libjrl-mathtools-doc
 Description: documentation for the dynamic graph C++ library
  The dynamic graph library allows the representation of data-flow in C++.
  It provides fast graph evaluation and a simple script language to manipulate
