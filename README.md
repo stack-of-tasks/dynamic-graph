@@ -58,7 +58,7 @@ have to be available on your machine.
 
  - Libraries:
    - [Boost][] (>= 1.40)
-     Its detection is controled by the `BOOST_ROOT` variable, see next section
+     Its detection is controlled by the `BOOST_ROOT` variable, see next section
      for more information.
    - [Lapack][] library
      Use the generic purpose `CMAKE_CXX_FLAGS` and `CMAKE_EXE_LINKER_FLAGS`

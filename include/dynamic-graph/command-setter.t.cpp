@@ -32,7 +32,7 @@ namespace dynamicgraph {
     template <class E>
     class Setter<E, bool> : public Command {
     public:
-      /// Pointer to method that sets paramter of type bool
+      /// Pointer to method that sets parameter of type bool
       typedef void (E::*SetterMethod) (const bool&);
       /// Constructor
       Setter(E& entity, SetterMethod setterMethod,
@@ -70,7 +70,7 @@ namespace dynamicgraph {
     template <class E>
     class Setter<E, unsigned> : public Command {
     public:
-      /// Pointer to method that sets paramter of type unsigned
+      /// Pointer to method that sets parameter of type unsigned
       typedef void (E::*SetterMethod) (const unsigned&);
       /// Constructor
       Setter(E& entity, SetterMethod setterMethod,
@@ -108,7 +108,7 @@ namespace dynamicgraph {
     template <class E>
     class Setter<E, int> : public Command {
     public:
-      /// Pointer to method that sets paramter of type int
+      /// Pointer to method that sets parameter of type int
       typedef void (E::*SetterMethod) (const int&);
       /// Constructor
       Setter(E& entity, SetterMethod setterMethod,
@@ -146,7 +146,7 @@ namespace dynamicgraph {
     template <class E>
     class Setter<E, float> : public Command {
     public:
-      /// Pointer to method that sets paramter of type float
+      /// Pointer to method that sets parameter of type float
       typedef void (E::*SetterMethod) (const float&);
       /// Constructor
       Setter(E& entity, SetterMethod setterMethod,
@@ -184,7 +184,7 @@ namespace dynamicgraph {
     template <class E>
     class Setter<E, double> : public Command {
     public:
-      /// Pointer to method that sets paramter of type double
+      /// Pointer to method that sets parameter of type double
       typedef void (E::*SetterMethod) (const double&);
       /// Constructor
       Setter(E& entity, SetterMethod setterMethod,
@@ -222,7 +222,7 @@ namespace dynamicgraph {
     template <class E>
     class Setter<E, std::string> : public Command {
     public:
-      /// Pointer to method that sets paramter of type std::string
+      /// Pointer to method that sets parameter of type std::string
       typedef void (E::*SetterMethod) (const std::string&);
       /// Constructor
       Setter(E& entity, SetterMethod setterMethod,
@@ -260,7 +260,7 @@ namespace dynamicgraph {
     template <class E>
     class Setter<E, Vector> : public Command {
     public:
-      /// Pointer to method that sets paramter of type Vector
+      /// Pointer to method that sets parameter of type Vector
       typedef void (E::*SetterMethod) (const Vector&);
       /// Constructor
       Setter(E& entity, SetterMethod setterMethod,
@@ -298,7 +298,7 @@ namespace dynamicgraph {
     template <class E>
     class Setter<E, Matrix> : public Command {
     public:
-      /// Pointer to method that sets paramter of type Matrix
+      /// Pointer to method that sets parameter of type Matrix
       typedef void (E::*SetterMethod) (const Matrix&);
       /// Constructor
       Setter(E& entity, SetterMethod setterMethod,

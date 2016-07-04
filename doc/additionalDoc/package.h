@@ -33,7 +33,7 @@ for a given problem. It is the basis for the stack of tasks operation.
 Functionality:
 \li Built-in scripting language* for fast prototyping and testing
 \li Support for extensions and modules using dynamic link libraries
-\li Template-based signal definition, independant
+\li Template-based signal definition, independent
 \li Type-safe connection of input and output signals
 \li On-demand signal computation as well as a caching system for signal values allow fast
 computation of signal values, which is a critical point for real-time systems\n
