@@ -85,7 +85,6 @@ FOREACH(plugin_file ${plugins_list})
   SET_TARGET_PROPERTIES(${plugin}
     PROPERTIES
     PREFIX ""
-    NO_SONAME true
     )
 
   INSTALL(TARGETS ${plugin} DESTINATION ${PLUGINDIR})
