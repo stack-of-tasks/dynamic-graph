@@ -13,8 +13,7 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with dynamic-graph.  If not, see <http://www.gnu.org/licenses/>.
 
-#include <boost/numeric/ublas/vector.hpp>
-#include <boost/numeric/ublas/io.hpp>
+#include <Eigen/Dense>
 
-typedef boost::numeric::ublas::vector<double> vec_type;
+typedef Eigen::VectorXd vec_type;
 extern vec_type vB;

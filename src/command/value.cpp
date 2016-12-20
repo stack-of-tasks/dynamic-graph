@@ -15,7 +15,6 @@
 // have received a copy of the GNU Lesser General Public License along
 // with dynamic-graph.  If not, see <http://www.gnu.org/licenses/>.
 
-#include <boost/numeric/ublas/io.hpp>
 #include "dynamic-graph/value.h"
 #include "dynamic-graph/exception-abstract.h"
 
