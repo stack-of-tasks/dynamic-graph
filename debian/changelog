@@ -1,0 +1,5 @@
+dynamic-graph (3.0.0-1) unstable; urgency=low
+
+  * Initial release (Closes: #822608)
+
+ -- Rohan Budhiraja <budhiraja.rohan@gmail.com>  Fri, 01 Jul 2016 12:30:14 +0200

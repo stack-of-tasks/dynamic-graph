@@ -28,6 +28,8 @@
 # include <boost/lexical_cast.hpp>
 # include <boost/tuple/tuple.hpp>
 
+#include <dynamic-graph/eigen-io.h>
+
 # include <dynamic-graph/dynamic-graph-api.h>
 # include "dynamic-graph/exception-signal.h"
 # include "dynamic-graph/signal-caster.h"
@@ -99,8 +101,8 @@ namespace dynamicgraph
     class SignalCast
     {
     public:
-      static T cast( std::istringstream& stringValue ) { throw 1;}
-      static void disp( const T& t,std::ostream& os )  { throw 1;  }
+      static T cast( std::istringstream& ) { throw 1;}
+      static void disp( const T&,std::ostream&)  { throw 1;  }
       static void trace( const T& t,std::ostream& os ) { disp(t,os); }
     public:
       // adapter functions for SignalCast

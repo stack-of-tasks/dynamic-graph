@@ -24,7 +24,6 @@
 #include <sstream>
 #include <algorithm>
 #include <dynamic-graph/exception-signal.h>
-
 #include <dynamic-graph/linear-algebra.h>
 
 namespace dynamicgraph
@@ -41,6 +40,7 @@ namespace dynamicgraph
   // To workaround this problem, parse special values manually
   // (the strings used are the one produces by displaying special
   // values on a stream).
+
   template <>
   inline boost::any
   DefaultCastRegisterer<double>::cast (std::istringstream& iss)
@@ -68,13 +68,14 @@ namespace dynamicgraph
     }
 
   /* Specialize Matrix and Vector traces. */
+
   template <>
   void
   DefaultCastRegisterer<dynamicgraph::Vector>::
   trace(const boost::any& object, std::ostream& os)
   {
     const dynamicgraph::Vector & v = boost::any_cast<dynamicgraph::Vector> (object);
-    for( unsigned int i=0;i<v.size();++i )
+    for( int i=0;i<v.size();++i )
       { os << "\t" << v(i); }
   }
   template <>
@@ -83,11 +84,10 @@ namespace dynamicgraph
   trace(const boost::any& object, std::ostream& os)
   {
     const dynamicgraph::Matrix & m = boost::any_cast<dynamicgraph::Matrix> (object);
-    for( unsigned int i=0;i<m.nbRows();++i )
-      for( unsigned int j=0;j<m.nbCols();++j )
+    for(int i=0;i<m.rows();++i )
+      for(int j=0;j<m.cols();++j )
 	{ os << "\t" << m(i,j); }
   }
-
 
 
   /// Registers useful casts

@@ -23,7 +23,7 @@
 #include <cassert>
 #include <typeinfo>
 #include "dynamic-graph/dynamic-graph-api.h"
-#include "dynamic-graph/linear-algebra.h"
+#include <dynamic-graph/linear-algebra.h>
 
 namespace dynamicgraph {
   namespace command {
@@ -39,7 +39,8 @@ namespace dynamicgraph {
       operator double () const;
       operator std::string () const;
       operator Vector () const;
-      operator Matrix () const;
+      operator Eigen::MatrixXd () const;
+      operator Eigen::Matrix4d () const;
     private:
       const Value* value_;
     };
@@ -56,6 +57,7 @@ namespace dynamicgraph {
 	STRING,
 	VECTOR,
 	MATRIX,
+	MATRIX4D,
 	NB_TYPES
       };
       ~Value();
@@ -67,7 +69,8 @@ namespace dynamicgraph {
       explicit Value(const double& value);
       explicit Value(const std::string& value);
       explicit Value(const Vector& value);
-      explicit Value(const Matrix& value);
+      explicit Value(const Eigen::MatrixXd& value);
+      explicit Value(const Eigen::Matrix4d& value);
       /// Copy constructor
       Value(const Value& value);
       // Construct an empty value (None)
@@ -103,7 +106,8 @@ namespace dynamicgraph {
       double doubleValue() const;
       std::string stringValue() const;
       Vector vectorValue() const;
-      Matrix matrixValue() const;
+      Eigen::MatrixXd matrixXdValue() const;
+      Eigen::Matrix4d matrix4dValue() const;
       Type type_;
       const void* const value_;
     };

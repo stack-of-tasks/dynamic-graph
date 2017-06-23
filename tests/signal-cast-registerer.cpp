@@ -17,13 +17,15 @@
 
 #include <boost/foreach.hpp>
 #include <boost/format.hpp>
-#include <boost/numeric/ublas/vector.hpp>
-#include <boost/numeric/ublas/io.hpp>
+
+#include <Eigen/Dense>
 
 #include <dynamic-graph/debug.h>
 #include <dynamic-graph/entity.h>
 #include <dynamic-graph/factory.h>
 #include <dynamic-graph/pool.h>
+#include <dynamic-graph/eigen-io.h>
+#include <dynamic-graph/linear-algebra.h>
 #include <dynamic-graph/signal-caster.h>
 #include <dynamic-graph/signal.h>
 #include <dynamic-graph/signal-cast-helper.h>
@@ -39,14 +41,14 @@
 using boost::test_tools::output_test_stream;
 
 
-typedef boost::numeric::ublas::vector<double> Vector;
+typedef Eigen::VectorXd Vector;
 
 
-struct BoostNumericsCastRegisterer : public dynamicgraph::SignalCastRegisterer
+struct EigenCastRegisterer : public dynamicgraph::SignalCastRegisterer
 {
-  typedef boost::numeric::ublas::vector<double> bnuVector;
+  typedef Vector bnuVector;
 
-  BoostNumericsCastRegisterer () :
+  EigenCastRegisterer () :
     SignalCastRegisterer
     (typeid(bnuVector), dispVector, castVector, traceVector)
   {}
@@ -62,7 +64,7 @@ struct BoostNumericsCastRegisterer : public dynamicgraph::SignalCastRegisterer
   {
     const bnuVector& v = boost::any_cast<bnuVector> (object);
     os << "[ ";
-    for (unsigned int i = 0; i < v.size (); ++i)
+    for (int i = 0; i < v.size (); ++i)
       os << v(i) << " ";
     os << " ];" << std::endl;
   }
@@ -70,13 +72,13 @@ struct BoostNumericsCastRegisterer : public dynamicgraph::SignalCastRegisterer
   static void traceVector (const boost::any& object, std::ostream& os)
   {
     const bnuVector& v = boost::any_cast<bnuVector> (object);
-    for (unsigned int i = 0; i < v.size (); ++i)
+    for (int i = 0; i < v.size (); ++i)
       os << v(i) << " ";
     os << std::endl;
   }
 };
 
-BoostNumericsCastRegisterer myVectorCast;
+EigenCastRegisterer myVectorCast;
 
 // Define a new cast with a type that supports streaming operators to
 // and from it (this could be automated with macros).
@@ -132,9 +134,8 @@ BOOST_AUTO_TEST_CASE (standard_double_registerer)
 // Check a custom cast registerer for Boost uBLAS vectors.
 BOOST_AUTO_TEST_CASE (custom_vector_registerer)
 {
-  namespace ublas = boost::numeric::ublas;
 
-  dynamicgraph::Signal<Vector, int> myVectorSignal("vector");
+  dynamicgraph::Signal<dynamicgraph::Vector, int> myVectorSignal("vector");
 
   // Print the signal name.
   {
@@ -145,10 +146,10 @@ BOOST_AUTO_TEST_CASE (custom_vector_registerer)
 
   for (unsigned int i = 0; i < 5; ++i)
     {
-      ublas::unit_vector<double> v (5, i);
+      Vector  v = Vector::Unit(5,i) ;
       std::ostringstream os;
       os << v;
-      std::istringstream ss (os.str ());
+      std::istringstream ss ("[5]("+os.str ()+")");
 
       // Set signal value.
       myVectorSignal.set (ss);

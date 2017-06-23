@@ -17,6 +17,7 @@ CMAKE_MINIMUM_REQUIRED(VERSION 2.6)
 
 INCLUDE(cmake/base.cmake)
 INCLUDE(cmake/boost.cmake)
+INCLUDE(cmake/eigen.cmake)
 INCLUDE(cmake/pthread.cmake)
 INCLUDE(cmake/cpack.cmake)
 
@@ -30,9 +31,6 @@ SET(CUSTOM_HEADER_DIR "${PROJECT_NAME}")
 SET(LIBRARY_OUTPUT_PATH ${PROJECT_BINARY_DIR}/lib)
 
 SETUP_PROJECT()
-
-# Trigger dependency to jrl-mal
-ADD_REQUIRED_DEPENDENCY("jrl-mal >= 1.8.0")
 
 # Add configuration headers for plug-ins.
 GENERATE_CONFIGURATION_HEADER(
@@ -61,6 +59,9 @@ PKG_CONFIG_APPEND_LIBS("dynamic-graph")
 # Search for Boost.
 SEARCH_FOR_BOOST()
 SEARCH_FOR_PTHREAD()
+
+# Search for Boost.
+SEARCH_FOR_EIGEN()
 
 ADD_SUBDIRECTORY(src)
 ADD_SUBDIRECTORY(include)

@@ -15,7 +15,6 @@
 // have received a copy of the GNU Lesser General Public License along
 // with dynamic-graph.  If not, see <http://www.gnu.org/licenses/>.
 
-#include <boost/numeric/ublas/io.hpp>
 #include "dynamic-graph/value.h"
 #include "dynamic-graph/exception-abstract.h"
 
@@ -62,9 +61,14 @@ namespace dynamicgraph {
     {
       return value_->vectorValue();
     }
-    EitherType::operator Matrix() const
+    EitherType::operator Eigen::MatrixXd() const
     {
-      return value_->matrixValue();
+      return value_->matrixXdValue();
+    }
+
+    EitherType::operator Eigen::Matrix4d() const
+    {
+      return value_->matrix4dValue();
     }
 
     void Value::deleteValue ()
@@ -92,7 +96,10 @@ namespace dynamicgraph {
 	delete(const Vector*)value_;
 	break;
       case MATRIX:
-	delete(const Matrix*)value_;
+	delete(const Eigen::MatrixXd*)value_;
+	break;
+      case MATRIX4D:
+	delete(const Eigen::Matrix4d*)value_;
 	break;
       default:;
       }
@@ -130,8 +137,12 @@ namespace dynamicgraph {
 					value_(new Vector(value))
     {
     }
-    Value::Value(const Matrix& value) : type_(MATRIX),
-					value_(new Matrix(value))
+    Value::Value(const Eigen::MatrixXd& value) : type_(MATRIX),
+						 value_(new Eigen::MatrixXd(value))
+    {
+    }
+    Value::Value(const Eigen::Matrix4d& value) : type_(MATRIX4D),
+						 value_(new Eigen::Matrix4d(value))
     {
     }
 
@@ -169,7 +180,10 @@ namespace dynamicgraph {
 	copy = new Vector(value.vectorValue());
 	break;
       case Value::MATRIX:
-	copy = new Matrix(value.matrixValue());
+	copy = new Eigen::MatrixXd(value.matrixXdValue());
+	break;
+      case Value::MATRIX4D:
+	copy = new Eigen::Matrix4d(value.matrix4dValue());
 	break;
       default:
 	abort();
@@ -263,12 +277,20 @@ namespace dynamicgraph {
 			      "value is not an vector");
     }
 
-    Matrix Value::matrixValue() const
+    Eigen::MatrixXd Value::matrixXdValue() const
     {
       if(type_ == MATRIX)
-	return *((const Matrix*)value_);
+	return *((const Eigen::MatrixXd*)value_);
       throw ExceptionAbstract(ExceptionAbstract::TOOLS,
-			      "value is not a matrix");
+			      "value is not a Eigen matrixXd");
+    }
+
+    Eigen::Matrix4d Value::matrix4dValue() const
+    {
+      if(type_ == MATRIX4D)
+	return *((const Eigen::Matrix4d*)value_);
+      throw ExceptionAbstract(ExceptionAbstract::TOOLS,
+			      "value is not a Eigen matrix4d");
     }
 
     std::string Value::typeName(Type type)
@@ -289,7 +311,9 @@ namespace dynamicgraph {
       case VECTOR:
 	return std::string("vector");
       case MATRIX:
-	return std::string("matrix");
+	return std::string("matrixXd");
+      case MATRIX4D:
+	return std::string("matrix4d");
       default:
 	return std::string("unknown");
       }
@@ -322,7 +346,10 @@ namespace dynamicgraph {
 	os << value.vectorValue();
 	break;
       case Value::MATRIX:
-	os << value.matrixValue();
+	os << value.matrixXdValue();
+	break;
+      case Value::MATRIX4D:
+	os << value.matrix4dValue();
 	break;
       default:
 	return os;
@@ -337,7 +364,8 @@ namespace dynamicgraph {
     template<> const Value::Type ValueHelper<double>::TypeID = Value::DOUBLE;
     template<> const Value::Type ValueHelper<std::string>::TypeID = Value::STRING;
     template<> const Value::Type ValueHelper<Vector>::TypeID = Value::VECTOR;
-    template<> const Value::Type ValueHelper<Matrix>::TypeID = Value::MATRIX;
+    template<> const Value::Type ValueHelper<Eigen::MatrixXd>::TypeID = Value::MATRIX;
+    template<> const Value::Type ValueHelper<Eigen::Matrix4d>::TypeID = Value::MATRIX4D;
 
   } // namespace command
 } //namespace dynamicgraph

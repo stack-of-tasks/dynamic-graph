@@ -55,7 +55,7 @@ namespace dynamicgraph {
     template <class E, typename T>
     class Getter : public Command {
     public:
-      /// Pointer to method that sets paramter of type T
+      /// Pointer to method that sets parameter of type T
       typedef T (E::*GetterMethod) () const;
       /// Constructor
       Getter(E& entity, GetterMethod getterMethod,
