@@ -1,5 +1,5 @@
 var a00070 =
 [
-    [ "DG_RETHROW", "a00070.html#ac5467892d97a2490cdd20cf61b25628c", null ],
-    [ "DG_THROW", "a00070.html#af37158a4ed07567f1673457ea2656a34", null ]
+    [ "DYNAMIC_GRAPH_ENTITY_DECL", "a00070.html#af84e1a9b6d3904391bbca1978d8ae21f", null ],
+    [ "operator<<", "a00070.html#af2d8bc7b4d13ca9b024d1998283eb113", null ]
 ];

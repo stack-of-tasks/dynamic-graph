@@ -3,7 +3,11 @@ var a00050 =
     [ "FileList", "a00050.html#a170906cf00dc42ccbb126e3b22609944", null ],
     [ "NameList", "a00050.html#ad6a5abf7d51ade33a9de8f933e73c7a1", null ],
     [ "SignalList", "a00050.html#afac64dae56fce1fb431a733ffa79ae23", null ],
-    [ "TraceStyle", "a00050.html#a37c51af38aff797e4460d16db35c25b8", null ],
+    [ "TraceStyle", "a00050.html#a37c51af38aff797e4460d16db35c25b8", [
+      [ "WHEN_SAID", "a00050.html#a37c51af38aff797e4460d16db35c25b8a3df8adfc48aec75c6529305e110a4989", null ],
+      [ "EACH_TIME", "a00050.html#a37c51af38aff797e4460d16db35c25b8a1b15644dfae7bd910c82ed6c2a0a47aa", null ],
+      [ "FREQUENTLY", "a00050.html#a37c51af38aff797e4460d16db35c25b8a6aa0086dff071bf0d699e10ac7deb8be", null ]
+    ] ],
     [ "Tracer", "a00050.html#a5d88c2e17cb0fb3eeba9b057a128cac4", null ],
     [ "~Tracer", "a00050.html#a8ce285142d28d891b542d0caaf78c902", null ],
     [ "addSignalToTrace", "a00050.html#af898e36f072c92df1ae678c44d2d6db9", null ],

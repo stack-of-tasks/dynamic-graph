@@ -1,20 +1,15 @@
 var a00013 =
 [
-    [ "DebugTrace", "a00013.html#a285fc61f0f4c6c337b54703a01174fe0", null ],
-    [ "closeFile", "a00013.html#ad0401ad17d850b70aeb7ecc9b34ade19", null ],
-    [ "openFile", "a00013.html#a94660127de69a83d1d68eeea8552198c", null ],
-    [ "pre", "a00013.html#af4111545a1bbb5d5c764506dcd1fc27d", null ],
-    [ "pre", "a00013.html#a7464ed4392fc02b201d534c9dafcdd87", null ],
-    [ "trace", "a00013.html#aa36fb9d2dbecb40dc734142b148737f3", null ],
-    [ "trace", "a00013.html#ac0695004372ed7c6c3df85d5b38636d3", null ],
-    [ "trace", "a00013.html#ab11e080e2b93a45f0ed0ec97ffea43a9", null ],
-    [ "traceTemplate", "a00013.html#a2ca1aff52f81391a3feb34622265126a", null ],
-    [ "traceTemplate", "a00013.html#a2e1c4a66d6147a7f4d1fa3c948829d2a", null ],
-    [ "charbuffer", "a00013.html#a7c3848f8b078ccbf84819de35110c3f6", null ],
-    [ "DEBUG_FILENAME_DEFAULT", "a00013.html#a1b5ec41ce046c2ec097b6e0aa22c8382", null ],
-    [ "outputbuffer", "a00013.html#aa3348996cef8d5dd6f55bc205ab83e54", null ],
-    [ "SIZE", "a00013.html#a85d10b3fd2f0dd2167034ae20db4acb6", null ],
-    [ "tmpbuffer", "a00013.html#ace984952aec058a028737735988450c7", null ],
-    [ "traceLevel", "a00013.html#a5b6f222904c43c5ae3e8646e161bb272", null ],
-    [ "traceLevelTemplate", "a00013.html#a5948172c86440fa6468a144e2c1d6d82", null ]
+    [ "Contiifstream", "a00013.html#ad92e218d32fe5c76b2fee5cb61382aa0", null ],
+    [ "~Contiifstream", "a00013.html#ae56da129adff4173d12de26cd818fb54", null ],
+    [ "loop", "a00013.html#a3b4997f929951f5a00ae9b80863b7ba4", null ],
+    [ "next", "a00013.html#a74d71772ac0b024ca394fe959d226389", null ],
+    [ "open", "a00013.html#a367c481009cb300124a4da49ad01c001", null ],
+    [ "ready", "a00013.html#a8e41c4ff53831268a2e567fc19f4e4f2", null ],
+    [ "buffer", "a00013.html#a2dd17f3fb0c516efb66380bea3da75df", null ],
+    [ "BUFFER_SIZE", "a00013.html#ab8dd85b35bbc0ecac626b531a54d35dc", null ],
+    [ "cursor", "a00013.html#adc97e7538e3b3a9afcdfbac084b803d4", null ],
+    [ "filename", "a00013.html#afedd7a447c06712d7b2dcf773ca9141d", null ],
+    [ "first", "a00013.html#a7151e2e117f27701209eecf9cb5ff1ed", null ],
+    [ "reader", "a00013.html#a774899380de2c809652baad99ff0b9e1", null ]
 ];

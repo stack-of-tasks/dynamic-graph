@@ -1,4 +1,5 @@
 var a00077 =
 [
-    [ "nullptr", "a00098.html#abd574d1493af8a227790f9b2ed585581", null ]
+    [ "Matrix", "a00077.html#a7f8adb74327f6ad75d584cb885757908", null ],
+    [ "Vector", "a00077.html#aa80b557e83a1386adf67f925062124f8", null ]
 ];

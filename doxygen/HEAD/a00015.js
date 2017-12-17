@@ -1,6 +1,7 @@
 var a00015 =
 [
-    [ "GetterMethod", "a00015.html#ab7e98e6e84cbadd80338d3e4dab57fbd", null ],
-    [ "DirectGetter", "a00015.html#a80b77de8e64b10f726f2b8ec02ef1dec", null ],
-    [ "doExecute", "a00015.html#a4b8d80811e177a9f726aa12b313ba102", null ]
+    [ "DefaultCastRegisterer", "a00015.html#a039feb06609776a491bbf85d78ec24f0", null ],
+    [ "cast", "a00015.html#a46d48248277ae147fd057040305b6cea", null ],
+    [ "disp", "a00015.html#ac57805b60eeaea2f52c4f9bbce3b185b", null ],
+    [ "trace", "a00015.html#ac32a8d18f0b75db7f713d50f9c23a48d", null ]
 ];

@@ -1,0 +1,6 @@
+<map id="dynamicgraph::ExceptionAbstract" name="dynamicgraph::ExceptionAbstract">
+<area shape="rect" id="node3" href="$a00023.html" title="Generic error class. " alt="" coords="424,5,637,32"/>
+<area shape="rect" id="node4" href="$a00024.html" title="Exceptions raised when an error related to signals happen. " alt="" coords="428,56,633,83"/>
+<area shape="rect" id="node5" href="$a00025.html" title="Exceptions raised when an error related to traces happen. " alt="" coords="426,107,635,133"/>
+<area shape="rect" id="node2" title="STL class. " alt="" coords="5,56,109,83"/>
+</map>

@@ -1,5 +1,5 @@
 var namespaces =
 [
-    [ "dynamicgraph", "a00098.html", "a00098" ],
-    [ "dynamicgraph::command", "a00099.html", "a00099" ]
+    [ "dynamicgraph", "a00099.html", "a00099" ],
+    [ "Eigen", "a00101.html", null ]
 ];

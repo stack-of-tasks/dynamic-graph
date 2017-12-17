@@ -1,7 +1,11 @@
 var a00049 =
 [
     [ "Dependencies", "a00049.html#a36860445864f3e1d3255dfd8a26475bc", null ],
-    [ "DependencyType", "a00049.html#a59b0dc61a19572304de2efd1c5dc81ce", null ],
+    [ "DependencyType", "a00049.html#a59b0dc61a19572304de2efd1c5dc81ce", [
+      [ "TIME_DEPENDENT", "a00049.html#a59b0dc61a19572304de2efd1c5dc81cea9930f326751f6c36d037ee64d09a840e", null ],
+      [ "BOOL_DEPENDENT", "a00049.html#a59b0dc61a19572304de2efd1c5dc81cea5924c4f2de4d5c05d90bf01a39d7310f", null ],
+      [ "ALWAYS_READY", "a00049.html#a59b0dc61a19572304de2efd1c5dc81cea603ebe54dcdfc2340d4fba0384e95133", null ]
+    ] ],
     [ "TimeDependency", "a00049.html#a3640000a90d8bc097a9467eac6a727c2", null ],
     [ "TimeDependency", "a00049.html#a5095b4831f8be6495f6bb1353345519b", null ],
     [ "~TimeDependency", "a00049.html#a7e5fd36ca7cacca0acd1339dd648514f", null ],

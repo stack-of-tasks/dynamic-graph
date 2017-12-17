@@ -2,7 +2,12 @@ var a00040 =
 [
     [ "Mutex", "a00040.html#a20378c06ed76b81c26f631002baa9380", null ],
     [ "MutexError", "a00040.html#acebd4a037334167f910ce9fdce2bdcdf", null ],
-    [ "SignalType", "a00040.html#a57b8e35c45307a40b6dc3c48cc334155", null ],
+    [ "SignalType", "a00040.html#a57b8e35c45307a40b6dc3c48cc334155", [
+      [ "CONSTANT", "a00040.html#a57b8e35c45307a40b6dc3c48cc334155aee2d1fa88618982d476c6f7bce0a5450", null ],
+      [ "REFERENCE", "a00040.html#a57b8e35c45307a40b6dc3c48cc334155a82183cba9bb80e23eec7f38c5f0c0a6a", null ],
+      [ "REFERENCE_NON_CONST", "a00040.html#a57b8e35c45307a40b6dc3c48cc334155afc314176df62034542117d23795f8394", null ],
+      [ "FUNCTION", "a00040.html#a57b8e35c45307a40b6dc3c48cc334155aa34353e1d87165ae87780a81954e68cd", null ]
+    ] ],
     [ "Signal", "a00040.html#a629a88006a73c05534c300bb7b950820", null ],
     [ "~Signal", "a00040.html#aed343abfadb95db8cbe0cee74cbe8002", null ],
     [ "access", "a00040.html#ab21414cd83d45d42b1d1f299fdbdc2cf", null ],

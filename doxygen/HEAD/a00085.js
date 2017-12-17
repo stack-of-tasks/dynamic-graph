@@ -1,10 +1,8 @@
 var a00085 =
 [
-    [ "CONSTRUCT_SIGNAL", "a00085.html#a530130f57b01d37a0b004b681cbeed9b", null ],
-    [ "CONSTRUCT_SIGNAL_IN", "a00085.html#a3a44c6d3b02e40385bae8bb2b3edccf8", null ],
-    [ "CONSTRUCT_SIGNAL_OUT", "a00085.html#a134a70cbd10876e8ff9499ae033d2223", null ],
-    [ "DECLARE_SIGNAL", "a00085.html#a292bb20eab563bf9ec91f6e0bbb7f1a7", null ],
-    [ "DECLARE_SIGNAL_IN", "a00085.html#a6f02a31ff29dcc554b84da1d98795286", null ],
-    [ "DECLARE_SIGNAL_OUT", "a00085.html#ac94cf08ee29e23a4838562e0b640f72a", null ],
-    [ "SIGNAL_OUT_FUNCTION", "a00085.html#a429ddd852b73f3bbb48ef932f3a0f862", null ]
+    [ "SignalCaster", "a00045.html", "a00045" ],
+    [ "SignalCastRegisterer", "a00046.html", "a00046" ],
+    [ "signal_cast", "a00085.html#a12ac1418f268160f1a4ad02fbaaad7ca", null ],
+    [ "signal_disp", "a00085.html#a385c0611ea655151b52a7515d4f836f9", null ],
+    [ "signal_trace", "a00085.html#a0d6929067c8e55a045ad573a7ea5ca57", null ]
 ];
