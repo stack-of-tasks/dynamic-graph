@@ -200,6 +200,8 @@ library, where you can execute scripts and commands, load plugins, create entiti
 Here is a typical use case for programmers:
 \image html figures/use-case.png
 
+\subsection Tutorial
+A tutorial is available <a href="http://stack-of-tasks.github.io/dynamic-graph-tutorial/">here</a>
 \section references References
 \anchor Mansard2009
 
