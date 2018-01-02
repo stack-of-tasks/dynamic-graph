@@ -1,5 +1,5 @@
 /**
-
+\ingroup gshellfunctions
 \page dgshell_doc dg-shell executable
 The dynamic-graph shell program "dg-shell" allows access to the dynamic-graph library's
 Interpreter class, which can execute commands and scripts from the command line.

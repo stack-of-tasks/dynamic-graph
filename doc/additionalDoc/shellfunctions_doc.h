@@ -1,4 +1,5 @@
 /**
+\ingroup gshellfunctions
 \page shellfunctions_doc ShellFunctions
 \note Note: this documentation covers specific aspects of the in-house
 scripting language currently used by the dynamic-graph script. Unless
