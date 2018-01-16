@@ -1,3 +1,6 @@
 <map id="command&#45;direct&#45;setter.h" name="command&#45;direct&#45;setter.h">
-<area shape="rect" id="node2" href="$a00054.html" title="all&#45;commands.h" alt="" coords="29,80,144,107"/>
+<area shape="rect" id="node2" href="$a00064.html" title="dynamic&#45;graph/command.h" alt="" coords="213,80,391,107"/>
+<area shape="rect" id="node4" href="$a00099.html" title="dynamic&#45;graph/value.h" alt="" coords="225,155,379,181"/>
+<area shape="rect" id="node9" href="$a00068.html" title="dynamic&#45;graph/dynamic\l&#45;graph&#45;api.h" alt="" coords="530,229,690,271"/>
+<area shape="rect" id="node11" href="$a00078.html" title="dynamic&#45;graph/linear\l&#45;algebra.h" alt="" coords="363,229,505,271"/>
 </map>

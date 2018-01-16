@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<title>signal.h File Reference</title>
+<title>signal-time-dependent.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css">
 <link href="doxygen.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="jquery.js"></script>
@@ -91,37 +91,32 @@ $(document).ready(function(){initNavTree('a00090.html','');});
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#namespaces">Namespaces</a>  </div>
   <div class="headertitle">
-<div class="title">signal.h File Reference</div>  </div>
+<div class="title">signal-time-dependent.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;boost/bind.hpp&gt;</code><br />
-<code>#include &lt;boost/function.hpp&gt;</code><br />
-<code>#include &lt;string&gt;</code><br />
-<code>#include &lt;iostream&gt;</code><br />
-<code>#include &lt;<a class="el" href="a00073.html">dynamic-graph/exception-signal.h</a>&gt;</code><br />
-<code>#include &lt;<a class="el" href="a00083.html">dynamic-graph/signal-base.h</a>&gt;</code><br />
-<code>#include &lt;<a class="el" href="a00091.html">dynamic-graph/signal.t.cpp</a>&gt;</code><br />
+<div class="textblock"><code>#include &lt;<a class="el" href="a00091.html">dynamic-graph/signal.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="a00093.html">dynamic-graph/time-dependency.h</a>&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
-Include dependency graph for signal.h:</div>
+Include dependency graph for signal-time-dependent.h:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="a00160.svg" width="2358" height="544"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="a00159.svg" width="2615" height="648"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="a00161.svg" width="544" height="262"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="a00160.svg" width="350" height="187"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00040.html">dynamicgraph::Signal&lt; T, Time &gt;</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Signals link I/O ports of entities. They can be constant-valued signals, or copy the value of a heap variable, or evaluated as a function. See <a class="el" href="a00047.html" title="This is the only type of signal that can be plugged to, using the plug () command. ">SignalPtr</a> and <a class="el" href="a00048.html" title="A type of signal that enforces a time dependency between other signals, making sure its inputs are up...">SignalTimeDependent</a> for other types of signals, and <a class="el" href="a00041.html" title="TODO. ">SignalArray</a> for a way of grouping them.  <a href="a00040.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00049.html">dynamicgraph::SignalTimeDependent&lt; T, Time &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A type of signal that enforces a time dependency between other signals, making sure its inputs are up to date on access, using a incrementing time tick as reference. It works this way: for a given <a class="el" href="a00049.html" title="A type of signal that enforces a time dependency between other signals, making sure its inputs are up...">SignalTimeDependent</a> S, the user manually adds dependent signals through the use of the addDependency function. On access (calling the signal S operator () or access(Time) function), if the dependent signals are not up-to-date, i.e. if their [last update] time is less than the current time, their value will be access ()'ed to bring them up-to-date. Thus, the value of dependent signals can be accessed <b>quickly</b> and <b>repeatedly</b> through the accessCopy () function.  <a href="a00049.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
 Namespaces</h2></td></tr>
-<tr class="memitem:a00099"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00099.html">dynamicgraph</a></td></tr>
-<tr class="memdesc:a00099"><td class="mdescLeft">&#160;</td><td class="mdescRight">WIN32. <br /></td></tr>
+<tr class="memitem:a00100"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00100.html">dynamicgraph</a></td></tr>
+<tr class="memdesc:a00100"><td class="mdescLeft">&#160;</td><td class="mdescRight">WIN32. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
@@ -130,8 +125,8 @@ Namespaces</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_a7fe445ff4848f3dbb9303db33c761fe.html">dynamic-graph</a></li><li class="navelem"><a class="el" href="a00090.html">signal.h</a></li>
-    <li class="footer">Generated on Mon Dec 18 2017 00:07:45 for dynamic-graph by
+    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_a7fe445ff4848f3dbb9303db33c761fe.html">dynamic-graph</a></li><li class="navelem"><a class="el" href="a00090.html">signal-time-dependent.h</a></li>
+    <li class="footer">Generated on Tue Jan 16 2018 12:19:09 for dynamic-graph by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.11 </li>
   </ul>

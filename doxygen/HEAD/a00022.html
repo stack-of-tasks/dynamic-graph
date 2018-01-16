@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<title>dynamicgraph::ExceptionAbstract Class Reference</title>
+<title>dynamicgraph::EntityRegisterer Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css">
 <link href="doxygen.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="jquery.js"></script>
@@ -90,129 +90,42 @@ $(document).ready(function(){initNavTree('a00022.html','');});
 
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a> &#124;
-<a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pub-static-attribs">Static Public Attributes</a> &#124;
-<a href="#pro-attribs">Protected Attributes</a> &#124;
-<a href="#friends">Friends</a> &#124;
-<a href="a00197.html">List of all members</a>  </div>
+<a href="a00195.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">dynamicgraph::ExceptionAbstract Class Reference</div>  </div>
+<div class="title">dynamicgraph::EntityRegisterer Class Reference<div class="ingroups"><a class="el" href="a00104.html">Core classes and objects</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>Abstract root class for all dynamic-graph exceptions.  
+<p>This class automatically register an <a class="el" href="a00020.html" title="This class represents an entity, i.e. ">Entity</a> to the global factory at initialization and unregister it during instance destruction.  
  <a href="a00022.html#details">More...</a></p>
 
-<p><code>#include &lt;dynamic-graph/exception-abstract.h&gt;</code></p>
+<p><code>#include &lt;dynamic-graph/factory.h&gt;</code></p>
 <div class="dynheader">
-Inheritance diagram for dynamicgraph::ExceptionAbstract:</div>
+Inheritance diagram for dynamicgraph::EntityRegisterer:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="a00199.svg" width="643" height="139"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="a00196.svg" width="216" height="112"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <div class="dynheader">
-Collaboration diagram for dynamicgraph::ExceptionAbstract:</div>
+Collaboration diagram for dynamicgraph::EntityRegisterer:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="a00200.svg" width="296" height="232"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="a00197.svg" width="216" height="112"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
-Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00029.html">Param</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class owned by exceptions to store error locations.  <a href="a00029.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
-Public Types</h2></td></tr>
-<tr class="memitem:a19678de05600e82a1eaa2e70c0ad6fe0"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00022.html#a19678de05600e82a1eaa2e70c0ad6fe0">ExceptionEnum</a> { <br />
-&#160;&#160;<a class="el" href="a00022.html#a19678de05600e82a1eaa2e70c0ad6fe0a33c94c6723036643d4b47c7bae1da350">ABSTRACT</a> = 0, 
-<br />
-&#160;&#160;<a class="el" href="a00022.html#a19678de05600e82a1eaa2e70c0ad6fe0a252baa19235309f051576f0d0e508098">SIGNAL</a> = 100, 
-<br />
-&#160;&#160;<a class="el" href="a00022.html#a19678de05600e82a1eaa2e70c0ad6fe0af74e7993a80a233e4d9ba3017ea63a4c">FACTORY</a> = 200, 
-<br />
-&#160;&#160;<a class="el" href="a00022.html#a19678de05600e82a1eaa2e70c0ad6fe0af27cffde588c14a95c26fc79314ec08c">TRACES</a> = 300, 
-<br />
-&#160;&#160;<a class="el" href="a00022.html#a19678de05600e82a1eaa2e70c0ad6fe0abd2d0743b46c0c3d922f957f65e31689">TOOLS</a> = 700
-<br />
- }<tr class="memdesc:a19678de05600e82a1eaa2e70c0ad6fe0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Categories error code.  <a href="a00022.html#a19678de05600e82a1eaa2e70c0ad6fe0">More...</a><br /></td></tr>
-</td></tr>
-<tr class="separator:a19678de05600e82a1eaa2e70c0ad6fe0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aa6e9245e2906c2de912ea4da438a15b0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00022.html#aa6e9245e2906c2de912ea4da438a15b0">ExceptionAbstract</a> (const int &amp;<a class="el" href="a00022.html#a7efe8b06765fc75ec92f32d0e73082a0">code</a>, const std::string &amp;msg=&quot;&quot;)</td></tr>
-<tr class="separator:aa6e9245e2906c2de912ea4da438a15b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7eed4f7a295dced25eec9e9407b00e67"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00022.html#a7eed4f7a295dced25eec9e9407b00e67">~ExceptionAbstract</a> ()  throw ()</td></tr>
-<tr class="separator:a7eed4f7a295dced25eec9e9407b00e67"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adf17921faed0da13d70a575f50c7180c"><td class="memItemLeft" align="right" valign="top">virtual const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00022.html#adf17921faed0da13d70a575f50c7180c">getExceptionName</a> () const </td></tr>
-<tr class="separator:adf17921faed0da13d70a575f50c7180c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0cc962ffce33ab54d946f97f05643249"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00022.html#a0cc962ffce33ab54d946f97f05643249">getCode</a> () const </td></tr>
-<tr class="memdesc:a0cc962ffce33ab54d946f97f05643249"><td class="mdescLeft">&#160;</td><td class="mdescRight">Access to the error code.  <a href="#a0cc962ffce33ab54d946f97f05643249">More...</a><br /></td></tr>
-<tr class="separator:a0cc962ffce33ab54d946f97f05643249"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4067867e311bac147fccc0995e5abee5"><td class="memItemLeft" align="right" valign="top">const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00022.html#a4067867e311bac147fccc0995e5abee5">getStringMessage</a> () const </td></tr>
-<tr class="memdesc:a4067867e311bac147fccc0995e5abee5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reference access to the error message (can be empty).  <a href="#a4067867e311bac147fccc0995e5abee5">More...</a><br /></td></tr>
-<tr class="separator:a4067867e311bac147fccc0995e5abee5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7e4ed5371f86a8d1e99abd127ae7a214"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00022.html#a7e4ed5371f86a8d1e99abd127ae7a214">getMessage</a> () const </td></tr>
-<tr class="memdesc:a7e4ed5371f86a8d1e99abd127ae7a214"><td class="mdescLeft">&#160;</td><td class="mdescRight">Access to the pointer on the array of <em>char</em> related to the error string.  <a href="#a7e4ed5371f86a8d1e99abd127ae7a214">More...</a><br /></td></tr>
-<tr class="separator:a7e4ed5371f86a8d1e99abd127ae7a214"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9a5208211df292bbfc679b036711a5d1"><td class="memItemLeft" align="right" valign="top">virtual const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00022.html#a9a5208211df292bbfc679b036711a5d1">what</a> () const   throw ()</td></tr>
-<tr class="separator:a9a5208211df292bbfc679b036711a5d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
-Static Public Attributes</h2></td></tr>
-<tr class="memitem:aa3cbda2debc333ce399bcc3cb3bad505"><td class="memItemLeft" align="right" valign="top">static const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00022.html#aa3cbda2debc333ce399bcc3cb3bad505">EXCEPTION_NAME</a></td></tr>
-<tr class="separator:aa3cbda2debc333ce399bcc3cb3bad505"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
-Protected Attributes</h2></td></tr>
-<tr class="memitem:a7efe8b06765fc75ec92f32d0e73082a0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00022.html#a7efe8b06765fc75ec92f32d0e73082a0">code</a></td></tr>
-<tr class="memdesc:a7efe8b06765fc75ec92f32d0e73082a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Error code.  <a href="#a7efe8b06765fc75ec92f32d0e73082a0">More...</a><br /></td></tr>
-<tr class="separator:a7efe8b06765fc75ec92f32d0e73082a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af4a0183309ed74c92d8645119c920831"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00022.html#af4a0183309ed74c92d8645119c920831">message</a></td></tr>
-<tr class="memdesc:af4a0183309ed74c92d8645119c920831"><td class="mdescLeft">&#160;</td><td class="mdescRight">Error message (can be empty).  <a href="#af4a0183309ed74c92d8645119c920831">More...</a><br /></td></tr>
-<tr class="separator:af4a0183309ed74c92d8645119c920831"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
-Friends</h2></td></tr>
-<tr class="memitem:a0750be86e659677bdca43adb9669411b"><td class="memItemLeft" align="right" valign="top">DYNAMIC_GRAPH_DLLAPI friend std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00022.html#a0750be86e659677bdca43adb9669411b">operator&lt;&lt;</a> (std::ostream &amp;os, const <a class="el" href="a00022.html">ExceptionAbstract</a> &amp;err)</td></tr>
-<tr class="memdesc:a0750be86e659677bdca43adb9669411b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print the error structure.  <a href="#a0750be86e659677bdca43adb9669411b">More...</a><br /></td></tr>
-<tr class="separator:a0750be86e659677bdca43adb9669411b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af92b0891d1f06de7f5ad762eef6e676c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00022.html#af92b0891d1f06de7f5ad762eef6e676c">EntityRegisterer</a> (const std::string &amp;entityClassName, <a class="el" href="a00027.html#a49e8974b169e5b73957cc64a3b223f6a">FactoryStorage::EntityConstructor_ptr</a> maker)</td></tr>
+<tr class="memdesc:af92b0891d1f06de7f5ad762eef6e676c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Register entity to the global factory.  <a href="#af92b0891d1f06de7f5ad762eef6e676c">More...</a><br /></td></tr>
+<tr class="separator:af92b0891d1f06de7f5ad762eef6e676c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f26108d1c4a08e03d48dfc881b4d919"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00022.html#a8f26108d1c4a08e03d48dfc881b4d919">~EntityRegisterer</a> ()</td></tr>
+<tr class="memdesc:a8f26108d1c4a08e03d48dfc881b4d919"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unregister entity to the global factory.  <a href="#a8f26108d1c4a08e03d48dfc881b4d919">More...</a><br /></td></tr>
+<tr class="separator:a8f26108d1c4a08e03d48dfc881b4d919"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Abstract root class for all dynamic-graph exceptions. </p>
-</div><h2 class="groupheader">Member Enumeration Documentation</h2>
-<a class="anchor" id="a19678de05600e82a1eaa2e70c0ad6fe0"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">enum <a class="el" href="a00022.html#a19678de05600e82a1eaa2e70c0ad6fe0">dynamicgraph::ExceptionAbstract::ExceptionEnum</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Categories error code. </p>
-<p>Each value matches categories used by a subclass of <a class="el" href="a00022.html" title="Abstract root class for all dynamic-graph exceptions. ">ExceptionAbstract</a>.</p>
-<p>This is the programmer responsibility to make sure there is enough room between two categories error code. </p>
-<table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a class="anchor" id="a19678de05600e82a1eaa2e70c0ad6fe0a33c94c6723036643d4b47c7bae1da350"></a>ABSTRACT&#160;</td><td class="fielddoc">
-</td></tr>
-<tr><td class="fieldname"><a class="anchor" id="a19678de05600e82a1eaa2e70c0ad6fe0a252baa19235309f051576f0d0e508098"></a>SIGNAL&#160;</td><td class="fielddoc">
-</td></tr>
-<tr><td class="fieldname"><a class="anchor" id="a19678de05600e82a1eaa2e70c0ad6fe0af74e7993a80a233e4d9ba3017ea63a4c"></a>FACTORY&#160;</td><td class="fielddoc">
-</td></tr>
-<tr><td class="fieldname"><a class="anchor" id="a19678de05600e82a1eaa2e70c0ad6fe0af27cffde588c14a95c26fc79314ec08c"></a>TRACES&#160;</td><td class="fielddoc">
-</td></tr>
-<tr><td class="fieldname"><a class="anchor" id="a19678de05600e82a1eaa2e70c0ad6fe0abd2d0743b46c0c3d922f957f65e31689"></a>TOOLS&#160;</td><td class="fielddoc">
-</td></tr>
-</table>
-
-</div>
-</div>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="aa6e9245e2906c2de912ea4da438a15b0"></a>
+<div class="textblock"><p>This class automatically register an <a class="el" href="a00020.html" title="This class represents an entity, i.e. ">Entity</a> to the global factory at initialization and unregister it during instance destruction. </p>
+<p>This class is mainly used by the DYNAMICGRAPH_FACTORY_ENTITY_PLUGIN macro and is of little interest by itself. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="af92b0891d1f06de7f5ad762eef6e676c"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -220,16 +133,16 @@ Friends</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">dynamicgraph::ExceptionAbstract::ExceptionAbstract </td>
+          <td class="memname">dynamicgraph::EntityRegisterer::EntityRegisterer </td>
           <td>(</td>
-          <td class="paramtype">const int &amp;&#160;</td>
-          <td class="paramname"><em>code</em>, </td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>entityClassName</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>msg</em> = <code>&quot;&quot;</code>&#160;</td>
+          <td class="paramtype"><a class="el" href="a00027.html#a49e8974b169e5b73957cc64a3b223f6a">FactoryStorage::EntityConstructor_ptr</a>&#160;</td>
+          <td class="paramname"><em>maker</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -244,246 +157,24 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Register entity to the global factory. </p>
+
 </div>
 </div>
-<a class="anchor" id="a7eed4f7a295dced25eec9e9407b00e67"></a>
+<a class="anchor" id="a8f26108d1c4a08e03d48dfc881b4d919"></a>
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual dynamicgraph::ExceptionAbstract::~ExceptionAbstract </td>
+          <td class="memname">dynamicgraph::EntityRegisterer::~EntityRegisterer </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
-        <tr>
-          <td align="right">throw </td><td>(</td><td colspan="2"></td>
-        </tr>
-        <tr>
-          <td align="right"></td><td>)</td><td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="a0cc962ffce33ab54d946f97f05643249"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int dynamicgraph::ExceptionAbstract::getCode </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Access to the error code. </p>
-
-</div>
-</div>
-<a class="anchor" id="adf17921faed0da13d70a575f50c7180c"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">virtual const std::string&amp; dynamicgraph::ExceptionAbstract::getExceptionName </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Reimplemented in <a class="el" href="a00023.html#ab0436fa265dd42656933910262278bd8">dynamicgraph::ExceptionFactory</a>, <a class="el" href="a00024.html#a3ba35ca146fe5ddf6ac21291ea84ca95">dynamicgraph::ExceptionSignal</a>, and <a class="el" href="a00025.html#a118715fac3c846b5997ff557b34b8bb0">dynamicgraph::ExceptionTraces</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a7e4ed5371f86a8d1e99abd127ae7a214"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">const char* dynamicgraph::ExceptionAbstract::getMessage </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Access to the pointer on the array of <em>char</em> related to the error string. </p>
-<p>Cannot be <em>NULL</em>. </p>
-
-</div>
-</div>
-<a class="anchor" id="a4067867e311bac147fccc0995e5abee5"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">const std::string&amp; dynamicgraph::ExceptionAbstract::getStringMessage </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Reference access to the error message (can be empty). </p>
-
-</div>
-</div>
-<a class="anchor" id="a9a5208211df292bbfc679b036711a5d1"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">virtual const char* dynamicgraph::ExceptionAbstract::what </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-        <tr>
-          <td align="right">throw </td><td>(</td><td colspan="2"></td>
-        </tr>
-        <tr>
-          <td align="right"></td><td>)</td><td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>References <a class="el" href="a00099.html#af2d8bc7b4d13ca9b024d1998283eb113">dynamicgraph::operator&lt;&lt;()</a>.</p>
-
-</div>
-</div>
-<h2 class="groupheader">Friends And Related Function Documentation</h2>
-<a class="anchor" id="a0750be86e659677bdca43adb9669411b"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">DYNAMIC_GRAPH_DLLAPI friend std::ostream&amp; operator&lt;&lt; </td>
-          <td>(</td>
-          <td class="paramtype">std::ostream &amp;&#160;</td>
-          <td class="paramname"><em>os</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const <a class="el" href="a00022.html">ExceptionAbstract</a> &amp;&#160;</td>
-          <td class="paramname"><em>err</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Print the error structure. </p>
-
-</div>
-</div>
-<h2 class="groupheader">Member Data Documentation</h2>
-<a class="anchor" id="a7efe8b06765fc75ec92f32d0e73082a0"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">int dynamicgraph::ExceptionAbstract::code</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Error code. </p>
-<dl class="section see"><dt>See also</dt><dd>ErrorCodeEnum </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="aa3cbda2debc333ce399bcc3cb3bad505"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">const std::string dynamicgraph::ExceptionAbstract::EXCEPTION_NAME</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="af4a0183309ed74c92d8645119c920831"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::string dynamicgraph::ExceptionAbstract::message</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Error message (can be empty). </p>
+<p>Unregister entity to the global factory. </p>
 
 </div>
 </div>
@@ -493,8 +184,8 @@ Friends</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="a00099.html">dynamicgraph</a></li><li class="navelem"><a class="el" href="a00022.html">ExceptionAbstract</a></li>
-    <li class="footer">Generated on Mon Dec 18 2017 00:07:45 for dynamic-graph by
+    <li class="navelem"><a class="el" href="a00100.html">dynamicgraph</a></li><li class="navelem"><a class="el" href="a00022.html">EntityRegisterer</a></li>
+    <li class="footer">Generated on Tue Jan 16 2018 12:19:09 for dynamic-graph by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.11 </li>
   </ul>

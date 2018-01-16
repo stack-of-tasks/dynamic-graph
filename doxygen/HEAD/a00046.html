@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<title>dynamicgraph::SignalCastRegisterer Class Reference</title>
+<title>dynamicgraph::SignalCaster Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css">
 <link href="doxygen.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="jquery.js"></script>
@@ -90,33 +90,110 @@ $(document).ready(function(){initNavTree('a00046.html','');});
 
 <div class="header">
   <div class="summary">
+<a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="a00235.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">dynamicgraph::SignalCastRegisterer Class Reference</div>  </div>
+<div class="title">dynamicgraph::SignalCaster Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>The <a class="el" href="a00044.html">SignalCast</a> registerer class.  
+<p>This singleton class allows serialization of a number of objects into (disp) and from (cast) std i/o streams.  
  <a href="a00046.html#details">More...</a></p>
 
 <p><code>#include &lt;dynamic-graph/signal-caster.h&gt;</code></p>
-<div class="dynheader">
-Inheritance diagram for dynamicgraph::SignalCastRegisterer:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="a00236.svg" width="192" height="142"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-<center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:a7b5582194f1fcaecde6063145b798aad"><td class="memItemLeft" align="right" valign="top">typedef boost::function2&lt; void, const boost::any &amp;, std::ostream &amp; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00046.html#a7b5582194f1fcaecde6063145b798aad">displayer_type</a></td></tr>
+<tr class="memdesc:a7b5582194f1fcaecde6063145b798aad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Typedef of displayer functions that take an encapsulated 'any' object and displays, cast, or trace it on an output stream (serialization).  <a href="#a7b5582194f1fcaecde6063145b798aad">More...</a><br /></td></tr>
+<tr class="separator:a7b5582194f1fcaecde6063145b798aad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae9eb9afc64e319826ed9241a2d456765"><td class="memItemLeft" align="right" valign="top">typedef boost::function1&lt; boost::any, std::istringstream &amp; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00046.html#ae9eb9afc64e319826ed9241a2d456765">caster_type</a></td></tr>
+<tr class="separator:ae9eb9afc64e319826ed9241a2d456765"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acc9c753d8fef1eb233914855bbd0a6b3"><td class="memItemLeft" align="right" valign="top">typedef boost::function2&lt; void, const boost::any &amp;, std::ostream &amp; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00046.html#acc9c753d8fef1eb233914855bbd0a6b3">tracer_type</a></td></tr>
+<tr class="separator:acc9c753d8fef1eb233914855bbd0a6b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a0e953897c7a0696504247b43ddd31758"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00046.html#a0e953897c7a0696504247b43ddd31758">SignalCastRegisterer</a> (const std::type_info &amp;type, <a class="el" href="a00045.html#a7b5582194f1fcaecde6063145b798aad">SignalCaster::displayer_type</a> displayer, <a class="el" href="a00045.html#ae9eb9afc64e319826ed9241a2d456765">SignalCaster::caster_type</a> caster, <a class="el" href="a00045.html#acc9c753d8fef1eb233914855bbd0a6b3">SignalCaster::tracer_type</a> tracer)</td></tr>
-<tr class="separator:a0e953897c7a0696504247b43ddd31758"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa5fade8df2d029a0c7145040f60bf795"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00046.html#aa5fade8df2d029a0c7145040f60bf795">~SignalCaster</a> ()</td></tr>
+<tr class="separator:aa5fade8df2d029a0c7145040f60bf795"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0fbdc0f08a4b9e201c91ef88fd6dea9e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00046.html#a0fbdc0f08a4b9e201c91ef88fd6dea9e">disp</a> (const boost::any &amp;object, std::ostream &amp;os)</td></tr>
+<tr class="memdesc:a0fbdc0f08a4b9e201c91ef88fd6dea9e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Displays an object using a registered displayer function.  <a href="#a0fbdc0f08a4b9e201c91ef88fd6dea9e">More...</a><br /></td></tr>
+<tr class="separator:a0fbdc0f08a4b9e201c91ef88fd6dea9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a30504e44ed210a22db802560f5ba32da"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00046.html#a30504e44ed210a22db802560f5ba32da">trace</a> (const boost::any &amp;object, std::ostream &amp;os)</td></tr>
+<tr class="memdesc:a30504e44ed210a22db802560f5ba32da"><td class="mdescLeft">&#160;</td><td class="mdescRight">Traces an object using a registered trace function.  <a href="#a30504e44ed210a22db802560f5ba32da">More...</a><br /></td></tr>
+<tr class="separator:a30504e44ed210a22db802560f5ba32da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a50e80ad4c3e069494b5fafac61a228de"><td class="memItemLeft" align="right" valign="top">boost::any&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00046.html#a50e80ad4c3e069494b5fafac61a228de">cast</a> (const std::type_info &amp;, std::istringstream &amp;iss)</td></tr>
+<tr class="memdesc:a50e80ad4c3e069494b5fafac61a228de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Casts an object using a registered cast function.  <a href="#a50e80ad4c3e069494b5fafac61a228de">More...</a><br /></td></tr>
+<tr class="separator:a50e80ad4c3e069494b5fafac61a228de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a351e2e41780cdcdfd21b2d18e9c36581"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00046.html#a351e2e41780cdcdfd21b2d18e9c36581">registerCast</a> (const std::type_info &amp;type, <a class="el" href="a00046.html#a7b5582194f1fcaecde6063145b798aad">displayer_type</a> displayer, <a class="el" href="a00046.html#ae9eb9afc64e319826ed9241a2d456765">caster_type</a> caster, <a class="el" href="a00046.html#acc9c753d8fef1eb233914855bbd0a6b3">tracer_type</a> tracer)</td></tr>
+<tr class="memdesc:a351e2e41780cdcdfd21b2d18e9c36581"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registers a cast.  <a href="#a351e2e41780cdcdfd21b2d18e9c36581">More...</a><br /></td></tr>
+<tr class="separator:a351e2e41780cdcdfd21b2d18e9c36581"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acbcb68102cc2537b56b2545a14aa0035"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00046.html#acbcb68102cc2537b56b2545a14aa0035">unregisterCast</a> (const std::type_info &amp;type)</td></tr>
+<tr class="memdesc:acbcb68102cc2537b56b2545a14aa0035"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unregister a cast.  <a href="#acbcb68102cc2537b56b2545a14aa0035">More...</a><br /></td></tr>
+<tr class="separator:acbcb68102cc2537b56b2545a14aa0035"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac9ab45f841c870bcb713a85f7bf5db2c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00046.html#ac9ab45f841c870bcb713a85f7bf5db2c">existsCast</a> (const std::type_info &amp;type) const </td></tr>
+<tr class="memdesc:ac9ab45f841c870bcb713a85f7bf5db2c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if there is a displayer registered with type_name.  <a href="#ac9ab45f841c870bcb713a85f7bf5db2c">More...</a><br /></td></tr>
+<tr class="separator:ac9ab45f841c870bcb713a85f7bf5db2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac698d1365e8a4a30fb465928d3d8f3f2"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00046.html#ac698d1365e8a4a30fb465928d3d8f3f2">listTypenames</a> () const </td></tr>
+<tr class="memdesc:ac698d1365e8a4a30fb465928d3d8f3f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the list of type names registered.  <a href="#ac698d1365e8a4a30fb465928d3d8f3f2">More...</a><br /></td></tr>
+<tr class="separator:ac698d1365e8a4a30fb465928d3d8f3f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
+Static Public Member Functions</h2></td></tr>
+<tr class="memitem:ac1ae50fa027d68a1b3a52d04667838cd"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00046.html#ac1ae50fa027d68a1b3a52d04667838cd">destroy</a> ()</td></tr>
+<tr class="memdesc:ac1ae50fa027d68a1b3a52d04667838cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy the unique instance.  <a href="#ac1ae50fa027d68a1b3a52d04667838cd">More...</a><br /></td></tr>
+<tr class="separator:ac1ae50fa027d68a1b3a52d04667838cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aba07426693ab9a277dd4309ebe582230"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="a00046.html">SignalCaster</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00046.html#aba07426693ab9a277dd4309ebe582230">getInstance</a> (void)</td></tr>
+<tr class="memdesc:aba07426693ab9a277dd4309ebe582230"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a reference to the unique object of the class.  <a href="#aba07426693ab9a277dd4309ebe582230">More...</a><br /></td></tr>
+<tr class="separator:aba07426693ab9a277dd4309ebe582230"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>The <a class="el" href="a00044.html">SignalCast</a> registerer class. </p>
-<p>Can be used to automatically register a cast when instanced somewhere in a cpp file. Pass the typeid () of the type you want to register a cast to as the first argument. The code is provided here so the class does not need to be exported. </p>
-</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="a0e953897c7a0696504247b43ddd31758"></a>
+<div class="textblock"><p>This singleton class allows serialization of a number of objects into (disp) and from (cast) std i/o streams. </p>
+<p>The transformation is done at run-time, i.e. <a class="el" href="a00046.html" title="This singleton class allows serialization of a number of objects into (disp) and from (cast) std i/o ...">SignalCaster</a> doesn't know about the type of objects it casts to.</p>
+<p>It also allows registering of user-defined casts. A cast is identified by the compiler. The mapping from a type to a serialization function is dynamic, hence it is more complex than a typical template-based compile-time resolve. So disp, cast and trace are costly functions and should be used as such. </p>
+</div><h2 class="groupheader">Member Typedef Documentation</h2>
+<a class="anchor" id="ae9eb9afc64e319826ed9241a2d456765"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef boost::function1&lt;boost::any, std::istringstream&amp;&gt; <a class="el" href="a00046.html#ae9eb9afc64e319826ed9241a2d456765">dynamicgraph::SignalCaster::caster_type</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a7b5582194f1fcaecde6063145b798aad"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef boost::function2&lt;void, const boost::any&amp;, std::ostream&amp;&gt; <a class="el" href="a00046.html#a7b5582194f1fcaecde6063145b798aad">dynamicgraph::SignalCaster::displayer_type</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Typedef of displayer functions that take an encapsulated 'any' object and displays, cast, or trace it on an output stream (serialization). </p>
+
+</div>
+</div>
+<a class="anchor" id="acc9c753d8fef1eb233914855bbd0a6b3"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef boost::function2&lt;void, const boost::any&amp;, std::ostream&amp;&gt; <a class="el" href="a00046.html#acc9c753d8fef1eb233914855bbd0a6b3">dynamicgraph::SignalCaster::tracer_type</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="aa5fade8df2d029a0c7145040f60bf795"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -124,7 +201,176 @@ Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">dynamicgraph::SignalCastRegisterer::SignalCastRegisterer </td>
+          <td class="memname">virtual dynamicgraph::SignalCaster::~SignalCaster </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a50e80ad4c3e069494b5fafac61a228de"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">boost::any dynamicgraph::SignalCaster::cast </td>
+          <td>(</td>
+          <td class="paramtype">const std::type_info &amp;&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::istringstream &amp;&#160;</td>
+          <td class="paramname"><em>iss</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Casts an object using a registered cast function. </p>
+
+<p>Referenced by <a class="el" href="a00100.html#a12ac1418f268160f1a4ad02fbaaad7ca">dynamicgraph::signal_cast()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ac1ae50fa027d68a1b3a52d04667838cd"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void dynamicgraph::SignalCaster::destroy </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Destroy the unique instance. </p>
+
+</div>
+</div>
+<a class="anchor" id="a0fbdc0f08a4b9e201c91ef88fd6dea9e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void dynamicgraph::SignalCaster::disp </td>
+          <td>(</td>
+          <td class="paramtype">const boost::any &amp;&#160;</td>
+          <td class="paramname"><em>object</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::ostream &amp;&#160;</td>
+          <td class="paramname"><em>os</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Displays an object using a registered displayer function. </p>
+
+<p>Referenced by <a class="el" href="a00100.html#a385c0611ea655151b52a7515d4f836f9">dynamicgraph::signal_disp()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ac9ab45f841c870bcb713a85f7bf5db2c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool dynamicgraph::SignalCaster::existsCast </td>
+          <td>(</td>
+          <td class="paramtype">const std::type_info &amp;&#160;</td>
+          <td class="paramname"><em>type</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Checks if there is a displayer registered with type_name. </p>
+
+</div>
+</div>
+<a class="anchor" id="aba07426693ab9a277dd4309ebe582230"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="a00046.html">SignalCaster</a>* dynamicgraph::SignalCaster::getInstance </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get a reference to the unique object of the class. </p>
+
+<p>Referenced by <a class="el" href="a00100.html#a12ac1418f268160f1a4ad02fbaaad7ca">dynamicgraph::signal_cast()</a>, <a class="el" href="a00100.html#a385c0611ea655151b52a7515d4f836f9">dynamicgraph::signal_disp()</a>, <a class="el" href="a00100.html#a0d6929067c8e55a045ad573a7ea5ca57">dynamicgraph::signal_trace()</a>, and <a class="el" href="a00047.html#a0e953897c7a0696504247b43ddd31758">dynamicgraph::SignalCastRegisterer::SignalCastRegisterer()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ac698d1365e8a4a30fb465928d3d8f3f2"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;std::string&gt; dynamicgraph::SignalCaster::listTypenames </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Return the list of type names registered. </p>
+
+</div>
+</div>
+<a class="anchor" id="a351e2e41780cdcdfd21b2d18e9c36581"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void dynamicgraph::SignalCaster::registerCast </td>
           <td>(</td>
           <td class="paramtype">const std::type_info &amp;&#160;</td>
           <td class="paramname"><em>type</em>, </td>
@@ -132,19 +378,19 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="a00045.html#a7b5582194f1fcaecde6063145b798aad">SignalCaster::displayer_type</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="a00046.html#a7b5582194f1fcaecde6063145b798aad">displayer_type</a>&#160;</td>
           <td class="paramname"><em>displayer</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="a00045.html#ae9eb9afc64e319826ed9241a2d456765">SignalCaster::caster_type</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="a00046.html#ae9eb9afc64e319826ed9241a2d456765">caster_type</a>&#160;</td>
           <td class="paramname"><em>caster</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="a00045.html#acc9c753d8fef1eb233914855bbd0a6b3">SignalCaster::tracer_type</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="a00046.html#acc9c753d8fef1eb233914855bbd0a6b3">tracer_type</a>&#160;</td>
           <td class="paramname"><em>tracer</em>&#160;</td>
         </tr>
         <tr>
@@ -153,14 +399,59 @@ Public Member Functions</h2></td></tr>
           <td></td><td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
-<p>References <a class="el" href="a00045.html#aba07426693ab9a277dd4309ebe582230">dynamicgraph::SignalCaster::getInstance()</a>, and <a class="el" href="a00045.html#a351e2e41780cdcdfd21b2d18e9c36581">dynamicgraph::SignalCaster::registerCast()</a>.</p>
+<p>Registers a cast. </p>
+
+<p>Referenced by <a class="el" href="a00047.html#a0e953897c7a0696504247b43ddd31758">dynamicgraph::SignalCastRegisterer::SignalCastRegisterer()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a30504e44ed210a22db802560f5ba32da"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void dynamicgraph::SignalCaster::trace </td>
+          <td>(</td>
+          <td class="paramtype">const boost::any &amp;&#160;</td>
+          <td class="paramname"><em>object</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::ostream &amp;&#160;</td>
+          <td class="paramname"><em>os</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Traces an object using a registered trace function. </p>
+
+<p>Referenced by <a class="el" href="a00100.html#a0d6929067c8e55a045ad573a7ea5ca57">dynamicgraph::signal_trace()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="acbcb68102cc2537b56b2545a14aa0035"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void dynamicgraph::SignalCaster::unregisterCast </td>
+          <td>(</td>
+          <td class="paramtype">const std::type_info &amp;&#160;</td>
+          <td class="paramname"><em>type</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Unregister a cast. </p>
 
 </div>
 </div>
@@ -170,8 +461,8 @@ Public Member Functions</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="a00099.html">dynamicgraph</a></li><li class="navelem"><a class="el" href="a00046.html">SignalCastRegisterer</a></li>
-    <li class="footer">Generated on Mon Dec 18 2017 00:07:45 for dynamic-graph by
+    <li class="navelem"><a class="el" href="a00100.html">dynamicgraph</a></li><li class="navelem"><a class="el" href="a00046.html">SignalCaster</a></li>
+    <li class="footer">Generated on Tue Jan 16 2018 12:19:09 for dynamic-graph by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.11 </li>
   </ul>

@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<title>signal-caster.h File Reference</title>
+<title>signal-cast-helper.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css">
 <link href="doxygen.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="jquery.js"></script>
@@ -90,9 +90,9 @@ $(document).ready(function(){initNavTree('a00085.html','');});
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#namespaces">Namespaces</a> &#124;
-<a href="#func-members">Functions</a>  </div>
+<a href="#define-members">Macros</a>  </div>
   <div class="headertitle">
-<div class="title">signal-caster.h File Reference</div>  </div>
+<div class="title">signal-cast-helper.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &lt;map&gt;</code><br />
@@ -105,55 +105,244 @@ $(document).ready(function(){initNavTree('a00085.html','');});
 <code>#include &lt;boost/function/function2.hpp&gt;</code><br />
 <code>#include &lt;boost/lexical_cast.hpp&gt;</code><br />
 <code>#include &lt;boost/tuple/tuple.hpp&gt;</code><br />
-<code>#include &lt;<a class="el" href="a00067.html">dynamic-graph/dynamic-graph-api.h</a>&gt;</code><br />
-<code>#include &quot;<a class="el" href="a00073.html">dynamic-graph/exception-signal.h</a>&quot;</code><br />
+<code>#include &lt;<a class="el" href="a00069.html">dynamic-graph/eigen-io.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="a00068.html">dynamic-graph/dynamic-graph-api.h</a>&gt;</code><br />
+<code>#include &quot;<a class="el" href="a00074.html">dynamic-graph/exception-signal.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="a00086.html">dynamic-graph/signal-caster.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
-Include dependency graph for signal-caster.h:</div>
+Include dependency graph for signal-cast-helper.h:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="a00151.svg" width="1651" height="380"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
-</div><div class="textblock"><div class="dynheader">
-This graph shows which files directly or indirectly include this file:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="a00152.svg" width="503" height="411"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="a00151.svg" width="2100" height="470"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00045.html">dynamicgraph::SignalCaster</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">This singleton class allows serialization of a number of objects into (disp) and from (cast) std i/o streams.  <a href="a00045.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00016.html">dynamicgraph::DefaultCastRegisterer&lt; T &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">This class can be used to register default casts, i.e.  <a href="a00016.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00046.html">dynamicgraph::SignalCastRegisterer</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The <a class="el" href="a00044.html">SignalCast</a> registerer class.  <a href="a00046.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00045.html">dynamicgraph::SignalCast&lt; T &gt;</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
 Namespaces</h2></td></tr>
-<tr class="memitem:a00099"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00099.html">dynamicgraph</a></td></tr>
-<tr class="memdesc:a00099"><td class="mdescLeft">&#160;</td><td class="mdescRight">WIN32. <br /></td></tr>
+<tr class="memitem:a00100"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00100.html">dynamicgraph</a></td></tr>
+<tr class="memdesc:a00100"><td class="mdescLeft">&#160;</td><td class="mdescRight">WIN32. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
-Functions</h2></td></tr>
-<tr class="memitem:a385c0611ea655151b52a7515d4f836f9"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:a385c0611ea655151b52a7515d4f836f9"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00099.html#a385c0611ea655151b52a7515d4f836f9">dynamicgraph::signal_disp</a> (const T &amp;value, std::ostream &amp;os)</td></tr>
-<tr class="memdesc:a385c0611ea655151b52a7515d4f836f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Global signal cast template (helper) functions.  <a href="a00099.html#a385c0611ea655151b52a7515d4f836f9">More...</a><br /></td></tr>
-<tr class="separator:a385c0611ea655151b52a7515d4f836f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a12ac1418f268160f1a4ad02fbaaad7ca"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:a12ac1418f268160f1a4ad02fbaaad7ca"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00099.html#a12ac1418f268160f1a4ad02fbaaad7ca">dynamicgraph::signal_cast</a> (std::istringstream &amp;iss)</td></tr>
-<tr class="separator:a12ac1418f268160f1a4ad02fbaaad7ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0d6929067c8e55a045ad573a7ea5ca57"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:a0d6929067c8e55a045ad573a7ea5ca57"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00099.html#a0d6929067c8e55a045ad573a7ea5ca57">dynamicgraph::signal_trace</a> (const T &amp;value, std::ostream &amp;os)</td></tr>
-<tr class="separator:a0d6929067c8e55a045ad573a7ea5ca57"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:a74bbd15916356e7bcaf4746d37148c03"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00085.html#a74bbd15916356e7bcaf4746d37148c03">DG_SIGNAL_CAST_DECLARATION</a>(TYPE)</td></tr>
+<tr class="separator:a74bbd15916356e7bcaf4746d37148c03"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a50d90cc8a9cf220a5ed7139286660b31"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00085.html#a50d90cc8a9cf220a5ed7139286660b31">DG_SIGNAL_CAST_DECLARATION_NAMED</a>(TYPE,  NAME)</td></tr>
+<tr class="separator:a50d90cc8a9cf220a5ed7139286660b31"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af6223707a00d293582fed75aed71b55b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00085.html#af6223707a00d293582fed75aed71b55b">DG_SIGNAL_CAST_FULL_DEFINITION</a>(TYPE,  CAST,  DISP,  TRACE)</td></tr>
+<tr class="separator:af6223707a00d293582fed75aed71b55b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae56bebc30642284101f2029b0e7780a5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00085.html#ae56bebc30642284101f2029b0e7780a5">DG_SIGNAL_CAST_DEFINITION_HPP</a>(TYPE)&#160;&#160;&#160;<a class="el" href="a00085.html#af6223707a00d293582fed75aed71b55b">DG_SIGNAL_CAST_FULL_DEFINITION</a>(TYPE,;,;,{ disp(t,os); })</td></tr>
+<tr class="separator:ae56bebc30642284101f2029b0e7780a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a94a29e3acac419a2c61c817d886122a5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00085.html#a94a29e3acac419a2c61c817d886122a5">DG_SIGNAL_CAST_DEFINITION_TRACE_HPP</a>(TYPE,  TRACE)</td></tr>
+<tr class="separator:a94a29e3acac419a2c61c817d886122a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a323bda7ee6a5908f92ca846f319c8627"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00085.html#a323bda7ee6a5908f92ca846f319c8627">DG_SIGNAL_CAST_DEFINITION</a>(TYPE)</td></tr>
+<tr class="separator:a323bda7ee6a5908f92ca846f319c8627"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab5a08a905476e8a31988898e69898d27"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00085.html#ab5a08a905476e8a31988898e69898d27">DG_SIGNAL_CAST_DEFINITION_TRACE</a>(TYPE)</td></tr>
+<tr class="separator:ab5a08a905476e8a31988898e69898d27"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a755db16bb36b8aad19b962d07d08b81f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00085.html#a755db16bb36b8aad19b962d07d08b81f">DG_ADD_CASTER</a>(TYPE,  ID)</td></tr>
+<tr class="separator:a755db16bb36b8aad19b962d07d08b81f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Macro Definition Documentation</h2>
+<a class="anchor" id="a755db16bb36b8aad19b962d07d08b81f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DG_ADD_CASTER</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">TYPE, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">ID&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Value:</b><div class="fragment"><div class="line"><a class="code" href="a00047.html">::dynamicgraph::SignalCastRegisterer</a> sotCastRegisterer_##ID     \</div><div class="line">    (<span class="keyword">typeid</span>(TYPE),                                                        \</div><div class="line">     SignalCast&lt;TYPE&gt;::disp_,                                             \</div><div class="line">     SignalCast&lt;TYPE&gt;::cast_,                                             \</div><div class="line">     SignalCast&lt;TYPE&gt;::trace_)</div><div class="ttc" id="a00047_html"><div class="ttname"><a href="a00047.html">dynamicgraph::SignalCastRegisterer</a></div><div class="ttdoc">The SignalCast registerer class. </div><div class="ttdef"><b>Definition:</b> signal-caster.h:104</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="a74bbd15916356e7bcaf4746d37148c03"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DG_SIGNAL_CAST_DECLARATION</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">TYPE</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Value:</b><div class="fragment"><div class="line"><a class="code" href="a00047.html">::dynamicgraph::SignalCastRegisterer</a> sotCastRegisterer_##TYPE \</div><div class="line">    (<span class="keyword">typeid</span>(TYPE),            \</div><div class="line">     SignalCast&lt;TYPE&gt;::disp_,         \</div><div class="line">     SignalCast&lt;TYPE&gt;::cast_,         \</div><div class="line">     SignalCast&lt;TYPE&gt;::trace_)</div><div class="ttc" id="a00047_html"><div class="ttname"><a href="a00047.html">dynamicgraph::SignalCastRegisterer</a></div><div class="ttdoc">The SignalCast registerer class. </div><div class="ttdef"><b>Definition:</b> signal-caster.h:104</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="a50d90cc8a9cf220a5ed7139286660b31"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DG_SIGNAL_CAST_DECLARATION_NAMED</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">TYPE, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">NAME&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Value:</b><div class="fragment"><div class="line"><a class="code" href="a00047.html">::dynamicgraph::SignalCastRegisterer</a> sotCastRegisterer_##NAME   \</div><div class="line">    (<span class="keyword">typeid</span>(TYPE),              \</div><div class="line">     SignalCast&lt;TYPE&gt;::disp_,           \</div><div class="line">     SignalCast&lt;TYPE&gt;::cast_,           \</div><div class="line">     SignalCast&lt;TYPE&gt;::trace_)</div><div class="ttc" id="a00047_html"><div class="ttname"><a href="a00047.html">dynamicgraph::SignalCastRegisterer</a></div><div class="ttdoc">The SignalCast registerer class. </div><div class="ttdef"><b>Definition:</b> signal-caster.h:104</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="a323bda7ee6a5908f92ca846f319c8627"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DG_SIGNAL_CAST_DEFINITION</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">TYPE</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Value:</b><div class="fragment"><div class="line"><a class="code" href="a00085.html#af6223707a00d293582fed75aed71b55b">DG_SIGNAL_CAST_FULL_DEFINITION</a>(TYPE,                                    \</div><div class="line"> {TYPE res; iss &gt;&gt; res; <span class="keywordflow">return</span> res; },                                   \</div><div class="line"> { os &lt;&lt; t &lt;&lt;std::endl; },                                               \</div><div class="line"> { disp(t,os); })</div><div class="ttc" id="a00085_html_af6223707a00d293582fed75aed71b55b"><div class="ttname"><a href="a00085.html#af6223707a00d293582fed75aed71b55b">DG_SIGNAL_CAST_FULL_DEFINITION</a></div><div class="ttdeci">#define DG_SIGNAL_CAST_FULL_DEFINITION(TYPE, CAST, DISP, TRACE)</div><div class="ttdef"><b>Definition:</b> signal-cast-helper.h:149</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="ae56bebc30642284101f2029b0e7780a5"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DG_SIGNAL_CAST_DEFINITION_HPP</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">TYPE</td><td>)</td>
+          <td>&#160;&#160;&#160;<a class="el" href="a00085.html#af6223707a00d293582fed75aed71b55b">DG_SIGNAL_CAST_FULL_DEFINITION</a>(TYPE,;,;,{ disp(t,os); })</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ab5a08a905476e8a31988898e69898d27"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DG_SIGNAL_CAST_DEFINITION_TRACE</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">TYPE</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Value:</b><div class="fragment"><div class="line"><a class="code" href="a00085.html#af6223707a00d293582fed75aed71b55b">DG_SIGNAL_CAST_FULL_DEFINITION</a>(TYPE,                                    \</div><div class="line"> {TYPE res; iss &gt;&gt; res; <span class="keywordflow">return</span> res; },                                   \</div><div class="line"> { os &lt;&lt; t &lt;&lt;std::endl; },                                               \</div><div class="line"> ;)</div><div class="ttc" id="a00085_html_af6223707a00d293582fed75aed71b55b"><div class="ttname"><a href="a00085.html#af6223707a00d293582fed75aed71b55b">DG_SIGNAL_CAST_FULL_DEFINITION</a></div><div class="ttdeci">#define DG_SIGNAL_CAST_FULL_DEFINITION(TYPE, CAST, DISP, TRACE)</div><div class="ttdef"><b>Definition:</b> signal-cast-helper.h:149</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="a94a29e3acac419a2c61c817d886122a5"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DG_SIGNAL_CAST_DEFINITION_TRACE_HPP</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">TYPE, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">TRACE&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Value:</b><div class="fragment"><div class="line"><a class="code" href="a00085.html#af6223707a00d293582fed75aed71b55b">DG_SIGNAL_CAST_FULL_DEFINITION</a>(TYPE,                                    \</div><div class="line"> {TYPE res; iss &gt;&gt; res; <span class="keywordflow">return</span> res; },                                   \</div><div class="line"> { os &lt;&lt; t &lt;&lt;std::endl; },                                               \</div><div class="line"> TRACE )</div><div class="ttc" id="a00085_html_af6223707a00d293582fed75aed71b55b"><div class="ttname"><a href="a00085.html#af6223707a00d293582fed75aed71b55b">DG_SIGNAL_CAST_FULL_DEFINITION</a></div><div class="ttdeci">#define DG_SIGNAL_CAST_FULL_DEFINITION(TYPE, CAST, DISP, TRACE)</div><div class="ttdef"><b>Definition:</b> signal-cast-helper.h:149</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="af6223707a00d293582fed75aed71b55b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DG_SIGNAL_CAST_FULL_DEFINITION</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">TYPE, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">CAST, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">DISP, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">TRACE&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Value:</b><div class="fragment"><div class="line"><span class="keyword">template</span>&lt;&gt;                                                                            \</div><div class="line"> class SignalCast&lt;TYPE&gt;                                       \</div><div class="line">{                                                                                     \</div><div class="line">public:                                                                               \</div><div class="line">        static TYPE cast( std::istringstream&amp; iss )         CAST                      \</div><div class="line">  static <span class="keywordtype">void</span> disp( TYPE <span class="keyword">const</span>&amp; t,std::ostream&amp; os )  DISP                \</div><div class="line">  static <span class="keywordtype">void</span> trace( TYPE <span class="keyword">const</span>&amp; t,std::ostream&amp; os ) TRACE                     \</div><div class="line">public:                                                                     \</div><div class="line">  static boost::any cast_( std::istringstream&amp; stringValue ) {                  \</div><div class="line">      return boost::any_cast&lt;TYPE&gt;(cast(stringValue));                  \</div><div class="line">  }                                                                             \</div><div class="line">  static <span class="keywordtype">void</span> disp_( <span class="keyword">const</span> boost::any&amp; t,std::ostream&amp; os )  {              \</div><div class="line">    disp(boost::any_cast&lt;TYPE&gt;(t), os);                       \</div><div class="line">  }                                 \</div><div class="line">  static <span class="keywordtype">void</span> trace_( <span class="keyword">const</span> boost::any&amp; t,std::ostream&amp; os ) {              \</div><div class="line">      trace(boost::any_cast&lt;TYPE&gt;(t),os);                 \</div><div class="line">  }                               \</div><div class="line">}</div></div><!-- fragment -->
+</div>
+</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.8.6-->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_a7fe445ff4848f3dbb9303db33c761fe.html">dynamic-graph</a></li><li class="navelem"><a class="el" href="a00085.html">signal-caster.h</a></li>
-    <li class="footer">Generated on Mon Dec 18 2017 00:07:45 for dynamic-graph by
+    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_a7fe445ff4848f3dbb9303db33c761fe.html">dynamic-graph</a></li><li class="navelem"><a class="el" href="a00085.html">signal-cast-helper.h</a></li>
+    <li class="footer">Generated on Tue Jan 16 2018 12:19:09 for dynamic-graph by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.11 </li>
   </ul>

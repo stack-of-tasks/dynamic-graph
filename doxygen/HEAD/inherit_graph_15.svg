@@ -16,7 +16,7 @@
 </g>
 <!-- Node2 -->
 <g id="node2" class="node"><title>Node2</title>
-<g id="a_node2"><a xlink:href="a00019.html" target="_top" xlink:title="This class represents an entity, i.e. ">
+<g id="a_node2"><a xlink:href="a00020.html" target="_top" xlink:title="This class represents an entity, i.e. ">
 <polygon fill="white" stroke="black" points="129.5,-260 129.5,-279 238.5,-279 238.5,-260 129.5,-260"/>
 <text text-anchor="middle" x="184" y="-267" font-family="Helvetica,sans-Serif" font-size="10.00">dynamicgraph::Entity</text>
 </a>
@@ -29,7 +29,7 @@
 </g>
 <!-- Node5 -->
 <g id="node5" class="node"><title>Node5</title>
-<g id="a_node5"><a xlink:href="a00021.html" target="_top" xlink:title="This class automatically register an Entity to the global factory at initialization and unregister it...">
+<g id="a_node5"><a xlink:href="a00022.html" target="_top" xlink:title="This class automatically register an Entity to the global factory at initialization and unregister it...">
 <polygon fill="white" stroke="black" points="107,-222 107,-241 261,-241 261,-222 107,-222"/>
 <text text-anchor="middle" x="184" y="-229" font-family="Helvetica,sans-Serif" font-size="10.00">dynamicgraph::EntityRegisterer</text>
 </a>
@@ -42,7 +42,7 @@
 </g>
 <!-- Node6 -->
 <g id="node6" class="node"><title>Node6</title>
-<g id="a_node6"><a xlink:href="a00026.html" target="_top" xlink:title="Provides a way to create Entity objects from their class name. ">
+<g id="a_node6"><a xlink:href="a00027.html" target="_top" xlink:title="Provides a way to create Entity objects from their class name. ">
 <polygon fill="white" stroke="black" points="109,-184 109,-203 259,-203 259,-184 109,-184"/>
 <text text-anchor="middle" x="184" y="-191" font-family="Helvetica,sans-Serif" font-size="10.00">dynamicgraph::FactoryStorage</text>
 </a>
@@ -55,7 +55,7 @@
 </g>
 <!-- Node7 -->
 <g id="node7" class="node"><title>Node7</title>
-<g id="a_node7"><a xlink:href="a00043.html" target="_top" xlink:title="The base class for signals: not to be used as such. ">
+<g id="a_node7"><a xlink:href="a00044.html" target="_top" xlink:title="The base class for signals: not to be used as such. ">
 <polygon fill="white" stroke="black" points="117.5,-134.5 117.5,-164.5 250.5,-164.5 250.5,-134.5 117.5,-134.5"/>
 <text text-anchor="start" x="125.5" y="-152.5" font-family="Helvetica,sans-Serif" font-size="10.00">dynamicgraph::SignalBase</text>
 <text text-anchor="middle" x="184" y="-141.5" font-family="Helvetica,sans-Serif" font-size="10.00">&lt; Time &gt;</text>
@@ -69,7 +69,7 @@
 </g>
 <!-- Node11 -->
 <g id="node11" class="node"><title>Node11</title>
-<g id="a_node11"><a xlink:href="a00043.html" target="_top" xlink:title="dynamicgraph::SignalBase\l\&lt; int \&gt;">
+<g id="a_node11"><a xlink:href="a00044.html" target="_top" xlink:title="dynamicgraph::SignalBase\l\&lt; int \&gt;">
 <polygon fill="white" stroke="black" points="117.5,-73.5 117.5,-103.5 250.5,-103.5 250.5,-73.5 117.5,-73.5"/>
 <text text-anchor="start" x="125.5" y="-91.5" font-family="Helvetica,sans-Serif" font-size="10.00">dynamicgraph::SignalBase</text>
 <text text-anchor="middle" x="184" y="-80.5" font-family="Helvetica,sans-Serif" font-size="10.00">&lt; int &gt;</text>
@@ -83,7 +83,7 @@
 </g>
 <!-- Node3 -->
 <g id="node3" class="node"><title>Node3</title>
-<g id="a_node3"><a xlink:href="a00050.html" target="_top" xlink:title="Tracer plug&#45;in main class. ">
+<g id="a_node3"><a xlink:href="a00051.html" target="_top" xlink:title="Tracer plug&#45;in main class. ">
 <polygon fill="white" stroke="black" points="321.5,-260 321.5,-279 432.5,-279 432.5,-260 321.5,-260"/>
 <text text-anchor="middle" x="377" y="-267" font-family="Helvetica,sans-Serif" font-size="10.00">dynamicgraph::Tracer</text>
 </a>
@@ -96,7 +96,7 @@
 </g>
 <!-- Node4 -->
 <g id="node4" class="node"><title>Node4</title>
-<g id="a_node4"><a xlink:href="a00051.html" target="_top" xlink:title="Main class of the tracer real&#45;time plug&#45;in. ">
+<g id="a_node4"><a xlink:href="a00052.html" target="_top" xlink:title="Main class of the tracer real&#45;time plug&#45;in. ">
 <polygon fill="white" stroke="black" points="493,-260 493,-279 646,-279 646,-260 493,-260"/>
 <text text-anchor="middle" x="569.5" y="-267" font-family="Helvetica,sans-Serif" font-size="10.00">dynamicgraph::TracerRealTime</text>
 </a>
@@ -109,7 +109,7 @@
 </g>
 <!-- Node8 -->
 <g id="node8" class="node"><title>Node8</title>
-<g id="a_node8"><a xlink:href="a00040.html" target="_top" xlink:title="Signals link I/O ports of entities. They can be constant&#45;valued signals, or copy the value of a heap ...">
+<g id="a_node8"><a xlink:href="a00041.html" target="_top" xlink:title="Signals link I/O ports of entities. They can be constant&#45;valued signals, or copy the value of a heap ...">
 <polygon fill="white" stroke="black" points="322,-147.5 322,-177.5 432,-177.5 432,-147.5 322,-147.5"/>
 <text text-anchor="start" x="330" y="-165.5" font-family="Helvetica,sans-Serif" font-size="10.00">dynamicgraph::Signal</text>
 <text text-anchor="middle" x="377" y="-154.5" font-family="Helvetica,sans-Serif" font-size="10.00">&lt; T, Time &gt;</text>
@@ -123,7 +123,7 @@
 </g>
 <!-- Node9 -->
 <g id="node9" class="node"><title>Node9</title>
-<g id="a_node9"><a xlink:href="a00047.html" target="_top" xlink:title="This is the only type of signal that can be plugged to, using the plug () command. ">
+<g id="a_node9"><a xlink:href="a00048.html" target="_top" xlink:title="This is the only type of signal that can be plugged to, using the plug () command. ">
 <polygon fill="white" stroke="black" points="508,-147.5 508,-177.5 631,-177.5 631,-147.5 508,-147.5"/>
 <text text-anchor="start" x="516" y="-165.5" font-family="Helvetica,sans-Serif" font-size="10.00">dynamicgraph::SignalPtr</text>
 <text text-anchor="middle" x="569.5" y="-154.5" font-family="Helvetica,sans-Serif" font-size="10.00">&lt; T, Time &gt;</text>
@@ -137,7 +137,7 @@
 </g>
 <!-- Node10 -->
 <g id="node10" class="node"><title>Node10</title>
-<g id="a_node10"><a xlink:href="a00048.html" target="_top" xlink:title="A type of signal that enforces a time dependency between other signals, making sure its inputs are up...">
+<g id="a_node10"><a xlink:href="a00049.html" target="_top" xlink:title="A type of signal that enforces a time dependency between other signals, making sure its inputs are up...">
 <polygon fill="white" stroke="black" points="503.5,-98.5 503.5,-128.5 635.5,-128.5 635.5,-98.5 503.5,-98.5"/>
 <text text-anchor="start" x="511.5" y="-116.5" font-family="Helvetica,sans-Serif" font-size="10.00">dynamicgraph::SignalTime</text>
 <text text-anchor="middle" x="569.5" y="-105.5" font-family="Helvetica,sans-Serif" font-size="10.00">Dependent&lt; T, Time &gt;</text>
@@ -151,7 +151,7 @@
 </g>
 <!-- Node12 -->
 <g id="node12" class="node"><title>Node12</title>
-<g id="a_node12"><a xlink:href="a00040.html" target="_top" xlink:title="dynamicgraph::Signal\l\&lt; int, int \&gt;">
+<g id="a_node12"><a xlink:href="a00041.html" target="_top" xlink:title="dynamicgraph::Signal\l\&lt; int, int \&gt;">
 <polygon fill="white" stroke="black" points="322,-49.5 322,-79.5 432,-79.5 432,-49.5 322,-49.5"/>
 <text text-anchor="start" x="330" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">dynamicgraph::Signal</text>
 <text text-anchor="middle" x="377" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">&lt; int, int &gt;</text>
@@ -165,7 +165,7 @@
 </g>
 <!-- Node13 -->
 <g id="node13" class="node"><title>Node13</title>
-<g id="a_node13"><a xlink:href="a00048.html" target="_top" xlink:title="dynamicgraph::SignalTime\lDependent\&lt; int, int \&gt;">
+<g id="a_node13"><a xlink:href="a00049.html" target="_top" xlink:title="dynamicgraph::SignalTime\lDependent\&lt; int, int \&gt;">
 <polygon fill="white" stroke="black" points="503.5,-25.5 503.5,-55.5 635.5,-55.5 635.5,-25.5 503.5,-25.5"/>
 <text text-anchor="start" x="511.5" y="-43.5" font-family="Helvetica,sans-Serif" font-size="10.00">dynamicgraph::SignalTime</text>
 <text text-anchor="middle" x="569.5" y="-32.5" font-family="Helvetica,sans-Serif" font-size="10.00">Dependent&lt; int, int &gt;</text>
@@ -179,7 +179,7 @@
 </g>
 <!-- Node14 -->
 <g id="node14" class="node"><title>Node14</title>
-<g id="a_node14"><a xlink:href="a00049.html" target="_top" xlink:title="A helper class for setting and specifying dependencies between signals. ">
+<g id="a_node14"><a xlink:href="a00050.html" target="_top" xlink:title="A helper class for setting and specifying dependencies between signals. ">
 <polygon fill="white" stroke="black" points="297,-98.5 297,-128.5 457,-128.5 457,-98.5 297,-98.5"/>
 <text text-anchor="start" x="305" y="-116.5" font-family="Helvetica,sans-Serif" font-size="10.00">dynamicgraph::TimeDependency</text>
 <text text-anchor="middle" x="377" y="-105.5" font-family="Helvetica,sans-Serif" font-size="10.00">&lt; Time &gt;</text>
@@ -193,7 +193,7 @@
 </g>
 <!-- Node15 -->
 <g id="node15" class="node"><title>Node15</title>
-<g id="a_node15"><a xlink:href="a00049.html" target="_top" xlink:title="dynamicgraph::TimeDependency\l\&lt; int \&gt;">
+<g id="a_node15"><a xlink:href="a00050.html" target="_top" xlink:title="dynamicgraph::TimeDependency\l\&lt; int \&gt;">
 <polygon fill="white" stroke="black" points="297,-0.5 297,-30.5 457,-30.5 457,-0.5 297,-0.5"/>
 <text text-anchor="start" x="305" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">dynamicgraph::TimeDependency</text>
 <text text-anchor="middle" x="377" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">&lt; int &gt;</text>

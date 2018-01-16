@@ -1,20 +1,22 @@
 var a00023 =
 [
-    [ "ErrorCodeEnum", "a00023.html#a827d4a8bf13001f6b1eb04746b083849", [
-      [ "GENERIC", "a00023.html#a827d4a8bf13001f6b1eb04746b083849aac3098260c49aa047dbe2ad564aa756d", null ],
-      [ "UNREFERED_OBJECT", "a00023.html#a827d4a8bf13001f6b1eb04746b083849a9e9f28958f7ffd6c7a997df752bb97d5", null ],
-      [ "UNREFERED_SIGNAL", "a00023.html#a827d4a8bf13001f6b1eb04746b083849af23a8ce479f832624480aa6c0ba35cd9", null ],
-      [ "UNREFERED_FUNCTION", "a00023.html#a827d4a8bf13001f6b1eb04746b083849af159588b0f39514f85abdd874beed950", null ],
-      [ "DYNAMIC_LOADING", "a00023.html#a827d4a8bf13001f6b1eb04746b083849ae7b916904d771732c4869e6dbae60afe", null ],
-      [ "SIGNAL_CONFLICT", "a00023.html#a827d4a8bf13001f6b1eb04746b083849af524dede4e6a9f60e5752bcfd076bc39", null ],
-      [ "FUNCTION_CONFLICT", "a00023.html#a827d4a8bf13001f6b1eb04746b083849a02500a43be7f1a96af2e1020ec4cf046", null ],
-      [ "OBJECT_CONFLICT", "a00023.html#a827d4a8bf13001f6b1eb04746b083849a680452e3391be4e29001641e8827b25f", null ],
-      [ "SYNTAX_ERROR", "a00023.html#a827d4a8bf13001f6b1eb04746b083849a6d79a9d0e863d1a1ee84e28803001f44", null ],
-      [ "READ_FILE", "a00023.html#a827d4a8bf13001f6b1eb04746b083849a257c60facc0f82066a69a6aed52e142e", null ]
+    [ "Param", "a00030.html", "a00030" ],
+    [ "ExceptionEnum", "a00023.html#a19678de05600e82a1eaa2e70c0ad6fe0", [
+      [ "ABSTRACT", "a00023.html#a19678de05600e82a1eaa2e70c0ad6fe0a33c94c6723036643d4b47c7bae1da350", null ],
+      [ "SIGNAL", "a00023.html#a19678de05600e82a1eaa2e70c0ad6fe0a252baa19235309f051576f0d0e508098", null ],
+      [ "FACTORY", "a00023.html#a19678de05600e82a1eaa2e70c0ad6fe0af74e7993a80a233e4d9ba3017ea63a4c", null ],
+      [ "TRACES", "a00023.html#a19678de05600e82a1eaa2e70c0ad6fe0af27cffde588c14a95c26fc79314ec08c", null ],
+      [ "TOOLS", "a00023.html#a19678de05600e82a1eaa2e70c0ad6fe0abd2d0743b46c0c3d922f957f65e31689", null ]
     ] ],
-    [ "ExceptionFactory", "a00023.html#ab60e5bb9be64c0986858f5a06e9b9463", null ],
-    [ "ExceptionFactory", "a00023.html#a53e142dd07be6f12568be97466d4f640", null ],
-    [ "~ExceptionFactory", "a00023.html#a97efc73cdbf9492e02bf65db21e34fa2", null ],
-    [ "getExceptionName", "a00023.html#ab0436fa265dd42656933910262278bd8", null ],
-    [ "EXCEPTION_NAME", "a00023.html#a8c2d132bfb615d36cb4fad02bf42d951", null ]
+    [ "ExceptionAbstract", "a00023.html#aa6e9245e2906c2de912ea4da438a15b0", null ],
+    [ "~ExceptionAbstract", "a00023.html#a7eed4f7a295dced25eec9e9407b00e67", null ],
+    [ "getCode", "a00023.html#a0cc962ffce33ab54d946f97f05643249", null ],
+    [ "getExceptionName", "a00023.html#adf17921faed0da13d70a575f50c7180c", null ],
+    [ "getMessage", "a00023.html#a7e4ed5371f86a8d1e99abd127ae7a214", null ],
+    [ "getStringMessage", "a00023.html#a4067867e311bac147fccc0995e5abee5", null ],
+    [ "what", "a00023.html#a9a5208211df292bbfc679b036711a5d1", null ],
+    [ "operator<<", "a00023.html#a0750be86e659677bdca43adb9669411b", null ],
+    [ "code", "a00023.html#a7efe8b06765fc75ec92f32d0e73082a0", null ],
+    [ "EXCEPTION_NAME", "a00023.html#aa3cbda2debc333ce399bcc3cb3bad505", null ],
+    [ "message", "a00023.html#af4a0183309ed74c92d8645119c920831", null ]
 ];

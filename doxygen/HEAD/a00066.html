@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<title>dgshell_doc.h File Reference</title>
+<title>debug.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css">
 <link href="doxygen.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="jquery.js"></script>
@@ -87,18 +87,584 @@ $(document).ready(function(){initNavTree('a00066.html','');});
 </div>
 
 <div class="header">
+  <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#namespaces">Namespaces</a> &#124;
+<a href="#define-members">Macros</a> &#124;
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
-<div class="title">dgshell_doc.h File Reference</div>  </div>
+<div class="title">debug.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+<div class="textblock"><code>#include &lt;cstdio&gt;</code><br />
+<code>#include &lt;cstdarg&gt;</code><br />
+<code>#include &lt;iostream&gt;</code><br />
+<code>#include &lt;fstream&gt;</code><br />
+<code>#include &lt;sstream&gt;</code><br />
+<code>#include &lt;<a class="el" href="a00077.html">dynamic-graph/fwd.hh</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="a00068.html">dynamic-graph/dynamic-graph-api.h</a>&gt;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Include dependency graph for debug.h:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="a00126.svg" width="800" height="202"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div><div class="textblock"><div class="dynheader">
+This graph shows which files directly or indirectly include this file:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="a00127.svg" width="495" height="411"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00015.html">dynamicgraph::DebugTrace</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Logging class.  <a href="a00015.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
+Namespaces</h2></td></tr>
+<tr class="memitem:a00100"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00100.html">dynamicgraph</a></td></tr>
+<tr class="memdesc:a00100"><td class="mdescLeft">&#160;</td><td class="mdescRight">WIN32. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:a6dd3437819a217fef90ef973cf9364ca"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00066.html#a6dd3437819a217fef90ef973cf9364ca">VP_DEBUG_MODE</a>&#160;&#160;&#160;0</td></tr>
+<tr class="separator:a6dd3437819a217fef90ef973cf9364ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a99bf14cae76d8d5cbfe574d6ae62f30d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00066.html#a99bf14cae76d8d5cbfe574d6ae62f30d">VP_TEMPLATE_DEBUG_MODE</a>&#160;&#160;&#160;0</td></tr>
+<tr class="memdesc:a99bf14cae76d8d5cbfe574d6ae62f30d"><td class="mdescLeft">&#160;</td><td class="mdescRight">VP_DEBUG_MODE.  <a href="#a99bf14cae76d8d5cbfe574d6ae62f30d">More...</a><br /></td></tr>
+<tr class="separator:a99bf14cae76d8d5cbfe574d6ae62f30d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a34a049f8220d4679cf39de22833f88b9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00066.html#a34a049f8220d4679cf39de22833f88b9">DG_COMMON_TRACES</a></td></tr>
+<tr class="memdesc:a34a049f8220d4679cf39de22833f88b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">VP_TEMPLATE_DEBUG_MODE.  <a href="#a34a049f8220d4679cf39de22833f88b9">More...</a><br /></td></tr>
+<tr class="separator:a34a049f8220d4679cf39de22833f88b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a73d80a0eea397787f6ded077d8baa82b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00066.html#a73d80a0eea397787f6ded077d8baa82b">dgPREERROR</a>&#160;&#160;&#160;&quot;\t!! &quot;&lt;&lt;__FILE__ &lt;&lt; &quot;: &quot; &lt;&lt;__FUNCTION__ &lt;&lt; &quot;(#&quot; &lt;&lt; __LINE__ &lt;&lt; &quot;) :&quot;</td></tr>
+<tr class="separator:a73d80a0eea397787f6ded077d8baa82b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9965d817b72b8039eb0a2cadb646a48a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00066.html#a9965d817b72b8039eb0a2cadb646a48a">dgDEBUG</a>(level)</td></tr>
+<tr class="separator:a9965d817b72b8039eb0a2cadb646a48a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6ee8be21e139bab3b1dae8ca1ab8582d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00066.html#a6ee8be21e139bab3b1dae8ca1ab8582d">dgDEBUGMUTE</a></td></tr>
+<tr class="separator:a6ee8be21e139bab3b1dae8ca1ab8582d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae1d20131c769567f32609e038328acb6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00066.html#ae1d20131c769567f32609e038328acb6">dgERROR</a>&#160;&#160;&#160;dgERRORFLOW.outputbuffer &lt;&lt; <a class="el" href="a00066.html#a73d80a0eea397787f6ded077d8baa82b">dgPREERROR</a></td></tr>
+<tr class="separator:ae1d20131c769567f32609e038328acb6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0241c1aaa7c62ad461dc170dabd81ad1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00066.html#a0241c1aaa7c62ad461dc170dabd81ad1">dgTDEBUG</a>(level)</td></tr>
+<tr class="separator:a0241c1aaa7c62ad461dc170dabd81ad1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8c2bccd6b05adbe27487c1c17aadb2a1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00066.html#a8c2bccd6b05adbe27487c1c17aadb2a1">dgDEBUG_ENABLE</a>(level)&#160;&#160;&#160;false</td></tr>
+<tr class="separator:a8c2bccd6b05adbe27487c1c17aadb2a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a57ba45221de292838287ccce99e6ab6a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00066.html#a57ba45221de292838287ccce99e6ab6a">dgTDEBUG_ENABLE</a>(level)&#160;&#160;&#160;false</td></tr>
+<tr class="separator:a57ba45221de292838287ccce99e6ab6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4ee3604ba36dde608834bf7d5b6436e6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00066.html#a4ee3604ba36dde608834bf7d5b6436e6">dgDEBUGIN</a>(level)&#160;&#160;&#160;<a class="el" href="a00066.html#a9965d817b72b8039eb0a2cadb646a48a">dgDEBUG</a>(level) &lt;&lt; &quot;# In {&quot; &lt;&lt; std::endl</td></tr>
+<tr class="memdesc:a4ee3604ba36dde608834bf7d5b6436e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">VP_DEBUG.  <a href="#a4ee3604ba36dde608834bf7d5b6436e6">More...</a><br /></td></tr>
+<tr class="separator:a4ee3604ba36dde608834bf7d5b6436e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa0e31e14443239a3601348a259bdb3bd"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00066.html#aa0e31e14443239a3601348a259bdb3bd">dgDEBUGOUT</a>(level)&#160;&#160;&#160;<a class="el" href="a00066.html#a9965d817b72b8039eb0a2cadb646a48a">dgDEBUG</a>(level) &lt;&lt; &quot;# Out }&quot; &lt;&lt; std::endl</td></tr>
+<tr class="separator:aa0e31e14443239a3601348a259bdb3bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a578f46d54389f40c1928858228652921"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00066.html#a578f46d54389f40c1928858228652921">dgDEBUGINOUT</a>(level)&#160;&#160;&#160;<a class="el" href="a00066.html#a9965d817b72b8039eb0a2cadb646a48a">dgDEBUG</a>(level) &lt;&lt; &quot;# In/Out { }&quot; &lt;&lt; std::endl</td></tr>
+<tr class="separator:a578f46d54389f40c1928858228652921"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f397f1a19564cb3d336924f596b24d4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00066.html#a5f397f1a19564cb3d336924f596b24d4">dgTDEBUGIN</a>(level)&#160;&#160;&#160;<a class="el" href="a00066.html#a0241c1aaa7c62ad461dc170dabd81ad1">dgTDEBUG</a>(level) &lt;&lt; &quot;# In {&quot; &lt;&lt; std::endl</td></tr>
+<tr class="separator:a5f397f1a19564cb3d336924f596b24d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a19d56a2093d1396e30140bf481c169ba"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00066.html#a19d56a2093d1396e30140bf481c169ba">dgTDEBUGOUT</a>(level)&#160;&#160;&#160;<a class="el" href="a00066.html#a0241c1aaa7c62ad461dc170dabd81ad1">dgTDEBUG</a>(level) &lt;&lt; &quot;# Out }&quot; &lt;&lt; std::endl</td></tr>
+<tr class="separator:a19d56a2093d1396e30140bf481c169ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae47250abb6397e5cc9f30fd494dba435"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00066.html#ae47250abb6397e5cc9f30fd494dba435">dgTDEBUGINOUT</a>(level)&#160;&#160;&#160;<a class="el" href="a00066.html#a0241c1aaa7c62ad461dc170dabd81ad1">dgTDEBUG</a>(level) &lt;&lt; &quot;# In/Out { }&quot; &lt;&lt; std::endl</td></tr>
+<tr class="separator:ae47250abb6397e5cc9f30fd494dba435"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:a274638f39a33135c61b29ed23c2c473c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00066.html#a274638f39a33135c61b29ed23c2c473c">dgDEBUGF</a> (const int, const char *,...)</td></tr>
+<tr class="separator:a274638f39a33135c61b29ed23c2c473c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a21ee41cfee85608e41803e563bde76b5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00066.html#a21ee41cfee85608e41803e563bde76b5">dgDEBUGF</a> (const char *,...)</td></tr>
+<tr class="separator:a21ee41cfee85608e41803e563bde76b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b2fd062680adb4108ef5a2ab64f9f4b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00066.html#a4b2fd062680adb4108ef5a2ab64f9f4b">dgERRORF</a> (const int, const char *,...)</td></tr>
+<tr class="separator:a4b2fd062680adb4108ef5a2ab64f9f4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a88de0e8b8f28887995a2fe74d5374117"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00066.html#a88de0e8b8f28887995a2fe74d5374117">dgERRORF</a> (const char *,...)</td></tr>
+<tr class="separator:a88de0e8b8f28887995a2fe74d5374117"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad83a067e05ef93c6cdc1e80b8759c8d7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00066.html#ad83a067e05ef93c6cdc1e80b8759c8d7">dgTDEBUGF</a> (const int, const char *,...)</td></tr>
+<tr class="separator:ad83a067e05ef93c6cdc1e80b8759c8d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa2d012bd54a01c35127a477cf19d154a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00066.html#aa2d012bd54a01c35127a477cf19d154a">dgTDEBUGF</a> (const char *,...)</td></tr>
+<tr class="separator:aa2d012bd54a01c35127a477cf19d154a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:aab235a22d3fb5ed1e2fac533f82515c9"><td class="memItemLeft" align="right" valign="top">DYNAMIC_GRAPH_DLLAPI DebugTrace&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00100.html#aab235a22d3fb5ed1e2fac533f82515c9">dynamicgraph::dgDEBUGFLOW</a></td></tr>
+<tr class="separator:aab235a22d3fb5ed1e2fac533f82515c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6a5cfe0ca153b59cd66b2e227e5aa40a"><td class="memItemLeft" align="right" valign="top">DYNAMIC_GRAPH_DLLAPI DebugTrace&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00100.html#a6a5cfe0ca153b59cd66b2e227e5aa40a">dynamicgraph::dgERRORFLOW</a></td></tr>
+<tr class="separator:a6a5cfe0ca153b59cd66b2e227e5aa40a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Macro Definition Documentation</h2>
+<a class="anchor" id="a34a049f8220d4679cf39de22833f88b9"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DG_COMMON_TRACES</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Value:</b><div class="fragment"><div class="line"><span class="keywordflow">do</span> {                \</div><div class="line">  va_list arg;              \</div><div class="line">  va_start (arg, format);           \</div><div class="line">  vsnprintf (charbuffer, SIZE, format, arg);      \</div><div class="line">  va_end (arg);             \</div><div class="line">  outputbuffer &lt;&lt; tmpbuffer.str  () &lt;&lt; charbuffer &lt;&lt; std::endl; \</div><div class="line">    } <span class="keywordflow">while</span>(0)</div></div><!-- fragment -->
+<p>VP_TEMPLATE_DEBUG_MODE. </p>
+
+<p>Referenced by <a class="el" href="a00015.html#aa36fb9d2dbecb40dc734142b148737f3">dynamicgraph::DebugTrace::trace()</a>, and <a class="el" href="a00015.html#a2ca1aff52f81391a3feb34622265126a">dynamicgraph::DebugTrace::traceTemplate()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a9965d817b72b8039eb0a2cadb646a48a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define dgDEBUG</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">level</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Value:</b><div class="fragment"><div class="line"><span class="keywordflow">if</span> (1)          \</div><div class="line">    ;           \</div><div class="line">  else            \</div><div class="line">    std::cout</div></div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="a8c2bccd6b05adbe27487c1c17aadb2a1"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define dgDEBUG_ENABLE</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">level</td><td>)</td>
+          <td>&#160;&#160;&#160;false</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a4ee3604ba36dde608834bf7d5b6436e6"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define dgDEBUGIN</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">level</td><td>)</td>
+          <td>&#160;&#160;&#160;<a class="el" href="a00066.html#a9965d817b72b8039eb0a2cadb646a48a">dgDEBUG</a>(level) &lt;&lt; &quot;# In {&quot; &lt;&lt; std::endl</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>VP_DEBUG. </p>
+
+</div>
+</div>
+<a class="anchor" id="a578f46d54389f40c1928858228652921"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define dgDEBUGINOUT</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">level</td><td>)</td>
+          <td>&#160;&#160;&#160;<a class="el" href="a00066.html#a9965d817b72b8039eb0a2cadb646a48a">dgDEBUG</a>(level) &lt;&lt; &quot;# In/Out { }&quot; &lt;&lt; std::endl</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a6ee8be21e139bab3b1dae8ca1ab8582d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define dgDEBUGMUTE</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Value:</b><div class="fragment"><div class="line">(level)     \</div><div class="line">  <span class="keywordflow">if</span> (1)          \</div><div class="line">    ;           \</div><div class="line">  else            \</div><div class="line">    std::cout</div></div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="aa0e31e14443239a3601348a259bdb3bd"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define dgDEBUGOUT</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">level</td><td>)</td>
+          <td>&#160;&#160;&#160;<a class="el" href="a00066.html#a9965d817b72b8039eb0a2cadb646a48a">dgDEBUG</a>(level) &lt;&lt; &quot;# Out }&quot; &lt;&lt; std::endl</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ae1d20131c769567f32609e038328acb6"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define dgERROR&#160;&#160;&#160;dgERRORFLOW.outputbuffer &lt;&lt; <a class="el" href="a00066.html#a73d80a0eea397787f6ded077d8baa82b">dgPREERROR</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a73d80a0eea397787f6ded077d8baa82b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define dgPREERROR&#160;&#160;&#160;&quot;\t!! &quot;&lt;&lt;__FILE__ &lt;&lt; &quot;: &quot; &lt;&lt;__FUNCTION__ &lt;&lt; &quot;(#&quot; &lt;&lt; __LINE__ &lt;&lt; &quot;) :&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a0241c1aaa7c62ad461dc170dabd81ad1"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define dgTDEBUG</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">level</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Value:</b><div class="fragment"><div class="line"><span class="keywordflow">if</span> (1)          \</div><div class="line">    ;           \</div><div class="line">  else            \</div><div class="line">    std::cout</div></div><!-- fragment -->
+<p>Referenced by <a class="el" href="a00050.html#a1f8518dc19802d3a0f0983dc5be19b64">dynamicgraph::TimeDependency&lt; Time &gt;::needUpdate()</a>, and <a class="el" href="a00048.html#a2c408f7845c6a922572f9749fb1c3b0f">dynamicgraph::SignalPtr&lt; T, Time &gt;::plug()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a57ba45221de292838287ccce99e6ab6a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define dgTDEBUG_ENABLE</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">level</td><td>)</td>
+          <td>&#160;&#160;&#160;false</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a5f397f1a19564cb3d336924f596b24d4"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define dgTDEBUGIN</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">level</td><td>)</td>
+          <td>&#160;&#160;&#160;<a class="el" href="a00066.html#a0241c1aaa7c62ad461dc170dabd81ad1">dgTDEBUG</a>(level) &lt;&lt; &quot;# In {&quot; &lt;&lt; std::endl</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Referenced by <a class="el" href="a00048.html#aee71a360c2d2bcbf16ee5e8465623485">dynamicgraph::SignalPtr&lt; T, Time &gt;::access()</a>, <a class="el" href="a00048.html#a54d8d5114c373ead6fa5a77a1bd2b862">dynamicgraph::SignalPtr&lt; T, Time &gt;::display()</a>, <a class="el" href="a00048.html#ab5d2e1642c085b3793ce1ec05d55062b">dynamicgraph::SignalPtr&lt; T, Time &gt;::displayDependencies()</a>, <a class="el" href="a00048.html#afdf9f49303bf9766501ae0ef435a4144">dynamicgraph::SignalPtr&lt; T, Time &gt;::getPtr()</a>, and <a class="el" href="a00048.html#a2c408f7845c6a922572f9749fb1c3b0f">dynamicgraph::SignalPtr&lt; T, Time &gt;::plug()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ae47250abb6397e5cc9f30fd494dba435"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define dgTDEBUGINOUT</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">level</td><td>)</td>
+          <td>&#160;&#160;&#160;<a class="el" href="a00066.html#a0241c1aaa7c62ad461dc170dabd81ad1">dgTDEBUG</a>(level) &lt;&lt; &quot;# In/Out { }&quot; &lt;&lt; std::endl</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a19d56a2093d1396e30140bf481c169ba"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define dgTDEBUGOUT</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">level</td><td>)</td>
+          <td>&#160;&#160;&#160;<a class="el" href="a00066.html#a0241c1aaa7c62ad461dc170dabd81ad1">dgTDEBUG</a>(level) &lt;&lt; &quot;# Out }&quot; &lt;&lt; std::endl</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Referenced by <a class="el" href="a00048.html#aee71a360c2d2bcbf16ee5e8465623485">dynamicgraph::SignalPtr&lt; T, Time &gt;::access()</a>, <a class="el" href="a00048.html#a54d8d5114c373ead6fa5a77a1bd2b862">dynamicgraph::SignalPtr&lt; T, Time &gt;::display()</a>, <a class="el" href="a00048.html#ab5d2e1642c085b3793ce1ec05d55062b">dynamicgraph::SignalPtr&lt; T, Time &gt;::displayDependencies()</a>, <a class="el" href="a00048.html#afdf9f49303bf9766501ae0ef435a4144">dynamicgraph::SignalPtr&lt; T, Time &gt;::getPtr()</a>, <a class="el" href="a00050.html#a1f8518dc19802d3a0f0983dc5be19b64">dynamicgraph::TimeDependency&lt; Time &gt;::needUpdate()</a>, and <a class="el" href="a00048.html#a2c408f7845c6a922572f9749fb1c3b0f">dynamicgraph::SignalPtr&lt; T, Time &gt;::plug()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a6dd3437819a217fef90ef973cf9364ca"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define VP_DEBUG_MODE&#160;&#160;&#160;0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a99bf14cae76d8d5cbfe574d6ae62f30d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define VP_TEMPLATE_DEBUG_MODE&#160;&#160;&#160;0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>VP_DEBUG_MODE. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Function Documentation</h2>
+<a class="anchor" id="a274638f39a33135c61b29ed23c2c473c"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void dgDEBUGF </td>
+          <td>(</td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>...</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a21ee41cfee85608e41803e563bde76b5"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void dgDEBUGF </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>...</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a4b2fd062680adb4108ef5a2ab64f9f4b"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void dgERRORF </td>
+          <td>(</td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>...</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a88de0e8b8f28887995a2fe74d5374117"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void dgERRORF </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>...</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ad83a067e05ef93c6cdc1e80b8759c8d7"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void dgTDEBUGF </td>
+          <td>(</td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>...</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="aa2d012bd54a01c35127a477cf19d154a"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void dgTDEBUGF </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>...</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.8.6-->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_e68e8157741866f444e17edd764ebbae.html">doc</a></li><li class="navelem"><a class="el" href="dir_48ff735666d3b2a22469cf347206dd8e.html">additionalDoc</a></li><li class="navelem"><a class="el" href="a00066.html">dgshell_doc.h</a></li>
-    <li class="footer">Generated on Mon Dec 18 2017 00:07:45 for dynamic-graph by
+    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_a7fe445ff4848f3dbb9303db33c761fe.html">dynamic-graph</a></li><li class="navelem"><a class="el" href="a00066.html">debug.h</a></li>
+    <li class="footer">Generated on Tue Jan 16 2018 12:19:09 for dynamic-graph by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.11 </li>
   </ul>

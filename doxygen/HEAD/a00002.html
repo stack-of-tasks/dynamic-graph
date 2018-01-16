@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<title>ShellFunctions</title>
+<title>Notes about the scripting language</title>
 <link href="tabs.css" rel="stylesheet" type="text/css">
 <link href="doxygen.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="jquery.js"></script>
@@ -28,8 +28,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li class="current"><a href="pages.html"><span>Related&#160;Pages</span></a></li>
-      <li><a href="modules.html"><span>Modules</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
+      <li class="current"><a href="modules.html"><span>Modules</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
@@ -82,10 +82,21 @@ $(document).ready(function(){initNavTree('a00002.html','');});
 
 <div class="header">
   <div class="headertitle">
-<div class="title">ShellFunctions </div>  </div>
+<div class="title">Notes about the scripting language</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><dl class="section note"><dt>Note</dt><dd>Note: this documentation covers specific aspects of the in-house scripting language currently used by the dynamic-graph script. Unless otherwise specified, it is only relevant for programmers using this particular language. At the time of writing, there is talk of replacing the language with python, so check if this information is still relevant before reading.</dd></dl>
+
+<p>A couple of functions are built-in in the interpreter and provides low-level features such as file sourcing or plug-in loading.  
+<a href="#details">More...</a></p>
+<p>A couple of functions are built-in in the interpreter and provides low-level features such as file sourcing or plug-in loading. </p>
+<p><br />
+These functions are:<br />
+</p><div class="fragment"><div class="line">plug &lt;obj1.sig1&gt; &lt;obj2.sig2&gt; </div></div><!-- fragment --><p> plugs the signal sig1 of obj1 to the signal sig2 of obj2. sig1 and sig2 have to be of the same type. sig1 has to be an output signal and sig2 an input signal. </p><div class="fragment"><div class="line">new &lt;class&gt; &lt;<span class="keywordtype">object</span>&gt; </div></div><!-- fragment --><p> instantiates an object object of class class. object has to be a free identifier and class an existing entity. </p><div class="fragment"><div class="line">destroy &lt;object&gt; </div></div><!-- fragment --><p> deletes an instance previously created. </p><div class="fragment"><div class="line">run &lt;script.txt&gt; </div></div><!-- fragment --><p> sources (i.e. read and interpret) an external file. </p><div class="fragment"><div class="line">loadPlugin &lt;file.so&gt; &lt;directory&gt; </div></div><!-- fragment --><p> loads a plugin called file.so and located in the directory directory. </p><div class="fragment"><div class="line">unloadPlugin &lt;path/file.so&gt; </div></div><!-- fragment --><p> unloads a plugin. </p><div class="fragment"><div class="line">help </div></div><!-- fragment --><p> lists available functions. </p><div class="fragment"><div class="line"><span class="keyword">set</span> &lt;obj.signal&gt; &lt;value&gt; </div></div><!-- fragment --><p> defines an input signal to a specific, constant, value. </p><div class="fragment"><div class="line"><span class="keyword">get</span> &lt;obj.signal&gt; &lt;value&gt; </div></div><!-- fragment --><p> prints out a signal value. </p><div class="fragment"><div class="line">compute &lt;obj.sig&gt; &lt;time&gt; </div></div><!-- fragment --><p> computes an output signal and sets the associated time to time. </p>
+
+
+<h3><a class="anchor" id="dgshell_doc"></a>dg-shell executable</h3><div class="textblock">The dynamic-graph shell program "dg-shell" allows access to the dynamic-graph library's Interpreter class, which can execute commands and scripts from the command line.It can be found in the installation prefix's bin/ directory.There is also a linux shell script available, dg-shell-plugin, that creates a and loads a default script whose goal is to load useful plugins at startup (shell-functions and shell-procedure).For an example of shell commands and scripts, see <a class="el" href="index.html#scriptingabout">Building the graph</a>. </div>
+
+<h3><a class="anchor" id="shellfunctions_doc"></a>ShellFunctions</h3><div class="textblock"><dl class="section note"><dt>Note</dt><dd>Note: this documentation covers specific aspects of the in-house scripting language currently used by the dynamic-graph script. Unless otherwise specified, it is only relevant for programmers using this particular language. At the time of writing, there is talk of replacing the language with python, so check if this information is still relevant before reading.</dd></dl>
 <h1><a class="anchor" id="description"></a>
 Description</h1>
 <p>The <b>ShellFunctions</b> plugin file adds common shell functions to the dynamic-graph shell. </p>
@@ -103,7 +114,7 @@ Generated plugin file</h1>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Mon Dec 18 2017 00:07:45 for dynamic-graph by
+    <li class="footer">Generated on Tue Jan 16 2018 12:19:09 for dynamic-graph by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.11 </li>
   </ul>

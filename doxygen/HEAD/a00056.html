@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<title>command-bind.h File Reference</title>
+<title>all-signals.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css">
 <link href="doxygen.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="jquery.js"></script>
@@ -87,129 +87,26 @@ $(document).ready(function(){initNavTree('a00056.html','');});
 </div>
 
 <div class="header">
-  <div class="summary">
-<a href="#nested-classes">Classes</a> &#124;
-<a href="#namespaces">Namespaces</a> &#124;
-<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<div class="title">command-bind.h File Reference</div>  </div>
+<div class="title">all-signals.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;<a class="el" href="a00063.html">dynamic-graph/command.h</a>&quot;</code><br />
-<code>#include &lt;boost/assign/list_of.hpp&gt;</code><br />
-<code>#include &lt;boost/function.hpp&gt;</code><br />
-<code>#include &lt;boost/bind.hpp&gt;</code><br />
+<div class="textblock"><code>#include &lt;<a class="el" href="a00091.html">dynamic-graph/signal.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="a00088.html">dynamic-graph/signal-ptr.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="a00090.html">dynamic-graph/signal-time-dependent.h</a>&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
-Include dependency graph for command-bind.h:</div>
+Include dependency graph for all-signals.h:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="a00108.svg" width="866" height="351"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="a00108.svg" width="2735" height="738"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
-</div><div class="textblock"><div class="dynheader">
-This graph shows which files directly or indirectly include this file:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="a00109.svg" width="130" height="112"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
-</div><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
-Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00008.html">dynamicgraph::command::CommandVoid0&lt; E &gt;</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00009.html">dynamicgraph::command::CommandVoid1&lt; E, T &gt;</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00010.html">dynamicgraph::command::CommandVoid2&lt; E, T1, T2 &gt;</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00011.html">dynamicgraph::command::CommandVoid3&lt; E, T1, T2, T3 &gt;</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00012.html">dynamicgraph::command::CommandVoid4&lt; E, T1, T2, T3, T4 &gt;</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00007.html">dynamicgraph::command::CommandVerbose&lt; E &gt;</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
-Namespaces</h2></td></tr>
-<tr class="memitem:a00099"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00099.html">dynamicgraph</a></td></tr>
-<tr class="memdesc:a00099"><td class="mdescLeft">&#160;</td><td class="mdescRight">WIN32. <br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a00100"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00100.html">dynamicgraph::command</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
-Functions</h2></td></tr>
-<tr class="memitem:ac9c765d61d77e93c9ad165ad9b898bf8"><td class="memTemplParams" colspan="2">template&lt;class E &gt; </td></tr>
-<tr class="memitem:ac9c765d61d77e93c9ad165ad9b898bf8"><td class="memTemplItemLeft" align="right" valign="top">CommandVoid0&lt; E &gt; *&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00100.html#ac9c765d61d77e93c9ad165ad9b898bf8">dynamicgraph::command::makeCommandVoid0</a> (E &amp;entity, boost::function&lt; void(void)&gt; function, const std::string &amp;docString)</td></tr>
-<tr class="separator:ac9c765d61d77e93c9ad165ad9b898bf8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a519630b169cace5c242742aa164c7042"><td class="memTemplParams" colspan="2">template&lt;class E &gt; </td></tr>
-<tr class="memitem:a519630b169cace5c242742aa164c7042"><td class="memTemplItemLeft" align="right" valign="top">CommandVoid0&lt; E &gt; *&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00100.html#a519630b169cace5c242742aa164c7042">dynamicgraph::command::makeCommandVoid0</a> (E &amp;entity, boost::function&lt; void(E *)&gt; function, const std::string &amp;docString)</td></tr>
-<tr class="separator:a519630b169cace5c242742aa164c7042"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af009148d4dd971dbdf4c0357c26dbec3"><td class="memTemplParams" colspan="2">template&lt;class E &gt; </td></tr>
-<tr class="memitem:af009148d4dd971dbdf4c0357c26dbec3"><td class="memTemplItemLeft" align="right" valign="top">CommandVoid0&lt; E &gt; *&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00100.html#af009148d4dd971dbdf4c0357c26dbec3">dynamicgraph::command::makeCommandVoid0</a> (E &amp;entity, void(E::*function)(void), const std::string &amp;docString)</td></tr>
-<tr class="separator:af009148d4dd971dbdf4c0357c26dbec3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5be29f36336190ef936e1ad465745e88"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00100.html#a5be29f36336190ef936e1ad465745e88">dynamicgraph::command::docCommandVoid0</a> (const std::string &amp;doc)</td></tr>
-<tr class="separator:a5be29f36336190ef936e1ad465745e88"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a399d9270497b6885132d752a8469ab24"><td class="memTemplParams" colspan="2">template&lt;class E , typename T &gt; </td></tr>
-<tr class="memitem:a399d9270497b6885132d752a8469ab24"><td class="memTemplItemLeft" align="right" valign="top">CommandVoid1&lt; E, T &gt; *&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00100.html#a399d9270497b6885132d752a8469ab24">dynamicgraph::command::makeCommandVoid1</a> (E &amp;entity, boost::function&lt; void(const T &amp;)&gt; function, const std::string &amp;docString)</td></tr>
-<tr class="separator:a399d9270497b6885132d752a8469ab24"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad04bbf0c7e5bdbcb9b997e6001debd50"><td class="memTemplParams" colspan="2">template&lt;class E , typename T &gt; </td></tr>
-<tr class="memitem:ad04bbf0c7e5bdbcb9b997e6001debd50"><td class="memTemplItemLeft" align="right" valign="top">CommandVoid1&lt; E, T &gt; *&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00100.html#ad04bbf0c7e5bdbcb9b997e6001debd50">dynamicgraph::command::makeCommandVoid1</a> (E &amp;entity, boost::function&lt; void(E *, const T &amp;)&gt; function, const std::string &amp;docString)</td></tr>
-<tr class="separator:ad04bbf0c7e5bdbcb9b997e6001debd50"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad8f8b386673fed2a38b1261e7e405145"><td class="memTemplParams" colspan="2">template&lt;class E , typename T &gt; </td></tr>
-<tr class="memitem:ad8f8b386673fed2a38b1261e7e405145"><td class="memTemplItemLeft" align="right" valign="top">CommandVoid1&lt; E, T &gt; *&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00100.html#ad8f8b386673fed2a38b1261e7e405145">dynamicgraph::command::makeCommandVoid1</a> (E &amp;entity, void(E::*function)(const T &amp;), const std::string &amp;docString)</td></tr>
-<tr class="separator:ad8f8b386673fed2a38b1261e7e405145"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2b254e9caf650fda1a993d33794a0f2b"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00100.html#a2b254e9caf650fda1a993d33794a0f2b">dynamicgraph::command::docCommandVoid1</a> (const std::string &amp;doc, const std::string &amp;type)</td></tr>
-<tr class="separator:a2b254e9caf650fda1a993d33794a0f2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7b58247fe75dbb9e6ee4e732c459e74f"><td class="memTemplParams" colspan="2">template&lt;class E , typename T1 , typename T2 &gt; </td></tr>
-<tr class="memitem:a7b58247fe75dbb9e6ee4e732c459e74f"><td class="memTemplItemLeft" align="right" valign="top">CommandVoid2&lt; E, T1, T2 &gt; *&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00100.html#a7b58247fe75dbb9e6ee4e732c459e74f">dynamicgraph::command::makeCommandVoid2</a> (E &amp;entity, boost::function&lt; void(const T1 &amp;, const T2 &amp;)&gt; function, const std::string &amp;docString)</td></tr>
-<tr class="separator:a7b58247fe75dbb9e6ee4e732c459e74f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1a0f2cd084ce251aca4568202d8b4d03"><td class="memTemplParams" colspan="2">template&lt;class E , typename T1 , typename T2 &gt; </td></tr>
-<tr class="memitem:a1a0f2cd084ce251aca4568202d8b4d03"><td class="memTemplItemLeft" align="right" valign="top">CommandVoid2&lt; E, T1, T2 &gt; *&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00100.html#a1a0f2cd084ce251aca4568202d8b4d03">dynamicgraph::command::makeCommandVoid2</a> (E &amp;entity, boost::function&lt; void(E *, const T1 &amp;, const T2 &amp;)&gt; function, const std::string &amp;docString)</td></tr>
-<tr class="separator:a1a0f2cd084ce251aca4568202d8b4d03"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a40c472182e8a85df136836d1220faca9"><td class="memTemplParams" colspan="2">template&lt;class E , typename T1 , typename T2 &gt; </td></tr>
-<tr class="memitem:a40c472182e8a85df136836d1220faca9"><td class="memTemplItemLeft" align="right" valign="top">CommandVoid2&lt; E, T1, T2 &gt; *&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00100.html#a40c472182e8a85df136836d1220faca9">dynamicgraph::command::makeCommandVoid2</a> (E &amp;entity, void(E::*function)(const T1 &amp;, const T2 &amp;), const std::string &amp;docString)</td></tr>
-<tr class="separator:a40c472182e8a85df136836d1220faca9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a65d9f8623ed28327836889a3b5796f4e"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00100.html#a65d9f8623ed28327836889a3b5796f4e">dynamicgraph::command::docCommandVoid2</a> (const std::string &amp;doc, const std::string &amp;type1, const std::string &amp;type2)</td></tr>
-<tr class="separator:a65d9f8623ed28327836889a3b5796f4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab30e1068fe8758247a3997a4a874400a"><td class="memTemplParams" colspan="2">template&lt;class E , typename T1 , typename T2 , typename T3 &gt; </td></tr>
-<tr class="memitem:ab30e1068fe8758247a3997a4a874400a"><td class="memTemplItemLeft" align="right" valign="top">CommandVoid3&lt; E, T1, T2, T3 &gt; *&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00100.html#ab30e1068fe8758247a3997a4a874400a">dynamicgraph::command::makeCommandVoid3</a> (E &amp;entity, typename CommandVoid3&lt; E, T1, T2, T3 &gt;::function_t function, const std::string &amp;docString)</td></tr>
-<tr class="separator:ab30e1068fe8758247a3997a4a874400a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a317b1f9571ed6174b6909e1bc4a8accd"><td class="memTemplParams" colspan="2">template&lt;class E , typename T1 , typename T2 , typename T3 &gt; </td></tr>
-<tr class="memitem:a317b1f9571ed6174b6909e1bc4a8accd"><td class="memTemplItemLeft" align="right" valign="top">CommandVoid3&lt; E, T1, T2, T3 &gt; *&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00100.html#a317b1f9571ed6174b6909e1bc4a8accd">dynamicgraph::command::makeCommandVoid3</a> (E &amp;entity, boost::function&lt; void(E *, const T1 &amp;, const T2 &amp;, const T3 &amp;)&gt; function, const std::string &amp;docString)</td></tr>
-<tr class="separator:a317b1f9571ed6174b6909e1bc4a8accd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a313ed7c2b16d67ea99112199dde7622a"><td class="memTemplParams" colspan="2">template&lt;class E , typename T1 , typename T2 , typename T3 &gt; </td></tr>
-<tr class="memitem:a313ed7c2b16d67ea99112199dde7622a"><td class="memTemplItemLeft" align="right" valign="top">CommandVoid3&lt; E, T1, T2, T3 &gt; *&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00100.html#a313ed7c2b16d67ea99112199dde7622a">dynamicgraph::command::makeCommandVoid3</a> (E &amp;entity, void(E::*function)(const T1 &amp;, const T2 &amp;, const T3 &amp;), const std::string &amp;docString)</td></tr>
-<tr class="separator:a313ed7c2b16d67ea99112199dde7622a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af4ae0e594e0022631a6afddcabec2f3e"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00100.html#af4ae0e594e0022631a6afddcabec2f3e">dynamicgraph::command::docCommandVoid3</a> (const std::string &amp;doc, const std::string &amp;type1, const std::string &amp;type2, const std::string &amp;type3)</td></tr>
-<tr class="separator:af4ae0e594e0022631a6afddcabec2f3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a269678ea5c5ff41d5f7e663c8f139ffa"><td class="memTemplParams" colspan="2">template&lt;class E , typename T1 , typename T2 , typename T3 , typename T4 &gt; </td></tr>
-<tr class="memitem:a269678ea5c5ff41d5f7e663c8f139ffa"><td class="memTemplItemLeft" align="right" valign="top">CommandVoid4&lt; E, T1, T2, T3, T4 &gt; *&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00100.html#a269678ea5c5ff41d5f7e663c8f139ffa">dynamicgraph::command::makeCommandVoid4</a> (E &amp;entity, typename CommandVoid4&lt; E, T1, T2, T3, T4 &gt;::function_t function, const std::string &amp;docString)</td></tr>
-<tr class="separator:a269678ea5c5ff41d5f7e663c8f139ffa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab1d1c3e50081bd550a18451cfd654915"><td class="memTemplParams" colspan="2">template&lt;class E , typename T1 , typename T2 , typename T3 , typename T4 &gt; </td></tr>
-<tr class="memitem:ab1d1c3e50081bd550a18451cfd654915"><td class="memTemplItemLeft" align="right" valign="top">CommandVoid4&lt; E, T1, T2, T3, T4 &gt; *&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00100.html#ab1d1c3e50081bd550a18451cfd654915">dynamicgraph::command::makeCommandVoid4</a> (E &amp;entity, boost::function&lt; void(E *, const T1 &amp;, const T2 &amp;, const T3 &amp;, const T4 &amp;)&gt; function, const std::string &amp;docString)</td></tr>
-<tr class="separator:ab1d1c3e50081bd550a18451cfd654915"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2ed60c588dc5a4bff2b9a8cda4eb9889"><td class="memTemplParams" colspan="2">template&lt;class E , typename T1 , typename T2 , typename T3 , typename T4 &gt; </td></tr>
-<tr class="memitem:a2ed60c588dc5a4bff2b9a8cda4eb9889"><td class="memTemplItemLeft" align="right" valign="top">CommandVoid4&lt; E, T1, T2, T3, T4 &gt; *&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00100.html#a2ed60c588dc5a4bff2b9a8cda4eb9889">dynamicgraph::command::makeCommandVoid4</a> (E &amp;entity, void(E::*function)(const T1 &amp;, const T2 &amp;, const T3 &amp;, const T4 &amp;), const std::string &amp;docString)</td></tr>
-<tr class="separator:a2ed60c588dc5a4bff2b9a8cda4eb9889"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a85ab18cbb7f68400b62c8684d09a18ae"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00100.html#a85ab18cbb7f68400b62c8684d09a18ae">dynamicgraph::command::docCommandVoid4</a> (const std::string &amp;doc, const std::string &amp;type1, const std::string &amp;type2, const std::string &amp;type3, const std::string &amp;type4)</td></tr>
-<tr class="separator:a85ab18cbb7f68400b62c8684d09a18ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1b8c934b735f00dd5f0a1548978428dc"><td class="memTemplParams" colspan="2">template&lt;class E &gt; </td></tr>
-<tr class="memitem:a1b8c934b735f00dd5f0a1548978428dc"><td class="memTemplItemLeft" align="right" valign="top">CommandVerbose&lt; E &gt; *&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00100.html#a1b8c934b735f00dd5f0a1548978428dc">dynamicgraph::command::makeCommandVerbose</a> (E &amp;entity, typename CommandVerbose&lt; E &gt;::function_t function, const std::string &amp;docString)</td></tr>
-<tr class="separator:a1b8c934b735f00dd5f0a1548978428dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a78a8cdf4df69ff3277a27d00510b647c"><td class="memTemplParams" colspan="2">template&lt;class E &gt; </td></tr>
-<tr class="memitem:a78a8cdf4df69ff3277a27d00510b647c"><td class="memTemplItemLeft" align="right" valign="top">CommandVerbose&lt; E &gt; *&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00100.html#a78a8cdf4df69ff3277a27d00510b647c">dynamicgraph::command::makeCommandVerbose</a> (E &amp;entity, typename CommandVerbose&lt; E &gt;::memberFunctionConst_ptr_t function, const std::string &amp;docString)</td></tr>
-<tr class="separator:a78a8cdf4df69ff3277a27d00510b647c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4a03de4878228a935ab7046c3f7bf58b"><td class="memTemplParams" colspan="2">template&lt;class E &gt; </td></tr>
-<tr class="memitem:a4a03de4878228a935ab7046c3f7bf58b"><td class="memTemplItemLeft" align="right" valign="top">CommandVerbose&lt; E &gt; *&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00100.html#a4a03de4878228a935ab7046c3f7bf58b">dynamicgraph::command::makeCommandVerbose</a> (E &amp;entity, typename CommandVerbose&lt; E &gt;::memberFunction_ptr_t function, const std::string &amp;docString)</td></tr>
-<tr class="separator:a4a03de4878228a935ab7046c3f7bf58b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaa51a5449be380d1b41ff4b383f7836a"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00100.html#aaa51a5449be380d1b41ff4b383f7836a">dynamicgraph::command::docCommandVerbose</a> (const std::string &amp;doc)</td></tr>
-<tr class="separator:aaa51a5449be380d1b41ff4b383f7836a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table>
-</div><!-- contents -->
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.8.6-->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_a7fe445ff4848f3dbb9303db33c761fe.html">dynamic-graph</a></li><li class="navelem"><a class="el" href="a00056.html">command-bind.h</a></li>
-    <li class="footer">Generated on Mon Dec 18 2017 00:07:45 for dynamic-graph by
+    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_a7fe445ff4848f3dbb9303db33c761fe.html">dynamic-graph</a></li><li class="navelem"><a class="el" href="a00056.html">all-signals.h</a></li>
+    <li class="footer">Generated on Tue Jan 16 2018 12:19:09 for dynamic-graph by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.11 </li>
   </ul>

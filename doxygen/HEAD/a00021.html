@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<title>dynamicgraph::EntityRegisterer Class Reference</title>
+<title>dynamicgraph::EntityHelper&lt; Ent &gt; Struct Template Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css">
 <link href="doxygen.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="jquery.js"></script>
@@ -90,91 +90,32 @@ $(document).ready(function(){initNavTree('a00021.html','');});
 
 <div class="header">
   <div class="summary">
-<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-types">Public Types</a> &#124;
 <a href="a00194.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">dynamicgraph::EntityRegisterer Class Reference<div class="ingroups"><a class="el" href="a00103.html">Core classes and objects</a></div></div>  </div>
+<div class="title">dynamicgraph::EntityHelper&lt; Ent &gt; Struct Template Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>This class automatically register an <a class="el" href="a00019.html" title="This class represents an entity, i.e. ">Entity</a> to the global factory at initialization and unregister it during instance destruction.  
- <a href="a00021.html#details">More...</a></p>
-
-<p><code>#include &lt;dynamic-graph/factory.h&gt;</code></p>
-<div class="dynheader">
-Inheritance diagram for dynamicgraph::EntityRegisterer:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="a00195.svg" width="216" height="112"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-<center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
-<div class="dynheader">
-Collaboration diagram for dynamicgraph::EntityRegisterer:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="a00196.svg" width="216" height="112"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-<center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
+<p><code>#include &lt;dynamic-graph/entity-helper.h&gt;</code></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
-Public Member Functions</h2></td></tr>
-<tr class="memitem:af92b0891d1f06de7f5ad762eef6e676c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00021.html#af92b0891d1f06de7f5ad762eef6e676c">EntityRegisterer</a> (const std::string &amp;entityClassName, <a class="el" href="a00026.html#a49e8974b169e5b73957cc64a3b223f6a">FactoryStorage::EntityConstructor_ptr</a> maker)</td></tr>
-<tr class="memdesc:af92b0891d1f06de7f5ad762eef6e676c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Register entity to the global factory.  <a href="#af92b0891d1f06de7f5ad762eef6e676c">More...</a><br /></td></tr>
-<tr class="separator:af92b0891d1f06de7f5ad762eef6e676c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8f26108d1c4a08e03d48dfc881b4d919"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00021.html#a8f26108d1c4a08e03d48dfc881b4d919">~EntityRegisterer</a> ()</td></tr>
-<tr class="memdesc:a8f26108d1c4a08e03d48dfc881b4d919"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unregister entity to the global factory.  <a href="#a8f26108d1c4a08e03d48dfc881b4d919">More...</a><br /></td></tr>
-<tr class="separator:a8f26108d1c4a08e03d48dfc881b4d919"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:a4b446c7ab2f3976af9a4e0aab59ba359"><td class="memItemLeft" align="right" valign="top">typedef Ent&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00021.html#a4b446c7ab2f3976af9a4e0aab59ba359">EntityClassName</a></td></tr>
+<tr class="separator:a4b446c7ab2f3976af9a4e0aab59ba359"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>This class automatically register an <a class="el" href="a00019.html" title="This class represents an entity, i.e. ">Entity</a> to the global factory at initialization and unregister it during instance destruction. </p>
-<p>This class is mainly used by the DYNAMICGRAPH_FACTORY_ENTITY_PLUGIN macro and is of little interest by itself. </p>
-</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="af92b0891d1f06de7f5ad762eef6e676c"></a>
+<h2 class="groupheader">Member Typedef Documentation</h2>
+<a class="anchor" id="a4b446c7ab2f3976af9a4e0aab59ba359"></a>
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
+<div class="memtemplate">
+template&lt;typename Ent &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">dynamicgraph::EntityRegisterer::EntityRegisterer </td>
-          <td>(</td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>entityClassName</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="a00026.html#a49e8974b169e5b73957cc64a3b223f6a">FactoryStorage::EntityConstructor_ptr</a>&#160;</td>
-          <td class="paramname"><em>maker</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Register entity to the global factory. </p>
-
-</div>
-</div>
-<a class="anchor" id="a8f26108d1c4a08e03d48dfc881b4d919"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">dynamicgraph::EntityRegisterer::~EntityRegisterer </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
+          <td class="memname">typedef Ent <a class="el" href="a00021.html">dynamicgraph::EntityHelper</a>&lt; Ent &gt;::<a class="el" href="a00021.html#a4b446c7ab2f3976af9a4e0aab59ba359">EntityClassName</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Unregister entity to the global factory. </p>
 
 </div>
 </div>
@@ -184,8 +125,8 @@ Public Member Functions</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="a00099.html">dynamicgraph</a></li><li class="navelem"><a class="el" href="a00021.html">EntityRegisterer</a></li>
-    <li class="footer">Generated on Mon Dec 18 2017 00:07:45 for dynamic-graph by
+    <li class="navelem"><a class="el" href="a00100.html">dynamicgraph</a></li><li class="navelem"><a class="el" href="a00021.html">EntityHelper</a></li>
+    <li class="footer">Generated on Tue Jan 16 2018 12:19:09 for dynamic-graph by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.11 </li>
   </ul>

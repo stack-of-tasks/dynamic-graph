@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<title>dynamicgraph::EntityHelper&lt; Ent &gt; Struct Template Reference</title>
+<title>dynamicgraph::Entity Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css">
 <link href="doxygen.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="jquery.js"></script>
@@ -91,30 +91,720 @@ $(document).ready(function(){initNavTree('a00020.html','');});
 <div class="header">
   <div class="summary">
 <a href="#pub-types">Public Types</a> &#124;
-<a href="a00193.html">List of all members</a>  </div>
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pro-methods">Protected Member Functions</a> &#124;
+<a href="#pro-attribs">Protected Attributes</a> &#124;
+<a href="a00191.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">dynamicgraph::EntityHelper&lt; Ent &gt; Struct Template Reference</div>  </div>
+<div class="title">dynamicgraph::Entity Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span><div class="ingroups"><a class="el" href="a00104.html">Core classes and objects</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p><code>#include &lt;dynamic-graph/entity-helper.h&gt;</code></p>
+<p>This class represents an entity, i.e.  
+ <a href="a00020.html#details">More...</a></p>
+
+<p><code>#include &lt;dynamic-graph/entity.h&gt;</code></p>
+<div class="dynheader">
+Inheritance diagram for dynamicgraph::Entity:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="a00192.svg" width="215" height="262"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
+<div class="dynheader">
+Collaboration diagram for dynamicgraph::Entity:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="a00193.svg" width="1326" height="282"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:a4b446c7ab2f3976af9a4e0aab59ba359"><td class="memItemLeft" align="right" valign="top">typedef Ent&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00020.html#a4b446c7ab2f3976af9a4e0aab59ba359">EntityClassName</a></td></tr>
-<tr class="separator:a4b446c7ab2f3976af9a4e0aab59ba359"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac2b0d244c0ce939462eeb6f4d879765b"><td class="memItemLeft" align="right" valign="top">typedef std::map&lt; std::string, <a class="el" href="a00044.html">SignalBase</a>&lt; int &gt; * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00020.html#ac2b0d244c0ce939462eeb6f4d879765b">SignalMap</a></td></tr>
+<tr class="separator:ac2b0d244c0ce939462eeb6f4d879765b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a54da633f344f0e4955754955816732fa"><td class="memItemLeft" align="right" valign="top">typedef std::map&lt; const std::string, <a class="el" href="a00007.html">command::Command</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00020.html#a54da633f344f0e4955754955816732fa">CommandMap_t</a></td></tr>
+<tr class="separator:a54da633f344f0e4955754955816732fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a027e1581e00972dff2f2c470c5346e55"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00020.html#a027e1581e00972dff2f2c470c5346e55">Entity</a> (const std::string &amp;<a class="el" href="a00020.html#a8828fb6d5270786dc7a12705cff62fdc">name</a>)</td></tr>
+<tr class="separator:a027e1581e00972dff2f2c470c5346e55"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab7f830e2bd8d7e3a6dd5fde249f2700e"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00020.html#ab7f830e2bd8d7e3a6dd5fde249f2700e">~Entity</a> ()</td></tr>
+<tr class="separator:ab7f830e2bd8d7e3a6dd5fde249f2700e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8be6c2a103f030b644ff515bdce8f9ae"><td class="memItemLeft" align="right" valign="top">const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00020.html#a8be6c2a103f030b644ff515bdce8f9ae">getName</a> () const </td></tr>
+<tr class="separator:a8be6c2a103f030b644ff515bdce8f9ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5b55a0f1af32e9d0ff0dcb7b65ef1fd4"><td class="memItemLeft" align="right" valign="top">virtual const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00020.html#a5b55a0f1af32e9d0ff0dcb7b65ef1fd4">getClassName</a> () const =0</td></tr>
+<tr class="separator:a5b55a0f1af32e9d0ff0dcb7b65ef1fd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1ba8ae417ee953b93a57e002cba94136"><td class="memItemLeft" align="right" valign="top">virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00020.html#a1ba8ae417ee953b93a57e002cba94136">getDocString</a> () const </td></tr>
+<tr class="separator:a1ba8ae417ee953b93a57e002cba94136"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad6333beeba67d820b6a3755d5fe5a100"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00020.html#ad6333beeba67d820b6a3755d5fe5a100">hasSignal</a> (const std::string &amp;signame) const </td></tr>
+<tr class="separator:ad6333beeba67d820b6a3755d5fe5a100"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac2386728ff3519c6a36443b4855fd1b2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00044.html">SignalBase</a>&lt; int &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00020.html#ac2386728ff3519c6a36443b4855fd1b2">getSignal</a> (const std::string &amp;signalName)</td></tr>
+<tr class="separator:ac2386728ff3519c6a36443b4855fd1b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad7ced10dcd58724451208e3a25af790d"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="a00044.html">SignalBase</a>&lt; int &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00020.html#ad7ced10dcd58724451208e3a25af790d">getSignal</a> (const std::string &amp;signalName) const </td></tr>
+<tr class="separator:ad7ced10dcd58724451208e3a25af790d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aae39fb7ea3290814c860123dc8c7b0f2"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00020.html#aae39fb7ea3290814c860123dc8c7b0f2">displaySignalList</a> (std::ostream &amp;os) const </td></tr>
+<tr class="separator:aae39fb7ea3290814c860123dc8c7b0f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaacb708ef239d3fbc953bcdb2ad7c3d1"><td class="memItemLeft" align="right" valign="top">virtual std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00020.html#aaacb708ef239d3fbc953bcdb2ad7c3d1">writeGraph</a> (std::ostream &amp;os) const </td></tr>
+<tr class="separator:aaacb708ef239d3fbc953bcdb2ad7c3d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae4416aada52468f823877500b60b0db9"><td class="memItemLeft" align="right" valign="top">virtual std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00020.html#ae4416aada52468f823877500b60b0db9">writeCompletionList</a> (std::ostream &amp;os) const </td></tr>
+<tr class="separator:ae4416aada52468f823877500b60b0db9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9766ac602d5b6d16b227597b4f4a674c"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00020.html#a9766ac602d5b6d16b227597b4f4a674c">display</a> (std::ostream &amp;os) const </td></tr>
+<tr class="separator:a9766ac602d5b6d16b227597b4f4a674c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aac17d397ff8f7c33c9e3b0434417f614"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00020.html#aac17d397ff8f7c33c9e3b0434417f614">commandLine</a> (const std::string &amp;cmdLine, std::istringstream &amp;cmdArgs, std::ostream &amp;os)</td></tr>
+<tr class="separator:aac17d397ff8f7c33c9e3b0434417f614"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac13301d45f39c336f5c018c04500c906"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="a00044.html">SignalBase</a>&lt; int &gt; *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00020.html#ac13301d45f39c336f5c018c04500c906">test</a> ()</td></tr>
+<tr class="separator:ac13301d45f39c336f5c018c04500c906"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a56ff4516fcb465df6bf920a554a896a9"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00020.html#a56ff4516fcb465df6bf920a554a896a9">test2</a> (<a class="el" href="a00044.html">SignalBase</a>&lt; int &gt; *)</td></tr>
+<tr class="separator:a56ff4516fcb465df6bf920a554a896a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adc33847dec189b9806f8b90ef49c070a"><td class="memItemLeft" align="right" valign="top">const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00020.html#adc33847dec189b9806f8b90ef49c070a">getCommandList</a> () const </td></tr>
+<tr class="separator:adc33847dec189b9806f8b90ef49c070a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afd68500691bbf5a3407e90c028925ca6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00020.html#a54da633f344f0e4955754955816732fa">CommandMap_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00020.html#afd68500691bbf5a3407e90c028925ca6">getNewStyleCommandMap</a> ()</td></tr>
+<tr class="separator:afd68500691bbf5a3407e90c028925ca6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a47140733dad597ccbf0ab19fc4c11c42"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00007.html">command::Command</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00020.html#a47140733dad597ccbf0ab19fc4c11c42">getNewStyleCommand</a> (const std::string &amp;cmdName)</td></tr>
+<tr class="separator:a47140733dad597ccbf0ab19fc4c11c42"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac0ae837e5435609a274ab76adb9a5577"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00020.html#ac2b0d244c0ce939462eeb6f4d879765b">SignalMap</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00020.html#ac0ae837e5435609a274ab76adb9a5577">getSignalMap</a> () const </td></tr>
+<tr class="separator:ac0ae837e5435609a274ab76adb9a5577"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
+Protected Member Functions</h2></td></tr>
+<tr class="memitem:adc5060d7eec76f7fdff92cbf8642ed76"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00020.html#adc5060d7eec76f7fdff92cbf8642ed76">addCommand</a> (const std::string &amp;<a class="el" href="a00020.html#a8828fb6d5270786dc7a12705cff62fdc">name</a>, <a class="el" href="a00007.html">command::Command</a> *command)</td></tr>
+<tr class="separator:adc5060d7eec76f7fdff92cbf8642ed76"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a726f39eabd105c326568b053eac19e73"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00020.html#a726f39eabd105c326568b053eac19e73">entityRegistration</a> ()</td></tr>
+<tr class="separator:a726f39eabd105c326568b053eac19e73"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aef9b671fb26851cf0af560c7e41fb38b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00020.html#aef9b671fb26851cf0af560c7e41fb38b">entityDeregistration</a> ()</td></tr>
+<tr class="separator:aef9b671fb26851cf0af560c7e41fb38b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a72def88a3dd29e124f80603506c73a7e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00020.html#a72def88a3dd29e124f80603506c73a7e">signalRegistration</a> (const <a class="el" href="a00042.html">SignalArray</a>&lt; int &gt; &amp;signals)</td></tr>
+<tr class="separator:a72def88a3dd29e124f80603506c73a7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a90e43ab1c4ae7034ef352840f6708026"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00020.html#a90e43ab1c4ae7034ef352840f6708026">signalDeregistration</a> (const std::string &amp;<a class="el" href="a00020.html#a8828fb6d5270786dc7a12705cff62fdc">name</a>)</td></tr>
+<tr class="separator:a90e43ab1c4ae7034ef352840f6708026"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
+Protected Attributes</h2></td></tr>
+<tr class="memitem:a8828fb6d5270786dc7a12705cff62fdc"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00020.html#a8828fb6d5270786dc7a12705cff62fdc">name</a></td></tr>
+<tr class="separator:a8828fb6d5270786dc7a12705cff62fdc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a36384a620ac18c9703d34ab712cbd547"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00020.html#ac2b0d244c0ce939462eeb6f4d879765b">SignalMap</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00020.html#a36384a620ac18c9703d34ab712cbd547">signalMap</a></td></tr>
+<tr class="separator:a36384a620ac18c9703d34ab712cbd547"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adf73b95e81e513d6c59e7c4166fe5682"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00020.html#a54da633f344f0e4955754955816732fa">CommandMap_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00020.html#adf73b95e81e513d6c59e7c4166fe5682">commandMap</a></td></tr>
+<tr class="separator:adf73b95e81e513d6c59e7c4166fe5682"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Typedef Documentation</h2>
-<a class="anchor" id="a4b446c7ab2f3976af9a4e0aab59ba359"></a>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>This class represents an entity, i.e. </p>
+<p>a generic computational unit that provides input and output signals.</p>
+<p>These signals link the entities together to form a complete computation graph. To declare a new entity, please see the DYNAMICGRAPH_FACTORY_ENTITY_PLUGIN macro in <a class="el" href="a00076.html">factory.h</a>. A command-line interface provided by the entity can be used by a sot shell to call methods from entities and display the result of their execution. Classes that derive from <a class="el" href="a00020.html" title="This class represents an entity, i.e. ">Entity</a> can customize the command-line by overriding commandLine (). </p>
+</div><h2 class="groupheader">Member Typedef Documentation</h2>
+<a class="anchor" id="a54da633f344f0e4955754955816732fa"></a>
 <div class="memitem">
 <div class="memproto">
-<div class="memtemplate">
-template&lt;typename Ent &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">typedef Ent <a class="el" href="a00020.html">dynamicgraph::EntityHelper</a>&lt; Ent &gt;::<a class="el" href="a00020.html#a4b446c7ab2f3976af9a4e0aab59ba359">EntityClassName</a></td>
+          <td class="memname">typedef std::map&lt;const std::string, <a class="el" href="a00007.html">command::Command</a>*&gt; <a class="el" href="a00020.html#a54da633f344f0e4955754955816732fa">dynamicgraph::Entity::CommandMap_t</a></td>
         </tr>
       </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ac2b0d244c0ce939462eeb6f4d879765b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef std::map&lt; std::string,<a class="el" href="a00044.html">SignalBase</a>&lt;int&gt;* &gt; <a class="el" href="a00020.html#ac2b0d244c0ce939462eeb6f4d879765b">dynamicgraph::Entity::SignalMap</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="a027e1581e00972dff2f2c470c5346e55"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">dynamicgraph::Entity::Entity </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>name</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ab7f830e2bd8d7e3a6dd5fde249f2700e"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual dynamicgraph::Entity::~Entity </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="adc5060d7eec76f7fdff92cbf8642ed76"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void dynamicgraph::Entity::addCommand </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="a00007.html">command::Command</a> *&#160;</td>
+          <td class="paramname"><em>command</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="aac17d397ff8f7c33c9e3b0434417f614"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void dynamicgraph::Entity::commandLine </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>cmdLine</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::istringstream &amp;&#160;</td>
+          <td class="paramname"><em>cmdArgs</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::ostream &amp;&#160;</td>
+          <td class="paramname"><em>os</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Reimplemented in <a class="el" href="a00051.html#a485ee257340b32e27ae50ef0b70d6261">dynamicgraph::Tracer</a>, and <a class="el" href="a00052.html#a1ddd8c6d0d642adca0830bf09221a0fb">dynamicgraph::TracerRealTime</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a9766ac602d5b6d16b227597b4f4a674c"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void dynamicgraph::Entity::display </td>
+          <td>(</td>
+          <td class="paramtype">std::ostream &amp;&#160;</td>
+          <td class="paramname"><em>os</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Reimplemented in <a class="el" href="a00051.html#a54e0745b369f5f589ffa4651d089787d">dynamicgraph::Tracer</a>, and <a class="el" href="a00052.html#a09c5fa146a9a6acf7978d1acea29e8fb">dynamicgraph::TracerRealTime</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aae39fb7ea3290814c860123dc8c7b0f2"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::ostream&amp; dynamicgraph::Entity::displaySignalList </td>
+          <td>(</td>
+          <td class="paramtype">std::ostream &amp;&#160;</td>
+          <td class="paramname"><em>os</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="aef9b671fb26851cf0af560c7e41fb38b"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void dynamicgraph::Entity::entityDeregistration </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a726f39eabd105c326568b053eac19e73"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void dynamicgraph::Entity::entityRegistration </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a5b55a0f1af32e9d0ff0dcb7b65ef1fd4"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual const std::string&amp; dynamicgraph::Entity::getClassName </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="adc33847dec189b9806f8b90ef49c070a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::string&amp; dynamicgraph::Entity::getCommandList </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a1ba8ae417ee953b93a57e002cba94136"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual std::string dynamicgraph::Entity::getDocString </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a8be6c2a103f030b644ff515bdce8f9ae"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::string&amp; dynamicgraph::Entity::getName </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a47140733dad597ccbf0ab19fc4c11c42"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00007.html">command::Command</a>* dynamicgraph::Entity::getNewStyleCommand </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>cmdName</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="afd68500691bbf5a3407e90c028925ca6"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00020.html#a54da633f344f0e4955754955816732fa">CommandMap_t</a> dynamicgraph::Entity::getNewStyleCommandMap </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ac2386728ff3519c6a36443b4855fd1b2"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00044.html">SignalBase</a>&lt;int&gt;&amp; dynamicgraph::Entity::getSignal </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>signalName</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ad7ced10dcd58724451208e3a25af790d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="a00044.html">SignalBase</a>&lt;int&gt;&amp; dynamicgraph::Entity::getSignal </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>signalName</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ac0ae837e5435609a274ab76adb9a5577"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00020.html#ac2b0d244c0ce939462eeb6f4d879765b">SignalMap</a> dynamicgraph::Entity::getSignalMap </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ad6333beeba67d820b6a3755d5fe5a100"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool dynamicgraph::Entity::hasSignal </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>signame</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a90e43ab1c4ae7034ef352840f6708026"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void dynamicgraph::Entity::signalDeregistration </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>name</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a72def88a3dd29e124f80603506c73a7e"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void dynamicgraph::Entity::signalRegistration </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="a00042.html">SignalArray</a>&lt; int &gt; &amp;&#160;</td>
+          <td class="paramname"><em>signals</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ac13301d45f39c336f5c018c04500c906"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual <a class="el" href="a00044.html">SignalBase</a>&lt;int&gt;* dynamicgraph::Entity::test </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a56ff4516fcb465df6bf920a554a896a9"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void dynamicgraph::Entity::test2 </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="a00044.html">SignalBase</a>&lt; int &gt; *&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ae4416aada52468f823877500b60b0db9"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual std::ostream&amp; dynamicgraph::Entity::writeCompletionList </td>
+          <td>(</td>
+          <td class="paramtype">std::ostream &amp;&#160;</td>
+          <td class="paramname"><em>os</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="aaacb708ef239d3fbc953bcdb2ad7c3d1"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual std::ostream&amp; dynamicgraph::Entity::writeGraph </td>
+          <td>(</td>
+          <td class="paramtype">std::ostream &amp;&#160;</td>
+          <td class="paramname"><em>os</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="adf73b95e81e513d6c59e7c4166fe5682"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00020.html#a54da633f344f0e4955754955816732fa">CommandMap_t</a> dynamicgraph::Entity::commandMap</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a8828fb6d5270786dc7a12705cff62fdc"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string dynamicgraph::Entity::name</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a36384a620ac18c9703d34ab712cbd547"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00020.html#ac2b0d244c0ce939462eeb6f4d879765b">SignalMap</a> dynamicgraph::Entity::signalMap</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 </div>
@@ -125,8 +815,8 @@ template&lt;typename Ent &gt; </div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="a00099.html">dynamicgraph</a></li><li class="navelem"><a class="el" href="a00020.html">EntityHelper</a></li>
-    <li class="footer">Generated on Mon Dec 18 2017 00:07:45 for dynamic-graph by
+    <li class="navelem"><a class="el" href="a00100.html">dynamicgraph</a></li><li class="navelem"><a class="el" href="a00020.html">Entity</a></li>
+    <li class="footer">Generated on Tue Jan 16 2018 12:19:09 for dynamic-graph by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.11 </li>
   </ul>

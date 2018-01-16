@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<title>dynamicgraph::Signal&lt; T, Time &gt; Class Template Reference</title>
+<title>dynamicgraph::command::Setter&lt; E, Vector &gt; Class Template Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css">
 <link href="doxygen.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="jquery.js"></script>
@@ -92,371 +92,137 @@ $(document).ready(function(){initNavTree('a00040.html','');});
   <div class="summary">
 <a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pro-types">Protected Types</a> &#124;
-<a href="#pro-attribs">Protected Attributes</a> &#124;
-<a href="#pro-static-attribs">Static Protected Attributes</a> &#124;
-<a href="a00221.html">List of all members</a>  </div>
+<a href="#pro-methods">Protected Member Functions</a> &#124;
+<a href="a00310.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">dynamicgraph::Signal&lt; T, Time &gt; Class Template Reference<div class="ingroups"><a class="el" href="a00103.html">Core classes and objects</a></div></div>  </div>
+<div class="title">dynamicgraph::command::Setter&lt; E, Vector &gt; Class Template Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-
-<p>Signals link I/O ports of entities. They can be constant-valued signals, or copy the value of a heap variable, or evaluated as a function. See <a class="el" href="a00047.html" title="This is the only type of signal that can be plugged to, using the plug () command. ">SignalPtr</a> and <a class="el" href="a00048.html" title="A type of signal that enforces a time dependency between other signals, making sure its inputs are up...">SignalTimeDependent</a> for other types of signals, and <a class="el" href="a00041.html" title="TODO. ">SignalArray</a> for a way of grouping them.  
- <a href="a00040.html#details">More...</a></p>
-
-<p><code>#include &lt;dynamic-graph/signal.h&gt;</code></p>
 <div class="dynheader">
-Inheritance diagram for dynamicgraph::Signal&lt; T, Time &gt;:</div>
+Inheritance diagram for dynamicgraph::command::Setter&lt; E, Vector &gt;:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="a00222.svg" width="376" height="306"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="a00311.svg" width="179" height="142"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <div class="dynheader">
-Collaboration diagram for dynamicgraph::Signal&lt; T, Time &gt;:</div>
+Collaboration diagram for dynamicgraph::command::Setter&lt; E, Vector &gt;:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="a00223.svg" width="343" height="351"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="a00312.svg" width="188" height="247"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:a20378c06ed76b81c26f631002baa9380"><td class="memItemLeft" align="right" valign="top">typedef int *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00040.html#a20378c06ed76b81c26f631002baa9380">Mutex</a></td></tr>
-<tr class="separator:a20378c06ed76b81c26f631002baa9380"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acebd4a037334167f910ce9fdce2bdcdf"><td class="memItemLeft" align="right" valign="top">typedef int *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00040.html#acebd4a037334167f910ce9fdce2bdcdf">MutexError</a></td></tr>
-<tr class="separator:acebd4a037334167f910ce9fdce2bdcdf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3804f38e2f2d016d33988e2f03b6729e"><td class="memItemLeft" align="right" valign="top">typedef void(E::*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00040.html#a3804f38e2f2d016d33988e2f03b6729e">SetterMethod</a>) (const <a class="el" href="a00100.html#aa80b557e83a1386adf67f925062124f8">Vector</a> &amp;)</td></tr>
+<tr class="memdesc:a3804f38e2f2d016d33988e2f03b6729e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointer to method that sets parameter of type Vector.  <a href="#a3804f38e2f2d016d33988e2f03b6729e">More...</a><br /></td></tr>
+<tr class="separator:a3804f38e2f2d016d33988e2f03b6729e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a629a88006a73c05534c300bb7b950820"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00040.html#a629a88006a73c05534c300bb7b950820">Signal</a> (std::string <a class="el" href="a00043.html#ad12786d4912e14d4e6e1a13c56620538">name</a>)</td></tr>
-<tr class="separator:a629a88006a73c05534c300bb7b950820"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aed343abfadb95db8cbe0cee74cbe8002"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00040.html#aed343abfadb95db8cbe0cee74cbe8002">~Signal</a> ()</td></tr>
-<tr class="separator:aed343abfadb95db8cbe0cee74cbe8002"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adac702b2fcf5d9d54da7857b5e7cb8ac"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00040.html#adac702b2fcf5d9d54da7857b5e7cb8ac">get</a> (std::ostream &amp;value) const </td></tr>
-<tr class="separator:adac702b2fcf5d9d54da7857b5e7cb8ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a797a1153fa10367eea96853476e2e88f"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00040.html#a797a1153fa10367eea96853476e2e88f">set</a> (std::istringstream &amp;value)</td></tr>
-<tr class="separator:a797a1153fa10367eea96853476e2e88f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac2f9e3571670302a4267a4c7fc614557"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00040.html#ac2f9e3571670302a4267a4c7fc614557">trace</a> (std::ostream &amp;os) const </td></tr>
-<tr class="separator:ac2f9e3571670302a4267a4c7fc614557"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8da7c632bb7f6039b594e4ebf2f6663e"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00040.html#a8da7c632bb7f6039b594e4ebf2f6663e">setConstant</a> (const T &amp;t)</td></tr>
-<tr class="separator:a8da7c632bb7f6039b594e4ebf2f6663e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1260cbb12057a5e3cb66821290572453"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00040.html#a1260cbb12057a5e3cb66821290572453">setReference</a> (const T *t, <a class="el" href="a00040.html#a20378c06ed76b81c26f631002baa9380">Mutex</a> *mutexref=NULL)</td></tr>
-<tr class="separator:a1260cbb12057a5e3cb66821290572453"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a25fa3fa114741dca4d3793e1541fb80d"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00040.html#a25fa3fa114741dca4d3793e1541fb80d">setReferenceNonConstant</a> (T *t, <a class="el" href="a00040.html#a20378c06ed76b81c26f631002baa9380">Mutex</a> *mutexref=NULL)</td></tr>
-<tr class="separator:a25fa3fa114741dca4d3793e1541fb80d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a098d47013d96bce67b017a0db30707c2"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00040.html#a098d47013d96bce67b017a0db30707c2">setFunction</a> (boost::function2&lt; T &amp;, T &amp;, Time &gt; t, <a class="el" href="a00040.html#a20378c06ed76b81c26f631002baa9380">Mutex</a> *mutexref=NULL)</td></tr>
-<tr class="separator:a098d47013d96bce67b017a0db30707c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac0af1f6facdd4087b283de5f64129e27"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00040.html#ac0af1f6facdd4087b283de5f64129e27">getKeepReference</a> ()</td></tr>
-<tr class="separator:ac0af1f6facdd4087b283de5f64129e27"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac3aec5678570895b03ec8aa14da92de6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00040.html#ac3aec5678570895b03ec8aa14da92de6">setKeepReference</a> (const bool &amp;b)</td></tr>
-<tr class="separator:ac3aec5678570895b03ec8aa14da92de6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab21414cd83d45d42b1d1f299fdbdc2cf"><td class="memItemLeft" align="right" valign="top">virtual const T &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00040.html#ab21414cd83d45d42b1d1f299fdbdc2cf">access</a> (const Time &amp;t)</td></tr>
-<tr class="separator:ab21414cd83d45d42b1d1f299fdbdc2cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2767be0456f0e62bb2c6006cf0f95d83"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00040.html#a2767be0456f0e62bb2c6006cf0f95d83">recompute</a> (const Time &amp;t)</td></tr>
-<tr class="separator:a2767be0456f0e62bb2c6006cf0f95d83"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a58c74bb7fd598478431366fb2fff2c50"><td class="memItemLeft" align="right" valign="top">virtual const T &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00040.html#a58c74bb7fd598478431366fb2fff2c50">accessCopy</a> () const </td></tr>
-<tr class="separator:a58c74bb7fd598478431366fb2fff2c50"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5e4572911650ec7ebb4c8485a9916671"><td class="memItemLeft" align="right" valign="top">virtual std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00040.html#a5e4572911650ec7ebb4c8485a9916671">display</a> (std::ostream &amp;os) const </td></tr>
-<tr class="separator:a5e4572911650ec7ebb4c8485a9916671"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab081214016e2d44b1a80094ddaf198e7"><td class="memItemLeft" align="right" valign="top">virtual const T &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00040.html#ab081214016e2d44b1a80094ddaf198e7">operator()</a> (const Time &amp;t)</td></tr>
-<tr class="separator:ab081214016e2d44b1a80094ddaf198e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5f416b400eb8a843e529a5b3e224501d"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="a00040.html">Signal</a>&lt; T, Time &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00040.html#a5f416b400eb8a843e529a5b3e224501d">operator=</a> (const T &amp;t)</td></tr>
-<tr class="separator:a5f416b400eb8a843e529a5b3e224501d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0e64c4691f2051a1cc44335d857b9553"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00040.html#a0e64c4691f2051a1cc44335d857b9553">operator const T &amp;</a> () const </td></tr>
-<tr class="separator:a0e64c4691f2051a1cc44335d857b9553"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a249f336c1fd2613db5126b2dceb53883"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00040.html#a249f336c1fd2613db5126b2dceb53883">getClassName</a> (std::string &amp;aClassName) const </td></tr>
-<tr class="separator:a249f336c1fd2613db5126b2dceb53883"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abc47f178f7a1ecfa7625f53ac2262d50"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00040.html#abc47f178f7a1ecfa7625f53ac2262d50">checkCompatibility</a> ()</td></tr>
-<tr class="separator:abc47f178f7a1ecfa7625f53ac2262d50"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pub_methods_a00043"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_a00043')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="a00043.html">dynamicgraph::SignalBase&lt; Time &gt;</a></td></tr>
-<tr class="memitem:abce7bd9d12571de9f4d63f757c45ab17 inherit pub_methods_a00043"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00043.html#abce7bd9d12571de9f4d63f757c45ab17">SignalBase</a> (std::string <a class="el" href="a00043.html#ad12786d4912e14d4e6e1a13c56620538">name</a>=&quot;&quot;)</td></tr>
-<tr class="separator:abce7bd9d12571de9f4d63f757c45ab17 inherit pub_methods_a00043"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aee47bbcc4288ea6de5bfc845ca9ee7ae inherit pub_methods_a00043"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00043.html#aee47bbcc4288ea6de5bfc845ca9ee7ae">~SignalBase</a> ()</td></tr>
-<tr class="separator:aee47bbcc4288ea6de5bfc845ca9ee7ae inherit pub_methods_a00043"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab4fa5d68fa38ffb86805a0d8d9d41cec inherit pub_methods_a00043"><td class="memItemLeft" align="right" valign="top">virtual const Time &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00043.html#ab4fa5d68fa38ffb86805a0d8d9d41cec">getTime</a> () const </td></tr>
-<tr class="separator:ab4fa5d68fa38ffb86805a0d8d9d41cec inherit pub_methods_a00043"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7760134ac05d172848ff1888488d9d34 inherit pub_methods_a00043"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00043.html#a7760134ac05d172848ff1888488d9d34">setTime</a> (const Time &amp;t)</td></tr>
-<tr class="separator:a7760134ac05d172848ff1888488d9d34 inherit pub_methods_a00043"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3a8496883b00b8ce249ccc9ef1eb1db2 inherit pub_methods_a00043"><td class="memItemLeft" align="right" valign="top">const bool &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00043.html#a3a8496883b00b8ce249ccc9ef1eb1db2">getReady</a> () const </td></tr>
-<tr class="separator:a3a8496883b00b8ce249ccc9ef1eb1db2 inherit pub_methods_a00043"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1f79b558ef929b0dbccb00f9d353112f inherit pub_methods_a00043"><td class="memItemLeft" align="right" valign="top">const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00043.html#a1f79b558ef929b0dbccb00f9d353112f">getName</a> () const </td></tr>
-<tr class="separator:a1f79b558ef929b0dbccb00f9d353112f inherit pub_methods_a00043"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acf438ba5e539ad1d2edacdce5d9deabe inherit pub_methods_a00043"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00043.html#acf438ba5e539ad1d2edacdce5d9deabe">getClassName</a> (std::string &amp;aClassName) const </td></tr>
-<tr class="separator:acf438ba5e539ad1d2edacdce5d9deabe inherit pub_methods_a00043"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a38a29a53e479dd8e0b5219e01df0e272 inherit pub_methods_a00043"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00043.html#a38a29a53e479dd8e0b5219e01df0e272">setPeriodTime</a> (const Time &amp;)</td></tr>
-<tr class="separator:a38a29a53e479dd8e0b5219e01df0e272 inherit pub_methods_a00043"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afefd65e1271e7cdd0164878999cb7108 inherit pub_methods_a00043"><td class="memItemLeft" align="right" valign="top">virtual Time&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00043.html#afefd65e1271e7cdd0164878999cb7108">getPeriodTime</a> () const </td></tr>
-<tr class="separator:afefd65e1271e7cdd0164878999cb7108 inherit pub_methods_a00043"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab14d3716fb15d91a970c2baa86c05203 inherit pub_methods_a00043"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00043.html#ab14d3716fb15d91a970c2baa86c05203">addDependency</a> (const <a class="el" href="a00043.html">SignalBase</a>&lt; Time &gt; &amp;)</td></tr>
-<tr class="separator:ab14d3716fb15d91a970c2baa86c05203 inherit pub_methods_a00043"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a72aba85da6e8652221ebabf88fc0035b inherit pub_methods_a00043"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00043.html#a72aba85da6e8652221ebabf88fc0035b">removeDependency</a> (const <a class="el" href="a00043.html">SignalBase</a>&lt; Time &gt; &amp;)</td></tr>
-<tr class="separator:a72aba85da6e8652221ebabf88fc0035b inherit pub_methods_a00043"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acc4d5967339412489393f978140cf890 inherit pub_methods_a00043"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00043.html#acc4d5967339412489393f978140cf890">clearDependencies</a> ()</td></tr>
-<tr class="separator:acc4d5967339412489393f978140cf890 inherit pub_methods_a00043"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abc852ac55dd5322330817c176870045e inherit pub_methods_a00043"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00043.html#abc852ac55dd5322330817c176870045e">needUpdate</a> (const Time &amp;) const </td></tr>
-<tr class="separator:abc852ac55dd5322330817c176870045e inherit pub_methods_a00043"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afc3445e6bce14ccaa5dc2b9b80c86483 inherit pub_methods_a00043"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00043.html#afc3445e6bce14ccaa5dc2b9b80c86483">setReady</a> (const bool sready=true)</td></tr>
-<tr class="separator:afc3445e6bce14ccaa5dc2b9b80c86483 inherit pub_methods_a00043"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2a7734e306894404eb4252d1b9aa5510 inherit pub_methods_a00043"><td class="memItemLeft" align="right" valign="top">virtual std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00043.html#a2a7734e306894404eb4252d1b9aa5510">writeGraph</a> (std::ostream &amp;os) const </td></tr>
-<tr class="separator:a2a7734e306894404eb4252d1b9aa5510 inherit pub_methods_a00043"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8b31549e015d7f72536a7a4769e8e545 inherit pub_methods_a00043"><td class="memItemLeft" align="right" valign="top">virtual std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00043.html#a8b31549e015d7f72536a7a4769e8e545">displayDependencies</a> (std::ostream &amp;os, const int=-1, std::string space=&quot;&quot;, std::string next1=&quot;&quot;, std::string=&quot;&quot;) const </td></tr>
-<tr class="separator:a8b31549e015d7f72536a7a4769e8e545 inherit pub_methods_a00043"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad5558c80e899fb1b7a884b629f5d4984 inherit pub_methods_a00043"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00043.html#ad5558c80e899fb1b7a884b629f5d4984">plug</a> (<a class="el" href="a00043.html">SignalBase</a>&lt; Time &gt; *sigarg)</td></tr>
-<tr class="separator:ad5558c80e899fb1b7a884b629f5d4984 inherit pub_methods_a00043"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0cb6f6bd867d24cb75ee8fcb865c134b inherit pub_methods_a00043"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00043.html#a0cb6f6bd867d24cb75ee8fcb865c134b">unplug</a> ()</td></tr>
-<tr class="separator:a0cb6f6bd867d24cb75ee8fcb865c134b inherit pub_methods_a00043"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a83de599744dd02fcba44b8a4c687c45d inherit pub_methods_a00043"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00043.html#a83de599744dd02fcba44b8a4c687c45d">isPlugged</a> () const </td></tr>
-<tr class="separator:a83de599744dd02fcba44b8a4c687c45d inherit pub_methods_a00043"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a505588db3697cac9b6e36b7085ef92f2 inherit pub_methods_a00043"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="a00043.html">SignalBase</a>&lt; Time &gt; *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00043.html#a505588db3697cac9b6e36b7085ef92f2">getPluged</a> () const </td></tr>
-<tr class="separator:a505588db3697cac9b6e36b7085ef92f2 inherit pub_methods_a00043"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a302822fd86973216b3d411656e79cab3 inherit pub_methods_a00043"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00043.html#a302822fd86973216b3d411656e79cab3">setConstantDefault</a> ()</td></tr>
-<tr class="separator:a302822fd86973216b3d411656e79cab3 inherit pub_methods_a00043"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa95969e3206868363a97dd1f78f9636e inherit pub_methods_a00043"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00043.html#aa95969e3206868363a97dd1f78f9636e">shortName</a> () const </td></tr>
-<tr class="separator:aa95969e3206868363a97dd1f78f9636e inherit pub_methods_a00043"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaebe8bf745a95ff83a47297b6df3c87b inherit pub_methods_a00043"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00043.html#aaebe8bf745a95ff83a47297b6df3c87b">ExtractNodeAndLocalNames</a> (std::string &amp;LocalName, std::string &amp;NodeName) const </td></tr>
-<tr class="separator:aaebe8bf745a95ff83a47297b6df3c87b inherit pub_methods_a00043"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa96f4da42ede6238efa0611fbfda845e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00040.html#aa96f4da42ede6238efa0611fbfda845e">Setter</a> (E &amp;entity, <a class="el" href="a00040.html#a3804f38e2f2d016d33988e2f03b6729e">SetterMethod</a> setterMethod, const std::string &amp;docString)</td></tr>
+<tr class="memdesc:aa96f4da42ede6238efa0611fbfda845e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="#aa96f4da42ede6238efa0611fbfda845e">More...</a><br /></td></tr>
+<tr class="separator:aa96f4da42ede6238efa0611fbfda845e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_a00007"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_a00007')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="a00007.html">dynamicgraph::command::Command</a></td></tr>
+<tr class="memitem:ae1244719512927af5027cbc542aaa2e3 inherit pub_methods_a00007"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00007.html#ae1244719512927af5027cbc542aaa2e3">~Command</a> ()</td></tr>
+<tr class="separator:ae1244719512927af5027cbc542aaa2e3 inherit pub_methods_a00007"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6653ed2fa17731dea5dab63f0a11cd90 inherit pub_methods_a00007"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00007.html#a6653ed2fa17731dea5dab63f0a11cd90">Command</a> (<a class="el" href="a00020.html">Entity</a> &amp;entity, const std::vector&lt; <a class="el" href="a00053.html#a8b1ad07088898b7d8e530682e589576f">Value::Type</a> &gt; &amp;<a class="el" href="a00007.html#a4288f646b6aa99cfe91613671537f237">valueTypes</a>, const std::string &amp;docstring)</td></tr>
+<tr class="memdesc:a6653ed2fa17731dea5dab63f0a11cd90 inherit pub_methods_a00007"><td class="mdescLeft">&#160;</td><td class="mdescRight">Store the owner entity and a vector of value types.  <a href="#a6653ed2fa17731dea5dab63f0a11cd90">More...</a><br /></td></tr>
+<tr class="separator:a6653ed2fa17731dea5dab63f0a11cd90 inherit pub_methods_a00007"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4288f646b6aa99cfe91613671537f237 inherit pub_methods_a00007"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; <a class="el" href="a00053.html#a8b1ad07088898b7d8e530682e589576f">Value::Type</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00007.html#a4288f646b6aa99cfe91613671537f237">valueTypes</a> () const </td></tr>
+<tr class="memdesc:a4288f646b6aa99cfe91613671537f237 inherit pub_methods_a00007"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the value type of all parameters.  <a href="#a4288f646b6aa99cfe91613671537f237">More...</a><br /></td></tr>
+<tr class="separator:a4288f646b6aa99cfe91613671537f237 inherit pub_methods_a00007"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee751d4ddbe61c4526deb3662c7ceaaf inherit pub_methods_a00007"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00007.html#aee751d4ddbe61c4526deb3662c7ceaaf">setParameterValues</a> (const std::vector&lt; <a class="el" href="a00053.html">Value</a> &gt; &amp;values)</td></tr>
+<tr class="memdesc:aee751d4ddbe61c4526deb3662c7ceaaf inherit pub_methods_a00007"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set parameter values.  <a href="#aee751d4ddbe61c4526deb3662c7ceaaf">More...</a><br /></td></tr>
+<tr class="separator:aee751d4ddbe61c4526deb3662c7ceaaf inherit pub_methods_a00007"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaae4582d8321da872b6b9f06aca0989a inherit pub_methods_a00007"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; <a class="el" href="a00053.html">Value</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00007.html#aaae4582d8321da872b6b9f06aca0989a">getParameterValues</a> () const </td></tr>
+<tr class="memdesc:aaae4582d8321da872b6b9f06aca0989a inherit pub_methods_a00007"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get parameter values.  <a href="#aaae4582d8321da872b6b9f06aca0989a">More...</a><br /></td></tr>
+<tr class="separator:aaae4582d8321da872b6b9f06aca0989a inherit pub_methods_a00007"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a533151ad15d592f5a9d9869e7ed9a206 inherit pub_methods_a00007"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00053.html">Value</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00007.html#a533151ad15d592f5a9d9869e7ed9a206">execute</a> ()</td></tr>
+<tr class="memdesc:a533151ad15d592f5a9d9869e7ed9a206 inherit pub_methods_a00007"><td class="mdescLeft">&#160;</td><td class="mdescRight">Execute the command after checking parameters.  <a href="#a533151ad15d592f5a9d9869e7ed9a206">More...</a><br /></td></tr>
+<tr class="separator:a533151ad15d592f5a9d9869e7ed9a206 inherit pub_methods_a00007"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5da7a948700ca6136685bfad15807a6d inherit pub_methods_a00007"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00020.html">Entity</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00007.html#a5da7a948700ca6136685bfad15807a6d">owner</a> ()</td></tr>
+<tr class="memdesc:a5da7a948700ca6136685bfad15807a6d inherit pub_methods_a00007"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a reference to the <a class="el" href="a00020.html" title="This class represents an entity, i.e. ">Entity</a> owning this command.  <a href="#a5da7a948700ca6136685bfad15807a6d">More...</a><br /></td></tr>
+<tr class="separator:a5da7a948700ca6136685bfad15807a6d inherit pub_methods_a00007"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2fb484fd4d3b659a335543e89166a474 inherit pub_methods_a00007"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00007.html#a2fb484fd4d3b659a335543e89166a474">getDocstring</a> () const </td></tr>
+<tr class="memdesc:a2fb484fd4d3b659a335543e89166a474 inherit pub_methods_a00007"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get documentation string.  <a href="#a2fb484fd4d3b659a335543e89166a474">More...</a><br /></td></tr>
+<tr class="separator:a2fb484fd4d3b659a335543e89166a474 inherit pub_methods_a00007"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-types"></a>
-Protected Types</h2></td></tr>
-<tr class="memitem:a57b8e35c45307a40b6dc3c48cc334155"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00040.html#a57b8e35c45307a40b6dc3c48cc334155">SignalType</a> { <br />
-&#160;&#160;<a class="el" href="a00040.html#a57b8e35c45307a40b6dc3c48cc334155aee2d1fa88618982d476c6f7bce0a5450">CONSTANT</a>, 
-<br />
-&#160;&#160;<a class="el" href="a00040.html#a57b8e35c45307a40b6dc3c48cc334155a82183cba9bb80e23eec7f38c5f0c0a6a">REFERENCE</a>, 
-<br />
-&#160;&#160;<a class="el" href="a00040.html#a57b8e35c45307a40b6dc3c48cc334155afc314176df62034542117d23795f8394">REFERENCE_NON_CONST</a>, 
-<br />
-&#160;&#160;<a class="el" href="a00040.html#a57b8e35c45307a40b6dc3c48cc334155aa34353e1d87165ae87780a81954e68cd">FUNCTION</a>
-<br />
- }</td></tr>
-<tr class="separator:a57b8e35c45307a40b6dc3c48cc334155"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
+Protected Member Functions</h2></td></tr>
+<tr class="memitem:a2fae756413c7034d7d6b313c515fb07c"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="a00053.html">Value</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00040.html#a2fae756413c7034d7d6b313c515fb07c">doExecute</a> ()</td></tr>
+<tr class="memdesc:a2fae756413c7034d7d6b313c515fb07c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Specific action performed by the command.  <a href="#a2fae756413c7034d7d6b313c515fb07c">More...</a><br /></td></tr>
+<tr class="separator:a2fae756413c7034d7d6b313c515fb07c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
-Protected Attributes</h2></td></tr>
-<tr class="memitem:aae4a59d6d32f56520abf64179c7ac277"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00040.html#a57b8e35c45307a40b6dc3c48cc334155">SignalType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00040.html#aae4a59d6d32f56520abf64179c7ac277">signalType</a></td></tr>
-<tr class="separator:aae4a59d6d32f56520abf64179c7ac277"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a22e70c2affa81b282f9753f6172da866"><td class="memItemLeft" align="right" valign="top">T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00040.html#a22e70c2affa81b282f9753f6172da866">Tcopy1</a></td></tr>
-<tr class="separator:a22e70c2affa81b282f9753f6172da866"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7f9af955ec9424257766b3d0cf30c3e2"><td class="memItemLeft" align="right" valign="top">T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00040.html#a7f9af955ec9424257766b3d0cf30c3e2">Tcopy2</a></td></tr>
-<tr class="separator:a7f9af955ec9424257766b3d0cf30c3e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a70958e01cd65e0ee5f97bf19442a101f"><td class="memItemLeft" align="right" valign="top">T *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00040.html#a70958e01cd65e0ee5f97bf19442a101f">Tcopy</a></td></tr>
-<tr class="separator:a70958e01cd65e0ee5f97bf19442a101f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a50cc6ca4915fda743edec7507f81b22d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00040.html#a50cc6ca4915fda743edec7507f81b22d">copyInit</a></td></tr>
-<tr class="separator:a50cc6ca4915fda743edec7507f81b22d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a109c69e77a16a5df8c45b1f18f3aa4bf"><td class="memItemLeft" align="right" valign="top">const T *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00040.html#a109c69e77a16a5df8c45b1f18f3aa4bf">Treference</a></td></tr>
-<tr class="separator:a109c69e77a16a5df8c45b1f18f3aa4bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a58743c8c709e2eab0197c75628258505"><td class="memItemLeft" align="right" valign="top">T *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00040.html#a58743c8c709e2eab0197c75628258505">TreferenceNonConst</a></td></tr>
-<tr class="separator:a58743c8c709e2eab0197c75628258505"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aab6d34eaad78350ce8fb8c3b54f2eda7"><td class="memItemLeft" align="right" valign="top">boost::function2&lt; T &amp;, T &amp;, Time &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00040.html#aab6d34eaad78350ce8fb8c3b54f2eda7">Tfunction</a></td></tr>
-<tr class="separator:aab6d34eaad78350ce8fb8c3b54f2eda7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a42a6d3c54dd0a2c1479d694e7db432c1"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00040.html#a42a6d3c54dd0a2c1479d694e7db432c1">keepReference</a></td></tr>
-<tr class="separator:a42a6d3c54dd0a2c1479d694e7db432c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6558d39a544deb36cc875855021f9186"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00040.html#a20378c06ed76b81c26f631002baa9380">Mutex</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00040.html#a6558d39a544deb36cc875855021f9186">providerMutex</a></td></tr>
-<tr class="separator:a6558d39a544deb36cc875855021f9186"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pro_attribs_a00043"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_a00043')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="a00043.html">dynamicgraph::SignalBase&lt; Time &gt;</a></td></tr>
-<tr class="memitem:ad12786d4912e14d4e6e1a13c56620538 inherit pro_attribs_a00043"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00043.html#ad12786d4912e14d4e6e1a13c56620538">name</a></td></tr>
-<tr class="separator:ad12786d4912e14d4e6e1a13c56620538 inherit pro_attribs_a00043"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2d0e96da4d0378f08805b421cf381183 inherit pro_attribs_a00043"><td class="memItemLeft" align="right" valign="top">Time&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00043.html#a2d0e96da4d0378f08805b421cf381183">signalTime</a></td></tr>
-<tr class="separator:a2d0e96da4d0378f08805b421cf381183 inherit pro_attribs_a00043"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a18a4ab0c8174425763c6dd9f19e7a7d4 inherit pro_attribs_a00043"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00043.html#a18a4ab0c8174425763c6dd9f19e7a7d4">ready</a></td></tr>
-<tr class="separator:a18a4ab0c8174425763c6dd9f19e7a7d4 inherit pro_attribs_a00043"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-static-attribs"></a>
-Static Protected Attributes</h2></td></tr>
-<tr class="memitem:a7195a872bca9a22f0bcea9cd2baa9b98"><td class="memItemLeft" align="right" valign="top">static const <a class="el" href="a00040.html#a57b8e35c45307a40b6dc3c48cc334155">SignalType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00040.html#a7195a872bca9a22f0bcea9cd2baa9b98">SIGNAL_TYPE_DEFAULT</a> = <a class="el" href="a00040.html#a57b8e35c45307a40b6dc3c48cc334155aee2d1fa88618982d476c6f7bce0a5450">CONSTANT</a></td></tr>
-<tr class="separator:a7195a872bca9a22f0bcea9cd2baa9b98"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad2b8c22fdf80b1d661de3d743138d21c"><td class="memItemLeft" align="right" valign="top">static const bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00040.html#ad2b8c22fdf80b1d661de3d743138d21c">KEEP_REFERENCE_DEFAULT</a> = false</td></tr>
-<tr class="separator:ad2b8c22fdf80b1d661de3d743138d21c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
+Additional Inherited Members</h2></td></tr>
+<tr class="inherit_header pub_static_attribs_a00007"><td colspan="2" onclick="javascript:toggleInherit('pub_static_attribs_a00007')"><img src="closed.png" alt="-"/>&#160;Static Public Attributes inherited from <a class="el" href="a00007.html">dynamicgraph::command::Command</a></td></tr>
+<tr class="memitem:ad710622ad06ed14b87739e124c61f69b inherit pub_static_attribs_a00007"><td class="memItemLeft" align="right" valign="top">static const std::vector&lt; <a class="el" href="a00053.html#a8b1ad07088898b7d8e530682e589576f">Value::Type</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00007.html#ad710622ad06ed14b87739e124c61f69b">EMPTY_ARG</a></td></tr>
+<tr class="separator:ad710622ad06ed14b87739e124c61f69b inherit pub_static_attribs_a00007"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><h3>template&lt;class T, class Time&gt;<br />
-class dynamicgraph::Signal&lt; T, Time &gt;</h3>
-
-<p>Signals link I/O ports of entities. They can be constant-valued signals, or copy the value of a heap variable, or evaluated as a function. See <a class="el" href="a00047.html" title="This is the only type of signal that can be plugged to, using the plug () command. ">SignalPtr</a> and <a class="el" href="a00048.html" title="A type of signal that enforces a time dependency between other signals, making sure its inputs are up...">SignalTimeDependent</a> for other types of signals, and <a class="el" href="a00041.html" title="TODO. ">SignalArray</a> for a way of grouping them. </p>
-<p>There are several ways to specify the value output by a signal: </p><ul>
-<li>using the function setConstant(T) to set the value of the signal to T; </li>
-<li>using the function setReference(mutex, T*) to set the value from a pointer, whose access is restricted by a mutex; </li>
-<li>using the function setFunction(boost::function2) that will be called when the signal's value is accessed. </li>
-</ul>
-</div><h2 class="groupheader">Member Typedef Documentation</h2>
-<a class="anchor" id="a20378c06ed76b81c26f631002baa9380"></a>
+<h2 class="groupheader">Member Typedef Documentation</h2>
+<a class="anchor" id="a3804f38e2f2d016d33988e2f03b6729e"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class T, class Time&gt; </div>
+template&lt;class E &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">typedef int* <a class="el" href="a00040.html">dynamicgraph::Signal</a>&lt; T, Time &gt;::<a class="el" href="a00040.html#a20378c06ed76b81c26f631002baa9380">Mutex</a></td>
+          <td class="memname">typedef void(E::* <a class="el" href="a00032.html">dynamicgraph::command::Setter</a>&lt; E, <a class="el" href="a00100.html#aa80b557e83a1386adf67f925062124f8">Vector</a> &gt;::SetterMethod) (const <a class="el" href="a00100.html#aa80b557e83a1386adf67f925062124f8">Vector</a> &amp;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-</div>
-</div>
-<a class="anchor" id="acebd4a037334167f910ce9fdce2bdcdf"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class T, class Time&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef int* <a class="el" href="a00040.html">dynamicgraph::Signal</a>&lt; T, Time &gt;::<a class="el" href="a00040.html#acebd4a037334167f910ce9fdce2bdcdf">MutexError</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<h2 class="groupheader">Member Enumeration Documentation</h2>
-<a class="anchor" id="a57b8e35c45307a40b6dc3c48cc334155"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class T, class Time&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">enum <a class="el" href="a00040.html#a57b8e35c45307a40b6dc3c48cc334155">dynamicgraph::Signal::SignalType</a></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a class="anchor" id="a57b8e35c45307a40b6dc3c48cc334155aee2d1fa88618982d476c6f7bce0a5450"></a>CONSTANT&#160;</td><td class="fielddoc">
-</td></tr>
-<tr><td class="fieldname"><a class="anchor" id="a57b8e35c45307a40b6dc3c48cc334155a82183cba9bb80e23eec7f38c5f0c0a6a"></a>REFERENCE&#160;</td><td class="fielddoc">
-</td></tr>
-<tr><td class="fieldname"><a class="anchor" id="a57b8e35c45307a40b6dc3c48cc334155afc314176df62034542117d23795f8394"></a>REFERENCE_NON_CONST&#160;</td><td class="fielddoc">
-</td></tr>
-<tr><td class="fieldname"><a class="anchor" id="a57b8e35c45307a40b6dc3c48cc334155aa34353e1d87165ae87780a81954e68cd"></a>FUNCTION&#160;</td><td class="fielddoc">
-</td></tr>
-</table>
+<p>Pointer to method that sets parameter of type Vector. </p>
 
 </div>
 </div>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="a629a88006a73c05534c300bb7b950820"></a>
+<a class="anchor" id="aa96f4da42ede6238efa0611fbfda845e"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class T , class Time &gt; </div>
+template&lt;class E &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="a00040.html">dynamicgraph::Signal</a>&lt; T, Time &gt;::<a class="el" href="a00040.html">Signal</a> </td>
+          <td class="memname"><a class="el" href="a00032.html">dynamicgraph::command::Setter</a>&lt; E, <a class="el" href="a00100.html#aa80b557e83a1386adf67f925062124f8">Vector</a> &gt;::<a class="el" href="a00032.html">Setter</a> </td>
           <td>(</td>
-          <td class="paramtype">std::string&#160;</td>
-          <td class="paramname"><em>name</em></td><td>)</td>
+          <td class="paramtype">E &amp;&#160;</td>
+          <td class="paramname"><em>entity</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype"><a class="el" href="a00040.html#a3804f38e2f2d016d33988e2f03b6729e">SetterMethod</a>&#160;</td>
+          <td class="paramname"><em>setterMethod</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>docString</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>References <a class="el" href="a00040.html#a797a1153fa10367eea96853476e2e88f">dynamicgraph::Signal&lt; T, Time &gt;::set()</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="aed343abfadb95db8cbe0cee74cbe8002"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class T, class Time&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">virtual <a class="el" href="a00040.html">dynamicgraph::Signal</a>&lt; T, Time &gt;::~<a class="el" href="a00040.html">Signal</a> </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
+<p>Constructor. </p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="ab21414cd83d45d42b1d1f299fdbdc2cf"></a>
+<a class="anchor" id="a2fae756413c7034d7d6b313c515fb07c"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class T , class Time&gt; </div>
+template&lt;class E &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const T &amp; <a class="el" href="a00040.html">dynamicgraph::Signal</a>&lt; T, Time &gt;::access </td>
-          <td>(</td>
-          <td class="paramtype">const Time &amp;&#160;</td>
-          <td class="paramname"><em>t</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Reimplemented in <a class="el" href="a00047.html#aee71a360c2d2bcbf16ee5e8465623485">dynamicgraph::SignalPtr&lt; T, Time &gt;</a>, <a class="el" href="a00048.html#aa4df5a0ace7d7470c48a6e1d4c5fcecf">dynamicgraph::SignalTimeDependent&lt; T, Time &gt;</a>, and <a class="el" href="a00048.html#aa4df5a0ace7d7470c48a6e1d4c5fcecf">dynamicgraph::SignalTimeDependent&lt; int, int &gt;</a>.</p>
-
-<p>References <a class="el" href="a00040.html#a58c74bb7fd598478431366fb2fff2c50">dynamicgraph::Signal&lt; T, Time &gt;::accessCopy()</a>, <a class="el" href="a00040.html#a57b8e35c45307a40b6dc3c48cc334155aee2d1fa88618982d476c6f7bce0a5450">dynamicgraph::Signal&lt; T, Time &gt;::CONSTANT</a>, <a class="el" href="a00040.html#a50cc6ca4915fda743edec7507f81b22d">dynamicgraph::Signal&lt; T, Time &gt;::copyInit</a>, <a class="el" href="a00040.html#a57b8e35c45307a40b6dc3c48cc334155aa34353e1d87165ae87780a81954e68cd">dynamicgraph::Signal&lt; T, Time &gt;::FUNCTION</a>, <a class="el" href="a00043.html#a3a8496883b00b8ce249ccc9ef1eb1db2">dynamicgraph::SignalBase&lt; Time &gt;::getReady()</a>, <a class="el" href="a00040.html#a6558d39a544deb36cc875855021f9186">dynamicgraph::Signal&lt; T, Time &gt;::providerMutex</a>, <a class="el" href="a00040.html#a57b8e35c45307a40b6dc3c48cc334155a82183cba9bb80e23eec7f38c5f0c0a6a">dynamicgraph::Signal&lt; T, Time &gt;::REFERENCE</a>, <a class="el" href="a00040.html#a57b8e35c45307a40b6dc3c48cc334155afc314176df62034542117d23795f8394">dynamicgraph::Signal&lt; T, Time &gt;::REFERENCE_NON_CONST</a>, <a class="el" href="a00043.html#afc3445e6bce14ccaa5dc2b9b80c86483">dynamicgraph::SignalBase&lt; Time &gt;::setReady()</a>, <a class="el" href="a00043.html#a7760134ac05d172848ff1888488d9d34">dynamicgraph::SignalBase&lt; Time &gt;::setTime()</a>, <a class="el" href="a00043.html#a2d0e96da4d0378f08805b421cf381183">dynamicgraph::SignalBase&lt; Time &gt;::signalTime</a>, <a class="el" href="a00040.html#aae4a59d6d32f56520abf64179c7ac277">dynamicgraph::Signal&lt; T, Time &gt;::signalType</a>, <a class="el" href="a00040.html#aab6d34eaad78350ce8fb8c3b54f2eda7">dynamicgraph::Signal&lt; T, Time &gt;::Tfunction</a>, and <a class="el" href="a00040.html#a109c69e77a16a5df8c45b1f18f3aa4bf">dynamicgraph::Signal&lt; T, Time &gt;::Treference</a>.</p>
-
-<p>Referenced by <a class="el" href="a00048.html#aa4df5a0ace7d7470c48a6e1d4c5fcecf">dynamicgraph::SignalTimeDependent&lt; T, Time &gt;::access()</a>, <a class="el" href="a00047.html#aee71a360c2d2bcbf16ee5e8465623485">dynamicgraph::SignalPtr&lt; T, Time &gt;::access()</a>, <a class="el" href="a00040.html#a58c74bb7fd598478431366fb2fff2c50">dynamicgraph::Signal&lt; T, Time &gt;::accessCopy()</a>, <a class="el" href="a00040.html#ab081214016e2d44b1a80094ddaf198e7">dynamicgraph::Signal&lt; int, int &gt;::operator()()</a>, <a class="el" href="a00040.html#a2767be0456f0e62bb2c6006cf0f95d83">dynamicgraph::Signal&lt; int, int &gt;::recompute()</a>, and <a class="el" href="a00040.html#ac3aec5678570895b03ec8aa14da92de6">dynamicgraph::Signal&lt; int, int &gt;::setKeepReference()</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a58c74bb7fd598478431366fb2fff2c50"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class T , class Time &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">const T &amp; <a class="el" href="a00040.html">dynamicgraph::Signal</a>&lt; T, Time &gt;::accessCopy </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Reimplemented in <a class="el" href="a00047.html#aaa6c4df9377ccc19baba36d57a3655fb">dynamicgraph::SignalPtr&lt; T, Time &gt;</a>.</p>
-
-<p>References <a class="el" href="a00040.html#ab21414cd83d45d42b1d1f299fdbdc2cf">dynamicgraph::Signal&lt; T, Time &gt;::access()</a>, and <a class="el" href="a00040.html#a70958e01cd65e0ee5f97bf19442a101f">dynamicgraph::Signal&lt; T, Time &gt;::Tcopy</a>.</p>
-
-<p>Referenced by <a class="el" href="a00048.html#aa4df5a0ace7d7470c48a6e1d4c5fcecf">dynamicgraph::SignalTimeDependent&lt; T, Time &gt;::access()</a>, <a class="el" href="a00047.html#aee71a360c2d2bcbf16ee5e8465623485">dynamicgraph::SignalPtr&lt; T, Time &gt;::access()</a>, <a class="el" href="a00040.html#ab21414cd83d45d42b1d1f299fdbdc2cf">dynamicgraph::Signal&lt; T, Time &gt;::access()</a>, <a class="el" href="a00047.html#aaa6c4df9377ccc19baba36d57a3655fb">dynamicgraph::SignalPtr&lt; T, Time &gt;::accessCopy()</a>, <a class="el" href="a00040.html#adac702b2fcf5d9d54da7857b5e7cb8ac">dynamicgraph::Signal&lt; T, Time &gt;::get()</a>, <a class="el" href="a00040.html#a0e64c4691f2051a1cc44335d857b9553">dynamicgraph::Signal&lt; T, Time &gt;::operator const T &amp;()</a>, <a class="el" href="a00040.html#a2767be0456f0e62bb2c6006cf0f95d83">dynamicgraph::Signal&lt; int, int &gt;::recompute()</a>, <a class="el" href="a00040.html#a098d47013d96bce67b017a0db30707c2">dynamicgraph::Signal&lt; T, Time &gt;::setFunction()</a>, and <a class="el" href="a00040.html#ac2f9e3571670302a4267a4c7fc614557">dynamicgraph::Signal&lt; T, Time &gt;::trace()</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="abc47f178f7a1ecfa7625f53ac2262d50"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class T, class Time&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">virtual void <a class="el" href="a00040.html">dynamicgraph::Signal</a>&lt; T, Time &gt;::checkCompatibility </td>
+          <td class="memname"><a class="el" href="a00053.html">Value</a> <a class="el" href="a00032.html">dynamicgraph::command::Setter</a>&lt; E, <a class="el" href="a00100.html#aa80b557e83a1386adf67f925062124f8">Vector</a> &gt;::doExecute </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -464,775 +230,16 @@ template&lt;class T, class Time&gt; </div>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p>Reimplemented from <a class="el" href="a00043.html#ac585b4169a7d54ceded4cc7a0a8b523b">dynamicgraph::SignalBase&lt; Time &gt;</a>.</p>
+<p>Specific action performed by the command. </p>
 
-<p>Reimplemented in <a class="el" href="a00047.html#a8c807a8862c39164eaf170dfd38affea">dynamicgraph::SignalPtr&lt; T, Time &gt;</a>.</p>
+<p>Implements <a class="el" href="a00007.html#ad0a03f5e3c267e41b559824cbd1b49e1">dynamicgraph::command::Command</a>.</p>
 
-<p>Referenced by <a class="el" href="a00047.html#a8c807a8862c39164eaf170dfd38affea">dynamicgraph::SignalPtr&lt; T, Time &gt;::checkCompatibility()</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a5e4572911650ec7ebb4c8485a9916671"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class T , class Time &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::ostream &amp; <a class="el" href="a00040.html">dynamicgraph::Signal</a>&lt; T, Time &gt;::display </td>
-          <td>(</td>
-          <td class="paramtype">std::ostream &amp;&#160;</td>
-          <td class="paramname"><em>os</em></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Reimplemented from <a class="el" href="a00043.html#afc9097f1e7d9eb48b684d22bc4c9656a">dynamicgraph::SignalBase&lt; Time &gt;</a>.</p>
-
-<p>Reimplemented in <a class="el" href="a00047.html#a54d8d5114c373ead6fa5a77a1bd2b862">dynamicgraph::SignalPtr&lt; T, Time &gt;</a>.</p>
-
-<p>References <a class="el" href="a00043.html#ad12786d4912e14d4e6e1a13c56620538">dynamicgraph::SignalBase&lt; Time &gt;::name</a>, and <a class="el" href="a00040.html#aae4a59d6d32f56520abf64179c7ac277">dynamicgraph::Signal&lt; T, Time &gt;::signalType</a>.</p>
-
-<p>Referenced by <a class="el" href="a00047.html#a54d8d5114c373ead6fa5a77a1bd2b862">dynamicgraph::SignalPtr&lt; T, Time &gt;::display()</a>, <a class="el" href="a00040.html#a5f416b400eb8a843e529a5b3e224501d">dynamicgraph::Signal&lt; T, Time &gt;::operator=()</a>, and <a class="el" href="a00040.html#a2767be0456f0e62bb2c6006cf0f95d83">dynamicgraph::Signal&lt; int, int &gt;::recompute()</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="adac702b2fcf5d9d54da7857b5e7cb8ac"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class T , class Time &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void <a class="el" href="a00040.html">dynamicgraph::Signal</a>&lt; T, Time &gt;::get </td>
-          <td>(</td>
-          <td class="paramtype">std::ostream &amp;&#160;</td>
-          <td class="paramname"><em>value</em></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Reimplemented from <a class="el" href="a00043.html#a8903f55460793d969dcf6152c23226e9">dynamicgraph::SignalBase&lt; Time &gt;</a>.</p>
-
-<p>References <a class="el" href="a00040.html#a58c74bb7fd598478431366fb2fff2c50">dynamicgraph::Signal&lt; T, Time &gt;::accessCopy()</a>, and <a class="el" href="a00040.html#ac2f9e3571670302a4267a4c7fc614557">dynamicgraph::Signal&lt; T, Time &gt;::trace()</a>.</p>
-
-<p>Referenced by <a class="el" href="a00040.html#a797a1153fa10367eea96853476e2e88f">dynamicgraph::Signal&lt; T, Time &gt;::set()</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a249f336c1fd2613db5126b2dceb53883"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class T, class Time&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">virtual void <a class="el" href="a00040.html">dynamicgraph::Signal</a>&lt; T, Time &gt;::getClassName </td>
-          <td>(</td>
-          <td class="paramtype">std::string &amp;&#160;</td>
-          <td class="paramname"><em>aClassName</em></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="ac0af1f6facdd4087b283de5f64129e27"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class T, class Time&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool <a class="el" href="a00040.html">dynamicgraph::Signal</a>&lt; T, Time &gt;::getKeepReference </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="a0e64c4691f2051a1cc44335d857b9553"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class T, class Time&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="a00040.html">dynamicgraph::Signal</a>&lt; T, Time &gt;::operator const T &amp; </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>References <a class="el" href="a00040.html#a58c74bb7fd598478431366fb2fff2c50">dynamicgraph::Signal&lt; T, Time &gt;::accessCopy()</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="ab081214016e2d44b1a80094ddaf198e7"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class T, class Time&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">virtual const T&amp; <a class="el" href="a00040.html">dynamicgraph::Signal</a>&lt; T, Time &gt;::operator() </td>
-          <td>(</td>
-          <td class="paramtype">const Time &amp;&#160;</td>
-          <td class="paramname"><em>t</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Reimplemented in <a class="el" href="a00047.html#aeb0ade18b2ce9412f8cb6339aedd7bc8">dynamicgraph::SignalPtr&lt; T, Time &gt;</a>, <a class="el" href="a00048.html#a96393c40edd04485cbee8f383ff3c908">dynamicgraph::SignalTimeDependent&lt; T, Time &gt;</a>, and <a class="el" href="a00048.html#a96393c40edd04485cbee8f383ff3c908">dynamicgraph::SignalTimeDependent&lt; int, int &gt;</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a5f416b400eb8a843e529a5b3e224501d"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class T, class Time &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="a00040.html">Signal</a>&lt; T, Time &gt; &amp; <a class="el" href="a00040.html">dynamicgraph::Signal</a>&lt; T, Time &gt;::operator= </td>
-          <td>(</td>
-          <td class="paramtype">const T &amp;&#160;</td>
-          <td class="paramname"><em>t</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Reimplemented in <a class="el" href="a00047.html#a0fd7bacf8ca62390536eb47abc50d44e">dynamicgraph::SignalPtr&lt; T, Time &gt;</a>.</p>
-
-<p>References <a class="el" href="a00040.html#a5e4572911650ec7ebb4c8485a9916671">dynamicgraph::Signal&lt; T, Time &gt;::display()</a>, <a class="el" href="a00040.html#a42a6d3c54dd0a2c1479d694e7db432c1">dynamicgraph::Signal&lt; T, Time &gt;::keepReference</a>, <a class="el" href="a00040.html#a6558d39a544deb36cc875855021f9186">dynamicgraph::Signal&lt; T, Time &gt;::providerMutex</a>, <a class="el" href="a00040.html#a57b8e35c45307a40b6dc3c48cc334155afc314176df62034542117d23795f8394">dynamicgraph::Signal&lt; T, Time &gt;::REFERENCE_NON_CONST</a>, <a class="el" href="a00040.html#a8da7c632bb7f6039b594e4ebf2f6663e">dynamicgraph::Signal&lt; T, Time &gt;::setConstant()</a>, <a class="el" href="a00040.html#aae4a59d6d32f56520abf64179c7ac277">dynamicgraph::Signal&lt; T, Time &gt;::signalType</a>, and <a class="el" href="a00040.html#a58743c8c709e2eab0197c75628258505">dynamicgraph::Signal&lt; T, Time &gt;::TreferenceNonConst</a>.</p>
-
-<p>Referenced by <a class="el" href="a00040.html#ab081214016e2d44b1a80094ddaf198e7">dynamicgraph::Signal&lt; int, int &gt;::operator()()</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a2767be0456f0e62bb2c6006cf0f95d83"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class T, class Time&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">virtual void <a class="el" href="a00040.html">dynamicgraph::Signal</a>&lt; T, Time &gt;::recompute </td>
-          <td>(</td>
-          <td class="paramtype">const Time &amp;&#160;</td>
-          <td class="paramname"><em>t</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Reimplemented from <a class="el" href="a00043.html#a32b65fa6e14c4e504952bb6d9989c034">dynamicgraph::SignalBase&lt; Time &gt;</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a797a1153fa10367eea96853476e2e88f"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class T , class Time &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void <a class="el" href="a00040.html">dynamicgraph::Signal</a>&lt; T, Time &gt;::set </td>
-          <td>(</td>
-          <td class="paramtype">std::istringstream &amp;&#160;</td>
-          <td class="paramname"><em>value</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Reimplemented from <a class="el" href="a00043.html#a93048742c90d6ead172065be3ad9de72">dynamicgraph::SignalBase&lt; Time &gt;</a>.</p>
-
-<p>References <a class="el" href="a00040.html#adac702b2fcf5d9d54da7857b5e7cb8ac">dynamicgraph::Signal&lt; T, Time &gt;::get()</a>, and <a class="el" href="a00099.html#a12ac1418f268160f1a4ad02fbaaad7ca">dynamicgraph::signal_cast()</a>.</p>
-
-<p>Referenced by <a class="el" href="a00040.html#a629a88006a73c05534c300bb7b950820">dynamicgraph::Signal&lt; T, Time &gt;::Signal()</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a8da7c632bb7f6039b594e4ebf2f6663e"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class T, class Time &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void <a class="el" href="a00040.html">dynamicgraph::Signal</a>&lt; T, Time &gt;::setConstant </td>
-          <td>(</td>
-          <td class="paramtype">const T &amp;&#160;</td>
-          <td class="paramname"><em>t</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Reimplemented in <a class="el" href="a00047.html#aef10f61419c9c043793b0169a6c730ed">dynamicgraph::SignalPtr&lt; T, Time &gt;</a>.</p>
-
-<p>References <a class="el" href="a00040.html#a57b8e35c45307a40b6dc3c48cc334155aee2d1fa88618982d476c6f7bce0a5450">dynamicgraph::Signal&lt; T, Time &gt;::CONSTANT</a>, <a class="el" href="a00043.html#afc3445e6bce14ccaa5dc2b9b80c86483">dynamicgraph::SignalBase&lt; Time &gt;::setReady()</a>, <a class="el" href="a00040.html#a1260cbb12057a5e3cb66821290572453">dynamicgraph::Signal&lt; T, Time &gt;::setReference()</a>, and <a class="el" href="a00040.html#aae4a59d6d32f56520abf64179c7ac277">dynamicgraph::Signal&lt; T, Time &gt;::signalType</a>.</p>
-
-<p>Referenced by <a class="el" href="a00040.html#a5f416b400eb8a843e529a5b3e224501d">dynamicgraph::Signal&lt; T, Time &gt;::operator=()</a>, <a class="el" href="a00047.html#aef10f61419c9c043793b0169a6c730ed">dynamicgraph::SignalPtr&lt; T, Time &gt;::setConstant()</a>, <a class="el" href="a00047.html#a29053970721ea67d6d583ffb1acef901">dynamicgraph::SignalPtr&lt; T, Time &gt;::setConstantDefault()</a>, <a class="el" href="a00040.html#ac2f9e3571670302a4267a4c7fc614557">dynamicgraph::Signal&lt; T, Time &gt;::trace()</a>, and <a class="el" href="a00040.html#aed343abfadb95db8cbe0cee74cbe8002">dynamicgraph::Signal&lt; int, int &gt;::~Signal()</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a098d47013d96bce67b017a0db30707c2"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class T, class Time&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void <a class="el" href="a00040.html">dynamicgraph::Signal</a>&lt; T, Time &gt;::setFunction </td>
-          <td>(</td>
-          <td class="paramtype">boost::function2&lt; T &amp;, T &amp;, Time &gt;&#160;</td>
-          <td class="paramname"><em>t</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="a00040.html#a20378c06ed76b81c26f631002baa9380">Mutex</a> *&#160;</td>
-          <td class="paramname"><em>mutexref</em> = <code>NULL</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>References <a class="el" href="a00040.html#a58c74bb7fd598478431366fb2fff2c50">dynamicgraph::Signal&lt; T, Time &gt;::accessCopy()</a>, <a class="el" href="a00040.html#a50cc6ca4915fda743edec7507f81b22d">dynamicgraph::Signal&lt; T, Time &gt;::copyInit</a>, <a class="el" href="a00040.html#a57b8e35c45307a40b6dc3c48cc334155aa34353e1d87165ae87780a81954e68cd">dynamicgraph::Signal&lt; T, Time &gt;::FUNCTION</a>, <a class="el" href="a00040.html#a6558d39a544deb36cc875855021f9186">dynamicgraph::Signal&lt; T, Time &gt;::providerMutex</a>, <a class="el" href="a00043.html#afc3445e6bce14ccaa5dc2b9b80c86483">dynamicgraph::SignalBase&lt; Time &gt;::setReady()</a>, <a class="el" href="a00040.html#aae4a59d6d32f56520abf64179c7ac277">dynamicgraph::Signal&lt; T, Time &gt;::signalType</a>, and <a class="el" href="a00040.html#aab6d34eaad78350ce8fb8c3b54f2eda7">dynamicgraph::Signal&lt; T, Time &gt;::Tfunction</a>.</p>
-
-<p>Referenced by <a class="el" href="a00047.html#a617db8a502120bbc84018557e5ab05ad">dynamicgraph::SignalPtr&lt; T, Time &gt;::setFunction()</a>, <a class="el" href="a00040.html#a25fa3fa114741dca4d3793e1541fb80d">dynamicgraph::Signal&lt; T, Time &gt;::setReferenceNonConstant()</a>, <a class="el" href="a00048.html#aad9aa8e29a8af77602852615dc336ba0">dynamicgraph::SignalTimeDependent&lt; T, Time &gt;::SignalTimeDependent()</a>, and <a class="el" href="a00040.html#aed343abfadb95db8cbe0cee74cbe8002">dynamicgraph::Signal&lt; int, int &gt;::~Signal()</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="ac3aec5678570895b03ec8aa14da92de6"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class T, class Time&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void <a class="el" href="a00040.html">dynamicgraph::Signal</a>&lt; T, Time &gt;::setKeepReference </td>
-          <td>(</td>
-          <td class="paramtype">const bool &amp;&#160;</td>
-          <td class="paramname"><em>b</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="a1260cbb12057a5e3cb66821290572453"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class T, class Time &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void <a class="el" href="a00040.html">dynamicgraph::Signal</a>&lt; T, Time &gt;::setReference </td>
-          <td>(</td>
-          <td class="paramtype">const T *&#160;</td>
-          <td class="paramname"><em>t</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="a00040.html#a20378c06ed76b81c26f631002baa9380">Mutex</a> *&#160;</td>
-          <td class="paramname"><em>mutexref</em> = <code>NULL</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>References <a class="el" href="a00040.html#a50cc6ca4915fda743edec7507f81b22d">dynamicgraph::Signal&lt; T, Time &gt;::copyInit</a>, <a class="el" href="a00040.html#a6558d39a544deb36cc875855021f9186">dynamicgraph::Signal&lt; T, Time &gt;::providerMutex</a>, <a class="el" href="a00040.html#a57b8e35c45307a40b6dc3c48cc334155a82183cba9bb80e23eec7f38c5f0c0a6a">dynamicgraph::Signal&lt; T, Time &gt;::REFERENCE</a>, <a class="el" href="a00043.html#afc3445e6bce14ccaa5dc2b9b80c86483">dynamicgraph::SignalBase&lt; Time &gt;::setReady()</a>, <a class="el" href="a00040.html#a25fa3fa114741dca4d3793e1541fb80d">dynamicgraph::Signal&lt; T, Time &gt;::setReferenceNonConstant()</a>, <a class="el" href="a00040.html#aae4a59d6d32f56520abf64179c7ac277">dynamicgraph::Signal&lt; T, Time &gt;::signalType</a>, and <a class="el" href="a00040.html#a109c69e77a16a5df8c45b1f18f3aa4bf">dynamicgraph::Signal&lt; T, Time &gt;::Treference</a>.</p>
-
-<p>Referenced by <a class="el" href="a00047.html#a2c408f7845c6a922572f9749fb1c3b0f">dynamicgraph::SignalPtr&lt; T, Time &gt;::plug()</a>, <a class="el" href="a00040.html#a8da7c632bb7f6039b594e4ebf2f6663e">dynamicgraph::Signal&lt; T, Time &gt;::setConstant()</a>, <a class="el" href="a00047.html#a237157361a90b2e8eb51979020e56f69">dynamicgraph::SignalPtr&lt; T, Time &gt;::setReference()</a>, and <a class="el" href="a00040.html#aed343abfadb95db8cbe0cee74cbe8002">dynamicgraph::Signal&lt; int, int &gt;::~Signal()</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a25fa3fa114741dca4d3793e1541fb80d"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class T, class Time &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void <a class="el" href="a00040.html">dynamicgraph::Signal</a>&lt; T, Time &gt;::setReferenceNonConstant </td>
-          <td>(</td>
-          <td class="paramtype">T *&#160;</td>
-          <td class="paramname"><em>t</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="a00040.html#a20378c06ed76b81c26f631002baa9380">Mutex</a> *&#160;</td>
-          <td class="paramname"><em>mutexref</em> = <code>NULL</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>References <a class="el" href="a00040.html#a50cc6ca4915fda743edec7507f81b22d">dynamicgraph::Signal&lt; T, Time &gt;::copyInit</a>, <a class="el" href="a00040.html#a6558d39a544deb36cc875855021f9186">dynamicgraph::Signal&lt; T, Time &gt;::providerMutex</a>, <a class="el" href="a00040.html#a57b8e35c45307a40b6dc3c48cc334155afc314176df62034542117d23795f8394">dynamicgraph::Signal&lt; T, Time &gt;::REFERENCE_NON_CONST</a>, <a class="el" href="a00040.html#a098d47013d96bce67b017a0db30707c2">dynamicgraph::Signal&lt; T, Time &gt;::setFunction()</a>, <a class="el" href="a00043.html#afc3445e6bce14ccaa5dc2b9b80c86483">dynamicgraph::SignalBase&lt; Time &gt;::setReady()</a>, <a class="el" href="a00040.html#aae4a59d6d32f56520abf64179c7ac277">dynamicgraph::Signal&lt; T, Time &gt;::signalType</a>, <a class="el" href="a00040.html#a109c69e77a16a5df8c45b1f18f3aa4bf">dynamicgraph::Signal&lt; T, Time &gt;::Treference</a>, and <a class="el" href="a00040.html#a58743c8c709e2eab0197c75628258505">dynamicgraph::Signal&lt; T, Time &gt;::TreferenceNonConst</a>.</p>
-
-<p>Referenced by <a class="el" href="a00040.html#a1260cbb12057a5e3cb66821290572453">dynamicgraph::Signal&lt; T, Time &gt;::setReference()</a>, and <a class="el" href="a00040.html#aed343abfadb95db8cbe0cee74cbe8002">dynamicgraph::Signal&lt; int, int &gt;::~Signal()</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="ac2f9e3571670302a4267a4c7fc614557"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class T , class Time &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void <a class="el" href="a00040.html">dynamicgraph::Signal</a>&lt; T, Time &gt;::trace </td>
-          <td>(</td>
-          <td class="paramtype">std::ostream &amp;&#160;</td>
-          <td class="paramname"><em>os</em></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Reimplemented from <a class="el" href="a00043.html#a23a76f91d7c5da15afac0d67f076ace1">dynamicgraph::SignalBase&lt; Time &gt;</a>.</p>
-
-<p>References <a class="el" href="a00040.html#a58c74bb7fd598478431366fb2fff2c50">dynamicgraph::Signal&lt; T, Time &gt;::accessCopy()</a>, <a class="el" href="a00040.html#a50cc6ca4915fda743edec7507f81b22d">dynamicgraph::Signal&lt; T, Time &gt;::copyInit</a>, <a class="el" href="a00071.html#ac5467892d97a2490cdd20cf61b25628c">DG_RETHROW</a>, <a class="el" href="a00071.html#af37158a4ed07567f1673457ea2656a34">DG_THROW</a>, <a class="el" href="a00024.html#a5c6942a3d775d104aa6fa46902106f10af40270d1e2ca50c5449ed97f74528ccb">dynamicgraph::ExceptionSignal::SET_IMPOSSIBLE</a>, <a class="el" href="a00040.html#a8da7c632bb7f6039b594e4ebf2f6663e">dynamicgraph::Signal&lt; T, Time &gt;::setConstant()</a>, <a class="el" href="a00040.html#a70958e01cd65e0ee5f97bf19442a101f">dynamicgraph::Signal&lt; T, Time &gt;::Tcopy</a>, <a class="el" href="a00040.html#a22e70c2affa81b282f9753f6172da866">dynamicgraph::Signal&lt; T, Time &gt;::Tcopy1</a>, and <a class="el" href="a00040.html#a7f9af955ec9424257766b3d0cf30c3e2">dynamicgraph::Signal&lt; T, Time &gt;::Tcopy2</a>.</p>
-
-<p>Referenced by <a class="el" href="a00040.html#adac702b2fcf5d9d54da7857b5e7cb8ac">dynamicgraph::Signal&lt; T, Time &gt;::get()</a>, and <a class="el" href="a00040.html#aed343abfadb95db8cbe0cee74cbe8002">dynamicgraph::Signal&lt; int, int &gt;::~Signal()</a>.</p>
-
-</div>
-</div>
-<h2 class="groupheader">Member Data Documentation</h2>
-<a class="anchor" id="a50cc6ca4915fda743edec7507f81b22d"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class T, class Time&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool <a class="el" href="a00040.html">dynamicgraph::Signal</a>&lt; T, Time &gt;::copyInit</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Referenced by <a class="el" href="a00040.html#ab21414cd83d45d42b1d1f299fdbdc2cf">dynamicgraph::Signal&lt; T, Time &gt;::access()</a>, <a class="el" href="a00040.html#a098d47013d96bce67b017a0db30707c2">dynamicgraph::Signal&lt; T, Time &gt;::setFunction()</a>, <a class="el" href="a00040.html#a1260cbb12057a5e3cb66821290572453">dynamicgraph::Signal&lt; T, Time &gt;::setReference()</a>, <a class="el" href="a00040.html#a25fa3fa114741dca4d3793e1541fb80d">dynamicgraph::Signal&lt; T, Time &gt;::setReferenceNonConstant()</a>, and <a class="el" href="a00040.html#ac2f9e3571670302a4267a4c7fc614557">dynamicgraph::Signal&lt; T, Time &gt;::trace()</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="ad2b8c22fdf80b1d661de3d743138d21c"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class T, class Time&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">const bool <a class="el" href="a00040.html">dynamicgraph::Signal</a>&lt; T, Time &gt;::KEEP_REFERENCE_DEFAULT = false</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="a42a6d3c54dd0a2c1479d694e7db432c1"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class T, class Time&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool <a class="el" href="a00040.html">dynamicgraph::Signal</a>&lt; T, Time &gt;::keepReference</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Referenced by <a class="el" href="a00040.html#ac0af1f6facdd4087b283de5f64129e27">dynamicgraph::Signal&lt; int, int &gt;::getKeepReference()</a>, and <a class="el" href="a00040.html#a5f416b400eb8a843e529a5b3e224501d">dynamicgraph::Signal&lt; T, Time &gt;::operator=()</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a6558d39a544deb36cc875855021f9186"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class T, class Time&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="a00040.html#a20378c06ed76b81c26f631002baa9380">Mutex</a>* <a class="el" href="a00040.html">dynamicgraph::Signal</a>&lt; T, Time &gt;::providerMutex</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Referenced by <a class="el" href="a00040.html#ab21414cd83d45d42b1d1f299fdbdc2cf">dynamicgraph::Signal&lt; T, Time &gt;::access()</a>, <a class="el" href="a00040.html#a5f416b400eb8a843e529a5b3e224501d">dynamicgraph::Signal&lt; T, Time &gt;::operator=()</a>, <a class="el" href="a00040.html#a098d47013d96bce67b017a0db30707c2">dynamicgraph::Signal&lt; T, Time &gt;::setFunction()</a>, <a class="el" href="a00040.html#a1260cbb12057a5e3cb66821290572453">dynamicgraph::Signal&lt; T, Time &gt;::setReference()</a>, and <a class="el" href="a00040.html#a25fa3fa114741dca4d3793e1541fb80d">dynamicgraph::Signal&lt; T, Time &gt;::setReferenceNonConstant()</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a7195a872bca9a22f0bcea9cd2baa9b98"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class T, class Time&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">const <a class="el" href="a00040.html#a57b8e35c45307a40b6dc3c48cc334155">SignalType</a> <a class="el" href="a00040.html">dynamicgraph::Signal</a>&lt; T, Time &gt;::SIGNAL_TYPE_DEFAULT = <a class="el" href="a00040.html#a57b8e35c45307a40b6dc3c48cc334155aee2d1fa88618982d476c6f7bce0a5450">CONSTANT</a></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="aae4a59d6d32f56520abf64179c7ac277"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class T, class Time&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="a00040.html#a57b8e35c45307a40b6dc3c48cc334155">SignalType</a> <a class="el" href="a00040.html">dynamicgraph::Signal</a>&lt; T, Time &gt;::signalType</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Referenced by <a class="el" href="a00040.html#ab21414cd83d45d42b1d1f299fdbdc2cf">dynamicgraph::Signal&lt; T, Time &gt;::access()</a>, <a class="el" href="a00040.html#a5e4572911650ec7ebb4c8485a9916671">dynamicgraph::Signal&lt; T, Time &gt;::display()</a>, <a class="el" href="a00040.html#a5f416b400eb8a843e529a5b3e224501d">dynamicgraph::Signal&lt; T, Time &gt;::operator=()</a>, <a class="el" href="a00040.html#a8da7c632bb7f6039b594e4ebf2f6663e">dynamicgraph::Signal&lt; T, Time &gt;::setConstant()</a>, <a class="el" href="a00040.html#a098d47013d96bce67b017a0db30707c2">dynamicgraph::Signal&lt; T, Time &gt;::setFunction()</a>, <a class="el" href="a00040.html#a1260cbb12057a5e3cb66821290572453">dynamicgraph::Signal&lt; T, Time &gt;::setReference()</a>, and <a class="el" href="a00040.html#a25fa3fa114741dca4d3793e1541fb80d">dynamicgraph::Signal&lt; T, Time &gt;::setReferenceNonConstant()</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a70958e01cd65e0ee5f97bf19442a101f"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class T, class Time&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">T* <a class="el" href="a00040.html">dynamicgraph::Signal</a>&lt; T, Time &gt;::Tcopy</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Referenced by <a class="el" href="a00040.html#a58c74bb7fd598478431366fb2fff2c50">dynamicgraph::Signal&lt; T, Time &gt;::accessCopy()</a>, <a class="el" href="a00040.html#abc47f178f7a1ecfa7625f53ac2262d50">dynamicgraph::Signal&lt; int, int &gt;::checkCompatibility()</a>, and <a class="el" href="a00040.html#ac2f9e3571670302a4267a4c7fc614557">dynamicgraph::Signal&lt; T, Time &gt;::trace()</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a22e70c2affa81b282f9753f6172da866"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class T, class Time&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">T <a class="el" href="a00040.html">dynamicgraph::Signal</a>&lt; T, Time &gt;::Tcopy1</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Referenced by <a class="el" href="a00040.html#ac2f9e3571670302a4267a4c7fc614557">dynamicgraph::Signal&lt; T, Time &gt;::trace()</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a7f9af955ec9424257766b3d0cf30c3e2"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class T, class Time&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">T <a class="el" href="a00040.html">dynamicgraph::Signal</a>&lt; T, Time &gt;::Tcopy2</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Referenced by <a class="el" href="a00040.html#ac2f9e3571670302a4267a4c7fc614557">dynamicgraph::Signal&lt; T, Time &gt;::trace()</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="aab6d34eaad78350ce8fb8c3b54f2eda7"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class T, class Time&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">boost::function2&lt;T&amp;,T&amp;,Time&gt; <a class="el" href="a00040.html">dynamicgraph::Signal</a>&lt; T, Time &gt;::Tfunction</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Referenced by <a class="el" href="a00040.html#ab21414cd83d45d42b1d1f299fdbdc2cf">dynamicgraph::Signal&lt; T, Time &gt;::access()</a>, and <a class="el" href="a00040.html#a098d47013d96bce67b017a0db30707c2">dynamicgraph::Signal&lt; T, Time &gt;::setFunction()</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a109c69e77a16a5df8c45b1f18f3aa4bf"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class T, class Time&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">const T* <a class="el" href="a00040.html">dynamicgraph::Signal</a>&lt; T, Time &gt;::Treference</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Referenced by <a class="el" href="a00040.html#ab21414cd83d45d42b1d1f299fdbdc2cf">dynamicgraph::Signal&lt; T, Time &gt;::access()</a>, <a class="el" href="a00040.html#a1260cbb12057a5e3cb66821290572453">dynamicgraph::Signal&lt; T, Time &gt;::setReference()</a>, and <a class="el" href="a00040.html#a25fa3fa114741dca4d3793e1541fb80d">dynamicgraph::Signal&lt; T, Time &gt;::setReferenceNonConstant()</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a58743c8c709e2eab0197c75628258505"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class T, class Time&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">T* <a class="el" href="a00040.html">dynamicgraph::Signal</a>&lt; T, Time &gt;::TreferenceNonConst</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Referenced by <a class="el" href="a00040.html#a5f416b400eb8a843e529a5b3e224501d">dynamicgraph::Signal&lt; T, Time &gt;::operator=()</a>, and <a class="el" href="a00040.html#a25fa3fa114741dca4d3793e1541fb80d">dynamicgraph::Signal&lt; T, Time &gt;::setReferenceNonConstant()</a>.</p>
+<p>References <a class="el" href="a00007.html#aaae4582d8321da872b6b9f06aca0989a">dynamicgraph::command::Command::getParameterValues()</a>, and <a class="el" href="a00007.html#a5da7a948700ca6136685bfad15807a6d">dynamicgraph::command::Command::owner()</a>.</p>
 
 </div>
 </div>
@@ -1242,8 +249,8 @@ template&lt;class T, class Time&gt; </div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="a00099.html">dynamicgraph</a></li><li class="navelem"><a class="el" href="a00040.html">Signal</a></li>
-    <li class="footer">Generated on Mon Dec 18 2017 00:07:45 for dynamic-graph by
+    <li class="navelem"><a class="el" href="a00100.html">dynamicgraph</a></li><li class="navelem"><a class="el" href="a00101.html">command</a></li><li class="navelem"><a class="el" href="a00040.html">Setter&lt; E, Vector &gt;</a></li>
+    <li class="footer">Generated on Tue Jan 16 2018 12:19:09 for dynamic-graph by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.11 </li>
   </ul>

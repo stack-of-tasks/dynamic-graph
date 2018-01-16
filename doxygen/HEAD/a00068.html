@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<title>eigen-io.h File Reference</title>
+<title>dynamic-graph-api.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css">
 <link href="doxygen.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="jquery.js"></script>
@@ -87,65 +87,29 @@ $(document).ready(function(){initNavTree('a00068.html','');});
 </div>
 
 <div class="header">
-  <div class="summary">
-<a href="#namespaces">Namespaces</a> &#124;
-<a href="#typedef-members">Typedefs</a> &#124;
-<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<div class="title">eigen-io.h File Reference</div>  </div>
+<div class="title">dynamic-graph-api.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;iostream&gt;</code><br />
-<code>#include &lt;boost/format.hpp&gt;</code><br />
-<code>#include &lt;boost/numeric/conversion/cast.hpp&gt;</code><br />
-<code>#include &lt;<a class="el" href="a00073.html">dynamic-graph/exception-signal.h</a>&gt;</code><br />
-<code>#include &lt;<a class="el" href="a00077.html">dynamic-graph/linear-algebra.h</a>&gt;</code><br />
-<code>#include &lt;Eigen/Geometry&gt;</code><br />
+<div class="textblock"><code>#include &lt;dynamic-graph/config.hh&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
-Include dependency graph for eigen-io.h:</div>
+Include dependency graph for dynamic-graph-api.h:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="a00129.svg" width="930" height="380"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="a00128.svg" width="175" height="112"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="a00130.svg" width="146" height="112"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="a00129.svg" width="2012" height="635"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
-</div><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
-Namespaces</h2></td></tr>
-<tr class="memitem:a00101"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00101.html">Eigen</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
-Typedefs</h2></td></tr>
-<tr class="memitem:a6cde4474234ff4c3fb628f8e7a90894d"><td class="memItemLeft" align="right" valign="top">typedef EIGEN_DEFAULT_DENSE_INDEX_TYPE&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00101.html#a6cde4474234ff4c3fb628f8e7a90894d">Eigen::eigen_index</a></td></tr>
-<tr class="separator:a6cde4474234ff4c3fb628f8e7a90894d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
-Functions</h2></td></tr>
-<tr class="memitem:a6f7680357b6b6f5c662b913abc810e50"><td class="memItemLeft" align="right" valign="top">std::istringstream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00101.html#a6f7680357b6b6f5c662b913abc810e50">Eigen::operator&gt;&gt;</a> (std::istringstream &amp;iss, <a class="el" href="a00099.html#aa80b557e83a1386adf67f925062124f8">dynamicgraph::Vector</a> &amp;inst)</td></tr>
-<tr class="separator:a6f7680357b6b6f5c662b913abc810e50"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2d6af4380d172c52405a0928d07601fc"><td class="memTemplParams" colspan="2">template&lt;typename Derived &gt; </td></tr>
-<tr class="memitem:a2d6af4380d172c52405a0928d07601fc"><td class="memTemplItemLeft" align="right" valign="top">std::istringstream &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00101.html#a2d6af4380d172c52405a0928d07601fc">Eigen::operator&gt;&gt;</a> (std::istringstream &amp;iss, DenseBase&lt; Derived &gt; &amp;inst)</td></tr>
-<tr class="separator:a2d6af4380d172c52405a0928d07601fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9a6e271ed7bf02f910ece03543b1fc56"><td class="memItemLeft" align="right" valign="top">std::istringstream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00101.html#a9a6e271ed7bf02f910ece03543b1fc56">Eigen::operator&gt;&gt;</a> (std::istringstream &amp;iss, Transform&lt; double, 3, Affine &gt; &amp;inst)</td></tr>
-<tr class="separator:a9a6e271ed7bf02f910ece03543b1fc56"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a12b5a4ec073aff33eac038845725d3e3"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00101.html#a12b5a4ec073aff33eac038845725d3e3">Eigen::operator&lt;&lt;</a> (std::ostream &amp;os, Transform&lt; double, 3, Affine &gt; MH)</td></tr>
-<tr class="separator:a12b5a4ec073aff33eac038845725d3e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6b61a6c2c9779bb4c7f091b00acec38d"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00101.html#a6b61a6c2c9779bb4c7f091b00acec38d">Eigen::operator&lt;&lt;</a> (std::ostream &amp;os, AngleAxisd quat)</td></tr>
-<tr class="separator:a6b61a6c2c9779bb4c7f091b00acec38d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a204571c19cf57ec9724cde179a8b4759"><td class="memItemLeft" align="right" valign="top">std::istringstream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00101.html#a204571c19cf57ec9724cde179a8b4759">Eigen::operator&gt;&gt;</a> (std::istringstream &amp;iss, AngleAxisd &amp;inst)</td></tr>
-<tr class="separator:a204571c19cf57ec9724cde179a8b4759"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table>
-</div><!-- contents -->
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.8.6-->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_a7fe445ff4848f3dbb9303db33c761fe.html">dynamic-graph</a></li><li class="navelem"><a class="el" href="a00068.html">eigen-io.h</a></li>
-    <li class="footer">Generated on Mon Dec 18 2017 00:07:45 for dynamic-graph by
+    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_a7fe445ff4848f3dbb9303db33c761fe.html">dynamic-graph</a></li><li class="navelem"><a class="el" href="a00068.html">dynamic-graph-api.h</a></li>
+    <li class="footer">Generated on Tue Jan 16 2018 12:19:09 for dynamic-graph by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.11 </li>
   </ul>

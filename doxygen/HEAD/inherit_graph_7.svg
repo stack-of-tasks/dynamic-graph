@@ -19,7 +19,7 @@
 </g>
 <!-- Node2 -->
 <g id="node2" class="node"><title>Node2</title>
-<g id="a_node2"><a xlink:href="a00022.html" target="_top" xlink:title="Abstract root class for all dynamic&#45;graph exceptions. ">
+<g id="a_node2"><a xlink:href="a00023.html" target="_top" xlink:title="Abstract root class for all dynamic&#45;graph exceptions. ">
 <polygon fill="white" stroke="black" points="114,-38.5 114,-57.5 278,-57.5 278,-38.5 114,-38.5"/>
 <text text-anchor="middle" x="196" y="-45.5" font-family="Helvetica,sans-Serif" font-size="10.00">dynamicgraph::ExceptionAbstract</text>
 </a>
@@ -32,7 +32,7 @@
 </g>
 <!-- Node3 -->
 <g id="node3" class="node"><title>Node3</title>
-<g id="a_node3"><a xlink:href="a00023.html" target="_top" xlink:title="Generic error class. ">
+<g id="a_node3"><a xlink:href="a00024.html" target="_top" xlink:title="Generic error class. ">
 <polygon fill="white" stroke="black" points="314,-76.5 314,-95.5 474,-95.5 474,-76.5 314,-76.5"/>
 <text text-anchor="middle" x="394" y="-83.5" font-family="Helvetica,sans-Serif" font-size="10.00">dynamicgraph::ExceptionFactory</text>
 </a>
@@ -45,7 +45,7 @@
 </g>
 <!-- Node4 -->
 <g id="node4" class="node"><title>Node4</title>
-<g id="a_node4"><a xlink:href="a00024.html" target="_top" xlink:title="Exceptions raised when an error related to signals happen. ">
+<g id="a_node4"><a xlink:href="a00025.html" target="_top" xlink:title="Exceptions raised when an error related to signals happen. ">
 <polygon fill="white" stroke="black" points="317,-38.5 317,-57.5 471,-57.5 471,-38.5 317,-38.5"/>
 <text text-anchor="middle" x="394" y="-45.5" font-family="Helvetica,sans-Serif" font-size="10.00">dynamicgraph::ExceptionSignal</text>
 </a>
@@ -58,7 +58,7 @@
 </g>
 <!-- Node5 -->
 <g id="node5" class="node"><title>Node5</title>
-<g id="a_node5"><a xlink:href="a00025.html" target="_top" xlink:title="Exceptions raised when an error related to traces happen. ">
+<g id="a_node5"><a xlink:href="a00026.html" target="_top" xlink:title="Exceptions raised when an error related to traces happen. ">
 <polygon fill="white" stroke="black" points="315.5,-0.5 315.5,-19.5 472.5,-19.5 472.5,-0.5 315.5,-0.5"/>
 <text text-anchor="middle" x="394" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">dynamicgraph::ExceptionTraces</text>
 </a>

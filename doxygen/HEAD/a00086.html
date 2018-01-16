@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<title>signal-helper.h File Reference</title>
+<title>signal-caster.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css">
 <link href="doxygen.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="jquery.js"></script>
@@ -88,238 +88,72 @@ $(document).ready(function(){initNavTree('a00086.html','');});
 
 <div class="header">
   <div class="summary">
-<a href="#define-members">Macros</a>  </div>
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#namespaces">Namespaces</a> &#124;
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<div class="title">signal-helper.h File Reference</div>  </div>
+<div class="title">signal-caster.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;<a class="el" href="a00070.html">dynamic-graph/entity.h</a>&gt;</code><br />
-<code>#include &lt;<a class="el" href="a00087.html">dynamic-graph/signal-ptr.h</a>&gt;</code><br />
-<code>#include &lt;<a class="el" href="a00089.html">dynamic-graph/signal-time-dependent.h</a>&gt;</code><br />
+<div class="textblock"><code>#include &lt;map&gt;</code><br />
+<code>#include &lt;typeinfo&gt;</code><br />
+<code>#include &lt;iostream&gt;</code><br />
+<code>#include &lt;vector&gt;</code><br />
+<code>#include &lt;boost/any.hpp&gt;</code><br />
+<code>#include &lt;boost/format.hpp&gt;</code><br />
+<code>#include &lt;boost/function/function1.hpp&gt;</code><br />
+<code>#include &lt;boost/function/function2.hpp&gt;</code><br />
+<code>#include &lt;boost/lexical_cast.hpp&gt;</code><br />
+<code>#include &lt;boost/tuple/tuple.hpp&gt;</code><br />
+<code>#include &lt;<a class="el" href="a00068.html">dynamic-graph/dynamic-graph-api.h</a>&gt;</code><br />
+<code>#include &quot;<a class="el" href="a00074.html">dynamic-graph/exception-signal.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
-Include dependency graph for signal-helper.h:</div>
+Include dependency graph for signal-caster.h:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="a00153.svg" width="3116" height="738"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="a00152.svg" width="1651" height="380"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div><div class="textblock"><div class="dynheader">
+This graph shows which files directly or indirectly include this file:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="a00153.svg" width="503" height="411"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
-Macros</h2></td></tr>
-<tr class="memitem:a292bb20eab563bf9ec91f6e0bbb7f1a7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00086.html#a292bb20eab563bf9ec91f6e0bbb7f1a7">DECLARE_SIGNAL</a>(name,  IO,  type)&#160;&#160;&#160;::<a class="el" href="a00040.html">dynamicgraph::Signal</a>&lt;type,int&gt; name##S##IO</td></tr>
-<tr class="separator:a292bb20eab563bf9ec91f6e0bbb7f1a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a530130f57b01d37a0b004b681cbeed9b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00086.html#a530130f57b01d37a0b004b681cbeed9b">CONSTRUCT_SIGNAL</a>(name,  IO,  type)&#160;&#160;&#160;name##S##IO( getClassName()+&quot;(&quot;+getName()+&quot;)::&quot;+#IO+&quot;put(&quot;+#type+&quot;)::&quot;+#name )</td></tr>
-<tr class="separator:a530130f57b01d37a0b004b681cbeed9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6f02a31ff29dcc554b84da1d98795286"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00086.html#a6f02a31ff29dcc554b84da1d98795286">DECLARE_SIGNAL_IN</a>(name,  type)&#160;&#160;&#160;::<a class="el" href="a00047.html">dynamicgraph::SignalPtr</a>&lt;type,int&gt; name##SIN</td></tr>
-<tr class="separator:a6f02a31ff29dcc554b84da1d98795286"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3a44c6d3b02e40385bae8bb2b3edccf8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00086.html#a3a44c6d3b02e40385bae8bb2b3edccf8">CONSTRUCT_SIGNAL_IN</a>(name,  type)&#160;&#160;&#160;name##SIN( NULL,getClassName()+&quot;(&quot;+getName()+&quot;)::input(&quot;+#type+&quot;)::&quot;+#name )</td></tr>
-<tr class="separator:a3a44c6d3b02e40385bae8bb2b3edccf8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a429ddd852b73f3bbb48ef932f3a0f862"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00086.html#a429ddd852b73f3bbb48ef932f3a0f862">SIGNAL_OUT_FUNCTION</a>(name)&#160;&#160;&#160;name##SOUT_function</td></tr>
-<tr class="separator:a429ddd852b73f3bbb48ef932f3a0f862"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac94cf08ee29e23a4838562e0b640f72a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00086.html#ac94cf08ee29e23a4838562e0b640f72a">DECLARE_SIGNAL_OUT</a>(name,  type)</td></tr>
-<tr class="separator:ac94cf08ee29e23a4838562e0b640f72a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a134a70cbd10876e8ff9499ae033d2223"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00086.html#a134a70cbd10876e8ff9499ae033d2223">CONSTRUCT_SIGNAL_OUT</a>(name,  type,  dep)</td></tr>
-<tr class="separator:a134a70cbd10876e8ff9499ae033d2223"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00046.html">dynamicgraph::SignalCaster</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">This singleton class allows serialization of a number of objects into (disp) and from (cast) std i/o streams.  <a href="a00046.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00047.html">dynamicgraph::SignalCastRegisterer</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The <a class="el" href="a00045.html">SignalCast</a> registerer class.  <a href="a00047.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
+Namespaces</h2></td></tr>
+<tr class="memitem:a00100"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00100.html">dynamicgraph</a></td></tr>
+<tr class="memdesc:a00100"><td class="mdescLeft">&#160;</td><td class="mdescRight">WIN32. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:a385c0611ea655151b52a7515d4f836f9"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a385c0611ea655151b52a7515d4f836f9"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00100.html#a385c0611ea655151b52a7515d4f836f9">dynamicgraph::signal_disp</a> (const T &amp;value, std::ostream &amp;os)</td></tr>
+<tr class="memdesc:a385c0611ea655151b52a7515d4f836f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Global signal cast template (helper) functions.  <a href="a00100.html#a385c0611ea655151b52a7515d4f836f9">More...</a><br /></td></tr>
+<tr class="separator:a385c0611ea655151b52a7515d4f836f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a12ac1418f268160f1a4ad02fbaaad7ca"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a12ac1418f268160f1a4ad02fbaaad7ca"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00100.html#a12ac1418f268160f1a4ad02fbaaad7ca">dynamicgraph::signal_cast</a> (std::istringstream &amp;iss)</td></tr>
+<tr class="separator:a12ac1418f268160f1a4ad02fbaaad7ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0d6929067c8e55a045ad573a7ea5ca57"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a0d6929067c8e55a045ad573a7ea5ca57"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00100.html#a0d6929067c8e55a045ad573a7ea5ca57">dynamicgraph::signal_trace</a> (const T &amp;value, std::ostream &amp;os)</td></tr>
+<tr class="separator:a0d6929067c8e55a045ad573a7ea5ca57"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Macro Definition Documentation</h2>
-<a class="anchor" id="a530130f57b01d37a0b004b681cbeed9b"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define CONSTRUCT_SIGNAL</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">name, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">IO, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">type&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td>&#160;&#160;&#160;name##S##IO( getClassName()+&quot;(&quot;+getName()+&quot;)::&quot;+#IO+&quot;put(&quot;+#type+&quot;)::&quot;+#name )</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="a3a44c6d3b02e40385bae8bb2b3edccf8"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define CONSTRUCT_SIGNAL_IN</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">name, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">type&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td>&#160;&#160;&#160;name##SIN( NULL,getClassName()+&quot;(&quot;+getName()+&quot;)::input(&quot;+#type+&quot;)::&quot;+#name )</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="a134a70cbd10876e8ff9499ae033d2223"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define CONSTRUCT_SIGNAL_OUT</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">name, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">type, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">dep&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">name##SOUT( boost::bind(&amp;  EntityClassName::name##SOUT_function,<span class="keyword">this</span>,_1,_2), \</div><div class="line">        dep,getClassName()+<span class="stringliteral">&quot;(&quot;</span>+getName()+<span class="stringliteral">&quot;)::output(&quot;</span>+#type+<span class="stringliteral">&quot;)::&quot;</span>+#name )</div></div><!-- fragment -->
-</div>
-</div>
-<a class="anchor" id="a292bb20eab563bf9ec91f6e0bbb7f1a7"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define DECLARE_SIGNAL</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">name, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">IO, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">type&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td>&#160;&#160;&#160;::<a class="el" href="a00040.html">dynamicgraph::Signal</a>&lt;type,int&gt; name##S##IO</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="a6f02a31ff29dcc554b84da1d98795286"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define DECLARE_SIGNAL_IN</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">name, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">type&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td>&#160;&#160;&#160;::<a class="el" href="a00047.html">dynamicgraph::SignalPtr</a>&lt;type,int&gt; name##SIN</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="ac94cf08ee29e23a4838562e0b640f72a"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define DECLARE_SIGNAL_OUT</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">name, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">type&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line"><span class="keyword">public</span>:                                                       \</div><div class="line">    <a class="code" href="a00048.html">::dynamicgraph::SignalTimeDependent&lt;type,int&gt;</a> name##SOUT; \</div><div class="line">  protected:                                                    \</div><div class="line">  type&amp; <a class="code" href="a00086.html#a429ddd852b73f3bbb48ef932f3a0f862">SIGNAL_OUT_FUNCTION</a>(name)( type&amp;,int )</div><div class="ttc" id="a00086_html_a429ddd852b73f3bbb48ef932f3a0f862"><div class="ttname"><a href="a00086.html#a429ddd852b73f3bbb48ef932f3a0f862">SIGNAL_OUT_FUNCTION</a></div><div class="ttdeci">#define SIGNAL_OUT_FUNCTION(name)</div><div class="ttdef"><b>Definition:</b> signal-helper.h:35</div></div>
-<div class="ttc" id="a00048_html"><div class="ttname"><a href="a00048.html">dynamicgraph::SignalTimeDependent</a></div><div class="ttdoc">A type of signal that enforces a time dependency between other signals, making sure its inputs are up...</div><div class="ttdef"><b>Definition:</b> fwd.hh:64</div></div>
-</div><!-- fragment -->
-</div>
-</div>
-<a class="anchor" id="a429ddd852b73f3bbb48ef932f3a0f862"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define SIGNAL_OUT_FUNCTION</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">name</td><td>)</td>
-          <td>&#160;&#160;&#160;name##SOUT_function</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.8.6-->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_a7fe445ff4848f3dbb9303db33c761fe.html">dynamic-graph</a></li><li class="navelem"><a class="el" href="a00086.html">signal-helper.h</a></li>
-    <li class="footer">Generated on Mon Dec 18 2017 00:07:45 for dynamic-graph by
+    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_a7fe445ff4848f3dbb9303db33c761fe.html">dynamic-graph</a></li><li class="navelem"><a class="el" href="a00086.html">signal-caster.h</a></li>
+    <li class="footer">Generated on Tue Jan 16 2018 12:19:09 for dynamic-graph by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.11 </li>
   </ul>

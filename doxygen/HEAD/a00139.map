@@ -1,5 +1,20 @@
-<map id="exception&#45;traces.h" name="exception&#45;traces.h">
-<area shape="rect" id="node3" href="$a00076.html" title="dynamic&#45;graph/fwd.hh" alt="" coords="84,177,235,203"/>
-<area shape="rect" id="node4" href="$a00067.html" title="dynamic&#45;graph/dynamic\l&#45;graph&#45;api.h" alt="" coords="355,169,515,211"/>
-<area shape="rect" id="node6" href="$a00071.html" title="dynamic&#45;graph/exception\l&#45;abstract.h" alt="" coords="197,80,364,121"/>
+<map id="exception&#45;signal.h" name="exception&#45;signal.h">
+<area shape="rect" id="node2" href="$a00091.html" title="signal.h" alt="" coords="303,155,370,181"/>
+<area shape="rect" id="node5" href="$a00088.html" title="signal&#45;ptr.h" alt="" coords="119,229,205,256"/>
+<area shape="rect" id="node11" href="$a00084.html" title="signal&#45;base.h" alt="" coords="462,80,561,107"/>
+<area shape="rect" id="node17" href="$a00086.html" title="signal&#45;caster.h" alt="" coords="585,80,691,107"/>
+<area shape="rect" id="node18" href="$a00085.html" title="signal&#45;cast&#45;helper.h" alt="" coords="827,155,961,181"/>
+<area shape="rect" id="node19" href="$a00069.html" title="eigen&#45;io.h" alt="" coords="832,80,911,107"/>
+<area shape="rect" id="node3" href="$a00056.html" title="all&#45;signals.h" alt="" coords="205,379,295,405"/>
+<area shape="rect" id="node4" href="$a00092.html" title="signal.t.cpp" alt="" coords="363,229,452,256"/>
+<area shape="rect" id="node8" href="$a00090.html" title="signal&#45;time&#45;dependent.h" alt="" coords="290,304,450,331"/>
+<area shape="rect" id="node6" href="$a00089.html" title="signal&#45;ptr.t.cpp" alt="" coords="5,304,113,331"/>
+<area shape="rect" id="node7" href="$a00087.html" title="signal&#45;helper.h" alt="" coords="319,379,426,405"/>
+<area shape="rect" id="node9" href="$a00097.html" title="tracer.h" alt="" coords="597,379,663,405"/>
+<area shape="rect" id="node10" href="$a00095.html" title="tracer&#45;real&#45;time.h" alt="" coords="570,453,690,480"/>
+<area shape="rect" id="node12" href="$a00093.html" title="time&#45;dependency.h" alt="" coords="579,229,711,256"/>
+<area shape="rect" id="node14" href="$a00083.html" title="signal&#45;array.h" alt="" coords="579,155,679,181"/>
+<area shape="rect" id="node15" href="$a00071.html" title="entity.h" alt="" coords="473,304,539,331"/>
+<area shape="rect" id="node16" href="$a00081.html" title="pool.h" alt="" coords="395,155,452,181"/>
+<area shape="rect" id="node13" href="$a00094.html" title="time&#45;dependency.t.cpp" alt="" coords="562,304,717,331"/>
 </map>

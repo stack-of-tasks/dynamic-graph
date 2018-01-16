@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<title>dynamicgraph::command::CommandVerbose&lt; E &gt; Struct Template Reference</title>
+<title>dynamicgraph::command::Command Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css">
 <link href="doxygen.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="jquery.js"></script>
@@ -90,191 +90,87 @@ $(document).ready(function(){initNavTree('a00007.html','');});
 
 <div class="header">
   <div class="summary">
-<a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-attribs">Static Public Attributes</a> &#124;
 <a href="#pro-methods">Protected Member Functions</a> &#124;
-<a href="a00257.html">List of all members</a>  </div>
+<a href="a00255.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">dynamicgraph::command::CommandVerbose&lt; E &gt; Struct Template Reference</div>  </div>
+<div class="title">dynamicgraph::command::Command Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p><code>#include &lt;dynamic-graph/command-bind.h&gt;</code></p>
+<p>Abstract class for entity commands.  
+ <a href="a00007.html#details">More...</a></p>
+
+<p><code>#include &lt;dynamic-graph/command.h&gt;</code></p>
 <div class="dynheader">
-Inheritance diagram for dynamicgraph::command::CommandVerbose&lt; E &gt;:</div>
+Inheritance diagram for dynamicgraph::command::Command:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="a00258.svg" width="182" height="142"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="a00256.svg" width="430" height="1191"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <div class="dynheader">
-Collaboration diagram for dynamicgraph::command::CommandVerbose&lt; E &gt;:</div>
+Collaboration diagram for dynamicgraph::command::Command:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="a00259.svg" width="188" height="247"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="a00257.svg" width="188" height="156"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
-Public Types</h2></td></tr>
-<tr class="memitem:abd671cb355dd38bc6f219d82d47cfe0b"><td class="memItemLeft" align="right" valign="top">typedef boost::function&lt; void(std::ostream &amp;)&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00007.html#abd671cb355dd38bc6f219d82d47cfe0b">function_t</a></td></tr>
-<tr class="separator:abd671cb355dd38bc6f219d82d47cfe0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a60479d98640b893d9f4eab8602d30db3"><td class="memItemLeft" align="right" valign="top">typedef boost::function&lt; void(E *, std::ostream &amp;)&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00007.html#a60479d98640b893d9f4eab8602d30db3">memberFunction_t</a></td></tr>
-<tr class="separator:a60479d98640b893d9f4eab8602d30db3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac4240fa1b3fc26701006794e2e5085d4"><td class="memItemLeft" align="right" valign="top">typedef void(E::*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00007.html#ac4240fa1b3fc26701006794e2e5085d4">memberFunctionConst_ptr_t</a>) (std::ostream &amp;) const </td></tr>
-<tr class="separator:ac4240fa1b3fc26701006794e2e5085d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aed7837daadcf60d1db362f5b242f5ac6"><td class="memItemLeft" align="right" valign="top">typedef void(E::*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00007.html#aed7837daadcf60d1db362f5b242f5ac6">memberFunction_ptr_t</a>) (std::ostream &amp;)</td></tr>
-<tr class="separator:aed7837daadcf60d1db362f5b242f5ac6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ae9710b9e00b75b5d0416d013f1778a53"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00007.html#ae9710b9e00b75b5d0416d013f1778a53">CommandVerbose</a> (E &amp;entity, <a class="el" href="a00007.html#abd671cb355dd38bc6f219d82d47cfe0b">function_t</a> function, const std::string &amp;docString)</td></tr>
-<tr class="separator:ae9710b9e00b75b5d0416d013f1778a53"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pub_methods_a00006"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_a00006')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="a00006.html">dynamicgraph::command::Command</a></td></tr>
-<tr class="memitem:ae1244719512927af5027cbc542aaa2e3 inherit pub_methods_a00006"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00006.html#ae1244719512927af5027cbc542aaa2e3">~Command</a> ()</td></tr>
-<tr class="separator:ae1244719512927af5027cbc542aaa2e3 inherit pub_methods_a00006"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6653ed2fa17731dea5dab63f0a11cd90 inherit pub_methods_a00006"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00006.html#a6653ed2fa17731dea5dab63f0a11cd90">Command</a> (<a class="el" href="a00019.html">Entity</a> &amp;entity, const std::vector&lt; <a class="el" href="a00052.html#a8b1ad07088898b7d8e530682e589576f">Value::Type</a> &gt; &amp;<a class="el" href="a00006.html#a4288f646b6aa99cfe91613671537f237">valueTypes</a>, const std::string &amp;docstring)</td></tr>
-<tr class="memdesc:a6653ed2fa17731dea5dab63f0a11cd90 inherit pub_methods_a00006"><td class="mdescLeft">&#160;</td><td class="mdescRight">Store the owner entity and a vector of value types.  <a href="#a6653ed2fa17731dea5dab63f0a11cd90">More...</a><br /></td></tr>
-<tr class="separator:a6653ed2fa17731dea5dab63f0a11cd90 inherit pub_methods_a00006"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4288f646b6aa99cfe91613671537f237 inherit pub_methods_a00006"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; <a class="el" href="a00052.html#a8b1ad07088898b7d8e530682e589576f">Value::Type</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00006.html#a4288f646b6aa99cfe91613671537f237">valueTypes</a> () const </td></tr>
-<tr class="memdesc:a4288f646b6aa99cfe91613671537f237 inherit pub_methods_a00006"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the value type of all parameters.  <a href="#a4288f646b6aa99cfe91613671537f237">More...</a><br /></td></tr>
-<tr class="separator:a4288f646b6aa99cfe91613671537f237 inherit pub_methods_a00006"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aee751d4ddbe61c4526deb3662c7ceaaf inherit pub_methods_a00006"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00006.html#aee751d4ddbe61c4526deb3662c7ceaaf">setParameterValues</a> (const std::vector&lt; <a class="el" href="a00052.html">Value</a> &gt; &amp;values)</td></tr>
-<tr class="memdesc:aee751d4ddbe61c4526deb3662c7ceaaf inherit pub_methods_a00006"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set parameter values.  <a href="#aee751d4ddbe61c4526deb3662c7ceaaf">More...</a><br /></td></tr>
-<tr class="separator:aee751d4ddbe61c4526deb3662c7ceaaf inherit pub_methods_a00006"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaae4582d8321da872b6b9f06aca0989a inherit pub_methods_a00006"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; <a class="el" href="a00052.html">Value</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00006.html#aaae4582d8321da872b6b9f06aca0989a">getParameterValues</a> () const </td></tr>
-<tr class="memdesc:aaae4582d8321da872b6b9f06aca0989a inherit pub_methods_a00006"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get parameter values.  <a href="#aaae4582d8321da872b6b9f06aca0989a">More...</a><br /></td></tr>
-<tr class="separator:aaae4582d8321da872b6b9f06aca0989a inherit pub_methods_a00006"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a533151ad15d592f5a9d9869e7ed9a206 inherit pub_methods_a00006"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00052.html">Value</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00006.html#a533151ad15d592f5a9d9869e7ed9a206">execute</a> ()</td></tr>
-<tr class="memdesc:a533151ad15d592f5a9d9869e7ed9a206 inherit pub_methods_a00006"><td class="mdescLeft">&#160;</td><td class="mdescRight">Execute the command after checking parameters.  <a href="#a533151ad15d592f5a9d9869e7ed9a206">More...</a><br /></td></tr>
-<tr class="separator:a533151ad15d592f5a9d9869e7ed9a206 inherit pub_methods_a00006"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5da7a948700ca6136685bfad15807a6d inherit pub_methods_a00006"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00019.html">Entity</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00006.html#a5da7a948700ca6136685bfad15807a6d">owner</a> ()</td></tr>
-<tr class="memdesc:a5da7a948700ca6136685bfad15807a6d inherit pub_methods_a00006"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a reference to the <a class="el" href="a00019.html" title="This class represents an entity, i.e. ">Entity</a> owning this command.  <a href="#a5da7a948700ca6136685bfad15807a6d">More...</a><br /></td></tr>
-<tr class="separator:a5da7a948700ca6136685bfad15807a6d inherit pub_methods_a00006"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2fb484fd4d3b659a335543e89166a474 inherit pub_methods_a00006"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00006.html#a2fb484fd4d3b659a335543e89166a474">getDocstring</a> () const </td></tr>
-<tr class="memdesc:a2fb484fd4d3b659a335543e89166a474 inherit pub_methods_a00006"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get documentation string.  <a href="#a2fb484fd4d3b659a335543e89166a474">More...</a><br /></td></tr>
-<tr class="separator:a2fb484fd4d3b659a335543e89166a474 inherit pub_methods_a00006"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae1244719512927af5027cbc542aaa2e3"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00007.html#ae1244719512927af5027cbc542aaa2e3">~Command</a> ()</td></tr>
+<tr class="separator:ae1244719512927af5027cbc542aaa2e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6653ed2fa17731dea5dab63f0a11cd90"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00007.html#a6653ed2fa17731dea5dab63f0a11cd90">Command</a> (<a class="el" href="a00020.html">Entity</a> &amp;entity, const std::vector&lt; <a class="el" href="a00053.html#a8b1ad07088898b7d8e530682e589576f">Value::Type</a> &gt; &amp;<a class="el" href="a00007.html#a4288f646b6aa99cfe91613671537f237">valueTypes</a>, const std::string &amp;docstring)</td></tr>
+<tr class="memdesc:a6653ed2fa17731dea5dab63f0a11cd90"><td class="mdescLeft">&#160;</td><td class="mdescRight">Store the owner entity and a vector of value types.  <a href="#a6653ed2fa17731dea5dab63f0a11cd90">More...</a><br /></td></tr>
+<tr class="separator:a6653ed2fa17731dea5dab63f0a11cd90"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4288f646b6aa99cfe91613671537f237"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; <a class="el" href="a00053.html#a8b1ad07088898b7d8e530682e589576f">Value::Type</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00007.html#a4288f646b6aa99cfe91613671537f237">valueTypes</a> () const </td></tr>
+<tr class="memdesc:a4288f646b6aa99cfe91613671537f237"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the value type of all parameters.  <a href="#a4288f646b6aa99cfe91613671537f237">More...</a><br /></td></tr>
+<tr class="separator:a4288f646b6aa99cfe91613671537f237"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee751d4ddbe61c4526deb3662c7ceaaf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00007.html#aee751d4ddbe61c4526deb3662c7ceaaf">setParameterValues</a> (const std::vector&lt; <a class="el" href="a00053.html">Value</a> &gt; &amp;values)</td></tr>
+<tr class="memdesc:aee751d4ddbe61c4526deb3662c7ceaaf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set parameter values.  <a href="#aee751d4ddbe61c4526deb3662c7ceaaf">More...</a><br /></td></tr>
+<tr class="separator:aee751d4ddbe61c4526deb3662c7ceaaf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaae4582d8321da872b6b9f06aca0989a"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; <a class="el" href="a00053.html">Value</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00007.html#aaae4582d8321da872b6b9f06aca0989a">getParameterValues</a> () const </td></tr>
+<tr class="memdesc:aaae4582d8321da872b6b9f06aca0989a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get parameter values.  <a href="#aaae4582d8321da872b6b9f06aca0989a">More...</a><br /></td></tr>
+<tr class="separator:aaae4582d8321da872b6b9f06aca0989a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a533151ad15d592f5a9d9869e7ed9a206"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00053.html">Value</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00007.html#a533151ad15d592f5a9d9869e7ed9a206">execute</a> ()</td></tr>
+<tr class="memdesc:a533151ad15d592f5a9d9869e7ed9a206"><td class="mdescLeft">&#160;</td><td class="mdescRight">Execute the command after checking parameters.  <a href="#a533151ad15d592f5a9d9869e7ed9a206">More...</a><br /></td></tr>
+<tr class="separator:a533151ad15d592f5a9d9869e7ed9a206"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5da7a948700ca6136685bfad15807a6d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00020.html">Entity</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00007.html#a5da7a948700ca6136685bfad15807a6d">owner</a> ()</td></tr>
+<tr class="memdesc:a5da7a948700ca6136685bfad15807a6d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a reference to the <a class="el" href="a00020.html" title="This class represents an entity, i.e. ">Entity</a> owning this command.  <a href="#a5da7a948700ca6136685bfad15807a6d">More...</a><br /></td></tr>
+<tr class="separator:a5da7a948700ca6136685bfad15807a6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2fb484fd4d3b659a335543e89166a474"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00007.html#a2fb484fd4d3b659a335543e89166a474">getDocstring</a> () const </td></tr>
+<tr class="memdesc:a2fb484fd4d3b659a335543e89166a474"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get documentation string.  <a href="#a2fb484fd4d3b659a335543e89166a474">More...</a><br /></td></tr>
+<tr class="separator:a2fb484fd4d3b659a335543e89166a474"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
+Static Public Attributes</h2></td></tr>
+<tr class="memitem:ad710622ad06ed14b87739e124c61f69b"><td class="memItemLeft" align="right" valign="top">static const std::vector&lt; <a class="el" href="a00053.html#a8b1ad07088898b7d8e530682e589576f">Value::Type</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00007.html#ad710622ad06ed14b87739e124c61f69b">EMPTY_ARG</a></td></tr>
+<tr class="separator:ad710622ad06ed14b87739e124c61f69b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
-<tr class="memitem:a5edf1c907d187f59b26e36ee353132ee"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="a00052.html">Value</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00007.html#a5edf1c907d187f59b26e36ee353132ee">doExecute</a> ()</td></tr>
-<tr class="memdesc:a5edf1c907d187f59b26e36ee353132ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Specific action performed by the command.  <a href="#a5edf1c907d187f59b26e36ee353132ee">More...</a><br /></td></tr>
-<tr class="separator:a5edf1c907d187f59b26e36ee353132ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
-Additional Inherited Members</h2></td></tr>
-<tr class="inherit_header pub_static_attribs_a00006"><td colspan="2" onclick="javascript:toggleInherit('pub_static_attribs_a00006')"><img src="closed.png" alt="-"/>&#160;Static Public Attributes inherited from <a class="el" href="a00006.html">dynamicgraph::command::Command</a></td></tr>
-<tr class="memitem:ad710622ad06ed14b87739e124c61f69b inherit pub_static_attribs_a00006"><td class="memItemLeft" align="right" valign="top">static const std::vector&lt; <a class="el" href="a00052.html#a8b1ad07088898b7d8e530682e589576f">Value::Type</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00006.html#ad710622ad06ed14b87739e124c61f69b">EMPTY_ARG</a></td></tr>
-<tr class="separator:ad710622ad06ed14b87739e124c61f69b inherit pub_static_attribs_a00006"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad0a03f5e3c267e41b559824cbd1b49e1"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="a00053.html">Value</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00007.html#ad0a03f5e3c267e41b559824cbd1b49e1">doExecute</a> ()=0</td></tr>
+<tr class="memdesc:ad0a03f5e3c267e41b559824cbd1b49e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Specific action performed by the command.  <a href="#ad0a03f5e3c267e41b559824cbd1b49e1">More...</a><br /></td></tr>
+<tr class="separator:ad0a03f5e3c267e41b559824cbd1b49e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Typedef Documentation</h2>
-<a class="anchor" id="abd671cb355dd38bc6f219d82d47cfe0b"></a>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Abstract class for entity commands. </p>
+<p>This class provide a mean to control entities from external python script.</p>
+<p>A command </p><ul>
+<li>is owned by an entity, </li>
+<li>takes parameters of type <a class="el" href="a00053.html">Value</a>, </li>
+<li>return an instance of <a class="el" href="a00053.html">Value</a> when calling <a class="el" href="a00007.html#a533151ad15d592f5a9d9869e7ed9a206" title="Execute the command after checking parameters. ">Command::execute()</a></li>
+</ul>
+<p>At construction, the prototype of the command is defined by providing a vector of <a class="el" href="a00053.html#a8b1ad07088898b7d8e530682e589576f">Value::Type</a>.</p>
+<p>Parameters are set by calling <a class="el" href="a00007.html#aee751d4ddbe61c4526deb3662c7ceaaf" title="Set parameter values. ">Command::setParameterValues</a> with a vector of Values the types of which should fit the vector specified at construction. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="ae1244719512927af5027cbc542aaa2e3"></a>
 <div class="memitem">
 <div class="memproto">
-<div class="memtemplate">
-template&lt;class E&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef boost::function&lt;void(std::ostream&amp;)&gt; <a class="el" href="a00007.html">dynamicgraph::command::CommandVerbose</a>&lt; E &gt;::<a class="el" href="a00007.html#abd671cb355dd38bc6f219d82d47cfe0b">function_t</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="aed7837daadcf60d1db362f5b242f5ac6"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class E&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef void(E::* <a class="el" href="a00007.html">dynamicgraph::command::CommandVerbose</a>&lt; E &gt;::memberFunction_ptr_t) (std::ostream &amp;)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="a60479d98640b893d9f4eab8602d30db3"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class E&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef boost::function&lt;void(E*,std::ostream&amp;)&gt; <a class="el" href="a00007.html">dynamicgraph::command::CommandVerbose</a>&lt; E &gt;::<a class="el" href="a00007.html#a60479d98640b893d9f4eab8602d30db3">memberFunction_t</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="ac4240fa1b3fc26701006794e2e5085d4"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class E&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef void(E::* <a class="el" href="a00007.html">dynamicgraph::command::CommandVerbose</a>&lt; E &gt;::memberFunctionConst_ptr_t) (std::ostream &amp;) const </td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="ae9710b9e00b75b5d0416d013f1778a53"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class E&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="a00007.html">dynamicgraph::command::CommandVerbose</a>&lt; E &gt;::<a class="el" href="a00007.html">CommandVerbose</a> </td>
-          <td>(</td>
-          <td class="paramtype">E &amp;&#160;</td>
-          <td class="paramname"><em>entity</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="a00007.html#abd671cb355dd38bc6f219d82d47cfe0b">function_t</a>&#160;</td>
-          <td class="paramname"><em>function</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>docString</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="a5edf1c907d187f59b26e36ee353132ee"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class E&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">virtual <a class="el" href="a00052.html">Value</a> <a class="el" href="a00007.html">dynamicgraph::command::CommandVerbose</a>&lt; E &gt;::doExecute </td>
+          <td class="memname">virtual dynamicgraph::command::Command::~Command </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -282,16 +178,208 @@ template&lt;class E&gt; </div>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a6653ed2fa17731dea5dab63f0a11cd90"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">dynamicgraph::command::Command::Command </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="a00020.html">Entity</a> &amp;&#160;</td>
+          <td class="paramname"><em>entity</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; <a class="el" href="a00053.html#a8b1ad07088898b7d8e530682e589576f">Value::Type</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>valueTypes</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>docstring</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Store the owner entity and a vector of value types. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">entity</td><td>reference to <a class="el" href="a00020.html" title="This class represents an entity, i.e. ">Entity</a> owning this command. </td></tr>
+    <tr><td class="paramname">valueTypes</td><td>vector specifying the number and types of parameters </td></tr>
+    <tr><td class="paramname">docstring</td><td>documentation of the command </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="ad0a03f5e3c267e41b559824cbd1b49e1"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual <a class="el" href="a00053.html">Value</a> dynamicgraph::command::Command::doExecute </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">pure virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
 <p>Specific action performed by the command. </p>
 
-<p>Implements <a class="el" href="a00006.html#ad0a03f5e3c267e41b559824cbd1b49e1">dynamicgraph::command::Command</a>.</p>
+<p>Implemented in <a class="el" href="a00008.html#a5edf1c907d187f59b26e36ee353132ee">dynamicgraph::command::CommandVerbose&lt; E &gt;</a>, <a class="el" href="a00013.html#a0af43e4525530f79a2b6b54413bbf6ea">dynamicgraph::command::CommandVoid4&lt; E, T1, T2, T3, T4 &gt;</a>, <a class="el" href="a00037.html#aed945703e72b77f89bc4e2f31d4a4b01">dynamicgraph::command::Setter&lt; E, Matrix &gt;</a>, <a class="el" href="a00012.html#a93d504bb7fb521419090393000a72406">dynamicgraph::command::CommandVoid3&lt; E, T1, T2, T3 &gt;</a>, <a class="el" href="a00040.html#a2fae756413c7034d7d6b313c515fb07c">dynamicgraph::command::Setter&lt; E, Vector &gt;</a>, <a class="el" href="a00038.html#a9069ba3a1a5bde3fdec2b624168b3ef9">dynamicgraph::command::Setter&lt; E, std::string &gt;</a>, <a class="el" href="a00034.html#a4464db19340cd3ea004e7cdbe84228d2">dynamicgraph::command::Setter&lt; E, double &gt;</a>, <a class="el" href="a00011.html#aa3fa2c9bdbb8d2d648dbbb45256eee30">dynamicgraph::command::CommandVoid2&lt; E, T1, T2 &gt;</a>, <a class="el" href="a00035.html#a94513812b5cae95f83d05e204300d2e3">dynamicgraph::command::Setter&lt; E, float &gt;</a>, <a class="el" href="a00036.html#a1a1cefd8c3d561b7304b18098d9d6be0">dynamicgraph::command::Setter&lt; E, int &gt;</a>, <a class="el" href="a00010.html#ae33d5cdee724c5e411fdeb43f44c2297">dynamicgraph::command::CommandVoid1&lt; E, T &gt;</a>, <a class="el" href="a00039.html#a81318c4a846593e68f9e756b56bfc20f">dynamicgraph::command::Setter&lt; E, unsigned &gt;</a>, <a class="el" href="a00028.html#a25b24a28596885410bf8aed2fe905b61">dynamicgraph::command::Getter&lt; E, T &gt;</a>, <a class="el" href="a00032.html#af7706c9272906e5dfd4c77f18d094fcc">dynamicgraph::command::Setter&lt; E, T &gt;</a>, <a class="el" href="a00009.html#ac163edef4af6e8d44f0fd328c583a66d">dynamicgraph::command::CommandVoid0&lt; E &gt;</a>, <a class="el" href="a00017.html#a4b8d80811e177a9f726aa12b313ba102">dynamicgraph::command::DirectGetter&lt; E, T &gt;</a>, <a class="el" href="a00018.html#a543e656bc74163d8d26a0a9d44e58017">dynamicgraph::command::DirectSetter&lt; E, T &gt;</a>, and <a class="el" href="a00033.html#ae8d97439edb331cf768eddc7eb52e8c1">dynamicgraph::command::Setter&lt; E, bool &gt;</a>.</p>
 
-<p>References <a class="el" href="a00006.html#aaae4582d8321da872b6b9f06aca0989a">dynamicgraph::command::Command::getParameterValues()</a>.</p>
+</div>
+</div>
+<a class="anchor" id="a533151ad15d592f5a9d9869e7ed9a206"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00053.html">Value</a> dynamicgraph::command::Command::execute </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Execute the command after checking parameters. </p>
+
+</div>
+</div>
+<a class="anchor" id="a2fb484fd4d3b659a335543e89166a474"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string dynamicgraph::command::Command::getDocstring </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get documentation string. </p>
+
+</div>
+</div>
+<a class="anchor" id="aaae4582d8321da872b6b9f06aca0989a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::vector&lt;<a class="el" href="a00053.html">Value</a>&gt;&amp; dynamicgraph::command::Command::getParameterValues </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get parameter values. </p>
+
+<p>Referenced by <a class="el" href="a00033.html#ae8d97439edb331cf768eddc7eb52e8c1">dynamicgraph::command::Setter&lt; E, bool &gt;::doExecute()</a>, <a class="el" href="a00018.html#a543e656bc74163d8d26a0a9d44e58017">dynamicgraph::command::DirectSetter&lt; E, T &gt;::doExecute()</a>, <a class="el" href="a00009.html#ac163edef4af6e8d44f0fd328c583a66d">dynamicgraph::command::CommandVoid0&lt; E &gt;::doExecute()</a>, <a class="el" href="a00039.html#a81318c4a846593e68f9e756b56bfc20f">dynamicgraph::command::Setter&lt; E, unsigned &gt;::doExecute()</a>, <a class="el" href="a00010.html#ae33d5cdee724c5e411fdeb43f44c2297">dynamicgraph::command::CommandVoid1&lt; E, T &gt;::doExecute()</a>, <a class="el" href="a00036.html#a1a1cefd8c3d561b7304b18098d9d6be0">dynamicgraph::command::Setter&lt; E, int &gt;::doExecute()</a>, <a class="el" href="a00035.html#a94513812b5cae95f83d05e204300d2e3">dynamicgraph::command::Setter&lt; E, float &gt;::doExecute()</a>, <a class="el" href="a00011.html#aa3fa2c9bdbb8d2d648dbbb45256eee30">dynamicgraph::command::CommandVoid2&lt; E, T1, T2 &gt;::doExecute()</a>, <a class="el" href="a00034.html#a4464db19340cd3ea004e7cdbe84228d2">dynamicgraph::command::Setter&lt; E, double &gt;::doExecute()</a>, <a class="el" href="a00038.html#a9069ba3a1a5bde3fdec2b624168b3ef9">dynamicgraph::command::Setter&lt; E, std::string &gt;::doExecute()</a>, <a class="el" href="a00040.html#a2fae756413c7034d7d6b313c515fb07c">dynamicgraph::command::Setter&lt; E, Vector &gt;::doExecute()</a>, <a class="el" href="a00012.html#a93d504bb7fb521419090393000a72406">dynamicgraph::command::CommandVoid3&lt; E, T1, T2, T3 &gt;::doExecute()</a>, <a class="el" href="a00037.html#aed945703e72b77f89bc4e2f31d4a4b01">dynamicgraph::command::Setter&lt; E, Matrix &gt;::doExecute()</a>, <a class="el" href="a00013.html#a0af43e4525530f79a2b6b54413bbf6ea">dynamicgraph::command::CommandVoid4&lt; E, T1, T2, T3, T4 &gt;::doExecute()</a>, and <a class="el" href="a00008.html#a5edf1c907d187f59b26e36ee353132ee">dynamicgraph::command::CommandVerbose&lt; E &gt;::doExecute()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a5da7a948700ca6136685bfad15807a6d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00020.html">Entity</a>&amp; dynamicgraph::command::Command::owner </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get a reference to the <a class="el" href="a00020.html" title="This class represents an entity, i.e. ">Entity</a> owning this command. </p>
+
+<p>Referenced by <a class="el" href="a00033.html#ae8d97439edb331cf768eddc7eb52e8c1">dynamicgraph::command::Setter&lt; E, bool &gt;::doExecute()</a>, <a class="el" href="a00028.html#a25b24a28596885410bf8aed2fe905b61">dynamicgraph::command::Getter&lt; E, T &gt;::doExecute()</a>, <a class="el" href="a00039.html#a81318c4a846593e68f9e756b56bfc20f">dynamicgraph::command::Setter&lt; E, unsigned &gt;::doExecute()</a>, <a class="el" href="a00036.html#a1a1cefd8c3d561b7304b18098d9d6be0">dynamicgraph::command::Setter&lt; E, int &gt;::doExecute()</a>, <a class="el" href="a00035.html#a94513812b5cae95f83d05e204300d2e3">dynamicgraph::command::Setter&lt; E, float &gt;::doExecute()</a>, <a class="el" href="a00034.html#a4464db19340cd3ea004e7cdbe84228d2">dynamicgraph::command::Setter&lt; E, double &gt;::doExecute()</a>, <a class="el" href="a00038.html#a9069ba3a1a5bde3fdec2b624168b3ef9">dynamicgraph::command::Setter&lt; E, std::string &gt;::doExecute()</a>, <a class="el" href="a00040.html#a2fae756413c7034d7d6b313c515fb07c">dynamicgraph::command::Setter&lt; E, Vector &gt;::doExecute()</a>, and <a class="el" href="a00037.html#aed945703e72b77f89bc4e2f31d4a4b01">dynamicgraph::command::Setter&lt; E, Matrix &gt;::doExecute()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aee751d4ddbe61c4526deb3662c7ceaaf"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void dynamicgraph::command::Command::setParameterValues </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; <a class="el" href="a00053.html">Value</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>values</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set parameter values. </p>
+
+</div>
+</div>
+<a class="anchor" id="a4288f646b6aa99cfe91613671537f237"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::vector&lt;<a class="el" href="a00053.html#a8b1ad07088898b7d8e530682e589576f">Value::Type</a>&gt;&amp; dynamicgraph::command::Command::valueTypes </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Return the value type of all parameters. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="ad710622ad06ed14b87739e124c61f69b"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::vector&lt;<a class="el" href="a00053.html#a8b1ad07088898b7d8e530682e589576f">Value::Type</a>&gt; dynamicgraph::command::Command::EMPTY_ARG</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -301,8 +389,8 @@ template&lt;class E&gt; </div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="a00099.html">dynamicgraph</a></li><li class="navelem"><a class="el" href="a00100.html">command</a></li><li class="navelem"><a class="el" href="a00007.html">CommandVerbose</a></li>
-    <li class="footer">Generated on Mon Dec 18 2017 00:07:45 for dynamic-graph by
+    <li class="navelem"><a class="el" href="a00100.html">dynamicgraph</a></li><li class="navelem"><a class="el" href="a00101.html">command</a></li><li class="navelem"><a class="el" href="a00007.html">Command</a></li>
+    <li class="footer">Generated on Tue Jan 16 2018 12:19:09 for dynamic-graph by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.11 </li>
   </ul>

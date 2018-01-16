@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<title>signal.t.cpp File Reference</title>
+<title>signal.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css">
 <link href="doxygen.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="jquery.js"></script>
@@ -88,118 +88,50 @@ $(document).ready(function(){initNavTree('a00091.html','');});
 
 <div class="header">
   <div class="summary">
-<a href="#namespaces">Namespaces</a> &#124;
-<a href="#define-members">Macros</a>  </div>
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#namespaces">Namespaces</a>  </div>
   <div class="headertitle">
-<div class="title">signal.t.cpp File Reference</div>  </div>
+<div class="title">signal.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;<a class="el" href="a00090.html">dynamic-graph/signal.h</a>&gt;</code><br />
-<code>#include &lt;<a class="el" href="a00085.html">dynamic-graph/signal-caster.h</a>&gt;</code><br />
-<code>#include &lt;<a class="el" href="a00065.html">dynamic-graph/debug.h</a>&gt;</code><br />
+<div class="textblock"><code>#include &lt;boost/bind.hpp&gt;</code><br />
+<code>#include &lt;boost/function.hpp&gt;</code><br />
+<code>#include &lt;string&gt;</code><br />
+<code>#include &lt;iostream&gt;</code><br />
+<code>#include &lt;<a class="el" href="a00074.html">dynamic-graph/exception-signal.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="a00084.html">dynamic-graph/signal-base.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="a00092.html">dynamic-graph/signal.t.cpp</a>&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
-Include dependency graph for signal.t.cpp:</div>
+Include dependency graph for signal.h:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="a00162.svg" width="2358" height="544"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="a00161.svg" width="2358" height="544"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="a00163.svg" width="456" height="336"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="a00162.svg" width="544" height="262"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
-Namespaces</h2></td></tr>
-<tr class="memitem:a00099"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00099.html">dynamicgraph</a></td></tr>
-<tr class="memdesc:a00099"><td class="mdescLeft">&#160;</td><td class="mdescRight">WIN32. <br /></td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00041.html">dynamicgraph::Signal&lt; T, Time &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Signals link I/O ports of entities. They can be constant-valued signals, or copy the value of a heap variable, or evaluated as a function. See <a class="el" href="a00048.html" title="This is the only type of signal that can be plugged to, using the plug () command. ">SignalPtr</a> and <a class="el" href="a00049.html" title="A type of signal that enforces a time dependency between other signals, making sure its inputs are up...">SignalTimeDependent</a> for other types of signals, and <a class="el" href="a00042.html" title="TODO. ">SignalArray</a> for a way of grouping them.  <a href="a00041.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
-Macros</h2></td></tr>
-<tr class="memitem:a45480f79dd3474262ece2cb79048439e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00091.html#a45480f79dd3474262ece2cb79048439e">DYNAMIC_GRAPH_SIGNAL_T_CPP</a></td></tr>
-<tr class="separator:a45480f79dd3474262ece2cb79048439e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a99bf14cae76d8d5cbfe574d6ae62f30d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00091.html#a99bf14cae76d8d5cbfe574d6ae62f30d">VP_TEMPLATE_DEBUG_MODE</a>&#160;&#160;&#160;0</td></tr>
-<tr class="separator:a99bf14cae76d8d5cbfe574d6ae62f30d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad78a2e4f7a993954f976eefb14af3880"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00091.html#ad78a2e4f7a993954f976eefb14af3880">__SIGNAL_INIT</a>(name,  Tcpy,  Tref,  TrefNC,  mutex)</td></tr>
-<tr class="separator:ad78a2e4f7a993954f976eefb14af3880"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
+Namespaces</h2></td></tr>
+<tr class="memitem:a00100"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00100.html">dynamicgraph</a></td></tr>
+<tr class="memdesc:a00100"><td class="mdescLeft">&#160;</td><td class="mdescRight">WIN32. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Macro Definition Documentation</h2>
-<a class="anchor" id="ad78a2e4f7a993954f976eefb14af3880"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define __SIGNAL_INIT</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">name, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">Tcpy, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">Tref, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">TrefNC, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">mutex&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">SignalBase&lt;Time&gt;(name)        \</div><div class="line">    ,signalType (SIGNAL_TYPE_DEFAULT)     \</div><div class="line">    ,Tcopy1 (Tcpy)          \</div><div class="line">    ,Tcopy2 (Tcpy)          \</div><div class="line">    ,Tcopy (&amp;Tcopy1)          \</div><div class="line">    ,Treference (Tref)          \</div><div class="line">    ,TreferenceNonConst (TrefNC)      \</div><div class="line">    ,Tfunction ()         \</div><div class="line">    ,keepReference (KEEP_REFERENCE_DEFAULT)   \</div><div class="line">    ,providerMutex (mutex)</div></div><!-- fragment -->
-</div>
-</div>
-<a class="anchor" id="a45480f79dd3474262ece2cb79048439e"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define DYNAMIC_GRAPH_SIGNAL_T_CPP</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="a99bf14cae76d8d5cbfe574d6ae62f30d"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define VP_TEMPLATE_DEBUG_MODE&#160;&#160;&#160;0</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.8.6-->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_a7fe445ff4848f3dbb9303db33c761fe.html">dynamic-graph</a></li><li class="navelem"><a class="el" href="a00091.html">signal.t.cpp</a></li>
-    <li class="footer">Generated on Mon Dec 18 2017 00:07:45 for dynamic-graph by
+    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_a7fe445ff4848f3dbb9303db33c761fe.html">dynamic-graph</a></li><li class="navelem"><a class="el" href="a00091.html">signal.h</a></li>
+    <li class="footer">Generated on Tue Jan 16 2018 12:19:09 for dynamic-graph by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.11 </li>
   </ul>

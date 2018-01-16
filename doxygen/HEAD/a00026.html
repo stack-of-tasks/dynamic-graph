@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<title>dynamicgraph::FactoryStorage Class Reference</title>
+<title>dynamicgraph::ExceptionTraces Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css">
 <link href="doxygen.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="jquery.js"></script>
@@ -92,175 +92,223 @@ $(document).ready(function(){initNavTree('a00026.html','');});
   <div class="summary">
 <a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
-<a href="a00211.html">List of all members</a>  </div>
+<a href="#pub-static-attribs">Static Public Attributes</a> &#124;
+<a href="a00209.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">dynamicgraph::FactoryStorage Class Reference<div class="ingroups"><a class="el" href="a00103.html">Core classes and objects</a></div></div>  </div>
+<div class="title">dynamicgraph::ExceptionTraces Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>Provides a way to create <a class="el" href="a00019.html" title="This class represents an entity, i.e. ">Entity</a> objects from their class name.  
+<p>Exceptions raised when an error related to traces happen.  
  <a href="a00026.html#details">More...</a></p>
 
-<p><code>#include &lt;dynamic-graph/factory.h&gt;</code></p>
+<p><code>#include &lt;dynamic-graph/exception-traces.h&gt;</code></p>
 <div class="dynheader">
-Inheritance diagram for dynamicgraph::FactoryStorage:</div>
+Inheritance diagram for dynamicgraph::ExceptionTraces:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="a00212.svg" width="211" height="112"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="a00210.svg" width="230" height="187"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <div class="dynheader">
-Collaboration diagram for dynamicgraph::FactoryStorage:</div>
+Collaboration diagram for dynamicgraph::ExceptionTraces:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="a00213.svg" width="211" height="112"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="a00211.svg" width="390" height="308"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:a49e8974b169e5b73957cc64a3b223f6a"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="a00019.html">Entity</a> *(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00026.html#a49e8974b169e5b73957cc64a3b223f6a">EntityConstructor_ptr</a>) (const std::string &amp;)</td></tr>
-<tr class="memdesc:a49e8974b169e5b73957cc64a3b223f6a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function pointer providing an entity instance from its name.  <a href="#a49e8974b169e5b73957cc64a3b223f6a">More...</a><br /></td></tr>
-<tr class="separator:a49e8974b169e5b73957cc64a3b223f6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7ad040c9d04b1dcd294b92692a095742"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00026.html#a7ad040c9d04b1dcd294b92692a095742">ErrorCodeEnum</a> { <br />
+&#160;&#160;<a class="el" href="a00026.html#a7ad040c9d04b1dcd294b92692a095742a29f716d5d418900f2349f197318eb6f5">GENERIC</a> = ExceptionAbstract::TRACES, 
+<br />
+&#160;&#160;<a class="el" href="a00026.html#a7ad040c9d04b1dcd294b92692a095742a94b426c1dcf7cc40c6bb769ce4cbd813">NOT_OPEN</a>
+<br />
+ }</td></tr>
+<tr class="separator:a7ad040c9d04b1dcd294b92692a095742"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_types_a00023"><td colspan="2" onclick="javascript:toggleInherit('pub_types_a00023')"><img src="closed.png" alt="-"/>&#160;Public Types inherited from <a class="el" href="a00023.html">dynamicgraph::ExceptionAbstract</a></td></tr>
+<tr class="memitem:a19678de05600e82a1eaa2e70c0ad6fe0 inherit pub_types_a00023"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00023.html#a19678de05600e82a1eaa2e70c0ad6fe0">ExceptionEnum</a> { <br />
+&#160;&#160;<a class="el" href="a00023.html#a19678de05600e82a1eaa2e70c0ad6fe0a33c94c6723036643d4b47c7bae1da350">ABSTRACT</a> = 0, 
+<br />
+&#160;&#160;<a class="el" href="a00023.html#a19678de05600e82a1eaa2e70c0ad6fe0a252baa19235309f051576f0d0e508098">SIGNAL</a> = 100, 
+<br />
+&#160;&#160;<a class="el" href="a00023.html#a19678de05600e82a1eaa2e70c0ad6fe0af74e7993a80a233e4d9ba3017ea63a4c">FACTORY</a> = 200, 
+<br />
+&#160;&#160;<a class="el" href="a00023.html#a19678de05600e82a1eaa2e70c0ad6fe0af27cffde588c14a95c26fc79314ec08c">TRACES</a> = 300, 
+<br />
+&#160;&#160;<a class="el" href="a00023.html#a19678de05600e82a1eaa2e70c0ad6fe0abd2d0743b46c0c3d922f957f65e31689">TOOLS</a> = 700
+<br />
+ }<tr class="memdesc:a19678de05600e82a1eaa2e70c0ad6fe0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Categories error code.  <a href="a00023.html#a19678de05600e82a1eaa2e70c0ad6fe0">More...</a><br /></td></tr>
+</td></tr>
+<tr class="separator:a19678de05600e82a1eaa2e70c0ad6fe0 inherit pub_types_a00023"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a6b54dcf99ac89fe2861f2b66f89bcd83"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00026.html#a6b54dcf99ac89fe2861f2b66f89bcd83">~FactoryStorage</a> ()</td></tr>
-<tr class="separator:a6b54dcf99ac89fe2861f2b66f89bcd83"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a20483c6c27a7962077fbabd721f51a10"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00026.html#a20483c6c27a7962077fbabd721f51a10">registerEntity</a> (const std::string &amp;entname, <a class="el" href="a00026.html#a49e8974b169e5b73957cc64a3b223f6a">EntityConstructor_ptr</a> ent)</td></tr>
-<tr class="memdesc:a20483c6c27a7962077fbabd721f51a10"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a new entity to the factory.  <a href="#a20483c6c27a7962077fbabd721f51a10">More...</a><br /></td></tr>
-<tr class="separator:a20483c6c27a7962077fbabd721f51a10"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1d9fddc1c9330cae4564e15e5da17e10"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00026.html#a1d9fddc1c9330cae4564e15e5da17e10">deregisterEntity</a> (const std::string &amp;entname)</td></tr>
-<tr class="memdesc:a1d9fddc1c9330cae4564e15e5da17e10"><td class="mdescLeft">&#160;</td><td class="mdescRight">Delete an entity from the factory.  <a href="#a1d9fddc1c9330cae4564e15e5da17e10">More...</a><br /></td></tr>
-<tr class="separator:a1d9fddc1c9330cae4564e15e5da17e10"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1b2f13ecd234ed50083c16f3ed4feac2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00019.html">Entity</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00026.html#a1b2f13ecd234ed50083c16f3ed4feac2">newEntity</a> (const std::string &amp;classname, const std::string &amp;objname) const </td></tr>
-<tr class="memdesc:a1b2f13ecd234ed50083c16f3ed4feac2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Instantiate (and allocate) an entity.  <a href="#a1b2f13ecd234ed50083c16f3ed4feac2">More...</a><br /></td></tr>
-<tr class="separator:a1b2f13ecd234ed50083c16f3ed4feac2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0c63e70310e0ad4ea666aec797bf78a9"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00026.html#a0c63e70310e0ad4ea666aec797bf78a9">existEntity</a> (const std::string &amp;name) const </td></tr>
-<tr class="memdesc:a0c63e70310e0ad4ea666aec797bf78a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if an <a class="el" href="a00019.html" title="This class represents an entity, i.e. ">Entity</a> associated with a particular name has already been registered.  <a href="#a0c63e70310e0ad4ea666aec797bf78a9">More...</a><br /></td></tr>
-<tr class="separator:a0c63e70310e0ad4ea666aec797bf78a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a82015768e31062fc3b2ce333a485563f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00026.html#a82015768e31062fc3b2ce333a485563f">listEntities</a> (std::vector&lt; std::string &gt; &amp;list) const </td></tr>
-<tr class="memdesc:a82015768e31062fc3b2ce333a485563f"><td class="mdescLeft">&#160;</td><td class="mdescRight">List the available entities.  <a href="#a82015768e31062fc3b2ce333a485563f">More...</a><br /></td></tr>
-<tr class="separator:a82015768e31062fc3b2ce333a485563f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7f1921a85304ff14c5f77a55b7b8be46"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00026.html#a7f1921a85304ff14c5f77a55b7b8be46">commandLine</a> (const std::string &amp;cmdLine, std::istringstream &amp;cmdArgs, std::ostream &amp;os)</td></tr>
-<tr class="memdesc:a7f1921a85304ff14c5f77a55b7b8be46"><td class="mdescLeft">&#160;</td><td class="mdescRight">Define <a class="el" href="a00026.html" title="Provides a way to create Entity objects from their class name. ">FactoryStorage</a> commands.  <a href="#a7f1921a85304ff14c5f77a55b7b8be46">More...</a><br /></td></tr>
-<tr class="separator:a7f1921a85304ff14c5f77a55b7b8be46"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaf1a6f970ced2f07770c734a28734223"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00026.html#aaf1a6f970ced2f07770c734a28734223">ExceptionTraces</a> (const <a class="el" href="a00026.html#a7ad040c9d04b1dcd294b92692a095742">ExceptionTraces::ErrorCodeEnum</a> &amp;errcode, const std::string &amp;msg=&quot;&quot;)</td></tr>
+<tr class="separator:aaf1a6f970ced2f07770c734a28734223"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea3c51659fb04373d6fcd3e8a4b2edc2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00026.html#aea3c51659fb04373d6fcd3e8a4b2edc2">ExceptionTraces</a> (const <a class="el" href="a00026.html#a7ad040c9d04b1dcd294b92692a095742">ExceptionTraces::ErrorCodeEnum</a> &amp;errcode, const std::string &amp;msg, const char *format,...)</td></tr>
+<tr class="separator:aea3c51659fb04373d6fcd3e8a4b2edc2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa2ad82933517b2c5a585291c19f198ec"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00026.html#aa2ad82933517b2c5a585291c19f198ec">~ExceptionTraces</a> ()  throw ()</td></tr>
+<tr class="separator:aa2ad82933517b2c5a585291c19f198ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a118715fac3c846b5997ff557b34b8bb0"><td class="memItemLeft" align="right" valign="top">virtual const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00026.html#a118715fac3c846b5997ff557b34b8bb0">getExceptionName</a> () const </td></tr>
+<tr class="separator:a118715fac3c846b5997ff557b34b8bb0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_a00023"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_a00023')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="a00023.html">dynamicgraph::ExceptionAbstract</a></td></tr>
+<tr class="memitem:aa6e9245e2906c2de912ea4da438a15b0 inherit pub_methods_a00023"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00023.html#aa6e9245e2906c2de912ea4da438a15b0">ExceptionAbstract</a> (const int &amp;<a class="el" href="a00023.html#a7efe8b06765fc75ec92f32d0e73082a0">code</a>, const std::string &amp;msg=&quot;&quot;)</td></tr>
+<tr class="separator:aa6e9245e2906c2de912ea4da438a15b0 inherit pub_methods_a00023"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7eed4f7a295dced25eec9e9407b00e67 inherit pub_methods_a00023"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00023.html#a7eed4f7a295dced25eec9e9407b00e67">~ExceptionAbstract</a> ()  throw ()</td></tr>
+<tr class="separator:a7eed4f7a295dced25eec9e9407b00e67 inherit pub_methods_a00023"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0cc962ffce33ab54d946f97f05643249 inherit pub_methods_a00023"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00023.html#a0cc962ffce33ab54d946f97f05643249">getCode</a> () const </td></tr>
+<tr class="memdesc:a0cc962ffce33ab54d946f97f05643249 inherit pub_methods_a00023"><td class="mdescLeft">&#160;</td><td class="mdescRight">Access to the error code.  <a href="#a0cc962ffce33ab54d946f97f05643249">More...</a><br /></td></tr>
+<tr class="separator:a0cc962ffce33ab54d946f97f05643249 inherit pub_methods_a00023"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4067867e311bac147fccc0995e5abee5 inherit pub_methods_a00023"><td class="memItemLeft" align="right" valign="top">const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00023.html#a4067867e311bac147fccc0995e5abee5">getStringMessage</a> () const </td></tr>
+<tr class="memdesc:a4067867e311bac147fccc0995e5abee5 inherit pub_methods_a00023"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reference access to the error message (can be empty).  <a href="#a4067867e311bac147fccc0995e5abee5">More...</a><br /></td></tr>
+<tr class="separator:a4067867e311bac147fccc0995e5abee5 inherit pub_methods_a00023"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e4ed5371f86a8d1e99abd127ae7a214 inherit pub_methods_a00023"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00023.html#a7e4ed5371f86a8d1e99abd127ae7a214">getMessage</a> () const </td></tr>
+<tr class="memdesc:a7e4ed5371f86a8d1e99abd127ae7a214 inherit pub_methods_a00023"><td class="mdescLeft">&#160;</td><td class="mdescRight">Access to the pointer on the array of <em>char</em> related to the error string.  <a href="#a7e4ed5371f86a8d1e99abd127ae7a214">More...</a><br /></td></tr>
+<tr class="separator:a7e4ed5371f86a8d1e99abd127ae7a214 inherit pub_methods_a00023"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9a5208211df292bbfc679b036711a5d1 inherit pub_methods_a00023"><td class="memItemLeft" align="right" valign="top">virtual const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00023.html#a9a5208211df292bbfc679b036711a5d1">what</a> () const   throw ()</td></tr>
+<tr class="separator:a9a5208211df292bbfc679b036711a5d1 inherit pub_methods_a00023"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
-Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a99302576f999dee3b45f13cb69e32d36"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="a00026.html">FactoryStorage</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00026.html#a99302576f999dee3b45f13cb69e32d36">getInstance</a> ()</td></tr>
-<tr class="memdesc:a99302576f999dee3b45f13cb69e32d36"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get pointer to unique object of the class.  <a href="#a99302576f999dee3b45f13cb69e32d36">More...</a><br /></td></tr>
-<tr class="separator:a99302576f999dee3b45f13cb69e32d36"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a755c4b0b945597dd9e283b852d4a41a7"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00026.html#a755c4b0b945597dd9e283b852d4a41a7">destroy</a> ()</td></tr>
-<tr class="memdesc:a755c4b0b945597dd9e283b852d4a41a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy the unique instance of the class.  <a href="#a755c4b0b945597dd9e283b852d4a41a7">More...</a><br /></td></tr>
-<tr class="separator:a755c4b0b945597dd9e283b852d4a41a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
+Static Public Attributes</h2></td></tr>
+<tr class="memitem:a8e537a54b4b4d1f4cdfb2b9659294617"><td class="memItemLeft" align="right" valign="top">static const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00026.html#a8e537a54b4b4d1f4cdfb2b9659294617">EXCEPTION_NAME</a></td></tr>
+<tr class="separator:a8e537a54b4b4d1f4cdfb2b9659294617"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_static_attribs_a00023"><td colspan="2" onclick="javascript:toggleInherit('pub_static_attribs_a00023')"><img src="closed.png" alt="-"/>&#160;Static Public Attributes inherited from <a class="el" href="a00023.html">dynamicgraph::ExceptionAbstract</a></td></tr>
+<tr class="memitem:aa3cbda2debc333ce399bcc3cb3bad505 inherit pub_static_attribs_a00023"><td class="memItemLeft" align="right" valign="top">static const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00023.html#aa3cbda2debc333ce399bcc3cb3bad505">EXCEPTION_NAME</a></td></tr>
+<tr class="separator:aa3cbda2debc333ce399bcc3cb3bad505 inherit pub_static_attribs_a00023"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
+Additional Inherited Members</h2></td></tr>
+<tr class="inherit_header pro_attribs_a00023"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_a00023')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="a00023.html">dynamicgraph::ExceptionAbstract</a></td></tr>
+<tr class="memitem:a7efe8b06765fc75ec92f32d0e73082a0 inherit pro_attribs_a00023"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00023.html#a7efe8b06765fc75ec92f32d0e73082a0">code</a></td></tr>
+<tr class="memdesc:a7efe8b06765fc75ec92f32d0e73082a0 inherit pro_attribs_a00023"><td class="mdescLeft">&#160;</td><td class="mdescRight">Error code.  <a href="#a7efe8b06765fc75ec92f32d0e73082a0">More...</a><br /></td></tr>
+<tr class="separator:a7efe8b06765fc75ec92f32d0e73082a0 inherit pro_attribs_a00023"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af4a0183309ed74c92d8645119c920831 inherit pro_attribs_a00023"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00023.html#af4a0183309ed74c92d8645119c920831">message</a></td></tr>
+<tr class="memdesc:af4a0183309ed74c92d8645119c920831 inherit pro_attribs_a00023"><td class="mdescLeft">&#160;</td><td class="mdescRight">Error message (can be empty).  <a href="#af4a0183309ed74c92d8645119c920831">More...</a><br /></td></tr>
+<tr class="separator:af4a0183309ed74c92d8645119c920831 inherit pro_attribs_a00023"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Provides a way to create <a class="el" href="a00019.html" title="This class represents an entity, i.e. ">Entity</a> objects from their class name. </p>
-<p>The dynamic graph frameworks relies on entities (see <a class="el" href="a00019.html" title="This class represents an entity, i.e. ">Entity</a>) which defines atomic processing units. This class provides a robust way to enumerate and instantiate these entities. Each entity has a name (its type name) and can be instantiated. Each instance also has a name.</p>
-<p>For instance one can define a C++ class called MyEntity which inherits from <a class="el" href="a00019.html" title="This class represents an entity, i.e. ">dynamicgraph::Entity</a>. This type can be registered into the factory to teach the framework that:</p><ul>
-<li>this entity exists</li>
-<li>this entity can be instantiated (and how to instantiate it).</li>
-</ul>
-<p>To achieve this, one must pass an entity name and a function pointer.</p>
-<p>The entity name will identify the class <b>at run-time</b> (be careful: this may not be equivalent to the C++ class name even if it is recommended to do so).</p>
-<p>The function pointer must point on a function taking a string as input and returning an instance of the <a class="el" href="a00019.html" title="This class represents an entity, i.e. ">Entity</a> (the concrete subclass, not directly the upper <a class="el" href="a00019.html" title="This class represents an entity, i.e. ">Entity</a> class).</p>
-<p>The instances returned by this function <b>must</b> be dynamically allocated and the caller <b>must</b> get the ownership of the instance (i.e. it will free it when required).</p>
-<p>To finish, please note that the instance name indicates to the entity how the instance itself is called at run-time. This name does not need to be unique and no check is done on it. It is the caller responsibility to make sure that the instance name is appropriate and to check for uniqueness if required.</p>
-<p>This class is a singleton. The rationale is that each unique name must identify a unique <a class="el" href="a00019.html" title="This class represents an entity, i.e. ">Entity</a>. The use of a single instance of this class enforces this behavior, instantiating one yourself would break this property. </p>
-</div><h2 class="groupheader">Member Typedef Documentation</h2>
-<a class="anchor" id="a49e8974b169e5b73957cc64a3b223f6a"></a>
+<div class="textblock"><p>Exceptions raised when an error related to traces happen. </p>
+</div><h2 class="groupheader">Member Enumeration Documentation</h2>
+<a class="anchor" id="a7ad040c9d04b1dcd294b92692a095742"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef <a class="el" href="a00019.html">Entity</a>*(* dynamicgraph::FactoryStorage::EntityConstructor_ptr) (const std::string &amp;)</td>
+          <td class="memname">enum <a class="el" href="a00026.html#a7ad040c9d04b1dcd294b92692a095742">dynamicgraph::ExceptionTraces::ErrorCodeEnum</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Function pointer providing an entity instance from its name. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a class="anchor" id="a7ad040c9d04b1dcd294b92692a095742a29f716d5d418900f2349f197318eb6f5"></a>GENERIC&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a7ad040c9d04b1dcd294b92692a095742a94b426c1dcf7cc40c6bb769ce4cbd813"></a>NOT_OPEN&#160;</td><td class="fielddoc">
+</td></tr>
+</table>
 
 </div>
 </div>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="a6b54dcf99ac89fe2861f2b66f89bcd83"></a>
+<a class="anchor" id="aaf1a6f970ced2f07770c734a28734223"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">dynamicgraph::ExceptionTraces::ExceptionTraces </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="a00026.html#a7ad040c9d04b1dcd294b92692a095742">ExceptionTraces::ErrorCodeEnum</a> &amp;&#160;</td>
+          <td class="paramname"><em>errcode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>msg</em> = <code>&quot;&quot;</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="aea3c51659fb04373d6fcd3e8a4b2edc2"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">dynamicgraph::FactoryStorage::~FactoryStorage </td>
+          <td class="memname">dynamicgraph::ExceptionTraces::ExceptionTraces </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="a00026.html#a7ad040c9d04b1dcd294b92692a095742">ExceptionTraces::ErrorCodeEnum</a> &amp;&#160;</td>
+          <td class="paramname"><em>errcode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>msg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>format</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>...</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="aa2ad82933517b2c5a585291c19f198ec"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual dynamicgraph::ExceptionTraces::~ExceptionTraces </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
+        <tr>
+          <td align="right">throw </td><td>(</td><td colspan="2"></td>
+        </tr>
+        <tr>
+          <td align="right"></td><td>)</td><td></td><td></td>
+        </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="a7f1921a85304ff14c5f77a55b7b8be46"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void dynamicgraph::FactoryStorage::commandLine </td>
-          <td>(</td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>cmdLine</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">std::istringstream &amp;&#160;</td>
-          <td class="paramname"><em>cmdArgs</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">std::ostream &amp;&#160;</td>
-          <td class="paramname"><em>os</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Define <a class="el" href="a00026.html" title="Provides a way to create Entity objects from their class name. ">FactoryStorage</a> commands. </p>
-<p>Define two equivalent commands:</p><ul>
-<li>list</li>
-<li>listEntities listing the available entities. </li>
-</ul>
-
-</div>
-</div>
-<a class="anchor" id="a1d9fddc1c9330cae4564e15e5da17e10"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void dynamicgraph::FactoryStorage::deregisterEntity </td>
-          <td>(</td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>entname</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Delete an entity from the factory. </p>
-<p>If the provided entity name does not exist in the factory, an <a class="el" href="a00023.html" title="Generic error class. ">ExceptionFactory</a> exception will be raised with the code OBJECT_CONFLICT.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">entname</td><td>the entity name (as passed to registerEntity before) </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a class="anchor" id="a755c4b0b945597dd9e283b852d4a41a7"></a>
+<a class="anchor" id="a118715fac3c846b5997ff557b34b8bb0"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -268,10 +316,33 @@ Static Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static void dynamicgraph::FactoryStorage::destroy </td>
+          <td class="memname">virtual const std::string&amp; dynamicgraph::ExceptionTraces::getExceptionName </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
-          <td></td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Reimplemented from <a class="el" href="a00023.html#adf17921faed0da13d70a575f50c7180c">dynamicgraph::ExceptionAbstract</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="a8e537a54b4b4d1f4cdfb2b9659294617"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::string dynamicgraph::ExceptionTraces::EXCEPTION_NAME</td>
         </tr>
       </table>
   </td>
@@ -280,160 +351,6 @@ Static Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p>Destroy the unique instance of the class. </p>
-
-</div>
-</div>
-<a class="anchor" id="a0c63e70310e0ad4ea666aec797bf78a9"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool dynamicgraph::FactoryStorage::existEntity </td>
-          <td>(</td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>name</em></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Check if an <a class="el" href="a00019.html" title="This class represents an entity, i.e. ">Entity</a> associated with a particular name has already been registered. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">name</td><td>entity name </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>Do the entity exist? </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="a99302576f999dee3b45f13cb69e32d36"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static <a class="el" href="a00026.html">FactoryStorage</a>* dynamicgraph::FactoryStorage::getInstance </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Get pointer to unique object of the class. </p>
-
-</div>
-</div>
-<a class="anchor" id="a82015768e31062fc3b2ce333a485563f"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void dynamicgraph::FactoryStorage::listEntities </td>
-          <td>(</td>
-          <td class="paramtype">std::vector&lt; std::string &gt; &amp;&#160;</td>
-          <td class="paramname"><em>list</em></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>List the available entities. </p>
-<p>Available entities are appended to the method argument.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">list</td><td>Available entities will be appended to list. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a class="anchor" id="a1b2f13ecd234ed50083c16f3ed4feac2"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="a00019.html">Entity</a>* dynamicgraph::FactoryStorage::newEntity </td>
-          <td>(</td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>classname</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>objname</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td> const</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Instantiate (and allocate) an entity. </p>
-<p>An instance called objname of the entity which type is classname will be allocated by this method.</p>
-<p>It is <b>the caller</b> responsibility to free the returned object.</p>
-<p>If the class name does not exist, an <a class="el" href="a00023.html" title="Generic error class. ">ExceptionFactory</a> exception will be raised with the code UNREFERED_OBJECT.</p>
-<p>The instance name (objname) is passed to the <a class="el" href="a00019.html" title="This class represents an entity, i.e. ">Entity</a> constructor and it is the caller responsibility to avoid instance name conflicts if necessary.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">classname</td><td>the name of the <a class="el" href="a00019.html" title="This class represents an entity, i.e. ">Entity</a> type </td></tr>
-    <tr><td class="paramname">objname</td><td>the instance name </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>Dynamically allocated instance of classname. </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="a20483c6c27a7962077fbabd721f51a10"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void dynamicgraph::FactoryStorage::registerEntity </td>
-          <td>(</td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>entname</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="a00026.html#a49e8974b169e5b73957cc64a3b223f6a">EntityConstructor_ptr</a>&#160;</td>
-          <td class="paramname"><em>ent</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Add a new entity to the factory. </p>
-<p>It is not allowed to have several entities using the same name. If this is the case, an <a class="el" href="a00023.html" title="Generic error class. ">ExceptionFactory</a> exception will be raised with the code OBJECT_CONFLICT.</p>
-<p>If the function pointer is null, an <a class="el" href="a00023.html" title="Generic error class. ">ExceptionFactory</a> exception will be raised with the code OBJECT_CONFLICT.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">entname</td><td>the name used to subscribe the entity. </td></tr>
-    <tr><td class="paramname">ent</td><td>pointer to a function allocating an entity from an instance name. </td></tr>
-  </table>
-  </dd>
-</dl>
 
 </div>
 </div>
@@ -443,8 +360,8 @@ Static Public Member Functions</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="a00099.html">dynamicgraph</a></li><li class="navelem"><a class="el" href="a00026.html">FactoryStorage</a></li>
-    <li class="footer">Generated on Mon Dec 18 2017 00:07:45 for dynamic-graph by
+    <li class="navelem"><a class="el" href="a00100.html">dynamicgraph</a></li><li class="navelem"><a class="el" href="a00026.html">ExceptionTraces</a></li>
+    <li class="footer">Generated on Tue Jan 16 2018 12:19:09 for dynamic-graph by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.11 </li>
   </ul>

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['outstringstream',['OutStringStream',['../a00028.html',1,'dynamicgraph']]]
+  ['outstringstream',['OutStringStream',['../a00029.html',1,'dynamicgraph']]]
 ];

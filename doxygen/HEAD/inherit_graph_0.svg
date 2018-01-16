@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-889 318,-889 318,4 -4,4"/>
 <!-- Node1 -->
 <g id="node1" class="node"><title>Node1</title>
-<g id="a_node1"><a xlink:href="a00006.html" target="_top" xlink:title="Abstract class for entity commands. ">
+<g id="a_node1"><a xlink:href="a00007.html" target="_top" xlink:title="Abstract class for entity commands. ">
 <polygon fill="white" stroke="black" points="0,-416.5 0,-446.5 126,-446.5 126,-416.5 0,-416.5"/>
 <text text-anchor="start" x="8" y="-434.5" font-family="Helvetica,sans-Serif" font-size="10.00">dynamicgraph::command</text>
 <text text-anchor="middle" x="63" y="-423.5" font-family="Helvetica,sans-Serif" font-size="10.00">::Command</text>
@@ -20,7 +20,7 @@
 </g>
 <!-- Node2 -->
 <g id="node2" class="node"><title>Node2</title>
-<g id="a_node2"><a xlink:href="a00007.html" target="_top" xlink:title="dynamicgraph::command\l::CommandVerbose\&lt; E \&gt;">
+<g id="a_node2"><a xlink:href="a00008.html" target="_top" xlink:title="dynamicgraph::command\l::CommandVerbose\&lt; E \&gt;">
 <polygon fill="white" stroke="black" points="174,-854.5 174,-884.5 302,-884.5 302,-854.5 174,-854.5"/>
 <text text-anchor="start" x="182" y="-872.5" font-family="Helvetica,sans-Serif" font-size="10.00">dynamicgraph::command</text>
 <text text-anchor="middle" x="238" y="-861.5" font-family="Helvetica,sans-Serif" font-size="10.00">::CommandVerbose&lt; E &gt;</text>
@@ -34,7 +34,7 @@
 </g>
 <!-- Node3 -->
 <g id="node3" class="node"><title>Node3</title>
-<g id="a_node3"><a xlink:href="a00008.html" target="_top" xlink:title="dynamicgraph::command\l::CommandVoid0\&lt; E \&gt;">
+<g id="a_node3"><a xlink:href="a00009.html" target="_top" xlink:title="dynamicgraph::command\l::CommandVoid0\&lt; E \&gt;">
 <polygon fill="white" stroke="black" points="175,-805.5 175,-835.5 301,-835.5 301,-805.5 175,-805.5"/>
 <text text-anchor="start" x="183" y="-823.5" font-family="Helvetica,sans-Serif" font-size="10.00">dynamicgraph::command</text>
 <text text-anchor="middle" x="238" y="-812.5" font-family="Helvetica,sans-Serif" font-size="10.00">::CommandVoid0&lt; E &gt;</text>
@@ -48,7 +48,7 @@
 </g>
 <!-- Node4 -->
 <g id="node4" class="node"><title>Node4</title>
-<g id="a_node4"><a xlink:href="a00009.html" target="_top" xlink:title="dynamicgraph::command\l::CommandVoid1\&lt; E, T \&gt;">
+<g id="a_node4"><a xlink:href="a00010.html" target="_top" xlink:title="dynamicgraph::command\l::CommandVoid1\&lt; E, T \&gt;">
 <polygon fill="white" stroke="black" points="173.5,-756.5 173.5,-786.5 302.5,-786.5 302.5,-756.5 173.5,-756.5"/>
 <text text-anchor="start" x="181.5" y="-774.5" font-family="Helvetica,sans-Serif" font-size="10.00">dynamicgraph::command</text>
 <text text-anchor="middle" x="238" y="-763.5" font-family="Helvetica,sans-Serif" font-size="10.00">::CommandVoid1&lt; E, T &gt;</text>
@@ -62,7 +62,7 @@
 </g>
 <!-- Node5 -->
 <g id="node5" class="node"><title>Node5</title>
-<g id="a_node5"><a xlink:href="a00010.html" target="_top" xlink:title="dynamicgraph::command\l::CommandVoid2\&lt; E, T1, T2 \&gt;">
+<g id="a_node5"><a xlink:href="a00011.html" target="_top" xlink:title="dynamicgraph::command\l::CommandVoid2\&lt; E, T1, T2 \&gt;">
 <polygon fill="white" stroke="black" points="162,-707.5 162,-737.5 314,-737.5 314,-707.5 162,-707.5"/>
 <text text-anchor="start" x="170" y="-725.5" font-family="Helvetica,sans-Serif" font-size="10.00">dynamicgraph::command</text>
 <text text-anchor="middle" x="238" y="-714.5" font-family="Helvetica,sans-Serif" font-size="10.00">::CommandVoid2&lt; E, T1, T2 &gt;</text>
@@ -76,7 +76,7 @@
 </g>
 <!-- Node6 -->
 <g id="node6" class="node"><title>Node6</title>
-<g id="a_node6"><a xlink:href="a00011.html" target="_top" xlink:title="dynamicgraph::command\l::CommandVoid3\&lt; E, T1,\l T2, T3 \&gt;">
+<g id="a_node6"><a xlink:href="a00012.html" target="_top" xlink:title="dynamicgraph::command\l::CommandVoid3\&lt; E, T1,\l T2, T3 \&gt;">
 <polygon fill="white" stroke="black" points="174,-648 174,-689 302,-689 302,-648 174,-648"/>
 <text text-anchor="start" x="182" y="-677" font-family="Helvetica,sans-Serif" font-size="10.00">dynamicgraph::command</text>
 <text text-anchor="start" x="182" y="-666" font-family="Helvetica,sans-Serif" font-size="10.00">::CommandVoid3&lt; E, T1,</text>
@@ -91,7 +91,7 @@
 </g>
 <!-- Node7 -->
 <g id="node7" class="node"><title>Node7</title>
-<g id="a_node7"><a xlink:href="a00012.html" target="_top" xlink:title="dynamicgraph::command\l::CommandVoid4\&lt; E, T1,\l T2, T3, T4 \&gt;">
+<g id="a_node7"><a xlink:href="a00013.html" target="_top" xlink:title="dynamicgraph::command\l::CommandVoid4\&lt; E, T1,\l T2, T3, T4 \&gt;">
 <polygon fill="white" stroke="black" points="174,-588 174,-629 302,-629 302,-588 174,-588"/>
 <text text-anchor="start" x="182" y="-617" font-family="Helvetica,sans-Serif" font-size="10.00">dynamicgraph::command</text>
 <text text-anchor="start" x="182" y="-606" font-family="Helvetica,sans-Serif" font-size="10.00">::CommandVoid4&lt; E, T1,</text>
@@ -106,7 +106,7 @@
 </g>
 <!-- Node8 -->
 <g id="node8" class="node"><title>Node8</title>
-<g id="a_node8"><a xlink:href="a00016.html" target="_top" xlink:title="dynamicgraph::command\l::DirectGetter\&lt; E, T \&gt;">
+<g id="a_node8"><a xlink:href="a00017.html" target="_top" xlink:title="dynamicgraph::command\l::DirectGetter\&lt; E, T \&gt;">
 <polygon fill="white" stroke="black" points="175,-539.5 175,-569.5 301,-569.5 301,-539.5 175,-539.5"/>
 <text text-anchor="start" x="183" y="-557.5" font-family="Helvetica,sans-Serif" font-size="10.00">dynamicgraph::command</text>
 <text text-anchor="middle" x="238" y="-546.5" font-family="Helvetica,sans-Serif" font-size="10.00">::DirectGetter&lt; E, T &gt;</text>
@@ -120,7 +120,7 @@
 </g>
 <!-- Node9 -->
 <g id="node9" class="node"><title>Node9</title>
-<g id="a_node9"><a xlink:href="a00017.html" target="_top" xlink:title="dynamicgraph::command\l::DirectSetter\&lt; E, T \&gt;">
+<g id="a_node9"><a xlink:href="a00018.html" target="_top" xlink:title="dynamicgraph::command\l::DirectSetter\&lt; E, T \&gt;">
 <polygon fill="white" stroke="black" points="175,-490.5 175,-520.5 301,-520.5 301,-490.5 175,-490.5"/>
 <text text-anchor="start" x="183" y="-508.5" font-family="Helvetica,sans-Serif" font-size="10.00">dynamicgraph::command</text>
 <text text-anchor="middle" x="238" y="-497.5" font-family="Helvetica,sans-Serif" font-size="10.00">::DirectSetter&lt; E, T &gt;</text>
@@ -134,7 +134,7 @@
 </g>
 <!-- Node10 -->
 <g id="node10" class="node"><title>Node10</title>
-<g id="a_node10"><a xlink:href="a00027.html" target="_top" xlink:title="Command that calls a parameter getter function. ">
+<g id="a_node10"><a xlink:href="a00028.html" target="_top" xlink:title="Command that calls a parameter getter function. ">
 <polygon fill="white" stroke="black" points="175,-441.5 175,-471.5 301,-471.5 301,-441.5 175,-441.5"/>
 <text text-anchor="start" x="183" y="-459.5" font-family="Helvetica,sans-Serif" font-size="10.00">dynamicgraph::command</text>
 <text text-anchor="middle" x="238" y="-448.5" font-family="Helvetica,sans-Serif" font-size="10.00">::Getter&lt; E, T &gt;</text>
@@ -148,7 +148,7 @@
 </g>
 <!-- Node11 -->
 <g id="node11" class="node"><title>Node11</title>
-<g id="a_node11"><a xlink:href="a00031.html" target="_top" xlink:title="Command that calls a parameter setter function. ">
+<g id="a_node11"><a xlink:href="a00032.html" target="_top" xlink:title="Command that calls a parameter setter function. ">
 <polygon fill="white" stroke="black" points="175,-392.5 175,-422.5 301,-422.5 301,-392.5 175,-392.5"/>
 <text text-anchor="start" x="183" y="-410.5" font-family="Helvetica,sans-Serif" font-size="10.00">dynamicgraph::command</text>
 <text text-anchor="middle" x="238" y="-399.5" font-family="Helvetica,sans-Serif" font-size="10.00">::Setter&lt; E, T &gt;</text>
@@ -162,7 +162,7 @@
 </g>
 <!-- Node12 -->
 <g id="node12" class="node"><title>Node12</title>
-<g id="a_node12"><a xlink:href="a00032.html" target="_top" xlink:title="dynamicgraph::command\l::Setter\&lt; E, bool \&gt;">
+<g id="a_node12"><a xlink:href="a00033.html" target="_top" xlink:title="dynamicgraph::command\l::Setter\&lt; E, bool \&gt;">
 <polygon fill="white" stroke="black" points="175,-343.5 175,-373.5 301,-373.5 301,-343.5 175,-343.5"/>
 <text text-anchor="start" x="183" y="-361.5" font-family="Helvetica,sans-Serif" font-size="10.00">dynamicgraph::command</text>
 <text text-anchor="middle" x="238" y="-350.5" font-family="Helvetica,sans-Serif" font-size="10.00">::Setter&lt; E, bool &gt;</text>
@@ -176,7 +176,7 @@
 </g>
 <!-- Node13 -->
 <g id="node13" class="node"><title>Node13</title>
-<g id="a_node13"><a xlink:href="a00033.html" target="_top" xlink:title="dynamicgraph::command\l::Setter\&lt; E, double \&gt;">
+<g id="a_node13"><a xlink:href="a00034.html" target="_top" xlink:title="dynamicgraph::command\l::Setter\&lt; E, double \&gt;">
 <polygon fill="white" stroke="black" points="175,-294.5 175,-324.5 301,-324.5 301,-294.5 175,-294.5"/>
 <text text-anchor="start" x="183" y="-312.5" font-family="Helvetica,sans-Serif" font-size="10.00">dynamicgraph::command</text>
 <text text-anchor="middle" x="238" y="-301.5" font-family="Helvetica,sans-Serif" font-size="10.00">::Setter&lt; E, double &gt;</text>
@@ -190,7 +190,7 @@
 </g>
 <!-- Node14 -->
 <g id="node14" class="node"><title>Node14</title>
-<g id="a_node14"><a xlink:href="a00034.html" target="_top" xlink:title="dynamicgraph::command\l::Setter\&lt; E, float \&gt;">
+<g id="a_node14"><a xlink:href="a00035.html" target="_top" xlink:title="dynamicgraph::command\l::Setter\&lt; E, float \&gt;">
 <polygon fill="white" stroke="black" points="175,-245.5 175,-275.5 301,-275.5 301,-245.5 175,-245.5"/>
 <text text-anchor="start" x="183" y="-263.5" font-family="Helvetica,sans-Serif" font-size="10.00">dynamicgraph::command</text>
 <text text-anchor="middle" x="238" y="-252.5" font-family="Helvetica,sans-Serif" font-size="10.00">::Setter&lt; E, float &gt;</text>
@@ -204,7 +204,7 @@
 </g>
 <!-- Node15 -->
 <g id="node15" class="node"><title>Node15</title>
-<g id="a_node15"><a xlink:href="a00035.html" target="_top" xlink:title="dynamicgraph::command\l::Setter\&lt; E, int \&gt;">
+<g id="a_node15"><a xlink:href="a00036.html" target="_top" xlink:title="dynamicgraph::command\l::Setter\&lt; E, int \&gt;">
 <polygon fill="white" stroke="black" points="175,-196.5 175,-226.5 301,-226.5 301,-196.5 175,-196.5"/>
 <text text-anchor="start" x="183" y="-214.5" font-family="Helvetica,sans-Serif" font-size="10.00">dynamicgraph::command</text>
 <text text-anchor="middle" x="238" y="-203.5" font-family="Helvetica,sans-Serif" font-size="10.00">::Setter&lt; E, int &gt;</text>
@@ -218,7 +218,7 @@
 </g>
 <!-- Node16 -->
 <g id="node16" class="node"><title>Node16</title>
-<g id="a_node16"><a xlink:href="a00036.html" target="_top" xlink:title="dynamicgraph::command\l::Setter\&lt; E, Matrix \&gt;">
+<g id="a_node16"><a xlink:href="a00037.html" target="_top" xlink:title="dynamicgraph::command\l::Setter\&lt; E, Matrix \&gt;">
 <polygon fill="white" stroke="black" points="175,-147.5 175,-177.5 301,-177.5 301,-147.5 175,-147.5"/>
 <text text-anchor="start" x="183" y="-165.5" font-family="Helvetica,sans-Serif" font-size="10.00">dynamicgraph::command</text>
 <text text-anchor="middle" x="238" y="-154.5" font-family="Helvetica,sans-Serif" font-size="10.00">::Setter&lt; E, Matrix &gt;</text>
@@ -232,7 +232,7 @@
 </g>
 <!-- Node17 -->
 <g id="node17" class="node"><title>Node17</title>
-<g id="a_node17"><a xlink:href="a00037.html" target="_top" xlink:title="dynamicgraph::command\l::Setter\&lt; E, std::string \&gt;">
+<g id="a_node17"><a xlink:href="a00038.html" target="_top" xlink:title="dynamicgraph::command\l::Setter\&lt; E, std::string \&gt;">
 <polygon fill="white" stroke="black" points="175,-98.5 175,-128.5 301,-128.5 301,-98.5 175,-98.5"/>
 <text text-anchor="start" x="183" y="-116.5" font-family="Helvetica,sans-Serif" font-size="10.00">dynamicgraph::command</text>
 <text text-anchor="middle" x="238" y="-105.5" font-family="Helvetica,sans-Serif" font-size="10.00">::Setter&lt; E, std::string &gt;</text>
@@ -246,7 +246,7 @@
 </g>
 <!-- Node18 -->
 <g id="node18" class="node"><title>Node18</title>
-<g id="a_node18"><a xlink:href="a00038.html" target="_top" xlink:title="dynamicgraph::command\l::Setter\&lt; E, unsigned \&gt;">
+<g id="a_node18"><a xlink:href="a00039.html" target="_top" xlink:title="dynamicgraph::command\l::Setter\&lt; E, unsigned \&gt;">
 <polygon fill="white" stroke="black" points="175,-49.5 175,-79.5 301,-79.5 301,-49.5 175,-49.5"/>
 <text text-anchor="start" x="183" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">dynamicgraph::command</text>
 <text text-anchor="middle" x="238" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::Setter&lt; E, unsigned &gt;</text>
@@ -260,7 +260,7 @@
 </g>
 <!-- Node19 -->
 <g id="node19" class="node"><title>Node19</title>
-<g id="a_node19"><a xlink:href="a00039.html" target="_top" xlink:title="dynamicgraph::command\l::Setter\&lt; E, Vector \&gt;">
+<g id="a_node19"><a xlink:href="a00040.html" target="_top" xlink:title="dynamicgraph::command\l::Setter\&lt; E, Vector \&gt;">
 <polygon fill="white" stroke="black" points="175,-0.5 175,-30.5 301,-30.5 301,-0.5 175,-0.5"/>
 <text text-anchor="start" x="183" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">dynamicgraph::command</text>
 <text text-anchor="middle" x="238" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::Setter&lt; E, Vector &gt;</text>

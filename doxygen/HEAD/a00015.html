@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<title>dynamicgraph::DefaultCastRegisterer&lt; T &gt; Class Template Reference</title>
+<title>dynamicgraph::DebugTrace Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css">
 <link href="doxygen.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="jquery.js"></script>
@@ -92,64 +92,158 @@ $(document).ready(function(){initNavTree('a00015.html','');});
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
-<a href="a00187.html">List of all members</a>  </div>
+<a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="#pub-static-attribs">Static Public Attributes</a> &#124;
+<a href="a00178.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">dynamicgraph::DefaultCastRegisterer&lt; T &gt; Class Template Reference</div>  </div>
+<div class="title">dynamicgraph::DebugTrace Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>This class can be used to register default casts, i.e.  
+<p>Logging class.  
  <a href="a00015.html#details">More...</a></p>
 
-<p><code>#include &lt;dynamic-graph/signal-cast-helper.h&gt;</code></p>
+<p><code>#include &lt;dynamic-graph/debug.h&gt;</code></p>
 <div class="dynheader">
-Inheritance diagram for dynamicgraph::DefaultCastRegisterer&lt; T &gt;:</div>
+Collaboration diagram for dynamicgraph::DebugTrace:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="a00188.svg" width="192" height="142"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-<center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
-<div class="dynheader">
-Collaboration diagram for dynamicgraph::DefaultCastRegisterer&lt; T &gt;:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="a00189.svg" width="192" height="142"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="a00187.svg" width="456" height="590"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a039feb06609776a491bbf85d78ec24f0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00015.html#a039feb06609776a491bbf85d78ec24f0">DefaultCastRegisterer</a> ()</td></tr>
-<tr class="separator:a039feb06609776a491bbf85d78ec24f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pub_methods_a00046"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_a00046')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="a00046.html">dynamicgraph::SignalCastRegisterer</a></td></tr>
-<tr class="memitem:a0e953897c7a0696504247b43ddd31758 inherit pub_methods_a00046"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00046.html#a0e953897c7a0696504247b43ddd31758">SignalCastRegisterer</a> (const std::type_info &amp;type, <a class="el" href="a00045.html#a7b5582194f1fcaecde6063145b798aad">SignalCaster::displayer_type</a> displayer, <a class="el" href="a00045.html#ae9eb9afc64e319826ed9241a2d456765">SignalCaster::caster_type</a> caster, <a class="el" href="a00045.html#acc9c753d8fef1eb233914855bbd0a6b3">SignalCaster::tracer_type</a> tracer)</td></tr>
-<tr class="separator:a0e953897c7a0696504247b43ddd31758 inherit pub_methods_a00046"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a285fc61f0f4c6c337b54703a01174fe0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00015.html#a285fc61f0f4c6c337b54703a01174fe0">DebugTrace</a> (std::ostream &amp;os)</td></tr>
+<tr class="separator:a285fc61f0f4c6c337b54703a01174fe0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa36fb9d2dbecb40dc734142b148737f3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00015.html#aa36fb9d2dbecb40dc734142b148737f3">trace</a> (const int level, const char *format,...)</td></tr>
+<tr class="separator:aa36fb9d2dbecb40dc734142b148737f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac0695004372ed7c6c3df85d5b38636d3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00015.html#ac0695004372ed7c6c3df85d5b38636d3">trace</a> (const char *format,...)</td></tr>
+<tr class="separator:ac0695004372ed7c6c3df85d5b38636d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab11e080e2b93a45f0ed0ec97ffea43a9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00015.html#ab11e080e2b93a45f0ed0ec97ffea43a9">trace</a> (const int level=-1)</td></tr>
+<tr class="separator:ab11e080e2b93a45f0ed0ec97ffea43a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2ca1aff52f81391a3feb34622265126a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00015.html#a2ca1aff52f81391a3feb34622265126a">traceTemplate</a> (const int level, const char *format,...)</td></tr>
+<tr class="separator:a2ca1aff52f81391a3feb34622265126a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2e1c4a66d6147a7f4d1fa3c948829d2a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00015.html#a2e1c4a66d6147a7f4d1fa3c948829d2a">traceTemplate</a> (const char *format,...)</td></tr>
+<tr class="separator:a2e1c4a66d6147a7f4d1fa3c948829d2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af4111545a1bbb5d5c764506dcd1fc27d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00015.html">DebugTrace</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00015.html#af4111545a1bbb5d5c764506dcd1fc27d">pre</a> (const std::ostream &amp;)</td></tr>
+<tr class="separator:af4111545a1bbb5d5c764506dcd1fc27d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7464ed4392fc02b201d534c9dafcdd87"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00015.html">DebugTrace</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00015.html#a7464ed4392fc02b201d534c9dafcdd87">pre</a> (const std::ostream &amp;, int level)</td></tr>
+<tr class="separator:a7464ed4392fc02b201d534c9dafcdd87"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a46d48248277ae147fd057040305b6cea"><td class="memItemLeft" align="right" valign="top">static boost::any&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00015.html#a46d48248277ae147fd057040305b6cea">cast</a> (std::istringstream &amp;iss)</td></tr>
-<tr class="memdesc:a46d48248277ae147fd057040305b6cea"><td class="mdescLeft">&#160;</td><td class="mdescRight">A default version of the caster, to serialize directly from std::in.  <a href="#a46d48248277ae147fd057040305b6cea">More...</a><br /></td></tr>
-<tr class="separator:a46d48248277ae147fd057040305b6cea"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac57805b60eeaea2f52c4f9bbce3b185b"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00015.html#ac57805b60eeaea2f52c4f9bbce3b185b">disp</a> (const boost::any &amp;object, std::ostream &amp;os)</td></tr>
-<tr class="separator:ac57805b60eeaea2f52c4f9bbce3b185b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac32a8d18f0b75db7f713d50f9c23a48d"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00015.html#ac32a8d18f0b75db7f713d50f9c23a48d">trace</a> (const boost::any &amp;object, std::ostream &amp;os)</td></tr>
-<tr class="separator:ac32a8d18f0b75db7f713d50f9c23a48d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a94660127de69a83d1d68eeea8552198c"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00015.html#a94660127de69a83d1d68eeea8552198c">openFile</a> (const char *filename=<a class="el" href="a00015.html#a1b5ec41ce046c2ec097b6e0aa22c8382">DEBUG_FILENAME_DEFAULT</a>)</td></tr>
+<tr class="separator:a94660127de69a83d1d68eeea8552198c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad0401ad17d850b70aeb7ecc9b34ade19"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00015.html#ad0401ad17d850b70aeb7ecc9b34ade19">closeFile</a> (const char *filename=<a class="el" href="a00015.html#a1b5ec41ce046c2ec097b6e0aa22c8382">DEBUG_FILENAME_DEFAULT</a>)</td></tr>
+<tr class="separator:ad0401ad17d850b70aeb7ecc9b34ade19"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr class="memitem:ace984952aec058a028737735988450c7"><td class="memItemLeft" align="right" valign="top">std::stringstream&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00015.html#ace984952aec058a028737735988450c7">tmpbuffer</a></td></tr>
+<tr class="separator:ace984952aec058a028737735988450c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa3348996cef8d5dd6f55bc205ab83e54"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00015.html#aa3348996cef8d5dd6f55bc205ab83e54">outputbuffer</a></td></tr>
+<tr class="separator:aa3348996cef8d5dd6f55bc205ab83e54"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7c3848f8b078ccbf84819de35110c3f6"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00015.html#a7c3848f8b078ccbf84819de35110c3f6">charbuffer</a> [<a class="el" href="a00015.html#a85d10b3fd2f0dd2167034ae20db4acb6">SIZE</a>+1]</td></tr>
+<tr class="separator:a7c3848f8b078ccbf84819de35110c3f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5b6f222904c43c5ae3e8646e161bb272"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00015.html#a5b6f222904c43c5ae3e8646e161bb272">traceLevel</a></td></tr>
+<tr class="separator:a5b6f222904c43c5ae3e8646e161bb272"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5948172c86440fa6468a144e2c1d6d82"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00015.html#a5948172c86440fa6468a144e2c1d6d82">traceLevelTemplate</a></td></tr>
+<tr class="separator:a5948172c86440fa6468a144e2c1d6d82"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
+Static Public Attributes</h2></td></tr>
+<tr class="memitem:a85d10b3fd2f0dd2167034ae20db4acb6"><td class="memItemLeft" align="right" valign="top">static const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00015.html#a85d10b3fd2f0dd2167034ae20db4acb6">SIZE</a> = 512</td></tr>
+<tr class="separator:a85d10b3fd2f0dd2167034ae20db4acb6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1b5ec41ce046c2ec097b6e0aa22c8382"><td class="memItemLeft" align="right" valign="top">static const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00015.html#a1b5ec41ce046c2ec097b6e0aa22c8382">DEBUG_FILENAME_DEFAULT</a></td></tr>
+<tr class="separator:a1b5ec41ce046c2ec097b6e0aa22c8382"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><h3>template&lt;typename T&gt;<br />
-class dynamicgraph::DefaultCastRegisterer&lt; T &gt;</h3>
-
-<p>This class can be used to register default casts, i.e. </p>
-<p>casts already supported by the object to an std::iostream through the operators &gt;&gt; and &lt;&lt; . </p>
+<div class="textblock"><p>Logging class. </p>
+<p>This class should never be used directly, please use the debugging macro instead. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="a039feb06609776a491bbf85d78ec24f0"></a>
+<a class="anchor" id="a285fc61f0f4c6c337b54703a01174fe0"></a>
 <div class="memitem">
 <div class="memproto">
-<div class="memtemplate">
-template&lt;typename T &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="a00015.html">dynamicgraph::DefaultCastRegisterer</a>&lt; T &gt;::<a class="el" href="a00015.html">DefaultCastRegisterer</a> </td>
+          <td class="memname">dynamicgraph::DebugTrace::DebugTrace </td>
           <td>(</td>
+          <td class="paramtype">std::ostream &amp;&#160;</td>
+          <td class="paramname"><em>os</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="ad0401ad17d850b70aeb7ecc9b34ade19"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void dynamicgraph::DebugTrace::closeFile </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>filename</em> = <code><a class="el" href="a00015.html#a1b5ec41ce046c2ec097b6e0aa22c8382">DEBUG_FILENAME_DEFAULT</a></code></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a94660127de69a83d1d68eeea8552198c"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void dynamicgraph::DebugTrace::openFile </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>filename</em> = <code><a class="el" href="a00015.html#a1b5ec41ce046c2ec097b6e0aa22c8382">DEBUG_FILENAME_DEFAULT</a></code></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="af4111545a1bbb5d5c764506dcd1fc27d"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00015.html">DebugTrace</a>&amp; dynamicgraph::DebugTrace::pre </td>
+          <td>(</td>
+          <td class="paramtype">const std::ostream &amp;&#160;</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
@@ -161,26 +255,244 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>References <a class="el" href="a00015.html#a46d48248277ae147fd057040305b6cea">dynamicgraph::DefaultCastRegisterer&lt; T &gt;::cast()</a>.</p>
-
 </div>
 </div>
-<h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="a46d48248277ae147fd057040305b6cea"></a>
+<a class="anchor" id="a7464ed4392fc02b201d534c9dafcdd87"></a>
 <div class="memitem">
 <div class="memproto">
-<div class="memtemplate">
-template&lt;typename T &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">boost::any <a class="el" href="a00015.html">dynamicgraph::DefaultCastRegisterer</a>&lt; T &gt;::cast </td>
+          <td class="memname"><a class="el" href="a00015.html">DebugTrace</a>&amp; dynamicgraph::DebugTrace::pre </td>
           <td>(</td>
-          <td class="paramtype">std::istringstream &amp;&#160;</td>
-          <td class="paramname"><em>iss</em></td><td>)</td>
+          <td class="paramtype">const std::ostream &amp;&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>level</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="aa36fb9d2dbecb40dc734142b148737f3"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void dynamicgraph::DebugTrace::trace </td>
+          <td>(</td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>level</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>format</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>...</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>References <a class="el" href="a00066.html#a34a049f8220d4679cf39de22833f88b9">DG_COMMON_TRACES</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ac0695004372ed7c6c3df85d5b38636d3"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void dynamicgraph::DebugTrace::trace </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>format</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>...</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>References <a class="el" href="a00066.html#a34a049f8220d4679cf39de22833f88b9">DG_COMMON_TRACES</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ab11e080e2b93a45f0ed0ec97ffea43a9"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void dynamicgraph::DebugTrace::trace </td>
+          <td>(</td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>level</em> = <code>-1</code></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a2ca1aff52f81391a3feb34622265126a"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void dynamicgraph::DebugTrace::traceTemplate </td>
+          <td>(</td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>level</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>format</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>...</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>References <a class="el" href="a00066.html#a34a049f8220d4679cf39de22833f88b9">DG_COMMON_TRACES</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a2e1c4a66d6147a7f4d1fa3c948829d2a"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void dynamicgraph::DebugTrace::traceTemplate </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>format</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>...</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>References <a class="el" href="a00066.html#a34a049f8220d4679cf39de22833f88b9">DG_COMMON_TRACES</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="a7c3848f8b078ccbf84819de35110c3f6"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char dynamicgraph::DebugTrace::charbuffer[<a class="el" href="a00015.html#a85d10b3fd2f0dd2167034ae20db4acb6">SIZE</a>+1]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a1b5ec41ce046c2ec097b6e0aa22c8382"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char* dynamicgraph::DebugTrace::DEBUG_FILENAME_DEFAULT</td>
         </tr>
       </table>
   </td>
@@ -190,89 +502,73 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>A default version of the caster, to serialize directly from std::in. </p>
-
-<p>References <a class="el" href="a00024.html#a5c6942a3d775d104aa6fa46902106f10a6bd5a74da9334e449fa709dbed10159b">dynamicgraph::ExceptionSignal::GENERIC</a>.</p>
-
-<p>Referenced by <a class="el" href="a00044.html#a9d4ad53df31b75d0618c410560a26ccc">dynamicgraph::SignalCast&lt; T &gt;::cast_()</a>, and <a class="el" href="a00015.html#a039feb06609776a491bbf85d78ec24f0">dynamicgraph::DefaultCastRegisterer&lt; T &gt;::DefaultCastRegisterer()</a>.</p>
-
 </div>
 </div>
-<a class="anchor" id="ac57805b60eeaea2f52c4f9bbce3b185b"></a>
+<a class="anchor" id="aa3348996cef8d5dd6f55bc205ab83e54"></a>
 <div class="memitem">
 <div class="memproto">
-<div class="memtemplate">
-template&lt;typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">std::ostream&amp; dynamicgraph::DebugTrace::outputbuffer</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a85d10b3fd2f0dd2167034ae20db4acb6"></a>
+<div class="memitem">
+<div class="memproto">
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static void <a class="el" href="a00015.html">dynamicgraph::DefaultCastRegisterer</a>&lt; T &gt;::disp </td>
-          <td>(</td>
-          <td class="paramtype">const boost::any &amp;&#160;</td>
-          <td class="paramname"><em>object</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">std::ostream &amp;&#160;</td>
-          <td class="paramname"><em>os</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="memname">const int dynamicgraph::DebugTrace::SIZE = 512</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p>Referenced by <a class="el" href="a00044.html#a9d71d01c524d9fc8ad92548706100d90">dynamicgraph::SignalCast&lt; T &gt;::disp_()</a>, <a class="el" href="a00015.html#ac32a8d18f0b75db7f713d50f9c23a48d">dynamicgraph::DefaultCastRegisterer&lt; T &gt;::trace()</a>, and <a class="el" href="a00044.html#af0c0323fca629be572fda16b66d830d0">dynamicgraph::SignalCast&lt; T &gt;::trace()</a>.</p>
-
 </div>
 </div>
-<a class="anchor" id="ac32a8d18f0b75db7f713d50f9c23a48d"></a>
+<a class="anchor" id="ace984952aec058a028737735988450c7"></a>
 <div class="memitem">
 <div class="memproto">
-<div class="memtemplate">
-template&lt;typename T &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static void <a class="el" href="a00015.html">dynamicgraph::DefaultCastRegisterer</a>&lt; T &gt;::trace </td>
-          <td>(</td>
-          <td class="paramtype">const boost::any &amp;&#160;</td>
-          <td class="paramname"><em>object</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">std::ostream &amp;&#160;</td>
-          <td class="paramname"><em>os</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="memname">std::stringstream dynamicgraph::DebugTrace::tmpbuffer</td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
-<p>References <a class="el" href="a00015.html#ac57805b60eeaea2f52c4f9bbce3b185b">dynamicgraph::DefaultCastRegisterer&lt; T &gt;::disp()</a>.</p>
+</div>
+</div>
+<a class="anchor" id="a5b6f222904c43c5ae3e8646e161bb272"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int dynamicgraph::DebugTrace::traceLevel</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
 
-<p>Referenced by <a class="el" href="a00044.html#af82283f2ce377d499eca49a5ffc5322e">dynamicgraph::SignalCast&lt; T &gt;::trace_()</a>.</p>
+</div>
+</div>
+<a class="anchor" id="a5948172c86440fa6468a144e2c1d6d82"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int dynamicgraph::DebugTrace::traceLevelTemplate</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -282,8 +578,8 @@ template&lt;typename T &gt; </div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="a00099.html">dynamicgraph</a></li><li class="navelem"><a class="el" href="a00015.html">DefaultCastRegisterer</a></li>
-    <li class="footer">Generated on Mon Dec 18 2017 00:07:45 for dynamic-graph by
+    <li class="navelem"><a class="el" href="a00100.html">dynamicgraph</a></li><li class="navelem"><a class="el" href="a00015.html">DebugTrace</a></li>
+    <li class="footer">Generated on Tue Jan 16 2018 12:19:09 for dynamic-graph by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.11 </li>
   </ul>

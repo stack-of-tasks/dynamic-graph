@@ -1,24 +1,37 @@
 var NAVTREE =
 [
   [ "dynamic-graph", "index.html", [
-    [ "Introduction", "index.html#intro_dynamicGraph", null ],
-    [ "Code overview", "index.html#overview", null ],
-    [ "List of entities in this package", "index.html#entities", null ],
-    [ "About signals", "index.html#sigintro", null ],
-    [ "Notes about the scripting language", "index.html#scriptingabout", null ],
-    [ "How to use this package", "index.html#usecase", null ],
-    [ "References", "index.html#References", null ],
-    [ "dg-shell executable", "a00001.html", null ],
-    [ "ShellFunctions", "a00002.html", [
+    [ "Introduction", "index.html#intro_dynamicGraph", [
+      [ "Exemple: Real-time control", "index.html#controlgraph", null ],
+      [ "Functionnalities", "index.html#Functionnalities", null ]
+    ] ],
+    [ "Computational Entity", "index.html#entity", [
+      [ "General definition", "index.html#entity_definition", null ],
+      [ "Entity class", "index.html#entity_classes", null ],
+      [ "List of entities in this package", "index.html#entities", null ],
+      [ "Specific semantics with entities", "index.html#specific_semantics", null ]
+    ] ],
+    [ "Signals", "index.html#sigintro", null ],
+    [ "Graph", "index.html#graph", [
+      [ "Factory", "index.html#factory", null ],
+      [ "Pool", "index.html#pool", null ],
+      [ "Building the graph", "index.html#scriptingabout", null ]
+    ] ],
+    [ "How to use this package", "index.html#usecase", [
+      [ "Programmatically", "index.html#use_programmtically", null ],
+      [ "Through scripts", "index.html#use_scripts", null ],
+      [ "Tutorial", "index.html#Tutorial", null ]
+    ] ],
+    [ "References", "index.html#references", [
       [ "Description", "a00002.html#description", null ],
       [ "Commands", "a00002.html#commands", null ],
       [ "Additional information", "a00002.html#addi", null ],
       [ "Generated plugin file", "a00002.html#generates", null ]
     ] ],
-    [ "TracerRealTime", "a00003.html", [
-      [ "Sample usage", "a00003.html#sample", null ]
+    [ "TracerRealTime", "a00004.html", [
+      [ "Sample usage", "a00004.html#sample", null ]
     ] ],
-    [ "Tracer", "a00004.html", null ],
+    [ "Tracer", "a00005.html", null ],
     [ "Modules", "modules.html", "modules" ],
     [ "Namespaces", null, [
       [ "Namespace List", "namespaces.html", "namespaces" ],
@@ -56,10 +69,10 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"a00001.html",
-"a00030.html#a7d940ca5cf71c5aaf874160192e15418",
-"a00049.html#ac52a8900ecf9318c3c0ab9d887e58219",
-"a00099.html"
+"a00002.html",
+"a00031.html",
+"a00050.html#a5a36dad644972bb146a9c7cec85087f9",
+"a00094.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

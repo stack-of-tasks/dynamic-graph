@@ -1,5 +1,6 @@
 var modules =
 [
-    [ "Core classes and objects", "a00103.html", "a00103" ],
-    [ "Signals", "a00104.html", null ]
+    [ "Notes about the scripting language", "a00002.html", "a00002" ],
+    [ "Core classes and objects", "a00104.html", "a00104" ],
+    [ "Signals", "a00105.html", null ]
 ];

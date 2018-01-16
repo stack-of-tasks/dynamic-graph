@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<title>dynamicgraph::command::ValueHelper&lt; T &gt; Struct Template Reference</title>
+<title>dynamicgraph::command::Value Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css">
 <link href="doxygen.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="jquery.js"></script>
@@ -90,32 +90,601 @@ $(document).ready(function(){initNavTree('a00053.html','');});
 
 <div class="header">
   <div class="summary">
-<a href="#pub-static-attribs">Static Public Attributes</a> &#124;
+<a href="#pub-types">Public Types</a> &#124;
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
+<a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="#friends">Friends</a> &#124;
 <a href="a00313.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">dynamicgraph::command::ValueHelper&lt; T &gt; Struct Template Reference</div>  </div>
+<div class="title">dynamicgraph::command::Value Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
 <p><code>#include &lt;dynamic-graph/value.h&gt;</code></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
-Static Public Attributes</h2></td></tr>
-<tr class="memitem:aed0fb42c31ea70a5f226700d9eb02129"><td class="memItemLeft" align="right" valign="top">static const <a class="el" href="a00052.html#a8b1ad07088898b7d8e530682e589576f">Value::Type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00053.html#aed0fb42c31ea70a5f226700d9eb02129">TypeID</a></td></tr>
-<tr class="separator:aed0fb42c31ea70a5f226700d9eb02129"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:a8b1ad07088898b7d8e530682e589576f"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00053.html#a8b1ad07088898b7d8e530682e589576f">Type</a> { <br />
+&#160;&#160;<a class="el" href="a00053.html#a8b1ad07088898b7d8e530682e589576fa714e68670e3cc48d9c523347aaf7fa91">NONE</a>, 
+<br />
+&#160;&#160;<a class="el" href="a00053.html#a8b1ad07088898b7d8e530682e589576faa88ef7d154e97a15c69837756b4629a2">BOOL</a>, 
+<br />
+&#160;&#160;<a class="el" href="a00053.html#a8b1ad07088898b7d8e530682e589576fa0008db55c2d060ff726ad300490957d6">UNSIGNED</a>, 
+<br />
+&#160;&#160;<a class="el" href="a00053.html#a8b1ad07088898b7d8e530682e589576fab265227d95036f0568ad2428cbf2850c">INT</a>, 
+<br />
+&#160;&#160;<a class="el" href="a00053.html#a8b1ad07088898b7d8e530682e589576fa88a9765d18f1dc88089d029856241d88">FLOAT</a>, 
+<br />
+&#160;&#160;<a class="el" href="a00053.html#a8b1ad07088898b7d8e530682e589576fa2c5d675d68e131f4e31c3d6bba10bede">DOUBLE</a>, 
+<br />
+&#160;&#160;<a class="el" href="a00053.html#a8b1ad07088898b7d8e530682e589576fa6037a0d2ce6a029f7048ae973a4933d1">STRING</a>, 
+<br />
+&#160;&#160;<a class="el" href="a00053.html#a8b1ad07088898b7d8e530682e589576fa80ad7c49e3d452f05f31c1351ca20b07">VECTOR</a>, 
+<br />
+&#160;&#160;<a class="el" href="a00053.html#a8b1ad07088898b7d8e530682e589576fab545daa6ac1fffe9b94525a46dfaa369">MATRIX</a>, 
+<br />
+&#160;&#160;<a class="el" href="a00053.html#a8b1ad07088898b7d8e530682e589576fa7e2fcb82e42813ad19a0b9a1928df4b8">MATRIX4D</a>, 
+<br />
+&#160;&#160;<a class="el" href="a00053.html#a8b1ad07088898b7d8e530682e589576fa597ec6fad1dc0b2f56fad11818d61ea0">NB_TYPES</a>
+<br />
+ }</td></tr>
+<tr class="separator:a8b1ad07088898b7d8e530682e589576f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a0cab171b93c4f4c399c37a8830d3e8a9"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00053.html#a0cab171b93c4f4c399c37a8830d3e8a9">~Value</a> ()</td></tr>
+<tr class="separator:a0cab171b93c4f4c399c37a8830d3e8a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4dceb38dddf7e191e9b8c3c051845001"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00053.html#a4dceb38dddf7e191e9b8c3c051845001">deleteValue</a> ()</td></tr>
+<tr class="separator:a4dceb38dddf7e191e9b8c3c051845001"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acbddf6024f516382e89a7fc262d5795f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00053.html#acbddf6024f516382e89a7fc262d5795f">Value</a> (const bool &amp;<a class="el" href="a00053.html#aa9b16c31672114c16e81049c0aa0495c">value</a>)</td></tr>
+<tr class="separator:acbddf6024f516382e89a7fc262d5795f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa9fcf61eb22a30df8879fb6ec5c8a2a0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00053.html#aa9fcf61eb22a30df8879fb6ec5c8a2a0">Value</a> (const unsigned &amp;<a class="el" href="a00053.html#aa9b16c31672114c16e81049c0aa0495c">value</a>)</td></tr>
+<tr class="separator:aa9fcf61eb22a30df8879fb6ec5c8a2a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adcffe9a55345cc32a398a1fd8d2ae151"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00053.html#adcffe9a55345cc32a398a1fd8d2ae151">Value</a> (const int &amp;<a class="el" href="a00053.html#aa9b16c31672114c16e81049c0aa0495c">value</a>)</td></tr>
+<tr class="separator:adcffe9a55345cc32a398a1fd8d2ae151"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6bc690dad0d55c10bcc099f828a143db"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00053.html#a6bc690dad0d55c10bcc099f828a143db">Value</a> (const float &amp;<a class="el" href="a00053.html#aa9b16c31672114c16e81049c0aa0495c">value</a>)</td></tr>
+<tr class="separator:a6bc690dad0d55c10bcc099f828a143db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a364031c21bf1045ee29ea2d18a89401d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00053.html#a364031c21bf1045ee29ea2d18a89401d">Value</a> (const double &amp;<a class="el" href="a00053.html#aa9b16c31672114c16e81049c0aa0495c">value</a>)</td></tr>
+<tr class="separator:a364031c21bf1045ee29ea2d18a89401d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae8e842549d739a78d496b2863142887d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00053.html#ae8e842549d739a78d496b2863142887d">Value</a> (const std::string &amp;<a class="el" href="a00053.html#aa9b16c31672114c16e81049c0aa0495c">value</a>)</td></tr>
+<tr class="separator:ae8e842549d739a78d496b2863142887d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a422cfbd11bd76b37dcbd9ac928f398fe"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00053.html#a422cfbd11bd76b37dcbd9ac928f398fe">Value</a> (const <a class="el" href="a00100.html#aa80b557e83a1386adf67f925062124f8">Vector</a> &amp;<a class="el" href="a00053.html#aa9b16c31672114c16e81049c0aa0495c">value</a>)</td></tr>
+<tr class="separator:a422cfbd11bd76b37dcbd9ac928f398fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad4c276f0fb87c300aab7a1eb989b98ce"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00053.html#ad4c276f0fb87c300aab7a1eb989b98ce">Value</a> (const Eigen::MatrixXd &amp;<a class="el" href="a00053.html#aa9b16c31672114c16e81049c0aa0495c">value</a>)</td></tr>
+<tr class="separator:ad4c276f0fb87c300aab7a1eb989b98ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8dc1b1b6f71ea074ea930061b6c8a31a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00053.html#a8dc1b1b6f71ea074ea930061b6c8a31a">Value</a> (const Eigen::Matrix4d &amp;<a class="el" href="a00053.html#aa9b16c31672114c16e81049c0aa0495c">value</a>)</td></tr>
+<tr class="separator:a8dc1b1b6f71ea074ea930061b6c8a31a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac0b13ebdd034bb2511753ee924bdb711"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00053.html#ac0b13ebdd034bb2511753ee924bdb711">Value</a> (const <a class="el" href="a00053.html">Value</a> &amp;<a class="el" href="a00053.html#aa9b16c31672114c16e81049c0aa0495c">value</a>)</td></tr>
+<tr class="memdesc:ac0b13ebdd034bb2511753ee924bdb711"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy constructor.  <a href="#ac0b13ebdd034bb2511753ee924bdb711">More...</a><br /></td></tr>
+<tr class="separator:ac0b13ebdd034bb2511753ee924bdb711"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa110513fefc4406cde866ac3ed16fcb4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00053.html#aa110513fefc4406cde866ac3ed16fcb4">Value</a> ()</td></tr>
+<tr class="separator:aa110513fefc4406cde866ac3ed16fcb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab32648206df3b4bc6388ae4f63edc9a8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00053.html">Value</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00053.html#ab32648206df3b4bc6388ae4f63edc9a8">operator=</a> (const <a class="el" href="a00053.html">Value</a> &amp;<a class="el" href="a00053.html#aa9b16c31672114c16e81049c0aa0495c">value</a>)</td></tr>
+<tr class="separator:ab32648206df3b4bc6388ae4f63edc9a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a73554e4a2acf6a6ea92b3f6f39b56613"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00053.html#a8b1ad07088898b7d8e530682e589576f">Type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00053.html#a73554e4a2acf6a6ea92b3f6f39b56613">type</a> () const </td></tr>
+<tr class="memdesc:a73554e4a2acf6a6ea92b3f6f39b56613"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the type of the value.  <a href="#a73554e4a2acf6a6ea92b3f6f39b56613">More...</a><br /></td></tr>
+<tr class="separator:a73554e4a2acf6a6ea92b3f6f39b56613"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa9b16c31672114c16e81049c0aa0495c"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="a00019.html">EitherType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00053.html#aa9b16c31672114c16e81049c0aa0495c">value</a> () const </td></tr>
+<tr class="memdesc:aa9b16c31672114c16e81049c0aa0495c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the value as a castable value into the approriate type.  <a href="#aa9b16c31672114c16e81049c0aa0495c">More...</a><br /></td></tr>
+<tr class="separator:aa9b16c31672114c16e81049c0aa0495c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6bbf2862ddc66d40426bee6e76dc10b3"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00053.html#a6bbf2862ddc66d40426bee6e76dc10b3">boolValue</a> () const </td></tr>
+<tr class="separator:a6bbf2862ddc66d40426bee6e76dc10b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a670a8b880cb4117e4cdf73b1d9a44e24"><td class="memItemLeft" align="right" valign="top">unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00053.html#a670a8b880cb4117e4cdf73b1d9a44e24">unsignedValue</a> () const </td></tr>
+<tr class="separator:a670a8b880cb4117e4cdf73b1d9a44e24"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a09103abaaf332315e1687dcd83c15143"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00053.html#a09103abaaf332315e1687dcd83c15143">intValue</a> () const </td></tr>
+<tr class="separator:a09103abaaf332315e1687dcd83c15143"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa6db9eb1582c32d7618fdb2da251f713"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00053.html#aa6db9eb1582c32d7618fdb2da251f713">floatValue</a> () const </td></tr>
+<tr class="separator:aa6db9eb1582c32d7618fdb2da251f713"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a46080563af8a86c5e2887eba7ccbbef4"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00053.html#a46080563af8a86c5e2887eba7ccbbef4">doubleValue</a> () const </td></tr>
+<tr class="separator:a46080563af8a86c5e2887eba7ccbbef4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad0eb77fe4fa3a4092646f02d08300748"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00053.html#ad0eb77fe4fa3a4092646f02d08300748">stringValue</a> () const </td></tr>
+<tr class="separator:ad0eb77fe4fa3a4092646f02d08300748"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac1b0e15ddc1543628aa5a283ace1c134"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00100.html#aa80b557e83a1386adf67f925062124f8">Vector</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00053.html#ac1b0e15ddc1543628aa5a283ace1c134">vectorValue</a> () const </td></tr>
+<tr class="separator:ac1b0e15ddc1543628aa5a283ace1c134"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a69ecc23f6b6c5efbea4a1463a63a6a78"><td class="memItemLeft" align="right" valign="top">Eigen::MatrixXd&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00053.html#a69ecc23f6b6c5efbea4a1463a63a6a78">matrixXdValue</a> () const </td></tr>
+<tr class="separator:a69ecc23f6b6c5efbea4a1463a63a6a78"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea3042513f889251803a08c02d4c319c"><td class="memItemLeft" align="right" valign="top">Eigen::Matrix4d&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00053.html#aea3042513f889251803a08c02d4c319c">matrix4dValue</a> () const </td></tr>
+<tr class="separator:aea3042513f889251803a08c02d4c319c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
+Static Public Member Functions</h2></td></tr>
+<tr class="memitem:ace185a663ea4b56bc268830979271dcb"><td class="memItemLeft" align="right" valign="top">static std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00053.html#ace185a663ea4b56bc268830979271dcb">typeName</a> (<a class="el" href="a00053.html#a8b1ad07088898b7d8e530682e589576f">Type</a> <a class="el" href="a00053.html#a73554e4a2acf6a6ea92b3f6f39b56613">type</a>)</td></tr>
+<tr class="memdesc:ace185a663ea4b56bc268830979271dcb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the name of the type.  <a href="#ace185a663ea4b56bc268830979271dcb">More...</a><br /></td></tr>
+<tr class="separator:ace185a663ea4b56bc268830979271dcb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr class="memitem:ad898cb72b7e56fb595460fb8d6ed415d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00053.html#a8b1ad07088898b7d8e530682e589576f">Type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00053.html#ad898cb72b7e56fb595460fb8d6ed415d">type_</a></td></tr>
+<tr class="separator:ad898cb72b7e56fb595460fb8d6ed415d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a27a56a72b4055821192430eaea5286ed"><td class="memItemLeft" align="right" valign="top">const void *const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00053.html#a27a56a72b4055821192430eaea5286ed">value_</a></td></tr>
+<tr class="separator:a27a56a72b4055821192430eaea5286ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
+Friends</h2></td></tr>
+<tr class="memitem:ac11c9096a2e2791e6aa1c7f364f1c77c"><td class="memItemLeft" align="right" valign="top">class&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00053.html#ac11c9096a2e2791e6aa1c7f364f1c77c">EitherType</a></td></tr>
+<tr class="separator:ac11c9096a2e2791e6aa1c7f364f1c77c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ecca1cfb3c499af94e61f5906aed725"><td class="memItemLeft" align="right" valign="top">DYNAMIC_GRAPH_DLLAPI friend std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00053.html#a3ecca1cfb3c499af94e61f5906aed725">operator&lt;&lt;</a> (std::ostream &amp;os, const <a class="el" href="a00053.html">Value</a> &amp;<a class="el" href="a00053.html#aa9b16c31672114c16e81049c0aa0495c">value</a>)</td></tr>
+<tr class="memdesc:a3ecca1cfb3c499af94e61f5906aed725"><td class="mdescLeft">&#160;</td><td class="mdescRight">Output in a stream.  <a href="#a3ecca1cfb3c499af94e61f5906aed725">More...</a><br /></td></tr>
+<tr class="separator:a3ecca1cfb3c499af94e61f5906aed725"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Data Documentation</h2>
-<a class="anchor" id="aed0fb42c31ea70a5f226700d9eb02129"></a>
+<h2 class="groupheader">Member Enumeration Documentation</h2>
+<a class="anchor" id="a8b1ad07088898b7d8e530682e589576f"></a>
 <div class="memitem">
 <div class="memproto">
-<div class="memtemplate">
-template&lt;typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="a00053.html#a8b1ad07088898b7d8e530682e589576f">dynamicgraph::command::Value::Type</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a class="anchor" id="a8b1ad07088898b7d8e530682e589576fa714e68670e3cc48d9c523347aaf7fa91"></a>NONE&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a8b1ad07088898b7d8e530682e589576faa88ef7d154e97a15c69837756b4629a2"></a>BOOL&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a8b1ad07088898b7d8e530682e589576fa0008db55c2d060ff726ad300490957d6"></a>UNSIGNED&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a8b1ad07088898b7d8e530682e589576fab265227d95036f0568ad2428cbf2850c"></a>INT&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a8b1ad07088898b7d8e530682e589576fa88a9765d18f1dc88089d029856241d88"></a>FLOAT&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a8b1ad07088898b7d8e530682e589576fa2c5d675d68e131f4e31c3d6bba10bede"></a>DOUBLE&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a8b1ad07088898b7d8e530682e589576fa6037a0d2ce6a029f7048ae973a4933d1"></a>STRING&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a8b1ad07088898b7d8e530682e589576fa80ad7c49e3d452f05f31c1351ca20b07"></a>VECTOR&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a8b1ad07088898b7d8e530682e589576fab545daa6ac1fffe9b94525a46dfaa369"></a>MATRIX&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a8b1ad07088898b7d8e530682e589576fa7e2fcb82e42813ad19a0b9a1928df4b8"></a>MATRIX4D&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a8b1ad07088898b7d8e530682e589576fa597ec6fad1dc0b2f56fad11818d61ea0"></a>NB_TYPES&#160;</td><td class="fielddoc">
+</td></tr>
+</table>
+
+</div>
+</div>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="a0cab171b93c4f4c399c37a8830d3e8a9"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">dynamicgraph::command::Value::~Value </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="acbddf6024f516382e89a7fc262d5795f"></a>
+<div class="memitem">
+<div class="memproto">
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const <a class="el" href="a00052.html#a8b1ad07088898b7d8e530682e589576f">Value::Type</a> <a class="el" href="a00053.html">dynamicgraph::command::ValueHelper</a>&lt; T &gt;::TypeID</td>
+          <td class="memname">dynamicgraph::command::Value::Value </td>
+          <td>(</td>
+          <td class="paramtype">const bool &amp;&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="aa9fcf61eb22a30df8879fb6ec5c8a2a0"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">dynamicgraph::command::Value::Value </td>
+          <td>(</td>
+          <td class="paramtype">const unsigned &amp;&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="adcffe9a55345cc32a398a1fd8d2ae151"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">dynamicgraph::command::Value::Value </td>
+          <td>(</td>
+          <td class="paramtype">const int &amp;&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a6bc690dad0d55c10bcc099f828a143db"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">dynamicgraph::command::Value::Value </td>
+          <td>(</td>
+          <td class="paramtype">const float &amp;&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a364031c21bf1045ee29ea2d18a89401d"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">dynamicgraph::command::Value::Value </td>
+          <td>(</td>
+          <td class="paramtype">const double &amp;&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ae8e842549d739a78d496b2863142887d"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">dynamicgraph::command::Value::Value </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a422cfbd11bd76b37dcbd9ac928f398fe"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">dynamicgraph::command::Value::Value </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="a00100.html#aa80b557e83a1386adf67f925062124f8">Vector</a> &amp;&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ad4c276f0fb87c300aab7a1eb989b98ce"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">dynamicgraph::command::Value::Value </td>
+          <td>(</td>
+          <td class="paramtype">const Eigen::MatrixXd &amp;&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a8dc1b1b6f71ea074ea930061b6c8a31a"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">dynamicgraph::command::Value::Value </td>
+          <td>(</td>
+          <td class="paramtype">const Eigen::Matrix4d &amp;&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ac0b13ebdd034bb2511753ee924bdb711"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">dynamicgraph::command::Value::Value </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="a00053.html">Value</a> &amp;&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Copy constructor. </p>
+
+</div>
+</div>
+<a class="anchor" id="aa110513fefc4406cde866ac3ed16fcb4"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">dynamicgraph::command::Value::Value </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a6bbf2862ddc66d40426bee6e76dc10b3"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool dynamicgraph::command::Value::boolValue </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a4dceb38dddf7e191e9b8c3c051845001"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void dynamicgraph::command::Value::deleteValue </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a46080563af8a86c5e2887eba7ccbbef4"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double dynamicgraph::command::Value::doubleValue </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="aa6db9eb1582c32d7618fdb2da251f713"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float dynamicgraph::command::Value::floatValue </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a09103abaaf332315e1687dcd83c15143"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int dynamicgraph::command::Value::intValue </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="aea3042513f889251803a08c02d4c319c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Eigen::Matrix4d dynamicgraph::command::Value::matrix4dValue </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a69ecc23f6b6c5efbea4a1463a63a6a78"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Eigen::MatrixXd dynamicgraph::command::Value::matrixXdValue </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ab32648206df3b4bc6388ae4f63edc9a8"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00053.html">Value</a> dynamicgraph::command::Value::operator= </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="a00053.html">Value</a> &amp;&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ad0eb77fe4fa3a4092646f02d08300748"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string dynamicgraph::command::Value::stringValue </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a73554e4a2acf6a6ea92b3f6f39b56613"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00053.html#a8b1ad07088898b7d8e530682e589576f">Type</a> dynamicgraph::command::Value::type </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Return the type of the value. </p>
+
+</div>
+</div>
+<a class="anchor" id="ace185a663ea4b56bc268830979271dcb"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static std::string dynamicgraph::command::Value::typeName </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="a00053.html#a8b1ad07088898b7d8e530682e589576f">Type</a>&#160;</td>
+          <td class="paramname"><em>type</em></td><td>)</td>
+          <td></td>
         </tr>
       </table>
   </td>
@@ -123,6 +692,138 @@ template&lt;typename T &gt; </div>
 <span class="mlabels"><span class="mlabel">static</span></span>  </td>
   </tr>
 </table>
+</div><div class="memdoc">
+
+<p>Return the name of the type. </p>
+
+</div>
+</div>
+<a class="anchor" id="a670a8b880cb4117e4cdf73b1d9a44e24"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned dynamicgraph::command::Value::unsignedValue </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="aa9b16c31672114c16e81049c0aa0495c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="a00019.html">EitherType</a> dynamicgraph::command::Value::value </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Return the value as a castable value into the approriate type. </p>
+<p>For instance, </p><div class="fragment"><div class="line"><a class="code" href="a00053.html#aa110513fefc4406cde866ac3ed16fcb4">Value</a> v1(5.0); <span class="comment">// v1 is of type double</span></div><div class="line"><a class="code" href="a00053.html#aa110513fefc4406cde866ac3ed16fcb4">Value</a> v2(3);   <span class="comment">// v2 is of type int</span></div><div class="line"><span class="keywordtype">double</span> x1 = v1.value();</div><div class="line"><span class="keywordtype">double</span> x2 = v2.value();</div></div><!-- fragment --><p> The first assignment will succeed, while the second one will throw an exception. </p>
+
+</div>
+</div>
+<a class="anchor" id="ac1b0e15ddc1543628aa5a283ace1c134"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00100.html#aa80b557e83a1386adf67f925062124f8">Vector</a> dynamicgraph::command::Value::vectorValue </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Friends And Related Function Documentation</h2>
+<a class="anchor" id="ac11c9096a2e2791e6aa1c7f364f1c77c"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">friend class <a class="el" href="a00019.html">EitherType</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a3ecca1cfb3c499af94e61f5906aed725"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">DYNAMIC_GRAPH_DLLAPI friend std::ostream&amp; operator&lt;&lt; </td>
+          <td>(</td>
+          <td class="paramtype">std::ostream &amp;&#160;</td>
+          <td class="paramname"><em>os</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="a00053.html">Value</a> &amp;&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Output in a stream. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="ad898cb72b7e56fb595460fb8d6ed415d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00053.html#a8b1ad07088898b7d8e530682e589576f">Type</a> dynamicgraph::command::Value::type_</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a27a56a72b4055821192430eaea5286ed"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const void* const dynamicgraph::command::Value::value_</td>
+        </tr>
+      </table>
 </div><div class="memdoc">
 
 </div>
@@ -133,8 +834,8 @@ template&lt;typename T &gt; </div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="a00099.html">dynamicgraph</a></li><li class="navelem"><a class="el" href="a00100.html">command</a></li><li class="navelem"><a class="el" href="a00053.html">ValueHelper</a></li>
-    <li class="footer">Generated on Mon Dec 18 2017 00:07:45 for dynamic-graph by
+    <li class="navelem"><a class="el" href="a00100.html">dynamicgraph</a></li><li class="navelem"><a class="el" href="a00101.html">command</a></li><li class="navelem"><a class="el" href="a00053.html">Value</a></li>
+    <li class="footer">Generated on Tue Jan 16 2018 12:19:09 for dynamic-graph by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.11 </li>
   </ul>

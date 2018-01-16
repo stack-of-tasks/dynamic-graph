@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<title>Signals</title>
+<title>Core classes and objects</title>
 <link href="tabs.css" rel="stylesheet" type="text/css">
 <link href="doxygen.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="jquery.js"></script>
@@ -81,36 +81,96 @@ $(document).ready(function(){initNavTree('a00104.html','');});
 </div>
 
 <div class="header">
+  <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#define-members">Macros</a>  </div>
   <div class="headertitle">
-<div class="title">Signals</div>  </div>
+<div class="title">Core classes and objects</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>This part provides the mechanism to transfer information from one entity to another.  
+<p>Classes, entities and binaries that make up the core of the dynamic-graph library are listed here.  
 <a href="#details">More...</a></p>
-<p>This part provides the mechanism to transfer information from one entity to another. </p>
-<p>There are three main types of signals, all deriving from the common class <a class="el" href="a00043.html" title="The base class for signals: not to be used as such. ">dynamicgraph::SignalBase</a> : </p><ul>
-<li><a class="el" href="a00040.html" title="Signals link I/O ports of entities. They can be constant-valued signals, or copy the value of a heap ...">dynamicgraph::Signal</a> : a "normal" signal, passing data around <b>by</b> <b>value</b> </li>
-<li><a class="el" href="a00047.html" title="This is the only type of signal that can be plugged to, using the plug () command. ">dynamicgraph::SignalPtr</a> : a signal used for efficient passing of large data, by reference (or rather, C pointers)* </li>
-<li><a class="el" href="a00048.html" title="A type of signal that enforces a time dependency between other signals, making sure its inputs are up...">dynamicgraph::SignalTimeDependent</a> : a signal that enforces a time dependency between other signals, making sure its inputs are up to date on access, using a incrementing time tick as reference.</li>
-</ul>
-<p><br />
-* Note: this may cause a problem if this package is used in a multithreaded program.</p>
-<p>Signals can be grouped together using <a class="el" href="a00041.html" title="TODO. ">dynamicgraph::SignalArray</a>.</p>
-<p>Signals implement a caching mechanism by storing the last computation time tick.</p>
-<p>Some signals can be plugged ("plug" script command) into one another or set through shell commands.</p>
-<p>For more information, please see the individual signal pages.</p>
-<p><b>Samples</b> </p>
-<ul>
-<li>The following code ensures the jacobian output signal uses up-to-date values for its computations, when accessed.</li>
-</ul>
-<div class="fragment"><div class="line"><span class="comment">// This signal returns the Jacobian of the current value</span></div><div class="line"><span class="comment">//  according to the robot state</span></div><div class="line">dg::SignalTimeDependent&lt;ml::Matrix,int&gt; jacobianSOUT;</div><div class="line"></div><div class="line">(...)</div><div class="line"></div><div class="line">jacobianSOUT.addDependency( positionSIN );</div><div class="line">jacobianSOUT.addDependency( articularJacobianSIN );</div></div><!-- fragment --> </div><!-- contents -->
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00020.html">dynamicgraph::Entity</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">This class represents an entity, i.e.  <a href="a00020.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00027.html">dynamicgraph::FactoryStorage</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Provides a way to create <a class="el" href="a00020.html" title="This class represents an entity, i.e. ">Entity</a> objects from their class name.  <a href="a00027.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00022.html">dynamicgraph::EntityRegisterer</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">This class automatically register an <a class="el" href="a00020.html" title="This class represents an entity, i.e. ">Entity</a> to the global factory at initialization and unregister it during instance destruction.  <a href="a00022.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00031.html">dynamicgraph::PoolStorage</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Singleton that keeps track of all the entities.  <a href="a00031.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00043.html">dynamicgraph::SignalArray_const&lt; Time &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">TODO.  <a href="a00043.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00042.html">dynamicgraph::SignalArray&lt; Time &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">TODO.  <a href="a00042.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00048.html">dynamicgraph::SignalPtr&lt; T, Time &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is the only type of signal that can be plugged to, using the plug () command.  <a href="a00048.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00041.html">dynamicgraph::Signal&lt; T, Time &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Signals link I/O ports of entities. They can be constant-valued signals, or copy the value of a heap variable, or evaluated as a function. See <a class="el" href="a00048.html" title="This is the only type of signal that can be plugged to, using the plug () command. ">SignalPtr</a> and <a class="el" href="a00049.html" title="A type of signal that enforces a time dependency between other signals, making sure its inputs are up...">SignalTimeDependent</a> for other types of signals, and <a class="el" href="a00042.html" title="TODO. ">SignalArray</a> for a way of grouping them.  <a href="a00041.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:ga85cdc78c7d7456c08cc56b701770542d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00104.html#ga85cdc78c7d7456c08cc56b701770542d">DYNAMICGRAPH_FACTORY_ENTITY_PLUGIN</a>(CLASSTYPE,  CLASSNAME)</td></tr>
+<tr class="memdesc:ga85cdc78c7d7456c08cc56b701770542d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Automatically register a class to the global factory by relying on the static initialization.  <a href="#ga85cdc78c7d7456c08cc56b701770542d">More...</a><br /></td></tr>
+<tr class="separator:ga85cdc78c7d7456c08cc56b701770542d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<p>Classes, entities and binaries that make up the core of the dynamic-graph library are listed here. </p>
+<h2 class="groupheader">Macro Definition Documentation</h2>
+<a class="anchor" id="ga85cdc78c7d7456c08cc56b701770542d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DYNAMICGRAPH_FACTORY_ENTITY_PLUGIN</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">CLASSTYPE, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">CLASSNAME&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Value:</b><div class="fragment"><div class="line"><span class="keyword">const</span> std::string CLASSTYPE::CLASS_NAME = CLASSNAME;      \</div><div class="line">  extern <span class="stringliteral">&quot;C&quot;</span> {                \</div><div class="line">    <a class="code" href="a00020.html">::dynamicgraph::Entity</a>*           \</div><div class="line">    EntityMaker_##CLASSTYPE(<span class="keyword">const</span> std::string&amp; objname)     \</div><div class="line">    {                 \</div><div class="line">      return <span class="keyword">new</span> CLASSTYPE (objname);         \</div><div class="line">    }                 \</div><div class="line">    ::dynamicgraph::EntityRegisterer          \</div><div class="line">    reg_##CLASSTYPE (CLASSNAME,           \</div><div class="line">         &amp;EntityMaker_##CLASSTYPE);       \</div><div class="line">  }                 \</div><div class="line">  struct e_n_d__w_i_t_h__s_e_m_i_c_o_l_o_n</div><div class="ttc" id="a00020_html"><div class="ttname"><a href="a00020.html">dynamicgraph::Entity</a></div><div class="ttdoc">This class represents an entity, i.e. </div><div class="ttdef"><b>Definition:</b> entity.h:72</div></div>
+</div><!-- fragment -->
+<p>Automatically register a class to the global factory by relying on the static initialization. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">CLASSTYPE</td><td>the Entity type to be registered </td></tr>
+    <tr><td class="paramname">CLASSNAME</td><td>the name of the Entity to be registered (this must be a std::string or a type implicitly castable into a std::string such as classic C string delimited by double quotes). </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+</div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.8.6-->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Mon Dec 18 2017 00:07:45 for dynamic-graph by
+    <li class="footer">Generated on Tue Jan 16 2018 12:19:09 for dynamic-graph by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.11 </li>
   </ul>

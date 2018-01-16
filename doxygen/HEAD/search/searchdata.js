@@ -11,7 +11,7 @@ var indexSectionsWithContent =
   8: "abcdefgimnoprstuvw",
   9: "eo",
   10: "_cdsv",
-  11: "cs",
+  11: "cns",
   12: "dst"
 };
 

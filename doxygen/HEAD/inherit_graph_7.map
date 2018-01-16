@@ -1,7 +1,7 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
 <area shape="rect" id="node1" title="STL class. " alt="" coords="5,56,109,83"/>
-<area shape="rect" id="node2" href="$a00022.html" title="Abstract root class for all dynamic&#45;graph exceptions. " alt="" coords="157,56,376,83"/>
-<area shape="rect" id="node3" href="$a00023.html" title="Generic error class. " alt="" coords="424,5,637,32"/>
-<area shape="rect" id="node4" href="$a00024.html" title="Exceptions raised when an error related to signals happen. " alt="" coords="428,56,633,83"/>
-<area shape="rect" id="node5" href="$a00025.html" title="Exceptions raised when an error related to traces happen. " alt="" coords="426,107,635,133"/>
+<area shape="rect" id="node2" href="$a00023.html" title="Abstract root class for all dynamic&#45;graph exceptions. " alt="" coords="157,56,376,83"/>
+<area shape="rect" id="node3" href="$a00024.html" title="Generic error class. " alt="" coords="424,5,637,32"/>
+<area shape="rect" id="node4" href="$a00025.html" title="Exceptions raised when an error related to signals happen. " alt="" coords="428,56,633,83"/>
+<area shape="rect" id="node5" href="$a00026.html" title="Exceptions raised when an error related to traces happen. " alt="" coords="426,107,635,133"/>
 </map>
