@@ -1,10 +1,9 @@
 dynamic-graph
 =============
 
-[![Build Status](https://travis-ci.org/stack-of-tasks/dynamic-graph.png)](https://travis-ci.org/stack-of-tasks/dynamic-graph)
-[![Coverage Status](https://coveralls.io/repos/stack-of-tasks/dynamic-graph/badge.png?branch=master)](https://coveralls.io/r/stack-of-tasks/dynamic-graph?branch=master)
-
-![LGPL-3](https://www.gnu.org/graphics/lgplv3-88x31.png)
+[![Building Status](https://travis-ci.org/stack-of-tasks/dynamic-graph.svg?branch=master)](https://travis-ci.org/stack-of-tasks/dynamic-graph)
+[![Pipeline status](https://gepgitlab.laas.fr/stack-of-tasks/dynamic-graph/badges/master/pipeline.svg)](https://gepgitlab.laas.fr/stack-of-tasks/dynamic-graph/commits/master)
+[![Coverage report](https://gepgitlab.laas.fr/stack-of-tasks/dynamic-graph/badges/master/coverage.svg?job=doc-coverage)](http://projects.laas.fr/stack-of-tasks/doc/stack-of-tasks/dynamic-graph/master/coverage/)
 
 This software provides an efficient way to modelize a C++ data-flow.
 
