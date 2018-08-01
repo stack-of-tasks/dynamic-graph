@@ -107,19 +107,6 @@ namespace dynamicgraph
     /// \param sigpath stream containing a string of the form "entity.signal"
     SignalBase<int>& getSignal( std::istringstream& sigpath );
 
-    /*! \brief This method looks for the object named objectName,
-      and ask to provide the function functionName with the arguments cmdArg.
-      If the method of the object displays some information this will
-      be done on os.
-
-      The commands specific to the \b PoolStorage singleton are:
-      \li \b list : List all the entities registered in the pool
-    */
-    void commandLine (const std::string& objectName,
-		      const std::string& functionName,
-		      std::istringstream& cmdArg,
-		      std::ostream& os);
-
     /*! \brief This method write a graph description on the file named
         FileName. */
     void writeGraph (const std::string& aFileName);

@@ -235,56 +235,6 @@ getCommandList  () const
   return Entity_COMMAND_LIST;
 }
 
-void Entity::
-commandLine( const std::string& cmdLine,std::istringstream& cmdArgs,std::ostream& os )
-{
-  if( cmdLine == "help" )
-    {
-      os << "Entity : " << std::endl
-	 << "  - print\t\t\tWhat d'you think?"<<endl
-	 << "  - signals\t\t\tDisplay the signals list."<<endl
-	 << "  - signalDep <signame> \tDisplay the dependency graph for signal signame."<<endl;
-    }
-  else if( cmdLine == "print")
-    {
-      os << *this << std::endl;
-    }
-  else if( cmdLine == "signals")
-    {      displaySignalList(os);    }
-  else if( cmdLine == "signalDep")
-    {
-      string sig; cmdArgs>>sig;
-      cmdArgs >>  ws; int depth=-1;
-      if( cmdArgs.good () ) { cmdArgs >> depth; }
-      getSignal(sig) .displayDependencies( os,depth ); os<<endl;
-    }
-  else
-    {
-      try{
-	SignalBase<int> & sig = getSignal( cmdLine );
-
-	int time; cmdArgs>>ws;
-	if( cmdArgs.good () )
-	  {cmdArgs >> time;} else {time=0;}
-	sig.recompute( time );
-
-	os << cmdLine << " = "; sig.get( os );
-      } catch( ExceptionFactory& e ) {
-	switch( e.getCode () )
-	  {
-	  case ExceptionFactory::UNREFERED_SIGNAL:
-	    DG_THROW ExceptionFactory( ExceptionFactory::UNREFERED_FUNCTION,
-					   "The requested function/signal :","<%s> is "
-					   "not registered.",cmdLine.c_str () );
-	    break;
-	  default:
-	    throw;
-	  }
-      } catch( ... ) { throw;  }
-    }
-
-}
-
 /// Add a command to Entity
 void Entity::
 addCommand(const std::string& inName, Command* command)

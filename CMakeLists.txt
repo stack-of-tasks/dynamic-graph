@@ -40,9 +40,6 @@ GENERATE_CONFIGURATION_HEADER(
   config-tracer-real-time.hh DG_TRACERREALTIME tracer_real_time_EXPORTS)
 GENERATE_CONFIGURATION_HEADER(
   ${HEADER_DIR}
-  config-shell-procedure.hh DG_SHELLPROCEDURE shell_procedure_EXPORTS)
-GENERATE_CONFIGURATION_HEADER(
-  ${HEADER_DIR}
   config-contiifstream.hh DG_CONTIIFSTREAM contiifstream_EXPORTS)
 
 # FIXME: to be changed into lib/dynamic-graph
@@ -65,7 +62,6 @@ SEARCH_FOR_EIGEN()
 
 ADD_SUBDIRECTORY(src)
 ADD_SUBDIRECTORY(include)
-ADD_SUBDIRECTORY(doc)
 ADD_SUBDIRECTORY(tests)
 ADD_SUBDIRECTORY(share)
 

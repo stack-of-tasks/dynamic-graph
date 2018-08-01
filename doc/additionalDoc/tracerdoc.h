@@ -6,8 +6,7 @@ the tracked signal values are recorded and traced to a file. The behavior of the
 function can be changed, from printing to a file immediately after recording, to printing out
 only when asked explicitly.
 \section commands Commands
-The \b commands that this entity exposes are (you can also type [entity name].help at the
-dynamic-graph shell command line to see this list):
+The \b commands that this entity exposes are:
 \code
 open, close (a file);
 add (a signal)

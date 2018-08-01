@@ -169,16 +169,6 @@ namespace dynamicgraph
     /// \param list Available entities will be appended to list.
     void listEntities (std::vector <std::string>& list) const;
 
-    /// \brief Define FactoryStorage commands.
-    ///
-    /// Define two equivalent commands:
-    /// - list
-    /// - listEntities
-    /// listing the available entities.
-    void commandLine (const std::string& cmdLine,
-		      std::istringstream& cmdArgs,
-		      std::ostream& os);
-
   private:
 
     /// \brief Constructor the factory.
@@ -197,7 +187,7 @@ namespace dynamicgraph
     /// \brief The entity map storing information about how to
     /// instantiate an Entity.
     EntityMap entityMap;
-    
+
     /// \pointer to the unique object of the class
     static FactoryStorage* instance_;
   };
