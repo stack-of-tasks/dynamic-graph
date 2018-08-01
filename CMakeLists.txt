@@ -27,6 +27,8 @@ SET(PROJECT_URL "http://github.com/jrl-umi3218/dynamic-graph")
 
 SET(CUSTOM_HEADER_DIR "${PROJECT_NAME}")
 
+SET(DOXYGEN_USE_MATHJAX YES)
+
 # Defines paths.
 SET(LIBRARY_OUTPUT_PATH ${PROJECT_BINARY_DIR}/lib)
 
