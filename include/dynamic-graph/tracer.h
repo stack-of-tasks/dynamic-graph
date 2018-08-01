@@ -106,11 +106,8 @@ namespace dynamicgraph
 
     /* --- PARAMS --- */
     void display( std::ostream& os ) const;
-    virtual void commandLine( const std::string& cmdLine
-			      ,std::istringstream& cmdArgs
-			      ,std::ostream& os );
-  };
 
+  };
 
 } // end of namespace dynamicgraph
 

@@ -64,11 +64,7 @@ namespace dynamicgraph
   ///
   /// These signals link the entities together to form a complete
   /// computation graph.  To declare a new entity, please see the
-  /// DYNAMICGRAPH_FACTORY_ENTITY_PLUGIN macro in factory.h. A
-  /// command-line interface provided by the entity can be used by a
-  /// sot shell to call methods from entities and display the result
-  /// of their execution.  Classes that derive from Entity can
-  /// customize the command-line by overriding commandLine ().
+  /// DYNAMICGRAPH_FACTORY_ENTITY_PLUGIN macro in factory.h.
   class DYNAMIC_GRAPH_DLLAPI Entity : private boost::noncopyable
   {
   public:
@@ -92,10 +88,6 @@ namespace dynamicgraph
     virtual std::ostream& writeCompletionList (std::ostream& os) const;
 
     virtual void display (std::ostream& os) const;
-
-    virtual void commandLine (const std::string& cmdLine,
-			      std::istringstream& cmdArgs,
-			      std::ostream& os);
 
     virtual SignalBase<int>* test ()
     {

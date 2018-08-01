@@ -38,7 +38,7 @@ for a given problem. It is the basis for the stack of tasks operation.
 <p>To give a more concrete example, the real-time control used by the Gepetto group for the humanoid robot HRP-2
 is detailled.</p>
 <p>
-Real-time control system are usually driven by a cyclic computational node which 
+Real-time control system are usually driven by a cyclic computational node which
 needs to send a control reference value to each motors of a robot. To compute this
 control reference values, sensor values need to be provided.
 In the Stack-Of-Tasks special entities called Device are used to
@@ -52,13 +52,13 @@ This control vector is the result of a computation solving a control problem.
 The entity in charge of solving this control problem is called "Solver" in the previous
 figure.
 In the SoT framework it is often cast as an optimization problem.
-This optimization problem is build using a control "Task" (not to be confused with the 
+This optimization problem is build using a control "Task" (not to be confused with the
 general word task). A control "Task" regulates the difference with a "Feature" computed
 on the current robot state and a "Desired Feature". For instance when walking, the regulated
-feature is the robot's Center-Of-Mass (CoM) position. The "Feature" is computed using a 
+feature is the robot's Center-Of-Mass (CoM) position. The "Feature" is computed using a
 library using the robot model and the sensor value. The entity making this computation is "Dyn".
 A walking pattern generator using foot-steps position given in advance generates the desired
-value for the CoM. 
+value for the CoM.
 Note that the "Dyn" entity uses the sensor provided by the entity "Robot". </p>
 
 <p>
@@ -90,7 +90,7 @@ See \ref scriptingabout
 
 \subsection entity_definition General definition
 Despite the fact that it looks very similar to a ROS node or a CORBA/OpenRTM server, an entity is simply a C++ object.
-The main idea is that this entity is providing mostly a data-driven functionnality working at very high rate (\f$ 200 Hz\f$ or \f$ 1 kHz \f$) 
+The main idea is that this entity is providing mostly a data-driven functionnality working at very high rate (\f$ 200 Hz\f$ or \f$ 1 kHz \f$)
 and should have a minimal computational time foot-print.
 
 For this signals (or ports to use a more classical terminology) are providing a time dependency between data.
@@ -101,7 +101,7 @@ but in general the external data is based upon the sensor values provided by a "
 For this reason the signal evaluations are realized through the cascade of dependencies and start from the evaluation of an input
 signal of a periodic node (in general the device). This is realized inside a \b real-time thread.
 
-To add flexibility to a node, it is possible to add command with arguments to modify the internal behavior of the entity 
+To add flexibility to a node, it is possible to add command with arguments to modify the internal behavior of the entity
 or get information from the entity.
 As a command is in general asynchronous and rare with respect to the data-flow scheme for the signals the command is in general
 executed in a \b none-real-time thread.
@@ -123,8 +123,6 @@ the entities' names in the scripts; loading this file with the plugin loader wil
 enable creation of this entity through the factory.
 \li \ref tracerdoc
 \li \ref tracerrealtimedoc
-\li ShellProcedure
-\li \ref shellfunctions_doc
 
 \subsection specific_semantics Specific semantics with entities
 
@@ -152,10 +150,10 @@ The class \ref dynamicgraph::FactoryStorage is a singleton which register the en
 \subsection pool Pool
 The class \ref dynamicgraph::PoolStorage keeps track of the entities instanciated with the factory.
 The entities are the graph nodes. Signals are constructed during the class instanciation, they do not live independently
-from the entities. Signals are the directed edges of the graph. 
-The pool can write a file representing the graph of entities. 
+from the entities. Signals are the directed edges of the graph.
+The pool can write a file representing the graph of entities.
 
-\subsection scriptingabout Building the graph 
+\subsection scriptingabout Building the graph
 
 This package provides a scripting language allows entities to define their own commands, and
 provides a basic framework to build dynamically the computational graph.
@@ -175,16 +173,6 @@ register them in the Pool, where they can be listed, accessed, and acted upon
 (see PoolStorage documentation). Basic commands defined by entities include
 signal connection graph file generation, help and name print, and signals.
 
-Finally, a shell (command-line) interface is made available thanks to the
-Interpreter class (see the file test_shell.cpp for an example). Objects deriving from
-Entity can expose their own commands by overriding the Entity's default
-commandLine() method. It is possible to load a plugin to register custom
-shell commands; see shell-functions and shell-procedure for an example.
-
-Some basic shell functions, and support for procedures, are also included.
-For a complete list of those, load the plugin shell-functions.so and type 'help'
-at the command line.
-
 The singletons made available by including the corresponding headers in this
 module are:
 \li dynamicgraph::FactoryStorage
@@ -192,13 +180,6 @@ module are:
 
 For an example of a program creating entities in C++, see the unit test
 test_pool.cpp (in your package source directory/unitTesting).
-
-\subsection use_scripts Through scripts
-The program \ref dgshell_doc can be used to have scripting access to the dynamic-graph
-library, where you can execute scripts and commands, load plugins, create entities and connect signals.
-
-Here is a typical use case for programmers:
-\image html figures/use-case.png
 
 \subsection Tutorial
 A tutorial is available <a href="http://stack-of-tasks.github.io/dynamic-graph-tutorial/">here</a>
@@ -216,25 +197,6 @@ Int. Conf. on Autonomous Robots, ICAR, 2009
 IEEE Trans. on Robotics, 23(1):60-72, February 2007
 
 \namespace dynamicgraph This is the namespace where every object and class of this library is located.
-
-\defgroup gshellfunctions Notes about the scripting language
-@{
-A couple of functions are built-in in the interpreter and provides low-level features such as file sourcing or
-plug-in loading.\n
-These functions are:\n
-\code plug <obj1.sig1> <obj2.sig2> \endcode plugs the signal sig1 of obj1 to the signal sig2 of obj2. sig1 and sig2
-have to be of the same type. sig1 has to be an output signal and sig2 an input signal.
-\code new <class> <object> \endcode instantiates an object object of class class. object has to be a free identifier and
-class an existing entity.
-\code destroy <object> \endcode deletes an instance previously created.
-\code run <script.txt> \endcode sources (i.e. read and interpret) an external file.
-\code loadPlugin <file.so> <directory> \endcode loads a plugin called file.so and located in the directory directory.
-\code unloadPlugin <path/file.so> \endcode unloads a plugin.
-\code help \endcode lists available functions.
-\code set <obj.signal> <value> \endcode defines an input signal to a specific, constant, value.
-\code get <obj.signal> <value> \endcode prints out a signal value.
-\code compute <obj.sig> <time> \endcode computes an output signal and sets the associated time to time.
-@}
 
 \defgroup dgraph Core classes and objects
 @{
@@ -257,8 +219,6 @@ making sure its inputs are up to date on access, using a incrementing time tick 
 Signals can be grouped together using dynamicgraph::SignalArray.
 
 Signals implement a caching mechanism by storing the last computation time tick.
-
-Some signals can be plugged ("plug" script command) into one another or set through shell commands.
 
 For more information, please see the individual signal pages.
 

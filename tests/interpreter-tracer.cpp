@@ -31,7 +31,6 @@ using boost::test_tools::output_test_stream;
 BOOST_AUTO_TEST_CASE (cmd_tracer)
 {
   dynamicgraph::PluginLoader pl;
-  dynamicgraph::Interpreter shell (&pl);
 
   // Push paths.
   {

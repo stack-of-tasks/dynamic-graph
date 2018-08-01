@@ -34,7 +34,6 @@ namespace dynamicgraph
   class OutStringStream;
   class PluginLoader;
   class PoolStorage;
-  class ShellFunctionRegisterer;
 
   class SignalCaster;
   class SignalCastRegisterer;
@@ -72,8 +71,5 @@ namespace dynamicgraph
 
 } // end of namespace dynamicgraph.
 
-
-class ShellFunctions;
-class ShellProcedure;
 
 #endif //! DYNAMIC_GRAPH_FWD_HH

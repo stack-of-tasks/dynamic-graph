@@ -3,6 +3,8 @@ CHANGELOG
 
 [Current]
 
+* remove shell
+
 [v3.0.0]
  * Replace jrl-mal with eigen
  * Add ostream and isteram operators for Eigen Classes
