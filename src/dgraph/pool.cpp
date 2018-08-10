@@ -60,7 +60,7 @@ PoolStorage::
   dgDEBUGIN(15);
 
   for( Entities::iterator iter=entityMap.begin (); iter!=entityMap.end ();
-       iter=entityMap.begin ())
+       iter++)
     {
       dgDEBUG(15) << "Delete \""
 		   << (iter->first) <<"\""<<std::endl;
