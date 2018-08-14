@@ -158,6 +158,7 @@ namespace dynamicgraph {
       switch(value.type()) {
       case Value::NONE:
 	copy = NULL;
+	break;
       case Value::BOOL:
 	copy = new bool(value.boolValue());
 	break;

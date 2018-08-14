@@ -5,8 +5,7 @@ The \b TracerRealTime entity monitors a set of signals with real-time constraint
 function is very similar to the Tracer, except that all traces are recorded to a
 memory buffer, which can be emptied at any time.
 \section commands Commands
-The \b commands that this entity exposes are (you can also type [entity name].help at the
-dynamic-graph shell command line to see this list):
+The \b commands that this entity exposes are:
 \code
 empty (discards all buffers)
 buffersize (sets buffer size for recording)

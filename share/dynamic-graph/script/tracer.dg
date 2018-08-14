@@ -1,4 +1,3 @@
-import "shell.dg"
 # Copyright 2010, Thomas Moulard, JRL, CNRS/AIST.
 # .
 # This file is part of dynamic-graph.

@@ -31,7 +31,7 @@ namespace dynamicgraph
     }
     return instance_;
   }
-  
+
   void FactoryStorage::destroy()
   {
     delete instance_;
@@ -143,45 +143,6 @@ namespace dynamicgraph
     BOOST_FOREACH (const iter_t& entity, entityMap)
       outList.push_back(entity.first);
   }
-
-  void
-  FactoryStorage::commandLine(const std::string& cmdLine,
-			      std::istringstream& cmdArgs,
-			      std::ostream& os)
-  {
-    if (cmdLine == "help")
-      {
-	os << "factory ";
-
-	std::string cmd2;
-	cmdArgs >> cmd2;
-
-	if (!cmdArgs.good  ())
-	  os
-	    << " <arg>\t\t\t\taccess to the factory (help <arg> for more detail)"
-	    << std::endl;
-	else if (cmd2 == "list")
-	  os << "list\t\t:List all available entities." << std::endl;
-	else if (cmd2 == "listEntities")
-	  os <<"listEntities\t:List available entities." << std::endl;
-      }
-    else if (cmdLine == "list")
-      commandLine("listEntities",cmdArgs,os);
-    else if (cmdLine == "listEntities")
-      {
-	os <<" List of available entities:" << std::endl;
-
-	typedef std::pair<std::string, EntityConstructor_ptr> iter_t;
-	BOOST_FOREACH (const iter_t& entity, entityMap)
-	  os << "  - " << entity.first << std::endl;
-      }
-    return;
-  }
-
-
-
-
-
 
   EntityRegisterer::EntityRegisterer
   (const std::string& entityClassName, FactoryStorage::EntityConstructor_ptr maker)

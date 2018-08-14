@@ -16,7 +16,6 @@
 # Install dynamic-graph scripts.
 INSTALL(FILES
 
-  dynamic-graph/script/shell.dg
   dynamic-graph/script/tracer.dg
 
   DESTINATION share/dynamic-graph/script

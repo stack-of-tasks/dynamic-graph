@@ -65,10 +65,6 @@ namespace dynamicgraph
     DG_TRACERREALTIME_DLLAPI friend std::ostream& operator<<
       (std::ostream& os, const TracerRealTime& t);
 
-    virtual void commandLine (const std::string& cmdLine,
-			      std::istringstream& cmdArgs,
-			      std::ostream& os);
-
   protected:
     virtual void openFile (const SignalBase<int>& sig,
 			   const std::string& filename);

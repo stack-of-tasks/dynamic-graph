@@ -249,48 +249,6 @@ writeCompletionList(std::ostream& os)
 
 }
 
-
-void PoolStorage::
-commandLine( const std::string& objectName,const std::string& functionName,
-	     std::istringstream& cmdArg, std::ostream& os )
-{
-  dgDEBUG(15) << "Object <" << objectName<< "> function <"
-	       <<functionName<<">"<<std::endl;
-
-  if( objectName=="pool" )
-    {
-      if( functionName=="help" )
-	{
-	  os <<"Pool: " << std::endl
-	     <<"  - list" << std::endl
-	     << " - writegraph FileName" << std::endl;
-	}
-      else if( functionName=="list" )
-	{
-	  for( Entities::iterator iter=entityMap.begin ();
-	       iter!=entityMap.end (); ++iter)
-	    {
-	      Entity* ent = iter->second;
-	      os << ent->getName ()
-		 <<" (" << ent->getClassName () << ")" << std::endl;
-	    }
-
-	}
-      else if (functionName=="writegraph")
-	{
-	  std::string aFileName;
-	  cmdArg >> aFileName;
-	  writeGraph(aFileName);
-	}
-
-    }
-  else
-    {
-      Entity& ent = getEntity(objectName);
-      ent.commandLine(functionName,cmdArg,os);
-    }
-}
-
 static bool
 objectNameParser( std::istringstream& cmdparse,
 		  std::string& objName,

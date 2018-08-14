@@ -13,16 +13,8 @@
 # received a copy of the GNU Lesser General Public License along with
 # dynamic-graph. If not, see <http://www.gnu.org/licenses/>.
 
-# Add default import directories.
-#  It is used by the import directive of the sot shell to locate
-#  scripts and plug-ins.
-SET(
-  DG_IMPORT_DEFAULT_PATHS
-  "${CMAKE_INSTALL_PREFIX}/share/dynamic-graph/script:${CMAKE_INSTALL_PREFIX}/${PLUGINDIR}"
-  )
-
 CONFIGURE_FILE(
-	${PROJECT_NAME}/import-default-paths.h.cmake	
+	${PROJECT_NAME}/import-default-paths.h.cmake
 	${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}/import-default-paths.h)
 INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}/import-default-paths.h
        DESTINATION include/${PROJECT_NAME}

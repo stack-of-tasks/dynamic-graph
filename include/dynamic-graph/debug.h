@@ -81,8 +81,9 @@ namespace dynamicgraph
 
     inline void trace (const int level=-1)
     {
-      if (level <= traceLevel)
+      if (level <= traceLevel) {
 	outputbuffer << tmpbuffer.str (); tmpbuffer.str("");
+      }
     }
 
     inline void traceTemplate (const int level, const char* format, ...)

@@ -49,20 +49,6 @@ struct CustomEntity : public dynamicgraph::Entity
     os << "custom entity";
   }
 
-  virtual void commandLine (const std::string& cmdLine,
-			    std::istringstream& cmdArgs,
-			    std::ostream& os)
-  {
-    if (cmdLine == "help")
-      {
-	os << "This is a custom help." << std::endl;
-	Entity::commandLine (cmdLine, cmdArgs, os);
-      }
-    else if (cmdLine == "nothing")
-      ;
-    else
-      Entity::commandLine (cmdLine, cmdArgs, os);
-  }
 };
 
 DYNAMICGRAPH_FACTORY_ENTITY_PLUGIN (CustomEntity,"CustomEntity");
