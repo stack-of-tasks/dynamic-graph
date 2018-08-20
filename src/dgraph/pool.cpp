@@ -60,7 +60,9 @@ PoolStorage::
   dgDEBUGIN(15);
 
   for( Entities::iterator iter=entityMap.begin (); iter!=entityMap.end ();
-       iter++)
+       // Here, this is normal that the next iteration is at the beginning
+       // of the map as deregisterEntity remove the element iter from the map.
+       iter=entityMap.begin())
     {
       dgDEBUG(15) << "Delete \""
 		   << (iter->first) <<"\""<<std::endl;
