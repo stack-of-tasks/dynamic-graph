@@ -65,7 +65,6 @@ PoolStorage::
       dgDEBUG(15) << "Delete \""
 		   << (iter->first) <<"\""<<std::endl;
       Entity* entity = iter->second;
-      deregisterEntity(iter);
       delete (entity);
     }
   instance_ = 0;
