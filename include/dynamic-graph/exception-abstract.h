@@ -17,7 +17,6 @@
 
 #ifndef DYNAMIC_GRAPH_EXCEPTION_ABSTRACT_H
 # define DYNAMIC_GRAPH_EXCEPTION_ABSTRACT_H
-# include <iostream>
 # include <string>
 
 # include <dynamic-graph/fwd.hh>

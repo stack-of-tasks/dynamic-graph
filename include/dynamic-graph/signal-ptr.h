@@ -17,10 +17,11 @@
 
 #ifndef DYNAMIC_GRAPH_SIGNAL_PTR_H
 #define DYNAMIC_GRAPH_SIGNAL_PTR_H
-# include <iostream>
 
 # include <dynamic-graph/exception-signal.h>
 # include <dynamic-graph/signal.h>
+
+# include <dynamic-graph/deprecated.hh>
 
 namespace dynamicgraph
 {
@@ -73,9 +74,7 @@ namespace dynamicgraph
     const SignalBase<Time>* getAbstractPtr () const; // throw
     virtual void plug( SignalBase<Time>* ref );
     virtual void unplug () { plug(NULL); }
-    virtual bool isPluged () const {
-      std::cerr << "The method isPluged is deprecated.";
-      std::cerr << " Please use isPlugged instead" << std::endl;
+    virtual bool isPluged () const DYNAMIC_GRAPH_DEPRECATED {
       return isPlugged ();
     }
     virtual bool isPlugged () const { return (NULL!=signalPtr); }

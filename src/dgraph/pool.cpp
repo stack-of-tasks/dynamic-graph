@@ -25,7 +25,6 @@
 /* --- DYNAMIC-GRAPH --- */
 #include <list>
 #include <typeinfo>
-#include <iostream>
 #include <sstream>
 #include <string>
 #include "dynamic-graph/pool.h"

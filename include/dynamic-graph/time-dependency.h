@@ -18,7 +18,6 @@
 #ifndef DYNAMIC_GRAPH_TIME_DEPENDENCY_H
 # define DYNAMIC_GRAPH_TIME_DEPENDENCY_H
 # include <list>
-# include <iostream>
 
 # include <dynamic-graph/fwd.hh>
 # include <dynamic-graph/signal-base.h>

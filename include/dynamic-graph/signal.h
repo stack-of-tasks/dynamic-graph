@@ -25,7 +25,6 @@
 #include <boost/function.hpp>
 
 #include <string>
-#include <iostream>
 
 #include <dynamic-graph/exception-signal.h>
 #include <dynamic-graph/signal-base.h>
