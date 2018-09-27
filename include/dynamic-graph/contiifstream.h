@@ -18,7 +18,6 @@
 #ifndef DYNAMIC_GRAPH_CONTIIFSTREAM_H
 # define DYNAMIC_GRAPH_CONTIIFSTREAM_H
 # include <fstream>
-# include <iostream>
 # include <list>
 # include <sstream>
 

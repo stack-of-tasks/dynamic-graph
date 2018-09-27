@@ -18,7 +18,6 @@
 # define DYNAMIC_GRAPH_SIGNAL_CASTER_HH
 # include <map>
 # include <typeinfo>
-# include <iostream>
 # include <vector>
 
 # include <boost/any.hpp>

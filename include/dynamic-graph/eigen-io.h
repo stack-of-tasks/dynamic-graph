@@ -18,7 +18,6 @@
 #ifndef DYNAMIC_GRAPH_EIGEN_IO_H
 #define DYNAMIC_GRAPH_EIGEN_IO_H
 
-#include <iostream>
 #include <boost/format.hpp>
 #include <boost/numeric/conversion/cast.hpp>
 

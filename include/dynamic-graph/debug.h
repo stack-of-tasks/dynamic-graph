@@ -19,7 +19,6 @@
 # define DYNAMIC_GRAPH_DEBUG_HH
 # include <cstdio>
 # include <cstdarg>
-# include <iostream>
 # include <fstream>
 # include <sstream>
 
@@ -189,13 +188,13 @@ inline bool dgTDEBUG_ENABLE (const int & level)
   if (1)					\
     ;						\
   else						\
-    std::cout
+    std::ostream(NULL)
 
 #  define dgDEBUGMUTE (level)			\
   if (1)					\
     ;						\
   else						\
-    std::cout
+    std::ostream(NULL)
 
 #  define dgERROR				\
   dgERRORFLOW.outputbuffer << dgPREERROR
@@ -225,7 +224,7 @@ inline void dgERRORF (const char*, ...)
   if (1)					\
     ;						\
   else						\
-    std::cout
+    std::ostream(NULL)
 
 inline void dgTDEBUGF (const int, const char*, ...)
 {

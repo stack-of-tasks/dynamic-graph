@@ -19,7 +19,6 @@
 # define DYNAMIC_GRAPH_SIGNAL_BASE_H
 # include <string>
 # include <sstream>
-# include <iostream>
 # include <typeinfo>
 # include <boost/noncopyable.hpp>
 

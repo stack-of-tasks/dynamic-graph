@@ -18,7 +18,6 @@
 #ifndef DYNAMIC_GRAPH_VALUE_H
 #define DYNAMIC_GRAPH_VALUE_H
 
-#include <iostream>
 #include <string>
 #include <cassert>
 #include <typeinfo>
