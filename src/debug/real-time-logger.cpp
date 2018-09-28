@@ -19,6 +19,9 @@
 
 #include <dynamic-graph/real-time-logger.h>
 
+#include <boost/thread/thread.hpp>
+#include <boost/date_time/posix_time/posix_time.hpp>
+
 namespace dynamicgraph
 {
   RealTimeLogger::RealTimeLogger (const std::size_t& bufferSize)
@@ -67,5 +70,48 @@ namespace dynamicgraph
   {
     os_ << std::ends;
     if (logger_ != NULL) logger_->frontReady();
+  }
+
+  struct RealTimeLogger::thread
+  {
+    bool requestShutdown_;
+    boost::thread t_;
+
+    thread (RealTimeLogger* logger)
+      : requestShutdown_ (false)
+      , t_ (&thread::spin, this, logger)
+    {}
+
+    void spin (RealTimeLogger* logger)
+    {
+      while (!requestShutdown_ || !logger->empty())
+      {
+        // If the logger did not write anything, it means the buffer is empty.
+        // Do a pause
+        if (!logger->spinOnce())
+          boost::this_thread::sleep(boost::posix_time::milliseconds(100));
+      }
+    }
+  };
+
+  RealTimeLogger* RealTimeLogger::instance_ = NULL;
+  RealTimeLogger::thread* RealTimeLogger::thread_ = NULL;
+
+  RealTimeLogger& RealTimeLogger::instance()
+  {
+    if (instance_ == NULL) {
+      instance_ = new RealTimeLogger (1000);
+      thread_ = new thread (instance_);
+    }
+    return *instance_;
+  }
+
+  void RealTimeLogger::destroy ()
+  {
+    if (instance_ == NULL) return;
+    thread_->requestShutdown_ = true;
+    thread_->t_.join();
+    delete instance_;
+    delete thread_;
   }
 }

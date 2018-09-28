@@ -18,6 +18,8 @@
  */
 
 #include <iostream>
+
+#define ENABLE_RT_LOG
 #include <dynamic-graph/real-time-logger.h>
 
 #define BOOST_TEST_MODULE real_time_logger
@@ -25,7 +27,6 @@
 #include <boost/test/unit_test.hpp>
 #include <boost/test/output_test_stream.hpp>
 
-#include <boost/thread.hpp>
 #include <boost/thread/thread.hpp>
 #include <boost/date_time/posix_time/posix_time.hpp>
 
@@ -51,33 +52,20 @@ BOOST_AUTO_TEST_CASE (monothread)
   rtl.spinOnce();
 }
 
-bool requestShutdown = false;
-void spin (RealTimeLogger* logger)
-{
-  while (!requestShutdown || !logger->empty())
-  {
-    // If the logger did not write anything, it means the buffer is empty.
-    // Do a pause
-    if (!logger->spinOnce())
-      boost::this_thread::sleep(boost::posix_time::milliseconds(100));
-  }
-}
-
 BOOST_AUTO_TEST_CASE (multithread)
 {
-  RealTimeLogger rtl (10);
-  rtl.addOutputStream (LoggerStreamPtr_t (new LoggerIOStream(std::cout)));
+  RealTimeLogger& rtl = RealTimeLogger::instance();
+  dgADD_OSTREAM_TO_RTLOG (std::cout);
 
-  boost::thread loggerThread (spin, &rtl);
-
-  for (int i = 0; i < 10; ++i) {
-    boost::this_thread::sleep(boost::posix_time::milliseconds(20));
+  for (std::size_t i = 0; i < rtl.getBufferSize()-1; ++i)
     rtl.front() << "Call number " << i << '\n';
+  for (std::size_t i = 0; i < 12; ++i) {
+    boost::this_thread::sleep(boost::posix_time::milliseconds(20));
+    rtl.front() << "Call number " << i << std::endl;
     BOOST_CHECK (!rtl.full());
   }
 
-  rtl.front() << "This call should appear in the output" << '\n';
+  dgRTLOG() << "This call should appear in the output" << '\n';
 
-  requestShutdown = true;
-  loggerThread.join();
+  RealTimeLogger::destroy();
 }

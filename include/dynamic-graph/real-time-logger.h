@@ -23,6 +23,8 @@
 # include <boost/shared_ptr.hpp>
 
 # include <dynamic-graph/config.hh>
+# include <dynamic-graph/debug.h>
+
 
 namespace dynamicgraph
 {
@@ -50,7 +52,8 @@ namespace dynamicgraph
   {
     public:
       RTLoggerStream (RealTimeLogger* logger, std::ostream& os) : logger_(logger), os_ (os) {}
-      template <typename T> RTLoggerStream& operator<< (T  t) { os_ << t; return *this; }
+      template <typename T> inline RTLoggerStream& operator<< (T  t) { os_ << t; return *this; }
+      inline RTLoggerStream& operator<< (std::ostream& (*pf)(std::ostream&)) { os_ << pf; return *this; }
 
       ~RTLoggerStream();
     private:
@@ -65,15 +68,16 @@ namespace dynamicgraph
   class DYNAMIC_GRAPH_DLLAPI RealTimeLogger
   {
   public:
+    static RealTimeLogger& instance();
+
+    static void destroy();
+
     /// \todo add an argument to preallocate the internal string to a given size.
     RealTimeLogger (const std::size_t& bufferSize);
 
     inline void clearOutputStreams () { outputs_.clear(); }
 
     inline void addOutputStream (const LoggerStreamPtr_t& os) { outputs_.push_back(os); }
-
-    /// The function to be called by the thread who exports the outputs
-    //void spin ();
 
     /// Write next message to output.
     /// It does nothing if the buffer is empty.
@@ -104,7 +108,7 @@ namespace dynamicgraph
         return backIdx_ + buffer_.size() - frontIdx_;
     }
 
-    inline std::size_t getBufferSize () { return buffer_.capacity(); }
+    inline std::size_t getBufferSize () { return buffer_.size(); }
 
     ~RealTimeLogger ();
 
@@ -121,7 +125,21 @@ namespace dynamicgraph
     /// Index of the slot where to write next value (does not contain valid data).
     std::size_t backIdx_;
     std::ostream oss_;
+
+    struct thread;
+
+    static RealTimeLogger* instance_;
+    static thread* thread_;
   };
 } // end of namespace dynamicgraph
+
+#ifdef ENABLE_RT_LOG
+# define dgADD_OSTREAM_TO_RTLOG(ostr) ::dynamicgraph::RealTimeLogger::instance() \
+  .addOutputStream(::dynamicgraph::LoggerStreamPtr_t(new ::dynamicgraph::LoggerIOStream(ostr)))
+# define dgRTLOG() ::dynamicgraph::RealTimeLogger::instance().front()
+#else // ENABLE_RT_LOG
+# define dgADD_OSTREAM_TO_RTLOG(ostr) struct __end_with_semicolon
+# define dgRTLOG() if (1) ; else __null_stream()
+#endif
 
 #endif //! DYNAMIC_GRAPH_LOGGER_REAL_TIME_H
