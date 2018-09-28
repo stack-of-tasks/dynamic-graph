@@ -188,13 +188,13 @@ inline bool dgTDEBUG_ENABLE (const int & level)
   if (1)					\
     ;						\
   else						\
-    std::ostream(NULL)
+    ::dynamicgraph::__null_stream()
 
 #  define dgDEBUGMUTE (level)			\
   if (1)					\
     ;						\
   else						\
-    std::ostream(NULL)
+    ::dynamicgraph::__null_stream()
 
 #  define dgERROR				\
   dgERRORFLOW.outputbuffer << dgPREERROR
@@ -219,12 +219,23 @@ inline void dgERRORF (const char*, ...)
   return;
 }
 
+namespace dynamicgraph
+{
+inline std::ostream& __null_stream ()
+{
+  // This function should never be called. With -O3,
+  // it should not appear in the generated binary.
+  static std::ostream os (NULL); return os;
+}
+}
+
+
 // TEMPLATE
 #  define dgTDEBUG(level)			\
   if (1)					\
     ;						\
   else						\
-    std::ostream(NULL)
+    ::dynamicgraph::__null_stream()
 
 inline void dgTDEBUGF (const int, const char*, ...)
 {
