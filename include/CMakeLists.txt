@@ -28,6 +28,7 @@ fwd.hh
 null-ptr.hh
 contiifstream.h
 debug.h
+real-time-logger.h
 
 dynamic-graph-api.h
 
