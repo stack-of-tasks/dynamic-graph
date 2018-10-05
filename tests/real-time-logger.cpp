@@ -46,7 +46,7 @@ BOOST_AUTO_TEST_CASE (monothread)
 
   int spinNb = 0;
   while (rtl.spinOnce()) { spinNb++; }
-  BOOST_CHECK(spinNb == 9);
+  BOOST_CHECK_EQUAL(spinNb, 9);
 
   rtl.front() << "This msg should be short." << '\n';
   rtl.spinOnce();
@@ -58,10 +58,10 @@ BOOST_AUTO_TEST_CASE (multithread)
   dgADD_OSTREAM_TO_RTLOG (std::cout);
 
   for (std::size_t i = 0; i < rtl.getBufferSize()-1; ++i)
-    rtl.front() << "Call number " << i << '\n';
+    dgRTLOG() << "Call number " << i << '\n';
   for (std::size_t i = 0; i < 12; ++i) {
     boost::this_thread::sleep(boost::posix_time::milliseconds(20));
-    rtl.front() << "Call number " << i << std::endl;
+    dgRTLOG() << "Call number " << i << std::endl;
     BOOST_CHECK (!rtl.full());
   }
 

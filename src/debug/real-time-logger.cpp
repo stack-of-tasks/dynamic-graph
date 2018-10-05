@@ -27,6 +27,7 @@ namespace dynamicgraph
   RealTimeLogger::RealTimeLogger (const std::size_t& bufferSize)
     : buffer_(bufferSize, NULL)
     , oss_ (NULL)
+    , nbDiscarded_ (0)
   {
     for (std::size_t i = 0; i < buffer_.size(); ++i)
       buffer_[i] = new Data;
@@ -54,8 +55,15 @@ namespace dynamicgraph
 
   RTLoggerStream RealTimeLogger::front ()
   {
+    // If no output or if buffer is full, discard message.
     if (outputs_.empty() || full()) {
-      oss_.rdbuf(NULL);
+      nbDiscarded_++;
+      return RTLoggerStream (NULL, oss_);
+    }
+    bool alone = wmutex.try_lock();
+    // If someone is writting, discard message.
+    if (!alone) {
+      nbDiscarded_++;
       return RTLoggerStream (NULL, oss_);
     }
     Data* data = buffer_[backIdx_];
