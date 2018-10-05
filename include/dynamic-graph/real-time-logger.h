@@ -21,6 +21,7 @@
 
 # include <boost/circular_buffer.hpp>
 # include <boost/shared_ptr.hpp>
+# include <boost/thread/mutex.hpp>
 
 # include <dynamic-graph/config.hh>
 # include <dynamic-graph/debug.h>
@@ -31,12 +32,20 @@ namespace dynamicgraph
   /// \ingroup debug
   ///
   /// \brief Stream for the real-time logger.
+  ///
+  /// You should inherit from this class in order to redirect the logs where you
+  /// want.
+  /// \sa LoggerIOStream
   class LoggerStream
   {
     public:
       virtual void write (const char* c) = 0;
   };
 
+  /// Write to an ostream object.
+  ///
+  /// The easieast is to use the macro \ref dgADD_OSTREAM_TO_RTLOG(ostr) where
+  /// `ostr` can be `std::cout` or an std::ofstream...
   class LoggerIOStream : public LoggerStream
   {
     public:
@@ -48,12 +57,18 @@ namespace dynamicgraph
   typedef boost::shared_ptr <LoggerStream> LoggerStreamPtr_t;
 
   class RealTimeLogger;
+
+  /// \cond DEVEL
+  /// \brief write entries to intenal buffer.
+  ///
+  /// The entry starts when an instance is created and ends when is is deleted.
+  /// This class is only used by RealTimeLogger.
   class RTLoggerStream
   {
     public:
       RTLoggerStream (RealTimeLogger* logger, std::ostream& os) : logger_(logger), os_ (os) {}
-      template <typename T> inline RTLoggerStream& operator<< (T  t) { os_ << t; return *this; }
-      inline RTLoggerStream& operator<< (std::ostream& (*pf)(std::ostream&)) { os_ << pf; return *this; }
+      template <typename T> inline RTLoggerStream& operator<< (T  t) { if (logger_!=NULL) os_ << t; return *this; }
+      inline RTLoggerStream& operator<< (std::ostream& (*pf)(std::ostream&)) { if (logger_!=NULL) os_ << pf; return *this; }
 
       ~RTLoggerStream();
     private:
@@ -61,10 +76,30 @@ namespace dynamicgraph
       RealTimeLogger* logger_;
       std::ostream& os_;
   };
+  /// \endcond DEVEL
 
   /// \ingroup debug
   ///
   /// \brief Main class of the real-time logger.
+  ///
+  /// It is intended to be used like this:
+  /// \code
+  /// #define ENABLE_RT_LOG
+  /// #include <dynamic-graph/real-time-logger.h>
+  ///
+  /// // Somewhere in the main function of your executable
+  /// int main (int argc, char** argv) {
+  ///   dgADD_OSTREAM_TO_RTLOG (std::cout);
+  /// }
+  ///
+  /// // Somewhere in your library
+  /// dgRTLOG() << "your message. Prefer to use \n than std::endl."
+  /// \endcode
+  ///
+  /// \note Thread safety. This class expects to have:
+  /// - only one reader: the one who take the log entries and write them somewhere.
+  /// - one writer at a time. Writing to the logs is **never** a blocking
+  ///   operation. If the resource is busy, the log entry is discarded.
   class DYNAMIC_GRAPH_DLLAPI RealTimeLogger
   {
   public:
@@ -88,7 +123,7 @@ namespace dynamicgraph
     /// The message is considered finished when the object is destroyed.
     RTLoggerStream front();
 
-    inline void frontReady() { backIdx_ = (backIdx_+1) % buffer_.size(); }
+    inline void frontReady() { backIdx_ = (backIdx_+1) % buffer_.size(); wmutex.unlock(); }
 
     inline bool empty () const
     {
@@ -125,6 +160,10 @@ namespace dynamicgraph
     /// Index of the slot where to write next value (does not contain valid data).
     std::size_t backIdx_;
     std::ostream oss_;
+
+    /// The writer mutex.
+    boost::mutex wmutex;
+    std::size_t nbDiscarded_;
 
     struct thread;
 
