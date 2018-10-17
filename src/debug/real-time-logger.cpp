@@ -26,6 +26,8 @@ namespace dynamicgraph
 {
   RealTimeLogger::RealTimeLogger (const std::size_t& bufferSize)
     : buffer_(bufferSize, NULL)
+    , frontIdx_ (0)
+    , backIdx_ (0)
     , oss_ (NULL)
     , nbDiscarded_ (0)
   {
