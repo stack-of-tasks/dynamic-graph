@@ -17,7 +17,7 @@ transmission.
 An efficient caching mechanism avoid useless data recomputation and a
 simple built-in language can be used to control the graph actions.
 
-It is released under the [LGPL-3](COPYING.LESSER) license.
+It is released under the [BSD-clause 2](COPYING.LESSER) license.
 
 
 **Warning:** this repository contains [Git
