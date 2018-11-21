@@ -94,6 +94,19 @@ namespace dynamicgraph
 
     void spin (RealTimeLogger* logger)
     {
+      // Change the thread's scheduler from real-time to normal and reduce its priority
+      int threadPolicy;
+      struct sched_param threadParam;
+      if (pthread_getschedparam (pthread_self(), &threadPolicy, &threadParam) == 0)
+      {
+        threadPolicy = SCHED_OTHER;
+        threadParam.sched_priority -= 5;
+        if (threadParam.sched_priority < sched_get_priority_min (threadPolicy))
+          threadParam.sched_priority = sched_get_priority_min (threadPolicy);
+         
+        pthread_setschedparam (pthread_self(), threadPolicy, &threadParam);
+      } 
+
       while (!requestShutdown_ || !logger->empty())
       {
         // If the logger did not write anything, it means the buffer is empty.
