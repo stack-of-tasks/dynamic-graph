@@ -21,9 +21,10 @@ INCLUDE(cmake/eigen.cmake)
 INCLUDE(cmake/pthread.cmake)
 INCLUDE(cmake/cpack.cmake)
 
+SET(PROJECT_ORG stack-of-tasks)
 SET(PROJECT_NAME dynamic-graph)
 SET(PROJECT_DESCRIPTION "Dynamic graph library")
-SET(PROJECT_URL "http://github.com/jrl-umi3218/dynamic-graph")
+SET(PROJECT_URL "http://github.com/${PROJECT_ORG}/${PROJECT_NAME}")
 SET(PROJECT_SUFFIX "-v3")
 
 SET(CUSTOM_HEADER_DIR "${PROJECT_NAME}")
@@ -54,7 +55,7 @@ SET(PLUGINDIR "${CMAKE_INSTALL_FULL_LIBDIR}/plugin")
 SET(PKG_CONFIG_EXTRA "plugindir=${PLUGINDIR}")
 
 # Add dependency toward dynamic graph library in pkg-config file.
-PKG_CONFIG_APPEND_LIBS("dynamic-graph")
+PKG_CONFIG_APPEND_LIBS(${PROJECT_NAME})
 
 # Search for Boost.
 SEARCH_FOR_BOOST()
@@ -64,7 +65,7 @@ SEARCH_FOR_PTHREAD()
 SEARCH_FOR_EIGEN()
 
 ADD_SUBDIRECTORY(src)
-ADD_SUBDIRECTORY(include)
+ADD_SUBDIRECTORY(include/${PROJECT_NAME})
 ADD_SUBDIRECTORY(tests)
 ADD_SUBDIRECTORY(share)
 
