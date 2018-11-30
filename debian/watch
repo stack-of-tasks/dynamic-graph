@@ -1,7 +1,0 @@
-version=3
-opts=filenamemangle=s/.+\/v?(\d\S*)\.tar\.gz/dynamic-graph-$1\.tar\.gz/,\
-pgpsigurlmangle=s/github.com/raw.githubusercontent.com/;\
-s/archive\/master/signatures/;\
-s/([^\/]+)\.tar\.gz/dynamic-graph-$1\.tar\.gz/;\
-s/$/.asc/ \
- https://github.com/proyan/dynamic-graph/releases .*/v?(\d\S*)\.tar\.gz

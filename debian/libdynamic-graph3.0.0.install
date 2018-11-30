@@ -1,4 +1,0 @@
-usr/lib/*.so.*
-usr/lib/plugin/*.so
-usr/share/man/*
-usr/share/dynamic-graph/*
