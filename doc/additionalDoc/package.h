@@ -77,7 +77,6 @@ create instances of entities.</p>
 
 \subsection Functionnalities
 
-\li Built-in scripting language* for fast prototyping and testing of computational graph
 \li Support for extensions and modules using dynamic link libraries
 \li Template-based signal definition, independent
 \li Type-safe connection of input and output signals
@@ -152,13 +151,6 @@ The class \ref dynamicgraph::PoolStorage keeps track of the entities instanciate
 The entities are the graph nodes. Signals are constructed during the class instanciation, they do not live independently
 from the entities. Signals are the directed edges of the graph.
 The pool can write a file representing the graph of entities.
-
-\subsection scriptingabout Building the graph
-
-This package provides a scripting language allows entities to define their own commands, and
-provides a basic framework to build dynamically the computational graph.
-However bindings have been created with python in the <a href="https://github.com/stack-of-tasks/dynamic-graph-python">dynamic-graph-python package</a>
-and we strongly recommend to use this package instead of the in-house scripting language.
 
 \section usecase How to use this package
 \subsection use_programmtically Programmatically
