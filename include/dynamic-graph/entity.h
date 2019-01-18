@@ -78,7 +78,11 @@ namespace dynamicgraph
     {
       return name;
     }
-    virtual const std::string& getClassName  () const = 0;
+    virtual const std::string& getClassName  () const
+    {
+      static std::string ret("Entity");
+      return ret;
+    }
     virtual std::string getDocString () const;
     bool hasSignal( const std::string & signame ) const;
     SignalBase<int>& getSignal (const std::string& signalName);
