@@ -41,6 +41,7 @@ ADD_LIBRARY(${LIBRARY_NAME}
   SHARED
   debug/debug.cpp
   debug/real-time-logger.cpp
+  debug/logger.cpp
 
   dgraph/entity.cpp
   dgraph/factory.cpp
