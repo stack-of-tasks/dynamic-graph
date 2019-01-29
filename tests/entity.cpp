@@ -153,11 +153,6 @@ BOOST_AUTO_TEST_CASE (sendMsg)
 
   dynamicgraph::Entity& entity =
     dynamicgraph::PoolStorage::getInstance()->getEntity("my-entity");
-  std::string AppendMsg[4] = {" INFO_WARNING_ERROR",
-			      " WARNING_ERROR",
-			      " ERROR",
-			      " ALL",
-  };
 
   output_test_stream output;
   
@@ -186,7 +181,6 @@ BOOST_AUTO_TEST_CASE (sendMsg)
     };
 
   BOOST_CHECK (output.is_equal (""));
-  usleep (1000000);
   dynamicgraph::RealTimeLogger::destroy();
 }
 
