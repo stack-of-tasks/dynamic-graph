@@ -166,7 +166,6 @@ namespace dynamicgraph {
     LoggerVerbosity getVerbosity();
 
   protected:
-    std::ofstream        m_output_fstream;    /// Output File Stream
     LoggerVerbosity m_lv;                /// verbosity of the logger
     double          m_timeSample;        /// specify the period of call of the countdown method
     double          m_streamPrintPeriod; /// specify the time period of the stream prints

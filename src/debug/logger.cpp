@@ -32,14 +32,10 @@ namespace dynamicgraph
       m_printCountdown(0.0)
   {
     m_lv = VERBOSITY_ERROR;
-    //    m_output_fstream.open("/tmp/dg-LOGS.txt",std::ofstream::out|std::ofstream::app);
-    //dgADD_OSTREAM_TO_RTLOG(m_output_fstream);
   }
 
   Logger::~Logger()
   {
-    //m_output_fstream.close();
-
   }
   
   void Logger::setVerbosity(LoggerVerbosity lv)
@@ -89,9 +85,7 @@ namespace dynamicgraph
         else  // otherwise reset counter and print
           it->second = m_streamPrintPeriod;
       }
-    //    std::cout << msg.c_str() << std::endl;
     dgRTLOG() << msg.c_str() << "\n";
-    //m_output_fstream.flush();
   }
 
   bool Logger::setTimeSample(double t)
