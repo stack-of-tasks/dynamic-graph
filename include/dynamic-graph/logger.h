@@ -129,8 +129,32 @@ namespace dynamicgraph {
     VERBOSITY_NONE
   };
 
-  /** A simple class for logging messages
-  */
+  /// \ingroup debug
+  ///
+  /// \brief Class for logging messages
+  ///
+  /// It is intended to be used like this:
+  /// \code
+  /// #define ENABLE_RT_LOG
+  /// #include <dynamic-graph/real-time-logger.h>
+  ///
+  /// // Somewhere in the main function of your executable
+  /// int main (int argc, char** argv) {
+  ///   std::ofstream of;
+  ///   of.open("/tmp/dg-LOGS.txt",std::ofstream::out|std::ofstream::app); 
+  ///   dgADD_OSTREAM_TO_RTLOG (of);
+  /// }
+  ///
+  /// // Somewhere in your library
+  /// dynamicgraph::LoggerVerbosity aLoggerVerbosityLevel = VERBOSITY_WARNING_ERROR;
+  /// entity.setLoggerVerbosityLevel(aLoggerVerbosityLevel);
+  /// ...
+  /// std::string aMsg=aBaseMsg+" WARNING";
+  /// entity.sendMsg(aMsg,dynamicgraph::MSG_TYPE_WARNING, __FILE__,__LINE__);
+  ///
+  /// \endcode
+  ///
+  /// 
   class Logger
   {
   public:
