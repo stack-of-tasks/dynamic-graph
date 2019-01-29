@@ -1,7 +1,7 @@
 /*
  * Copyright 2015, 2019
  * LAAS-CNRS
- * Andrea Del Prete, François Bailly,
+ * Andrea Del Prete, François Bailly, Olivier Stasse
  *
  * This file is part of dynamic-graph.
  * See license file.
@@ -24,51 +24,7 @@
 #  define LOGGER_EXPORT
 #endif
 
-
-/* --------------------------------------------------------------------- */
-/* --- INCLUDE --------------------------------------------------------- */
-/* --------------------------------------------------------------------- */
-
-#include <dynamic-graph/signal-helper.h>
-#include <map>
-#include <iomanip> // std::setprecision
-#include "boost/assign.hpp"
-
-
 namespace dynamicgraph {
-
-//#define LOGGER_VERBOSITY_INFO_WARNING_ERROR
-#define LOGGER_VERBOSITY_ALL
-
-#define SEND_MSG(msg,type)         sendMsg(msg,type,__FILE__,__LINE__)
-
-#ifdef LOGGER_VERBOSITY_ERROR
-  #define SEND_DEBUG_STREAM_MSG(msg)
-  #define SEND_INFO_STREAM_MSG(msg)
-  #define SEND_WARNING_STREAM_MSG(msg)
-  #define SEND_ERROR_STREAM_MSG(msg)    SEND_MSG(msg,MSG_TYPE_ERROR_STREAM)
-#endif
-
-#ifdef LOGGER_VERBOSITY_WARNING_ERROR
-  #define SEND_DEBUG_STREAM_MSG(msg)
-  #define SEND_INFO_STREAM_MSG(msg)\
-  #define SEND_WARNING_STREAM_MSG(msg)  SEND_MSG(msg,MSG_TYPE_WARNING_STREAM)
-  #define SEND_ERROR_STREAM_MSG(msg)    SEND_MSG(msg,MSG_TYPE_ERROR_STREAM)
-#endif
-
-#ifdef LOGGER_VERBOSITY_INFO_WARNING_ERROR
-  #define SEND_DEBUG_STREAM_MSG(msg)
-  #define SEND_INFO_STREAM_MSG(msg)     SEND_MSG(msg,MSG_TYPE_INFO_STREAM)
-  #define SEND_WARNING_STREAM_MSG(msg)  SEND_MSG(msg,MSG_TYPE_WARNING_STREAM)
-  #define SEND_ERROR_STREAM_MSG(msg)    SEND_MSG(msg,MSG_TYPE_ERROR_STREAM)
-#endif
-
-#ifdef LOGGER_VERBOSITY_ALL
-  #define SEND_DEBUG_STREAM_MSG(msg) SEND_MSG(msg,MSG_TYPE_DEBUG_STREAM)
-  #define SEND_INFO_STREAM_MSG(msg)   SEND_MSG(msg,MSG_TYPE_INFO_STREAM)
-  #define SEND_WARNING_STREAM_MSG(msg)  SEND_MSG(msg,MSG_TYPE_WARNING_STREAM)
-  #define SEND_ERROR_STREAM_MSG(msg)    SEND_MSG(msg,MSG_TYPE_ERROR_STREAM)
-#endif
 
   /** Enum representing the different kind of messages.
    */
@@ -83,6 +39,30 @@ namespace dynamicgraph {
     MSG_TYPE_WARNING_STREAM =6,
     MSG_TYPE_ERROR_STREAM   =7
   };
+}
+
+/* --------------------------------------------------------------------- */
+/* --- INCLUDE --------------------------------------------------------- */
+/* --------------------------------------------------------------------- */
+
+#include <map>
+#include <iomanip> // std::setprecision
+#include <fstream>
+#include <sstream>
+#include "boost/assign.hpp"
+#include <dynamic-graph/linear-algebra.h>
+
+namespace dynamicgraph {
+
+//#define LOGGER_VERBOSITY_INFO_WARNING_ERROR
+#define LOGGER_VERBOSITY_ALL
+
+#define SEND_MSG(msg,type)         sendMsg(msg,type,__FILE__,__LINE__)
+
+#define SEND_DEBUG_STREAM_MSG(msg) SEND_MSG(msg,MSG_TYPE_DEBUG_STREAM)
+#define SEND_INFO_STREAM_MSG(msg)   SEND_MSG(msg,MSG_TYPE_INFO_STREAM)
+#define SEND_WARNING_STREAM_MSG(msg)  SEND_MSG(msg,MSG_TYPE_WARNING_STREAM)
+#define SEND_ERROR_STREAM_MSG(msg)    SEND_MSG(msg,MSG_TYPE_ERROR_STREAM)
 
   template<typename T>
   std::string toString(const T& v, const int precision=3, const int width=-1)
@@ -159,7 +139,7 @@ namespace dynamicgraph {
     Logger(double timeSample=0.001, double streamPrintPeriod=1.0);
 
     /** Destructor */
-    ~Logger(){}
+    ~Logger();
 
     /** Method to be called at every control iteration
        * to decrement the internal Logger's counter. */
@@ -182,7 +162,11 @@ namespace dynamicgraph {
     /** Set the verbosity level of the logger. */
     void setVerbosity(LoggerVerbosity lv);
 
+    /** Get the verbosity level of the logger. */
+    LoggerVerbosity getVerbosity();
+
   protected:
+    std::ofstream        m_output_fstream;    /// Output File Stream
     LoggerVerbosity m_lv;                /// verbosity of the logger
     double          m_timeSample;        /// specify the period of call of the countdown method
     double          m_streamPrintPeriod; /// specify the time period of the stream prints
@@ -207,8 +191,6 @@ namespace dynamicgraph {
     { return m==MSG_TYPE_ERROR_STREAM || m==MSG_TYPE_ERROR; }
   };
 
-  /** Method to get the logger (singleton). */
-  Logger& getLogger();
 }        // namespace dynamicgraph
 
 

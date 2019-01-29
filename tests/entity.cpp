@@ -18,6 +18,7 @@
 #include <dynamic-graph/exception-factory.h>
 #include "dynamic-graph/factory.h"
 #include "dynamic-graph/pool.h"
+#include <dynamic-graph/real-time-logger.h>
 
 #define BOOST_TEST_MODULE entity
 
@@ -140,6 +141,51 @@ BOOST_AUTO_TEST_CASE (writeCompletionList)
   entity.writeGraph (output);
 
   BOOST_CHECK (output.is_equal (""));
+}
+
+BOOST_AUTO_TEST_CASE (sendMsg)
+{
+  std::ofstream of;
+  of.open("/tmp/dg-LOGS.txt",std::ofstream::out|std::ofstream::app);
+  dgADD_OSTREAM_TO_RTLOG(of);
+
+  dynamicgraph::Entity& entity =
+    dynamicgraph::PoolStorage::getInstance()->getEntity("my-entity");
+  std::string AppendMsg[4] = {" INFO_WARNING_ERROR",
+			      " WARNING_ERROR",
+			      " ERROR",
+			      " ALL",
+  };
+
+  output_test_stream output;
+  
+  for(unsigned int i=0;
+      i<4;
+      i++)
+    {
+      for(unsigned int j=0;j<2000;j++)
+	{
+	  dynamicgraph::LoggerVerbosity aLoggerVerbosityLevel=
+	    (dynamicgraph::LoggerVerbosity) i;
+	  entity.setLoggerVerbosityLevel(aLoggerVerbosityLevel);
+	  if (entity.getLoggerVerbosityLevel()!=aLoggerVerbosityLevel)
+	    output << "Mismatch output";
+	  
+	  std::string aBaseMsg="Auto Test Case";
+	  std::string aMsg=aBaseMsg+" DEBUG";
+	  entity.sendMsg(aMsg, dynamicgraph::MSG_TYPE_DEBUG, __FILE__, __LINE__);
+	  aMsg=aBaseMsg+" INFO";
+	  entity.sendMsg(aMsg, dynamicgraph::MSG_TYPE_INFO, __FILE__, __LINE__);
+	  aMsg=aBaseMsg+" WARNING";
+	  entity.sendMsg(aMsg, dynamicgraph::MSG_TYPE_WARNING, __FILE__, __LINE__);
+	  aMsg=aBaseMsg+" DEBUG";
+	  entity.sendMsg(aMsg, dynamicgraph::MSG_TYPE_ERROR, __FILE__, __LINE__);
+	};
+    };
+
+  BOOST_CHECK (output.is_equal (""));
+  usleep (1000000);
+  dynamicgraph::RealTimeLogger::destroy();
 }
 
 // WTF?
