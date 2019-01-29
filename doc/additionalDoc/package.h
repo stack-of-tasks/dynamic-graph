@@ -190,6 +190,8 @@ IEEE Trans. on Robotics, 23(1):60-72, February 2007
 
 \namespace dynamicgraph This is the namespace where every object and class of this library is located.
 
+\defgroup debug Debugging
+
 \defgroup dgraph Core classes and objects
 @{
 
