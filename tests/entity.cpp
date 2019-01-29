@@ -13,6 +13,8 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with dynamic-graph.  If not, see <http://www.gnu.org/licenses/>.
 
+#define ENABLE_RT_LOG
+
 #include <sstream>
 #include <dynamic-graph/entity.h>
 #include <dynamic-graph/exception-factory.h>
