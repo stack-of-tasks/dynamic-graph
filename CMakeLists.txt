@@ -42,9 +42,6 @@ GENERATE_CONFIGURATION_HEADER(
 GENERATE_CONFIGURATION_HEADER(
   ${HEADER_DIR}
   config-tracer-real-time.hh DG_TRACERREALTIME tracer_real_time_EXPORTS)
-GENERATE_CONFIGURATION_HEADER(
-  ${HEADER_DIR}
-  config-contiifstream.hh DG_CONTIIFSTREAM contiifstream_EXPORTS)
 
 # FIXME: to be changed into lib/dynamic-graph
 # to avoid name collision when installing dynamic-graph in /usr.
