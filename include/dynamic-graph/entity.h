@@ -29,6 +29,7 @@
 # include <dynamic-graph/exception-factory.h>
 # include <dynamic-graph/signal-array.h>
 # include <dynamic-graph/signal-base.h>
+# include <dynamic-graph/logger.h>
 
 /// \brief Helper macro for entity declaration.
 ///
@@ -108,6 +109,22 @@ namespace dynamicgraph
     command::Command* getNewStyleCommand( const std::string& cmdName );
 
     SignalMap getSignalMap() const;
+
+    /** \name Logger related methods */
+    /** \{*/
+    /// \brief Send messages \param msg with level t. Add string file and line to message.
+    void sendMsg(const std::string &msg,
+		 MsgType t=MSG_TYPE_INFO,
+		 const char *file="",
+		 int line=0);
+
+    /// \brief Specify the verbosity level of the logger.
+    void setLoggerVerbosityLevel(LoggerVerbosity lv)
+    {logger_.setVerbosity(lv);}
+
+    /// \brief Get the logger's verbosity level.
+    LoggerVerbosity getLoggerVerbosityLevel()
+    { return logger_.getVerbosity(); };
   protected:
     void addCommand(const std::string& name,command::Command* command);
 
@@ -120,6 +137,7 @@ namespace dynamicgraph
     std::string name;
     SignalMap signalMap;
     CommandMap_t commandMap;
+    Logger logger_;
   };
 
   DYNAMIC_GRAPH_DLLAPI std::ostream&

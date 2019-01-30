@@ -31,6 +31,7 @@ namespace dynamicgraph
   class FactoryStorage;
   class Interpreter;
   class InterpreterHelper;
+  class Logger;
   class OutStringStream;
   class PluginLoader;
   class PoolStorage;
