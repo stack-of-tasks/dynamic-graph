@@ -1,7 +1,6 @@
 SET(${PROJECT_NAME}_HEADERS
   fwd.hh
   null-ptr.hh
-  contiifstream.h
   debug.h
   real-time-logger.h
 
