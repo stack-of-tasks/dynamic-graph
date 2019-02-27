@@ -30,14 +30,14 @@
 /* --- MACROS ---------------------------------------------------------- */
 #define SIGNAL_OUT_FUNCTION_NAME(name) name##SOUT_function
 
-#define DECLARE_SIGNAL( name,IO,type )    ::dynamicgraph::Signal<type,int> name##S##IO
-#define CONSTRUCT_SIGNAL( name,IO,type )  name##S##IO( getClassName()+"("+getName()+")::"+#IO+"put("+#type+")::"+#name )
+#define DECLARE_SIGNAL( name,IO,type )    ::dynamicgraph::Signal<type,int> m_##name##S##IO
+#define CONSTRUCT_SIGNAL( name,IO,type )  m_##name##S##IO( getClassName()+"("+getName()+")::"+#IO+"put("+#type+")::"+#name )
 #define BIND_SIGNAL_TO_FUNCTION(name,IO,type) m_##name##S##IO.setFunction(boost::bind(&EntityClassName::SIGNAL_OUT_FUNCTION_NAME(name),this,_1,_2));
 
 /**/
 
-#define DECLARE_SIGNAL_IN( name,type )    ::dynamicgraph::SignalPtr<type,int> name##SIN
-#define CONSTRUCT_SIGNAL_IN( name,type )  name##SIN( NULL,getClassName()+"("+getName()+")::input("+#type+")::"+#name )
+#define DECLARE_SIGNAL_IN( name,type )    ::dynamicgraph::SignalPtr<type,int> m_##name##SIN
+#define CONSTRUCT_SIGNAL_IN( name,type )  m_##name##SIN( NULL,getClassName()+"("+getName()+")::input("+#type+")::"+#name )
 
 /**/
 
@@ -51,12 +51,12 @@
 
 #define DECLARE_SIGNAL_OUT( name,type )                         \
   public:                                                       \
-    ::dynamicgraph::SignalTimeDependent<type,int> name##SOUT;	\
+    ::dynamicgraph::SignalTimeDependent<type,int> m_##name##SOUT;	\
   protected:                                                    \
   type& SIGNAL_OUT_FUNCTION(name)( type&,int )
 
 #define CONSTRUCT_SIGNAL_OUT( name,type,dep )		\
-  name##SOUT( boost::bind(&  EntityClassName::name##SOUT_function,this,_1,_2), \
+  m_##name##SOUT( boost::bind(&  EntityClassName::name##SOUT_function,this,_1,_2), \
 	      dep,getClassName()+"("+getName()+")::output("+#type+")::"+#name )
 
 
