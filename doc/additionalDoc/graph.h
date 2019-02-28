@@ -1,5 +1,5 @@
 /**
-\page page_graph Graph
+\page p_graph Graph
 
 
 In this package, the graph considered are directed graphs.
