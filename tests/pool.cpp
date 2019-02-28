@@ -120,7 +120,7 @@ BOOST_AUTO_TEST_CASE (pool_display)
 			      "   fontcolor = black, color = black, fillcolor=cyan, style=filled, shape=box ]\n"
     "}\n";
 
-  /* Check the two substring (remove the date) */
+  /* Check the two substring (remove the date) -**/
   std::string s_output_wgph = oss_output_wgph.str();
   std::string s_crmk="*/";
 
@@ -134,6 +134,15 @@ BOOST_AUTO_TEST_CASE (pool_display)
   
   BOOST_CHECK(two_sub_string_identical);
 
+  // Test name of an object.
+  std::istringstream an_iss("MyEntityInst.in_double");
+  
+  dg::SignalBase<int> &aSignal=
+    dg::PoolStorage::getInstance()->getSignal(an_iss);
+
+  std::string aSignalName=aSignal.getName();
+  testExistence = aSignalName=="MyEntity(MyEntityInst)::input(double)::in_double";
+  BOOST_CHECK(testExistence);
   
   // Deregister the entity.
   dg::PoolStorage::getInstance()->deregisterEntity
