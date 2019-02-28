@@ -9,7 +9,7 @@ Despite the fact that it looks very similar to a ROS node or a CORBA/OpenRTM ser
 The main idea is that this entity is providing mostly a data-driven functionnality working at very high rate (\f$ 200 Hz\f$ or \f$ 1 kHz \f$)
 and should have a minimal computational time foot-print.
 
-For this signals (or ports to use a more classical terminology) are providing a time dependency between data.
+For this \subpage subp_signals (or ports to use a more classical terminology) are providing a time dependency between data.
 To implement this, an output signal is linked with a method of the entity. The method calls input signals or use other means
 to get the needed data.
 It might be provided by the connection with remote computers through a middleware, or specific protocols,
