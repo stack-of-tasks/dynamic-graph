@@ -14,6 +14,7 @@
 // along with dynamic-graph.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <sstream>
+#include <iostream>
 #include <dynamic-graph/entity.h>
 #include <dynamic-graph/factory.h>
 #include <dynamic-graph/exception-factory.h>
@@ -47,18 +48,48 @@ struct MyEntity : public dynamicgraph::Entity
 
 DYNAMICGRAPH_FACTORY_ENTITY_PLUGIN (MyEntity, "MyEntity");
 
+namespace dg = dynamicgraph;
 BOOST_AUTO_TEST_CASE (pool_display)
 {
-  dynamicgraph::Entity* entity =
-    dynamicgraph::FactoryStorage::getInstance()->
+  // Create Entity
+  dg::Entity* entity =
+    dg::FactoryStorage::getInstance()->
     newEntity("MyEntity", "MyEntityInst");
 
+  // Search for an entity inside the map
   output_test_stream output;
-  dynamicgraph::Entity& e = dynamicgraph::PoolStorage::getInstance()->getEntity
+  dg::Entity& e = dg::PoolStorage::getInstance()->getEntity
     ("MyEntityInst");
   e.display(output);
   BOOST_CHECK (output.is_equal ("Hello! My name is MyEntityInst !\n"));
-  dynamicgraph::PoolStorage::getInstance()->deregisterEntity
+
+
+  // Testing entityMap
+  const dg::PoolStorage::Entities& anEntityMap =
+    dg::PoolStorage::getInstance()->getEntityMap();
+
+  bool testExistence = anEntityMap.find("MyEntityInst")==anEntityMap.end();
+  BOOST_CHECK(!testExistence);
+  
+  // Testing the existence of an entity
+  testExistence = dg::PoolStorage::getInstance()->existEntity
+    ("MyEntityInst",entity);
+
+  BOOST_CHECK(testExistence);
+
+  // Testing the completion list of pool storage
+  dg::PoolStorage::getInstance()->writeCompletionList
+    (output);
+  BOOST_CHECK (output.is_equal ("print\nsignals\nsignalDep\n"));
+  
+  // Deregister the entity.
+  dg::PoolStorage::getInstance()->deregisterEntity
     (entity->getName());
-  dynamicgraph::PoolStorage::destroy();
+
+  // Testing the existance of an entity
+  testExistence = dg::PoolStorage::getInstance()->existEntity
+    ("MyEntityInst",entity);
+  
+  BOOST_CHECK(!testExistence);
+  dg::PoolStorage::destroy();
 }
