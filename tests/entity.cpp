@@ -13,6 +13,8 @@
 #include "dynamic-graph/factory.h"
 #include "dynamic-graph/pool.h"
 #include <dynamic-graph/real-time-logger.h>
+#include <dynamic-graph/signal-ptr.h>
+#include <dynamic-graph/signal-time-dependent.h>
 
 #define BOOST_TEST_MODULE entity
 
@@ -26,6 +28,9 @@ namespace dynamicgraph
   class CustomEntity : public Entity
   {
   public:
+    dynamicgraph::SignalPtr<double, int> m_sigdSIN;
+    dynamicgraph::SignalTimeDependent<double, int> m_sigdTimeDepSOUT;
+
     static const std::string CLASS_NAME;
     virtual const std::string& getClassName () const
     {
@@ -33,8 +38,32 @@ namespace dynamicgraph
     }
     CustomEntity (const std::string n)
       : Entity (n)
+      ,m_sigdSIN(NULL,"CustomEntity("+name+")::input(double)::in_double")
+      ,m_sigdTimeDepSOUT(boost::bind(&CustomEntity::update,this,_1,_2),
+			 m_sigdSIN,
+			 "CustomEntity("+name+")::input(double)::out_double")
+
     {
     }
+
+    void addSignal()
+    {
+      signalRegistration(m_sigdSIN << m_sigdTimeDepSOUT);
+    }
+
+    void rmValidSignal()
+    {
+      signalDeregistration("in_double");
+      signalDeregistration("out_double");
+    }
+
+    double & update(double &res, const int &inTime)
+    {
+      const double &aDouble = m_sigdSIN(inTime);
+      res = aDouble;
+      return res;
+    }
+     
   };
   DYNAMICGRAPH_FACTORY_ENTITY_PLUGIN (CustomEntity,"CustomEntity");
 }
@@ -76,6 +105,23 @@ BOOST_AUTO_TEST_CASE (signal)
     {
       const dynamicgraph::Entity& entityConst = entity;
       entityConst.getSignal ("I do not exist");
+      BOOST_ERROR ("Should never happen.");
+    }
+  catch (const dynamicgraph::ExceptionFactory& exception)
+    {
+      BOOST_CHECK_EQUAL (exception.getCode (),
+			 dynamicgraph::ExceptionFactory::UNREFERED_SIGNAL);
+    }
+  // deregistration
+  try
+    {
+      dynamicgraph::CustomEntity * customEntity =
+	dynamic_cast<dynamicgraph::CustomEntity *>(&entity);
+      customEntity->addSignal();
+      // Removing signals is working the first time
+      customEntity->rmValidSignal();
+      // Removing signals generates an exception the second time.
+      customEntity->rmValidSignal();
       BOOST_ERROR ("Should never happen.");
     }
   catch (const dynamicgraph::ExceptionFactory& exception)
