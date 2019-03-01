@@ -102,8 +102,6 @@ BOOST_AUTO_TEST_CASE(testDebugTrace)
   bool two_sub_string_identical;
 
   // Make comparisons.
-  std::cout << str_to_test << std::endl;
-  std::cout << oss_debug_file.str() << std::endl;
   two_sub_string_identical = str_to_test == oss_debug_file.str();
   
   BOOST_CHECK(two_sub_string_identical);
