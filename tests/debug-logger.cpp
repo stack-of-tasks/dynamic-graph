@@ -68,6 +68,7 @@ namespace dynamicgraph
 BOOST_AUTO_TEST_CASE(debug_logger)
 {
   std::ofstream of;
+  dynamicgraph::RealTimeLogger::instance();
   of.open("/tmp/dg-LOGS.txt",std::ofstream::out|std::ofstream::app); 
   dgADD_OSTREAM_TO_RTLOG (of);
   
@@ -81,6 +82,8 @@ BOOST_AUTO_TEST_CASE(debug_logger)
     {
       entity.testDebugTrace();
     }
-  
+
+  dynamicgraph::RealTimeLogger::destroy();
 }
+
 
