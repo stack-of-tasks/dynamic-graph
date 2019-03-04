@@ -3,8 +3,6 @@
  * LAAS-CNRS
  * Andrea Del Prete, François Bailly, Olivier Stasse
  *
- * This file is part of dynamic-graph.
- * See license file.
  */
 
 #ifndef __dynamic_graph_logger_H__
@@ -141,7 +139,7 @@ namespace dynamicgraph {
   /// // Somewhere in the main function of your executable
   /// int main (int argc, char** argv) {
   ///   std::ofstream of;
-  ///   of.open("/tmp/dg-LOGS.txt",std::ofstream::out|std::ofstream::app); 
+  ///   of.open("/tmp/dg-LOGS.txt",std::ofstream::out|std::ofstream::app);
   ///   dgADD_OSTREAM_TO_RTLOG (of);
   /// }
   ///
@@ -154,7 +152,7 @@ namespace dynamicgraph {
   ///
   /// \endcode
   ///
-  /// 
+  ///
   class Logger
   {
   public:

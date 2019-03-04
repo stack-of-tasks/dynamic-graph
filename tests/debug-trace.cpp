@@ -2,8 +2,6 @@
  *
  * Olivier Stasse
  *
- * See LICENSE file
- *
  */
 #include <sstream>
 #include <iostream>
@@ -66,9 +64,9 @@ namespace dynamicgraph
 BOOST_AUTO_TEST_CASE(testDebugTrace)
 {
 
-    
+
   BOOST_CHECK_EQUAL (dynamicgraph::CustomEntity::CLASS_NAME, "CustomEntity");
-  
+
   dynamicgraph::CustomEntity& entity = *(dynamic_cast<dynamicgraph::CustomEntity *>(
     dynamicgraph::FactoryStorage::getInstance()->newEntity("CustomEntity",
 							   "my-entity")));
@@ -79,7 +77,7 @@ BOOST_AUTO_TEST_CASE(testDebugTrace)
   std::fstream the_debug_file;
   the_debug_file.open(dynamicgraph::DebugTrace::DEBUG_FILENAME_DEFAULT,
 		      std::ios::in );
-  
+
   // Extract the filename and this source file from the output
   std::string astr;
   std::ostringstream oss_debug_file;
@@ -91,7 +89,7 @@ BOOST_AUTO_TEST_CASE(testDebugTrace)
       std::string asubstr2 = asubstr.substr(found+1,astr.length());
       oss_debug_file << asubstr2;
     }
-  
+
   the_debug_file.close();
 
   // Compare with the strings put inside this source file
@@ -103,9 +101,7 @@ BOOST_AUTO_TEST_CASE(testDebugTrace)
 
   // Make comparisons.
   two_sub_string_identical = str_to_test == oss_debug_file.str();
-  
+
   BOOST_CHECK(two_sub_string_identical);
-  
+
 }
-
-

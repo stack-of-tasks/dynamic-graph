@@ -1,7 +1,6 @@
 // Copyright 2010-2019, CNRS, JRL, AIST, LAAS
 // Thomas Moulard, Olivier Stasse
 //
-// See License
 
 #ifndef DYNAMIC_GRAPH_FWD_HH
 # define DYNAMIC_GRAPH_FWD_HH

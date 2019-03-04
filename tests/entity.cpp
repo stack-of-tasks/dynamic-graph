@@ -1,8 +1,6 @@
 /* Copyright 2010-2019 LAAS, CNRS
  * Thomas Moulard.
  *
- * See LICENSE file
- *
  */
 
 #define ENABLE_RT_LOG
@@ -63,7 +61,7 @@ namespace dynamicgraph
       res = aDouble;
       return res;
     }
-     
+
   };
   DYNAMICGRAPH_FACTORY_ENTITY_PLUGIN (CustomEntity,"CustomEntity");
 }
@@ -193,7 +191,7 @@ BOOST_AUTO_TEST_CASE (sendMsg)
     dynamicgraph::PoolStorage::getInstance()->getEntity("my-entity");
 
   output_test_stream output;
-  
+
   for(unsigned int i=0;
       i<4;
       i++)
@@ -205,7 +203,7 @@ BOOST_AUTO_TEST_CASE (sendMsg)
 	  entity.setLoggerVerbosityLevel(aLoggerVerbosityLevel);
 	  if (entity.getLoggerVerbosityLevel()!=aLoggerVerbosityLevel)
 	    output << "Mismatch output";
-	  
+
 	  std::string aBaseMsg="Auto Test Case";
 	  std::string aMsg=aBaseMsg+" DEBUG";
 	  entity.sendMsg(aMsg, dynamicgraph::MSG_TYPE_DEBUG, __FILE__, __LINE__);

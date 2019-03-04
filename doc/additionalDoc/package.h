@@ -6,17 +6,6 @@
  *
  * CNRS/AIST
  *
- * This file is part of dynamic-graph.
- * dynamic-graph is free software: you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public License
- * as published by the Free Software Foundation, either version 3 of
- * the License, or (at your option) any later version.
- * dynamic-graph is distributed in the hope that it will be
- * useful, but WITHOUT ANY WARRANTY; without even the implied warranty
- * of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.  You should
- * have received a copy of the GNU Lesser General Public License along
- * with dynamic-graph.  If not, see <http://www.gnu.org/licenses/>.
  */
 
 /**
@@ -31,7 +20,7 @@ The installation instruction are given at \subpage subp_installation.
 
 The software graph structure is detailled in \subpage p_graph
 
-For debugging your entities detailed instructions are given in \subpage debug 
+For debugging your entities detailed instructions are given in \subpage debug
 
 For citing the software in your research work please refer to \subpage subp_references
 
