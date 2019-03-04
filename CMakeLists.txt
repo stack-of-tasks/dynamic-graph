@@ -19,7 +19,6 @@ INCLUDE(cmake/base.cmake)
 INCLUDE(cmake/boost.cmake)
 INCLUDE(cmake/eigen.cmake)
 INCLUDE(cmake/pthread.cmake)
-INCLUDE(cmake/cpack.cmake)
 
 SET(PROJECT_ORG stack-of-tasks)
 SET(PROJECT_NAME dynamic-graph)
@@ -66,4 +65,3 @@ ADD_SUBDIRECTORY(include/${PROJECT_NAME})
 ADD_SUBDIRECTORY(tests)
 
 SETUP_PROJECT_FINALIZE()
-SETUP_PROJECT_CPACK()
