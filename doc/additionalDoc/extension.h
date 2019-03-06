@@ -36,11 +36,11 @@ It is providing a step-by-step way of building an entity
 \section sec_htw_helpers Helpers
 
 When writing entities you might use some macros which are very useful to write your class.
-They are given also in the <a href="http://projects.laas.fr/gepetto/doc/stack-of-tasks/sot-core/master/doxygen-html">sot-core</a> package as well.
 
 \subsection subsec_howto_typedef Entity helpers
 
 The header <b>entity-helper.h</b> is defining a type called EntityClassName 
+
 \section sec_howto_macros_helpers Macro helpers
 
 \subsection subsec_howto_macros_helpers Preprocessing macros for signals
@@ -95,17 +95,27 @@ The header <b>entity-helper.h</b> is defining a type called EntityClassName
 
     </ul>
   <li> 
-  </li>
+  </li> Inner signals
+    <ul>
       <li> <b> DECLARE_SIGNAL_INNER(signal_name,type)</b>
       Inner signal are signal that depend on a state of the entity and not on input signals.
       This macro declares an inner signal with the following pattern:
       \code
       m_signal_nameSINNER
       \endcode
-   </li>
-   <li> <b>DEFINE_SIGNAL_INNER_FUNCTION</b> 
-This macro 
-</li>
+      It also creates a member function with the following pattern:
+      \code
+      type & EntityClassName::nameSINNER_function(signal_name)(type &, int)
+      \endcode
+      </li>
+      <li> <b>DEFINE_SIGNAL_INNER_FUNCTION(signal_name,type)</b> 
+      This macro is used to implement the method related to signal_name. More precisely 
+      it provides the header of the member function(i.e. method) declaration.
+      </li>
+      <li><b>DECLARE_SIGNAL_INNER_FUNCTION(signal_name,type)</b>
+      This macros declares the member function used to handle the access to this signal.
+      </li>
+    </ul>
 </ul>
 
 */
