@@ -1,19 +1,8 @@
 /*
- * Copyright 2011, 2019 
+ * Copyright 2011, 2019
  * LAAS-CNRS
- * Nicolas Mansard, François Bailly 
+ * Nicolas Mansard, François Bailly
  *
- * This file is part of dynamic-graph.
- * dynamic-graph is free software: you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public License
- * as published by the Free Software Foundation, either version 3 of
- * the License, or (at your option) any later version.
- * dynamic-graph is distributed in the hope that it will be
- * useful, but WITHOUT ANY WARRANTY; without even the implied warranty
- * of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.  You should
- * have received a copy of the GNU Lesser General Public License along
- * with dynamic-graph.  If not, see <http://www.gnu.org/licenses/>.
  */
 
 #ifndef __dynamic_graph_signal_helper_H__
@@ -25,7 +14,7 @@
 #include <dynamic-graph/entity.h>
 #include <dynamic-graph/signal-ptr.h>
 #include <dynamic-graph/signal-time-dependent.h>
-#include <dynamic-graph/linear-algebra.h> 
+#include <dynamic-graph/linear-algebra.h>
 
 /* --- MACROS ---------------------------------------------------------- */
 #define SIGNAL_OUT_FUNCTION_NAME(name) name##SOUT_function

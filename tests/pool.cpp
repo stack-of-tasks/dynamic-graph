@@ -1,17 +1,5 @@
 // Copyright 2010 Thomas Moulard.
 //
-// This file is part of dynamic-graph.
-// dynamic-graph is free software: you can redistribute it and/or modify
-// it under the terms of the GNU Lesser General Public License as published by
-// the Free Software Foundation, either version 3 of the License, or
-// (at your option) any later version.
-//
-// dynamic-graph is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU Lesser General Public License for more details.
-// You should have received a copy of the GNU Lesser General Public License
-// along with dynamic-graph.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <sstream>
 #include <iostream>
@@ -35,7 +23,7 @@ struct MyEntity : public dynamicgraph::Entity
 
   dynamicgraph::SignalPtr<double, int> m_sigdSIN;
   dynamicgraph::SignalTimeDependent<double, int> m_sigdTimeDepSOUT;
-  
+
   MyEntity (const std::string& name)
     : Entity (name)
     ,m_sigdSIN(NULL,"MyEntity("+name+")::input(double)::in_double")
@@ -62,7 +50,7 @@ struct MyEntity : public dynamicgraph::Entity
     res = aDouble;
     return res;
   }
-  
+
 };
 
 DYNAMICGRAPH_FACTORY_ENTITY_PLUGIN (MyEntity, "MyEntity");
@@ -129,7 +117,7 @@ BOOST_AUTO_TEST_CASE (pool_display)
 
   bool testExistence = anEntityMap.find("MyEntityInst")==anEntityMap.end();
   BOOST_CHECK(!testExistence);
-  
+
   /// Testing the existence of an entity
   testExistence = dg::PoolStorage::getInstance()->existEntity
     ("MyEntityInst",entity);
@@ -149,7 +137,7 @@ BOOST_AUTO_TEST_CASE (pool_display)
   oss_output_wgph << the_debug_file.rdbuf();
   the_debug_file.close();
 
-  /// Use a predefined output 
+  /// Use a predefined output
   std::string str_to_test="/* This graph has been automatically generated.\n"
 			      "   2019 Month: 2 Day: 28 Time: 11:28 */\n"
 			      "digraph \"output\" { 	 graph [ label=\"output\" bgcolor = white rankdir=LR ]\n"
@@ -160,7 +148,7 @@ BOOST_AUTO_TEST_CASE (pool_display)
 			      "   fontcolor = black, color = black, fillcolor=cyan, style=filled, shape=box ]\n"
     "}\n";
 
-  /// Check the two substring (remove the date) - 
+  /// Check the two substring (remove the date) -
   std::string s_output_wgph = oss_output_wgph.str();
   std::string s_crmk="*/";
 
@@ -171,12 +159,12 @@ BOOST_AUTO_TEST_CASE (pool_display)
 
   bool two_sub_string_identical;
   two_sub_string_identical=sub_str_to_test==sub_s_output_wgph;
-  
+
   BOOST_CHECK(two_sub_string_identical);
 
   /// Test name of a valid signal.
   std::istringstream an_iss("MyEntityInst.in_double");
-  
+
   dg::SignalBase<int> &aSignal=
     dg::PoolStorage::getInstance()->getSignal(an_iss);
 
@@ -195,8 +183,8 @@ BOOST_AUTO_TEST_CASE (pool_display)
       res =(aef.getCode()==dg::ExceptionFactory::UNREFERED_SIGNAL);
     }
   BOOST_CHECK(res);
-  
-  
+
+
   /// Deregister the entity.
   dg::PoolStorage::getInstance()->deregisterEntity
     (entity->getName());
@@ -204,13 +192,13 @@ BOOST_AUTO_TEST_CASE (pool_display)
   /// Testing the existance of an entity
   testExistence = dg::PoolStorage::getInstance()->existEntity
     ("MyEntityInst",entity);
-  
+
   BOOST_CHECK(!testExistence);
 
   /// Create Entity
   std::string name_entity("MyEntityInst2");
   dg::PoolStorage::getInstance()->
     clearPlugin(name_entity);
-  
+
   dg::PoolStorage::destroy();
 }

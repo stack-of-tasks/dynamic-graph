@@ -3,17 +3,6 @@
 //
 // Author: Rohan Budhiraja
 //
-// This file is part of dynamic-graph.
-// dynamic-graph is free software: you can redistribute it and/or
-// modify it under the terms of the GNU Lesser General Public License
-// as published by the Free Software Foundation, either version 3 of
-// the License, or (at your option) any later version.
-// dynamic-graph is distributed in the hope that it will be
-// useful, but WITHOUT ANY WARRANTY; without even the implied warranty
-// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU Lesser General Public License for more details.  You should
-// have received a copy of the GNU Lesser General Public License along
-// with dynamic-graph.  If not, see <http://www.gnu.org/licenses/>.
 
 #ifndef DYNAMIC_GRAPH_EIGEN_IO_H
 #define DYNAMIC_GRAPH_EIGEN_IO_H
@@ -39,7 +28,7 @@ using dynamicgraph::ExceptionSignal;
 namespace Eigen {
   typedef EIGEN_DEFAULT_DENSE_INDEX_TYPE eigen_index;
 
-  inline std::istringstream& operator >> (std::istringstream &iss, 
+  inline std::istringstream& operator >> (std::istringstream &iss,
 					  dynamicgraph::Vector &inst) {
     unsigned int _size;
     double _dbl_val;
@@ -82,7 +71,7 @@ namespace Eigen {
    */
 
   template<typename Derived>
-  inline std::istringstream& operator >> (std::istringstream &iss, 
+  inline std::istringstream& operator >> (std::istringstream &iss,
 					  DenseBase<Derived> &inst) {
     unsigned int _colsize;
     unsigned int _rowsize;
@@ -133,13 +122,13 @@ namespace Eigen {
     return iss;
   }
 
-  
-  inline std::istringstream& operator >> (std::istringstream &iss, 
+
+  inline std::istringstream& operator >> (std::istringstream &iss,
 					  Transform<double,3,Affine> &inst) {
     MatrixXd M;    iss >> M;    inst.matrix() = M;    return iss;  }
-  
-  
-  
+
+
+
 
   /* \brief Eigen Homogeneous Matrix output
    *
@@ -147,27 +136,27 @@ namespace Eigen {
    * e.g. [2,5]((1 23 32.2 12.12 32),(2 32 23 92.01 19.2))
    */
 
-  inline std::ostream& operator << (std::ostream &os, 
+  inline std::ostream& operator << (std::ostream &os,
 				    Transform<double,3,Affine> MH) {
     IOFormat boostFmt(StreamPrecision, DontAlignCols,
 		      ",", ",",
 		      "(",")",
 		      "(",")");
-    
+
     os << "[4,4]"<< MH.matrix().format(boostFmt);      return os;   }
-  
-  
-  inline std::ostream& operator << (std::ostream &os, 
+
+
+  inline std::ostream& operator << (std::ostream &os,
 				    AngleAxisd quat) {
     VectorXd v(4);      v(0) = quat.angle();      v.tail<3>() = quat.axis();
     os << v;      return os;   }
-  
-  inline std::istringstream& operator >> (std::istringstream &iss, 
+
+  inline std::istringstream& operator >> (std::istringstream &iss,
 					  AngleAxisd &inst) {
     VectorXd v(4);    iss >>v;
     inst.angle() = v(0);    inst.axis() = v.tail<3>();
     return iss;  }
-  
+
 }
 
 

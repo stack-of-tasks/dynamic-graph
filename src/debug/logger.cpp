@@ -1,10 +1,8 @@
 /*
- * Copyright 2015, 2019 
+ * Copyright 2015, 2019
  * LAAS-CNRS
  * Andrea Del Prete, François Bailly, Olivier Stasse
- * 
- * This file is part of dynamic-graph.
- * See license file.
+ *
  */
 
 #ifndef WIN32
@@ -37,7 +35,7 @@ namespace dynamicgraph
   Logger::~Logger()
   {
   }
-  
+
   void Logger::setVerbosity(LoggerVerbosity lv)
   {
     m_lv=lv;
@@ -46,7 +44,7 @@ namespace dynamicgraph
   LoggerVerbosity Logger::getVerbosity()
   {
     return m_lv;
-    
+
   }
   void Logger::countdown()
   {
@@ -104,4 +102,3 @@ namespace dynamicgraph
     return true;
   }
 } // namespace dynamicgraph
-
