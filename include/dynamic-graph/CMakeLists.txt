@@ -1,7 +1,6 @@
 SET(${PROJECT_NAME}_HEADERS
   fwd.hh
   null-ptr.hh
-  contiifstream.h
   debug.h
   real-time-logger.h
 
@@ -47,7 +46,9 @@ SET(${PROJECT_NAME}_HEADERS
   command-direct-setter.h
   command-bind.h
   all-commands.h
-  )
+
+  logger.h
+    )
 
 INSTALL(FILES ${${PROJECT_NAME}_HEADERS}
   DESTINATION include/${PROJECT_NAME}

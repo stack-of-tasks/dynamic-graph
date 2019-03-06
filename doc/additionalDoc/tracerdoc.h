@@ -1,11 +1,12 @@
 /**
 \page tracerdoc Tracer
-\section description Description
+\section tracerdoc_description Description
 The \b Tracer entity monitors a set of signals. With an input change on the entity's [trigger] signal,
 the tracked signal values are recorded and traced to a file. The behavior of the trace-to-file
 function can be changed, from printing to a file immediately after recording, to printing out
 only when asked explicitly.
-\section commands Commands
+
+\section tracerdoc_commands Commands
 The \b commands that this entity exposes are:
 \code
 open, close (a file);
@@ -19,7 +20,8 @@ start, stop (traces)
 For more information on the signals exposed by this entity, please check the
 code documentation of the dynamicgraph::Tracer class.
 \n\n
-\section sample Sample usage
+
+\section tracerdoc_sample Sample usage
 The following code creates a TracerRealTime entity, then sets the tracing buffer
 size to 10MB. It then tells the tracer to create files with names of the form:
 jl_XXX.dat where XXX is the signal name, and adds a few signals after
@@ -38,10 +40,9 @@ tr.add dyn.0
 tr.add jgain.gain
 \endcode
 
-\section addi Additional information
+\section tracerdoc_addi Additional information
 See doxygen documentation for the class dynamicgraph::Tracer
 
-\section generates Generated plugin file
+\section tracerdoc_generates Generated plugin file
 tracer.dll or tracer.so.
-
-**/
+*/

@@ -2,18 +2,6 @@
 // Copyright 2010, François Bleibel, Thomas Moulard, Olivier Stasse,
 // JRL, CNRS/AIST.
 //
-// This file is part of dynamic-graph.
-// dynamic-graph is free software: you can redistribute it and/or
-// modify it under the terms of the GNU Lesser General Public License
-// as published by the Free Software Foundation, either version 3 of
-// the License, or (at your option) any later version.
-//
-// dynamic-graph is distributed in the hope that it will be useful, but
-// WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-// General Lesser Public License for more details.  You should have
-// received a copy of the GNU Lesser General Public License along with
-// dynamic-graph. If not, see <http://www.gnu.org/licenses/>.
 
 #ifndef DYNAMIC_GRAPH_ENTITY_H
 # define DYNAMIC_GRAPH_ENTITY_H
@@ -29,6 +17,7 @@
 # include <dynamic-graph/exception-factory.h>
 # include <dynamic-graph/signal-array.h>
 # include <dynamic-graph/signal-base.h>
+# include <dynamic-graph/logger.h>
 
 /// \brief Helper macro for entity declaration.
 ///
@@ -108,6 +97,22 @@ namespace dynamicgraph
     command::Command* getNewStyleCommand( const std::string& cmdName );
 
     SignalMap getSignalMap() const;
+
+    /** \name Logger related methods */
+    /** \{*/
+    /// \brief Send messages \param msg with level t. Add string file and line to message.
+    void sendMsg(const std::string &msg,
+		 MsgType t=MSG_TYPE_INFO,
+		 const char *file="",
+		 int line=0);
+
+    /// \brief Specify the verbosity level of the logger.
+    void setLoggerVerbosityLevel(LoggerVerbosity lv)
+    {logger_.setVerbosity(lv);}
+
+    /// \brief Get the logger's verbosity level.
+    LoggerVerbosity getLoggerVerbosityLevel()
+    { return logger_.getVerbosity(); };
   protected:
     void addCommand(const std::string& name,command::Command* command);
 
@@ -120,6 +125,7 @@ namespace dynamicgraph
     std::string name;
     SignalMap signalMap;
     CommandMap_t commandMap;
+    Logger logger_;
   };
 
   DYNAMIC_GRAPH_DLLAPI std::ostream&

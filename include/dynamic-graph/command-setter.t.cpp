@@ -3,17 +3,6 @@
 //
 // Author: Florent Lamiraux
 //
-// This file is part of dynamic-graph.
-// dynamic-graph is free software: you can redistribute it and/or
-// modify it under the terms of the GNU Lesser General Public License
-// as published by the Free Software Foundation, either version 3 of
-// the License, or (at your option) any later version.
-// dynamic-graph is distributed in the hope that it will be
-// useful, but WITHOUT ANY WARRANTY; without even the implied warranty
-// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU Lesser General Public License for more details.  You should
-// have received a copy of the GNU Lesser General Public License along
-// with dynamic-graph.  If not, see <http://www.gnu.org/licenses/>.
 
 #ifndef DYNAMIC_GRAPH_COMMAND_SETTER_T_CPP
 #define DYNAMIC_GRAPH_COMMAND_SETTER_T_CPP
@@ -26,7 +15,7 @@ namespace dynamicgraph {
   class Entity;
   namespace command {
 
-    // 
+    //
     // Template specialization: bool
     //
     template <class E>
@@ -64,7 +53,7 @@ namespace dynamicgraph {
       return Value();
     }
 
-    // 
+    //
     // Template specialization: unsigned
     //
     template <class E>
@@ -102,7 +91,7 @@ namespace dynamicgraph {
       return Value();
     }
 
-    // 
+    //
     // Template specialization: int
     //
     template <class E>
@@ -140,7 +129,7 @@ namespace dynamicgraph {
       return Value();
     }
 
-    // 
+    //
     // Template specialization: float
     //
     template <class E>
@@ -178,7 +167,7 @@ namespace dynamicgraph {
       return Value();
     }
 
-    // 
+    //
     // Template specialization: double
     //
     template <class E>
@@ -216,7 +205,7 @@ namespace dynamicgraph {
       return Value();
     }
 
-    // 
+    //
     // Template specialization: std::string
     //
     template <class E>
@@ -254,7 +243,7 @@ namespace dynamicgraph {
       return Value();
     }
 
-    // 
+    //
     // Template specialization: Vector
     //
     template <class E>
@@ -292,7 +281,7 @@ namespace dynamicgraph {
       return Value();
     }
 
-    // 
+    //
     // Template specialization: Matrix
     //
     template <class E>

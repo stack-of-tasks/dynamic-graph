@@ -1,10 +1,12 @@
 /**
 \page tracerrealtimedoc TracerRealTime
-\section description Description
+
+\section tracerrealtimedoc_description Description
 The \b TracerRealTime entity monitors a set of signals with real-time constraints; its
 function is very similar to the Tracer, except that all traces are recorded to a
 memory buffer, which can be emptied at any time.
-\section commands Commands
+
+\section tracerrealtimedoc_commands Commands
 The \b commands that this entity exposes are:
 \code
 empty (discards all buffers)
@@ -16,13 +18,12 @@ Plus all the commands exposed by \ref tracerdoc
 For more information on the signals exposed by this entity, please check the
 code documentation of the dynamicgraph::Tracer class.
 
-\section sample Sample usage
+\section tracerrealtimedoc_sample Sample usage
 See \ref tracerdoc for a code sample of using TracerRealTime.
 
-\section addi Additional information
+\section tracerrealtimedoc_addi Additional information
 See doxygen documentation for the class dynamicgraph::TracerRealTime
 
-\section generates Generated plugin file
+\section tracerrealtimedoc_generates Generated plugin file
 tracer-real-time.dll or tracer-real-time.so.
-
-**/
+*/
