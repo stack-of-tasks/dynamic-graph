@@ -35,6 +35,7 @@ It is providing a step-by-step way of building an entity
 
 \section sec_htw_helpers Helpers
 
+
 When writing entities you might use some macros which are very useful to write your class.
 
 \subsection subsec_howto_typedef Entity helpers
@@ -43,7 +44,21 @@ The header <b>entity-helper.h</b> is defining a type called EntityClassName
 
 \section sec_howto_macros_helpers Macro helpers
 
-\subsection subsec_howto_macros_helpers Preprocessing macros for signals
+\subsection subsec_howto_macros_helpers_ent Preprocessing macros for entities
+
+<ul> 
+  <li> <b>DYNAMIC_GRAPH_ENTITY_DECL()</b>:
+  This macro creates a method <b>getClassName()</b> which returns the class name.</li>
+  This macro <b>should</b> be used in the declaration of the class.
+  </li> 
+  <li> <b>DYNAMICGRAPH_FACTORY_ENTITY_PLUGIN(classtype,classname)</b>
+  This macros creates the methods necessary to have a factory building the C++ class 
+  <b>classtype</b> from the string <b>classname</b>.
+  This macro <b>should</b> be used in the implementation of the class.
+  </li>
+</ul>
+
+\subsection subsec_howto_macros_helpers_sig Preprocessing macros for signals
 
 <ul>
   <li>  Macro for input signals
