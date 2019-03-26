@@ -1,4 +1,4 @@
-/** 
+/**
 \page subp_logger Loggers
 
 \section sec_logger Initialization of the logger
@@ -17,12 +17,12 @@ In order to activate the logger you need to add the following lines:
 It is possible to set the output stream of the messages inside a file:
 \code
   dynamicgraph::RealTimeLogger::instance();
-  of.open("/tmp/dg-LOGS.txt",std::ofstream::out|std::ofstream::app); 
+  of.open("/tmp/dg-LOGS.txt",std::ofstream::out|std::ofstream::app);
   dgADD_OSTREAM_TO_RTLOG (of);
-  
+
   dynamicgraph::RealTimeLogger::destroy();
 \endcode
-Here the file is "/tmp/dg-LOGS.txt". 
+Here the file is "/tmp/dg-LOGS.txt".
 
 \subsection subsec_logger_init Initialization of the logger
 

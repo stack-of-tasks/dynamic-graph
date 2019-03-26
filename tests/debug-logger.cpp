@@ -43,7 +43,7 @@ namespace dynamicgraph
       LoggerVerbosity alv = logger_.getVerbosity();
       BOOST_CHECK(alv==VERBOSITY_ALL);
     }
-    
+
     ~CustomEntity()
     {
     }
@@ -69,11 +69,11 @@ BOOST_AUTO_TEST_CASE(debug_logger)
 {
   std::ofstream of;
   dynamicgraph::RealTimeLogger::instance();
-  of.open("/tmp/dg-LOGS.txt",std::ofstream::out|std::ofstream::app); 
+  of.open("/tmp/dg-LOGS.txt",std::ofstream::out|std::ofstream::app);
   dgADD_OSTREAM_TO_RTLOG (of);
-  
+
   BOOST_CHECK_EQUAL (dynamicgraph::CustomEntity::CLASS_NAME, "CustomEntity");
-  
+
   dynamicgraph::CustomEntity& entity = *(dynamic_cast<dynamicgraph::CustomEntity *>(
     dynamicgraph::FactoryStorage::getInstance()->newEntity("CustomEntity",
 							   "my-entity")));
@@ -85,5 +85,3 @@ BOOST_AUTO_TEST_CASE(debug_logger)
 
   dynamicgraph::RealTimeLogger::destroy();
 }
-
-
