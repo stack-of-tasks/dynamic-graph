@@ -1,0 +1,52 @@
+<html>
+
+<body>
+   <script src="https://github.com/mdaines/viz.js/releases/download/v2.1.2/viz.js"></script>
+   <script src="https://github.com/mdaines/viz.js/releases/download/v2.1.2/full.render.js"></script>
+   <script>
+     function renderDOTFile() {
+       var fileInputElement = document.getElementById("fileInputElement");
+     
+       var reader = new FileReader();
+       var graphtextres = ""
+       reader.onloadend = function(e) {
+          graphtextres = e.target.result
+          var viz = new Viz();
+
+          viz.renderSVGElement(graphtextres)
+          .then(function(element) {
+
+            elementToRemove=document.getElementById("displaysvgzone")
+            if (elementToRemove != null)
+            {
+             document.body.removeChild(elementToRemove)
+            }
+            document.body.appendChild(element)
+            element.id="displaysvgzone"
+         })
+         .catch(error => {
+          // Create a new Viz instance (@see Caveats page for more info)
+          viz = new Viz();
+     
+          // Possibly display the error
+          console.error(error);
+          });
+        }
+       reader.readAsText(fileInputElement.files[0]);
+     };
+
+
+   </script>
+   <input type="file" id="fileInputElement">   
+   <input id="Rendering" type="button" value="Rendering" onclick="renderDOTFile();" />
+   <script>
+     var el = document.getElementById("Rendering");
+     if (el.addEventListener)
+       el.addEventListener("click", renderDOTFile, false);
+     else if (el.attachEvent)
+       el.attachEvent('onclick', renderDOTFile);
+   </script>
+</body>
+
+</html>
+
