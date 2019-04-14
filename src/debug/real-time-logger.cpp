@@ -87,22 +87,22 @@ namespace dynamicgraph
       int threadPolicy;
       struct sched_param threadParam;
       if (pthread_getschedparam (pthread_self(), &threadPolicy, &threadParam) == 0)
-      {
-        threadPolicy = SCHED_OTHER;
-        threadParam.sched_priority -= 5;
-        if (threadParam.sched_priority < sched_get_priority_min (threadPolicy))
-          threadParam.sched_priority = sched_get_priority_min (threadPolicy);
+	{
+	  threadPolicy = SCHED_OTHER;
+	  threadParam.sched_priority -= 5;
+	  if (threadParam.sched_priority < sched_get_priority_min (threadPolicy))
+	    threadParam.sched_priority = sched_get_priority_min (threadPolicy);
 
-        pthread_setschedparam (pthread_self(), threadPolicy, &threadParam);
-      }
+	  pthread_setschedparam (pthread_self(), threadPolicy, &threadParam);
+	}
 
       while (!requestShutdown_ || !logger->empty())
-      {
-        // If the logger did not write anything, it means the buffer is empty.
-        // Do a pause
-        if (!logger->spinOnce())
-          boost::this_thread::sleep(boost::posix_time::milliseconds(100));
-      }
+	{
+	  // If the logger did not write anything, it means the buffer is empty.
+	  // Do a pause
+	  if (!logger->spinOnce())
+	    boost::this_thread::sleep(boost::posix_time::milliseconds(100));
+	}
     }
   };
 
