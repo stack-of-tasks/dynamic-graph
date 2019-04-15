@@ -35,11 +35,11 @@ Inside the constructor of the entity:
 \endcode
 
 The first line sets the frequency at which the logger will be updated.<br>
-The second line specifies at which frequency the message should be
+The second line specifies at which frequency the STREAM messages should be
 printed.<br>
 The third line specifies the level of message to accept.<br>
 The fourth line returns the level of verbosity.
-In this case, all messages are accepted. <br>
+In this case, all messages are accepted and the STREAM message are displayed on the output streams once on five. <br>
 
 The full list of options are:
 <ul>
@@ -54,15 +54,19 @@ The full list of options are:
 
 Here is some example on how to display or record some information.
 \code
-      sendMsg("This is a message of level MSG_TYPE_DEBUG",MSG_TYPE_DEBUG);
-      sendMsg("This is a message of level MSG_TYPE_INFO",MSG_TYPE_INFO);
-      sendMsg("This is a message of level MSG_TYPE_WARNING",MSG_TYPE_WARNING);
-      sendMsg("This is a message of level MSG_TYPE_ERROR",MSG_TYPE_ERROR);
-      sendMsg("This is a message of level MSG_TYPE_DEBUG_STREAM",MSG_TYPE_DEBUG_STREAM);
-      sendMsg("This is a message of level MSG_TYPE_INFO_STREAM",MSG_TYPE_INFO_STREAM);
-      sendMsg("This is a message of level MSG_TYPE_WARNING_STREAM",MSG_TYPE_WARNING_STREAM);
-      sendMsg("This is a message of level MSG_TYPE_ERROR_STREAM",MSG_TYPE_ERROR_STREAM);
+      sendMsg("This is a message of level MSG_TYPE_DEBUG",MSG_TYPE_DEBUG, __FILE__,__LINE__);
+      sendMsg("This is a message of level MSG_TYPE_INFO",MSG_TYPE_INFO, __FILE__,__LINE__);
+      sendMsg("This is a message of level MSG_TYPE_WARNING",MSG_TYPE_WARNING, __FILE__,__LINE__);
+      sendMsg("This is a message of level MSG_TYPE_ERROR",MSG_TYPE_ERROR, __FILE__,__LINE__);
+      sendMsg("This is a message of level MSG_TYPE_DEBUG_STREAM",MSG_TYPE_DEBUG_STREAM, __FILE__,__LINE__);
+      sendMsg("This is a message of level MSG_TYPE_INFO_STREAM",MSG_TYPE_INFO_STREAM, __FILE__,__LINE__);
+      sendMsg("This is a message of level MSG_TYPE_WARNING_STREAM",MSG_TYPE_WARNING_STREAM, __FILE__,__LINE__);
+      sendMsg("This is a message of level MSG_TYPE_ERROR_STREAM",MSG_TYPE_ERROR_STREAM, __FILE__,__LINE__);
 
       logger_.countdown();
 \endcode
+
+Specifying the file with __FILE__ and the line inside the file by __LINE__ are necessary for the 
+STREAM messages. Indeed they are indexed using the two values. As the default value are "" and 0 
+the counting will be confused.
 */
