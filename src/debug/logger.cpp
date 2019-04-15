@@ -78,7 +78,10 @@ namespace dynamicgraph
         if(it->second>0.0)
 	  {
 	    it->second -= m_timeSample;
-	    return;
+	    if (it->second<=0.0)
+	      it->second = m_streamPrintPeriod;
+	    else
+	      return;
 	  }
         else  // otherwise reset counter and print
           it->second = m_streamPrintPeriod;

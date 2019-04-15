@@ -7,12 +7,13 @@
  */
 #include <sstream>
 #include <iostream>
+
+#define ENABLE_RT_LOG
 #include <dynamic-graph/entity.h>
 #include <dynamic-graph/exception-factory.h>
 #include "dynamic-graph/factory.h"
 #include "dynamic-graph/pool.h"
 
-#define ENABLE_RT_LOG
 #include <dynamic-graph/real-time-logger.h>
 #include <dynamic-graph/logger.h>
 
