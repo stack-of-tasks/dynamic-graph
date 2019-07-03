@@ -109,6 +109,7 @@ BOOST_AUTO_TEST_CASE (standard_double_registerer)
 	output_test_stream output;
 	mySignal.trace (output);
 	BOOST_CHECK (output.is_equal (test.second));
+
       }
     }
 
