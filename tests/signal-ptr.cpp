@@ -11,13 +11,13 @@
 #include <dynamic-graph/pool.h>
 #include <iostream>
 
-#define BOOST_TEST_MODULE signal_ptr
+//#define BOOST_TEST_MODULE signal_ptr
 
 
-#include <boost/test/unit_test.hpp>
-#include <boost/test/output_test_stream.hpp>
+/*#include <boost/test/unit_test.hpp>
+#include <boost/test/output_test_stream.hpp>*/
 
-using boost::test_tools::output_test_stream;
+/*using boost::test_tools::output_test_stream;
 
 typedef dynamicgraph::SignalPtr<double, int> sigDouble_t;
 
@@ -26,7 +26,7 @@ class DummyClass
 {
 public:
 
-    std::string proname;
+    std::string proname;*/
 
 
 
@@ -52,6 +52,10 @@ int main( void )
   SignalBase<int> & sigPtrARef = sigPtrA, & sigPtrBRef = sigPtrB;
   sigPtrARef.plug( & sigRef );
   sigPtrBRef.plug( & sigPtrARef );
+
+  assert(sigRef.isPlugged()!=true);
+  sigPtrBRef.unplug();
+  assert(sigPtrBRef.isPlugged()!=true);
 
   cout << "Sig = ";  sigRef.get(cout); cout << std::endl;
   cout << "SigPtrA = ";  sigPtrARef.get(cout); cout << std::endl;
