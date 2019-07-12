@@ -112,7 +112,24 @@ namespace dynamicgraph
 
     /// \brief Get the logger's verbosity level.
     LoggerVerbosity getLoggerVerbosityLevel()
-    { return logger_.getVerbosity(); };
+    { return logger_.getVerbosity(); }
+
+    /// \brief Set the time sample.
+    bool setTimeSample(double t)
+    { return logger_.setTimeSample(t); }
+
+    /// \brief Get the time sample.
+    double getTimeSample()
+    { return logger_.getTimeSample();}
+
+    /// \brief Set the period of the stream period
+    bool setStreamPrintPeriod(double t)
+    { return logger_.setStreamPrintPeriod(t); }
+
+    /// \brief Get the period of the stream period
+    double getStreamPrintPeriod()
+    { return logger_.getStreamPrintPeriod();}
+
   protected:
     void addCommand(const std::string& name,command::Command* command);
 

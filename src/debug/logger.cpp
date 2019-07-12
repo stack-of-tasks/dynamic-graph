@@ -62,7 +62,7 @@ namespace dynamicgraph
       return;
 
     // if print is allowed by current verbosity level
-    if(isStreamMsg(type))
+    if( isStreamMsg(type))
       {
         // check whether counter already exists
         string id = file+toString(line);
@@ -78,7 +78,10 @@ namespace dynamicgraph
         if(it->second>0.0)
 	  {
 	    it->second -= m_timeSample;
-	    return;
+	    if (it->second<=0.0)
+	      it->second = m_streamPrintPeriod;
+	    else
+	      return;
 	  }
         else  // otherwise reset counter and print
           it->second = m_streamPrintPeriod;
@@ -100,5 +103,15 @@ namespace dynamicgraph
       return false;
     m_streamPrintPeriod = s;
     return true;
+  }
+
+  double Logger::getTimeSample()
+  {
+    return m_timeSample;
+  }
+
+  double Logger::getStreamPrintPeriod()
+  {
+    return m_streamPrintPeriod;
   }
 } // namespace dynamicgraph
