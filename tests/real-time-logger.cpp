@@ -43,6 +43,20 @@ BOOST_AUTO_TEST_CASE (monothread)
 
 BOOST_AUTO_TEST_CASE (multithread)
 {
+  // The part of the code changing priority will only be effective
+  // if this test is run as root. Otherwise it behaves like a classical thread.
+  // Test confirms that in this case, it runs with a priority -51
+  // and that the thread for logging is running on SCHED_OTHER
+  // with a nice priority (20).
+  int threadPolicy;
+  struct sched_param threadParam;
+  if (pthread_getschedparam (pthread_self(), &threadPolicy, &threadParam)==0)
+    {
+      threadPolicy = SCHED_RR;
+      threadParam.sched_priority = 50;
+      pthread_setschedparam (pthread_self(), threadPolicy, &threadParam);
+    }
+
   RealTimeLogger& rtl = RealTimeLogger::instance();
   dgADD_OSTREAM_TO_RTLOG (std::cout);
 

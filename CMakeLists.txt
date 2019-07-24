@@ -41,6 +41,7 @@ SET(PKG_CONFIG_EXTRA "plugindir=${PLUGINDIR}")
 PKG_CONFIG_APPEND_LIBS(${PROJECT_NAME})
 
 # Search for Boost.
+SET(BOOST_COMPONENTS serialization system unit_test_framework thread)
 SEARCH_FOR_BOOST()
 SEARCH_FOR_PTHREAD()
 
