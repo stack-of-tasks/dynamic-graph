@@ -121,6 +121,9 @@ BOOST_AUTO_TEST_CASE (signaltimedependent)
   sig5.setDependencyType (dynamicgraph::TimeDependency<int>::ALWAYS_READY);
   sig6.setDependencyType (dynamicgraph::TimeDependency<int>::BOOL_DEPENDENT);
 
+  sig5.setPeriodTime(3);
+  assert(sig5.getPeriodTime() == 3);
+
   sig6.setReady();
 
   {
