@@ -68,7 +68,7 @@ struct EigenCastRegisterer_V : public dynamicgraph::SignalCastRegisterer
   }
 };
 
-template<typename E>
+template<typename Derived>
 struct EigenCastRegisterer_M : public dynamicgraph::SignalCastRegisterer
 {
     typedef Matrix bnuMatrix;
@@ -89,23 +89,35 @@ struct EigenCastRegisterer_M : public dynamicgraph::SignalCastRegisterer
     {
         const bnuMatrix& m = boost::any_cast<bnuMatrix> (object);
         os << "[ ";
-        for (int i = 0; i < m.size (); ++i)
-            for (int j = 0; j < m(i).size(); j++)
-                os << m(i,j) << " ";
+        for (int i = 0; i < m.rows(); ++i){
+            os << "[ ";
+            for (int j = 0; j < m.cols(); ++j) {
+                os << m(i, j) << " ";
+            }
+            if (i != m.rows()-1){
+                os << "]; ";
+            }
+            else{
+                os << "] ";
+            }
+        }
         os << " ];" << std::endl;
     }
 
     static void traceMatrix (const boost::any& object, std::ostream& os)
     {
-        const bnuMatrix& v = boost::any_cast<bnuMatrix> (object);
-        for (int i = 0; i < v.size (); ++i)
-            os << v(i) << " ";
+        const bnuMatrix& m = boost::any_cast<bnuMatrix> (object);
+        for (int i = 0; i < m.rows(); ++i){
+            for (int j = 0; j < m.cols(); ++j){
+                os << m(i,j) << " ";
+            }
+        }
         os << std::endl;
     }
 };
 
 EigenCastRegisterer_V myVectorCast;
-EigenCastRegisterer_M myMatrixCast;
+EigenCastRegisterer_M<int> myMatrixCast;
 
 // Define a new cast with a type that supports streaming operators to
 // and from it (this could be automated with macros).
@@ -252,6 +264,13 @@ BOOST_AUTO_TEST_CASE (custom_matrix_registerer) {
 
     dynamicgraph::Signal<dynamicgraph::Matrix, int> myMatrixSignal("matrix");
 
+    // Print the signal name.
+    {
+        output_test_stream output;
+        output << myMatrixSignal;
+        BOOST_CHECK (output.is_equal ("Sig:matrix (Type Cst)"));
+    }
+
     //Catch Exception of ss (not good input)
 
     //ss[0] != "["
@@ -334,7 +353,7 @@ BOOST_AUTO_TEST_CASE (custom_matrix_registerer) {
         std::cout << "Test passed : ss[5] != \")\"";
     }
 
-    //ss[-2] != ")"
+    //ss[-3] != ")"
     try {
         std::istringstream ss("[5,1]((1)(2)(3)[");
         myMatrixSignal.set(ss);
@@ -342,13 +361,15 @@ BOOST_AUTO_TEST_CASE (custom_matrix_registerer) {
         std::cout << "Test passed : ss[5] != \")\"";
     }
 
-    //ss[-1] != "]"
+    //ss[-1]!= ")"
     try {
-        std::istringstream ss("[5,1]((1)(2)(3))[");
+        std::istringstream ss("[3,1]((1)(2),(3)[");
         myMatrixSignal.set(ss);
     } catch (ExceptionSignal e) {
-        std::cout << "Test passed : ss[5] != \"]\"";
+        std::cout << "Test passed : ss[5] != \")\" and ignore \",\"";
     }
+
+    //[...]((...))
 }
 
 // One issue with the strategy used by the
