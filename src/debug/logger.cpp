@@ -61,7 +61,6 @@ namespace dynamicgraph
        (m_lv==VERBOSITY_INFO_WARNING_ERROR && isDebugMsg(type)))
       return;
 
-    //TODO Modif ici
     // if print is allowed by current verbosity level
     if( isStreamMsg(type))
       {
