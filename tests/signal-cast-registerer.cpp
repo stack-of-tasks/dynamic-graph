@@ -371,22 +371,3 @@ BOOST_AUTO_TEST_CASE (custom_matrix_registerer) {
 
     //[...]((...))
 }
-
-// One issue with the strategy used by the
-// dynamicgraph::SignalCastRegisterer is that it relies on the
-// typeid. In practice, it means that two signals defined in two
-// different libraries will have different typeid and one will not be
-// able to plug one into the other unless the symbol have merged when
-// the plug-in is loaded. See man(3) dlopen in Linux for more
-// information about plug-in loading and the RTLD_GLOBAL flag
-// necessary to make cast registerer work as expected.
-//
-// Here we make sure that two instances of the same type
-// declared in two separate libraries are resolved into the
-// same typeid.
-/*BOOST_AUTO_TEST_CASE (typeid_issue)
-{
-  BOOST_CHECK (typeid(vA) == typeid(vB));
-  BOOST_CHECK_EQUAL (std::string (typeid(vA).name ()),
-		     std::string (typeid(vB).name ()));
-}*/
