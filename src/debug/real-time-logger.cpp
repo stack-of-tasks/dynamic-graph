@@ -74,35 +74,67 @@ namespace dynamicgraph
   struct RealTimeLogger::thread
   {
     bool requestShutdown_;
+    int threadPolicy_;
+    int threadPriority_;
+    bool changedThreadParams;    
     boost::thread t_;
-
+    
     thread (RealTimeLogger* logger)
       : requestShutdown_ (false)
+      , threadPolicy_(SCHED_OTHER)
+      , threadPriority_(0)
+      , changedThreadParams(true)
       , t_ (&thread::spin, this, logger)
     {}
 
-    void spin (RealTimeLogger* logger)
+    void setThreadPolicy(int policy)
     {
-      // Change the thread's scheduler from real-time to normal and reduce its priority
+      threadPolicy_ = policy;
+      changedThreadParams = true;
+      
+    }
+
+    void setPriority(int priority)
+    {
+      threadPriority_ = priority;
+      changedThreadParams = true;      
+    }
+    
+    int getThreadPolicy() { return threadPolicy_; }
+    int getThreadPriority() { return threadPriority_; }
+    
+    void changeThreadParams()
+    {
       int threadPolicy;
       struct sched_param threadParam;
-      if (pthread_getschedparam (pthread_self(), &threadPolicy, &threadParam) == 0)
-      {
-        threadPolicy = SCHED_OTHER;
-        threadParam.sched_priority -= 5;
-        if (threadParam.sched_priority < sched_get_priority_min (threadPolicy))
-          threadParam.sched_priority = sched_get_priority_min (threadPolicy);
+      if (pthread_getschedparam (pthread_self(), &threadPolicy, &threadParam)
+	  == 0)
+	{
+	  threadPolicy = threadPolicy_;
+	  threadParam.sched_priority = threadPriority_;
+	  if (threadParam.sched_priority <
+	      sched_get_priority_min (threadPolicy))
+	    threadParam.sched_priority = sched_get_priority_min (threadPolicy);
 
-        pthread_setschedparam (pthread_self(), threadPolicy, &threadParam);
-      }
+	  pthread_setschedparam (pthread_self(), threadPolicy, &threadParam);
+	  changedThreadParams = false;
+	}
+    }
+    
+    void spin (RealTimeLogger* logger)
+    {
+      // Change the thread's scheduler from real-time to normal
+      // and reduce its priority
 
       while (!requestShutdown_ || !logger->empty())
-      {
-        // If the logger did not write anything, it means the buffer is empty.
-        // Do a pause
-        if (!logger->spinOnce())
-          boost::this_thread::sleep(boost::posix_time::milliseconds(100));
-      }
+	{
+	  // If the logger did not write anything, it means the buffer is empty.
+	  // Do a pause
+	  if (!logger->spinOnce())
+	    boost::this_thread::sleep(boost::posix_time::milliseconds(1000));
+	  if (changedThreadParams)
+	    changeThreadParams();
+	}
     }
   };
 

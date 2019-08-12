@@ -178,8 +178,15 @@ namespace dynamicgraph {
        * is going to be called. */
     bool setTimeSample(double t);
 
+    /** Get the sampling time at which the method countdown()
+       * is going to be called. */
+    double getTimeSample();
+
     /** Set the time period for printing of streaming messages. */
     bool setStreamPrintPeriod(double s);
+
+    /** Get the time period for printing of streaming messages. */
+    double getStreamPrintPeriod();
 
     /** Set the verbosity level of the logger. */
     void setVerbosity(LoggerVerbosity lv);

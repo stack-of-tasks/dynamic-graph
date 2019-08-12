@@ -132,8 +132,9 @@ namespace dynamicgraph
 						std::string next2="" ) const;
 
   protected: // Interdiction of the rest of the heritage
-
+    using Signal<T,Time>::addDependency;
     virtual void addDependency () {}
+    using Signal<T,Time>::removeDependency;
     virtual void removeDependency () {}
     virtual void clearDependencies () {}
 
