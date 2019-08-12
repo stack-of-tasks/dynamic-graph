@@ -64,9 +64,8 @@ namespace dynamicgraph
     // if print is allowed by current verbosity level
     if( isStreamMsg(type))
       {
-        int l = line;
         // check whether counter already exists
-        string id = file+/*toString(line)*/+ l;
+        string id = file+toString(line);
         map<string,double>::iterator it = m_stream_msg_counters.find(id);
         if(it == m_stream_msg_counters.end())
 	  {
