@@ -2,7 +2,6 @@
  * Author: O. Stasse, 2019
  * See LICENSE file in the root directory of this repository.
  */
-#include <iostream>
 #include <fstream>
 #include <sstream>
 #include <string>
@@ -95,8 +94,7 @@ void CPUData::ProcessLine(std::istringstream &aCPULine)
       percent_ += (double)( softirq_period_)/(double)(total_period_) * 100.0;
       percent_ += (double)( steal_period_)/(double)(total_period_) * 100.0;
       percent_ += (double)( iowait_period_)/(double)(total_period_) * 100.0;
-    }
-  std::cout << cpu_id_ << " " << percent_ << std::endl;  
+    }  
 }
 
 System::System()
