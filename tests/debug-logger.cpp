@@ -78,6 +78,11 @@ BOOST_AUTO_TEST_CASE(debug_logger)
     dynamicgraph::FactoryStorage::getInstance()->newEntity("CustomEntity",
 							   "my-entity")));
 
+  entity.setTimeSample(0.002);
+  BOOST_CHECK_EQUAL(entity.getTimeSample(),0.002);
+  entity.setStreamPrintPeriod(0.004);
+  BOOST_CHECK_EQUAL(entity.getStreamPrintPeriod(),0.004);
+
   for(unsigned int i=0;i<10000;i++)
     {
       entity.testDebugTrace();

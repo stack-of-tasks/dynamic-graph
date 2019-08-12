@@ -7,19 +7,24 @@
  */
 #include <sstream>
 #include <iostream>
+
+#define ENABLE_RT_LOG
 #include <dynamic-graph/entity.h>
 #include <dynamic-graph/exception-factory.h>
 #include "dynamic-graph/factory.h"
 #include "dynamic-graph/pool.h"
 
-#define ENABLE_RT_LOG
 #include <dynamic-graph/real-time-logger.h>
 #include <dynamic-graph/logger.h>
+
 
 #define BOOST_TEST_MODULE debug-logger
 
 #include <boost/test/unit_test.hpp>
 #include <boost/test/output_test_stream.hpp>
+
+#include <boost/thread/thread.hpp>
+#include <boost/date_time/posix_time/posix_time.hpp>
 
 using boost::test_tools::output_test_stream;
 
@@ -78,7 +83,7 @@ BOOST_AUTO_TEST_CASE(debug_logger_wrong_initialization)
     dynamicgraph::FactoryStorage::getInstance()->newEntity("CustomEntity",
 							   "my-entity-2")));
 
-  for(unsigned int i=0;i<10000;i++)
+  for(unsigned int i=0;i<1000;i++)
     {
       entity.testDebugTrace();
     }
