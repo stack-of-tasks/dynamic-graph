@@ -1,7 +1,6 @@
 // Copyright 2010 Thomas Moulard.
 //
 
-#include <iostream>
 #include <sstream>
 #include <dynamic-graph/factory.h>
 #include <dynamic-graph/entity.h>
