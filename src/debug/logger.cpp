@@ -12,6 +12,7 @@
 #endif
 #define ENABLE_RT_LOG
 
+#include <sstream>
 #include <stdio.h>
 #include <iostream>
 #include <iomanip>      // std::setprecision
@@ -65,7 +66,9 @@ namespace dynamicgraph
     if( isStreamMsg(type))
       {
         // check whether counter already exists
-        string id = file+toString(line);
+        std::ostringstream oss;
+	oss << file << line;
+	std::string id (oss.str());
         map<string,double>::iterator it = m_stream_msg_counters.find(id);
         if(it == m_stream_msg_counters.end())
 	  {
