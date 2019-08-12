@@ -2,6 +2,7 @@
  * Author: O. Stasse, 2019
  * See LICENSE file in the root directory of this repository.
  */
+#include <iostream>
 #include <fstream>
 #include <sstream>
 #include <string>
