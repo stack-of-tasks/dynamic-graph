@@ -86,7 +86,7 @@ void CPUData::ProcessLine(std::istringstream &aCPULine)
   guest_time_      = lguest_all_time;
   total_time_      = ltotal_time;
 
-  if (total_period_!=0.0)
+  if (total_period_!=0)
     {
       percent_ = (double)(user_mode_period_)/(double)(total_period_) * 100.0;
       percent_ += (double)( nice_period_)/(double)(total_period_) * 100.0;
