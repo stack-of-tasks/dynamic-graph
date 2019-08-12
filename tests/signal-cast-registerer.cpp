@@ -88,31 +88,13 @@ struct EigenCastRegisterer_M : public dynamicgraph::SignalCastRegisterer
     static void dispMatrix (const boost::any& object, std::ostream& os)
     {
         const bnuMatrix& m = boost::any_cast<bnuMatrix> (object);
-        os << "[ ";
-        for (int i = 0; i < m.rows(); ++i){
-            os << "[ ";
-            for (int j = 0; j < m.cols(); ++j) {
-                os << m(i, j) << " ";
-            }
-            if (i != m.rows()-1){
-                os << "]; ";
-            }
-            else{
-                os << "] ";
-            }
-        }
-        os << " ];" << std::endl;
+        os << m << std::endl;
     }
 
     static void traceMatrix (const boost::any& object, std::ostream& os)
     {
         const bnuMatrix& m = boost::any_cast<bnuMatrix> (object);
-        for (int i = 0; i < m.rows(); ++i){
-            for (int j = 0; j < m.cols(); ++j){
-                os << m(i,j) << " ";
-            }
-        }
-        os << std::endl;
+        os << m << std::endl;
     }
 };
 
