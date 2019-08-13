@@ -16,23 +16,22 @@
 using boost::test_tools::output_test_stream;
 
 // Check that plug-in loading/unloading is working.
-BOOST_AUTO_TEST_CASE (cmd_tracer)
-{
+BOOST_AUTO_TEST_CASE(cmd_tracer) {
   dynamicgraph::PluginLoader pl;
 
   // Push paths.
   {
-    RUN_COMMAND ("pushImportPaths", TESTS_DATADIR);
-    BOOST_CHECK (output.is_empty ());
+    RUN_COMMAND("pushImportPaths", TESTS_DATADIR);
+    BOOST_CHECK(output.is_empty());
   }
   {
-    RUN_COMMAND ("pushImportPaths", TESTS_PLUGINDIR);
-    BOOST_CHECK (output.is_empty ());
+    RUN_COMMAND("pushImportPaths", TESTS_PLUGINDIR);
+    BOOST_CHECK(output.is_empty());
   }
 
   // Import tracer.dg
   {
-    RUN_COMMAND ("import", "interpreter-tracer.dg");
-    BOOST_CHECK (output.is_empty ());
+    RUN_COMMAND("import", "interpreter-tracer.dg");
+    BOOST_CHECK(output.is_empty());
   }
 }

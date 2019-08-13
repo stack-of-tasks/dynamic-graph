@@ -11,8 +11,7 @@
 
 using boost::test_tools::output_test_stream;
 
-BOOST_AUTO_TEST_CASE (value_string)
-{
+BOOST_AUTO_TEST_CASE(value_string) {
   using dynamicgraph::command::Value;
 
   std::string str1("value #1");
@@ -22,13 +21,13 @@ BOOST_AUTO_TEST_CASE (value_string)
   {
     output_test_stream output;
     output << value1;
-    BOOST_CHECK (output.is_equal ("Type=string, value=value #1"));
+    BOOST_CHECK(output.is_equal("Type=string, value=value #1"));
   }
 
   {
     output_test_stream output;
     output << value;
-    BOOST_CHECK (output.is_equal ("Type=string, value=value #1"));
+    BOOST_CHECK(output.is_equal("Type=string, value=value #1"));
   }
 
   std::string str2("value #2");
@@ -38,12 +37,12 @@ BOOST_AUTO_TEST_CASE (value_string)
   {
     output_test_stream output;
     output << value2;
-    BOOST_CHECK (output.is_equal ("Type=string, value=value #2"));
+    BOOST_CHECK(output.is_equal("Type=string, value=value #2"));
   }
 
   {
     output_test_stream output;
     output << value;
-    BOOST_CHECK (output.is_equal ("Type=string, value=value #2"));
+    BOOST_CHECK(output.is_equal("Type=string, value=value #2"));
   }
 }

@@ -2,28 +2,25 @@
 //
 
 #ifndef DYNAMIC_GRAPH_NULL_PTR_HH
-# define DYNAMIC_GRAPH_NULL_PTR_HH
+#define DYNAMIC_GRAPH_NULL_PTR_HH
 
-namespace dynamicgraph
-{
-  const class
-  {
-  public:
-    template<class T>
-    operator T*() const
-    {
-      return 0;
-    }
+namespace dynamicgraph {
+const class {
+ public:
+  template <class T>
+  operator T*() const {
+    return 0;
+  }
 
-    template<class C, class T>
-    operator T C::*() const
-    {
-      return 0;
-    }
-  private:
-    void operator&() const;
-  } nullptr = {};
+  template <class C, class T>
+  operator T C::*() const {
+    return 0;
+  }
 
-} // end of namespace dynamicgraph.
+ private:
+  void operator&() const;
+} nullptr = {};
 
-#endif //! DYNAMIC_GRAPH_NULL_PTR_HH
+}  // end of namespace dynamicgraph.
+
+#endif  //! DYNAMIC_GRAPH_NULL_PTR_HH

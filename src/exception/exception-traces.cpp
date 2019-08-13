@@ -11,7 +11,6 @@
 #include <stdarg.h>
 #include <cstdio>
 
-
 using namespace dynamicgraph;
 /* --------------------------------------------------------------------- */
 /* --- CLASS ----------------------------------------------------------- */
@@ -19,31 +18,23 @@ using namespace dynamicgraph;
 
 const std::string ExceptionTraces::EXCEPTION_NAME = "Traces";
 
-ExceptionTraces::
-ExceptionTraces ( const ExceptionTraces::ErrorCodeEnum& errcode,
-		     const std::string & msg )
-  :ExceptionAbstract(errcode,msg)
-{
-}
+ExceptionTraces::ExceptionTraces(const ExceptionTraces::ErrorCodeEnum& errcode, const std::string& msg)
+    : ExceptionAbstract(errcode, msg) {}
 
-ExceptionTraces::
-ExceptionTraces ( const ExceptionTraces::ErrorCodeEnum& errcode,
-			const std::string & msg,const char* format, ... )
-  :ExceptionAbstract(errcode,msg)
-{
+ExceptionTraces::ExceptionTraces(const ExceptionTraces::ErrorCodeEnum& errcode, const std::string& msg,
+                                 const char* format, ...)
+    : ExceptionAbstract(errcode, msg) {
   va_list args;
-  va_start(args,format);
+  va_start(args, format);
 
   const unsigned int SIZE = 256;
-  char  buffer[SIZE];
-  vsnprintf(buffer,SIZE,format,args);
+  char buffer[SIZE];
+  vsnprintf(buffer, SIZE, format, args);
 
   message += buffer;
 
   va_end(args);
 }
-
-
 
 /*
  * Local variables:

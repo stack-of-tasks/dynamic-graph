@@ -20,66 +20,68 @@
 using namespace dynamicgraph;
 using std::cout;
 
-BOOST_AUTO_TEST_CASE(normal_test)
-{
-  Signal<double,int> sig("sig");
-  SignalPtr<double,int> sigPtrA(NULL,"sigPtrA"),sigPtrB(NULL,"sigPtrB");
-  SignalPtr<double,int> sigNotPlug(NULL,"sigNotPlug");
-  SignalPtr<double,int> sigPtrAbstract(NULL,"sigPtrAbstract");
+BOOST_AUTO_TEST_CASE(normal_test) {
+  Signal<double, int> sig("sig");
+  SignalPtr<double, int> sigPtrA(NULL, "sigPtrA"), sigPtrB(NULL, "sigPtrB");
+  SignalPtr<double, int> sigNotPlug(NULL, "sigNotPlug");
+  SignalPtr<double, int> sigPtrAbstract(NULL, "sigPtrAbstract");
 
   try {
-      sigNotPlug.getPtr();
-  } catch (ExceptionSignal e){
-      cout << "Error catch" << std::endl;
+    sigNotPlug.getPtr();
+  } catch (ExceptionSignal e) {
+    cout << "Error catch" << std::endl;
   }
 
-  sig.setConstant( 1.56 );
+  sig.setConstant(1.56);
   sig.recompute(2);
   std::string name = "sig";
   sig.getClassName(name);
   std::string test = "test";
   try {
-      sig.getClassName(test);
+    sig.getClassName(test);
   } catch (ExceptionSignal e) {
-      e.getExceptionName();
+    e.getExceptionName();
   }
 
+  SignalBase<int> &sigRef = sig;
+  SignalBase<int> &sigPtrARef = sigPtrA, &sigPtrBRef = sigPtrB, &sigPtrAbstractRef = sigPtrAbstract;
+  sigPtrARef.plug(&sigRef);
+  sigPtrBRef.plug(&sigPtrARef);
 
-
-  SignalBase<int> & sigRef = sig;
-  SignalBase<int> & sigPtrARef = sigPtrA, & sigPtrBRef = sigPtrB, & sigPtrAbstractRef = sigPtrAbstract;
-  sigPtrARef.plug( & sigRef );
-  sigPtrBRef.plug( & sigPtrARef );
-
-
-  //TODO here
-  sigPtrAbstractRef.plug( & sigRef);
+  // TODO here
+  sigPtrAbstractRef.plug(&sigRef);
   sigPtrA.getPtr();
   sigPtrA.getPluged();
   sigPtrB.getPtr();
   sigPtrAbstract.getAbstractPtr();
 
-  assert(sigRef.isPlugged()!=true);
+  assert(sigRef.isPlugged() != true);
   SignalBase<int> *t = sigRef.getPluged();
-  //assert(sigPtrA.get()=false);
+  // assert(sigPtrA.get()=false);
 
-    //TODO Can't check if the constant change
+  // TODO Can't check if the constant change
   sigPtrA.setConstantDefault(1.2);
-  //getconstant
+  // getconstant
   sigPtrA.setConstantDefault();
-  //getconstant
+  // getconstant
   sigPtrA.setConstant(3.4);
-  //getconstant
+  // getconstant
   double tab_D[2];
   tab_D[0] = 1.2;
   tab_D[1] = 3.4;
-  sigPtrA.setReference(tab_D,NULL);
-  //getreference
+  sigPtrA.setReference(tab_D, NULL);
+  // getreference
   sigPtrA.operator=(1.2);
-  //getconstant
+  // getconstant
 
-  cout <<  t << std::endl;
-  cout << "Sig = ";  sigRef.get(cout); cout << std::endl;
-  cout << "SigPtrA = ";  sigPtrARef.get(cout); cout << std::endl;
-  cout << "SigPtrB = ";  sigPtrBRef.get(cout); cout << std::endl;
+  cout << t << std::endl;
+  cout << "Sig = ";
+  sigRef.get(cout);
+  cout << std::endl;
+  cout << "SigPtrA = ";
+  sigPtrARef.get(cout);
+  cout << std::endl;
+  cout << "SigPtrB = ";
+  sigPtrBRef.get(cout);
+  cout << std::endl;
 }
