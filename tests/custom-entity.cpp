@@ -50,6 +50,7 @@ BOOST_AUTO_TEST_CASE (constructor)
     dynamicgraph::FactoryStorage::getInstance()->
     newEntity("CustomEntity", "my-entity");
   BOOST_CHECK_EQUAL (entity->getName (), "my-entity");
+  BOOST_CHECK_EQUAL (entity->Entity::getClassName (), "Entity");
   BOOST_CHECK_EQUAL (entity->getClassName (), CustomEntity::CLASS_NAME);
 
   //CustomEntity entity2 ("");

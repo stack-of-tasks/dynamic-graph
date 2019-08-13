@@ -61,10 +61,9 @@ namespace dynamicgraph
     SignalBase<Time>* getAbstractPtr (); // throw
     const SignalBase<Time>* getAbstractPtr () const; // throw
     virtual void plug( SignalBase<Time>* ref );
+
     virtual void unplug () { plug(NULL); }
-    virtual bool isPluged () const DYNAMIC_GRAPH_DEPRECATED {
-      return isPlugged ();
-    }
+
     virtual bool isPlugged () const { return (NULL!=signalPtr); }
     virtual SignalBase<Time>* getPluged () const { return signalPtr; }
     virtual bool isAbstractPluged () const;

@@ -25,18 +25,20 @@
 
 #include <boost/test/unit_test.hpp>
 #include <boost/test/output_test_stream.hpp>
+#include <iostream>
 
 using boost::test_tools::output_test_stream;
 
 
 typedef Eigen::VectorXd Vector;
+typedef Eigen::MatrixXd Matrix;
 
 
-struct EigenCastRegisterer : public dynamicgraph::SignalCastRegisterer
+struct EigenCastRegisterer_V : public dynamicgraph::SignalCastRegisterer
 {
   typedef Vector bnuVector;
 
-  EigenCastRegisterer () :
+  EigenCastRegisterer_V () :
     SignalCastRegisterer
     (typeid(bnuVector), dispVector, castVector, traceVector)
   {}
@@ -66,7 +68,38 @@ struct EigenCastRegisterer : public dynamicgraph::SignalCastRegisterer
   }
 };
 
-EigenCastRegisterer myVectorCast;
+template<typename Derived>
+struct EigenCastRegisterer_M : public dynamicgraph::SignalCastRegisterer
+{
+    typedef Matrix bnuMatrix;
+
+    EigenCastRegisterer_M () :
+        SignalCastRegisterer
+        (typeid(bnuMatrix), dispMatrix, castMatrix, traceMatrix)
+    {}
+
+    static boost::any castMatrix (std::istringstream& iss)
+    {
+        bnuMatrix res;
+        iss >> res;
+        return res;
+    }
+
+    static void dispMatrix (const boost::any& object, std::ostream& os)
+    {
+        const bnuMatrix& m = boost::any_cast<bnuMatrix> (object);
+        os << m << std::endl;
+    }
+
+    static void traceMatrix (const boost::any& object, std::ostream& os)
+    {
+        const bnuMatrix& m = boost::any_cast<bnuMatrix> (object);
+        os << m << std::endl;
+    }
+};
+
+EigenCastRegisterer_V myVectorCast;
+EigenCastRegisterer_M<int> myMatrixCast;
 
 // Define a new cast with a type that supports streaming operators to
 // and from it (this could be automated with macros).
@@ -109,6 +142,7 @@ BOOST_AUTO_TEST_CASE (standard_double_registerer)
 	output_test_stream output;
 	mySignal.trace (output);
 	BOOST_CHECK (output.is_equal (test.second));
+
       }
     }
 
@@ -156,24 +190,166 @@ BOOST_AUTO_TEST_CASE (custom_vector_registerer)
 
       BOOST_CHECK (output.is_equal (fmt.str ()));
     }
+
+  //Catch Exception of ss (not good input)
+
+  //ss[0] != "["
+  try {
+      std::istringstream ss ("test");
+      myVectorSignal.set (ss);
+  } catch(ExceptionSignal e) {
+      std::cout << "Test passed : ss[0] != \"[\"";
+  }
+
+  //ss[1] != %i
+    try {
+        std::istringstream ss ("[test");
+        myVectorSignal.set (ss);
+    } catch(ExceptionSignal e) {
+        std::cout << "Test passed : ss[1] != %i";
+    }
+
+  //ss[2] != "]"
+    try {
+        std::istringstream ss ("[5[");
+        myVectorSignal.set (ss);
+    } catch(ExceptionSignal e) {
+        std::cout << "Test passed : ss[2] != \"]\"";
+    }
+
+    //ss[3] != "("
+    try {
+        std::istringstream ss ("[5]test");
+        myVectorSignal.set (ss);
+    } catch(ExceptionSignal e) {
+        std::cout << "Test passed : ss[3] != \"(\"";
+    }
+
+    //ss[4] != ' ' || ','
+    try {
+        std::istringstream ss ("[5](1, ");
+        myVectorSignal.set (ss);
+    } catch(ExceptionSignal e) {
+        BOOST_ERROR("Can't happened");
+    }
+
+    //ss[-1] != ")"
+    try {
+        std::istringstream ss ("[5](1,2,3,4,5]");
+        myVectorSignal.set (ss);
+    } catch(ExceptionSignal e) {
+        std::cout << "Test passed : ss[-1] != \")\"";
+    }
 }
 
+BOOST_AUTO_TEST_CASE (custom_matrix_registerer) {
 
-// One issue with the strategy used by the
-// dynamicgraph::SignalCastRegisterer is that it relies on the
-// typeid. In practice, it means that two signals defined in two
-// different libraries will have different typeid and one will not be
-// able to plug one into the other unless the symbol have merged when
-// the plug-in is loaded. See man(3) dlopen in Linux for more
-// information about plug-in loading and the RTLD_GLOBAL flag
-// necessary to make cast registerer work as expected.
-//
-// Here we make sure that two instances of the same type
-// declared in two separate libraries are resolved into the
-// same typeid.
-BOOST_AUTO_TEST_CASE (typeid_issue)
-{
-  BOOST_CHECK (typeid(vA) == typeid(vB));
-  BOOST_CHECK_EQUAL (std::string (typeid(vA).name ()),
-		     std::string (typeid(vB).name ()));
+    dynamicgraph::Signal<dynamicgraph::Matrix, int> myMatrixSignal("matrix");
+
+    // Print the signal name.
+    {
+        output_test_stream output;
+        output << myMatrixSignal;
+        BOOST_CHECK (output.is_equal ("Sig:matrix (Type Cst)"));
+    }
+
+    //Catch Exception of ss (not good input)
+
+    //ss[0] != "["
+    try {
+        std::istringstream ss("test");
+        myMatrixSignal.set(ss);
+    } catch (ExceptionSignal e) {
+        std::cout << "Test passed : ss[0] != \"[\"";
+    }
+
+    //ss[1] != %i
+    try {
+        std::istringstream ss("[test");
+        myMatrixSignal.set(ss);
+    } catch (ExceptionSignal e) {
+        std::cout << "Test passed : ss[1] != %i";
+    }
+
+    //ss[2] != ","
+    try {
+        std::istringstream ss("[5[");
+        myMatrixSignal.set(ss);
+    } catch (ExceptionSignal e) {
+        std::cout << "Test passed : ss[2] != \",\"";
+    }
+
+    //ss[3] != %i
+    try {
+        std::istringstream ss("[5,c");
+        myMatrixSignal.set(ss);
+    } catch (ExceptionSignal e) {
+        std::cout << "Test passed : ss[3] != %i";
+    }
+
+    //ss[4] != "]"
+    try {
+        std::istringstream ss("[5,3[");
+        myMatrixSignal.set(ss);
+    } catch (ExceptionSignal e) {
+        std::cout << "Test passed : ss[4] != \"]\"";
+    }
+
+    //ss[5] != "("
+    try {
+        std::istringstream ss("[5,3]test");
+        myMatrixSignal.set(ss);
+    } catch (ExceptionSignal e) {
+        std::cout << "Test passed : ss[5] != \"(\"";
+    }
+
+    //ss[6] != "("
+    try {
+        std::istringstream ss("[5,3](test");
+        myMatrixSignal.set(ss);
+    } catch (ExceptionSignal e) {
+        std::cout << "Test passed : ss[6] != \"(\"";
+    }
+
+    //ss[8] != " " || ","
+    try {
+        std::istringstream ss("[5,3]((1,");
+        myMatrixSignal.set(ss);
+    } catch (ExceptionSignal e) {
+        BOOST_ERROR("Can't happened");
+    }
+
+    //ss[6+n] != ")"
+    try {
+        std::istringstream ss("[5,3]((1,2,3]");
+        myMatrixSignal.set(ss);
+    } catch (ExceptionSignal e) {
+        std::cout << ("ss[6+n] != \")\"");
+    }
+
+    //ss[-3] != ")"
+    try {
+        std::istringstream ss("[5,1]((1)(2)(3[");
+        myMatrixSignal.set(ss);
+    } catch (ExceptionSignal e) {
+        std::cout << "Test passed : ss[5] != \")\"";
+    }
+
+    //ss[-3] != ")"
+    try {
+        std::istringstream ss("[5,1]((1)(2)(3)[");
+        myMatrixSignal.set(ss);
+    } catch (ExceptionSignal e) {
+        std::cout << "Test passed : ss[5] != \")\"";
+    }
+
+    //ss[-1]!= ")"
+    try {
+        std::istringstream ss("[3,1]((1)(2),(3)[");
+        myMatrixSignal.set(ss);
+    } catch (ExceptionSignal e) {
+        std::cout << "Test passed : ss[5] != \")\" and ignore \",\"";
+    }
+
+    //[...]((...))
 }
