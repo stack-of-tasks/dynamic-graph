@@ -11,8 +11,8 @@ Objects, which are derived from Entities (base class dynamicgraph::Entity), can 
 declared within the code and compiled as shared libraries (.so/.dll files).
 These libraries can be loaded at run-time using the PluginLoader methods,
 and at the same time register their class names to the Factory (see the
-examples in the <a href="http://projects.laas.fr/gepetto/doc/stack-of-tasks/sot-core/master/doxygen-html">sot-core documentation</a> 
-for advanced control examples).
+examples in the <a href="http://projects.laas.fr/gepetto/doc/stack-of-tasks/sot-core/master/doxygen-html">sot-core
+documentation</a> for advanced control examples).
 
 The Factory can then create instances of these objects and subsequently
 register them in the Pool. From the pool they can be listed, accessed, and acted upon
@@ -40,19 +40,19 @@ When writing entities you might use some macros which are very useful to write y
 
 \subsection subsec_howto_typedef Entity helpers
 
-The header <b>entity-helper.h</b> is defining a type called EntityClassName 
+The header <b>entity-helper.h</b> is defining a type called EntityClassName
 
 \section sec_howto_macros_helpers Macro helpers
 
 \subsection subsec_howto_macros_helpers_ent Preprocessing macros for entities
 
-<ul> 
+<ul>
   <li> <b>DYNAMIC_GRAPH_ENTITY_DECL()</b>:
   This macro creates a method <b>getClassName()</b> which returns the class name.</li>
   This macro <b>should</b> be used in the declaration of the class.
-  </li> 
+  </li>
   <li> <b>DYNAMICGRAPH_FACTORY_ENTITY_PLUGIN(classtype,classname)</b>
-  This macros creates the methods necessary to have a factory building the C++ class 
+  This macros creates the methods necessary to have a factory building the C++ class
   <b>classtype</b> from the string <b>classname</b>.
   This macro <b>should</b> be used in the implementation of the class.
   </li>
@@ -101,7 +101,7 @@ The header <b>entity-helper.h</b> is defining a type called EntityClassName
 
       <li> <b>DEFINE_SIGNAL_OUT_FUNCTION(signal_name, type)</b>:
       This macro is used when implementing the method specific to the output signal.
-      It is used in the main body of the entity class to declare the header of the method 
+      It is used in the main body of the entity class to declare the header of the method
       with the following pattern:
       \code
       type EntityClassName::signal_nameSOUT_function(type &, int iter)
@@ -109,7 +109,7 @@ The header <b>entity-helper.h</b> is defining a type called EntityClassName
       </li>
 
     </ul>
-  <li> 
+  <li>
   </li> Inner signals
     <ul>
       <li> <b> DECLARE_SIGNAL_INNER(signal_name,type)</b>
@@ -123,8 +123,8 @@ The header <b>entity-helper.h</b> is defining a type called EntityClassName
       type & EntityClassName::nameSINNER_function(signal_name)(type &, int)
       \endcode
       </li>
-      <li> <b>DEFINE_SIGNAL_INNER_FUNCTION(signal_name,type)</b> 
-      This macro is used to implement the method related to signal_name. More precisely 
+      <li> <b>DEFINE_SIGNAL_INNER_FUNCTION(signal_name,type)</b>
+      This macro is used to implement the method related to signal_name. More precisely
       it provides the header of the member function(i.e. method) declaration.
       </li>
       <li><b>DECLARE_SIGNAL_INNER_FUNCTION(signal_name,type)</b>

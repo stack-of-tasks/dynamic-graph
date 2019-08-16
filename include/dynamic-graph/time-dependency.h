@@ -4,79 +4,65 @@
 //
 
 #ifndef DYNAMIC_GRAPH_TIME_DEPENDENCY_H
-# define DYNAMIC_GRAPH_TIME_DEPENDENCY_H
-# include <list>
+#define DYNAMIC_GRAPH_TIME_DEPENDENCY_H
+#include <list>
 
-# include <dynamic-graph/fwd.hh>
-# include <dynamic-graph/signal-base.h>
-# include <dynamic-graph/signal-array.h>
+#include <dynamic-graph/fwd.hh>
+#include <dynamic-graph/signal-base.h>
+#include <dynamic-graph/signal-array.h>
 
-namespace dynamicgraph
-{
-  /** \brief A helper class for setting and specifying dependencies
-      between signals.
-  */
-  template<class Time>
-  class TimeDependency
-  {
-  public:
-    enum DependencyType
-      {
-	TIME_DEPENDENT,
-	BOOL_DEPENDENT,
-	ALWAYS_READY
-      };
+namespace dynamicgraph {
+/** \brief A helper class for setting and specifying dependencies
+    between signals.
+*/
+template <class Time>
+class TimeDependency {
+ public:
+  enum DependencyType { TIME_DEPENDENT, BOOL_DEPENDENT, ALWAYS_READY };
 
-    mutable Time lastAskForUpdate;
+  mutable Time lastAskForUpdate;
 
-  public:
+ public:
+  SignalBase<Time>& leader;
 
-    SignalBase< Time >& leader;
+  typedef std::list<const SignalBase<Time>*> Dependencies;
+  static const DependencyType DEPENDENCY_TYPE_DEFAULT = TIME_DEPENDENT;
 
-    typedef std::list< const SignalBase<Time> * > Dependencies;
-    static const DependencyType DEPENDENCY_TYPE_DEFAULT = TIME_DEPENDENT;
+  Dependencies dependencies;
+  bool updateFromAllChildren;
+  static const bool ALL_READY_DEFAULT = false;
 
-    Dependencies dependencies;
-    bool updateFromAllChildren;
-    static const bool ALL_READY_DEFAULT = false;
+  DependencyType dependencyType;
 
-    DependencyType dependencyType;
+  Time periodTime;
+  static const Time PERIOD_TIME_DEFAULT = 1;
 
-    Time periodTime;
-    static const Time PERIOD_TIME_DEFAULT = 1;
+ public:
+  TimeDependency(SignalBase<Time>* sig, const DependencyType dep = DEPENDENCY_TYPE_DEFAULT);
+  TimeDependency(SignalBase<Time>* sig, const SignalArray_const<Time>& arr,
+                 const DependencyType dep = DEPENDENCY_TYPE_DEFAULT);
+  virtual ~TimeDependency() {}
 
-  public:
+  void addDependency(const SignalBase<Time>& sig);
+  void removeDependency(const SignalBase<Time>& sig);
+  void clearDependency();
 
-    TimeDependency( SignalBase<Time>* sig,
-		    const DependencyType dep = DEPENDENCY_TYPE_DEFAULT );
-    TimeDependency( SignalBase<Time>* sig,
-		    const SignalArray_const<Time>& arr,
-		    const DependencyType dep = DEPENDENCY_TYPE_DEFAULT );
-    virtual ~TimeDependency  () {}
+  virtual std::ostream& writeGraph(std::ostream& os) const;
+  std::ostream& displayDependencies(std::ostream& os, const int depth = -1, std::string space = "",
+                                    std::string next1 = "", std::string next2 = "") const;
 
-    void addDependency( const SignalBase<Time>& sig );
-    void removeDependency( const SignalBase<Time>& sig );
-    void clearDependency  ();
+  bool needUpdate(const Time& t1) const;
 
+  void setDependencyType(DependencyType dep) { dependencyType = dep; }
 
-    virtual std::ostream & writeGraph(std::ostream &os) const;
-    std::ostream& displayDependencies( std::ostream& os,const int depth=-1,
-				       std::string space="",
-				       std::string next1="",std::string next2="" ) const;
+  void setNeedUpdateFromAllChildren(const bool b = true) { updateFromAllChildren = b; }
+  bool getNeedUpdateFromAllChildren() const { return updateFromAllChildren; }
 
-    bool needUpdate( const Time& t1 ) const;
+  void setPeriodTime(const Time& p) { periodTime = p; }
+  Time getPeriodTime() const { return periodTime; }
+};
 
-    void setDependencyType( DependencyType dep ) { dependencyType = dep; }
+}  // end of namespace dynamicgraph
 
-    void setNeedUpdateFromAllChildren( const bool b = true ){ updateFromAllChildren=b; }
-    bool getNeedUpdateFromAllChildren  () const { return updateFromAllChildren; }
-
-    void setPeriodTime( const Time& p ) { periodTime = p; }
-    Time getPeriodTime  () const { return periodTime; }
-
-  };
-
-} // end of namespace dynamicgraph
-
-# include <dynamic-graph/time-dependency.t.cpp>
-#endif //! DYNAMIC_GRAPH_TIME_DEPENDENCY_H
+#include <dynamic-graph/time-dependency.t.cpp>
+#endif  //! DYNAMIC_GRAPH_TIME_DEPENDENCY_H

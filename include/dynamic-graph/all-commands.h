@@ -4,7 +4,7 @@
 //
 
 #ifndef DYNAMIC_GRAPH_ALL_COMMANDS_H
-# define DYNAMIC_GRAPH_ALL_COMMANDS_H
+#define DYNAMIC_GRAPH_ALL_COMMANDS_H
 
 // Utility header files including all commands headers
 
@@ -15,4 +15,4 @@
 #include <dynamic-graph/command.h>
 #include <dynamic-graph/command-setter.h>
 
-#endif //! DYNAMIC_GRAPH_ALL_COMMANDS_H
+#endif  //! DYNAMIC_GRAPH_ALL_COMMANDS_H

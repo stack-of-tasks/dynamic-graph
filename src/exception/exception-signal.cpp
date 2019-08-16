@@ -19,31 +19,23 @@ using namespace dynamicgraph;
 
 const std::string ExceptionSignal::EXCEPTION_NAME = "Signal";
 
-ExceptionSignal::
-ExceptionSignal ( const ExceptionSignal::ErrorCodeEnum& errcode,
-		     const std::string & msg )
-  :ExceptionAbstract(errcode,msg)
-{
-}
+ExceptionSignal::ExceptionSignal(const ExceptionSignal::ErrorCodeEnum& errcode, const std::string& msg)
+    : ExceptionAbstract(errcode, msg) {}
 
-ExceptionSignal::
-ExceptionSignal ( const ExceptionSignal::ErrorCodeEnum& errcode,
-			const std::string & msg,const char* format, ... )
-  :ExceptionAbstract(errcode,msg)
-{
+ExceptionSignal::ExceptionSignal(const ExceptionSignal::ErrorCodeEnum& errcode, const std::string& msg,
+                                 const char* format, ...)
+    : ExceptionAbstract(errcode, msg) {
   va_list args;
-  va_start(args,format);
+  va_start(args, format);
 
   const unsigned int SIZE = 256;
-  char  buffer[SIZE];
-  vsnprintf(buffer,SIZE,format,args);
+  char buffer[SIZE];
+  vsnprintf(buffer, SIZE, format, args);
 
   message += buffer;
 
   va_end(args);
 }
-
-
 
 /*
  * Local variables:

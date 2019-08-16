@@ -38,29 +38,20 @@ namespace dynamicgraph {
   \li using the function setFunction(boost::function2) that will be called when the
   signal's value is accessed.
  */
-template< class T,class Time >
-class Signal
-: public SignalBase<Time>
-{
+template <class T, class Time>
+class Signal : public SignalBase<Time> {
  protected:
-
-  enum SignalType
-    {
-      CONSTANT
-      ,REFERENCE
-      ,REFERENCE_NON_CONST
-      ,FUNCTION
-    };
+  enum SignalType { CONSTANT, REFERENCE, REFERENCE_NON_CONST, FUNCTION };
   static const SignalType SIGNAL_TYPE_DEFAULT = CONSTANT;
 
   SignalType signalType;
-  T Tcopy1,Tcopy2;
+  T Tcopy1, Tcopy2;
   T* Tcopy;
   bool copyInit;
 
   const T* Treference;
   T* TreferenceNonConst;
-  boost::function2<T&,T&,Time> Tfunction;
+  boost::function2<T&, T&, Time> Tfunction;
 
   bool keepReference;
   const static bool KEEP_REFERENCE_DEFAULT = false;
@@ -74,65 +65,60 @@ class Signal
   typedef int* MutexError;
 #endif
 
-protected:
-  Mutex *providerMutex;
+ protected:
+  Mutex* providerMutex;
   using SignalBase<Time>::signalTime;
 
  public:
   using SignalBase<Time>::setReady;
 
  public:
-
   /* --- Constructor/destrusctor --- */
-  Signal( std::string name );
-  virtual ~Signal  () {}
+  Signal(std::string name);
+  virtual ~Signal() {}
 
   /* --- Generic In/Out function --- */
-  virtual void get( std::ostream& value ) const;
-  virtual void set( std::istringstream& value ) ;
-  virtual void trace( std::ostream& os ) const;
+  virtual void get(std::ostream& value) const;
+  virtual void set(std::istringstream& value);
+  virtual void trace(std::ostream& os) const;
 
   /* --- Generic Set function --- */
-  virtual void setConstant( const T& t );
-  virtual void setReference( const T* t,Mutex *mutexref=NULL );
-  virtual void setReferenceNonConstant( T* t,Mutex *mutexref=NULL );
-  virtual void setFunction( boost::function2<T&,T&,Time> t,
-			    Mutex *mutexref=NULL);
+  virtual void setConstant(const T& t);
+  virtual void setReference(const T* t, Mutex* mutexref = NULL);
+  virtual void setReferenceNonConstant(T* t, Mutex* mutexref = NULL);
+  virtual void setFunction(boost::function2<T&, T&, Time> t, Mutex* mutexref = NULL);
 
-  inline bool getKeepReference  (){ return keepReference; }
-  inline void setKeepReference( const bool& b ){ keepReference=b; }
+  inline bool getKeepReference() { return keepReference; }
+  inline void setKeepReference(const bool& b) { keepReference = b; }
 
   /* --- Signal computation --- */
-  virtual const T& access( const Time & t );
-  virtual inline void recompute( const Time & t ) { access(t); }
-  virtual const T& accessCopy  () const;
+  virtual const T& access(const Time& t);
+  virtual inline void recompute(const Time& t) { access(t); }
+  virtual const T& accessCopy() const;
 
-  virtual std::ostream& display( std::ostream& os ) const;
+  virtual std::ostream& display(std::ostream& os) const;
 
   /* --- Operators --- */
-  virtual inline const T& operator ()( const Time & t ){ return access(t); }
-  virtual Signal<T,Time>& operator= ( const T& t );
-  inline operator const T&   () const { return accessCopy (); }
-  virtual void getClassName(std::string & aClassName) const
-  { aClassName = typeid(this).name(); }
-
+  virtual inline const T& operator()(const Time& t) { return access(t); }
+  virtual Signal<T, Time>& operator=(const T& t);
+  inline operator const T&() const { return accessCopy(); }
+  virtual void getClassName(std::string& aClassName) const { aClassName = typeid(this).name(); }
 
  public:
-  virtual void checkCompatibility  () { throw Tcopy; }
+  virtual void checkCompatibility() { throw Tcopy; }
 
  private:
-  const T& setTcopy( const T& t );
-  T& getTwork  ();
-  const T& getTwork  () const ;
-  const T& switchTcopy  ();
-
+  const T& setTcopy(const T& t);
+  T& getTwork();
+  const T& getTwork() const;
+  const T& switchTcopy();
 };
 
-} // end of namespace dynamicgraph
+}  // end of namespace dynamicgraph
 
 #include <dynamic-graph/signal.t.cpp>
 
-#endif // #ifndef __SIGNAL_HH
+#endif  // #ifndef __SIGNAL_HH
 
 /*
  * Local variables:

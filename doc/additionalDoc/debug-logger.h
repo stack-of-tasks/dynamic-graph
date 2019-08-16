@@ -66,7 +66,7 @@ Here is some example on how to display or record some information.
       logger_.countdown();
 \endcode
 
-Specifying the file with __FILE__ and the line inside the file by __LINE__ are necessary for the 
-STREAM messages. Indeed they are indexed using the two values. As the default value are "" and 0 
+Specifying the file with __FILE__ and the line inside the file by __LINE__ are necessary for the
+STREAM messages. Indeed they are indexed using the two values. As the default value are "" and 0
 the counting will be confused.
 */
