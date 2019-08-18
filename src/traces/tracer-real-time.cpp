@@ -30,7 +30,9 @@ DYNAMICGRAPH_FACTORY_ENTITY_PLUGIN(TracerRealTime, "TracerRealTime");
 /* --- DGOUTSTRINGSTREAM ---------------------------------------------- */
 /* --------------------------------------------------------------------- */
 
-OutStringStream::OutStringStream() : std::ostringstream(), buffer(0), index(0), bufferSize(0), full(false) {
+OutStringStream::OutStringStream() :
+  std::ostringstream(), buffer(0), index(0), bufferSize(0), full(false)
+{
   dgDEBUGINOUT(15);
 }
 
@@ -84,17 +86,26 @@ void OutStringStream::empty() {
 /* --------------------------------------------------------------------- */
 /* --------------------------------------------------------------------- */
 
-TracerRealTime::TracerRealTime(const std::string& n) : Tracer(n), bufferSize(BUFFER_SIZE_DEFAULT) {
+TracerRealTime::TracerRealTime(const std::string& n) :
+  Tracer(n),
+  bufferSize(BUFFER_SIZE_DEFAULT)
+{
   dgDEBUGINOUT(15);
 
   /* --- Commands --- */
   {
     using namespace dynamicgraph::command;
-    std::string doc = docCommandVoid0("Trash the current content of the buffers, without saving it.");
-    addCommand("empty", makeCommandVoid0(*this, &TracerRealTime::emptyBuffers, doc));
+    std::string doc = docCommandVoid0
+      ("Trash the current content of the buffers, without saving it.");
+    addCommand("empty", makeCommandVoid0
+               (*this, &TracerRealTime::emptyBuffers, doc));
 
-    addCommand("getBufferSize", makeDirectGetter(*this, &bufferSize, docDirectGetter("bufferSize", "int")));
-    addCommand("setBufferSize", makeDirectSetter(*this, &bufferSize, docDirectSetter("bufferSize", "int")));
+    addCommand("getBufferSize",
+               makeDirectGetter(*this, &bufferSize,
+                                docDirectGetter("bufferSize", "int")));
+    addCommand("setBufferSize",
+               makeDirectSetter(*this, &bufferSize,
+                                docDirectSetter("bufferSize", "int")));
   }  // using namespace command
 
   dgDEBUGOUT(15);
@@ -104,7 +115,10 @@ TracerRealTime::TracerRealTime(const std::string& n) : Tracer(n), bufferSize(BUF
 /* --------------------------------------------------------------------- */
 /* --------------------------------------------------------------------- */
 
-void TracerRealTime::openFile(const SignalBase<int>& sig, const std::string& givenname) {
+void TracerRealTime::openFile
+(const SignalBase<int>& sig,
+ const std::string& givenname)
+{
   dgDEBUGIN(15);
   string signame;
   if (givenname.length()) {
@@ -167,35 +181,38 @@ void TracerRealTime::trace() {
     dgDEBUG(35) << "Next" << endl;
     std::ostream* os = *iter;
     if (NULL == os) {
-      DG_THROW ExceptionTraces(ExceptionTraces::NOT_OPEN, "The buffer is null", "");
+      DG_THROW ExceptionTraces
+        (ExceptionTraces::NOT_OPEN, "The buffer is null", "");
     }
     // std::stringstream & file = * dynamic_cast< stringstream* >(os);
     OutStringStream* file = dynamic_cast<OutStringStream*>(os);  // segfault
     if (NULL == file) {
-      DG_THROW ExceptionTraces(ExceptionTraces::NOT_OPEN, "The buffer is not open", "");
+      DG_THROW ExceptionTraces
+        (ExceptionTraces::NOT_OPEN, "The buffer is not open", "");
     }
 
     std::ofstream& hardFile = **hardIter;
     if (!hardFile.good()) {
-      DG_THROW ExceptionTraces(ExceptionTraces::NOT_OPEN, "The file is not open", "");
+      DG_THROW ExceptionTraces
+        (ExceptionTraces::NOT_OPEN, "The file is not open", "");
     }
 
     if ((hardFile.good()) && (NULL != file)) {
-      // 	  const unsigned int SIZE = 1024*8;
-      // 	  char buffer[SIZE];
-      // 	  streambuf * pbuf = file.rdbuf ();
-      // 	  pbuf->pubseekpos(0);
-      // 	  const unsigned int NB_BYTE = pbuf->in_avail ();
-      // 	  dgDEBUG(35) << "Bytes in buffer: " << NB_BYTE << endl;
-      // 	  //dgDEBUG(35) << "Copie" <<endl<<file.str ()<< endl;
+      //          const unsigned int SIZE = 1024*8;
+      //          char buffer[SIZE];
+      //          streambuf * pbuf = file.rdbuf ();
+      //          pbuf->pubseekpos(0);
+      //          const unsigned int NB_BYTE = pbuf->in_avail ();
+      //          dgDEBUG(35) << "Bytes in buffer: " << NB_BYTE << endl;
+      //          //dgDEBUG(35) << "Copie" <<endl<<file.str ()<< endl;
 
-      // 	  for( unsigned int index=0;index<NB_BYTE;index+=SIZE )
-      // 	    {
-      // 	      pbuf->pubseekpos( index );
-      // 	      int nget = pbuf->sgetn( buffer,SIZE );
-      // 	      dgDEBUG(35) << "Copie ["<<nget<<"] " <<buffer<<endl;
-      // 	      hardFile.write( buffer,nget );
-      // 	    }
+      //          for( unsigned int index=0;index<NB_BYTE;index+=SIZE )
+      //            {
+      //              pbuf->pubseekpos( index );
+      //              int nget = pbuf->sgetn( buffer,SIZE );
+      //              dgDEBUG(35) << "Copie ["<<nget<<"] " <<buffer<<endl;
+      //              hardFile.write( buffer,nget );
+      //            }
       // hardFile << file.str () << flush;
       // file.seekp(0);
 
@@ -215,16 +232,18 @@ void TracerRealTime::trace() {
 
 void TracerRealTime::emptyBuffers() {
   dgDEBUGIN(15);
-  for (FileList::iterator iter = files.begin(); files.end() != iter; ++iter) {
-    // std::stringstream & file = * dynamic_cast< stringstream* >(*iter);
-    try {
-      OutStringStream& file = *dynamic_cast<OutStringStream*>(*iter);
-      file.empty();
-      // file.str("");
-    } catch (...) {
-      DG_THROW ExceptionTraces(ExceptionTraces::NOT_OPEN, "The buffer is not open", "");
+  for (FileList::iterator iter = files.begin(); files.end() != iter; ++iter)
+    {
+      // std::stringstream & file = * dynamic_cast< stringstream* >(*iter);
+      try {
+        OutStringStream& file = *dynamic_cast<OutStringStream*>(*iter);
+        file.empty();
+        // file.str("");
+      } catch (...) {
+        DG_THROW ExceptionTraces
+          (ExceptionTraces::NOT_OPEN, "The buffer is not open", "");
+      }
     }
-  }
   dgDEBUGOUT(15);
 }
 
@@ -235,22 +254,27 @@ void TracerRealTime::emptyBuffers() {
 //   pbuf->file.rdbuf () ->pubsetbuf( fileBuffer,10 );
 
 // }
-void TracerRealTime::recordSignal(std::ostream& os, const SignalBase<int>& sig) {
+void TracerRealTime::recordSignal
+(std::ostream& os, const SignalBase<int>& sig)
+{
   dgDEBUGIN(15);
 
   try {
     OutStringStream& file = dynamic_cast<OutStringStream&>(os);
     file.str("");
-    dgDEBUG(45) << "Empty file [" << file.tellp() << "] <" << file.str().c_str() << "> " << endl;
+    dgDEBUG(45) << "Empty file [" << file.tellp() << "] <"
+                << file.str().c_str() << "> " << endl;
 
     Tracer::recordSignal(file, sig);
     file.addData(file.str().c_str(), file.tellp());
-    dgDEBUG(35) << "Write data [" << file.tellp() << "] <" << file.str().c_str() << "> " << endl;
+    dgDEBUG(35) << "Write data [" << file.tellp() << "] <"
+                << file.str().c_str() << "> " << endl;
 
   } catch (ExceptionAbstract& exc) {
     throw exc;
   } catch (...) {
-    DG_THROW ExceptionTraces(ExceptionTraces::NOT_OPEN, "The buffer is not open", "");
+    DG_THROW ExceptionTraces
+      (ExceptionTraces::NOT_OPEN, "The buffer is not open", "");
   }
 
   dgDEBUGOUT(15);
@@ -262,11 +286,13 @@ void TracerRealTime::recordSignal(std::ostream& os, const SignalBase<int>& sig) 
 /* --------------------------------------------------------------------- */
 
 void TracerRealTime::display(std::ostream& os) const {
-  os << CLASS_NAME << " " << name << " [mode=" << (play ? "play" : "pause") << "] : " << endl
+  os << CLASS_NAME << " " << name
+     << " [mode=" << (play ? "play" : "pause") << "] : " << endl
      << "  - Dep list: " << endl;
 
   FileList::const_iterator iterFile = files.begin();
-  for (SignalList::const_iterator iter = toTraceSignals.begin(); toTraceSignals.end() != iter; ++iter) {
+  for (SignalList::const_iterator iter = toTraceSignals.begin();
+       toTraceSignals.end() != iter; ++iter) {
     dgDEBUG(35) << "Next" << endl;
     const OutStringStream* file = dynamic_cast<OutStringStream*>(*iterFile);
     os << "     -> " << (*iter)->getName();
@@ -288,8 +314,10 @@ void TracerRealTime::display(std::ostream& os) const {
         dec = 10;
         unit = "Ko";
       }
-      os << "[" << std::setw(1) << std::setprecision(1) << (((double)SIZE + 0.0) / (1 << dec)) << unit << "/"
-         << std::setprecision(2) << (((double)MSIZE + 0.0) / (1 << dec)) << unit << "]\t";
+      os << "[" << std::setw(1) << std::setprecision(1)
+         << (((double)SIZE + 0.0) / (1 << dec)) << unit << "/"
+         << std::setprecision(2)
+         << (((double)MSIZE + 0.0) / (1 << dec)) << unit << "]\t";
       if (file->full) os << "(FULL)";
       os.precision(PRECISION);
     }

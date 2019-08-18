@@ -17,45 +17,55 @@
   (const ::dynamicgraph::ExceptionAbstract& err) { throw err; }
 
 #ifdef DYNAMICGRAPH_EXCEPTION_PASSING_PARAM
-#define DG_THROW throw ::dynamicgraph::ExceptionAbstract::Param(__LINE__, __FUNCTION__, __FILE__) +
+#define DG_THROW \
+  throw ::dynamicgraph::ExceptionAbstract::Param \
+  (__LINE__, __FUNCTION__, __FILE__) +
 #else
 #define DG_THROW throw
 #endif  // DYNAMICGRAPH_EXCEPTION_PASSING_PARAM
 
-namespace dynamicgraph {
-/// \ingroup error
-///
-/// \brief Abstract root class for all dynamic-graph exceptions.
-class DYNAMIC_GRAPH_DLLAPI ExceptionAbstract : public std::exception {
- public:
+namespace dynamicgraph
+{
   /// \ingroup error
   ///
-  /// \brief Class owned by exceptions to store error locations.
-  class Param {
-   public:
-    static const int BUFFER_SIZE = 80;
-
-    Param(const int& _line, const char* _function, const char* _file);
-    Param() : functionPTR(), function(), line(), filePTR(), file(), pointersSet(false), set(false) {}
-    Param& initCopy(const Param& p);
-
-    const char* functionPTR;
-    char function[BUFFER_SIZE];
-    int line;
-    const char* filePTR;
-    char file[BUFFER_SIZE];
-    bool pointersSet;
-    bool set;
-  };
-
-  /// \brief Categories error code.
-  ///
-  /// Each value matches categories used by a subclass of
-  /// ExceptionAbstract.
-  ///
-  /// This is the programmer responsibility to make sure there is
-  /// enough room between two categories error code.
-  enum ExceptionEnum { ABSTRACT = 0, SIGNAL = 100, FACTORY = 200, TRACES = 300, TOOLS = 700 };
+  /// \brief Abstract root class for all dynamic-graph exceptions.
+  class DYNAMIC_GRAPH_DLLAPI ExceptionAbstract : public std::exception
+  {
+  public:
+    /// \ingroup error
+    ///
+    /// \brief Class owned by exceptions to store error locations.
+    class Param
+    {
+    public:
+      static const int BUFFER_SIZE = 80;
+      
+      Param(const int& _line, const char* _function, const char* _file);
+      Param() : functionPTR(), function(), line(), filePTR(), file(),
+                pointersSet(false), set(false) {}
+      Param& initCopy(const Param& p);
+      
+      const char* functionPTR;
+      char function[BUFFER_SIZE];
+      int line;
+      const char* filePTR;
+      char file[BUFFER_SIZE];
+      bool pointersSet;
+      bool set;
+    };
+    
+    /// \brief Categories error code.
+    ///
+    /// Each value matches categories used by a subclass of
+    /// ExceptionAbstract.
+    ///
+    /// This is the programmer responsibility to make sure there is
+    /// enough room between two categories error code.
+    enum ExceptionEnum { ABSTRACT = 0,
+                         SIGNAL = 100,
+                         FACTORY = 200,
+                         TRACES = 300,
+                         TOOLS = 700 };
 
   static const std::string EXCEPTION_NAME;
 
@@ -76,10 +86,12 @@ class DYNAMIC_GRAPH_DLLAPI ExceptionAbstract : public std::exception {
   /// Cannot be \e NULL.
   const char* getMessage() const;
 
-  virtual const char* what() const throw() { return getStringMessage().c_str(); }
+  virtual const char* what() const throw()
+  { return getStringMessage().c_str(); }
 
   /// \brief Print the error structure.
-  DYNAMIC_GRAPH_DLLAPI friend std::ostream& operator<<(std::ostream& os, const ExceptionAbstract& err);
+  DYNAMIC_GRAPH_DLLAPI friend std::ostream& operator<<
+    (std::ostream& os, const ExceptionAbstract& err);
 
  protected:
   /// \brief Error code.
@@ -97,13 +109,15 @@ class DYNAMIC_GRAPH_DLLAPI ExceptionAbstract : public std::exception {
   mutable Param p;
 
   template <class Exc>
-  friend const Exc& operator+(const ExceptionAbstract::Param& p, const Exc& e) {
+  friend const Exc& operator+(const ExceptionAbstract::Param& p, const Exc& e)
+  {
     e.p.initCopy(p);
     return e;
   }
 
   template <class Exc>
-  friend Exc& operator+(const ExceptionAbstract::Param& p, Exc& e) {
+  friend Exc& operator+(const ExceptionAbstract::Param& p, Exc& e)
+  {
     e.p.initCopy(p);
     return e;
   }

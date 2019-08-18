@@ -73,34 +73,42 @@ std::string toString(const T& v, const int precision=3, const int width=-1)
 }*/
 
 template <typename T>
-std::string toString(const std::vector<T>& v, const int precision = 3, const int width = -1,
+std::string toString(const std::vector<T>& v,
+                     const int precision = 3, const int width = -1,
                      const std::string separator = ", ") {
   std::stringstream ss;
   if (width > precision) {
     for (int i = 0; i < v.size() - 1; i++)
-      ss << std::fixed << std::setw(width) << std::setprecision(precision) << v[i] << separator;
-    ss << std::fixed << std::setw(width) << std::setprecision(precision) << v[v.size() - 1];
+      ss << std::fixed << std::setw(width)
+         << std::setprecision(precision)
+         << v[i] << separator;
+    ss << std::fixed << std::setw(width)
+       << std::setprecision(precision) << v[v.size() - 1];
   } else {
-    for (int i = 0; i < v.size() - 1; i++) ss << std::fixed << std::setprecision(precision) << v[i] << separator;
+    for (int i = 0; i < v.size() - 1; i++)
+      ss << std::fixed << std::setprecision(precision) << v[i] << separator;
     ss << std::fixed << std::setprecision(precision) << v[v.size() - 1];
   }
 
   return ss.str();
 }
 
-//      template<typename T, int N>
-//      std::string toString(const Eigen::Matrix<T, N, 1, 0, N, 1>& v, const std::string separator=", ",
-//                           const int precision=3, const int width=-1)
 template <typename T>
-std::string toString(const Eigen::MatrixBase<T>& v, const int precision = 3, const int width = -1,
-                     const std::string separator = ", ") {
+std::string toString(const Eigen::MatrixBase<T>& v,
+                     const int precision = 3,
+                     const int width = -1,
+                     const std::string separator = ", ")
+{
   std::stringstream ss;
   if (width > precision) {
     for (int i = 0; i < v.size() - 1; i++)
-      ss << std::fixed << std::setw(width) << std::setprecision(precision) << v[i] << separator;
-    ss << std::fixed << std::setw(width) << std::setprecision(precision) << v[v.size() - 1];
+      ss << std::fixed << std::setw(width)
+         << std::setprecision(precision) << v[i] << separator;
+    ss << std::fixed << std::setw(width)
+       << std::setprecision(precision) << v[v.size() - 1];
   } else {
-    for (int i = 0; i < v.size() - 1; i++) ss << std::fixed << std::setprecision(precision) << v[i] << separator;
+    for (int i = 0; i < v.size() - 1; i++)
+      ss << std::fixed << std::setprecision(precision) << v[i] << separator;
     ss << std::setprecision(precision) << v[v.size() - 1];
   }
 
@@ -132,7 +140,8 @@ enum LoggerVerbosity {
 /// }
 ///
 /// // Somewhere in your library
-/// dynamicgraph::LoggerVerbosity aLoggerVerbosityLevel = VERBOSITY_WARNING_ERROR;
+/// dynamicgraph::LoggerVerbosity aLoggerVerbosityLevel =
+///   VERBOSITY_WARNING_ERROR;
 /// entity.setLoggerVerbosityLevel(aLoggerVerbosityLevel);
 /// ...
 /// std::string aMsg=aBaseMsg+" WARNING";
@@ -158,7 +167,10 @@ class Logger {
    * the point where sendMsg is called so that streaming messages are
    * printed only every streamPrintPeriod iterations.
    */
-  void sendMsg(std::string msg, MsgType type, const char* file = "", int line = 0);
+  void sendMsg(std::string msg,
+               MsgType type,
+               const char* file = "",
+               int line = 0);
 
   /** Set the sampling time at which the method countdown()
    * is going to be called. */
@@ -182,25 +194,34 @@ class Logger {
 
  protected:
   LoggerVerbosity m_lv;        /// verbosity of the logger
-  double m_timeSample;         /// specify the period of call of the countdown method
+  double m_timeSample;
+  /// specify the period of call of the countdown method
   double m_streamPrintPeriod;  /// specify the time period of the stream prints
-  double m_printCountdown;     /// every time this is < 0 (i.e. every _streamPrintPeriod sec) print stuff
+  double m_printCountdown;
+  /// every time this is < 0 (i.e. every _streamPrintPeriod sec) print stuff
 
-  /** Pointer to the dynamic structure which holds the collection of streaming messages */
+  /** Pointer to the dynamic structure which holds 
+      the collection of streaming messages */
   std::map<std::string, double> m_stream_msg_counters;
 
-  bool isStreamMsg(MsgType m) {
-    return m == MSG_TYPE_ERROR_STREAM || m == MSG_TYPE_DEBUG_STREAM || m == MSG_TYPE_INFO_STREAM ||
-           m == MSG_TYPE_WARNING_STREAM;
+  bool isStreamMsg(MsgType m)
+  {
+    return m == MSG_TYPE_ERROR_STREAM || m == MSG_TYPE_DEBUG_STREAM ||
+      m == MSG_TYPE_INFO_STREAM ||
+      m == MSG_TYPE_WARNING_STREAM;
   }
 
-  bool isDebugMsg(MsgType m) { return m == MSG_TYPE_DEBUG_STREAM || m == MSG_TYPE_DEBUG; }
+  bool isDebugMsg(MsgType m)
+  { return m == MSG_TYPE_DEBUG_STREAM || m == MSG_TYPE_DEBUG; }
 
-  bool isInfoMsg(MsgType m) { return m == MSG_TYPE_INFO_STREAM || m == MSG_TYPE_INFO; }
+  bool isInfoMsg(MsgType m)
+  { return m == MSG_TYPE_INFO_STREAM || m == MSG_TYPE_INFO; }
 
-  bool isWarningMsg(MsgType m) { return m == MSG_TYPE_WARNING_STREAM || m == MSG_TYPE_WARNING; }
+  bool isWarningMsg(MsgType m)
+  { return m == MSG_TYPE_WARNING_STREAM || m == MSG_TYPE_WARNING; }
 
-  bool isErrorMsg(MsgType m) { return m == MSG_TYPE_ERROR_STREAM || m == MSG_TYPE_ERROR; }
+  bool isErrorMsg(MsgType m)
+  { return m == MSG_TYPE_ERROR_STREAM || m == MSG_TYPE_ERROR; }
 };
 
 }  // namespace dynamicgraph

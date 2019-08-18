@@ -43,7 +43,9 @@ Tracer::Tracer(const std::string n)
       names(),
       play(false),
       timeStart(0),
-      triger(boost::bind(&Tracer::recordTrigger, this, _1, _2), sotNOSIGNAL, "Tracer(" + n + ")::triger") {
+      triger(boost::bind(&Tracer::recordTrigger, this, _1, _2),
+             sotNOSIGNAL, "Tracer(" + n + ")::triger")
+{
   signalRegistration(triger);
 
   /* --- Commands --- */
@@ -51,11 +53,17 @@ Tracer::Tracer(const std::string n)
     using namespace dynamicgraph::command;
     std::string doc;
 
-    doc = docCommandVoid2("Add a new signal to trace.", "string (signal name)", "string (filename, empty for default");
-    addCommand("add", makeCommandVoid2(*this, &Tracer::addSignalToTraceByName, doc));
+    doc = docCommandVoid2("Add a new signal to trace.",
+                          "string (signal name)",
+                          "string (filename, empty for default");
+    addCommand("add",
+               makeCommandVoid2(*this,
+                                &Tracer::addSignalToTraceByName, doc));
 
-    doc = docCommandVoid0("Remove all signals. If necessary, close open files.");
-    addCommand("clear", makeCommandVoid0(*this, &Tracer::clearSignalToTrace, doc));
+    doc = docCommandVoid0
+      ("Remove all signals. If necessary, close open files.");
+    addCommand("clear", makeCommandVoid0
+               (*this, &Tracer::clearSignalToTrace, doc));
 
     doc = docCommandVoid3(
         "Gives the args for file opening, and "
@@ -77,8 +85,12 @@ Tracer::Tracer(const std::string n)
     doc = docCommandVoid0("Stop temporarily the tracing process.");
     addCommand("stop", makeCommandVoid0(*this, &Tracer::stop, doc));
 
-    addCommand("getTimeStart", makeDirectGetter(*this, &timeStart, docDirectGetter("timeStart", "int")));
-    addCommand("setTimeStart", makeDirectSetter(*this, &timeStart, docDirectSetter("timeStart", "int")));
+    addCommand("getTimeStart",
+               makeDirectGetter(*this, &timeStart,
+                                docDirectGetter("timeStart", "int")));
+    addCommand("setTimeStart",
+               makeDirectSetter(*this, &timeStart,
+                                docDirectSetter("timeStart", "int")));
   }  // using namespace command
 }
 
@@ -86,7 +98,10 @@ Tracer::Tracer(const std::string n)
 /* --------------------------------------------------------------------- */
 /* --------------------------------------------------------------------- */
 
-void Tracer::addSignalToTrace(const SignalBase<int>& sig, const string& filename) {
+void Tracer::addSignalToTrace
+(const SignalBase<int>& sig,
+ const string& filename)
+{
   dgDEBUGIN(15);
   toTraceSignals.push_back(&sig);
   dgDEBUGF(15, "%p", &sig);
@@ -96,7 +111,10 @@ void Tracer::addSignalToTrace(const SignalBase<int>& sig, const string& filename
   dgDEBUGOUT(15);
 }
 
-void Tracer::addSignalToTraceByName(const string& signame, const string& filename) {
+void Tracer::addSignalToTraceByName
+(const string& signame,
+ const string& filename)
+{
   dgDEBUGIN(15);
   istringstream iss(signame);
   SignalBase<int>& sig = PoolStorage::getInstance()->getSignal(iss);
@@ -108,7 +126,8 @@ void Tracer::addSignalToTraceByName(const string& signame, const string& filenam
  * does not modify the file list (it does not close
  * the files in particular.
  */
-void Tracer::clearSignalToTrace() {
+void Tracer::clearSignalToTrace()
+{
   closeFiles();
   toTraceSignals.clear();
   triger.clearDependencies();
@@ -120,7 +139,11 @@ void Tracer::clearSignalToTrace() {
 //   triger.parasite(sig);
 // }
 
-void Tracer::openFiles(const std::string& rootdir_, const std::string& basename_, const std::string& suffix_) {
+void Tracer::openFiles
+(const std::string& rootdir_,
+ const std::string& basename_,
+ const std::string& suffix_)
+{
   dgDEBUGIN(15);
   std::basic_string<char>::size_type n = rootdir_.length();
   rootdir = rootdir_;
@@ -134,7 +157,8 @@ void Tracer::openFiles(const std::string& rootdir_, const std::string& basename_
   SignalList::const_iterator iter = toTraceSignals.begin();
   NameList::const_iterator iterName = names.begin();
   while (toTraceSignals.end() != iter) {
-    dgDEBUG(15) << "Open <" << (*iter)->getName() << "> in <" << *iterName << ">." << std::endl;
+    dgDEBUG(15) << "Open <" << (*iter)->getName()
+                << "> in <" << *iterName << ">." << std::endl;
     openFile(**iter, *iterName);
     ++iter;
     ++iterName;
@@ -144,7 +168,10 @@ void Tracer::openFiles(const std::string& rootdir_, const std::string& basename_
   dgDEBUGOUT(15);
 }
 
-void Tracer::openFile(const SignalBase<int>& sig, const string& givenname) {
+void Tracer::openFile
+(const SignalBase<int>& sig,
+ const string& givenname)
+{
   dgDEBUGIN(15);
   string signame;
   if (givenname.length()) {
@@ -161,7 +188,8 @@ void Tracer::openFile(const SignalBase<int>& sig, const string& givenname) {
   dgDEBUGOUT(15);
 }
 
-void Tracer::closeFiles() {
+void Tracer::closeFiles()
+{
   dgDEBUGIN(15);
 
   for (FileList::iterator iter = files.begin(); files.end() != iter; ++iter) {
@@ -177,7 +205,8 @@ void Tracer::closeFiles() {
 /* --------------------------------------------------------------------- */
 /* --------------------------------------------------------------------- */
 
-void Tracer::record() {
+void Tracer::record()
+{
   if (!play) {
     dgDEBUGINOUT(15);
     return;
@@ -185,24 +214,30 @@ void Tracer::record() {
 
   dgDEBUGIN(15);
 
-  if (files.size() != toTraceSignals.size()) {
-    DG_THROW ExceptionTraces(ExceptionTraces::NOT_OPEN, "No files open for tracing", " (file=%d != %d=sig).",
-                             files.size(), toTraceSignals.size());
-  }
+  if (files.size() != toTraceSignals.size())
+    {
+      DG_THROW
+        ExceptionTraces(ExceptionTraces::NOT_OPEN,
+                        "No files open for tracing",
+                        " (file=%d != %d=sig).",
+                        files.size(), toTraceSignals.size());
+    }
 
   FileList::iterator iterFile = files.begin();
   SignalList::iterator iterSig = toTraceSignals.begin();
 
-  while (toTraceSignals.end() != iterSig) {
-    dgDEBUG(45) << "Try..." << endl;
-    recordSignal(**iterFile, **iterSig);
-    ++iterSig;
-    ++iterFile;
-  }
+  while (toTraceSignals.end() != iterSig)
+    {
+      dgDEBUG(45) << "Try..." << endl;
+      recordSignal(**iterFile, **iterSig);
+      ++iterSig;
+      ++iterFile;
+    }
   dgDEBUGOUT(15);
 }
 
-void Tracer::recordSignal(std::ostream& os, const SignalBase<int>& sig) {
+void Tracer::recordSignal(std::ostream& os, const SignalBase<int>& sig)
+{
   dgDEBUGIN(15);
 
   try {
@@ -220,7 +255,8 @@ void Tracer::recordSignal(std::ostream& os, const SignalBase<int>& sig) {
   dgDEBUGOUT(15);
 }
 
-int& Tracer::recordTrigger(int& dummy, const int& time) {
+int& Tracer::recordTrigger(int& dummy, const int& time)
+{
   dgDEBUGIN(15) << "    time=" << time << endl;
   record();
   dgDEBUGOUT(15);
@@ -233,15 +269,20 @@ void Tracer::trace() {}
 /* --------------------------------------------------------------------- */
 /* --------------------------------------------------------------------- */
 
-void Tracer::display(std::ostream& os) const {
-  os << CLASS_NAME << " " << name << " [mode=" << (play ? "play" : "pause") << "] : " << endl
+void Tracer::display(std::ostream& os) const
+{
+  os << CLASS_NAME << " " << name << " [mode="
+     << (play ? "play" : "pause") << "] : " << endl
      << "  - Dep list: " << endl;
-  for (SignalList::const_iterator iter = toTraceSignals.begin(); toTraceSignals.end() != iter; ++iter) {
-    os << "     -> " << (*iter)->getName() << endl;
-  }
+  for (SignalList::const_iterator iter = toTraceSignals.begin();
+       toTraceSignals.end() != iter; ++iter)
+    {
+      os << "     -> " << (*iter)->getName() << endl;
+    }
 }
 
-std::ostream& operator<<(std::ostream& os, const Tracer& t) {
+std::ostream& operator<<(std::ostream& os, const Tracer& t)
+{
   t.display(os);
   return os;
 }

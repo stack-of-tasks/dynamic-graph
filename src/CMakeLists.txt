@@ -60,8 +60,8 @@ INSTALL(TARGETS ${LIBRARY_NAME}
 ### Plugins
 ####################################
 SET(plugins_list
-	traces/tracer
-	traces/tracer-real-time
+        traces/tracer
+        traces/tracer-real-time
 )
 
 SET(tracer-real-time_dependency tracer)

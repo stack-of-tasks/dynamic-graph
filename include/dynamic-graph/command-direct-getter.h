@@ -19,36 +19,45 @@
 #include <boost/assign/list_of.hpp>
 
 /* --- GETTER --------------------------------------------------------- */
-namespace dynamicgraph {
-namespace command {
+namespace dynamicgraph
+{
+  namespace command
+  {
 
-template <class E, typename T>
-class DirectGetter : public Command {
- public:
-  /// Pointer to method that sets parameter of type T
-  typedef T (E::*GetterMethod)() const;
+    template <class E, typename T>
+    class DirectGetter : public Command
+    {
+    public:
+      /// Pointer to method that sets parameter of type T
+      typedef T (E::*GetterMethod)() const;
 
-  /// Constructor
-  DirectGetter(E& entity, T* ptr, const std::string& docString)
-      : Command(entity, std::vector<Value::Type>(), docString), T_ptr(ptr) {}
+      /// Constructor
+      DirectGetter(E& entity, T* ptr, const std::string& docString)
+        : Command(entity, std::vector<Value::Type>(), docString), T_ptr(ptr)
+      {}
 
- protected:
-  virtual Value doExecute() { return Value(*T_ptr); }
+    protected:
+      virtual Value doExecute() { return Value(*T_ptr); }
 
- private:
-  T* T_ptr;
-};
+    private:
+      T* T_ptr;
+    };
 
-template <class E, typename T>
-DirectGetter<E, T>* makeDirectGetter(E& entity, T* ptr, const std::string& docString) {
-  return new DirectGetter<E, T>(entity, ptr, docString);
-}
+    template <class E, typename T>
+    DirectGetter<E, T>* makeDirectGetter
+    (E& entity, T* ptr, const std::string& docString)
+    {
+      return new DirectGetter<E, T>(entity, ptr, docString);
+    }
 
-inline std::string docDirectGetter(const std::string& name, const std::string& type) {
-  return std::string("\nGet the ") + name + ".\n\nNo input.\nReturn an " + type + ".\n\n";
-}
+    inline std::string docDirectGetter
+    (const std::string& name, const std::string& type)
+    {
+      return std::string("\nGet the ") + name +
+        ".\n\nNo input.\nReturn an " + type + ".\n\n";
+    }
 
-}  // namespace command
+  }  // namespace command
 }  // namespace dynamicgraph
 
 #endif  // __dg_command_direct_getter_h__
