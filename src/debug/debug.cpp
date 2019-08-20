@@ -15,10 +15,10 @@ using namespace dynamicgraph;
 
 #ifdef WIN32
 const char *DebugTrace::DEBUG_FILENAME_DEFAULT =
-  "c:/tmp/dynamic-graph-traces.txt";
+    "c:/tmp/dynamic-graph-traces.txt";
 #else  /*WIN32*/
 const char *DebugTrace::DEBUG_FILENAME_DEFAULT =
-  "/tmp/dynamic-graph-traces.txt";
+    "/tmp/dynamic-graph-traces.txt";
 #endif /*WIN32*/
 
 #ifdef VP_DEBUG
@@ -30,9 +30,9 @@ std::ofstream dg_debugfile("/tmp/dynamic-graph-traces.txt",
                            std::ios::trunc &std::ios::out);
 #endif /*WIN32*/
 #else
-std::ofstream dg_debugfile;  
+std::ofstream dg_debugfile;
 class dgDebug_init {
- public:
+public:
   dgDebug_init() { dg_debugfile.setstate(std::ios::failbit); }
 };
 dgDebug_init dgDebug_initialisator;
@@ -42,10 +42,11 @@ dgDebug_init dgDebug_initialisator;
 namespace dynamicgraph {
 DebugTrace dgDEBUGFLOW(dg_debugfile);
 DebugTrace dgERRORFLOW(dg_debugfile);
-}  // namespace dynamicgraph
+} // namespace dynamicgraph
 
 void DebugTrace::openFile(const char *filename) {
-  if (dg_debugfile.good() && dg_debugfile.is_open()) dg_debugfile.close();
+  if (dg_debugfile.good() && dg_debugfile.is_open())
+    dg_debugfile.close();
   dg_debugfile.clear();
   dg_debugfile.open(filename, std::ios::trunc & std::ios::out);
 }
@@ -56,4 +57,3 @@ void DebugTrace::closeFile(const char *) {
   }
   dg_debugfile.setstate(std::ios::failbit);
 }
-

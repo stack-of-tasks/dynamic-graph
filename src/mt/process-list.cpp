@@ -10,24 +10,15 @@
 
 using namespace dynamicgraph::CPU;
 CPUData::CPUData()
-    : user_mode_time_(0),
-      nice_time_(0),
-      system_time_(0),
-      idle_time_(0),
-      iowait_time_(0),
-      irq_time_(0),
-      softirq_time_(0),
-      steal_time_(0),
-      guest_time_(0),
-      guest_nice_time_(0),
-      percent_(0.0) {}
+    : user_mode_time_(0), nice_time_(0), system_time_(0), idle_time_(0),
+      iowait_time_(0), irq_time_(0), softirq_time_(0), steal_time_(0),
+      guest_time_(0), guest_nice_time_(0), percent_(0.0) {}
 
-void CPUData::ProcessLine(std::istringstream &aCPULine)
-{
-  unsigned long long int luser_mode_time = 0, lnice_time = 0,
-    lsystem_time = 0, lidle_time = 0, liowait_time = 0,
-    lirq_time = 0, lsoftirq_time = 0, lsteal_time = 0, lguest_time = 0,
-    lguest_nice_time;
+void CPUData::ProcessLine(std::istringstream &aCPULine) {
+  unsigned long long int luser_mode_time = 0, lnice_time = 0, lsystem_time = 0,
+                         lidle_time = 0, liowait_time = 0, lirq_time = 0,
+                         lsoftirq_time = 0, lsteal_time = 0, lguest_time = 0,
+                         lguest_nice_time;
 
   aCPULine >> luser_mode_time;
   aCPULine >> lnice_time;
@@ -46,13 +37,13 @@ void CPUData::ProcessLine(std::istringstream &aCPULine)
 
   // Compute cumulative time
   unsigned long long int lidle_all_time = 0, lsystem_all_time = 0,
-    lguest_all_time = 0, ltotal_time = 0;
+                         lguest_all_time = 0, ltotal_time = 0;
 
   lidle_all_time = lidle_time + liowait_time;
   lsystem_all_time = lsystem_time + lirq_time + lsoftirq_time;
   lguest_all_time = lguest_time + lguest_nice_time;
   ltotal_time = luser_mode_time + lnice_time + lsystem_all_time +
-    lidle_all_time + lsteal_time + lguest_all_time;
+                lidle_all_time + lsteal_time + lguest_all_time;
 
   // Update periodic computation.
   user_mode_period_ = computePeriod(luser_mode_time, user_mode_time_);
@@ -131,29 +122,27 @@ void System::readProcStat() {
       gCPUData_.cpu_id_ = -1;
     } else {
       // If not then check if there is a CPU number
-      if (pos == 0)
-        {
-          std::istringstream iss(str_cpunbr);
-          unsigned int lcpunb;
-          iss >> lcpunb;
-          // If we did not initialize
-          if (!init_)
-            {
-              // Count the number of CPU.
-              if (lcpunb > cpuNb_) cpuNb_ = lcpunb;
-            }
-          else
-            // Otherwise process the line.
-            ProcessCPULine(lcpunb, anISSLine);
-        }
+      if (pos == 0) {
+        std::istringstream iss(str_cpunbr);
+        unsigned int lcpunb;
+        iss >> lcpunb;
+        // If we did not initialize
+        if (!init_) {
+          // Count the number of CPU.
+          if (lcpunb > cpuNb_)
+            cpuNb_ = lcpunb;
+        } else
+          // Otherwise process the line.
+          ProcessCPULine(lcpunb, anISSLine);
+      }
     }
   }
 
-  if (!init_)
-    {
-      /// The number of CPU has been detected by going through /proc/stat.
-      vCPUData_.resize(cpuNb_ + 1);
-      for (int i = 0; i < (int)cpuNb_; i++) vCPUData_[i].cpu_id_ = i;
-    }
+  if (!init_) {
+    /// The number of CPU has been detected by going through /proc/stat.
+    vCPUData_.resize(cpuNb_ + 1);
+    for (int i = 0; i < (int)cpuNb_; i++)
+      vCPUData_[i].cpu_id_ = i;
+  }
   aif.close();
 }

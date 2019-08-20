@@ -29,32 +29,24 @@ class SignalCastRegisterer;
 class Tracer;
 class TracerRealTime;
 
-template <typename T>
-class DefaultCastRegisterer;
+template <typename T> class DefaultCastRegisterer;
 
-template <typename T, typename Time>
-class Signal;
+template <typename T, typename Time> class Signal;
 
-template <typename Time>
-class SignalArray;
+template <typename Time> class SignalArray;
 
-template <typename Time>
-class SignalArray_const;
+template <typename Time> class SignalArray_const;
 
-template <typename Time>
-class SignalBase;
+template <typename Time> class SignalBase;
 
-template <typename T, typename Time>
-class SignalPtr;
-template <typename T, typename Time>
-class SignalTimeDependent;
-template <typename Time>
-class TimeDependency;
+template <typename T, typename Time> class SignalPtr;
+template <typename T, typename Time> class SignalTimeDependent;
+template <typename Time> class TimeDependency;
 
 namespace command {
 class Command;
-}  // end of namespace command.
+} // end of namespace command.
 
-}  // end of namespace dynamicgraph.
+} // end of namespace dynamicgraph.
 
-#endif  //! DYNAMIC_GRAPH_FWD_HH
+#endif //! DYNAMIC_GRAPH_FWD_HH

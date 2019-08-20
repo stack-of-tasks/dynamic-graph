@@ -1,15 +1,15 @@
 // Copyright 2010 Thomas Moulard.
 //
 
-#include <sstream>
 #include <dynamic-graph/exception-factory.h>
 #include <dynamic-graph/interpreter.h>
 #include <dynamic-graph/plugin-loader.h>
+#include <sstream>
 
 #define BOOST_TEST_MODULE tracer
 
-#include <boost/test/unit_test.hpp>
 #include <boost/test/output_test_stream.hpp>
+#include <boost/test/unit_test.hpp>
 
 #include "interpreter.h"
 

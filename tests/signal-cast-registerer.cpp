@@ -9,22 +9,22 @@
 #include <Eigen/Dense>
 
 #include <dynamic-graph/debug.h>
+#include <dynamic-graph/eigen-io.h>
 #include <dynamic-graph/entity.h>
 #include <dynamic-graph/factory.h>
-#include <dynamic-graph/pool.h>
-#include <dynamic-graph/eigen-io.h>
 #include <dynamic-graph/linear-algebra.h>
+#include <dynamic-graph/pool.h>
+#include <dynamic-graph/signal-cast-helper.h>
 #include <dynamic-graph/signal-caster.h>
 #include <dynamic-graph/signal.h>
-#include <dynamic-graph/signal-cast-helper.h>
 
 #include "signal-cast-registerer-libA.hh"
 #include "signal-cast-registerer-libB.hh"
 
 #define BOOST_TEST_MODULE signal_cast_registerer
 
-#include <boost/test/unit_test.hpp>
 #include <boost/test/output_test_stream.hpp>
+#include <boost/test/unit_test.hpp>
 #include <iostream>
 
 using boost::test_tools::output_test_stream;
@@ -35,24 +35,28 @@ typedef Eigen::MatrixXd Matrix;
 struct EigenCastRegisterer_V : public dynamicgraph::SignalCastRegisterer {
   typedef Vector bnuVector;
 
-  EigenCastRegisterer_V() : SignalCastRegisterer(typeid(bnuVector), dispVector, castVector, traceVector) {}
+  EigenCastRegisterer_V()
+      : SignalCastRegisterer(typeid(bnuVector), dispVector, castVector,
+                             traceVector) {}
 
-  static boost::any castVector(std::istringstream& iss) {
+  static boost::any castVector(std::istringstream &iss) {
     bnuVector res;
     iss >> res;
     return res;
   }
 
-  static void dispVector(const boost::any& object, std::ostream& os) {
-    const bnuVector& v = boost::any_cast<bnuVector>(object);
+  static void dispVector(const boost::any &object, std::ostream &os) {
+    const bnuVector &v = boost::any_cast<bnuVector>(object);
     os << "[ ";
-    for (int i = 0; i < v.size(); ++i) os << v(i) << " ";
+    for (int i = 0; i < v.size(); ++i)
+      os << v(i) << " ";
     os << " ];" << std::endl;
   }
 
-  static void traceVector(const boost::any& object, std::ostream& os) {
-    const bnuVector& v = boost::any_cast<bnuVector>(object);
-    for (int i = 0; i < v.size(); ++i) os << v(i) << " ";
+  static void traceVector(const boost::any &object, std::ostream &os) {
+    const bnuVector &v = boost::any_cast<bnuVector>(object);
+    for (int i = 0; i < v.size(); ++i)
+      os << v(i) << " ";
     os << std::endl;
   }
 };
@@ -61,21 +65,23 @@ template <typename Derived>
 struct EigenCastRegisterer_M : public dynamicgraph::SignalCastRegisterer {
   typedef Matrix bnuMatrix;
 
-  EigenCastRegisterer_M() : SignalCastRegisterer(typeid(bnuMatrix), dispMatrix, castMatrix, traceMatrix) {}
+  EigenCastRegisterer_M()
+      : SignalCastRegisterer(typeid(bnuMatrix), dispMatrix, castMatrix,
+                             traceMatrix) {}
 
-  static boost::any castMatrix(std::istringstream& iss) {
+  static boost::any castMatrix(std::istringstream &iss) {
     bnuMatrix res;
     iss >> res;
     return res;
   }
 
-  static void dispMatrix(const boost::any& object, std::ostream& os) {
-    const bnuMatrix& m = boost::any_cast<bnuMatrix>(object);
+  static void dispMatrix(const boost::any &object, std::ostream &os) {
+    const bnuMatrix &m = boost::any_cast<bnuMatrix>(object);
     os << m << std::endl;
   }
 
-  static void traceMatrix(const boost::any& object, std::ostream& os) {
-    const bnuMatrix& m = boost::any_cast<bnuMatrix>(object);
+  static void traceMatrix(const boost::any &object, std::ostream &os) {
+    const bnuMatrix &m = boost::any_cast<bnuMatrix>(object);
     os << m << std::endl;
   }
 };
@@ -104,7 +110,7 @@ BOOST_AUTO_TEST_CASE(standard_double_registerer) {
   values.push_back(std::make_pair("-inf", "-inf\n"));
   values.push_back(std::make_pair("nan", "nan\n"));
 
-  BOOST_FOREACH (const test_t& test, values) {
+  BOOST_FOREACH (const test_t &test, values) {
     // Set
     std::istringstream value(test.first);
     mySignal.set(value);

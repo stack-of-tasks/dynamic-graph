@@ -12,7 +12,7 @@
 #include <dynamic-graph/command-direct-getter.h>
 #include <dynamic-graph/command-direct-setter.h>
 #include <dynamic-graph/command-getter.h>
-#include <dynamic-graph/command.h>
 #include <dynamic-graph/command-setter.h>
+#include <dynamic-graph/command.h>
 
-#endif  //! DYNAMIC_GRAPH_ALL_COMMANDS_H
+#endif //! DYNAMIC_GRAPH_ALL_COMMANDS_H

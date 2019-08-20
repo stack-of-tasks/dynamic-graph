@@ -21,6 +21,7 @@ It provides the following output:
 
 \section fromdottojs Viewing in a browser
 To view the dot file you can simply use the view_sot_dg.html file.
-Click on the "Choose File" to specify the filem and click on "Rendering" to display the graph.
+Click on the "Choose File" to specify the filem and click on "Rendering" to
+display the graph.
 
 */

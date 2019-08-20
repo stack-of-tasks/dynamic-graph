@@ -3,44 +3,43 @@
 
 #include <boost/foreach.hpp>
 
-#include <dynamic-graph/signal.h>
 #include <dynamic-graph/signal-time-dependent.h>
+#include <dynamic-graph/signal.h>
 
 #define BOOST_TEST_MODULE signal_time_dependent
 
-#include <boost/test/unit_test.hpp>
 #include <boost/test/output_test_stream.hpp>
+#include <boost/test/unit_test.hpp>
 
 using boost::test_tools::output_test_stream;
 
 typedef dynamicgraph::SignalTimeDependent<double, int> sigDouble_t;
 typedef dynamicgraph::SignalTimeDependent<std::string, int> sigString_t;
 
-template <class T>
-class DummyClass {
- public:
+template <class T> class DummyClass {
+public:
   std::string proname;
-  std::list<sigDouble_t*> inputsig;
-  std::list<sigString_t*> inputsigV;
+  std::list<sigDouble_t *> inputsig;
+  std::list<sigString_t *> inputsigV;
 
-  DummyClass(const std::string& n) : proname(n), res(), call(), timedata() {}
+  DummyClass(const std::string &n) : proname(n), res(), call(), timedata() {}
 
-  T& fun(T& res, int t) {
+  T &fun(T &res, int t) {
     ++call;
     timedata = t;
 
-    BOOST_FOREACH (sigDouble_t* ptr, inputsig)
+    BOOST_FOREACH (sigDouble_t *ptr, inputsig)
       ptr->access(timedata);
 
-    BOOST_FOREACH (sigString_t* ptr, inputsigV)
+    BOOST_FOREACH (sigString_t *ptr, inputsigV)
       ptr->access(timedata);
 
     res = (*this)();
     return res;
   }
 
-  void add(sigDouble_t& sig) { inputsig.push_back(&sig); }
-  void add(sigString_t& sig) { inputsigV.push_back(&sig); }
+  void add(sigDouble_t &sig) { inputsig.push_back(&sig); }
+  void add(sigString_t &sig) { inputsigV.push_back(&sig); }
 
   T operator()();
 
@@ -49,22 +48,17 @@ class DummyClass {
   int timedata;
 };
 
-template <>
-double DummyClass<double>::operator()() {
+template <> double DummyClass<double>::operator()() {
   res = call * timedata;
   return res;
 }
-template <>
-std::string DummyClass<std::string>::operator()() {
+template <> std::string DummyClass<std::string>::operator()() {
   std::ostringstream oss;
   oss << call * timedata;
   return oss.str();
 }
 
-template <class T>
-T DummyClass<T>::operator()() {
-  return this->res;
-}
+template <class T> T DummyClass<T>::operator()() { return this->res; }
 
 BOOST_AUTO_TEST_CASE(signaltimedependent) {
   DummyClass<double> pro1("pro1"), pro3("pro3"), pro5("pro5");
@@ -76,7 +70,8 @@ BOOST_AUTO_TEST_CASE(signaltimedependent) {
   sigString_t sig4(sig5, "Sig4");
   sigString_t sig2(sig4 << sig4 << sig4 << sig6, "Sig2");
   sigDouble_t sig3(sig2 << sig5 << sig6, "Sig3");
-  sigDouble_t sig1(boost::bind(&DummyClass<double>::fun, &pro1, _1, _2), sig2 << sig3, "Sig1");
+  sigDouble_t sig1(boost::bind(&DummyClass<double>::fun, &pro1, _1, _2),
+                   sig2 << sig3, "Sig1");
 
   sig2.setFunction(boost::bind(&DummyClass<std::string>::fun, &pro2, _1, _2));
   sig3.setFunction(boost::bind(&DummyClass<double>::fun, &pro3, _1, _2));

@@ -19,47 +19,41 @@
 #include <boost/assign/list_of.hpp>
 
 /* --- SETTER --------------------------------------------------------- */
-namespace dynamicgraph
-{
-  namespace command
-  {
-    
-    template <class E, typename T>
-    class DirectSetter : public Command
-    {
-    public:
-      DirectSetter(E& entity, T* ptr, const std::string& docString)
-        : Command(entity, boost::assign::list_of(ValueHelper<T>::TypeID),
-                  docString), T_ptr(ptr) {}
-      
-    protected:
-      virtual Value doExecute()
-      {
-        const std::vector<Value>& values = getParameterValues();
-        T val = values[0].value();
-        (*T_ptr) = val;
-        return Value();  // void
-      }
+namespace dynamicgraph {
+namespace command {
 
-    private:
-      T* T_ptr;
-    };
+template <class E, typename T> class DirectSetter : public Command {
+public:
+  DirectSetter(E &entity, T *ptr, const std::string &docString)
+      : Command(entity, boost::assign::list_of(ValueHelper<T>::TypeID),
+                docString),
+        T_ptr(ptr) {}
 
-    template <class E, typename T>
-    DirectSetter<E, T>* makeDirectSetter
-    (E& entity, T* ptr, const std::string& docString)
-    {
-      return new DirectSetter<E, T>(entity, ptr, docString);
-    }
+protected:
+  virtual Value doExecute() {
+    const std::vector<Value> &values = getParameterValues();
+    T val = values[0].value();
+    (*T_ptr) = val;
+    return Value(); // void
+  }
 
-    inline std::string docDirectSetter
-    (const std::string& name, const std::string& type)
-    {
-      return std::string("\nSet the ") + name + ".\n\nInput:\n - a " + type +
-        ".\nVoid return.\n\n";
-    }
+private:
+  T *T_ptr;
+};
 
-  }  // namespace command
-}  // namespace dynamicgraph
+template <class E, typename T>
+DirectSetter<E, T> *makeDirectSetter(E &entity, T *ptr,
+                                     const std::string &docString) {
+  return new DirectSetter<E, T>(entity, ptr, docString);
+}
 
-#endif  // __dg_command_direct_setter_h__
+inline std::string docDirectSetter(const std::string &name,
+                                   const std::string &type) {
+  return std::string("\nSet the ") + name + ".\n\nInput:\n - a " + type +
+         ".\nVoid return.\n\n";
+}
+
+} // namespace command
+} // namespace dynamicgraph
+
+#endif // __dg_command_direct_setter_h__

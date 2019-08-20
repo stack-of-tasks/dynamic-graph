@@ -3,16 +3,16 @@
  * Olivier Stasse
  *
  */
-#include <sstream>
+#include <dynamic-graph/process-list.hh>
 #include <fstream>
 #include <iostream>
+#include <sstream>
 #include <unistd.h>
-#include <dynamic-graph/process-list.hh>
 
 #define BOOST_TEST_MODULE debug - trace
 
-#include <boost/test/unit_test.hpp>
 #include <boost/test/output_test_stream.hpp>
+#include <boost/test/unit_test.hpp>
 
 using boost::test_tools::output_test_stream;
 

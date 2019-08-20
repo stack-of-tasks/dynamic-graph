@@ -2,9 +2,9 @@
 \page tracerrealtimedoc TracerRealTime
 
 \section tracerrealtimedoc_description Description
-The \b TracerRealTime entity monitors a set of signals with real-time constraints; its
-function is very similar to the Tracer, except that all traces are recorded to a
-memory buffer, which can be emptied at any time.
+The \b TracerRealTime entity monitors a set of signals with real-time
+constraints; its function is very similar to the Tracer, except that all traces
+are recorded to a memory buffer, which can be emptied at any time.
 
 \section tracerrealtimedoc_commands Commands
 The \b commands that this entity exposes are:

@@ -13,7 +13,8 @@ dynamic-graph depends on:
 \section sec_inst_get_src Getting the source
 
 The sources are available through github at the following URL:
-<a href="https://github.com/stack-of-tasks/dynamic-graph">https://github.com/stack-of-tasks/dynamic-graph</a>
+<a
+href="https://github.com/stack-of-tasks/dynamic-graph">https://github.com/stack-of-tasks/dynamic-graph</a>
 
 To clone:
 \code

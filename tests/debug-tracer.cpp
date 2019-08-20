@@ -16,8 +16,8 @@
 
 #define BOOST_TEST_MODULE debug - tracer
 
-#include <boost/test/unit_test.hpp>
 #include <boost/test/output_test_stream.hpp>
+#include <boost/test/unit_test.hpp>
 
 namespace dynamicgraph {
 struct MyEntity : public dynamicgraph::Entity {
@@ -30,16 +30,20 @@ struct MyEntity : public dynamicgraph::Entity {
   MyEntity(const std::string &name)
       : Entity(name),
         m_sigdSIN("MyEntity(" + name + ")::input(double)::in_double"),
-        m_sigdTimeDepSOUT(boost::bind(&MyEntity::update, this, _1, _2), m_sigdSIN,
+        m_sigdTimeDepSOUT(boost::bind(&MyEntity::update, this, _1, _2),
+                          m_sigdSIN,
                           "MyEntity(" + name + ")::input(double)::out_double"),
-        m_sigdTwoTimeDepSOUT(boost::bind(&MyEntity::update, this, _1, _2), m_sigdSIN,
-                             "MyEntity(" + name + ")::input(double)::out2double")
+        m_sigdTwoTimeDepSOUT(
+            boost::bind(&MyEntity::update, this, _1, _2), m_sigdSIN,
+            "MyEntity(" + name + ")::input(double)::out2double")
 
   {
     signalRegistration(m_sigdSIN << m_sigdTimeDepSOUT << m_sigdTwoTimeDepSOUT);
   }
 
-  virtual void display(std::ostream &os) const { os << "Hello! My name is " << getName() << " !" << std::endl; }
+  virtual void display(std::ostream &os) const {
+    os << "Hello! My name is " << getName() << " !" << std::endl;
+  }
 
   virtual const std::string &getClassName() const { return CLASS_NAME; }
 
@@ -50,14 +54,17 @@ struct MyEntity : public dynamicgraph::Entity {
   }
 };
 DYNAMICGRAPH_FACTORY_ENTITY_PLUGIN(MyEntity, "MyEntity");
-}  // namespace dynamicgraph
+} // namespace dynamicgraph
 
 BOOST_AUTO_TEST_CASE(test_tracer) {
   // Creates a tracer.
   dynamicgraph::Tracer &atracer = *dynamic_cast<dynamicgraph::Tracer *>(
-      dynamicgraph::FactoryStorage::getInstance()->newEntity("Tracer", "my-tracer"));
+      dynamicgraph::FactoryStorage::getInstance()->newEntity("Tracer",
+                                                             "my-tracer"));
 
-  dynamicgraph::Entity &entity = *dynamicgraph::FactoryStorage::getInstance()->newEntity("MyEntity", "my-entity");
+  dynamicgraph::Entity &entity =
+      *dynamicgraph::FactoryStorage::getInstance()->newEntity("MyEntity",
+                                                              "my-entity");
 
   /// Add trace by name
   atracer.addSignalToTraceByName("my-entity.out_double", "output");
@@ -65,7 +72,8 @@ BOOST_AUTO_TEST_CASE(test_tracer) {
   dynamicgraph::SignalBase<int> &aSignal = entity.getSignal("out2double");
 
   dynamicgraph::Signal<double, int> &aSignalInt =
-      *(dynamic_cast<dynamicgraph::Signal<double, int> *>(&entity.getSignal("in_double")));
+      *(dynamic_cast<dynamicgraph::Signal<double, int> *>(
+          &entity.getSignal("in_double")));
 
   /// Add trace by signal object
   atracer.addSignalToTrace(aSignal, "output2");

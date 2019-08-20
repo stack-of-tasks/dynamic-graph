@@ -5,21 +5,24 @@
 
 \subsection use_programmatically General introduction
 
-For control purposes the main use of this package is to create new entities and connect them through signals.
+For control purposes the main use of this package is to create new entities and
+connect them through signals.
 
-Objects, which are derived from Entities (base class dynamicgraph::Entity), can be
-declared within the code and compiled as shared libraries (.so/.dll files).
+Objects, which are derived from Entities (base class dynamicgraph::Entity), can
+be declared within the code and compiled as shared libraries (.so/.dll files).
 These libraries can be loaded at run-time using the PluginLoader methods,
 and at the same time register their class names to the Factory (see the
-examples in the <a href="http://projects.laas.fr/gepetto/doc/stack-of-tasks/sot-core/master/doxygen-html">sot-core
+examples in the <a
+href="http://projects.laas.fr/gepetto/doc/stack-of-tasks/sot-core/master/doxygen-html">sot-core
 documentation</a> for advanced control examples).
 
 The Factory can then create instances of these objects and subsequently
-register them in the Pool. From the pool they can be listed, accessed, and acted upon
-(see PoolStorage documentation). Basic commands defined by entities include
+register them in the Pool. From the pool they can be listed, accessed, and acted
+upon (see PoolStorage documentation). Basic commands defined by entities include
 signal connection graph file generation, help and name print, and signals.
 This is usually done through a scripting language such as python (see
-<a hef="https://github.com/stack-of-tasks/dynamic-graph-python">dynamic-graph-python</a>)
+<a
+hef="https://github.com/stack-of-tasks/dynamic-graph-python">dynamic-graph-python</a>)
 
 The singletons made available by including the corresponding headers in this
 module are:
@@ -30,13 +33,15 @@ For an example of a program creating entities in C++, see the unit test
 test_pool.cpp (in your package source directory/tests).
 
 \subsection Tutorial
-A tutorial is available <a href="http://stack-of-tasks.github.io/dynamic-graph-tutorial/">here</a>.
-It is providing a step-by-step way of building an entity
+A tutorial is available <a
+href="http://stack-of-tasks.github.io/dynamic-graph-tutorial/">here</a>. It is
+providing a step-by-step way of building an entity
 
 \section sec_htw_helpers Helpers
 
 
-When writing entities you might use some macros which are very useful to write your class.
+When writing entities you might use some macros which are very useful to write
+your class.
 
 \subsection subsec_howto_typedef Entity helpers
 
@@ -48,13 +53,13 @@ The header <b>entity-helper.h</b> is defining a type called EntityClassName
 
 <ul>
   <li> <b>DYNAMIC_GRAPH_ENTITY_DECL()</b>:
-  This macro creates a method <b>getClassName()</b> which returns the class name.</li>
-  This macro <b>should</b> be used in the declaration of the class.
+  This macro creates a method <b>getClassName()</b> which returns the class
+name.</li> This macro <b>should</b> be used in the declaration of the class.
   </li>
   <li> <b>DYNAMICGRAPH_FACTORY_ENTITY_PLUGIN(classtype,classname)</b>
-  This macros creates the methods necessary to have a factory building the C++ class
-  <b>classtype</b> from the string <b>classname</b>.
-  This macro <b>should</b> be used in the implementation of the class.
+  This macros creates the methods necessary to have a factory building the C++
+class <b>classtype</b> from the string <b>classname</b>. This macro
+<b>should</b> be used in the implementation of the class.
   </li>
 </ul>
 
@@ -64,15 +69,12 @@ The header <b>entity-helper.h</b> is defining a type called EntityClassName
   <li>  Macro for input signals
     <ul>
       <li> <b>DECLARE_SIGNAL_IN(signal_name,type)</b>:
-      Declare an input time dependent signal as a field of the class with the following name:
-      \code
-      m_signal_nameSIN
-      \endcode
+      Declare an input time dependent signal as a field of the class with the
+following name: \code m_signal_nameSIN \endcode
       </li>
       <li> <b>CONSTRUCT_SIGNAL_IN(signal_name,type)</b>:
-      This macro is used in the constructor of the entity class handling this signal.
-      It is calling the signal constructor and set the signal name to:
-      \code
+      This macro is used in the constructor of the entity class handling this
+signal. It is calling the signal constructor and set the signal name to: \code
       EntityClassName(entity-name)::input(type)::signal_name
       \endcode
     </ul>
@@ -80,32 +82,24 @@ The header <b>entity-helper.h</b> is defining a type called EntityClassName
   <li>  Macro for output signals
     <ul>
       <li> <b>DECLARE_SIGNAL_OUT(signal_name,type)</b>:
-      Declare an output time dependent signal as a field of the class with the following name:
-      \code
-      m_signal_nameSOUT
-      \endcode
-      It also declares a method with the following pattern:
-      \code
-      type signal_nameSOUT_function(type &,int)
-      \endcode
+      Declare an output time dependent signal as a field of the class with the
+following name: \code m_signal_nameSOUT \endcode It also declares a method with
+the following pattern: \code type signal_nameSOUT_function(type &,int) \endcode
       The second pattern is the time when calling the output.
       </li>
       <li> <b>CONSTRUCT_SIGNAL_OUT(signal_name,type)</b>
-      This macro is used in the constructor of the entity class handling this signal.
-      It creates the binding to the method described previously, and set the signal name to:
-      \code
-      EntityClassName(entity_name)::output(type)::signal_name
+      This macro is used in the constructor of the entity class handling this
+signal. It creates the binding to the method described previously, and set the
+signal name to: \code EntityClassName(entity_name)::output(type)::signal_name
       \endcode
       where entity_name is the name of the entity currently instanciated.
       </li>
 
       <li> <b>DEFINE_SIGNAL_OUT_FUNCTION(signal_name, type)</b>:
-      This macro is used when implementing the method specific to the output signal.
-      It is used in the main body of the entity class to declare the header of the method
-      with the following pattern:
-      \code
-      type EntityClassName::signal_nameSOUT_function(type &, int iter)
-      \endcode
+      This macro is used when implementing the method specific to the output
+signal. It is used in the main body of the entity class to declare the header of
+the method with the following pattern: \code type
+EntityClassName::signal_nameSOUT_function(type &, int iter) \endcode
       </li>
 
     </ul>
@@ -113,8 +107,8 @@ The header <b>entity-helper.h</b> is defining a type called EntityClassName
   </li> Inner signals
     <ul>
       <li> <b> DECLARE_SIGNAL_INNER(signal_name,type)</b>
-      Inner signal are signal that depend on a state of the entity and not on input signals.
-      This macro declares an inner signal with the following pattern:
+      Inner signal are signal that depend on a state of the entity and not on
+input signals. This macro declares an inner signal with the following pattern:
       \code
       m_signal_nameSINNER
       \endcode
@@ -124,11 +118,13 @@ The header <b>entity-helper.h</b> is defining a type called EntityClassName
       \endcode
       </li>
       <li> <b>DEFINE_SIGNAL_INNER_FUNCTION(signal_name,type)</b>
-      This macro is used to implement the method related to signal_name. More precisely
-      it provides the header of the member function(i.e. method) declaration.
+      This macro is used to implement the method related to signal_name. More
+precisely it provides the header of the member function(i.e. method)
+declaration.
       </li>
       <li><b>DECLARE_SIGNAL_INNER_FUNCTION(signal_name,type)</b>
-      This macros declares the member function used to handle the access to this signal.
+      This macros declares the member function used to handle the access to this
+signal.
       </li>
     </ul>
 </ul>

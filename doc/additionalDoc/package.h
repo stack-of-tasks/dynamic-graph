@@ -22,16 +22,19 @@ The software graph structure is detailled in \subpage p_graph
 
 For debugging your entities detailed instructions are given in \subpage debug
 
-For citing the software in your research work please refer to \subpage subp_references
+For citing the software in your research work please refer to \subpage
+subp_references
 
-\namespace dynamicgraph This is the namespace where every object and class of this library is located.
+\namespace dynamicgraph This is the namespace where every object and class of
+this library is located.
 
 \defgroup debug Debugging
 
 \defgroup dgraph Core classes and objects
 @{
 
-Classes, entities and binaries that make up the core of the dynamic-graph library are listed here.
+Classes, entities and binaries that make up the core of the dynamic-graph
+library are listed here.
 @}
 
 \defgroup signals Signals
@@ -40,11 +43,13 @@ This part provides the mechanism to transfer information
 from one entity to another. There are three main types of signals,
 all deriving from the common class dynamicgraph::SignalBase :
 \li dynamicgraph::Signal : a "normal" signal, passing data around \b by \b value
-\li dynamicgraph::SignalPtr : a signal used for efficient passing of large data, by reference (or rather, C pointers)*
-\li dynamicgraph::SignalTimeDependent : a signal that enforces a time dependency between other signals,
-making sure its inputs are up to date on access, using a incrementing time tick as reference.
+\li dynamicgraph::SignalPtr : a signal used for efficient passing of large data,
+by reference (or rather, C pointers)* \li dynamicgraph::SignalTimeDependent : a
+signal that enforces a time dependency between other signals, making sure its
+inputs are up to date on access, using a incrementing time tick as reference.
 
-\n* Note: this may cause a problem if this package is used in a multithreaded program.
+\n* Note: this may cause a problem if this package is used in a multithreaded
+program.
 
 Signals can be grouped together using dynamicgraph::SignalArray.
 
@@ -54,8 +59,8 @@ For more information, please see the individual signal pages.
 
 \b Samples
 
-\li The following code ensures the jacobian output signal uses up-to-date values for its
-computations, when accessed.
+\li The following code ensures the jacobian output signal uses up-to-date values
+for its computations, when accessed.
 
 \code
   // This signal returns the Jacobian of the current value

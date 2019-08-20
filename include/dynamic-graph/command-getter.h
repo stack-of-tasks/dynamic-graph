@@ -41,22 +41,21 @@ namespace command {
 /// \li T should be a type supported by class Value,
 /// \li prototype of E::getParameter should be exactly as specified in this
 /// example.
-template <class E, typename T>
-class Getter : public Command {
- public:
+template <class E, typename T> class Getter : public Command {
+public:
   /// Pointer to method that sets parameter of type T
   typedef T (E::*GetterMethod)() const;
   /// Constructor
-  Getter(E& entity, GetterMethod getterMethod, const std::string& docString);
+  Getter(E &entity, GetterMethod getterMethod, const std::string &docString);
 
- protected:
+protected:
   virtual Value doExecute();
 
- private:
+private:
   GetterMethod getterMethod_;
 };
-}  // namespace command
-}  // namespace dynamicgraph
+} // namespace command
+} // namespace dynamicgraph
 
 #include "dynamic-graph/command-getter.t.cpp"
-#endif  // DYNAMIC_GRAPH_COMMAND_GETTER_H
+#endif // DYNAMIC_GRAPH_COMMAND_GETTER_H

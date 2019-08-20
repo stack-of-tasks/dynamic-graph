@@ -12,6 +12,6 @@
 namespace dynamicgraph {
 typedef Eigen::MatrixXd Matrix;
 typedef Eigen::VectorXd Vector;
-}  // namespace dynamicgraph
+} // namespace dynamicgraph
 
-#endif  // DYNAMIC_GRAPH_LINEAR_ALGEBRA_H
+#endif // DYNAMIC_GRAPH_LINEAR_ALGEBRA_H

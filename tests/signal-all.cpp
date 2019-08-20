@@ -7,12 +7,12 @@
 #include <dynamic-graph/debug.h>
 #include <dynamic-graph/factory.h>
 #include <dynamic-graph/signal-array.h>
-#include <dynamic-graph/tracer.h>
 #include <dynamic-graph/signal-cast-helper.h>
+#include <dynamic-graph/tracer.h>
 
 #include <assert.h>
-#include <boost/test/unit_test.hpp>
 #include <boost/test/output_test_stream.hpp>
+#include <boost/test/unit_test.hpp>
 
 #define BOOST_TEST_MODULE signal_array
 

@@ -41,22 +41,21 @@ namespace command {
 /// \li T should be a type supported by class Value,
 /// \li prototype of E::setParameter should be exactly as specified in this
 /// example.
-template <class E, typename T>
-class Setter : public Command {
- public:
+template <class E, typename T> class Setter : public Command {
+public:
   /// Pointer to method that sets parameter of type T
-  typedef void (E::*SetterMethod)(const T&);
+  typedef void (E::*SetterMethod)(const T &);
   /// Constructor
-  Setter(E& entity, SetterMethod setterMethod, const std::string& docString);
+  Setter(E &entity, SetterMethod setterMethod, const std::string &docString);
 
- protected:
+protected:
   virtual Value doExecute();
 
- private:
+private:
   SetterMethod setterMethod_;
 };
-}  // namespace command
-}  // namespace dynamicgraph
+} // namespace command
+} // namespace dynamicgraph
 
 #include "dynamic-graph/command-setter.t.cpp"
-#endif  // DYNAMIC_GRAPH_COMMAND_SETTER_H
+#endif // DYNAMIC_GRAPH_COMMAND_SETTER_H

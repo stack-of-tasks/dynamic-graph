@@ -1,13 +1,13 @@
 // Copyright 2011 Florent Lamiraux, Thomas Moulard.
 //
 
-#include <iostream>
 #include "dynamic-graph/value.h"
+#include <iostream>
 
 #define BOOST_TEST_MODULE value
 
-#include <boost/test/unit_test.hpp>
 #include <boost/test/output_test_stream.hpp>
+#include <boost/test/unit_test.hpp>
 
 using boost::test_tools::output_test_stream;
 

@@ -5,102 +5,98 @@
  * See LICENSE file
  *
  */
-#include <sstream>
-#include <iostream>
-#include <dynamic-graph/entity.h>
-#include <dynamic-graph/exception-factory.h>
+#include "dynamic-graph/command-bind.h"
 #include "dynamic-graph/factory.h"
 #include "dynamic-graph/pool.h"
-#include "dynamic-graph/command-bind.h"
+#include <dynamic-graph/entity.h>
+#include <dynamic-graph/exception-factory.h>
+#include <iostream>
+#include <sstream>
 
 #define ENABLE_RT_LOG
-#include <dynamic-graph/real-time-logger.h>
 #include <dynamic-graph/logger.h>
+#include <dynamic-graph/real-time-logger.h>
 
 #define BOOST_TEST_MODULE debug - logger
 
-#include <boost/test/unit_test.hpp>
 #include <boost/test/output_test_stream.hpp>
+#include <boost/test/unit_test.hpp>
 
 using boost::test_tools::output_test_stream;
 
 using namespace dynamicgraph::command;
 
-namespace dynamicgraph
-{
-  class CustomEntity : public Entity
-  {
-  public:
-    static const std::string CLASS_NAME;
-    bool test_zero_arg_;
-    bool test_one_arg_;
-    bool test_two_args_;
-    bool test_three_args_;
-    bool test_four_args_;
-    
-    virtual const std::string &getClassName() const { return CLASS_NAME; }
-    CustomEntity(const std::string n) : Entity(n)
-    {
-      test_zero_arg_ = false;
-      test_one_arg_ = false;
-      test_two_args_ = false;
-      test_three_args_ = false;
-      test_four_args_ = false;
-      
-      addCommand("0_arg",
-                 makeCommandVoid0(*this, &CustomEntity::zero_arg,
-                                  docCommandVoid0("zero arg")));
-      
-      addCommand("1_arg",
-                 makeCommandVoid1(*this, &CustomEntity::one_arg,
-                                  docCommandVoid1("one arg", "int")));
+namespace dynamicgraph {
+class CustomEntity : public Entity {
+public:
+  static const std::string CLASS_NAME;
+  bool test_zero_arg_;
+  bool test_one_arg_;
+  bool test_two_args_;
+  bool test_three_args_;
+  bool test_four_args_;
 
-      addCommand("2_args",
-                 makeCommandVoid2(*this, &CustomEntity::two_args,
-                                  docCommandVoid2("two args", "int", "int")));
+  virtual const std::string &getClassName() const { return CLASS_NAME; }
+  CustomEntity(const std::string n) : Entity(n) {
+    test_zero_arg_ = false;
+    test_one_arg_ = false;
+    test_two_args_ = false;
+    test_three_args_ = false;
+    test_four_args_ = false;
 
-      addCommand("3_args",
-                 makeCommandVoid3(*this, &CustomEntity::three_args,
-                                  docCommandVoid3("three args",
-                                                  "int", "int", "int")));
+    addCommand("0_arg", makeCommandVoid0(*this, &CustomEntity::zero_arg,
+                                         docCommandVoid0("zero arg")));
 
-      addCommand("4_args",
-                 makeCommandVoid4(*this, &CustomEntity::four_args,
-                                  docCommandVoid4("four args", "int",
-                                                  "int", "int", "int")));
-    }
+    addCommand("1_arg", makeCommandVoid1(*this, &CustomEntity::one_arg,
+                                         docCommandVoid1("one arg", "int")));
 
-    ~CustomEntity() {}
+    addCommand("2_args",
+               makeCommandVoid2(*this, &CustomEntity::two_args,
+                                docCommandVoid2("two args", "int", "int")));
 
-    void zero_arg() { test_zero_arg_ = true; }
+    addCommand("3_args", makeCommandVoid3(*this, &CustomEntity::three_args,
+                                          docCommandVoid3("three args", "int",
+                                                          "int", "int")));
 
-    void one_arg(const int &) { test_one_arg_ = true; }
+    addCommand("4_args",
+               makeCommandVoid4(
+                   *this, &CustomEntity::four_args,
+                   docCommandVoid4("four args", "int", "int", "int", "int")));
+  }
 
-    void two_args(const int &, const int &) { test_two_args_ = true; }
+  ~CustomEntity() {}
 
-    void three_args(const int &, const int &, const int &)
-    { test_three_args_ = true; }
+  void zero_arg() { test_zero_arg_ = true; }
 
-    void four_args(const int &, const int &, const int &, const int &)
-    { test_four_args_ = true; }
-  };
-  DYNAMICGRAPH_FACTORY_ENTITY_PLUGIN(CustomEntity, "CustomEntity");
-}  // namespace dynamicgraph
+  void one_arg(const int &) { test_one_arg_ = true; }
 
-BOOST_AUTO_TEST_CASE(command_test)
-{
+  void two_args(const int &, const int &) { test_two_args_ = true; }
+
+  void three_args(const int &, const int &, const int &) {
+    test_three_args_ = true;
+  }
+
+  void four_args(const int &, const int &, const int &, const int &) {
+    test_four_args_ = true;
+  }
+};
+DYNAMICGRAPH_FACTORY_ENTITY_PLUGIN(CustomEntity, "CustomEntity");
+} // namespace dynamicgraph
+
+BOOST_AUTO_TEST_CASE(command_test) {
   dynamicgraph::CustomEntity &entity =
-    *(dynamic_cast<dynamicgraph::CustomEntity *>
-      (dynamicgraph::FactoryStorage::getInstance()->
-       newEntity("CustomEntity", "my-entity")));
+      *(dynamic_cast<dynamicgraph::CustomEntity *>(
+          dynamicgraph::FactoryStorage::getInstance()->newEntity("CustomEntity",
+                                                                 "my-entity")));
 
   std::map<const std::string, Command *> aCommandMap =
-    entity.getNewStyleCommandMap();
+      entity.getNewStyleCommandMap();
 
   std::map<const std::string, Command *>::iterator it_map;
 
   it_map = aCommandMap.find("0_arg");
-  if (it_map == aCommandMap.end()) BOOST_CHECK(false);
+  if (it_map == aCommandMap.end())
+    BOOST_CHECK(false);
   it_map->second->execute();
   BOOST_CHECK(entity.test_zero_arg_);
 
@@ -115,7 +111,8 @@ BOOST_AUTO_TEST_CASE(command_test)
 
   for (unsigned int i = 0; i < 4; i++) {
     it_map = aCommandMap.find(vec_fname[i]);
-    if (it_map == aCommandMap.end()) BOOST_CHECK(false);
+    if (it_map == aCommandMap.end())
+      BOOST_CHECK(false);
     values.push_back(aValue);
     it_map->second->setParameterValues(values);
     it_map->second->execute();

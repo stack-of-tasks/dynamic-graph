@@ -7,9 +7,9 @@
  *
  */
 
+#include <cstdio>
 #include <dynamic-graph/exception-traces.h>
 #include <stdarg.h>
-#include <cstdio>
 
 using namespace dynamicgraph;
 /* --------------------------------------------------------------------- */
@@ -18,17 +18,14 @@ using namespace dynamicgraph;
 
 const std::string ExceptionTraces::EXCEPTION_NAME = "Traces";
 
-ExceptionTraces::ExceptionTraces
-(const ExceptionTraces::ErrorCodeEnum& errcode,
- const std::string& msg)
+ExceptionTraces::ExceptionTraces(const ExceptionTraces::ErrorCodeEnum &errcode,
+                                 const std::string &msg)
     : ExceptionAbstract(errcode, msg) {}
 
-ExceptionTraces::ExceptionTraces
-(const ExceptionTraces::ErrorCodeEnum& errcode,
- const std::string& msg,
- const char* format, ...)
-    : ExceptionAbstract(errcode, msg)
-{
+ExceptionTraces::ExceptionTraces(const ExceptionTraces::ErrorCodeEnum &errcode,
+                                 const std::string &msg, const char *format,
+                                 ...)
+    : ExceptionAbstract(errcode, msg) {
   va_list args;
   va_start(args, format);
 

@@ -7,8 +7,8 @@ Please when referencing the Stack-Of-Tasks use the following reference:
 \anchor Mansard2009
 
 <b> <a href="https://hal-lirmm.ccsd.cnrs.fr/lirmm-00796736/document">
-"A versatile Generalized Inverted Kinematics implementation for collaborative working humanoid robots: The Stack Of
-Tasks"</a>
+"A versatile Generalized Inverted Kinematics implementation for collaborative
+working humanoid robots: The Stack Of Tasks"</a>
 </b>,
 <em>N. Mansard, O. Stasse, P. Evrard, A. Kheddar,</em>
 Int. Conf. on Autonomous Robots, ICAR, 2009

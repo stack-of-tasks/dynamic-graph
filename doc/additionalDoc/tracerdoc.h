@@ -1,10 +1,11 @@
 /**
 \page tracerdoc Tracer
 \section tracerdoc_description Description
-The \b Tracer entity monitors a set of signals. With an input change on the entity's [trigger] signal,
-the tracked signal values are recorded and traced to a file. The behavior of the trace-to-file
-function can be changed, from printing to a file immediately after recording, to printing out
-only when asked explicitly.
+The \b Tracer entity monitors a set of signals. With an input change on the
+entity's [trigger] signal, the tracked signal values are recorded and traced to
+a file. The behavior of the trace-to-file function can be changed, from printing
+to a file immediately after recording, to printing out only when asked
+explicitly.
 
 \section tracerdoc_commands Commands
 The \b commands that this entity exposes are:

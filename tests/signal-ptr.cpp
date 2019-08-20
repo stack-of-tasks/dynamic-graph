@@ -6,16 +6,16 @@
 #include <dynamic-graph/debug.h>
 #include <dynamic-graph/entity.h>
 #include <dynamic-graph/factory.h>
+#include <dynamic-graph/pool.h>
+#include <dynamic-graph/signal-base.h>
 #include <dynamic-graph/signal-ptr.h>
 #include <dynamic-graph/signal.h>
-#include <dynamic-graph/signal-base.h>
-#include <dynamic-graph/pool.h>
 #include <iostream>
 
-#include <string>
-#include <boost/test/unit_test_suite.hpp>
-#include <boost/test/unit_test.hpp>
 #include <boost/test/output_test_stream.hpp>
+#include <boost/test/unit_test.hpp>
+#include <boost/test/unit_test_suite.hpp>
+#include <string>
 
 using namespace dynamicgraph;
 using std::cout;
@@ -44,7 +44,8 @@ BOOST_AUTO_TEST_CASE(normal_test) {
   }
 
   SignalBase<int> &sigRef = sig;
-  SignalBase<int> &sigPtrARef = sigPtrA, &sigPtrBRef = sigPtrB, &sigPtrAbstractRef = sigPtrAbstract;
+  SignalBase<int> &sigPtrARef = sigPtrA, &sigPtrBRef = sigPtrB,
+                  &sigPtrAbstractRef = sigPtrAbstract;
   sigPtrARef.plug(&sigRef);
   sigPtrBRef.plug(&sigPtrARef);
 
