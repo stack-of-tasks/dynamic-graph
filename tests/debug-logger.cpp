@@ -51,15 +51,17 @@ public:
     sendMsg("This is a message of level MSG_TYPE_ERROR_STREAM",
             MSG_TYPE_ERROR_STREAM);
     /* Add test toString */
-    double q=1.0;
-    sendMsg("Value to display: "+toString(q));
+    double q = 1.0;
+    sendMsg("Value to display: " + toString(q));
     std::vector<double> vq;
     vq.resize(3);
-    vq[0] = 1.0; vq[1] = 2.0; vq[2] = 3.0;
-    sendMsg("Value to display: "+toString(vq));
-    Eigen::Matrix<double,3,3> an_eig_m;
+    vq[0] = 1.0;
+    vq[1] = 2.0;
+    vq[2] = 3.0;
+    sendMsg("Value to display: " + toString(vq));
+    Eigen::Matrix<double, 3, 3> an_eig_m;
     an_eig_m.Ones();
-    sendMsg("Value to display: "+toString(an_eig_m));
+    sendMsg("Value to display: " + toString(an_eig_m));
     logger_.countdown();
   }
 };

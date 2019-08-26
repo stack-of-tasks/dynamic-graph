@@ -61,14 +61,14 @@ namespace dynamicgraph {
 #define SEND_WARNING_STREAM_MSG(msg) SEND_MSG(msg, MSG_TYPE_WARNING_STREAM)
 #define SEND_ERROR_STREAM_MSG(msg) SEND_MSG(msg, MSG_TYPE_ERROR_STREAM)
 
-template<typename T>
-std::string toString(const T& v, const int precision=3, const int width=-1)
-{
+template <typename T>
+std::string toString(const T &v, const int precision = 3,
+                     const int width = -1) {
   std::stringstream ss;
-  if(width>precision)
-    ss<<std::fixed<<std::setw(width)<<std::setprecision(precision)<<v;
+  if (width > precision)
+    ss << std::fixed << std::setw(width) << std::setprecision(precision) << v;
   else
-    ss<<std::fixed<<std::setprecision(precision)<<v;
+    ss << std::fixed << std::setprecision(precision) << v;
   return ss.str();
 }
 
