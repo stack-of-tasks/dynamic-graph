@@ -22,8 +22,8 @@ The software graph structure is detailled in \subpage p_graph
 
 For debugging your entities detailed instructions are given in \subpage debug
 
-For citing the software in your research work please refer to \subpage
-subp_references
+For citing the software in your research work please refer to
+\subpage subp_references
 
 \namespace dynamicgraph This is the namespace where every object and class of
 this library is located.

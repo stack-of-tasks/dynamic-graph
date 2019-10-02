@@ -5,6 +5,7 @@
 #define DYNAMIC_GRAPH_NULL_PTR_HH
 
 namespace dynamicgraph {
+/// \cond
 const class {
 public:
   template <class T> operator T *() const { return 0; }
@@ -14,6 +15,7 @@ public:
 private:
   void operator&() const;
 } nullptr = {};
+/// \endcond
 
 } // end of namespace dynamicgraph.
 

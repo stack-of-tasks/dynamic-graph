@@ -22,7 +22,7 @@ public:
   ProcessList();
 };
 
-/// \class This class gather information on a specific CPU.
+/// This class gather information on a specific CPU.
 ///
 class DYNAMIC_GRAPH_DLLAPI CPUData {
 public:
@@ -123,7 +123,7 @@ public:
   }
 };
 
-/// \class This class gathers information on a computer.
+/// This class gathers information on a computer.
 /// This includes a list of CPU
 class DYNAMIC_GRAPH_DLLAPI System {
 private:

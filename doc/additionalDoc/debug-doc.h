@@ -13,6 +13,6 @@ WARNING, ERROR). It is described in details here: \subpage subp_logger
 int: \subpage subp_dbg_trace
 - If you just need to collect informations from signals (like rosbag). You can
 use an entity called Tracer inside the graph:\subpage tracerdoc . <br> A real
-time version exists to write directly inside a memory buffer \subpage
-tracerrealtimedoc
+time version exists to write directly inside a memory buffer
+\subpage tracerrealtimedoc
 **/
