@@ -43,6 +43,7 @@ public:
                  const DependencyType dep = DEPENDENCY_TYPE_DEFAULT);
   virtual ~TimeDependency() {}
 
+  void addDependencies(const SignalArray_const<Time> &arr);
   void addDependency(const SignalBase<Time> &sig);
   void removeDependency(const SignalBase<Time> &sig);
   void clearDependency();

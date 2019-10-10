@@ -65,5 +65,5 @@ test \endcode
 \section subp_dbg_trace_wrk_exp Working example
 
 A full working example is given here:
-\include ../tests/debug-trace.cpp
+\include tests/debug-trace.cpp
  */

@@ -13,16 +13,49 @@ namespace dynamicgraph {
   signals,
   making sure its inputs are up to date on access, using a incrementing time
   tick as reference.
-  It works this way: for a given SignalTimeDependent S, the user manually
-  adds dependent signals through the
-  use of the addDependency function. On access (calling the signal S
-  operator  () or access(Time) function),
-  if the dependent signals are not up-to-date, i.e. if their [last update]
-  time is less than the
-  current time, their value will be access ()'ed to bring them up-to-date.
-  Thus, the value of dependent
-  signals can be accessed \b quickly and \b repeatedly through the
-  accessCopy () function.
+
+  It works this way. For a given SignalTimeDependent S,
+  - the user manually adds dependent signals through the use of the SignalTimeDependent::addDependency function.
+  - On access (calling the signal S SignalTimeDependent::operator()(const Time&) or
+  SignalTimeDependent::access(const Time&) function), if the dependent signals are not
+  up-to-date, i.e. if their [last update] time is less than the current time,
+  their value will be SignalTimeDependent::access ()'ed to bring them up-to-date.
+
+  Thus, the value of dependent signals can be accessed \b quickly and
+  \b repeatedly through the Signal::accessCopy () function.
+
+  An example:
+  \code
+  class MyEntity : public Entity {
+  public:
+  // Some signal dependencies
+  SignalPtr<T,int> dep1, dep2;
+  SignalTimeDependent<T,int> signal;
+
+  MyEntity (const std::string& name)
+    : Entity (name)
+    , signal (
+        // Set the function that computes the signal value
+        boost::bind (&Entity::computeSignal, this, _1, _2),
+        // Declare the dependencies
+        dep1 << dep2,
+        "signalname")
+  {}
+
+   T& computeSignal (T& res, int time)
+   {
+     // The accesses below update the signal if necessary.
+     dep1(time);
+     dep1.access(time);
+     dep1.recompute(time);
+     // If dep1 and dep2 are already up-to-date, for a faster access, use
+     dep1.accessCopy();
+     dep2.accessCopy();
+
+     // Compute res
+     return res;
+   }
+  \endcode
 */
 template <class T, class Time>
 class SignalTimeDependent : public virtual Signal<T, Time>,

@@ -26,14 +26,19 @@ TimeDependency<Time>::TimeDependency(SignalBase<Time> *sig,
                                      const SignalArray_const<Time> &ar,
                                      const DependencyType dep)
     : __TIME_DEPENDENCY_INIT(sig, dep) {
-  for (unsigned int i = 0; i < ar.getSize(); ++i) {
-    addDependency(ar[i]);
-  }
+  addDependencies(ar);
 
   return;
 }
 
 /* ------------------------------------------------------------------------ */
+template <class Time>
+void TimeDependency<Time>::addDependencies(const SignalArray_const<Time> &ar) {
+  for (unsigned int i = 0; i < ar.getSize(); ++i) {
+    addDependency(ar[i]);
+  }
+}
+
 template <class Time>
 void TimeDependency<Time>::addDependency(const SignalBase<Time> &sig) {
   dependencies.push_front(&sig);
