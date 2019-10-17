@@ -15,11 +15,13 @@ namespace dynamicgraph {
   tick as reference.
 
   It works this way. For a given SignalTimeDependent S,
-  - the user manually adds dependent signals through the use of the SignalTimeDependent::addDependency function.
-  - On access (calling the signal S SignalTimeDependent::operator()(const Time&) or
-  SignalTimeDependent::access(const Time&) function), if the dependent signals are not
-  up-to-date, i.e. if their [last update] time is less than the current time,
-  their value will be SignalTimeDependent::access ()'ed to bring them up-to-date.
+  - the user manually adds dependent signals through the use of the
+  SignalTimeDependent::addDependency function.
+  - On access (calling the signal S SignalTimeDependent::operator()(const Time&)
+  or SignalTimeDependent::access(const Time&) function), if the dependent
+  signals are not up-to-date, i.e. if their [last update] time is less than the
+  current time, their value will be SignalTimeDependent::access ()'ed to bring
+  them up-to-date.
 
   Thus, the value of dependent signals can be accessed \b quickly and
   \b repeatedly through the Signal::accessCopy () function.

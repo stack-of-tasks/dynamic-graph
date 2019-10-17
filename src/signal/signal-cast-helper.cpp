@@ -82,7 +82,7 @@ DefaultCastRegisterer<bool> bool_reg;
 DefaultCastRegisterer<dynamicgraph::Vector> vectorCastRegisterer;
 DefaultCastRegisterer<dynamicgraph::Matrix> matrixCastRegisterer;
 DefaultCastRegisterer<boost::posix_time::ptime> ptimeCastRegisterer;
-DefaultCastRegisterer <std::string> stringCastRegisterer;
+DefaultCastRegisterer<std::string> stringCastRegisterer;
 } // end of anonymous namespace.
 
 } // namespace dynamicgraph
