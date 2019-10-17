@@ -23,22 +23,15 @@ code documentation of the dynamicgraph::Tracer class.
 \n\n
 
 \section tracerdoc_sample Sample usage
-The following code creates a TracerRealTime entity, then sets the tracing buffer
-size to 10MB. It then tells the tracer to create files with names of the form:
-jl_XXX.dat where XXX is the signal name, and adds a few signals after
-clearing the traces;
+The following code creates a TracerRealTime entity and sets the tracing buffer
+size to 80MB. It then tells the tracer to create files with names of the form:
+/tmp/dg_XXX.dat where XXX is the signal name, and call the signal
+after the device has evaluated the control law:
 \code
-new TracerRealTime tr
-tr.bufferSize 10485760
-
-tr.open  ${TRACE_REPOSITORY} jl_ .dat
-OpenHRP.periodicCall addSignal tr.triger
-(...)
-# --- TRACE ---
-tr.clear
-tr.add OpenHRP.forceRARM
-tr.add dyn.0
-tr.add jgain.gain
+robot.tracer = TracerRealTime("com_tracer")
+robot.tracer.setBufferSize(80*(2**20))
+robot.tracer.open('/tmp','dg_','.dat')
+robot.device.after.addSignal('{0}.triger'.format(robot.tracer.name))
 \endcode
 
 \section tracerdoc_addi Additional information

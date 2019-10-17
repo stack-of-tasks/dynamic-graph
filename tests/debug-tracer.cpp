@@ -66,6 +66,13 @@ BOOST_AUTO_TEST_CASE(test_tracer) {
       *dynamicgraph::FactoryStorage::getInstance()->newEntity("MyEntity",
                                                               "my-entity");
 
+  std::string rootdir("/tmp");
+  std::string basename("my-tracer");
+  std::string suffix(".dat");
+
+  /// Test openfiles
+  atracer.openFiles(rootdir, basename, suffix);
+
   /// Add trace by name
   atracer.addSignalToTraceByName("my-entity.out_double", "output");
 
@@ -80,13 +87,6 @@ BOOST_AUTO_TEST_CASE(test_tracer) {
 
   aSignalInt.setConstant(1.5);
 
-  std::string rootdir("/tmp");
-  std::string basename("my-tracer");
-  std::string suffix(".dat");
-
-  /// Test openfiles
-  atracer.openFiles(rootdir, basename, suffix);
-
   atracer.start();
 
   for (int i = 0; i < 1000; i++) {
@@ -96,6 +96,8 @@ BOOST_AUTO_TEST_CASE(test_tracer) {
   }
 
   atracer.stop();
-
+  atracer.clearSignalToTrace();
   atracer.closeFiles();
+
+  atracer.record();
 }
