@@ -86,3 +86,19 @@ BOOST_AUTO_TEST_CASE(normal_test) {
   sigPtrBRef.get(cout);
   cout << std::endl;
 }
+
+BOOST_AUTO_TEST_CASE (plug_signal_string)
+{
+  Signal<std::string, int> outSig("output");
+  SignalPtr<std::string, int> inSig (NULL, "input");
+
+  std::string str ("value");
+  outSig.setConstant(str);
+  inSig.plug (&outSig);
+  inSig.recompute(1);
+  std::ostringstream os;
+  inSig.get (os);
+  std::string res (os.str ());
+  // Note that a '\n' is added when passing through the signal
+  BOOST_CHECK (res == str);
+}
