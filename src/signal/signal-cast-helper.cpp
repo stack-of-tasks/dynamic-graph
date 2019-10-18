@@ -73,6 +73,17 @@ void DefaultCastRegisterer<dynamicgraph::Matrix>::trace(
     }
 }
 
+// for std::string, do not check failure. If input stream contains an
+// empty string, iss.fail() returns true and an exception is thrown
+template <>
+inline boost::any DefaultCastRegisterer<std::string>::cast
+(std::istringstream &iss)
+{
+  std::string inst ("");
+  iss >> inst;
+  return inst;
+}
+
 /// Registers useful casts
 namespace {
 DefaultCastRegisterer<double> double_reg;
