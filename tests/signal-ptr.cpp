@@ -99,6 +99,5 @@ BOOST_AUTO_TEST_CASE (plug_signal_string)
   std::ostringstream os;
   inSig.get (os);
   std::string res (os.str ());
-  // Note that a '\n' is added when passing through the signal
   BOOST_CHECK (res == str);
 }
