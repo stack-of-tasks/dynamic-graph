@@ -84,6 +84,14 @@ inline boost::any DefaultCastRegisterer<std::string>::cast
   return inst;
 }
 
+// for std::string, do not add std::endl at the end of the stream.
+template <>
+inline void DefaultCastRegisterer<std::string>::disp
+(const boost::any &object, std::ostream &os)
+{
+  os << boost::any_cast<std::string>(object);
+}
+
 /// Registers useful casts
 namespace {
 DefaultCastRegisterer<double> double_reg;
