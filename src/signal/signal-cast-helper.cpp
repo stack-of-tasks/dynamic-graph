@@ -79,8 +79,7 @@ template <>
 inline boost::any DefaultCastRegisterer<std::string>::cast
 (std::istringstream &iss)
 {
-  std::string inst ("");
-  iss >> inst;
+  std::string inst (iss.str ());
   return inst;
 }
 
