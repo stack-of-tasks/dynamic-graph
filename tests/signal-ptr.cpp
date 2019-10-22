@@ -87,26 +87,25 @@ BOOST_AUTO_TEST_CASE(normal_test) {
   cout << std::endl;
 }
 
-BOOST_AUTO_TEST_CASE (plug_signal_string)
-{
+BOOST_AUTO_TEST_CASE(plug_signal_string) {
   Signal<std::string, int> outSig("output");
-  SignalPtr<std::string, int> inSig (NULL, "input");
+  SignalPtr<std::string, int> inSig(NULL, "input");
 
-  std::string str ("two words");
+  std::string str("two words");
   outSig.setConstant(str);
-  inSig.plug (&outSig);
+  inSig.plug(&outSig);
   inSig.recompute(1);
   std::ostringstream os1;
-  inSig.get (os1);
-  std::string res (os1.str ());
-  BOOST_CHECK (res == str);
+  inSig.get(os1);
+  std::string res(os1.str());
+  BOOST_CHECK(res == str);
 
-  Signal<std::string, int> s ("signal");
+  Signal<std::string, int> s("signal");
   std::ostringstream os2;
-  s.setConstant (str);
-  os2.clear ();
-  s.get (os2);
-  res = os2.str ();
+  s.setConstant(str);
+  os2.clear();
+  s.get(os2);
+  res = os2.str();
   std::cout << "res=" << res << std::endl;
-  BOOST_CHECK (res == str);
+  BOOST_CHECK(res == str);
 }
