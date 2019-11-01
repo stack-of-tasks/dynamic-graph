@@ -2,10 +2,6 @@
 
 CMAKE_MINIMUM_REQUIRED(VERSION 2.6)
 
-INCLUDE(cmake/base.cmake)
-INCLUDE(cmake/boost.cmake)
-INCLUDE(cmake/eigen.cmake)
-INCLUDE(cmake/pthread.cmake)
 
 SET(PROJECT_ORG stack-of-tasks)
 SET(PROJECT_NAME dynamic-graph)
@@ -13,14 +9,22 @@ SET(PROJECT_DESCRIPTION "Dynamic graph library")
 SET(PROJECT_URL "http://github.com/${PROJECT_ORG}/${PROJECT_NAME}")
 SET(PROJECT_SUFFIX "-v3")
 
+INCLUDE(cmake/base.cmake)
+PROJECT(${PROJECT_NAME} CXX)
+
+INCLUDE(cmake/boost.cmake)
+INCLUDE(cmake/eigen.cmake)
+INCLUDE(cmake/pthread.cmake)
+
+# Export CMake Target
+SET(PROJECT_USE_CMAKE_EXPORT TRUE)
+
 SET(CUSTOM_HEADER_DIR "${PROJECT_NAME}")
 
 SET(DOXYGEN_USE_MATHJAX YES)
 
 # Defines paths.
 SET(LIBRARY_OUTPUT_PATH ${PROJECT_BINARY_DIR}/lib)
-
-SETUP_PROJECT()
 
 # Add configuration headers for plug-ins.
 GENERATE_CONFIGURATION_HEADER(
@@ -53,3 +57,4 @@ ADD_SUBDIRECTORY(include/${PROJECT_NAME})
 ADD_SUBDIRECTORY(tests)
 
 SETUP_PROJECT_FINALIZE()
+SETUP_PROJECT_PACKAGE_FINALIZE()
