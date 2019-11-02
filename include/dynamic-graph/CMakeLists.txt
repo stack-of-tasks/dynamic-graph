@@ -48,8 +48,6 @@ SET(${PROJECT_NAME}_HEADERS
   all-commands.h
 
   logger.h
-    )
+)
 
-  INSTALL(FILES ${${PROJECT_NAME}_HEADERS}
-    DESTINATION include/${PROJECT_NAME}
-  )
+SET(PUBLIC_HEADER ${${PROJECT_NAME}_HEADERS})
