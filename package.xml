@@ -1,0 +1,22 @@
+<package format="2">
+  <name>dynamic_graph</name>
+  <version>1.2.4</version>
+  <description>
+    Dynamic graph library
+  </description>
+  <maintainer email="ostasse@laas.fr">Olivier Stasse</maintainer>
+  <license>BSDv2</license>
+  
+  <url>http://github.com/${PROJECT_ORG}/${PROJECT_NAME}</url>
+  <author>Nicolas Mansard</author>
+  <author>Olivier Stasse</author>
+
+  <build_depend>roscpp</build_depend>
+
+  <run_depend>roscpp</run_depend>
+  
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <doc_depend>doxygen</doc_depend>
+  
+</package>
