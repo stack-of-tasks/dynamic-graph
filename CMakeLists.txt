@@ -9,6 +9,7 @@ SET(PROJECT_DESCRIPTION "Dynamic graph library")
 SET(PROJECT_URL "http://github.com/${PROJECT_ORG}/${PROJECT_NAME}")
 SET(PROJECT_SUFFIX "-v3")
 
+
 # Export CMake Target
 SET(PROJECT_USE_CMAKE_EXPORT TRUE)
 # Make sure that every header is generated in dynamic-graph
