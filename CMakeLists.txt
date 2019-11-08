@@ -1,7 +1,5 @@
 # Copyright 2010, Olivier Stasse, JRL, CNRS/AIST
-
 CMAKE_MINIMUM_REQUIRED(VERSION 2.6)
-
 
 SET(PROJECT_ORG stack-of-tasks)
 SET(PROJECT_NAME dynamic-graph)
@@ -9,22 +7,30 @@ SET(PROJECT_DESCRIPTION "Dynamic graph library")
 SET(PROJECT_URL "http://github.com/${PROJECT_ORG}/${PROJECT_NAME}")
 SET(PROJECT_SUFFIX "-v3")
 
-
 # Export CMake Target
 SET(PROJECT_USE_CMAKE_EXPORT TRUE)
 # Make sure that every header is generated in dynamic-graph
 SET(CUSTOM_HEADER_DIR ${PROJECT_NAME})
 
 INCLUDE(cmake/base.cmake)
-PROJECT(${PROJECT_NAME} CXX)
 
+# Specify the project.
+cmake_policy(SET CMP0048 NEW)
+PROJECT(${PROJECT_NAME}
+  LANGUAGES
+  CXX
+  VERSION
+  ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}.${PROJECT_VERSION_PATCH}
+  )
+
+
+# jrl-cmakemodules handling of usual modules
 INCLUDE(cmake/header.cmake)
 INCLUDE(cmake/boost.cmake)
 INCLUDE(cmake/pthread.cmake)
 add_project_dependency(Eigen3 REQUIRED NO_MODULE)
 
-SET(CUSTOM_HEADER_DIR "${PROJECT_NAME}")
-
+# Allows math in mathjax.
 SET(DOXYGEN_USE_MATHJAX YES)
 
 # Defines paths.
@@ -42,7 +48,7 @@ set(PACKAGE_EXTRA_MACROS
 
 # Specific to PKG module
 # FIXME: to be changed into lib/dynamic-graph
-# to avoid name collision when installing dynamic-graph in /usr.
+# to avoid name collision whenX installing dynamic-graph in /usr.
 SET(PLUGINDIR "${CMAKE_INSTALL_FULL_LIBDIR}/plugin")
 
 # Add extra keys to pkg-config file to export the location of the
@@ -57,9 +63,10 @@ SET(BOOST_COMPONENTS serialization system unit_test_framework thread)
 SEARCH_FOR_BOOST()
 SEARCH_FOR_PTHREAD()
 #SEARCH_FOR_EIGEN()
+#find_package(catkin
+#  REQUIRED COMPONENTS
+#  )
 
-# Copyright 2010, Olivier Stasse, JRL, CNRS/AIST
-#
 
 ####################################
 ### Main Library
@@ -98,7 +105,7 @@ ADD_LIBRARY(${LIBRARY_NAME}
 
   src/command/value.cpp
   src/command/command.cpp
-  
+
   )
 
 SET(${PROJECT_NAME}_HEADERS
@@ -157,35 +164,30 @@ SET(PUBLIC_HEADER ${${PROJECT_NAME}_HEADERS})
 
 INSTALL(TARGETS ${PROJECT_NAME}
   EXPORT ${TARGETS_EXPORT_NAME}
-  PUBLIC_HEADER 
+  PUBLIC_HEADER
   INCLUDES DESTINATION include
-  LIBRARY DESTINATION  ${CMAKE_INSTALL_LIBDIR}
+  LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
   ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
   )
 
 # We need to include Eigen3 because the CMakeFile at 16.04 LTS
 # is not so modern.
 target_include_directories(${PROJECT_NAME}
-   PUBLIC
+  PUBLIC
+  $<BUILD_INTERFACE:${CMAKE_BUILD_DIR}/include>
    $<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include>
    $<BUILD_INTERFACE:${EIGEN3_INCLUDE_DIR}>
-   INTERFACE
-   ${EIGEN3_INCLUDE_DIR}   
+   INTERFACE ${EIGEN3_INCLUDE_DIR}
    $<INSTALL_INTERFACE:include>
    )
 
 SET_TARGET_PROPERTIES(${LIBRARY_NAME} PROPERTIES SOVERSION ${PROJECT_VERSION})
-
 
 IF (UNIX)
   TARGET_LINK_LIBRARIES(${LIBRARY_NAME} ${CMAKE_DL_LIBS} pthread)
 ENDIF (UNIX)
 
 TARGET_LINK_LIBRARIES(${LIBRARY_NAME} ${Boost_LIBRARIES})
-
-#IF (UNIX AND NOT APPLE)
-#  TARGET_LINK_LIBRARIES(${LIBRARY_NAME} ${JRL_MAL_LDFLAGS_OTHER})
-#ENDIF (UNIX AND NOT APPLE)
 
 ####################################
 ### Plugins
