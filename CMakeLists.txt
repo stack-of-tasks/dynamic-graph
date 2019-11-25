@@ -26,10 +26,11 @@ PROJECT(${PROJECT_NAME}
 
 # jrl-cmakemodules handling of usual modules
 INCLUDE(cmake/header.cmake)
-INCLUDE(cmake/boost.cmake)
 INCLUDE(cmake/pthread.cmake)
 add_project_dependency(Eigen3 REQUIRED NO_MODULE)
-
+add_project_dependency(Boost REQUIRED
+  OPTIONAL_COMPONENTS
+  serialization system unit_test_framework thread)
 # Allows math in mathjax.
 SET(DOXYGEN_USE_MATHJAX YES)
 
@@ -59,13 +60,7 @@ SET(PKG_CONFIG_EXTRA "plugindir=${PLUGINDIR}")
 PKG_CONFIG_APPEND_LIBS(${PROJECT_NAME})
 
 # Search for Boost.
-SET(BOOST_COMPONENTS serialization system unit_test_framework thread)
-SEARCH_FOR_BOOST()
 SEARCH_FOR_PTHREAD()
-#SEARCH_FOR_EIGEN()
-#find_package(catkin
-#  REQUIRED COMPONENTS
-#  )
 
 
 ####################################
@@ -212,7 +207,9 @@ FOREACH(plugin_file ${plugins_list})
     PREFIX ""
     )
 
-  INSTALL(TARGETS ${plugin} EXPORT ${TARGET_NAME} DESTINATION ${PLUGINDIR})
+  INSTALL(TARGETS ${plugin}
+    EXPORT ${TARGET_NAME}
+    DESTINATION ${PLUGINDIR})
 ENDFOREACH(plugin_file)
 
 ADD_SUBDIRECTORY(include/${PROJECT_NAME})
@@ -220,3 +217,11 @@ ADD_SUBDIRECTORY(tests)
 
 
 SETUP_PROJECT_PACKAGE_FINALIZE()
+
+get_cmake_property(_variableNames VARIABLES)
+list (SORT _variableNames)
+foreach (_variableName ${_variableNames})
+    message(STATUS "${_variableName}=${${_variableName}}")
+endforeach()
+
+MESSAGE(STATUS "dynamic_graph_VERSION=${dynamic_graph_VERSION}")
