@@ -1,5 +1,5 @@
 <package format="2">
-  <name>dynamic_graph</name>
+  <name>dynamic-graph</name>
   <version>3.7.3</version>
   <description>
     Dynamic graph library
