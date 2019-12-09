@@ -9,8 +9,12 @@ SET(PROJECT_SUFFIX "-v3")
 
 # Export CMake Target
 SET(PROJECT_USE_CMAKE_EXPORT TRUE)
+
 # Make sure that every header is generated in dynamic-graph
 SET(CUSTOM_HEADER_DIR ${PROJECT_NAME})
+
+# Do not fail on warning
+SET(CXX_DISABLE_WERROR TRUE)
 
 INCLUDE(cmake/base.cmake)
 
