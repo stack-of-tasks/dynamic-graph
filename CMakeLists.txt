@@ -1,6 +1,6 @@
-# Copyright 2010, Olivier Stasse, JRL, CNRS/AIST
 CMAKE_MINIMUM_REQUIRED(VERSION 2.6)
 
+# Setup project properties
 SET(PROJECT_ORG stack-of-tasks)
 SET(PROJECT_NAME dynamic-graph)
 SET(PROJECT_DESCRIPTION "Dynamic graph library")
@@ -19,14 +19,8 @@ SET(CXX_DISABLE_WERROR TRUE)
 INCLUDE(cmake/base.cmake)
 
 # Specify the project.
-cmake_policy(SET CMP0048 NEW)
-PROJECT(${PROJECT_NAME}
-  LANGUAGES
-  CXX
-  VERSION
-  ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}.${PROJECT_VERSION_PATCH}
-  )
-
+COMPUTE_PROJECT_ARGS(PROJECT_ARGS LANGUAGES CXX)
+PROJECT(${PROJECT_NAME} ${PROJECT_ARGS})
 
 # jrl-cmakemodules handling of usual modules
 INCLUDE(cmake/header.cmake)
@@ -53,7 +47,7 @@ set(PACKAGE_EXTRA_MACROS
 
 # Specific to PKG module
 # FIXME: to be changed into lib/dynamic-graph
-# to avoid name collision whenX installing dynamic-graph in /usr.
+# to avoid name collision when installing dynamic-graph in /usr.
 SET(PLUGINDIR "${CMAKE_INSTALL_FULL_LIBDIR}/plugin")
 
 # Add extra keys to pkg-config file to export the location of the
@@ -225,7 +219,9 @@ SETUP_PROJECT_PACKAGE_FINALIZE()
 get_cmake_property(_variableNames VARIABLES)
 list (SORT _variableNames)
 foreach (_variableName ${_variableNames})
-    message(STATUS "${_variableName}=${${_variableName}}")
+  LIST(APPEND LOGGING_WATCHED_VARIABLES
+    ${_variableName}
+    )
 endforeach()
 
 MESSAGE(STATUS "dynamic_graph_VERSION=${dynamic_graph_VERSION}")
