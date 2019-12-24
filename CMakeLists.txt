@@ -213,9 +213,6 @@ ENDFOREACH(plugin_file)
 ADD_SUBDIRECTORY(include/${PROJECT_NAME})
 ADD_SUBDIRECTORY(tests)
 
-
-SETUP_PROJECT_PACKAGE_FINALIZE()
-
 get_cmake_property(_variableNames VARIABLES)
 list (SORT _variableNames)
 foreach (_variableName ${_variableNames})
