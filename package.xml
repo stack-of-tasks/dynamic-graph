@@ -5,15 +5,11 @@
     Dynamic graph library
   </description>
   <maintainer email="ostasse@laas.fr">Olivier Stasse</maintainer>
-  <license>BSDv2</license>
+  <license>BSD</license>
 
   <url>http://github.com/stack-of-tasks/dynamic-graph</url>
   <author>Nicolas Mansard</author>
   <author>Olivier Stasse</author>
-
-  <build_depend>roscpp</build_depend>
-
-  <exec_depend>roscpp</exec_depend>
 
   <buildtool_depend>catkin</buildtool_depend>
 
