@@ -23,7 +23,6 @@ COMPUTE_PROJECT_ARGS(PROJECT_ARGS LANGUAGES CXX)
 PROJECT(${PROJECT_NAME} ${PROJECT_ARGS})
 
 # jrl-cmakemodules handling of usual modules
-INCLUDE(cmake/header.cmake)
 INCLUDE(cmake/pthread.cmake)
 add_project_dependency(Eigen3 REQUIRED NO_MODULE)
 add_project_dependency(Boost REQUIRED
