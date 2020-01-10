@@ -1,6 +1,6 @@
 <package format="2">
   <name>dynamic-graph</name>
-  <version>3.7.3</version>
+  <version>3.8.0</version>
   <description>
     Dynamic graph library
   </description>

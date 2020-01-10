@@ -220,4 +220,6 @@ foreach (_variableName ${_variableNames})
     )
 endforeach()
 
+INSTALL(FILES package.xml DESTINATION share/${PROJECT_NAME})
+
 MESSAGE(STATUS "dynamic_graph_VERSION=${dynamic_graph_VERSION}")
