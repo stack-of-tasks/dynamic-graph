@@ -8,6 +8,7 @@
 #define DYNAMIC_GRAPH_COMMAND_SETTER_T_CPP
 
 #include "dynamic-graph/linear-algebra.h"
+#include "dynamic-graph/command-setter.h"
 #include <boost/assign/list_of.hpp>
 #include <sstream>
 

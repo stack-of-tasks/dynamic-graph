@@ -7,6 +7,7 @@
 #ifndef DYNAMIC_GRAPH_COMMAND_GETTER_T_CPP
 #define DYNAMIC_GRAPH_COMMAND_GETTER_T_CPP
 
+#include "dynamic-graph/command-getter.h"
 #include <sstream>
 
 namespace dynamicgraph {
