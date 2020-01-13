@@ -76,8 +76,7 @@ ENDIF (NOT (\"${CMAKE_VERBOSITY_LEVEL}\" STREQUAL \"\"))
 #include_directories(${Boost_INCLUDE_DIRS})
 #link_directories(${Boost_LIBRARY_DIRS})
 
-ADD_LIBRARY(${LIBRARY_NAME}
-  SHARED
+SET(${PROJECT_NAME}_SOURCES
   src/debug/debug.cpp
   src/debug/real-time-logger.cpp
   src/debug/logger.cpp
@@ -153,6 +152,9 @@ SET(${PROJECT_NAME}_HEADERS
 
   include/dynamic-graph/logger.h
 )
+
+ADD_LIBRARY(${LIBRARY_NAME}
+  SHARED ${${PROJECT_NAME}_SOURCES} ${${PROJECT_NAME}_HEADERS})
 
 SET(PUBLIC_HEADER ${${PROJECT_NAME}_HEADERS})
 
