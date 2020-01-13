@@ -24,10 +24,12 @@ PROJECT(${PROJECT_NAME} ${PROJECT_ARGS})
 
 # jrl-cmakemodules handling of usual modules
 INCLUDE(cmake/pthread.cmake)
-add_project_dependency(Eigen3 REQUIRED NO_MODULE)
-add_project_dependency(Boost REQUIRED
-  OPTIONAL_COMPONENTS
-  serialization system unit_test_framework thread)
+INCLUDE(cmake/boost.cmake)
+
+ADD_REQUIRED_DEPENDENCY(eigen3)
+SET(BOOST_COMPONENTS serialization system unit_test_framework thread)
+SEARCH_FOR_BOOST()
+
 # Allows math in mathjax.
 SET(DOXYGEN_USE_MATHJAX YES)
 
@@ -168,8 +170,8 @@ target_include_directories(${PROJECT_NAME}
   PUBLIC
   $<BUILD_INTERFACE:${CMAKE_BUILD_DIR}/include>
    $<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include>
-   $<BUILD_INTERFACE:${EIGEN3_INCLUDE_DIR}>
-   INTERFACE ${EIGEN3_INCLUDE_DIR}
+   $<BUILD_INTERFACE:${EIGEN3_INCLUDE_DIRS}>
+   INTERFACE ${EIGEN3_INCLUDE_DIRS}
    $<INSTALL_INTERFACE:include>
    )
 
