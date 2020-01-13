@@ -11,6 +11,19 @@
 
 using boost::test_tools::output_test_stream;
 
+BOOST_AUTO_TEST_CASE(value_none) {
+  using dynamicgraph::command::Value;
+
+  Value value1();
+
+  {
+    output_test_stream output;
+    output << value1;
+    BOOST_CHECK(output.is_equal("1"));
+  }
+
+}
+
 BOOST_AUTO_TEST_CASE(value_bool) {
   using dynamicgraph::command::Value;
 
