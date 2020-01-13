@@ -211,7 +211,6 @@ FOREACH(plugin_file ${plugins_list})
     DESTINATION ${PLUGINDIR})
 ENDFOREACH(plugin_file)
 
-ADD_SUBDIRECTORY(include/${PROJECT_NAME})
 ADD_SUBDIRECTORY(tests)
 
 get_cmake_property(_variableNames VARIABLES)
