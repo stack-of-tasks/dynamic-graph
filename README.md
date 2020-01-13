@@ -1,8 +1,7 @@
 dynamic-graph
 =============
 
-[![Building Status](https://travis-ci.org/stack-of-tasks/dynamic-graph.svg?branch=master)](https://travis-ci.org/stack-of-tasks/dynamic-graph)
-[![Pipeline status](https://gepgitlab.laas.fr/stack-of-tasks/dynamic-graph/badges/master/pipeline.svg)](https://gepgitlab.laas.fr/stack-of-tasks/dynamic-graph/commits/master)
+[![Building status](https://gepgitlab.laas.fr/stack-of-tasks/dynamic-graph/badges/master/pipeline.svg)](https://gepgitlab.laas.fr/stack-of-tasks/dynamic-graph/commits/master)
 [![Coverage report](https://gepgitlab.laas.fr/stack-of-tasks/dynamic-graph/badges/master/coverage.svg?job=doc-coverage)](http://projects.laas.fr/stack-of-tasks/doc/stack-of-tasks/dynamic-graph/master/coverage/)
 
 This software provides an efficient way to modelize a C++ data-flow.
@@ -42,10 +41,7 @@ located in the `$prefix/share/doc/dynamic-graph` directoy where
 Getting Help
 ------------
 
-Support is provided through:
- * the HPP mailing-list: hpp@laas.fr
- * the following HipChat room: http://www.hipchat.com/gh4wQrZeV
-
+Support is provided through issues on the github interface.
 
 How can I install dynamic-graph?
 --------------------------------
@@ -57,13 +53,9 @@ have to be available on your machine.
 
  - Libraries:
    - [Boost][] (>= 1.40)
-     Its detection is controlled by the `BOOST_ROOT` variable, see next section
-     for more information.
-   - [Lapack][] library
-     Use the generic purpose `CMAKE_CXX_FLAGS` and `CMAKE_EXE_LINKER_FLAGS`
-     to insert the flags required for the compiler to find your Lapack library
-     if it is installed in a non-standard directory.
-   - [jrl-mal][] library
+   - Doxygen
+   - Eigen3
+   - pthread
  - System tools:
    - [CMake][] (>=2.6)
    - [pkg-config][]
@@ -143,14 +135,11 @@ This package authors are credited in the [AUTHORS](AUTHORS) file.
 Available Packages
 ------------------
 
- * RobotPkg (Release 2.5.3r1):
+ * RobotPkg :
    http://robotpkg.openrobots.org/robotpkg/motion/dynamic-graph/index.html
 
 
 [doxygen-documentation]: http://stack-of-tasks.github.io/dynamic-graph/doxygen/HEAD/
-
-[jrl-mathtools]: https://github.com/jrl-umi3218/jrl-mathtools
-[jrl-mal]: https://github.com/jrl-umi3218/jrl-mal
 
 [git-submodules]: http://git-scm.com/book/en/Git-Tools-Submodules
 
@@ -159,7 +148,6 @@ Available Packages
 [Doxygen]: http://www.stack.nl/~dimitri/doxygen/
 [Eigen]: http://eigen.tuxfamily.org/
 [Git]: http://git-scm.com/
-[Lapack]: http://www.netlib.org/lapack/
 [Libtool]: https://www.gnu.org/software/libtool/
 [RobotPkg]: http://robotpkg.openrobots.org/
 [log4cxx]: https://logging.apache.org/log4cxx/
