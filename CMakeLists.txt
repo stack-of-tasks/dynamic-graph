@@ -96,7 +96,6 @@ SET(${PROJECT_NAME}_SOURCES
 
 SET(${PROJECT_NAME}_HEADERS
   include/dynamic-graph/fwd.hh
-  include/dynamic-graph/null-ptr.hh
   include/dynamic-graph/debug.h
   include/dynamic-graph/real-time-logger.h
 
