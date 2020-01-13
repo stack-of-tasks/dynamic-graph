@@ -70,10 +70,6 @@ IF (NOT (\"${CMAKE_VERBOSITY_LEVEL}\" STREQUAL \"\"))
   ADD_DEFINITIONS(-DVP_DEBUG_MODE=${CMAKE_VERBOSITY_LEVEL} -DVP_DEBUG)
 ENDIF (NOT (\"${CMAKE_VERBOSITY_LEVEL}\" STREQUAL \"\"))
 
-# Declare boost include directories
-#include_directories(${Boost_INCLUDE_DIRS})
-#link_directories(${Boost_LIBRARY_DIRS})
-
 SET(${PROJECT_NAME}_SOURCES
   src/debug/debug.cpp
   src/debug/real-time-logger.cpp
@@ -96,7 +92,6 @@ SET(${PROJECT_NAME}_SOURCES
 
   src/command/value.cpp
   src/command/command.cpp
-
   )
 
 SET(${PROJECT_NAME}_HEADERS
@@ -149,7 +144,7 @@ SET(${PROJECT_NAME}_HEADERS
   include/dynamic-graph/all-commands.h
 
   include/dynamic-graph/logger.h
-)
+  )
 
 ADD_LIBRARY(${PROJECT_NAME}
   SHARED ${${PROJECT_NAME}_SOURCES} ${${PROJECT_NAME}_HEADERS})
@@ -169,13 +164,13 @@ INSTALL(TARGETS ${PROJECT_NAME}
 target_include_directories(${PROJECT_NAME}
   PUBLIC
   $<BUILD_INTERFACE:${CMAKE_BUILD_DIR}/include>
-   $<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include>
-   $<BUILD_INTERFACE:${EIGEN3_INCLUDE_DIRS}>
-   INTERFACE ${EIGEN3_INCLUDE_DIRS}
-   $<INSTALL_INTERFACE:include>
-   )
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include>
+  $<BUILD_INTERFACE:${EIGEN3_INCLUDE_DIRS}>
+  INTERFACE ${EIGEN3_INCLUDE_DIRS}
+  $<INSTALL_INTERFACE:include>
+  )
 
- SET_TARGET_PROPERTIES(${PROJECT_NAME} PROPERTIES SOVERSION ${PROJECT_VERSION})
+SET_TARGET_PROPERTIES(${PROJECT_NAME} PROPERTIES SOVERSION ${PROJECT_VERSION})
 
 IF (UNIX)
   TARGET_LINK_LIBRARIES(${PROJECT_NAME} ${CMAKE_DL_LIBS} pthread)
@@ -187,9 +182,9 @@ TARGET_LINK_LIBRARIES(${PROJECT_NAME} ${Boost_LIBRARIES})
 ### Plugins
 ####################################
 SET(plugins_list
-        src/traces/tracer
-        src/traces/tracer-real-time
-)
+  src/traces/tracer
+  src/traces/tracer-real-time
+  )
 
 SET(tracer-real-time_dependency tracer)
 
