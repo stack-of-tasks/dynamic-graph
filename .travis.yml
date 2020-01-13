@@ -23,7 +23,7 @@ notifications:
 branches:
   only:
   - master
-  - debian
+  - devel
 script: ./travis_custom/build_custom
 after_success: ./.travis/run after_success
 after_failure: ./.travis/run after_failure
