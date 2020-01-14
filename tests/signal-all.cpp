@@ -45,9 +45,91 @@ BOOST_AUTO_TEST_CASE(test_array) {
 }
 
 BOOST_AUTO_TEST_CASE(test_base) {
+  SignalBase<int> sigA("testA");
   SignalBase<int> sigB("test");
   sigB.setReady();
   BOOST_CHECK_EQUAL(true, sigB.getReady());
+  // Does nothing, just check that the interface
+  // still exist at the abstract level.
+  sigB.setPeriodTime(1);
+  sigB.getPeriodTime();
+  sigB.addDependency(sigA);
+  sigB.removeDependency(sigA);
+  sigB.clearDependencies();
+  BOOST_CHECK_EQUAL(true, sigB.needUpdate(10));
+  output_test_stream output;
+  sigB.writeGraph(output);
+  BOOST_CHECK(output.is_equal(""));
+
+  /// Verify plug operations
+  bool res = false;
+  try {
+    sigB.plug(&sigA);
+  } catch (const ExceptionSignal &aea) {
+    res = (aea.getCode() == ExceptionSignal::PLUG_IMPOSSIBLE);
+  }
+  BOOST_CHECK(res);
+
+  res = false;
+  try {
+    sigB.unplug();
+  } catch (const ExceptionSignal &aea) {
+    res = (aea.getCode() == ExceptionSignal::PLUG_IMPOSSIBLE);
+  }
+
+  res = false;
+  try {
+    sigB.setConstantDefault();
+  } catch (const ExceptionSignal &aea) {
+    res = (aea.getCode() == ExceptionSignal::PLUG_IMPOSSIBLE);
+  }
+
+  res = false;
+  try {
+    /// Check signal compatibility.
+    sigB.checkCompatibility();
+  } catch (const ExceptionSignal &aea) {
+    res = (aea.getCode() == ExceptionSignal::PLUG_IMPOSSIBLE);
+  }
+  /// Verify set command value
+
+  /// set
+  std::istringstream iss("empty");
+  res = false;
+  try {
+    sigB.set(iss);
+  } catch (const ExceptionSignal &aea) {
+    res = (aea.getCode() == ExceptionSignal::SET_IMPOSSIBLE);
+  }
+
+  /// get a value
+  res = false;
+  std::ostringstream oss;
+  try {
+    sigB.get(oss);
+  } catch (const ExceptionSignal &aea) {
+    res = (aea.getCode() == ExceptionSignal::SET_IMPOSSIBLE);
+  }
+
+  /// Trigger revaluation of the signal
+  res = false;
+  try {
+    sigB.recompute(100);
+  } catch (const ExceptionSignal &aea) {
+    res = (aea.getCode() == ExceptionSignal::SET_IMPOSSIBLE);
+  }
+
+  /// Trace the signal
+  res = false;
+  try {
+    sigB.trace(oss);
+  } catch (const ExceptionSignal &aea) {
+    res = (aea.getCode() == ExceptionSignal::SET_IMPOSSIBLE);
+  }
+
+  /// Display the signal
+  sigB.display(output);
+  BOOST_CHECK(output.is_equal(""));
 }
 
 BOOST_AUTO_TEST_CASE(test_cast_helper) {
