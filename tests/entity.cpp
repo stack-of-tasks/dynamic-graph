@@ -7,6 +7,8 @@
 
 #include "dynamic-graph/factory.h"
 #include "dynamic-graph/pool.h"
+#include <dynamic-graph/command-direct-getter.h>
+#include <dynamic-graph/command-direct-setter.h>
 #include <dynamic-graph/entity.h>
 #include <dynamic-graph/exception-factory.h>
 #include <dynamic-graph/real-time-logger.h>
@@ -50,21 +52,44 @@ public:
     res = aDouble;
     return res;
   }
+
+public:
+  double m_value;
 };
 DYNAMICGRAPH_FACTORY_ENTITY_PLUGIN(CustomEntity, "CustomEntity");
 } // namespace dynamicgraph
 
 BOOST_AUTO_TEST_CASE(constructor) {
-  BOOST_CHECK_EQUAL(dynamicgraph::CustomEntity::CLASS_NAME, "CustomEntity");
+  namespace dg = dynamicgraph;
+  namespace dgc = dynamicgraph::command;
 
-  dynamicgraph::Entity &entity =
-      *dynamicgraph::FactoryStorage::getInstance()->newEntity("CustomEntity",
-                                                              "my-entity");
+  BOOST_CHECK_EQUAL(dg::CustomEntity::CLASS_NAME, "CustomEntity");
+
+  dg::Entity &entity = *dg::FactoryStorage::getInstance()->newEntity(
+      "CustomEntity", "my-entity");
   BOOST_CHECK_EQUAL(entity.getName(), "my-entity");
-  BOOST_CHECK_EQUAL(entity.getClassName(),
-                    dynamicgraph::CustomEntity::CLASS_NAME);
+  BOOST_CHECK_EQUAL(entity.getClassName(), dg::CustomEntity::CLASS_NAME);
 
-  dynamicgraph::CustomEntity entity2("");
+  dg::CustomEntity entity2("");
+
+  // Test Commands
+  dgc::DirectGetter<dg::CustomEntity, double> a_direct_getter(
+      entity2, &entity2.m_value,
+      dgc::docDirectGetter("Get value m_value", "double"));
+
+  dgc::DirectSetter<dg::CustomEntity, double> a_direct_setter(
+      entity2, &entity2.m_value,
+      dgc::docDirectSetter("Set value m_value", "double"));
+
+  dgc::Value aValue(2.0);
+  std::vector<dgc::Value> values;
+  values.push_back(aValue);
+  a_direct_setter.setParameterValues(values);
+  a_direct_setter.execute();
+  a_direct_getter.execute();
+
+  output_test_stream output;
+  output << entity2.m_value;
 }
 
 BOOST_AUTO_TEST_CASE(signal) {
