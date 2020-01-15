@@ -62,6 +62,16 @@ public:
                makeCommandVoid4(
                    *this, &CustomEntity::four_args,
                    docCommandVoid4("four args", "int", "int", "int", "int")));
+
+    /// Generating an exception by adding a command which already exist
+    bool res = false;
+    std::string e_1_arg("1_arg");
+    try {
+      addCommand(e_1_arg, getNewStyleCommand(e_1_arg));
+    } catch (dynamicgraph::ExceptionFactory &aef) {
+      res = (aef.getCode() == dynamicgraph::ExceptionFactory::OBJECT_CONFLICT);
+    }
+    BOOST_CHECK(res);
   }
 
   ~CustomEntity() {}
@@ -84,10 +94,11 @@ DYNAMICGRAPH_FACTORY_ENTITY_PLUGIN(CustomEntity, "CustomEntity");
 } // namespace dynamicgraph
 
 BOOST_AUTO_TEST_CASE(command_test) {
-  dynamicgraph::CustomEntity &entity =
-      *(dynamic_cast<dynamicgraph::CustomEntity *>(
+  dynamicgraph::CustomEntity *ptr_entity =
+      (dynamic_cast<dynamicgraph::CustomEntity *>(
           dynamicgraph::FactoryStorage::getInstance()->newEntity("CustomEntity",
                                                                  "my-entity")));
+  dynamicgraph::CustomEntity &entity = *ptr_entity;
 
   std::map<const std::string, Command *> aCommandMap =
       entity.getNewStyleCommandMap();
@@ -119,7 +130,7 @@ BOOST_AUTO_TEST_CASE(command_test) {
     it_map->second->owner();
     it_map->second->getDocstring();
   }
-  
+
   BOOST_CHECK(entity.test_one_arg_);
   BOOST_CHECK(entity.test_two_args_);
   BOOST_CHECK(entity.test_three_args_);
@@ -128,33 +139,43 @@ BOOST_AUTO_TEST_CASE(command_test) {
   std::vector<Value> values_two;
   values_two.push_back(aValue);
   /// Wrong number of arguments
-  bool res=false;
+  bool res = false;
   it_map = aCommandMap.find(std::string("2_args"));
   try {
     it_map->second->setParameterValues(values_two);
-  }
-  catch (const dynamicgraph::ExceptionAbstract &aea)
-  {
+  } catch (const dynamicgraph::ExceptionAbstract &aea) {
     res = (aea.getCode() == dynamicgraph::ExceptionAbstract::ABSTRACT);
   }
   BOOST_CHECK(res);
 
-  double snd_arg_db=10.0;
+  double snd_arg_db = 10.0;
   Value aValue2(snd_arg_db);
   values_two.push_back(aValue2);
 
   /// Wrong types of arguments
-  res=false;
+  res = false;
   it_map = aCommandMap.find(std::string("2_args"));
   try {
     it_map->second->setParameterValues(values_two);
-  }
-  catch (const dynamicgraph::ExceptionAbstract &aea)
-  {
+  } catch (const dynamicgraph::ExceptionAbstract &aea) {
     res = (aea.getCode() == dynamicgraph::ExceptionAbstract::TOOLS);
   }
   BOOST_CHECK(res);
-  
-  
 
+  /// Try to find the command 1_arg
+  res = false;
+  Command *a_cmd = entity.getNewStyleCommand(vec_fname[0]);
+  BOOST_CHECK(true);
+
+  /// Generate an exception by searching a command with an empty name.w
+  std::string empty("");
+  try {
+    a_cmd = entity.getNewStyleCommand(empty);
+  } catch (dynamicgraph::ExceptionFactory &aef) {
+    res = (aef.getCode() == dynamicgraph::ExceptionFactory::UNREFERED_FUNCTION);
+  }
+  BOOST_CHECK(res);
+
+  /// delete the entity.
+  delete ptr_entity;
 }
