@@ -113,21 +113,6 @@ bool TimeDependency<Time>::needUpdate(const Time &t1) const {
 
 template <class Time>
 std::ostream &TimeDependency<Time>::writeGraph(std::ostream &os) const {
-  std::string LeaderLocalName;
-  std::string LeaderNodeName;
-  leader.ExtractNodeAndLocalNames(LeaderLocalName, LeaderNodeName);
-  if (dependencies.size() != 0) {
-    const typename Dependencies::const_iterator itend = dependencies.end();
-    for (typename Dependencies::const_iterator it = dependencies.begin();
-         it != itend; ++it) {
-      std::string itLocalName, itNodeName;
-      (*it)->ExtractNodeAndLocalNames(itLocalName, itNodeName);
-      os << "\"" << itNodeName << "\" -> \"" << LeaderNodeName << "\""
-         << std::endl
-         << " [ headlabel = \"" << LeaderLocalName << "\" , taillabel = \""
-         << itLocalName << "\" ]" << std::endl;
-    }
-  }
   return os;
 }
 
