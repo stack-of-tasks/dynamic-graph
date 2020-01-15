@@ -88,20 +88,16 @@ BOOST_AUTO_TEST_CASE(normal_cst_test) {
   try {
     //    Signal<double, int> * r =
     sigNotPlug.getPtr();
-  }
-  catch(const ExceptionSignal &aea)
-  {
-    res = (aea.getCode() == ExceptionSignal::NOT_INITIALIZED);    
+  } catch (const ExceptionSignal &aea) {
+    res = (aea.getCode() == ExceptionSignal::NOT_INITIALIZED);
   }
   BOOST_CHECK(res);
 
   /// Testing const getPtr() interface: no plug case
   try {
     cstSigNotPlug.getPtr();
-  }
-  catch(const ExceptionSignal &aea)
-  {
-    res = (aea.getCode() == ExceptionSignal::NOT_INITIALIZED);    
+  } catch (const ExceptionSignal &aea) {
+    res = (aea.getCode() == ExceptionSignal::NOT_INITIALIZED);
   }
   BOOST_CHECK(res);
 
@@ -112,35 +108,34 @@ BOOST_AUTO_TEST_CASE(normal_cst_test) {
   sigNotPlug.display(output);
   cstSigNotPlug.display(output);
 
-    /// Testing getAbsatractPtr() interface: no plug
-  res=false;
+  /// Testing getAbsatractPtr() interface: no plug
+  res = false;
   try {
     sigNotPlug.getAbstractPtr();
-  }
-  catch(const ExceptionSignal &aea)
-  {
-    res = (aea.getCode() == ExceptionSignal::NOT_INITIALIZED);    
+  } catch (const ExceptionSignal &aea) {
+    res = (aea.getCode() == ExceptionSignal::NOT_INITIALIZED);
   }
   BOOST_CHECK(res);
 
   /// Testing const getAbstractPtr() interface: no plug case
   try {
     cstSigNotPlug.getAbstractPtr();
-  }
-  catch(const ExceptionSignal &aea)
-  {
-    res = (aea.getCode() == ExceptionSignal::NOT_INITIALIZED);    
+  } catch (const ExceptionSignal &aea) {
+    res = (aea.getCode() == ExceptionSignal::NOT_INITIALIZED);
   }
   BOOST_CHECK(res);
 
-  try { sigNotPlug.checkCompatibility(); }
-  catch(...) { }
+  try {
+    sigNotPlug.checkCompatibility();
+  } catch (...) {
+  }
   BOOST_CHECK(res);
-
 }
 
 BOOST_AUTO_TEST_CASE(normal_test) {
   Signal<double, int> sig("sig");
+  Signal<int, int> sigint("sig");
+  Signal<std::string, int> sigstr("sig_str");
   SignalPtr<double, int> sigPtrA(NULL, "sigPtrA"), sigPtrB(NULL, "sigPtrB");
   SignalPtr<double, int> sigPtrAbstract(NULL, "sigPtrAbstract");
   DummyClass<double> pro3("pro3");
@@ -156,32 +151,68 @@ BOOST_AUTO_TEST_CASE(normal_test) {
     e.getExceptionName();
   }
   BOOST_CHECK(true);
-  
-  sigPtrA.setFunction(boost::bind(&DummyClass<double>::fun, &pro3, _1, _2));  
-  
+
+  sigPtrA.setFunction(boost::bind(&DummyClass<double>::fun, &pro3, _1, _2));
+
   /// Plugging signal.
-  SignalBase<int> &sigRef = sig;
+  SignalBase<int> &sigRef = sig, sigBase("sigBase");
   SignalBase<int> &sigPtrARef = sigPtrA, &sigPtrBRef = sigPtrB,
                   &sigPtrAbstractRef = sigPtrAbstract;
-  sigPtrARef.plug(0);  
+  sigPtrARef.plug(0);
   sigPtrARef.plug(&sigRef);
   sigPtrBRef.plug(&sigPtrARef);
+  /// Try to plug an incompatible signal.
+  /// leave
+  bool res = false;
+  try {
+    sigPtrARef.plug(&sigstr);
+  } catch (const ExceptionSignal &aes) {
+    res = (aes.getCode() == ExceptionSignal::PLUG_IMPOSSIBLE);
+  }
+  BOOST_CHECK(res);
 
   /// Plug the signal.
   sigPtrAbstractRef.plug(&sigRef);
   sigPtrA.getPtr();
   BOOST_CHECK(true);
-  try { sigPtrARef.checkCompatibility(); }
-  catch(...) { }
+  try {
+    sigPtrARef.checkCompatibility();
+  } catch (const ExceptionSignal &aes) {
+    /// Should be NOT_INITIALIZED becase the last plug
+    /// on sigstr failed.
+    res = (aes.getCode() == ExceptionSignal::NOT_INITIALIZED);
+  } catch (const std::exception &e) {
+    std::cout << "Standard Exception:" << e.what() << std::endl;
+  } catch (...) {
+    std::cout << "Anything else: " << std::endl;
+  }
   sigPtrA.needUpdate(5);
-  //  BOOST_CHECK(res);
-  
+  BOOST_CHECK(true);
+
   int ltime = sigPtrA.getTime();
   sigPtrA.getPluged();
   sigPtrA(ltime);
+  BOOST_CHECK(true);
 
   sigPtrB.getPtr();
-  sigPtrAbstract.getAbstractPtr();
+  /// Test sigPtrAbstract with a normal plug.
+  res = false;
+  try {
+    sigPtrAbstract.getAbstractPtr();
+  } catch (ExceptionSignal &aes) {
+    /// Should be NOT_INITIALIZED becase the last plug
+    /// on sigstr failed.
+    std::cout << "Code: " << aes.getCode() << std::endl;
+    res = (aes.getCode() == ExceptionSignal::NOT_INITIALIZED);
+  } catch (...) {
+    std::cout << "Anything else with sigPtrAbstract.getAbstractPtr()"
+              << std::endl;
+  }
+  BOOST_CHECK(true);
+
+  /// Test the case where the plug ref is zero.
+  sigPtrAbstractRef.plug(0);
+  BOOST_CHECK(true);
 
   assert(sigRef.isPlugged() != true);
   SignalBase<int> *t = sigRef.getPluged();
@@ -204,12 +235,12 @@ BOOST_AUTO_TEST_CASE(normal_test) {
   sigPtrA.setReferenceNonConstant(tab_D, NULL);
   sigPtrA.access(5);
   sigPtrA.display(output);
-  
+
   // getreference
   sigPtrA.operator=(1.2);
   // getconstant
   sigPtrA.displayDependencies(output);
-  
+
   cout << t << std::endl;
   cout << "Sig = ";
   sigRef.get(cout);
