@@ -59,6 +59,7 @@ public:
     vq[1] = 2.0;
     vq[2] = 3.0;
     sendMsg("Value to display: " + toString(vq));
+    sendMsg("Value to display: " + toString(vq, 3, 10));
     Eigen::Matrix<double, 3, 3> an_eig_m;
     an_eig_m.Ones();
     sendMsg("Value to display: " + toString(an_eig_m));
