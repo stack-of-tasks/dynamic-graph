@@ -26,7 +26,7 @@ using boost::test_tools::output_test_stream;
 namespace dynamicgraph {
 class CustomEntity : public Entity {
 public:
-  dynamicgraph::SignalPtr<double, int> m_sigdSIN;
+  dynamicgraph::SignalPtr<double, int> m_sigdSIN, m_sigdSIN2;
   dynamicgraph::SignalTimeDependent<double, int> m_sigdTimeDepSOUT;
 
   static const std::string CLASS_NAME;
@@ -34,13 +34,24 @@ public:
   CustomEntity(const std::string n)
       : Entity(n),
         m_sigdSIN(NULL, "CustomEntity(" + name + ")::input(double)::in_double"),
+        m_sigdSIN2(NULL,
+                   "CustomEntity(" + name + ")::input(double)::in_double"),
         m_sigdTimeDepSOUT(
             boost::bind(&CustomEntity::update, this, _1, _2), m_sigdSIN,
-            "CustomEntity(" + name + ")::input(double)::out_double")
+            "CustomEntity(" + name + ")::input(double)::out_double") {}
 
-  {}
+  ~CustomEntity() { entityDeregistration(); }
 
-  void addSignal() { signalRegistration(m_sigdSIN << m_sigdTimeDepSOUT); }
+  void addSignal() {
+    signalRegistration(m_sigdSIN << m_sigdTimeDepSOUT);
+    /// Try a second time to generate an exception
+    try {
+      signalRegistration(m_sigdSIN2 << m_sigdTimeDepSOUT);
+    } catch (ExceptionFactory &aef) {
+      BOOST_CHECK_EQUAL(aef.getCode(),
+                        dynamicgraph::ExceptionFactory::SIGNAL_CONFLICT);
+    }
+  }
 
   void rmValidSignal() {
     signalDeregistration("in_double");
@@ -90,6 +101,9 @@ BOOST_AUTO_TEST_CASE(constructor) {
 
   output_test_stream output;
   output << entity2.m_value;
+  output << entity2;
+
+  entity.getDocString();
 }
 
 BOOST_AUTO_TEST_CASE(signal) {
@@ -119,6 +133,12 @@ BOOST_AUTO_TEST_CASE(signal) {
     dynamicgraph::CustomEntity *customEntity =
         dynamic_cast<dynamicgraph::CustomEntity *>(&entity);
     customEntity->addSignal();
+    std::string signame("CustomEntity(my-entity)::input(double)::in_double");
+    customEntity->Entity::hasSignal(signame);
+    output_test_stream output;
+    customEntity->Entity::displaySignalList(output);
+    dynamicgraph::Entity::SignalMap asigmap = customEntity->getSignalMap();
+    output << customEntity;
     // Removing signals is working the first time
     customEntity->rmValidSignal();
     // Removing signals generates an exception the second time.
