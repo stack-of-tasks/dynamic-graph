@@ -6,6 +6,7 @@
 
 #include <iostream>
 
+#include <dynamic-graph/command.h>
 #include <dynamic-graph/entity.h>
 #include <dynamic-graph/exception-factory.h>
 #include <dynamic-graph/factory.h>
@@ -13,7 +14,6 @@
 #include <dynamic-graph/signal-ptr.h>
 #include <dynamic-graph/signal-time-dependent.h>
 #include <dynamic-graph/tracer-real-time.h>
-
 #define BOOST_TEST_MODULE debug - tracer
 
 #include <boost/test/output_test_stream.hpp>
@@ -59,15 +59,13 @@ DYNAMICGRAPH_FACTORY_ENTITY_PLUGIN(MyEntity, "MyEntity");
 
 BOOST_AUTO_TEST_CASE(test_tracer) {
   using namespace dynamicgraph;
-  
+
   // Creates a tracer.
   TracerRealTime &atracer = *dynamic_cast<TracerRealTime *>(
-      FactoryStorage::getInstance()->newEntity("TracerRealTime",
-                                               "my-tracer"));
+      FactoryStorage::getInstance()->newEntity("TracerRealTime", "my-tracer"));
 
   Entity &entity =
-      *FactoryStorage::getInstance()->newEntity("MyEntity",
-                                                              "my-entity");
+      *FactoryStorage::getInstance()->newEntity("MyEntity", "my-entity");
 
   std::string rootdir("/tmp");
   std::string basename("my-tracer");
@@ -78,34 +76,38 @@ BOOST_AUTO_TEST_CASE(test_tracer) {
 
   /// Add trace by name
   atracer.addSignalToTraceByName("my-entity.out_double", "output");
-  
+
   /// Add trace by name
   SignalBase<int> &aSignal = entity.getSignal("out2double");
-    
-  Signal<double, int> &aSignalInt =
-      *(dynamic_cast<Signal<double, int> *>(
-          &entity.getSignal("in_double")));
 
+  Signal<double, int> &aSignalInt =
+      *(dynamic_cast<Signal<double, int> *>(&entity.getSignal("in_double")));
 
   aSignalInt.setConstant(1.5);
   atracer.start();
-    
+
   atracer.trace();
 
+  std::string emptybuf_cmd_str("empty");
+  command::Command *acmd = atracer.getNewStyleCommand(emptybuf_cmd_str);
+  acmd->execute();
   for (int i = 0; i < 1000; i++) {
     aSignal.setTime(i);
     aSignalInt.setTime(i);
     atracer.recordTrigger(i, i);
   }
+  output_test_stream output;
+  atracer.display(output);
 
   atracer.stop();
   atracer.clearSignalToTrace();
   atracer.closeFiles();
-
+  acmd->execute();
   atracer.record();
 
-  output_test_stream output;
-  atracer.display(output);
-  BOOST_CHECK(output.is_equal("TracerRealTime my-tracer [mode=pause] : "
-                              "\n  - Dep list: \n"));
+  BOOST_CHECK(output.is_equal(
+      "TracerRealTime my-tracer [mode=play] : \n"
+      "  - Dep list: \n"
+      "     -> MyEntity(my-entity)::input(double)::out_double (in output)"
+      "	[0Mo/1Mo]	\n"));
 }
