@@ -1,7 +1,7 @@
 // Copyright 2010 Thomas Moulard.
 //
-#include <iostream>
 #include <boost/foreach.hpp>
+#include <iostream>
 
 #include <dynamic-graph/signal-time-dependent.h>
 #include <dynamic-graph/signal.h>
@@ -210,13 +210,13 @@ BOOST_AUTO_TEST_CASE(signaltimedependent) {
 
   sig1.needUpdate(6);
   sig1.needUpdate(6);
-  output_test_stream output;  
+  output_test_stream output;
   sig1.writeGraph(output);
   BOOST_CHECK(output.is_equal(""));
-  
+
   sig1.removeDependency(sig3);
   BOOST_CHECK(true);
-  const double & avalue =sig1(6);
+  const double &avalue = sig1(6);
   output << avalue;
   BOOST_CHECK(true);
   /// Verify check compatibility
@@ -224,8 +224,7 @@ BOOST_AUTO_TEST_CASE(signaltimedependent) {
     sig1.checkCompatibility();
   }
   //  catch(double e)
-  catch(...)
-  {
+  catch (...) {
     std::cout << "Message: test \n";
   }
   BOOST_CHECK(true);
