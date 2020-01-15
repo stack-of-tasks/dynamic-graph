@@ -107,6 +107,8 @@ public:
   }
 
 public:
+  /// checkCompatibility is used to get the object contained in the
+  /// signal. This used to verify if a dynamic cast is possible or not.
   virtual void checkCompatibility() { throw Tcopy; }
 
 private:
