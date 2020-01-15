@@ -1,6 +1,6 @@
 // Copyright 2010 Thomas Moulard.
 //
-
+#include <iostream>
 #include <boost/foreach.hpp>
 
 #include <dynamic-graph/signal-time-dependent.h>
@@ -72,6 +72,7 @@ BOOST_AUTO_TEST_CASE(signaltimedependent) {
   sigDouble_t sig3(sig2 << sig5 << sig6, "Sig3");
   sigDouble_t sig1(boost::bind(&DummyClass<double>::fun, &pro1, _1, _2),
                    sig2 << sig3, "Sig1");
+  sigDouble_t sig7("Sig7");
 
   sig2.setFunction(boost::bind(&DummyClass<std::string>::fun, &pro2, _1, _2));
   sig3.setFunction(boost::bind(&DummyClass<double>::fun, &pro3, _1, _2));
@@ -209,4 +210,23 @@ BOOST_AUTO_TEST_CASE(signaltimedependent) {
 
   sig1.needUpdate(6);
   sig1.needUpdate(6);
+  output_test_stream output;  
+  sig1.writeGraph(output);
+  BOOST_CHECK(output.is_equal(""));
+  
+  sig1.removeDependency(sig3);
+  BOOST_CHECK(true);
+  const double & avalue =sig1(6);
+  output << avalue;
+  BOOST_CHECK(true);
+  /// Verify check compatibility
+  try {
+    sig1.checkCompatibility();
+  }
+  //  catch(double e)
+  catch(...)
+  {
+    std::cout << "Message: test \n";
+  }
+  BOOST_CHECK(true);
 }

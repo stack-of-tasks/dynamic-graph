@@ -6,8 +6,7 @@
 #include <boost/foreach.hpp>
 #include <boost/format.hpp>
 
-#include <Eigen/Dense>
-
+#include "signal-cast-register-test.h"
 #include <dynamic-graph/debug.h>
 #include <dynamic-graph/eigen-io.h>
 #include <dynamic-graph/entity.h>

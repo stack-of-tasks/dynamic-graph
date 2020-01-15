@@ -129,7 +129,7 @@ BOOST_AUTO_TEST_CASE(test_base) {
 
   /// Display the signal
   sigB.display(output);
-  BOOST_CHECK(output.is_equal(""));
+  BOOST_CHECK(output.is_equal("Sig:test"));
 }
 
 BOOST_AUTO_TEST_CASE(test_cast_helper) {
