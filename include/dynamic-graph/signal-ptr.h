@@ -20,6 +20,11 @@ namespace dynamicgraph {
 /// In that sense, when plugged into, it acts as a "pointer" to the
 /// input signal, hence the name. Operator -> is also overloaded and
 /// can be used to access the pointed signal.
+///
+/// If the signal provided as a parameter of the plug operation
+/// cannot be casted in type T, but is compatible then the class
+/// holds a reference to an abstract object.
+///
 template <class T, class Time>
 class SignalPtr : public virtual Signal<T, Time> {
 public:
