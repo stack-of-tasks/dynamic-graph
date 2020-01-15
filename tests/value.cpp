@@ -1,8 +1,8 @@
 // Copyright 2011 Florent Lamiraux, Thomas Moulard.
 //
 
-#include <dynamic-graph/exception-factory.h>
 #include "dynamic-graph/value.h"
+#include <dynamic-graph/exception-factory.h>
 #include <iostream>
 
 #define BOOST_TEST_MODULE value
@@ -14,7 +14,6 @@ using boost::test_tools::output_test_stream;
 
 namespace dg = dynamicgraph;
 
-
 BOOST_AUTO_TEST_CASE(value_none) {
   using dg::command::Value;
 
@@ -25,7 +24,6 @@ BOOST_AUTO_TEST_CASE(value_none) {
     output << value1;
     BOOST_CHECK(output.is_equal("Type=unknown, value="));
   }
-
 }
 
 BOOST_AUTO_TEST_CASE(value_bool) {
@@ -33,7 +31,7 @@ BOOST_AUTO_TEST_CASE(value_bool) {
 
   bool abool1(false);
   Value value1(abool1);
-  Value value=value1;
+  Value value = value1;
 
   {
     output_test_stream output;
@@ -53,8 +51,8 @@ BOOST_AUTO_TEST_CASE(value_exceptions) {
 
   Value value1;
   dg::command::EitherType anet(value1);
-  output_test_stream output,output2;
-  
+  output_test_stream output, output2;
+
   // Check if the exception is working when calling intValue
   // while we are having a none.
   bool res = false;
@@ -80,7 +78,7 @@ BOOST_AUTO_TEST_CASE(value_exceptions) {
     res = (aea.getCode() == dg::ExceptionAbstract::TOOLS);
   }
   BOOST_CHECK(res);
-  
+
   // Check if the exception is working when calling unsignedintValue
   // while we are having a none.
   res = false;
@@ -108,7 +106,7 @@ BOOST_AUTO_TEST_CASE(value_exceptions) {
   res = false;
   try {
     float afloat(anet);
-    output  << afloat;
+    output << afloat;
   } catch (const dg::ExceptionAbstract &aea) {
     res = (aea.getCode() == dg::ExceptionAbstract::TOOLS);
   }
@@ -148,7 +146,7 @@ BOOST_AUTO_TEST_CASE(value_exceptions) {
     res = (aea.getCode() == dg::ExceptionAbstract::TOOLS);
   }
   BOOST_CHECK(res);
-  
+
   // Check if the exception is working when calling matrix4dValue
   // while we are having a none.
   res = false;
@@ -159,7 +157,6 @@ BOOST_AUTO_TEST_CASE(value_exceptions) {
     res = (aea.getCode() == dg::ExceptionAbstract::TOOLS);
   }
   BOOST_CHECK(res);
-  
 }
 
 BOOST_AUTO_TEST_CASE(value_unsigned_int) {
@@ -167,7 +164,7 @@ BOOST_AUTO_TEST_CASE(value_unsigned_int) {
 
   unsigned int aint1(5);
   Value value1(aint1);
-  Value value=value1;
+  Value value = value1;
 
   {
     output_test_stream output;
@@ -187,7 +184,7 @@ BOOST_AUTO_TEST_CASE(value_int) {
 
   int aint1(5);
   Value value1(aint1);
-  Value value=value1;
+  Value value = value1;
 
   {
     output_test_stream output;
@@ -207,7 +204,7 @@ BOOST_AUTO_TEST_CASE(value_float) {
 
   float afloat1(0.5);
   Value value1(afloat1);
-  Value value=value1;
+  Value value = value1;
 
   {
     output_test_stream output;
@@ -227,7 +224,7 @@ BOOST_AUTO_TEST_CASE(value_double) {
 
   double adouble1(0.5);
   Value value1(adouble1);
-  Value value=value1;
+  Value value = value1;
 
   {
     output_test_stream output;
@@ -247,9 +244,10 @@ BOOST_AUTO_TEST_CASE(value_vector) {
 
   dg::Vector avector1;
   avector1.resize(2);
-  avector1[0]=0.5;avector1[1]=1.5;
+  avector1[0] = 0.5;
+  avector1[1] = 1.5;
   Value value1(avector1);
-  Value value=value1;
+  Value value = value1;
 
   {
     output_test_stream output;
@@ -304,11 +302,13 @@ BOOST_AUTO_TEST_CASE(value_matrixXd) {
   using dg::command::Value;
 
   Eigen::MatrixXd avector1;
-  avector1.resize(2,2);
-  avector1(0,0)=0.5;avector1(0,1)=1.5;
-  avector1(1,0)=2.5;avector1(1,1)=3.5;
+  avector1.resize(2, 2);
+  avector1(0, 0) = 0.5;
+  avector1(0, 1) = 1.5;
+  avector1(1, 0) = 2.5;
+  avector1(1, 1) = 3.5;
   Value value1(avector1);
-  Value value=value1;
+  Value value = value1;
 
   {
     output_test_stream output;
@@ -328,10 +328,12 @@ BOOST_AUTO_TEST_CASE(value_matrix4d) {
 
   Eigen::Matrix4d avector1;
   avector1.setZero();
-  avector1(0,0)=0.5;avector1(0,1)=1.5;
-  avector1(1,0)=2.5;avector1(1,1)=3.5;
+  avector1(0, 0) = 0.5;
+  avector1(0, 1) = 1.5;
+  avector1(1, 0) = 2.5;
+  avector1(1, 1) = 3.5;
   Value value1(avector1);
-  Value value=value1;
+  Value value = value1;
 
   {
     output_test_stream output;
