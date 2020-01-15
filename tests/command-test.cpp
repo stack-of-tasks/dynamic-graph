@@ -116,10 +116,45 @@ BOOST_AUTO_TEST_CASE(command_test) {
     values.push_back(aValue);
     it_map->second->setParameterValues(values);
     it_map->second->execute();
+    it_map->second->owner();
+    it_map->second->getDocstring();
   }
-
+  
   BOOST_CHECK(entity.test_one_arg_);
   BOOST_CHECK(entity.test_two_args_);
   BOOST_CHECK(entity.test_three_args_);
   BOOST_CHECK(entity.test_four_args_);
+
+  std::vector<Value> values_two;
+  values_two.push_back(aValue);
+  /// Wrong number of arguments
+  bool res=false;
+  it_map = aCommandMap.find(std::string("2_args"));
+  try {
+    it_map->second->setParameterValues(values_two);
+  }
+  catch (const dynamicgraph::ExceptionAbstract &aea)
+  {
+    res = (aea.getCode() == dynamicgraph::ExceptionAbstract::ABSTRACT);
+  }
+  BOOST_CHECK(res);
+
+  double snd_arg_db=10.0;
+  Value aValue2(snd_arg_db);
+  values_two.push_back(aValue2);
+
+  /// Wrong types of arguments
+  res=false;
+  it_map = aCommandMap.find(std::string("2_args"));
+  try {
+    it_map->second->setParameterValues(values_two);
+  }
+  catch (const dynamicgraph::ExceptionAbstract &aea)
+  {
+    res = (aea.getCode() == dynamicgraph::ExceptionAbstract::TOOLS);
+  }
+  BOOST_CHECK(res);
+  
+  
+
 }
