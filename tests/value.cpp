@@ -53,7 +53,7 @@ BOOST_AUTO_TEST_CASE(value_exceptions) {
 
   Value value1;
   dg::command::EitherType anet(value1);
-  output_test_stream output;
+  output_test_stream output,output2;
   
   // Check if the exception is working when calling intValue
   // while we are having a none.
@@ -62,9 +62,13 @@ BOOST_AUTO_TEST_CASE(value_exceptions) {
     int aInt(anet);
     output << aInt;
   } catch (const dg::ExceptionAbstract &aea) {
+    output << aea.getExceptionName();
+    output2 << aea.what();
     res = (aea.getCode() == dg::ExceptionAbstract::TOOLS);
   }
   BOOST_CHECK(res);
+  BOOST_CHECK(output.is_equal("Abstract"));
+  BOOST_CHECK(output2.is_equal("value is not an int int"));
 
   // Check if the exception is working when calling boolValue
   // while we are having a none.
