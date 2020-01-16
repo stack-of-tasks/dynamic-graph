@@ -46,7 +46,7 @@ Entity::Entity(const string &name__) : name(name__) {
 Entity::~Entity() {
   dgDEBUG(25) << "# In (" << name << " { " << endl;
   for (std::map<const std::string, Command *>::iterator it = commandMap.begin();
-       it != commandMap.end(); it++) {
+       it != commandMap.end(); ++it) {
     delete it->second;
   }
   dgDEBUGOUT(25);

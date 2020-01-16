@@ -22,7 +22,8 @@ public:
   std::list<sigDouble_t *> inputsig;
   std::list<sigString_t *> inputsigV;
 
-  DummyClass(const std::string &n) : proname(n), res(), call(), timedata() {}
+  explicit DummyClass(const std::string &n)
+      : proname(n), res(), call(), timedata() {}
 
   T &fun(T &res, int t) {
     ++call;

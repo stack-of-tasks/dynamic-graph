@@ -19,7 +19,7 @@ struct CustomEntity : public dynamicgraph::Entity {
 
   virtual const std::string &getClassName() const { return CLASS_NAME; }
 
-  CustomEntity(const std::string n) : Entity(n) {}
+  explicit CustomEntity(const std::string &n) : Entity(n) {}
 
   virtual ~CustomEntity() {}
 

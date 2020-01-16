@@ -171,7 +171,7 @@ BOOST_AUTO_TEST_CASE(custom_vector_registerer) {
   try {
     std::istringstream ss("test");
     myVectorSignal.set(ss);
-  } catch (ExceptionSignal e) {
+  } catch (ExceptionSignal &e) {
     std::cout << "Test passed : ss[0] != \"[\"";
   }
 
@@ -179,7 +179,7 @@ BOOST_AUTO_TEST_CASE(custom_vector_registerer) {
   try {
     std::istringstream ss("[test");
     myVectorSignal.set(ss);
-  } catch (ExceptionSignal e) {
+  } catch (ExceptionSignal &e) {
     std::cout << "Test passed : ss[1] != %i";
   }
 
@@ -187,7 +187,7 @@ BOOST_AUTO_TEST_CASE(custom_vector_registerer) {
   try {
     std::istringstream ss("[5[");
     myVectorSignal.set(ss);
-  } catch (ExceptionSignal e) {
+  } catch (ExceptionSignal &e) {
     std::cout << "Test passed : ss[2] != \"]\"";
   }
 
@@ -195,7 +195,7 @@ BOOST_AUTO_TEST_CASE(custom_vector_registerer) {
   try {
     std::istringstream ss("[5]test");
     myVectorSignal.set(ss);
-  } catch (ExceptionSignal e) {
+  } catch (ExceptionSignal &e) {
     std::cout << "Test passed : ss[3] != \"(\"";
   }
 
@@ -203,7 +203,7 @@ BOOST_AUTO_TEST_CASE(custom_vector_registerer) {
   try {
     std::istringstream ss("[5](1, ");
     myVectorSignal.set(ss);
-  } catch (ExceptionSignal e) {
+  } catch (ExceptionSignal &e) {
     BOOST_ERROR("Can't happened");
   }
 
@@ -211,7 +211,7 @@ BOOST_AUTO_TEST_CASE(custom_vector_registerer) {
   try {
     std::istringstream ss("[5](1,2,3,4,5]");
     myVectorSignal.set(ss);
-  } catch (ExceptionSignal e) {
+  } catch (ExceptionSignal &e) {
     std::cout << "Test passed : ss[-1] != \")\"";
   }
 }
@@ -232,7 +232,7 @@ BOOST_AUTO_TEST_CASE(custom_matrix_registerer) {
   try {
     std::istringstream ss("test");
     myMatrixSignal.set(ss);
-  } catch (ExceptionSignal e) {
+  } catch (ExceptionSignal &e) {
     std::cout << "Test passed : ss[0] != \"[\"";
   }
 
@@ -240,7 +240,7 @@ BOOST_AUTO_TEST_CASE(custom_matrix_registerer) {
   try {
     std::istringstream ss("[test");
     myMatrixSignal.set(ss);
-  } catch (ExceptionSignal e) {
+  } catch (ExceptionSignal &e) {
     std::cout << "Test passed : ss[1] != %i";
   }
 
@@ -248,7 +248,7 @@ BOOST_AUTO_TEST_CASE(custom_matrix_registerer) {
   try {
     std::istringstream ss("[5[");
     myMatrixSignal.set(ss);
-  } catch (ExceptionSignal e) {
+  } catch (ExceptionSignal &e) {
     std::cout << "Test passed : ss[2] != \",\"";
   }
 
@@ -256,7 +256,7 @@ BOOST_AUTO_TEST_CASE(custom_matrix_registerer) {
   try {
     std::istringstream ss("[5,c");
     myMatrixSignal.set(ss);
-  } catch (ExceptionSignal e) {
+  } catch (ExceptionSignal &e) {
     std::cout << "Test passed : ss[3] != %i";
   }
 
@@ -264,7 +264,7 @@ BOOST_AUTO_TEST_CASE(custom_matrix_registerer) {
   try {
     std::istringstream ss("[5,3[");
     myMatrixSignal.set(ss);
-  } catch (ExceptionSignal e) {
+  } catch (ExceptionSignal &e) {
     std::cout << "Test passed : ss[4] != \"]\"";
   }
 
@@ -272,7 +272,7 @@ BOOST_AUTO_TEST_CASE(custom_matrix_registerer) {
   try {
     std::istringstream ss("[5,3]test");
     myMatrixSignal.set(ss);
-  } catch (ExceptionSignal e) {
+  } catch (ExceptionSignal &e) {
     std::cout << "Test passed : ss[5] != \"(\"";
   }
 
@@ -280,7 +280,7 @@ BOOST_AUTO_TEST_CASE(custom_matrix_registerer) {
   try {
     std::istringstream ss("[5,3](test");
     myMatrixSignal.set(ss);
-  } catch (ExceptionSignal e) {
+  } catch (ExceptionSignal &e) {
     std::cout << "Test passed : ss[6] != \"(\"";
   }
 
@@ -288,7 +288,7 @@ BOOST_AUTO_TEST_CASE(custom_matrix_registerer) {
   try {
     std::istringstream ss("[5,3]((1,");
     myMatrixSignal.set(ss);
-  } catch (ExceptionSignal e) {
+  } catch (ExceptionSignal &e) {
     BOOST_ERROR("Can't happened");
   }
 
@@ -296,7 +296,7 @@ BOOST_AUTO_TEST_CASE(custom_matrix_registerer) {
   try {
     std::istringstream ss("[5,3]((1,2,3]");
     myMatrixSignal.set(ss);
-  } catch (ExceptionSignal e) {
+  } catch (ExceptionSignal &e) {
     std::cout << ("ss[6+n] != \")\"");
   }
 
@@ -304,7 +304,7 @@ BOOST_AUTO_TEST_CASE(custom_matrix_registerer) {
   try {
     std::istringstream ss("[5,1]((1)(2)(3[");
     myMatrixSignal.set(ss);
-  } catch (ExceptionSignal e) {
+  } catch (ExceptionSignal &e) {
     std::cout << "Test passed : ss[5] != \")\"";
   }
 
@@ -312,7 +312,7 @@ BOOST_AUTO_TEST_CASE(custom_matrix_registerer) {
   try {
     std::istringstream ss("[5,1]((1)(2)(3)[");
     myMatrixSignal.set(ss);
-  } catch (ExceptionSignal e) {
+  } catch (ExceptionSignal &e) {
     std::cout << "Test passed : ss[5] != \")\"";
   }
 
@@ -320,7 +320,7 @@ BOOST_AUTO_TEST_CASE(custom_matrix_registerer) {
   try {
     std::istringstream ss("[3,1]((1)(2),(3)[");
     myMatrixSignal.set(ss);
-  } catch (ExceptionSignal e) {
+  } catch (ExceptionSignal &e) {
     std::cout << "Test passed : ss[5] != \")\" and ignore \",\"";
   }
 

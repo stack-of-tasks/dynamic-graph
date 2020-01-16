@@ -27,7 +27,7 @@ struct MyEntity : public dynamicgraph::Entity {
   dynamicgraph::SignalTimeDependent<double, int> m_sigdTimeDepSOUT;
   dynamicgraph::SignalTimeDependent<double, int> m_sigdTwoTimeDepSOUT;
 
-  MyEntity(const std::string &name)
+  explicit MyEntity(const std::string &name)
       : Entity(name),
         m_sigdSIN("MyEntity(" + name + ")::input(double)::in_double"),
         m_sigdTimeDepSOUT(boost::bind(&MyEntity::update, this, _1, _2),

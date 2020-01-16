@@ -76,6 +76,7 @@ BOOST_AUTO_TEST_CASE(test_base) {
   } catch (const ExceptionSignal &aea) {
     res = (aea.getCode() == ExceptionSignal::PLUG_IMPOSSIBLE);
   }
+  BOOST_CHECK(res);
 
   res = false;
   try {
@@ -83,6 +84,7 @@ BOOST_AUTO_TEST_CASE(test_base) {
   } catch (const ExceptionSignal &aea) {
     res = (aea.getCode() == ExceptionSignal::PLUG_IMPOSSIBLE);
   }
+  BOOST_CHECK(res);
 
   res = false;
   try {
@@ -101,6 +103,7 @@ BOOST_AUTO_TEST_CASE(test_base) {
   } catch (const ExceptionSignal &aea) {
     res = (aea.getCode() == ExceptionSignal::SET_IMPOSSIBLE);
   }
+  BOOST_CHECK(res);
 
   /// get a value
   res = false;
@@ -110,6 +113,7 @@ BOOST_AUTO_TEST_CASE(test_base) {
   } catch (const ExceptionSignal &aea) {
     res = (aea.getCode() == ExceptionSignal::SET_IMPOSSIBLE);
   }
+  BOOST_CHECK(res);
 
   /// Trigger revaluation of the signal
   res = false;
@@ -118,6 +122,7 @@ BOOST_AUTO_TEST_CASE(test_base) {
   } catch (const ExceptionSignal &aea) {
     res = (aea.getCode() == ExceptionSignal::SET_IMPOSSIBLE);
   }
+  BOOST_CHECK(res);
 
   /// Trace the signal
   res = false;
@@ -126,6 +131,7 @@ BOOST_AUTO_TEST_CASE(test_base) {
   } catch (const ExceptionSignal &aea) {
     res = (aea.getCode() == ExceptionSignal::SET_IMPOSSIBLE);
   }
+  BOOST_CHECK(res);
 
   /// Display the signal
   sigB.display(output);
@@ -142,7 +148,7 @@ BOOST_AUTO_TEST_CASE(test_cast_helper) {
     std::istringstream iss_fail;
     iss.str("test");
     defaultCR.cast(iss_fail);
-  } catch (ExceptionSignal e) {
+  } catch (ExceptionSignal &e) {
     // Take int, not string
   }
 }

@@ -83,7 +83,7 @@ std::vector<std::string> SignalCaster::listTypenames() const {
   std::vector<std::string> typeList;
   for (std::map<std::string, cast_functions_type>::const_iterator iter =
            functions_.begin();
-       iter != functions_.end(); iter++)
+       iter != functions_.end(); ++iter)
     typeList.push_back(iter->first);
   return typeList;
 }

@@ -31,14 +31,15 @@ public:
 
   static const std::string CLASS_NAME;
   virtual const std::string &getClassName() const { return CLASS_NAME; }
-  CustomEntity(const std::string n)
+  explicit CustomEntity(const std::string &n)
       : Entity(n),
         m_sigdSIN(NULL, "CustomEntity(" + name + ")::input(double)::in_double"),
         m_sigdSIN2(NULL,
                    "CustomEntity(" + name + ")::input(double)::in_double"),
         m_sigdTimeDepSOUT(
             boost::bind(&CustomEntity::update, this, _1, _2), m_sigdSIN,
-            "CustomEntity(" + name + ")::input(double)::out_double") {}
+            "CustomEntity(" + name + ")::input(double)::out_double"),
+        m_value(0.0) {}
 
   ~CustomEntity() { entityDeregistration(); }
 
