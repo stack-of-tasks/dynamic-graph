@@ -72,6 +72,8 @@ public:
   explicit Value();
   // operator assignement
   Value operator=(const Value &value);
+  // Equality operator
+  bool operator==(const Value &other) const;
   /// Return the type of the value
   Type type() const;
 

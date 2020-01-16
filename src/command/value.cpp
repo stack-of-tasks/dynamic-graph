@@ -144,6 +144,25 @@ Value Value::operator=(const Value &value) {
   return *this;
 }
 
+bool Value::operator==(const Value &other) const {
+  if (type_ != other.type_) return false;
+  switch (type_) {
+  case Value::BOOL:     return boolValue()        == other.boolValue();
+  case Value::UNSIGNED: return unsignedValue()    == other.unsignedValue();
+  case Value::INT:      return intValue()         == other.intValue();
+  case Value::DOUBLE:   return doubleValue()      == other.doubleValue();
+  case Value::FLOAT:    return floatValue()       == other.floatValue();
+  case Value::STRING:   return stringValue()      == other.stringValue();
+  case Value::VECTOR:   return vectorValue()      == other.vectorValue();
+  case Value::MATRIX:   return matrixXdValue()    == other.matrixXdValue();
+  case Value::MATRIX4D: return matrix4dValue()    == other.matrix4dValue();
+  case Value::VALUES:   return constValuesValue() == other.constValuesValue();
+  case Value::NONE: break;
+  default: break;
+  }
+  return false;
+}
+
 const EitherType Value::value() const { return EitherType(*this); }
 
 Value::Type Value::type() const { return type_; }
