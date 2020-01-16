@@ -144,7 +144,7 @@ TimeDependency<Time>::displayDependencies(std::ostream &os, const int depth,
         std::string ajout = "|";
         std::string ajout2 = "|";
         typename Dependencies::const_iterator it2 = it;
-        it2++;
+        ++it2;
         if (it2 == dependencies.end()) {
           ajout = "`";
           ajout2 = " ";

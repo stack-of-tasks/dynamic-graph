@@ -32,7 +32,7 @@ class CustomEntity : public Entity {
 public:
   static const std::string CLASS_NAME;
   virtual const std::string &getClassName() const { return CLASS_NAME; }
-  CustomEntity(const std::string n) : Entity(n) {
+  explicit CustomEntity(const std::string &n) : Entity(n) {
     logger_.setTimeSample(0.001);
     logger_.setStreamPrintPeriod(0.005);
     logger_.setVerbosity(VERBOSITY_ALL);
@@ -62,10 +62,7 @@ DYNAMICGRAPH_FACTORY_ENTITY_PLUGIN(CustomEntity, "CustomEntity");
 } // namespace dynamicgraph
 
 BOOST_AUTO_TEST_CASE(debug_logger_wrong_initialization) {
-  std::ofstream of;
   dynamicgraph::RealTimeLogger::instance();
-  // of.open("/tmp/dg-LOGS.txt",std::ofstream::out|std::ofstream::app);
-  //  dgADD_OSTREAM_TO_RTLOG (of);
 
   BOOST_CHECK_EQUAL(dynamicgraph::CustomEntity::CLASS_NAME, "CustomEntity");
 

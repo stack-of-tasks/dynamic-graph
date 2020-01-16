@@ -72,22 +72,22 @@ struct RealTimeLogger::thread {
   bool changedThreadParams;
   boost::thread t_;
 
-  thread(RealTimeLogger *logger)
+  explicit thread(RealTimeLogger *logger)
       : requestShutdown_(false), threadPolicy_(SCHED_OTHER), threadPriority_(0),
         changedThreadParams(true), t_(&thread::spin, this, logger) {}
 
-  void setThreadPolicy(int policy) {
-    threadPolicy_ = policy;
-    changedThreadParams = true;
-  }
+  //  void setThreadPolicy(int policy) {
+  //  threadPolicy_ = policy;
+  //  changedThreadParams = true;
+  // }
 
-  void setPriority(int priority) {
-    threadPriority_ = priority;
-    changedThreadParams = true;
-  }
+  // void setPriority(int priority) {
+  //    threadPriority_ = priority;
+  //    changedThreadParams = true;
+  //  }
 
-  int getThreadPolicy() { return threadPolicy_; }
-  int getThreadPriority() { return threadPriority_; }
+  //  int getThreadPolicy() { return threadPolicy_; }
+  // int getThreadPriority() { return threadPriority_; }
 
   void changeThreadParams() {
     int threadPolicy;

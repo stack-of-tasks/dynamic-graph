@@ -37,7 +37,7 @@ public:
   bool test_four_args_;
 
   virtual const std::string &getClassName() const { return CLASS_NAME; }
-  CustomEntity(const std::string n) : Entity(n) {
+  explicit CustomEntity(const std::string &n) : Entity(n) {
     test_zero_arg_ = false;
     test_one_arg_ = false;
     test_two_args_ = false;
@@ -164,13 +164,13 @@ BOOST_AUTO_TEST_CASE(command_test) {
 
   /// Try to find the command 1_arg
   res = false;
-  Command *a_cmd = entity.getNewStyleCommand(vec_fname[0]);
+  entity.getNewStyleCommand(vec_fname[0]);
   BOOST_CHECK(true);
 
   /// Generate an exception by searching a command with an empty name.w
   std::string empty("");
   try {
-    a_cmd = entity.getNewStyleCommand(empty);
+    entity.getNewStyleCommand(empty);
   } catch (dynamicgraph::ExceptionFactory &aef) {
     res = (aef.getCode() == dynamicgraph::ExceptionFactory::UNREFERED_FUNCTION);
   }

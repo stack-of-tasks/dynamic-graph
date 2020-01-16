@@ -18,7 +18,7 @@ class CustomEntity : public Entity {
 public:
   static const std::string CLASS_NAME;
   virtual const std::string &getClassName() const { return CLASS_NAME; }
-  CustomEntity(const std::string n) : Entity(n) {}
+  explicit CustomEntity(const std::string &n) : Entity(n) {}
 };
 const std::string CustomEntity::CLASS_NAME = "CustomEntity";
 } // namespace dynamicgraph

@@ -317,7 +317,7 @@ void TracerRealTime::display(std::ostream &os) const {
       os.precision(PRECISION);
     }
     os << endl;
-    iterFile++;
+    ++iterFile;
   }
 }
 

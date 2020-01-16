@@ -34,7 +34,8 @@ public:
   std::list<sigDouble_t *> inputsig;
   std::list<sigString_t *> inputsigV;
 
-  DummyClass(const std::string &n) : proname(n), res(), call(), timedata() {}
+  explicit DummyClass(const std::string &n)
+      : proname(n), res(), call(), timedata() {}
 
   T &fun(T &res, int t) {
     ++call;
@@ -78,7 +79,7 @@ BOOST_AUTO_TEST_CASE(normal_cst_test) {
 
   try {
     sigNotPlug.getPtr();
-  } catch (ExceptionSignal e) {
+  } catch (ExceptionSignal &e) {
     cout << "Error catch" << std::endl;
   }
 
@@ -102,7 +103,8 @@ BOOST_AUTO_TEST_CASE(normal_cst_test) {
   BOOST_CHECK(res);
 
   /// Test needUpdate without plug
-  res = sigNotPlug.needUpdate(5);
+  res = (sigNotPlug.needUpdate(5) == false);
+  BOOST_CHECK(res);
   sigNotPlug.getTime();
   output_test_stream output;
   sigNotPlug.display(output);
@@ -147,7 +149,7 @@ BOOST_AUTO_TEST_CASE(normal_test) {
   std::string test = "test";
   try {
     sig.getClassName(test);
-  } catch (ExceptionSignal e) {
+  } catch (ExceptionSignal &e) {
     e.getExceptionName();
   }
   BOOST_CHECK(true);
