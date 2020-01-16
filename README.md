@@ -3,7 +3,7 @@ dynamic-graph
 
 [![Building status](https://gepgitlab.laas.fr/stack-of-tasks/dynamic-graph/badges/master/pipeline.svg)](https://gepgitlab.laas.fr/stack-of-tasks/dynamic-graph/commits/master)
 [![Coverage report](https://gepgitlab.laas.fr/stack-of-tasks/dynamic-graph/badges/master/coverage.svg?job=doc-coverage)](http://projects.laas.fr/stack-of-tasks/doc/stack-of-tasks/dynamic-graph/master/coverage/)
-[![License](https://opensource.org/licenses/BSD-2-Clause"><img src="https://img.shields.io/badge/License-BSD%202--Clause-green.svg)](https://opensource.org/licenses/BSD-2-Clause"><img src="https://img.shields.io/badge/License-BSD%202--Clause-green.svg)
+[![License](https://img.shields.io/badge/License-BSD%202--Clause-green.svg)](https://opensource.org/licenses/BSD-2-Clause)
 
 This software provides an efficient way to modelize a C++ data-flow.
 
