@@ -12,10 +12,13 @@
 #include <dynamic-graph/linear-algebra.h>
 #include <string>
 #include <typeinfo>
+#include <vector>
 
 namespace dynamicgraph {
 namespace command {
 class Value;
+typedef std::vector<Value> Values;
+
 class DYNAMIC_GRAPH_DLLAPI EitherType {
 public:
   EitherType(const Value &value);
@@ -29,6 +32,7 @@ public:
   operator Vector() const;
   operator Eigen::MatrixXd() const;
   operator Eigen::Matrix4d() const;
+  operator Values() const;
 
 private:
   const Value *value_;
@@ -47,6 +51,7 @@ public:
     VECTOR,
     MATRIX,
     MATRIX4D,
+    VALUES,
     NB_TYPES
   };
   ~Value();
@@ -60,6 +65,7 @@ public:
   explicit Value(const Vector &value);
   explicit Value(const Eigen::MatrixXd &value);
   explicit Value(const Eigen::Matrix4d &value);
+  explicit Value(const Values &value);
   /// Copy constructor
   Value(const Value &value);
   // Construct an empty value (None)
@@ -99,6 +105,8 @@ public:
   Vector vectorValue() const;
   Eigen::MatrixXd matrixXdValue() const;
   Eigen::Matrix4d matrix4dValue() const;
+  Values valuesValue () const;
+  const Values &constValuesValue () const;
   Type type_;
   const void *const value_;
 };

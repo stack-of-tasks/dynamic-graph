@@ -351,3 +351,24 @@ BOOST_AUTO_TEST_CASE(value_matrix4d) {
                                 "  0   0   0   0"));
   }
 }
+
+BOOST_AUTO_TEST_CASE(value_values) {
+  using namespace dynamicgraph::command;
+
+  std::string s1("value #1");
+  double d1 = 0.3;
+
+  Value vs1(s1);
+  Value vd1(d1);
+
+  Values values;
+  values.push_back (vs1);
+  values.push_back (vd1);
+
+  Value vvalues (values);
+
+  BOOST_CHECK_EQUAL(vvalues.type(), Value::VALUES);
+
+  const Values& vs = vvalues.constValuesValue();
+  BOOST_CHECK_EQUAL(vs.size(), values.size());
+}

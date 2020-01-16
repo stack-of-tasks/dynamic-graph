@@ -29,6 +29,7 @@ EitherType::operator Vector() const { return value_->vectorValue(); }
 EitherType::operator Eigen::MatrixXd() const { return value_->matrixXdValue(); }
 
 EitherType::operator Eigen::Matrix4d() const { return value_->matrix4dValue(); }
+EitherType::operator Values() const { return value_->valuesValue(); }
 
 void Value::deleteValue() {
   switch (type_) {
@@ -59,6 +60,9 @@ void Value::deleteValue() {
   case MATRIX4D:
     delete (const Eigen::Matrix4d *)value_;
     break;
+  case VALUES:
+    delete (const Values *)value_;
+    break;
   default:;
   }
 }
@@ -78,6 +82,8 @@ Value::Value(const Eigen::MatrixXd &value)
     : type_(MATRIX), value_(new Eigen::MatrixXd(value)) {}
 Value::Value(const Eigen::Matrix4d &value)
     : type_(MATRIX4D), value_(new Eigen::Matrix4d(value)) {}
+Value::Value(const Values &value)
+    : type_(VALUES), value_(new Values(value)) {}
 
 Value::Value(const Value &value)
     : type_(value.type_), value_(copyValue(value)) {}
@@ -115,6 +121,9 @@ void *copyValue(const Value &value) {
     break;
   case Value::MATRIX4D:
     copy = new Eigen::Matrix4d(value.matrix4dValue());
+    break;
+  case Value::VALUES:
+    copy = new Values(value.valuesValue());
     break;
   default:
     abort();
@@ -200,6 +209,20 @@ Eigen::Matrix4d Value::matrix4dValue() const {
                           "value is not a Eigen matrix4d");
 }
 
+Values Value::valuesValue() const {
+  if (type_ == VALUES)
+    return *((const Values *)value_);
+  throw ExceptionAbstract(ExceptionAbstract::TOOLS,
+                          "value is not a vector of Value");
+}
+
+const Values &Value::constValuesValue() const {
+  if (type_ == VALUES)
+    return *((const Values *)value_);
+  throw ExceptionAbstract(ExceptionAbstract::TOOLS,
+                          "value is not a vector of Value");
+}
+
 std::string Value::typeName(Type type) {
   switch (type) {
   case BOOL:
@@ -220,6 +243,8 @@ std::string Value::typeName(Type type) {
     return std::string("matrixXd");
   case MATRIX4D:
     return std::string("matrix4d");
+  case VALUES:
+    return std::string("values");
   default:
     return std::string("unknown");
   }
@@ -255,6 +280,15 @@ std::ostream &operator<<(std::ostream &os, const Value &value) {
   case Value::MATRIX4D:
     os << value.matrix4dValue();
     break;
+  case Value::VALUES:
+    {
+      const std::vector<Value>& vals = value.constValuesValue();
+      os << "[ ";
+      for (std::size_t i = 0; i < vals.size(); ++i)
+        os << "Value(" << vals[i] << "), ";
+      os << "]";
+    }
+    break;
   default:
     return os;
   }
@@ -272,6 +306,7 @@ template <>
 const Value::Type ValueHelper<Eigen::MatrixXd>::TypeID = Value::MATRIX;
 template <>
 const Value::Type ValueHelper<Eigen::Matrix4d>::TypeID = Value::MATRIX4D;
+template <> const Value::Type ValueHelper<Values>::TypeID = Value::VALUES;
 
 } // namespace command
 } // namespace dynamicgraph
