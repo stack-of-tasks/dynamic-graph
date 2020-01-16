@@ -371,4 +371,5 @@ BOOST_AUTO_TEST_CASE(value_values) {
 
   const Values& vs = vvalues.constValuesValue();
   BOOST_CHECK_EQUAL(vs.size(), values.size());
+  BOOST_CHECK(vs == values);
 }
