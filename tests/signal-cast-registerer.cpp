@@ -214,6 +214,13 @@ BOOST_AUTO_TEST_CASE(custom_vector_registerer) {
   } catch (ExceptionSignal &e) {
     std::cout << "Test passed : ss[-1] != \")\"";
   }
+
+  try {
+    output_test_stream output;
+    myVectorSignal.trace(output);
+  } catch (ExceptionSignal &e) {
+    std::cout << "Test passed : ss[-1] != \")\"";
+  }
 }
 
 BOOST_AUTO_TEST_CASE(custom_matrix_registerer) {

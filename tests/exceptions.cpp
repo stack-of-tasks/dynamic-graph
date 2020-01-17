@@ -15,7 +15,19 @@
 using boost::test_tools::output_test_stream;
 using namespace dynamicgraph;
 
+BOOST_AUTO_TEST_CASE(exception_abstract_param) {
+
+  /// Test param from Exception
+  /// Default constructor
+  ExceptionAbstract::Param aParamSimple;
+  /// Advanced constructor
+  ExceptionAbstract::Param aParam(60, "function_test", "my_file");
+  aParamSimple.initCopy(aParam);
+}
+
 BOOST_AUTO_TEST_CASE(exception_abstract) {
+
+  /// Test exception abstract with a simple message
   std::string msg_aea("Test exception abstract");
   ExceptionAbstract aEA(10, msg_aea);
 
@@ -27,9 +39,22 @@ BOOST_AUTO_TEST_CASE(exception_abstract) {
   output << aEA;
   BOOST_CHECK(
       output.is_equal("AbstractError [#10]:  Test exception abstract\n"));
+}
 
-  std::string msg_aet("Test exception abstract");
+BOOST_AUTO_TEST_CASE(exception_traces) {
+
+  std::string msg_aet("Test exception traces simple");
   ExceptionTraces aET(ExceptionTraces::GENERIC, msg_aet);
-
+  output_test_stream output;
   output << aET;
+  BOOST_CHECK(
+      output.is_equal("TracesError [#300]:  Test exception traces simple\n"));
+
+  /// Test exception traces with a format.
+  int a = 2, b = 3;
+  std::string msg_aet2("Test exception traces ");
+  ExceptionTraces aET2(ExceptionTraces::GENERIC, msg_aet2, "(%d,%d)", a, b);
+  output << aET2;
+  BOOST_CHECK(
+      output.is_equal("TracesError [#300]:  Test exception traces (2,3)\n"));
 }

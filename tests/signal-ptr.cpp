@@ -155,6 +155,7 @@ BOOST_AUTO_TEST_CASE(normal_test) {
   BOOST_CHECK(true);
 
   sigPtrA.setFunction(boost::bind(&DummyClass<double>::fun, &pro3, _1, _2));
+  sigPtrA.recompute(3);
 
   /// Plugging signal.
   SignalBase<int> &sigRef = sig, sigBase("sigBase");
@@ -261,6 +262,9 @@ BOOST_AUTO_TEST_CASE(plug_signal_string) {
   Signal<std::string, int> outSig("output");
   SignalPtr<std::string, int> inSig(NULL, "input");
 
+  Signal<dynamicgraph::Vector, int> outSigVec("outputVec");
+  SignalPtr<dynamicgraph::Vector, int> inSigVec(NULL, "inputVec");
+
   std::string str("two words");
   outSig.setConstant(str);
   inSig.plug(&outSig);
@@ -269,6 +273,20 @@ BOOST_AUTO_TEST_CASE(plug_signal_string) {
   inSig.get(os1);
   std::string res(os1.str());
   BOOST_CHECK(res == str);
+
+  dynamicgraph::Vector aVec;
+  aVec.resize(5);
+  aVec(0) = 1.0;
+  aVec(1) = 2.0;
+  aVec(2) = 3.0;
+  aVec(3) = 4.0;
+  aVec(4) = 5.0;
+  outSigVec.setConstant(aVec);
+  inSigVec.plug(&outSigVec);
+  inSigVec.recompute(1);
+  output_test_stream output;
+  inSigVec.get(output);
+  BOOST_CHECK(output.is_equal("1\n2\n3\n4\n5\n"));
 
   Signal<std::string, int> s("signal");
   std::ostringstream os2;

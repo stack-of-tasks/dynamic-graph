@@ -64,7 +64,6 @@ BOOST_AUTO_TEST_CASE(value_exceptions) {
   bool res = false;
   try {
     int aInt(anet);
-    output << aInt;
   } catch (const dg::ExceptionAbstract &aea) {
     output << aea.getExceptionName();
     output2 << aea.what();
@@ -79,7 +78,6 @@ BOOST_AUTO_TEST_CASE(value_exceptions) {
   res = false;
   try {
     bool abool(anet);
-    output << abool;
   } catch (const dg::ExceptionAbstract &aea) {
     res = (aea.getCode() == dg::ExceptionAbstract::TOOLS);
   }
@@ -90,7 +88,6 @@ BOOST_AUTO_TEST_CASE(value_exceptions) {
   res = false;
   try {
     unsigned int aint(anet);
-    output << aint;
   } catch (const dg::ExceptionAbstract &aea) {
     res = (aea.getCode() == dg::ExceptionAbstract::TOOLS);
   }
@@ -101,7 +98,6 @@ BOOST_AUTO_TEST_CASE(value_exceptions) {
   res = false;
   try {
     double adouble(anet);
-    output << adouble;
   } catch (const dg::ExceptionAbstract &aea) {
     res = (aea.getCode() == dg::ExceptionAbstract::TOOLS);
   }
@@ -112,7 +108,6 @@ BOOST_AUTO_TEST_CASE(value_exceptions) {
   res = false;
   try {
     float afloat(anet);
-    output << afloat;
   } catch (const dg::ExceptionAbstract &aea) {
     res = (aea.getCode() == dg::ExceptionAbstract::TOOLS);
   }
@@ -123,7 +118,6 @@ BOOST_AUTO_TEST_CASE(value_exceptions) {
   res = false;
   try {
     std::string astring(anet);
-    output << astring;
   } catch (const dg::ExceptionAbstract &aea) {
     res = (aea.getCode() == dg::ExceptionAbstract::TOOLS);
   }
@@ -135,7 +129,6 @@ BOOST_AUTO_TEST_CASE(value_exceptions) {
   try {
     dg::Vector avector;
     avector = anet;
-    output << avector;
   } catch (const dg::ExceptionAbstract &aea) {
     res = (aea.getCode() == dg::ExceptionAbstract::TOOLS);
   }
@@ -147,7 +140,6 @@ BOOST_AUTO_TEST_CASE(value_exceptions) {
   try {
     Eigen::MatrixXd amatrixXd;
     amatrixXd = anet;
-    output << amatrixXd;
   } catch (const dg::ExceptionAbstract &aea) {
     res = (aea.getCode() == dg::ExceptionAbstract::TOOLS);
   }

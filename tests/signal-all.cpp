@@ -144,11 +144,55 @@ BOOST_AUTO_TEST_CASE(test_cast_helper) {
   iss.str("1");
   defaultCR.cast(iss);
 
+  bool res = false;
   try {
     std::istringstream iss_fail;
     iss.str("test");
     defaultCR.cast(iss_fail);
   } catch (ExceptionSignal &e) {
     // Take int, not string
+    res = true;
   }
+  BOOST_CHECK(res);
+
+  /// Test cast register with Vector
+  output_test_stream output;
+  dynamicgraph::Vector avec;
+  DefaultCastRegisterer<dynamicgraph::Vector> defaultVR;
+  avec.resize(4);
+  avec[0] = 1.0;
+  avec[1] = 2.0;
+  avec[2] = 3.0;
+  avec[3] = 4.0;
+  res = true;
+  try {
+    defaultVR.trace(avec, output);
+  } catch (ExceptionSignal &e) {
+    /// Exception in case of wrong cast.
+    /// This should not happen.
+    res = false;
+  }
+  BOOST_CHECK(res);
+
+  /// Test cast register with Matrix
+  dynamicgraph::Matrix amatrix;
+  DefaultCastRegisterer<dynamicgraph::Matrix> defaultMR;
+  amatrix.resize(2, 2);
+  amatrix(0, 0) = 0.0;
+  amatrix(0, 1) = 1.0;
+  amatrix(1, 0) = 2.0;
+  amatrix(1, 1) = 3.0;
+  res = true;
+  try {
+    defaultMR.trace(amatrix, output);
+  } catch (ExceptionSignal &e) {
+    /// Exception in case of wrong cast.
+    /// This should happen
+    res = false;
+  }
+  BOOST_CHECK(res);
+
+  std::istringstream aiss("test");
+  DefaultCastRegisterer<std::string> defaultSR;
+  boost::any aTest = defaultSR.cast(aiss);
 }
