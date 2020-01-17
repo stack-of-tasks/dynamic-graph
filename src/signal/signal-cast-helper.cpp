@@ -52,36 +52,6 @@ inline boost::any DefaultCastRegisterer<double>::cast(std::istringstream &iss) {
   }
 }
 
-/* Specialize Matrix and Vector traces. */
-
-template <>
-void DefaultCastRegisterer<dynamicgraph::Vector>::trace(
-    const boost::any &object, std::ostream &os) {
-  const dynamicgraph::Vector &v = boost::any_cast<dynamicgraph::Vector>(object);
-  for (int i = 0; i < v.size(); ++i) {
-    os << "\t" << v(i);
-  }
-}
-
-template <>
-void DefaultCastRegisterer<dynamicgraph::Matrix>::trace(
-    const boost::any &object, std::ostream &os) {
-  const dynamicgraph::Matrix &m = boost::any_cast<dynamicgraph::Matrix>(object);
-  for (int i = 0; i < m.rows(); ++i)
-    for (int j = 0; j < m.cols(); ++j) {
-      os << "\t" << m(i, j);
-    }
-}
-
-// for std::string, do not check failure. If input stream contains an
-// empty string, iss.fail() returns true and an exception is thrown
-template <>
-inline boost::any
-DefaultCastRegisterer<std::string>::cast(std::istringstream &iss) {
-  std::string inst(iss.str());
-  return inst;
-}
-
 // for std::string, do not add std::endl at the end of the stream.
 template <>
 inline void DefaultCastRegisterer<std::string>::disp(const boost::any &object,
