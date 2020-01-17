@@ -42,12 +42,6 @@ struct MyEntity : public dynamicgraph::Entity {
     signalRegistration(m_sigdSIN << m_sigdTimeDepSOUT << m_sigdTwoTimeDepSOUT);
   }
 
-  virtual void display(std::ostream &os) const {
-    os << "Hello! My name is " << getName() << " !" << std::endl;
-  }
-
-  virtual const std::string &getClassName() const { return CLASS_NAME; }
-
   double &update(double &res, const int &inTime) {
     const double &aDouble = m_sigdSIN(inTime);
     res = aDouble;
@@ -64,8 +58,8 @@ BOOST_AUTO_TEST_CASE(test_tracer) {
   TracerRealTime &atracer = *dynamic_cast<TracerRealTime *>(
       FactoryStorage::getInstance()->newEntity("TracerRealTime", "my-tracer"));
 
-  Entity &entity =
-      *FactoryStorage::getInstance()->newEntity("MyEntity", "my-entity");
+  MyEntity &entity = *dynamic_cast<MyEntity *>(
+      FactoryStorage::getInstance()->newEntity("MyEntity", "my-entity"));
 
   std::string rootdir("/tmp");
   std::string basename("my-tracer");
@@ -79,6 +73,8 @@ BOOST_AUTO_TEST_CASE(test_tracer) {
 
   /// Add trace by name
   SignalBase<int> &aSignal = entity.getSignal("out2double");
+
+  entity.m_sigdTwoTimeDepSOUT.recompute(2);
 
   Signal<double, int> &aSignalInt =
       *(dynamic_cast<Signal<double, int> *>(&entity.getSignal("in_double")));

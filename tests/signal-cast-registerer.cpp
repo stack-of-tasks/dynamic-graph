@@ -139,6 +139,15 @@ BOOST_AUTO_TEST_CASE(standard_double_registerer) {
 BOOST_AUTO_TEST_CASE(custom_vector_registerer) {
   dynamicgraph::Signal<dynamicgraph::Vector, int> myVectorSignal("vector");
 
+  /// Create a second local vector registerer to generate an exception.
+  bool res = false;
+  try {
+    EigenCastRegisterer_V myVectorCast2;
+  } catch (const ExceptionSignal &aes) {
+    res = (aes.getCode() == ExceptionSignal::GENERIC);
+  }
+  //  BOOST_CHECK(res);
+
   // Print the signal name.
   {
     output_test_stream output;

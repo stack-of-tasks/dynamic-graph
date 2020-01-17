@@ -13,6 +13,7 @@
 #include <assert.h>
 #include <boost/test/output_test_stream.hpp>
 #include <boost/test/unit_test.hpp>
+#include <iostream>
 
 #define BOOST_TEST_MODULE signal_array
 
@@ -195,4 +196,21 @@ BOOST_AUTO_TEST_CASE(test_cast_helper) {
   std::istringstream aiss("test");
   DefaultCastRegisterer<std::string> defaultSR;
   boost::any aTest = defaultSR.cast(aiss);
+}
+
+BOOST_AUTO_TEST_CASE(signal_caster_basics) {
+  /// Get the singleton on registered types.
+  SignalCaster *asig_caster = SignalCaster::getInstance();
+
+  /// List the registered types.
+  std::vector<std::string> amap = asig_caster->listTypenames();
+  for (std::vector<std::string>::iterator it = amap.begin(); it != amap.end();
+       ++it)
+    std::cout << "signal_caster:listTypename: " << *it << std::endl;
+
+  /// Unregister a type
+  asig_caster->unregisterCast(typeid(double));
+
+  asig_caster->destroy();
+  BOOST_CHECK(true);
 }
