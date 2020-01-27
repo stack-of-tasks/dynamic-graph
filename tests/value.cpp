@@ -19,6 +19,10 @@ BOOST_AUTO_TEST_CASE(value_none) {
 
   Value value1;
   Value value(value1);
+
+  // Similar to NaN != NaN
+  BOOST_CHECK(!(value1 == value));
+
   {
     output_test_stream output;
     output << value1;
@@ -32,6 +36,8 @@ BOOST_AUTO_TEST_CASE(value_bool) {
   bool abool1(false);
   Value value1(abool1);
   Value value = value1;
+
+  BOOST_CHECK(value1 == value);
 
   {
     output_test_stream output;
@@ -166,6 +172,8 @@ BOOST_AUTO_TEST_CASE(value_unsigned_int) {
   Value value1(aint1);
   Value value = value1;
 
+  BOOST_CHECK(value1 == value);
+
   {
     output_test_stream output;
     output << value1;
@@ -185,6 +193,8 @@ BOOST_AUTO_TEST_CASE(value_int) {
   int aint1(5);
   Value value1(aint1);
   Value value = value1;
+
+  BOOST_CHECK(value1 == value);
 
   {
     output_test_stream output;
@@ -206,6 +216,8 @@ BOOST_AUTO_TEST_CASE(value_float) {
   Value value1(afloat1);
   Value value = value1;
 
+  BOOST_CHECK(value1 == value);
+
   {
     output_test_stream output;
     output << value1;
@@ -225,6 +237,8 @@ BOOST_AUTO_TEST_CASE(value_double) {
   double adouble1(0.5);
   Value value1(adouble1);
   Value value = value1;
+
+  BOOST_CHECK(value1 == value);
 
   {
     output_test_stream output;
@@ -249,6 +263,8 @@ BOOST_AUTO_TEST_CASE(value_vector) {
   Value value1(avector1);
   Value value = value1;
 
+  BOOST_CHECK(value1 == value);
+
   {
     output_test_stream output;
     output << value1;
@@ -268,6 +284,8 @@ BOOST_AUTO_TEST_CASE(value_string) {
   std::string str1("value #1");
   Value value1(str1);
   Value value = value1;
+
+  BOOST_CHECK(value1 == value);
 
   {
     output_test_stream output;
@@ -310,6 +328,8 @@ BOOST_AUTO_TEST_CASE(value_matrixXd) {
   Value value1(avector1);
   Value value = value1;
 
+  BOOST_CHECK(value1 == value);
+
   {
     output_test_stream output;
     output << value1;
@@ -334,6 +354,8 @@ BOOST_AUTO_TEST_CASE(value_matrix4d) {
   avector1(1, 1) = 3.5;
   Value value1(avector1);
   Value value = value1;
+
+  BOOST_CHECK(value1 == value);
 
   {
     output_test_stream output;
@@ -369,7 +391,28 @@ BOOST_AUTO_TEST_CASE(value_values) {
 
   BOOST_CHECK_EQUAL(vvalues.type(), Value::VALUES);
 
-  const Values& vs = vvalues.constValuesValue();
-  BOOST_CHECK_EQUAL(vs.size(), values.size());
-  BOOST_CHECK(vs == values);
+  { // Const ref
+    const Values& vs = vvalues.constValuesValue();
+    BOOST_CHECK_EQUAL(vs.size(), values.size());
+    BOOST_CHECK(vs == values);
+  }
+  { // Cast does not work.
+    //dg::command::EitherType eitherType (vvalues);
+    //Values vs = static_cast<Values>(eitherType);
+    //BOOST_CHECK_EQUAL(vs.size(), values.size());
+    //BOOST_CHECK(vs == values);
+  }
+  { // Constructor
+    Value vvs (vvalues);
+    BOOST_CHECK(vvs == vvalues);
+  }
+
+  {
+    output_test_stream output;
+    output << vvalues;
+    BOOST_CHECK(output.is_equal("Type=values, value=[ "
+                                "Value(Type=string, value=value #1), "
+                                "Value(Type=double, value=0.3), "
+                                "]"));
+  }
 }
