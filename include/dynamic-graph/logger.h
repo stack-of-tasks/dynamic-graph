@@ -191,25 +191,7 @@ public:
    * to decrement the internal Logger's counter. */
   void countdown();
 
-  /** Check whether next message should be accepted.
-   * \note See Logger::stream to see how to use it.
-   *       This will modify the counter associated to lineId as if it was
-   *       published. It should thus be used in conjunction with Logger::stream.
-   */
-  bool acceptMsg (MsgType m, const std::string& lineId) {
-    if ((m & MSG_TYPE_TYPE_BITS) < m_lv)
-      return false;
-
-    // if print is allowed by current verbosity level
-    if (isStreamMsg(m)) return checkStreamPeriod(lineId);
-    return true;
-  }
-
-  /** The most efficient logging method is
-   * \code
-   *   if (logger.acceptMsg(type, lineId))
-   *     logger.stream() << "my message\n";
-   * \endcode
+  /** Get an output stream independently of the debug level.
    */
   RTLoggerStream stream() {
     return ::dynamicgraph::RealTimeLogger::instance().emptyStream();
@@ -272,22 +254,22 @@ protected:
     return (m & MSG_TYPE_STREAM_BIT);
   }
 
-  bool isDebugMsg(MsgType m) {
-    return m == MSG_TYPE_DEBUG_STREAM || m == MSG_TYPE_DEBUG;
+  /** Check whether a message of type \m and from \c lineId should be accepted.
+   *  \note If \c is a stream type, the internal counter associated to \c lineId
+   *        is updated.
+   */
+  bool acceptMsg (MsgType m, const std::string& lineId) {
+    if ((m & MSG_TYPE_TYPE_BITS) < m_lv)
+      return false;
+
+    // if print is allowed by current verbosity level
+    if (isStreamMsg(m)) return checkStreamPeriod(lineId);
+    return true;
   }
 
-  bool isInfoMsg(MsgType m) {
-    return m == MSG_TYPE_INFO_STREAM || m == MSG_TYPE_INFO;
-  }
-
-  bool isWarningMsg(MsgType m) {
-    return m == MSG_TYPE_WARNING_STREAM || m == MSG_TYPE_WARNING;
-  }
-
-  bool isErrorMsg(MsgType m) {
-    return m == MSG_TYPE_ERROR_STREAM || m == MSG_TYPE_ERROR;
-  }
-
+  /** Check whether a message from \c lineId should be accepted.
+   *  \note The internal counter associated to \c lineId is updated.
+   */
   bool checkStreamPeriod (const std::string& lineId);
 };
 
