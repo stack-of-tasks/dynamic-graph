@@ -31,38 +31,86 @@ public:
   explicit CustomEntity(const std::string &n) : Entity(n) {
     logger_.setTimeSample(0.001);
     logger_.setStreamPrintPeriod(0.005);
+
+    logger_.setVerbosity(VERBOSITY_NONE);
+    BOOST_CHECK_EQUAL(logger_.getVerbosity(), VERBOSITY_NONE);
+    BOOST_CHECK( logger_.stream(MSG_TYPE_DEBUG  ).isNull());
+    BOOST_CHECK( logger_.stream(MSG_TYPE_INFO   ).isNull());
+    BOOST_CHECK( logger_.stream(MSG_TYPE_WARNING).isNull());
+    BOOST_CHECK( logger_.stream(MSG_TYPE_ERROR  ).isNull());
+
+    logger_.setVerbosity(VERBOSITY_ERROR);
+    BOOST_CHECK_EQUAL(logger_.getVerbosity(), VERBOSITY_ERROR);
+    BOOST_CHECK( logger_.stream(MSG_TYPE_DEBUG  ).isNull());
+    BOOST_CHECK( logger_.stream(MSG_TYPE_INFO   ).isNull());
+    BOOST_CHECK( logger_.stream(MSG_TYPE_WARNING).isNull());
+    BOOST_CHECK(!logger_.stream(MSG_TYPE_ERROR  ).isNull());
+
+    logger_.setVerbosity(VERBOSITY_WARNING_ERROR);
+    BOOST_CHECK_EQUAL(logger_.getVerbosity(), VERBOSITY_WARNING_ERROR);
+    BOOST_CHECK( logger_.stream(MSG_TYPE_DEBUG  ).isNull());
+    BOOST_CHECK( logger_.stream(MSG_TYPE_INFO   ).isNull());
+    BOOST_CHECK(!logger_.stream(MSG_TYPE_WARNING).isNull());
+    BOOST_CHECK(!logger_.stream(MSG_TYPE_ERROR  ).isNull());
+
+    logger_.setVerbosity(VERBOSITY_INFO_WARNING_ERROR);
+    BOOST_CHECK_EQUAL(logger_.getVerbosity(), VERBOSITY_INFO_WARNING_ERROR);
+    BOOST_CHECK( logger_.stream(MSG_TYPE_DEBUG  ).isNull());
+    BOOST_CHECK(!logger_.stream(MSG_TYPE_INFO   ).isNull());
+    BOOST_CHECK(!logger_.stream(MSG_TYPE_WARNING).isNull());
+    BOOST_CHECK(!logger_.stream(MSG_TYPE_ERROR  ).isNull());
+
     logger_.setVerbosity(VERBOSITY_ALL);
-    LoggerVerbosity alv = logger_.getVerbosity();
-    BOOST_CHECK(alv == VERBOSITY_ALL);
+    BOOST_CHECK_EQUAL(logger_.getVerbosity(), VERBOSITY_ALL);
+    BOOST_CHECK(!logger_.stream(MSG_TYPE_DEBUG  ).isNull());
+    BOOST_CHECK(!logger_.stream(MSG_TYPE_INFO   ).isNull());
+    BOOST_CHECK(!logger_.stream(MSG_TYPE_WARNING).isNull());
+    BOOST_CHECK(!logger_.stream(MSG_TYPE_ERROR  ).isNull());
   }
 
   ~CustomEntity() {}
   void testDebugTrace() {
-    sendMsg("This is a message of level MSG_TYPE_DEBUG", MSG_TYPE_DEBUG);
-    sendMsg("This is a message of level MSG_TYPE_INFO", MSG_TYPE_INFO);
-    sendMsg("This is a message of level MSG_TYPE_WARNING", MSG_TYPE_WARNING);
-    sendMsg("This is a message of level MSG_TYPE_ERROR", MSG_TYPE_ERROR);
-    sendMsg("This is a message of level MSG_TYPE_DEBUG_STREAM",
-            MSG_TYPE_DEBUG_STREAM);
-    sendMsg("This is a message of level MSG_TYPE_INFO_STREAM",
-            MSG_TYPE_INFO_STREAM);
-    sendMsg("This is a message of level MSG_TYPE_WARNING_STREAM",
-            MSG_TYPE_WARNING_STREAM);
-    sendMsg("This is a message of level MSG_TYPE_ERROR_STREAM",
-            MSG_TYPE_ERROR_STREAM);
+    logger_.stream(MSG_TYPE_DEBUG)
+      << "This is a message of level MSG_TYPE_DEBUG\n";
+    dynamicgraph::RealTimeLogger::instance().spinOnce();
+    logger_.stream(MSG_TYPE_INFO)
+      << "This is a message of level MSG_TYPE_INFO\n";
+    dynamicgraph::RealTimeLogger::instance().spinOnce();
+    logger_.stream(MSG_TYPE_WARNING)
+      << "This is a message of level MSG_TYPE_WARNING\n";
+    dynamicgraph::RealTimeLogger::instance().spinOnce();
+    logger_.stream(MSG_TYPE_ERROR)
+      << "This is a message of level MSG_TYPE_ERROR\n";
+    dynamicgraph::RealTimeLogger::instance().spinOnce();
+    logger_.stream(MSG_TYPE_DEBUG_STREAM)
+      << "This is a message of level MSG_TYPE_DEBUG_STREAM\n";
+    dynamicgraph::RealTimeLogger::instance().spinOnce();
+    logger_.stream(MSG_TYPE_INFO_STREAM)
+      << "This is a message of level MSG_TYPE_INFO_STREAM\n";
+    dynamicgraph::RealTimeLogger::instance().spinOnce();
+    logger_.stream(MSG_TYPE_WARNING_STREAM)
+      << "This is a message of level MSG_TYPE_WARNING_STREAM\n";
+    dynamicgraph::RealTimeLogger::instance().spinOnce();
+    logger_.stream(MSG_TYPE_ERROR_STREAM)
+      << "This is a message of level MSG_TYPE_ERROR_STREAM\n";
     /* Add test toString */
+    dynamicgraph::RealTimeLogger::instance().spinOnce();
     double q = 1.0;
-    sendMsg("Value to display: " + toString(q));
+    logger_.stream() << "Value to display: " + toString(q) << '\n';
+    dynamicgraph::RealTimeLogger::instance().spinOnce();
     std::vector<double> vq;
     vq.resize(3);
     vq[0] = 1.0;
     vq[1] = 2.0;
     vq[2] = 3.0;
-    sendMsg("Value to display: " + toString(vq));
-    sendMsg("Value to display: " + toString(vq, 3, 10));
+    logger_.stream(MSG_TYPE_INFO) << "Value to display: " << toString(vq) << '\n';
+    dynamicgraph::RealTimeLogger::instance().spinOnce();
+    logger_.stream(MSG_TYPE_INFO) << "Value to display: " << toString(vq, 3, 10) << '\n';
+    dynamicgraph::RealTimeLogger::instance().spinOnce();
     Eigen::Matrix<double, 3, 3> an_eig_m;
-    an_eig_m.Ones();
-    sendMsg("Value to display: " + toString(an_eig_m));
+    an_eig_m.setOnes();
+    logger_.stream(MSG_TYPE_INFO) << "Value to display: " << toString(an_eig_m) << '\n';
+    dynamicgraph::RealTimeLogger::instance().spinOnce();
     logger_.countdown();
   }
 };
@@ -84,8 +132,8 @@ BOOST_AUTO_TEST_CASE(debug_logger) {
 
   entity.setTimeSample(0.002);
   BOOST_CHECK_EQUAL(entity.getTimeSample(), 0.002);
-  entity.setStreamPrintPeriod(0.004);
-  BOOST_CHECK_EQUAL(entity.getStreamPrintPeriod(), 0.004);
+  entity.setStreamPrintPeriod(0.002);
+  BOOST_CHECK_EQUAL(entity.getStreamPrintPeriod(), 0.002);
 
   for (unsigned int i = 0; i < 10000; i++) {
     entity.testDebugTrace();

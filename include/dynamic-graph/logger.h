@@ -27,17 +27,17 @@ namespace dynamicgraph {
 /** Enum representing the different kind of messages.
  */
 enum MsgType {
-  MSG_TYPE_TYPE_BITS      = 1<<0 | 1<<1 | 1<<2 | 1<<3, // 15
-  MSG_TYPE_STREAM_BIT     = 1<<4,                      // 16
+  MSG_TYPE_TYPE_BITS      = 1<<0 | 1<<1 | 1<<2 | 1<<3,                // 15
+  MSG_TYPE_STREAM_BIT     = 1<<4,                                     // 16
 
-  MSG_TYPE_DEBUG          = 1<<0,                      // 1
-  MSG_TYPE_INFO           = 1<<1,                      // 2
-  MSG_TYPE_WARNING        = 1<<2,                      // 4
-  MSG_TYPE_ERROR          = 1<<3,                      // 8
-  MSG_TYPE_DEBUG_STREAM   = MSG_TYPE_DEBUG   | 1<<4,   // 17
-  MSG_TYPE_INFO_STREAM    = MSG_TYPE_INFO    | 1<<4,   // 18
-  MSG_TYPE_WARNING_STREAM = MSG_TYPE_WARNING | 1<<4,   // 20
-  MSG_TYPE_ERROR_STREAM   = MSG_TYPE_ERROR   | 1<<4    // 24
+  MSG_TYPE_DEBUG          = 1<<3,                                     // 1
+  MSG_TYPE_INFO           = 1<<2,                                     // 2
+  MSG_TYPE_WARNING        = 1<<1,                                     // 4
+  MSG_TYPE_ERROR          = 1<<0,                                     // 8
+  MSG_TYPE_DEBUG_STREAM   = MSG_TYPE_DEBUG   | MSG_TYPE_STREAM_BIT,   // 17
+  MSG_TYPE_INFO_STREAM    = MSG_TYPE_INFO    | MSG_TYPE_STREAM_BIT,   // 18
+  MSG_TYPE_WARNING_STREAM = MSG_TYPE_WARNING | MSG_TYPE_STREAM_BIT,   // 20
+  MSG_TYPE_ERROR_STREAM   = MSG_TYPE_ERROR   | MSG_TYPE_STREAM_BIT    // 24
 };
 } // namespace dynamicgraph
 
@@ -182,7 +182,9 @@ enum LoggerVerbosity {
 ///
 /// \endcode
 ///
-///
+/// \todo remove m_timeSample and streamPrintPeriod to rather use a simple
+///       integer counting the number of calls. This will achieve exactly the
+///       same behaviour without rouding numerical errors.
 class Logger {
 public:
   /** Constructor */
@@ -198,7 +200,7 @@ public:
   /** Get an output stream independently of the debug level.
    */
   RTLoggerStream stream() {
-    return ::dynamicgraph::RealTimeLogger::instance().emptyStream();
+    return ::dynamicgraph::RealTimeLogger::instance().front();
   }
 
   /** Print the specified message on standard output if the verbosity level
@@ -271,7 +273,8 @@ protected:
    *        is updated.
    */
   bool acceptMsg (MsgType m, const std::string& lineId) {
-    if ((m & MSG_TYPE_TYPE_BITS) < m_lv)
+    // If more verbose than the current verbosity level
+    if ((m & MSG_TYPE_TYPE_BITS) > m_lv)
       return false;
 
     // if print is allowed by current verbosity level
