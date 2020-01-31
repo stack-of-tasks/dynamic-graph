@@ -22,8 +22,6 @@
 
 namespace dynamicgraph {
 
-using namespace std;
-
 Logger::Logger(double timeSample, double streamPrintPeriod)
     : m_timeSample(timeSample), m_streamPrintPeriod(streamPrintPeriod),
       m_printCountdown(0.0) {
@@ -41,38 +39,8 @@ void Logger::countdown() {
   m_printCountdown -= m_timeSample;
 }
 
-void Logger::sendMsg(string msg, MsgType type, const char *file, int line) {
-  if (m_lv == VERBOSITY_NONE ||
-      (m_lv == VERBOSITY_ERROR && !isErrorMsg(type)) ||
-      (m_lv == VERBOSITY_WARNING_ERROR &&
-       !(isWarningMsg(type) || isErrorMsg(type))) ||
-      (m_lv == VERBOSITY_INFO_WARNING_ERROR && isDebugMsg(type)))
-    return;
-
-  // if print is allowed by current verbosity level
-  if (isStreamMsg(type)) {
-    // check whether counter already exists
-    std::ostringstream oss;
-    oss << file << line;
-    std::string id(oss.str());
-    map<string, double>::iterator it = m_stream_msg_counters.find(id);
-    if (it == m_stream_msg_counters.end()) {
-      // if counter doesn't exist then add one
-      m_stream_msg_counters.insert(make_pair(id, 0.0));
-      it = m_stream_msg_counters.find(id);
-    }
-
-    // if counter is greater than 0 then decrement it and do not print
-    if (it->second > 0.0) {
-      it->second -= m_timeSample;
-      if (it->second <= 0.0)
-        it->second = m_streamPrintPeriod;
-      else
-        return;
-    } else // otherwise reset counter and print
-      it->second = m_streamPrintPeriod;
-  }
-  dgRTLOG() << msg.c_str() << "\n";
+void Logger::sendMsg(std::string msg, MsgType type, const std::string &lineId) {
+  stream(type, lineId) << msg << '\n';
 }
 
 bool Logger::setTimeSample(double t) {
@@ -92,4 +60,21 @@ bool Logger::setStreamPrintPeriod(double s) {
 double Logger::getTimeSample() { return m_timeSample; }
 
 double Logger::getStreamPrintPeriod() { return m_streamPrintPeriod; }
+
+bool Logger::checkStreamPeriod(const std::string &lineId) {
+  // insert element with value 0 if it does not exist.
+  // otherwise, return a counter to the existing one.
+  std::pair<StreamCounterMap_t::iterator, bool> result =
+      m_stream_msg_counters.insert(std::make_pair(lineId, 0.));
+
+  // if counter is greater than 0 then decrement it and do not print
+  double &counter = result.first->second;
+  if (counter > 0.0) {
+    counter -= m_timeSample;
+    return false;
+  } else // otherwise reset counter and print
+    counter = m_streamPrintPeriod;
+  return true;
+}
+
 } // namespace dynamicgraph

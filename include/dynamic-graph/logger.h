@@ -27,14 +27,17 @@ namespace dynamicgraph {
 /** Enum representing the different kind of messages.
  */
 enum MsgType {
-  MSG_TYPE_DEBUG = 0,
-  MSG_TYPE_INFO = 1,
-  MSG_TYPE_WARNING = 2,
-  MSG_TYPE_ERROR = 3,
-  MSG_TYPE_DEBUG_STREAM = 4,
-  MSG_TYPE_INFO_STREAM = 5,
-  MSG_TYPE_WARNING_STREAM = 6,
-  MSG_TYPE_ERROR_STREAM = 7
+  MSG_TYPE_TYPE_BITS      = 1<<0 | 1<<1 | 1<<2 | 1<<3, // 15
+  MSG_TYPE_STREAM_BIT     = 1<<4,                      // 16
+
+  MSG_TYPE_DEBUG          = 1<<0,                      // 1
+  MSG_TYPE_INFO           = 1<<1,                      // 2
+  MSG_TYPE_WARNING        = 1<<2,                      // 4
+  MSG_TYPE_ERROR          = 1<<3,                      // 8
+  MSG_TYPE_DEBUG_STREAM   = MSG_TYPE_DEBUG   | 1<<4,   // 17
+  MSG_TYPE_INFO_STREAM    = MSG_TYPE_INFO    | 1<<4,   // 18
+  MSG_TYPE_WARNING_STREAM = MSG_TYPE_WARNING | 1<<4,   // 20
+  MSG_TYPE_ERROR_STREAM   = MSG_TYPE_ERROR   | 1<<4    // 24
 };
 } // namespace dynamicgraph
 
@@ -42,8 +45,10 @@ enum MsgType {
 /* --- INCLUDE --------------------------------------------------------- */
 /* --------------------------------------------------------------------- */
 
-#include "boost/assign.hpp"
+#include <boost/assign.hpp>
+#include <boost/preprocessor/stringize.hpp>
 #include <dynamic-graph/linear-algebra.h>
+#include <dynamic-graph/real-time-logger-def.h>
 #include <fstream>
 #include <iomanip> // std::setprecision
 #include <map>
@@ -54,12 +59,35 @@ namespace dynamicgraph {
 //#define LOGGER_VERBOSITY_INFO_WARNING_ERROR
 #define LOGGER_VERBOSITY_ALL
 
-#define SEND_MSG(msg, type) sendMsg(msg, type, __FILE__, __LINE__)
+#define SEND_MSG(msg, type)                                                    \
+  sendMsg(msg, type, __FILE__ ":" BOOST_PP_STRINGIZE(__LINE__))
 
 #define SEND_DEBUG_STREAM_MSG(msg) SEND_MSG(msg, MSG_TYPE_DEBUG_STREAM)
 #define SEND_INFO_STREAM_MSG(msg) SEND_MSG(msg, MSG_TYPE_INFO_STREAM)
 #define SEND_WARNING_STREAM_MSG(msg) SEND_MSG(msg, MSG_TYPE_WARNING_STREAM)
 #define SEND_ERROR_STREAM_MSG(msg) SEND_MSG(msg, MSG_TYPE_ERROR_STREAM)
+
+#define _DYNAMIC_GRAPH_ENTITY_MSG(entity, type)                                \
+  (entity).logger().stream(type, __FILE__ BOOST_PP_STRINGIZE(__LINE__))
+
+#define DYNAMIC_GRAPH_ENTITY_DEBUG(entity)                                     \
+  _DYNAMIC_GRAPH_ENTITY_MSG(entity, MSG_TYPE_DEBUG)
+#define DYNAMIC_GRAPH_ENTITY_INFO(entity)                                      \
+  _DYNAMIC_GRAPH_ENTITY_MSG(entity, MSG_TYPE_INFO)
+#define DYNAMIC_GRAPH_ENTITY_WARNING(entity)                                   \
+  _DYNAMIC_GRAPH_ENTITY_MSG(entity, MSG_TYPE_WARNING)
+#define DYNAMIC_GRAPH_ENTITY_ERROR(entity)                                     \
+  _DYNAMIC_GRAPH_ENTITY_MSG(entity, MSG_TYPE_ERROR)
+
+#define DYNAMIC_GRAPH_ENTITY_DEBUG_STREAM(entity)                              \
+  _DYNAMIC_GRAPH_ENTITY_MSG(entity, MSG_TYPE_DEBUG_STREAM)
+#define DYNAMIC_GRAPH_ENTITY_INFO_STREAM(entity)                               \
+  _DYNAMIC_GRAPH_ENTITY_MSG(entity, MSG_TYPE_INFO_STREAM)
+#define DYNAMIC_GRAPH_ENTITY_WARNING_STREAM(entity)                            \
+  _DYNAMIC_GRAPH_ENTITY_MSG(entity, MSG_TYPE_WARNING_STREAM)
+#define DYNAMIC_GRAPH_ENTITY_ERROR_STREAM(entity)                              \
+  _DYNAMIC_GRAPH_ENTITY_MSG(entity, MSG_TYPE_ERROR_STREAM)
+
 
 template <typename T>
 std::string toString(const T &v, const int precision = 3,
@@ -111,11 +139,11 @@ std::string toString(const Eigen::MatrixBase<T> &v, const int precision = 3,
 }
 
 enum LoggerVerbosity {
-  VERBOSITY_ALL,
-  VERBOSITY_INFO_WARNING_ERROR,
-  VERBOSITY_WARNING_ERROR,
-  VERBOSITY_ERROR,
-  VERBOSITY_NONE
+  VERBOSITY_ALL                = MSG_TYPE_DEBUG,
+  VERBOSITY_INFO_WARNING_ERROR = MSG_TYPE_INFO,
+  VERBOSITY_WARNING_ERROR      = MSG_TYPE_WARNING,
+  VERBOSITY_ERROR              = MSG_TYPE_ERROR,
+  VERBOSITY_NONE               = 0
 };
 
 /// \ingroup debug
@@ -139,8 +167,14 @@ enum LoggerVerbosity {
 ///   VERBOSITY_WARNING_ERROR;
 /// entity.setLoggerVerbosityLevel(aLoggerVerbosityLevel);
 /// ...
-/// std::string aMsg=aBaseMsg+" WARNING";
-/// entity.sendMsg(aMsg,dynamicgraph::MSG_TYPE_WARNING, __FILE__,__LINE__);
+/// // using macros
+/// DYNAMIC_GRAPH_ENTITY_WARNING(entity) << "your message\n";
+///
+/// // or the equivalent code without macros:
+/// // Please use '\n' instead of std::endl and flushing will have no effect
+/// entity.logger.stream(dynamicgraph::MSG_TYPE_WARNING,
+///                      __FILE__ BOOST_PP_STRINGIZE(__LINE__))
+///   << your message << '\n';
 ///
 /// \endcode
 ///
@@ -157,13 +191,49 @@ public:
    * to decrement the internal Logger's counter. */
   void countdown();
 
-  /** Print the specified message on standard output if the verbosity level
-   * allows it. The file name and the line number are used to identify
-   * the point where sendMsg is called so that streaming messages are
-   * printed only every streamPrintPeriod iterations.
+  /** Check whether next message should be accepted.
+   * \note See Logger::stream to see how to use it.
+   *       This will modify the counter associated to lineId as if it was
+   *       published. It should thus be used in conjunction with Logger::stream.
    */
-  void sendMsg(std::string msg, MsgType type, const char *file = "",
-               int line = 0);
+  bool acceptMsg (MsgType m, const std::string& lineId) {
+    if ((m & MSG_TYPE_TYPE_BITS) < m_lv)
+      return false;
+
+    // if print is allowed by current verbosity level
+    if (isStreamMsg(m)) return checkStreamPeriod(lineId);
+    return true;
+  }
+
+  /** The most efficient logging method is
+   * \code
+   *   if (logger.acceptMsg(type, lineId))
+   *     logger.stream() << "my message\n";
+   * \endcode
+   */
+  RTLoggerStream stream() {
+    return ::dynamicgraph::RealTimeLogger::instance().emptyStream();
+  }
+
+  /** Print the specified message on standard output if the verbosity level
+   * allows it. The lineId is used to identify the point where sendMsg is
+   * called so that streaming messages are printed only every streamPrintPeriod
+   * iterations.
+   * \param lineId typically __FILE__ ":" BOOST_PP_STRINGIZE(__LINE__)
+   */
+  RTLoggerStream stream(MsgType type, const std::string& lineId = "") {
+    RealTimeLogger &rtlogger = ::dynamicgraph::RealTimeLogger::instance();
+    if (acceptMsg(type, lineId))
+      return rtlogger.front();
+    return rtlogger.emptyStream();
+  }
+
+  /** \deprecated instead, use
+   *  \code
+   *    stream(type, lineId) << msg << '\n';
+   *  \endcode
+   */
+  void sendMsg(std::string msg, MsgType type, const std::string& lineId = "");
 
   /** Set the sampling time at which the method countdown()
    * is going to be called. */
@@ -193,13 +263,13 @@ protected:
   double m_printCountdown;
   /// every time this is < 0 (i.e. every _streamPrintPeriod sec) print stuff
 
+  typedef std::map<std::string, double> StreamCounterMap_t;
   /** Pointer to the dynamic structure which holds
       the collection of streaming messages */
-  std::map<std::string, double> m_stream_msg_counters;
+  StreamCounterMap_t m_stream_msg_counters;
 
-  bool isStreamMsg(MsgType m) {
-    return m == MSG_TYPE_ERROR_STREAM || m == MSG_TYPE_DEBUG_STREAM ||
-           m == MSG_TYPE_INFO_STREAM || m == MSG_TYPE_WARNING_STREAM;
+  inline bool isStreamMsg(MsgType m) {
+    return (m & MSG_TYPE_STREAM_BIT);
   }
 
   bool isDebugMsg(MsgType m) {
@@ -217,6 +287,8 @@ protected:
   bool isErrorMsg(MsgType m) {
     return m == MSG_TYPE_ERROR_STREAM || m == MSG_TYPE_ERROR;
   }
+
+  bool checkStreamPeriod (const std::string& lineId);
 };
 
 } // namespace dynamicgraph
