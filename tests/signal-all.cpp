@@ -210,7 +210,28 @@ BOOST_AUTO_TEST_CASE(signal_caster_basics) {
 
   /// Unregister a type
   asig_caster->unregisterCast(typeid(double));
+  
+  /// Unregister the type a second time to generate exception
+  bool res= false;
+  try {
+    asig_caster->unregisterCast(typeid(double));
+  } catch (ExceptionSignal &aes)
+  {
+    res = (aes.getCode() == ExceptionSignal::GENERIC);
+  }
+  BOOST_CHECK(res);
 
+  /// Get the type cast to generate exception
+  res= false;
+  double ad=2.0;
+  output_test_stream output;
+  try {
+    asig_caster->disp(ad,output);
+  } catch (ExceptionSignal &aes)
+  {
+    res = (aes.getCode() == ExceptionSignal::BAD_CAST);
+  }
+  BOOST_CHECK(res);
   asig_caster->destroy();
   BOOST_CHECK(true);
 }
