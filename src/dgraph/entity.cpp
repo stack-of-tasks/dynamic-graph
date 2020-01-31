@@ -207,7 +207,7 @@ Command *Entity::getNewStyleCommand(const std::string &commandName) {
   return commandMap[commandName];
 }
 
-void Entity::sendMsg(const std::string &msg, MsgType t, const char *file,
-                     int line) {
-  logger_.sendMsg("[" + name + "]" + msg, t, file, line);
+void Entity::sendMsg(const std::string &msg, MsgType t,
+                     const std::string &lineId) {
+  logger_.sendMsg("[" + name + "]" + msg, t, lineId);
 }

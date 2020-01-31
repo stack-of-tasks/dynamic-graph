@@ -92,7 +92,7 @@ public:
   /// \brief Send messages \c msg with level \c t.
   /// Add string file and line to message.
   void sendMsg(const std::string &msg, MsgType t = MSG_TYPE_INFO,
-               const char *file = "", int line = 0);
+               const std::string &lineId = "");
 
   /// \brief Specify the verbosity level of the logger.
   void setLoggerVerbosityLevel(LoggerVerbosity lv) { logger_.setVerbosity(lv); }

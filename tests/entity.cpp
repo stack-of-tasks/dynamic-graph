@@ -216,15 +216,16 @@ BOOST_AUTO_TEST_CASE(sendMsg) {
       if (entity.getLoggerVerbosityLevel() != aLoggerVerbosityLevel)
         output << "Mismatch output";
 
-      std::string aBaseMsg = "Auto Test Case";
-      std::string aMsg = aBaseMsg + " DEBUG";
-      entity.sendMsg(aMsg, dynamicgraph::MSG_TYPE_DEBUG, __FILE__, __LINE__);
-      aMsg = aBaseMsg + " INFO";
-      entity.sendMsg(aMsg, dynamicgraph::MSG_TYPE_INFO, __FILE__, __LINE__);
-      aMsg = aBaseMsg + " WARNING";
-      entity.sendMsg(aMsg, dynamicgraph::MSG_TYPE_WARNING, __FILE__, __LINE__);
-      aMsg = aBaseMsg + " DEBUG";
-      entity.sendMsg(aMsg, dynamicgraph::MSG_TYPE_ERROR, __FILE__, __LINE__);
+#define __FILELINE__ __FILE__ BOOST_PP_STRINGIZE(__LINE__)
+      entity.logger().stream(dynamicgraph::MSG_TYPE_DEBUG, __FILELINE__)
+        << "Auto Test Case" << " DEBUG" << '\n';
+      entity.logger().stream(dynamicgraph::MSG_TYPE_INFO, __FILELINE__)
+        << "Auto Test Case" << " INFO" << '\n';
+      entity.logger().stream(dynamicgraph::MSG_TYPE_WARNING, __FILELINE__)
+        << "Auto Test Case" << " WARNING" << '\n';
+      entity.logger().stream(dynamicgraph::MSG_TYPE_ERROR, __FILELINE__)
+        << "Auto Test Case" << " ERROR" << '\n';
+#undef __FILELINE__
     };
   };
 
