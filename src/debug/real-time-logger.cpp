@@ -59,12 +59,6 @@ RTLoggerStream RealTimeLogger::front() {
   return RTLoggerStream(this, oss_);
 }
 
-RTLoggerStream::~RTLoggerStream() {
-  os_ << std::ends;
-  if (logger_ != NULL)
-    logger_->frontReady();
-}
-
 struct RealTimeLogger::thread {
   bool requestShutdown_;
   int threadPolicy_;

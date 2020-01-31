@@ -7,12 +7,10 @@
 #include <sstream>
 #include <vector>
 
-#include <boost/circular_buffer.hpp>
 #include <boost/shared_ptr.hpp>
 #include <boost/thread/mutex.hpp>
 
 #include <dynamic-graph/config.hh>
-#include <dynamic-graph/debug.h>
 
 namespace dynamicgraph {
 /// \ingroup debug
@@ -50,22 +48,30 @@ class RealTimeLogger;
 /// This class is only used by RealTimeLogger.
 class RTLoggerStream {
 public:
-  RTLoggerStream(RealTimeLogger *logger, std::ostream &os)
-      : logger_(logger), os_(os) {}
+  inline RTLoggerStream(RealTimeLogger *logger, std::ostream &os)
+      : ok_(logger!=NULL), logger_(logger), os_(os) {}
   template <typename T> inline RTLoggerStream &operator<<(T t) {
-    if (logger_ != NULL)
-      os_ << t;
+    if (ok_) os_ << t;
     return *this;
   }
   inline RTLoggerStream &operator<<(std::ostream &(*pf)(std::ostream &)) {
-    if (logger_ != NULL)
-      os_ << pf;
+    if (ok_) os_ << pf;
     return *this;
   }
 
-  ~RTLoggerStream();
+  inline ~RTLoggerStream() {
+    if (ok_) {
+      os_ << std::ends;
+      logger_->frontReady();
+    }
+  }
+
+  inline bool isNull() {
+    return !ok_;
+  }
 
 private:
+  const bool ok_;
   RealTimeLogger *logger_;
   std::ostream &os_;
 };
@@ -118,6 +124,11 @@ public:
   /// Return an object onto which a real-time thread can write.
   /// The message is considered finished when the object is destroyed.
   RTLoggerStream front();
+
+  /// Return an empty stream object.
+  RTLoggerStream emptyStream() {
+    return RTLoggerStream(NULL, oss_);
+  }
 
   inline void frontReady() {
     backIdx_ = (backIdx_ + 1) % buffer_.size();
