@@ -45,14 +45,18 @@ enum MsgType {
 /* --- INCLUDE --------------------------------------------------------- */
 /* --------------------------------------------------------------------- */
 
-#include <boost/assign.hpp>
-#include <boost/preprocessor/stringize.hpp>
-#include <dynamic-graph/linear-algebra.h>
-#include <dynamic-graph/real-time-logger-def.h>
+#include <map>
+/// \todo These 3 headers should be removed.
 #include <fstream>
 #include <iomanip> // std::setprecision
-#include <map>
 #include <sstream>
+
+#include <boost/assign.hpp>
+#include <boost/preprocessor/stringize.hpp>
+
+#include <dynamic-graph/deprecated.hh>
+#include <dynamic-graph/linear-algebra.h>
+#include <dynamic-graph/real-time-logger-def.h>
 
 namespace dynamicgraph {
 
@@ -216,6 +220,14 @@ public:
    *  \endcode
    */
   void sendMsg(std::string msg, MsgType type, const std::string& lineId = "");
+
+  /** \deprecated instead, use
+   *  \code
+   *    stream(type, lineId) << msg << '\n';
+   *  \endcode
+   */
+  void sendMsg(std::string msg, MsgType type, const std::string& file,
+      int line) DYNAMIC_GRAPH_DEPRECATED;
 
   /** Set the sampling time at which the method countdown()
    * is going to be called. */
