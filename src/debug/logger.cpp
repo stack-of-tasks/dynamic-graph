@@ -76,8 +76,8 @@ bool Logger::checkStreamPeriod(const std::string &lineId) {
 
   // if counter is greater than 0 then decrement it and do not print
   double &counter = result.first->second;
+  counter -= m_timeSample;
   if (counter > 0.0) {
-    counter -= m_timeSample;
     return false;
   } else // otherwise reset counter and print
     counter = m_streamPrintPeriod;
