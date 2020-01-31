@@ -43,6 +43,13 @@ void Logger::sendMsg(std::string msg, MsgType type, const std::string &lineId) {
   stream(type, lineId) << msg << '\n';
 }
 
+void Logger::sendMsg(std::string msg, MsgType type, const std::string &file,
+                     int line) {
+  std::ostringstream oss;
+  oss << file << line;
+  stream(type, oss.str()) << msg << '\n';
+}
+
 bool Logger::setTimeSample(double t) {
   if (t <= 0.0)
     return false;
