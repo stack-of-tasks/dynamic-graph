@@ -98,6 +98,7 @@ SET(${PROJECT_NAME}_HEADERS
   include/dynamic-graph/fwd.hh
   include/dynamic-graph/debug.h
   include/dynamic-graph/real-time-logger.h
+  include/dynamic-graph/real-time-logger-def.h
 
   include/dynamic-graph/dynamic-graph-api.h
 
