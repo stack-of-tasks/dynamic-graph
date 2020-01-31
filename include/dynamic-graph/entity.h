@@ -83,8 +83,12 @@ public:
 
   SignalMap getSignalMap() const;
 
-  /** \name Logger related methods */
-  /** \{*/
+  /// \name Logger related methods
+  /// \{
+
+  Logger &logger() { return logger_; };
+  Logger const &logger() const { return logger_; };
+
   /// \brief Send messages \c msg with level \c t.
   /// Add string file and line to message.
   void sendMsg(const std::string &msg, MsgType t = MSG_TYPE_INFO,
@@ -109,6 +113,8 @@ public:
 
   /// \brief Get the period of the stream period
   double getStreamPrintPeriod() { return logger_.getStreamPrintPeriod(); }
+
+  /// \}
 
 protected:
   void addCommand(const std::string &name, command::Command *command);
