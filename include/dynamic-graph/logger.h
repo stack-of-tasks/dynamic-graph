@@ -27,17 +27,17 @@ namespace dynamicgraph {
 /** Enum representing the different kind of messages.
  */
 enum MsgType {
-  MSG_TYPE_TYPE_BITS      = 1<<0 | 1<<1 | 1<<2 | 1<<3,                // 15
-  MSG_TYPE_STREAM_BIT     = 1<<4,                                     // 16
+  MSG_TYPE_TYPE_BITS = 1 << 0 | 1 << 1 | 1 << 2 | 1 << 3, // 15
+  MSG_TYPE_STREAM_BIT = 1 << 4,                           // 16
 
-  MSG_TYPE_DEBUG          = 1<<3,                                     // 1
-  MSG_TYPE_INFO           = 1<<2,                                     // 2
-  MSG_TYPE_WARNING        = 1<<1,                                     // 4
-  MSG_TYPE_ERROR          = 1<<0,                                     // 8
-  MSG_TYPE_DEBUG_STREAM   = MSG_TYPE_DEBUG   | MSG_TYPE_STREAM_BIT,   // 17
-  MSG_TYPE_INFO_STREAM    = MSG_TYPE_INFO    | MSG_TYPE_STREAM_BIT,   // 18
-  MSG_TYPE_WARNING_STREAM = MSG_TYPE_WARNING | MSG_TYPE_STREAM_BIT,   // 20
-  MSG_TYPE_ERROR_STREAM   = MSG_TYPE_ERROR   | MSG_TYPE_STREAM_BIT    // 24
+  MSG_TYPE_DEBUG = 1 << 3,                                          // 1
+  MSG_TYPE_INFO = 1 << 2,                                           // 2
+  MSG_TYPE_WARNING = 1 << 1,                                        // 4
+  MSG_TYPE_ERROR = 1 << 0,                                          // 8
+  MSG_TYPE_DEBUG_STREAM = MSG_TYPE_DEBUG | MSG_TYPE_STREAM_BIT,     // 17
+  MSG_TYPE_INFO_STREAM = MSG_TYPE_INFO | MSG_TYPE_STREAM_BIT,       // 18
+  MSG_TYPE_WARNING_STREAM = MSG_TYPE_WARNING | MSG_TYPE_STREAM_BIT, // 20
+  MSG_TYPE_ERROR_STREAM = MSG_TYPE_ERROR | MSG_TYPE_STREAM_BIT      // 24
 };
 } // namespace dynamicgraph
 
@@ -92,7 +92,6 @@ namespace dynamicgraph {
 #define DYNAMIC_GRAPH_ENTITY_ERROR_STREAM(entity)                              \
   _DYNAMIC_GRAPH_ENTITY_MSG(entity, MSG_TYPE_ERROR_STREAM)
 
-
 template <typename T>
 std::string toString(const T &v, const int precision = 3,
                      const int width = -1) {
@@ -143,11 +142,11 @@ std::string toString(const Eigen::MatrixBase<T> &v, const int precision = 3,
 }
 
 enum LoggerVerbosity {
-  VERBOSITY_ALL                = MSG_TYPE_DEBUG,
+  VERBOSITY_ALL = MSG_TYPE_DEBUG,
   VERBOSITY_INFO_WARNING_ERROR = MSG_TYPE_INFO,
-  VERBOSITY_WARNING_ERROR      = MSG_TYPE_WARNING,
-  VERBOSITY_ERROR              = MSG_TYPE_ERROR,
-  VERBOSITY_NONE               = 0
+  VERBOSITY_WARNING_ERROR = MSG_TYPE_WARNING,
+  VERBOSITY_ERROR = MSG_TYPE_ERROR,
+  VERBOSITY_NONE = 0
 };
 
 /// \ingroup debug
@@ -209,7 +208,7 @@ public:
    * iterations.
    * \param lineId typically __FILE__ ":" BOOST_PP_STRINGIZE(__LINE__)
    */
-  RTLoggerStream stream(MsgType type, const std::string& lineId = "") {
+  RTLoggerStream stream(MsgType type, const std::string &lineId = "") {
     RealTimeLogger &rtlogger = ::dynamicgraph::RealTimeLogger::instance();
     if (acceptMsg(type, lineId))
       return rtlogger.front();
@@ -221,15 +220,15 @@ public:
    *    stream(type, lineId) << msg << '\n';
    *  \endcode
    */
-  void sendMsg(std::string msg, MsgType type, const std::string& lineId = "");
+  void sendMsg(std::string msg, MsgType type, const std::string &lineId = "");
 
   /** \deprecated instead, use
    *  \code
    *    stream(type, lineId) << msg << '\n';
    *  \endcode
    */
-  void sendMsg(std::string msg, MsgType type, const std::string& file,
-      int line) DYNAMIC_GRAPH_DEPRECATED;
+  void sendMsg(std::string msg, MsgType type, const std::string &file,
+               int line) DYNAMIC_GRAPH_DEPRECATED;
 
   /** Set the sampling time at which the method countdown()
    * is going to be called. */
@@ -264,28 +263,27 @@ protected:
       the collection of streaming messages */
   StreamCounterMap_t m_stream_msg_counters;
 
-  inline bool isStreamMsg(MsgType m) {
-    return (m & MSG_TYPE_STREAM_BIT);
-  }
+  inline bool isStreamMsg(MsgType m) { return (m & MSG_TYPE_STREAM_BIT); }
 
   /** Check whether a message of type \m and from \c lineId should be accepted.
    *  \note If \c is a stream type, the internal counter associated to \c lineId
    *        is updated.
    */
-  bool acceptMsg (MsgType m, const std::string& lineId) {
+  bool acceptMsg(MsgType m, const std::string &lineId) {
     // If more verbose than the current verbosity level
     if ((m & MSG_TYPE_TYPE_BITS) > m_lv)
       return false;
 
     // if print is allowed by current verbosity level
-    if (isStreamMsg(m)) return checkStreamPeriod(lineId);
+    if (isStreamMsg(m))
+      return checkStreamPeriod(lineId);
     return true;
   }
 
   /** Check whether a message from \c lineId should be accepted.
    *  \note The internal counter associated to \c lineId is updated.
    */
-  bool checkStreamPeriod (const std::string& lineId);
+  bool checkStreamPeriod(const std::string &lineId);
 };
 
 } // namespace dynamicgraph

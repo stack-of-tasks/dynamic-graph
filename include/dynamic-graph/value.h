@@ -107,8 +107,8 @@ public:
   Vector vectorValue() const;
   Eigen::MatrixXd matrixXdValue() const;
   Eigen::Matrix4d matrix4dValue() const;
-  Values valuesValue () const;
-  const Values &constValuesValue () const;
+  Values valuesValue() const;
+  const Values &constValuesValue() const;
   Type type_;
   const void *const value_;
 };

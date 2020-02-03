@@ -82,8 +82,7 @@ Value::Value(const Eigen::MatrixXd &value)
     : type_(MATRIX), value_(new Eigen::MatrixXd(value)) {}
 Value::Value(const Eigen::Matrix4d &value)
     : type_(MATRIX4D), value_(new Eigen::Matrix4d(value)) {}
-Value::Value(const Values &value)
-    : type_(VALUES), value_(new Values(value)) {}
+Value::Value(const Values &value) : type_(VALUES), value_(new Values(value)) {}
 
 Value::Value(const Value &value)
     : type_(value.type_), value_(copyValue(value)) {}
@@ -145,20 +144,33 @@ Value Value::operator=(const Value &value) {
 }
 
 bool Value::operator==(const Value &other) const {
-  if (type_ != other.type_) return false;
+  if (type_ != other.type_)
+    return false;
   switch (type_) {
-  case Value::BOOL:     return boolValue()        == other.boolValue();
-  case Value::UNSIGNED: return unsignedValue()    == other.unsignedValue();
-  case Value::INT:      return intValue()         == other.intValue();
-  case Value::DOUBLE:   return doubleValue()      == other.doubleValue();
-  case Value::FLOAT:    return floatValue()       == other.floatValue();
-  case Value::STRING:   return stringValue()      == other.stringValue();
-  case Value::VECTOR:   return vectorValue()      == other.vectorValue();
-  case Value::MATRIX:   return matrixXdValue()    == other.matrixXdValue();
-  case Value::MATRIX4D: return matrix4dValue()    == other.matrix4dValue();
-  case Value::VALUES:   return constValuesValue() == other.constValuesValue();
-  case Value::NONE: break;
-  default: break;
+  case Value::BOOL:
+    return boolValue() == other.boolValue();
+  case Value::UNSIGNED:
+    return unsignedValue() == other.unsignedValue();
+  case Value::INT:
+    return intValue() == other.intValue();
+  case Value::DOUBLE:
+    return doubleValue() == other.doubleValue();
+  case Value::FLOAT:
+    return floatValue() == other.floatValue();
+  case Value::STRING:
+    return stringValue() == other.stringValue();
+  case Value::VECTOR:
+    return vectorValue() == other.vectorValue();
+  case Value::MATRIX:
+    return matrixXdValue() == other.matrixXdValue();
+  case Value::MATRIX4D:
+    return matrix4dValue() == other.matrix4dValue();
+  case Value::VALUES:
+    return constValuesValue() == other.constValuesValue();
+  case Value::NONE:
+    break;
+  default:
+    break;
   }
   return false;
 }
@@ -299,15 +311,13 @@ std::ostream &operator<<(std::ostream &os, const Value &value) {
   case Value::MATRIX4D:
     os << value.matrix4dValue();
     break;
-  case Value::VALUES:
-    {
-      const std::vector<Value>& vals = value.constValuesValue();
-      os << "[ ";
-      for (std::size_t i = 0; i < vals.size(); ++i)
-        os << "Value(" << vals[i] << "), ";
-      os << "]";
-    }
-    break;
+  case Value::VALUES: {
+    const std::vector<Value> &vals = value.constValuesValue();
+    os << "[ ";
+    for (std::size_t i = 0; i < vals.size(); ++i)
+      os << "Value(" << vals[i] << "), ";
+    os << "]";
+  } break;
   default:
     return os;
   }

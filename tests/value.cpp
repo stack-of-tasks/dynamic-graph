@@ -376,26 +376,26 @@ BOOST_AUTO_TEST_CASE(value_values) {
   Value vd1(d1);
 
   Values values;
-  values.push_back (vs1);
-  values.push_back (vd1);
+  values.push_back(vs1);
+  values.push_back(vd1);
 
-  Value vvalues (values);
+  Value vvalues(values);
 
   BOOST_CHECK_EQUAL(vvalues.type(), Value::VALUES);
 
   { // Const ref
-    const Values& vs = vvalues.constValuesValue();
+    const Values &vs = vvalues.constValuesValue();
     BOOST_CHECK_EQUAL(vs.size(), values.size());
     BOOST_CHECK(vs == values);
   }
-  { // Cast does not work.
-    //dg::command::EitherType eitherType (vvalues);
-    //Values vs = static_cast<Values>(eitherType);
-    //BOOST_CHECK_EQUAL(vs.size(), values.size());
-    //BOOST_CHECK(vs == values);
-  }
-  { // Constructor
-    Value vvs (vvalues);
+  {
+      // Cast does not work.
+      // dg::command::EitherType eitherType (vvalues);
+      // Values vs = static_cast<Values>(eitherType);
+      // BOOST_CHECK_EQUAL(vs.size(), values.size());
+      // BOOST_CHECK(vs == values);
+  } { // Constructor
+    Value vvs(vvalues);
     BOOST_CHECK(vvs == vvalues);
   }
 

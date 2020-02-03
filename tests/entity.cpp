@@ -218,13 +218,17 @@ BOOST_AUTO_TEST_CASE(sendMsg) {
 
 #define __FILELINE__ __FILE__ BOOST_PP_STRINGIZE(__LINE__)
       entity.logger().stream(dynamicgraph::MSG_TYPE_DEBUG, __FILELINE__)
-        << "Auto Test Case" << " DEBUG" << '\n';
+          << "Auto Test Case"
+          << " DEBUG" << '\n';
       entity.logger().stream(dynamicgraph::MSG_TYPE_INFO, __FILELINE__)
-        << "Auto Test Case" << " INFO" << '\n';
+          << "Auto Test Case"
+          << " INFO" << '\n';
       entity.logger().stream(dynamicgraph::MSG_TYPE_WARNING, __FILELINE__)
-        << "Auto Test Case" << " WARNING" << '\n';
+          << "Auto Test Case"
+          << " WARNING" << '\n';
       entity.logger().stream(dynamicgraph::MSG_TYPE_ERROR, __FILELINE__)
-        << "Auto Test Case" << " ERROR" << '\n';
+          << "Auto Test Case"
+          << " ERROR" << '\n';
 #undef __FILELINE__
     };
   };
