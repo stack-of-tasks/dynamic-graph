@@ -2,6 +2,7 @@
 #
 
 ADD_DEFINITIONS(-DDEBUG=2)
+SET(CMAKE_EXE_LINKER_FLAGS ${CMAKE_EXE_LINKER_FLAGS} -Wl,--disable-new-dtags)
 
 # Add Boost path to include directories.
 #INCLUDE_DIRECTORIES(${Boost_INCLUDE_DIRS})
