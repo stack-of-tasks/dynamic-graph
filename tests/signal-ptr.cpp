@@ -297,3 +297,19 @@ BOOST_AUTO_TEST_CASE(plug_signal_string) {
   std::cout << "res=" << res << std::endl;
   BOOST_CHECK(res == str);
 }
+
+BOOST_AUTO_TEST_CASE(set_signal_string) {
+  Signal<std::string, int> s("signal");
+  std::string str("");
+  std::ostringstream os;
+  os << str;
+  std::istringstream value(os.str());
+  try {
+    s.set(value);
+  }
+  catch(const std::exception& exc)
+  {
+    std::cout << exc.what() << std::endl;
+    BOOST_CHECK(!"Tentative to set signal to empty string");
+  }
+}

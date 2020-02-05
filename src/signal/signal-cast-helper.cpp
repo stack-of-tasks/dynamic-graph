@@ -52,6 +52,15 @@ inline boost::any DefaultCastRegisterer<double>::cast(std::istringstream &iss) {
   }
 }
 
+// for std::string, do not check failure. If input stream contains an
+// empty string, iss.fail() returns true and an exception is thrown
+template <>
+inline boost::any
+DefaultCastRegisterer<std::string>::cast(std::istringstream &iss) {
+  std::string inst(iss.str());
+  return inst;
+}
+
 // for std::string, do not add std::endl at the end of the stream.
 template <>
 inline void DefaultCastRegisterer<std::string>::disp(const boost::any &object,
