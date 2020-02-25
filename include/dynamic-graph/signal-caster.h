@@ -42,20 +42,16 @@ public:
   typedef boost::function2<void, const boost::any &, std::ostream &>
       displayer_type;
   typedef boost::function1<boost::any, std::istringstream &> caster_type;
-  typedef boost::function2<void, const boost::any &, std::ostream &>
-      tracer_type;
 
   /// Get a reference to the unique object of the class.
   static SignalCaster *getInstance(void);
   /// Displays an object using a registered displayer function.
   void disp(const boost::any &object, std::ostream &os);
-  /// Traces an object using a registered trace function.
-  void trace(const boost::any &object, std::ostream &os);
   /// Casts an object using a registered cast function.
   boost::any cast(const std::type_info &, std::istringstream &iss);
   /// Registers a cast.
   void registerCast(const std::type_info &type, displayer_type displayer,
-                    caster_type caster, tracer_type tracer);
+                    caster_type caster);
   /// Unregister a cast.
   void unregisterCast(const std::type_info &type);
   /// Checks if there is a displayer registered with type_name.
@@ -65,7 +61,7 @@ public:
 
 private:
   /// Container for the three cast functions.
-  typedef boost::tuple<displayer_type, caster_type, tracer_type>
+  typedef boost::tuple<displayer_type, caster_type>
       cast_functions_type;
 
   /// \brief Retrieve cast structure from its name.
@@ -92,9 +88,8 @@ class DYNAMIC_GRAPH_DLLAPI SignalCastRegisterer {
 public:
   inline SignalCastRegisterer(const std::type_info &type,
                               SignalCaster::displayer_type displayer,
-                              SignalCaster::caster_type caster,
-                              SignalCaster::tracer_type tracer) {
-    SignalCaster::getInstance()->registerCast(type, displayer, caster, tracer);
+                              SignalCaster::caster_type caster) {
+    SignalCaster::getInstance()->registerCast(type, displayer, caster);
   }
 };
 

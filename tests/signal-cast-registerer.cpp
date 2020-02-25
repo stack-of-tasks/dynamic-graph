@@ -35,8 +35,7 @@ struct EigenCastRegisterer_V : public dynamicgraph::SignalCastRegisterer {
   typedef Vector bnuVector;
 
   EigenCastRegisterer_V()
-      : SignalCastRegisterer(typeid(bnuVector), dispVector, castVector,
-                             traceVector) {}
+      : SignalCastRegisterer(typeid(bnuVector), dispVector, castVector) {}
 
   static boost::any castVector(std::istringstream &iss) {
     bnuVector res;
@@ -51,13 +50,6 @@ struct EigenCastRegisterer_V : public dynamicgraph::SignalCastRegisterer {
       os << v(i) << " ";
     os << " ];" << std::endl;
   }
-
-  static void traceVector(const boost::any &object, std::ostream &os) {
-    const bnuVector &v = boost::any_cast<bnuVector>(object);
-    for (int i = 0; i < v.size(); ++i)
-      os << v(i) << " ";
-    os << std::endl;
-  }
 };
 
 template <typename Derived>
@@ -65,8 +57,7 @@ struct EigenCastRegisterer_M : public dynamicgraph::SignalCastRegisterer {
   typedef Matrix bnuMatrix;
 
   EigenCastRegisterer_M()
-      : SignalCastRegisterer(typeid(bnuMatrix), dispMatrix, castMatrix,
-                             traceMatrix) {}
+      : SignalCastRegisterer(typeid(bnuMatrix), dispMatrix, castMatrix) {}
 
   static boost::any castMatrix(std::istringstream &iss) {
     bnuMatrix res;
@@ -75,11 +66,6 @@ struct EigenCastRegisterer_M : public dynamicgraph::SignalCastRegisterer {
   }
 
   static void dispMatrix(const boost::any &object, std::ostream &os) {
-    const bnuMatrix &m = boost::any_cast<bnuMatrix>(object);
-    os << m << std::endl;
-  }
-
-  static void traceMatrix(const boost::any &object, std::ostream &os) {
     const bnuMatrix &m = boost::any_cast<bnuMatrix>(object);
     os << m << std::endl;
   }
