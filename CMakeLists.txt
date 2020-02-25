@@ -1,4 +1,4 @@
-CMAKE_MINIMUM_REQUIRED(VERSION 2.6)
+CMAKE_MINIMUM_REQUIRED(VERSION 3.1)
 
 # Setup project properties
 SET(PROJECT_ORG stack-of-tasks)
@@ -26,7 +26,7 @@ PROJECT(${PROJECT_NAME} ${PROJECT_ARGS})
 INCLUDE(cmake/pthread.cmake)
 INCLUDE(cmake/boost.cmake)
 
-ADD_REQUIRED_DEPENDENCY(eigen3)
+ADD_PROJECT_DEPENDENCY(Eigen3 REQUIRED PKG_CONFIG_REQUIRES eigen3)
 SET(BOOST_COMPONENTS serialization system unit_test_framework thread)
 SEARCH_FOR_BOOST()
 
