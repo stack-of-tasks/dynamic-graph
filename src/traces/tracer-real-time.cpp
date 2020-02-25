@@ -125,6 +125,11 @@ void TracerRealTime::openFile(const SignalBase<int> &sig,
   string filename = rootdir + basename + signame + suffix;
   dgDEBUG(5) << "Sig <" << sig.getName() << ">: new file " << filename << endl;
   std::ofstream *newfile = new std::ofstream(filename.c_str());
+  if (!newfile->good()) {
+    delete newfile;
+    DG_THROW ExceptionTraces(ExceptionTraces::NOT_OPEN,
+        "Could not open file " + filename + " for signal " + signame, "");
+  }
   dgDEBUG(5) << "Newfile:" << (void *)newfile << endl;
   hardFiles.push_back(newfile);
   dgDEBUG(5) << "Creating Outstringstream" << endl;
@@ -264,7 +269,7 @@ void TracerRealTime::recordSignal(std::ostream &os,
                 << "> " << endl;
 
   } catch (ExceptionAbstract &exc) {
-    throw exc;
+    throw;
   } catch (...) {
     DG_THROW ExceptionTraces(ExceptionTraces::NOT_OPEN,
                              "The buffer is not open", "");
