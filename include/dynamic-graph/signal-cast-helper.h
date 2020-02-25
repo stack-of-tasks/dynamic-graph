@@ -33,13 +33,9 @@ template <typename T>
 class DefaultCastRegisterer : public SignalCastRegisterer {
 public:
   DefaultCastRegisterer()
-      : SignalCastRegisterer(typeid(T), disp, cast) {}
+      : SignalCastRegisterer(typeid(T), cast) {}
 
   static boost::any cast(std::istringstream &iss);
-
-  static void disp(const boost::any &object, std::ostream &os) {
-    os << boost::any_cast<T>(object) << std::endl;
-  }
 };
 
 /// A default version of the caster, to serialize directly from
@@ -76,15 +72,11 @@ boost::any DefaultCastRegisterer<T>::cast(std::istringstream &iss) {
 template <class T> class SignalCast {
 public:
   static T cast(std::istringstream &) { throw 1; }
-  static void disp(const T &, std::ostream &) { throw 1; }
 
 public:
   // adapter functions for SignalCast
   static boost::any cast_(std::istringstream &stringValue) {
     return boost::any_cast<T>(cast(stringValue));
-  }
-  static void disp_(const boost::any &t, std::ostream &os) {
-    disp(boost::any_cast<T>(t), os);
   }
 
 private:
