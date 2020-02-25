@@ -17,6 +17,7 @@
 
 #include "dynamic-graph/exception-signal.h"
 #include <dynamic-graph/dynamic-graph-api.h>
+#include <dynamic-graph/linear-algebra.h>
 
 namespace dynamicgraph {
 /// This singleton class allows serialization of a number of objects into
@@ -109,9 +110,20 @@ template <typename T> T signal_cast(std::istringstream &iss) {
   return boost::any_cast<T>(SignalCaster::getInstance()->cast(typeid(T), iss));
 }
 
-template <typename T> void signal_trace(const T &value, std::ostream &os) {
-  SignalCaster::getInstance()->trace(value, os);
+/// Template class used to display a signal value.
+template <typename T> struct signal_trace {
+inline static void run(const T &value, std::ostream &os) { os << value << '\n'; }
+};
+
+/// Template specialization of signal_trace for Eigen objects
+template <typename Derived> struct signal_trace<Eigen::DenseBase<Derived> > {
+inline static void run(const Eigen::DenseBase<Derived> &value, std::ostream &os) {
+  static const Eigen::IOFormat row_format (Eigen::StreamPrecision,
+      Eigen::DontAlignCols, ", ", ", ", "", "", "", "\n");
+  os << value.format(row_format);
 }
+};
+
 } // end of namespace dynamicgraph.
 
 #endif //! DYNAMIC_GRAPH_SIGNAL_CASTER_HH

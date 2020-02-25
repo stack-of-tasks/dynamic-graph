@@ -159,7 +159,6 @@ BOOST_AUTO_TEST_CASE(test_cast_helper) {
   /// Test cast register with Vector
   output_test_stream output;
   dynamicgraph::Vector avec;
-  DefaultCastRegisterer<dynamicgraph::Vector> defaultVR;
   avec.resize(4);
   avec[0] = 1.0;
   avec[1] = 2.0;
@@ -167,7 +166,7 @@ BOOST_AUTO_TEST_CASE(test_cast_helper) {
   avec[3] = 4.0;
   res = true;
   try {
-    defaultVR.trace(avec, output);
+    signal_trace<Vector>::run(avec, output);
   } catch (ExceptionSignal &e) {
     /// Exception in case of wrong cast.
     /// This should not happen.
@@ -177,7 +176,6 @@ BOOST_AUTO_TEST_CASE(test_cast_helper) {
 
   /// Test cast register with Matrix
   dynamicgraph::Matrix amatrix;
-  DefaultCastRegisterer<dynamicgraph::Matrix> defaultMR;
   amatrix.resize(2, 2);
   amatrix(0, 0) = 0.0;
   amatrix(0, 1) = 1.0;
@@ -185,7 +183,7 @@ BOOST_AUTO_TEST_CASE(test_cast_helper) {
   amatrix(1, 1) = 3.0;
   res = true;
   try {
-    defaultMR.trace(amatrix, output);
+    signal_trace<Matrix>::run(amatrix, output);
   } catch (ExceptionSignal &e) {
     /// Exception in case of wrong cast.
     /// This should happen
