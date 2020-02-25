@@ -93,13 +93,26 @@ public:
   }
 };
 
-/// Global signal cast template (helper) functions
-///
-/// Using these avoid using the typeid () operator and keeps the
-/// implementation details hidden.
-template <typename T> void signal_disp(const T &value, std::ostream &os) {
-  SignalCaster::getInstance()->disp(value, os);
+/// Template class used to serialize a signal value.
+template <typename T> struct signal_disp {
+inline static void run (const T &value, std::ostream &os) { os << value << '\n'; }
+};
+
+/// Template specialization of signal_disp for Eigen objects
+template<typename _Scalar, int _Rows, int _Cols, int _Options, int _MaxRows, int _MaxCols>
+struct signal_disp<Eigen::Matrix< _Scalar, _Rows, _Cols, _Options, _MaxRows, _MaxCols > > {
+inline static void run(const Eigen::Matrix< _Scalar, _Rows, _Cols, _Options, _MaxRows, _MaxCols > &value, std::ostream &os) {
+  static const Eigen::IOFormat row_format (Eigen::StreamPrecision,
+      Eigen::DontAlignCols, " ", " ", "", "", "", "");
+  os << value.format(row_format);
 }
+};
+
+/// Template specialization of signal_disp for std::string.
+/// Do not print '\n' at the end.
+template <> struct signal_disp<std::string> {
+inline static void run (const std::string &value, std::ostream &os) { os << value; }
+};
 
 template <typename T> T signal_cast(std::istringstream &iss) {
   return boost::any_cast<T>(SignalCaster::getInstance()->cast(typeid(T), iss));

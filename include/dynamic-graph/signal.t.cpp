@@ -35,7 +35,7 @@ void Signal<T, Time>::set(std::istringstream &stringValue) {
 
 template <class T, class Time>
 void Signal<T, Time>::get(std::ostream &os) const {
-  signal_disp<T>(this->accessCopy(), os);
+  signal_disp<T>::run(this->accessCopy(), os);
 }
 
 template <class T, class Time>

@@ -286,7 +286,7 @@ BOOST_AUTO_TEST_CASE(plug_signal_string) {
   inSigVec.recompute(1);
   output_test_stream output;
   inSigVec.get(output);
-  BOOST_CHECK(output.is_equal("1\n2\n3\n4\n5\n"));
+  BOOST_CHECK(output.is_equal("1 2 3 4 5"));
 
   Signal<std::string, int> s("signal");
   std::ostringstream os2;

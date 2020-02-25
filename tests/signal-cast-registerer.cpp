@@ -152,7 +152,7 @@ BOOST_AUTO_TEST_CASE(custom_vector_registerer) {
     output_test_stream output;
     myVectorSignal.get(output);
 
-    boost::format fmt("[ %d %d %d %d %d  ];\n");
+    boost::format fmt("%d %d %d %d %d");
     fmt % (i == 0) % (i == 1) % (i == 2) % (i == 3) % (i == 4);
 
     BOOST_CHECK(output.is_equal(fmt.str()));
