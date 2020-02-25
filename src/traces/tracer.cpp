@@ -88,11 +88,12 @@ Tracer::Tracer(const std::string n)
 void Tracer::addSignalToTrace(const SignalBase<int> &sig,
                               const string &filename) {
   dgDEBUGIN(15);
+  // openFile may throw so it should be called first.
+  if (namesSet)
+    openFile(sig, filename);
   toTraceSignals.push_back(&sig);
   dgDEBUGF(15, "%p", &sig);
   names.push_back(filename);
-  if (namesSet)
-    openFile(sig, filename);
   triger.addDependency(sig);
   dgDEBUGOUT(15);
 }

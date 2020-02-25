@@ -65,11 +65,16 @@ BOOST_AUTO_TEST_CASE(test_tracer) {
   std::string basename("my-tracer");
   std::string suffix(".dat");
 
-  /// Test openfiles
   atracer.setBufferSize(1<<14);
-  atracer.openFiles(rootdir, basename, suffix);
 
-  /// Add trace by name
+  // Check that an exception is thrown if the filename is invalid.
+  atracer.openFiles(rootdir, "invalid/filename", suffix);
+  BOOST_CHECK_THROW(atracer.addSignalToTraceByName("my-entity.out_double", "output"),
+      ExceptionTraces);
+
+  // Test openfiles
+  atracer.openFiles(rootdir, basename, suffix);
+  // Add trace by name
   atracer.addSignalToTraceByName("my-entity.out_double", "output");
 
   /// Add trace by name
