@@ -50,16 +50,17 @@ public:
   DG_TRACERREALTIME_DLLAPI friend std::ostream &
   operator<<(std::ostream &os, const TracerRealTime &t);
 
-protected:
-  virtual void openFile(const SignalBase<int> &sig,
-                        const std::string &filename);
-
-  virtual void recordSignal(std::ostream &os, const SignalBase<int> &sig);
   void emptyBuffers();
 
   void setBufferSize(const int &SIZE) { bufferSize = SIZE; }
 
   const int &getBufferSize() { return bufferSize; }
+
+protected:
+  virtual void openFile(const SignalBase<int> &sig,
+                        const std::string &filename);
+
+  virtual void recordSignal(std::ostream &os, const SignalBase<int> &sig);
 
   typedef std::list<std::ofstream *> HardFileList;
   static const int BUFFER_SIZE_DEFAULT = 1048576; //  1Mo
