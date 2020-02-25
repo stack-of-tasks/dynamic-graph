@@ -223,7 +223,7 @@ BOOST_AUTO_TEST_CASE(signal_caster_basics) {
   double ad = 2.0;
   output_test_stream output;
   try {
-    asig_caster->disp(ad, output);
+    signal_disp<double>::run(ad, output);
   } catch (ExceptionSignal &aes) {
     res = (aes.getCode() == ExceptionSignal::BAD_CAST);
   }

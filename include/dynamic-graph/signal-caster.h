@@ -39,18 +39,14 @@ public:
   /// Typedef of displayer functions that take an encapsulated 'any'
   /// object and displays, cast, or trace it on an output stream
   /// (serialization).
-  typedef boost::function2<void, const boost::any &, std::ostream &>
-      displayer_type;
   typedef boost::function1<boost::any, std::istringstream &> caster_type;
 
   /// Get a reference to the unique object of the class.
   static SignalCaster *getInstance(void);
-  /// Displays an object using a registered displayer function.
-  void disp(const boost::any &object, std::ostream &os);
   /// Casts an object using a registered cast function.
   boost::any cast(const std::type_info &, std::istringstream &iss);
   /// Registers a cast.
-  void registerCast(const std::type_info &type, displayer_type displayer,
+  void registerCast(const std::type_info &type,
                     caster_type caster);
   /// Unregister a cast.
   void unregisterCast(const std::type_info &type);
@@ -61,7 +57,7 @@ public:
 
 private:
   /// Container for the three cast functions.
-  typedef boost::tuple<displayer_type, caster_type>
+  typedef boost::tuple<caster_type>
       cast_functions_type;
 
   /// \brief Retrieve cast structure from its name.
@@ -87,9 +83,8 @@ private:
 class DYNAMIC_GRAPH_DLLAPI SignalCastRegisterer {
 public:
   inline SignalCastRegisterer(const std::type_info &type,
-                              SignalCaster::displayer_type displayer,
                               SignalCaster::caster_type caster) {
-    SignalCaster::getInstance()->registerCast(type, displayer, caster);
+    SignalCaster::getInstance()->registerCast(type, caster);
   }
 };
 

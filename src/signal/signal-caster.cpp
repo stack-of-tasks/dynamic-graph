@@ -27,7 +27,6 @@ void SignalCaster::destroy() {
 }
 
 void SignalCaster::registerCast(const std::type_info &type,
-                                SignalCaster::displayer_type displayer,
                                 SignalCaster::caster_type caster) {
   if (existsCast(type)) {
     // If type name has already been registered for same type, do not throw.
@@ -44,7 +43,7 @@ void SignalCaster::registerCast(const std::type_info &type,
       throw ExceptionSignal(ExceptionSignal::GENERIC, os.str());
     }
   }
-  functions_[type.name()] = cast_functions_type(displayer, caster);
+  functions_[type.name()] = cast_functions_type(caster);
   type_info_[type.name()] = &type;
 }
 
@@ -70,10 +69,6 @@ SignalCaster::getCast(const std::string &type_name) {
   return it->second;
 }
 
-void SignalCaster::disp(const boost::any &object, std::ostream &os) {
-  getCast(object.type().name()).get<0>()(object, os);
-}
-
 std::vector<std::string> SignalCaster::listTypenames() const {
   std::vector<std::string> typeList;
   for (std::map<std::string, cast_functions_type>::const_iterator iter =
@@ -85,7 +80,7 @@ std::vector<std::string> SignalCaster::listTypenames() const {
 
 boost::any SignalCaster::cast(const std::type_info &type,
                               std::istringstream &iss) {
-  return getCast(type.name()).get<1>()(iss);
+  return getCast(type.name()).get<0>()(iss);
 }
 
 /// Singleton on the library-wide instance of SignalCaster
