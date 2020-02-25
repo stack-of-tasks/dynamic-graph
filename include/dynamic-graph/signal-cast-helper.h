@@ -33,16 +33,12 @@ template <typename T>
 class DefaultCastRegisterer : public SignalCastRegisterer {
 public:
   DefaultCastRegisterer()
-      : SignalCastRegisterer(typeid(T), disp, cast, trace) {}
+      : SignalCastRegisterer(typeid(T), disp, cast) {}
 
   static boost::any cast(std::istringstream &iss);
 
   static void disp(const boost::any &object, std::ostream &os) {
     os << boost::any_cast<T>(object) << std::endl;
-  }
-
-  static void trace(const boost::any &object, std::ostream &os) {
-    disp(object, os);
   }
 };
 
@@ -81,7 +77,6 @@ template <class T> class SignalCast {
 public:
   static T cast(std::istringstream &) { throw 1; }
   static void disp(const T &, std::ostream &) { throw 1; }
-  static void trace(const T &t, std::ostream &os) { disp(t, os); }
 
 public:
   // adapter functions for SignalCast
@@ -90,9 +85,6 @@ public:
   }
   static void disp_(const boost::any &t, std::ostream &os) {
     disp(boost::any_cast<T>(t), os);
-  }
-  static void trace_(const boost::any &t, std::ostream &os) {
-    trace(boost::any_cast<T>(t), os);
   }
 
 private:
