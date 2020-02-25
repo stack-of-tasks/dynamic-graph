@@ -41,7 +41,7 @@ void Signal<T, Time>::get(std::ostream &os) const {
 template <class T, class Time>
 void Signal<T, Time>::trace(std::ostream &os) const {
   try {
-    signal_trace<T>(this->accessCopy(), os);
+    signal_trace<T>::run(this->accessCopy(), os);
   } catch DG_RETHROW catch (...) {
     DG_THROW ExceptionSignal(ExceptionSignal::SET_IMPOSSIBLE,
                              "TRACE operation not possible with this signal. ",
