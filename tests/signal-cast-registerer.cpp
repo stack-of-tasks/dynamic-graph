@@ -13,8 +13,6 @@
 #include <dynamic-graph/factory.h>
 #include <dynamic-graph/linear-algebra.h>
 #include <dynamic-graph/pool.h>
-#include <dynamic-graph/signal-cast-helper.h>
-#include <dynamic-graph/signal-caster.h>
 #include <dynamic-graph/signal.h>
 
 #include "signal-cast-registerer-libA.hh"
@@ -30,40 +28,6 @@ using boost::test_tools::output_test_stream;
 
 typedef Eigen::VectorXd Vector;
 typedef Eigen::MatrixXd Matrix;
-
-struct EigenCastRegisterer_V : public dynamicgraph::SignalCastRegisterer {
-  typedef Vector bnuVector;
-
-  EigenCastRegisterer_V()
-      : SignalCastRegisterer(typeid(bnuVector), castVector) {}
-
-  static boost::any castVector(std::istringstream &iss) {
-    bnuVector res;
-    iss >> res;
-    return res;
-  }
-};
-
-template <typename Derived>
-struct EigenCastRegisterer_M : public dynamicgraph::SignalCastRegisterer {
-  typedef Matrix bnuMatrix;
-
-  EigenCastRegisterer_M()
-      : SignalCastRegisterer(typeid(bnuMatrix), castMatrix) {}
-
-  static boost::any castMatrix(std::istringstream &iss) {
-    bnuMatrix res;
-    iss >> res;
-    return res;
-  }
-};
-
-EigenCastRegisterer_V myVectorCast;
-EigenCastRegisterer_M<int> myMatrixCast;
-
-// Define a new cast with a type that supports streaming operators to
-// and from it (this could be automated with macros).
-dynamicgraph::DefaultCastRegisterer<bool> myBooleanCast;
 
 // Check standard double cast registerer.
 BOOST_AUTO_TEST_CASE(standard_double_registerer) {
@@ -111,13 +75,6 @@ BOOST_AUTO_TEST_CASE(standard_double_registerer) {
 // Check a custom cast registerer for Boost uBLAS vectors.
 BOOST_AUTO_TEST_CASE(custom_vector_registerer) {
   dynamicgraph::Signal<dynamicgraph::Vector, int> myVectorSignal("vector");
-
-  /// Create a second local vector registerer to generate an exception.
-  try {
-    EigenCastRegisterer_V myVectorCast2;
-  } catch (const ExceptionSignal &aes) {
-    // BOOST_CHECK(aes.getCode() == ExceptionSignal::GENERIC);
-  }
 
   // Print the signal name.
   {
@@ -184,7 +141,7 @@ BOOST_AUTO_TEST_CASE(custom_vector_registerer) {
     std::istringstream ss("[5](1, ");
     myVectorSignal.set(ss);
   } catch (ExceptionSignal &e) {
-    BOOST_ERROR("Can't happened");
+    std::cout << "Test passed : ss[4] != \" \" || \",\"";
   }
 
   // ss[-1] != ")"
@@ -276,7 +233,7 @@ BOOST_AUTO_TEST_CASE(custom_matrix_registerer) {
     std::istringstream ss("[5,3]((1,");
     myMatrixSignal.set(ss);
   } catch (ExceptionSignal &e) {
-    BOOST_ERROR("Can't happened");
+    std::cout << "Test passed : ss[8] != \" \" || \",\"";
   }
 
   // ss[6+n] != ")"
