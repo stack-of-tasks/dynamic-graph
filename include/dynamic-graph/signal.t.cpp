@@ -30,7 +30,7 @@ Signal<T, Time>::Signal(std::string name)
 
 template <class T, class Time>
 void Signal<T, Time>::set(std::istringstream &stringValue) {
-  (*this) = signal_cast<T>(stringValue);
+  (*this) = signal_cast<T>::run(stringValue);
 }
 
 template <class T, class Time>
