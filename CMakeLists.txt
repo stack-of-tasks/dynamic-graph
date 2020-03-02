@@ -174,7 +174,7 @@ OPTION(SUFFIX_SO_VERSION
   "Suffix shared library name by a string depending on git status of project"
   ON)
 
-IF (${SUFFIX_SO_VERSION} EQUAL "ON")
+IF (SUFFIX_SO_VERSION)
   SET_TARGET_PROPERTIES(${PROJECT_NAME} PROPERTIES SOVERSION ${PROJECT_VERSION})
 ENDIF ()
 
