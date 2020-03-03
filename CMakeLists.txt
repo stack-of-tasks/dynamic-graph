@@ -1,40 +1,40 @@
 CMAKE_MINIMUM_REQUIRED(VERSION 3.1)
 
-# Setup project properties
+# Project properties
 SET(PROJECT_ORG stack-of-tasks)
 SET(PROJECT_NAME dynamic-graph)
 SET(PROJECT_DESCRIPTION "Dynamic graph library")
-SET(PROJECT_URL "http://github.com/${PROJECT_ORG}/${PROJECT_NAME}")
+SET(PROJECT_URL "https://github.com/${PROJECT_ORG}/${PROJECT_NAME}")
 SET(PROJECT_SUFFIX "-v3")
 
-# Export CMake Target
+# Project options
+OPTION(SUFFIX_SO_VERSION "Suffix library name with its version" ON)
+
+# Project configuration
 SET(PROJECT_USE_CMAKE_EXPORT TRUE)
-
-# Make sure that every header is generated in dynamic-graph
 SET(CUSTOM_HEADER_DIR ${PROJECT_NAME})
-
-# Do not fail on warning
 SET(CXX_DISABLE_WERROR TRUE)
+SET(DOXYGEN_USE_MATHJAX YES)
+SET(DYNAMIC_GRAPH_PLUGINDIR "${CMAKE_INSTALL_PREFIX}/lib/${PROJECT_NAME}-plugins")
+SET(PACKAGE_EXTRA_MACROS "set(DYNAMIC_GRAPH_PLUGINDIR ${DYNAMIC_GRAPH_PLUGINDIR})")
+SET(PKG_CONFIG_EXTRA "plugindir=${DYNAMIC_GRAPH_PLUGINDIR}")
+SET(CMAKE_INSTALL_RPATH "${DYNAMIC_GRAPH_PLUGINDIR}")
 
+# JRL-cmakemodule setup
 INCLUDE(cmake/base.cmake)
+INCLUDE(cmake/boost.cmake)
 
-# Specify the project.
+# Project definition
 COMPUTE_PROJECT_ARGS(PROJECT_ARGS LANGUAGES CXX)
 PROJECT(${PROJECT_NAME} ${PROJECT_ARGS})
 
-# jrl-cmakemodules handling of usual modules
-INCLUDE(cmake/pthread.cmake)
-INCLUDE(cmake/boost.cmake)
+INCLUDE(cmake/pthread.cmake)  # needs to be included after the CXX definition
 
+# Project dependencies
 ADD_PROJECT_DEPENDENCY(Eigen3 REQUIRED PKG_CONFIG_REQUIRES eigen3)
 SET(BOOST_COMPONENTS serialization system unit_test_framework thread)
 SEARCH_FOR_BOOST()
-
-# Allows math in mathjax.
-SET(DOXYGEN_USE_MATHJAX YES)
-
-# Defines paths.
-SET(LIBRARY_OUTPUT_PATH ${PROJECT_BINARY_DIR}/lib)
+SEARCH_FOR_PTHREAD()
 
 # Add configuration headers for plug-ins.
 GENERATE_CONFIGURATION_HEADER(
@@ -43,32 +43,63 @@ GENERATE_CONFIGURATION_HEADER(
   ${HEADER_DIR}
   config-tracer-real-time.hh DG_TRACERREALTIME tracer_real_time_EXPORTS)
 
-set(PACKAGE_EXTRA_MACROS
-  "set (DYNAMIC_GRAPH_PLUGINDIR \${CMAKE_CURRENT_LIST_DIR}/../../plugin)")
-
-# Specific to PKG module
-# FIXME: to be changed into lib/dynamic-graph
-# to avoid name collision when installing dynamic-graph in /usr.
-SET(PLUGINDIR "${CMAKE_INSTALL_FULL_LIBDIR}/plugin")
-
-# Add extra keys to pkg-config file to export the location of the
-# plug-in directory in a robust manner.
-SET(PKG_CONFIG_EXTRA "plugindir=${PLUGINDIR}")
-
-# Add dependency toward dynamic graph library in pkg-config file.
-PKG_CONFIG_APPEND_LIBS(${PROJECT_NAME})
-
-# Search for Boost.
-SEARCH_FOR_PTHREAD()
-
-
-####################################
-### Main Library
-####################################
 # Verbosity level
-IF (NOT (\"${CMAKE_VERBOSITY_LEVEL}\" STREQUAL \"\"))
+IF(NOT (\"${CMAKE_VERBOSITY_LEVEL}\" STREQUAL \"\"))
   ADD_DEFINITIONS(-DVP_DEBUG_MODE=${CMAKE_VERBOSITY_LEVEL} -DVP_DEBUG)
-ENDIF (NOT (\"${CMAKE_VERBOSITY_LEVEL}\" STREQUAL \"\"))
+ENDIF(NOT (\"${CMAKE_VERBOSITY_LEVEL}\" STREQUAL \"\"))
+
+# Main Library
+SET(${PROJECT_NAME}_HEADERS
+  include/${CUSTOM_HEADER_DIR}/fwd.hh
+  include/${CUSTOM_HEADER_DIR}/debug.h
+  include/${CUSTOM_HEADER_DIR}/real-time-logger.h
+  include/${CUSTOM_HEADER_DIR}/real-time-logger-def.h
+
+  include/${CUSTOM_HEADER_DIR}/dynamic-graph-api.h
+
+  include/${CUSTOM_HEADER_DIR}/entity.h
+  include/${CUSTOM_HEADER_DIR}/factory.h
+  include/${CUSTOM_HEADER_DIR}/pool.h
+
+  include/${CUSTOM_HEADER_DIR}/exception-abstract.h
+  include/${CUSTOM_HEADER_DIR}/exception-factory.h
+  include/${CUSTOM_HEADER_DIR}/exception-signal.h
+  include/${CUSTOM_HEADER_DIR}/exception-traces.h
+
+  include/${CUSTOM_HEADER_DIR}/signal.h
+  include/${CUSTOM_HEADER_DIR}/signal-array.h
+  include/${CUSTOM_HEADER_DIR}/signal-base.h
+  include/${CUSTOM_HEADER_DIR}/signal-ptr.h
+  include/${CUSTOM_HEADER_DIR}/signal-time-dependent.h
+  include/${CUSTOM_HEADER_DIR}/signal-ptr.t.cpp
+  include/${CUSTOM_HEADER_DIR}/signal.t.cpp
+  include/${CUSTOM_HEADER_DIR}/time-dependency.h
+  include/${CUSTOM_HEADER_DIR}/time-dependency.t.cpp
+  include/${CUSTOM_HEADER_DIR}/signal-caster.h
+  include/${CUSTOM_HEADER_DIR}/signal-cast-helper.h
+  include/${CUSTOM_HEADER_DIR}/all-signals.h
+  include/${CUSTOM_HEADER_DIR}/signal-helper.h
+  include/${CUSTOM_HEADER_DIR}/entity-helper.h
+
+  include/${CUSTOM_HEADER_DIR}/tracer.h
+  include/${CUSTOM_HEADER_DIR}/tracer-real-time.h
+
+  include/${CUSTOM_HEADER_DIR}/command.h
+  include/${CUSTOM_HEADER_DIR}/eigen-io.h
+  include/${CUSTOM_HEADER_DIR}/linear-algebra.h
+  include/${CUSTOM_HEADER_DIR}/value.h
+
+  include/${CUSTOM_HEADER_DIR}/command-setter.h
+  include/${CUSTOM_HEADER_DIR}/command-setter.t.cpp
+  include/${CUSTOM_HEADER_DIR}/command-getter.h
+  include/${CUSTOM_HEADER_DIR}/command-getter.t.cpp
+  include/${CUSTOM_HEADER_DIR}/command-direct-getter.h
+  include/${CUSTOM_HEADER_DIR}/command-direct-setter.h
+  include/${CUSTOM_HEADER_DIR}/command-bind.h
+  include/${CUSTOM_HEADER_DIR}/all-commands.h
+
+  include/${CUSTOM_HEADER_DIR}/logger.h
+  )
 
 SET(${PROJECT_NAME}_SOURCES
   src/debug/debug.cpp
@@ -94,134 +125,24 @@ SET(${PROJECT_NAME}_SOURCES
   src/command/command.cpp
   )
 
-SET(${PROJECT_NAME}_HEADERS
-  include/dynamic-graph/fwd.hh
-  include/dynamic-graph/debug.h
-  include/dynamic-graph/real-time-logger.h
-  include/dynamic-graph/real-time-logger-def.h
-
-  include/dynamic-graph/dynamic-graph-api.h
-
-  include/dynamic-graph/entity.h
-  include/dynamic-graph/factory.h
-  include/dynamic-graph/pool.h
-
-  include/dynamic-graph/exception-abstract.h
-  include/dynamic-graph/exception-factory.h
-  include/dynamic-graph/exception-signal.h
-  include/dynamic-graph/exception-traces.h
-
-  include/dynamic-graph/signal.h
-  include/dynamic-graph/signal-array.h
-  include/dynamic-graph/signal-base.h
-  include/dynamic-graph/signal-ptr.h
-  include/dynamic-graph/signal-time-dependent.h
-  include/dynamic-graph/signal-ptr.t.cpp
-  include/dynamic-graph/signal.t.cpp
-  include/dynamic-graph/time-dependency.h
-  include/dynamic-graph/time-dependency.t.cpp
-  include/dynamic-graph/signal-caster.h
-  include/dynamic-graph/signal-cast-helper.h
-  include/dynamic-graph/all-signals.h
-  include/dynamic-graph/signal-helper.h
-  include/dynamic-graph/entity-helper.h
-
-  include/dynamic-graph/tracer.h
-  include/dynamic-graph/tracer-real-time.h
-
-  include/dynamic-graph/command.h
-  include/dynamic-graph/eigen-io.h
-  include/dynamic-graph/linear-algebra.h
-  include/dynamic-graph/value.h
-
-  include/dynamic-graph/command-setter.h
-  include/dynamic-graph/command-setter.t.cpp
-  include/dynamic-graph/command-getter.h
-  include/dynamic-graph/command-getter.t.cpp
-  include/dynamic-graph/command-direct-getter.h
-  include/dynamic-graph/command-direct-setter.h
-  include/dynamic-graph/command-bind.h
-  include/dynamic-graph/all-commands.h
-
-  include/dynamic-graph/logger.h
-  )
-
-ADD_LIBRARY(${PROJECT_NAME}
-  SHARED ${${PROJECT_NAME}_SOURCES} ${${PROJECT_NAME}_HEADERS})
-
-SET(PUBLIC_HEADER ${${PROJECT_NAME}_HEADERS})
-
-INSTALL(TARGETS ${PROJECT_NAME}
-  EXPORT ${TARGETS_EXPORT_NAME}
-  PUBLIC_HEADER
-  INCLUDES DESTINATION include
-  LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
-  ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
-  )
-
-# We need to include Eigen3 because the CMakeFile at 16.04 LTS
-# is not so modern.
-target_include_directories(${PROJECT_NAME}
-  PUBLIC
-  $<BUILD_INTERFACE:${CMAKE_BUILD_DIR}/include>
-  $<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include>
-  $<BUILD_INTERFACE:${EIGEN3_INCLUDE_DIRS}>
-  INTERFACE ${EIGEN3_INCLUDE_DIRS}
-  $<INSTALL_INTERFACE:include>
-  )
-
-OPTION(SUFFIX_SO_VERSION
-  "Suffix shared library name by a string depending on git status of project"
-  ON)
-
-IF (SUFFIX_SO_VERSION)
-  SET_TARGET_PROPERTIES(${PROJECT_NAME} PROPERTIES SOVERSION ${PROJECT_VERSION})
-ENDIF ()
-
-IF (UNIX)
-  TARGET_LINK_LIBRARIES(${PROJECT_NAME} ${CMAKE_DL_LIBS} pthread)
-ENDIF (UNIX)
-
+ADD_LIBRARY(${PROJECT_NAME} SHARED
+  ${${PROJECT_NAME}_SOURCES} ${${PROJECT_NAME}_HEADERS})
+TARGET_INCLUDE_DIRECTORIES(${PROJECT_NAME} SYSTEM PUBLIC ${EIGEN3_INCLUDE_DIR})
+TARGET_INCLUDE_DIRECTORIES(${PROJECT_NAME} PUBLIC $<INSTALL_INTERFACE:include>)
 TARGET_LINK_LIBRARIES(${PROJECT_NAME} ${Boost_LIBRARIES})
 
-####################################
-### Plugins
-####################################
-SET(plugins_list
-  src/traces/tracer
-  src/traces/tracer-real-time
-  )
+IF(UNIX)
+  TARGET_LINK_LIBRARIES(${PROJECT_NAME} ${CMAKE_DL_LIBS} pthread)
+ENDIF(UNIX)
 
-SET(tracer-real-time_dependency tracer)
+IF(SUFFIX_SO_VERSION)
+  SET_TARGET_PROPERTIES(${PROJECT_NAME} PROPERTIES SOVERSION ${PROJECT_VERSION})
+ENDIF(SUFFIX_SO_VERSION)
 
-FOREACH(plugin_file ${plugins_list})
-  GET_FILENAME_COMPONENT(plugin ${plugin_file} NAME)
-  ADD_LIBRARY(${plugin} SHARED "${plugin_file}.cpp")
+INSTALL(TARGETS ${PROJECT_NAME} EXPORT ${TARGETS_EXPORT_NAME} DESTINATION lib)
 
-  TARGET_LINK_LIBRARIES(${plugin}
-    ${PROJECT_NAME} ${${plugin}_dependency}
-    ${Boost_LIBRARIES})
-
-  SET_TARGET_PROPERTIES(${plugin}
-    PROPERTIES
-    PREFIX ""
-    )
-
-  INSTALL(TARGETS ${plugin}
-    EXPORT ${TARGET_NAME}
-    DESTINATION ${PLUGINDIR})
-ENDFOREACH(plugin_file)
-
+ADD_SUBDIRECTORY(src)
 ADD_SUBDIRECTORY(tests)
 
-get_cmake_property(_variableNames VARIABLES)
-list (SORT _variableNames)
-foreach (_variableName ${_variableNames})
-  LIST(APPEND LOGGING_WATCHED_VARIABLES
-    ${_variableName}
-    )
-endforeach()
-
+PKG_CONFIG_APPEND_LIBS(${PROJECT_NAME})
 INSTALL(FILES package.xml DESTINATION share/${PROJECT_NAME})
-
-MESSAGE(STATUS "dynamic_graph_VERSION=${dynamic_graph_VERSION}")
