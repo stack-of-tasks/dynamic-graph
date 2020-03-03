@@ -65,37 +65,43 @@ BOOST_AUTO_TEST_CASE(test_tracer) {
   std::string basename("my-tracer");
   std::string suffix(".dat");
 
-  /// Test openfiles
-  atracer.openFiles(rootdir, basename, suffix);
+  atracer.setBufferSize(1<<14);
 
-  /// Add trace by name
+  // Check that an exception is thrown if the filename is invalid.
+  atracer.openFiles(rootdir, "invalid/filename", suffix);
+  BOOST_CHECK_THROW(atracer.addSignalToTraceByName("my-entity.out_double", "output"),
+      ExceptionTraces);
+
+  // Test openfiles
+  atracer.openFiles(rootdir, basename, suffix);
+  // Add trace by name
   atracer.addSignalToTraceByName("my-entity.out_double", "output");
 
   /// Add trace by name
-  SignalBase<int> &aSignal = entity.getSignal("out2double");
+  SignalBase<int> &out_double = entity.getSignal("out_double");
+  SignalBase<int> &out_double_2 = entity.getSignal("out2double");
 
-  entity.m_sigdTwoTimeDepSOUT.recompute(2);
-
-  Signal<double, int> &aSignalInt =
+  Signal<double, int> &in_double =
       *(dynamic_cast<Signal<double, int> *>(&entity.getSignal("in_double")));
 
-  aSignalInt.setConstant(1.5);
+  in_double.setConstant(1.5);
   atracer.start();
-
-  atracer.trace();
 
   std::string emptybuf_cmd_str("empty");
   command::Command *acmd = atracer.getNewStyleCommand(emptybuf_cmd_str);
   acmd->execute();
   for (int i = 0; i < 1000; i++) {
-    aSignal.setTime(i);
-    aSignalInt.setTime(i);
+    in_double.setTime(i);
+    out_double.recompute(i);
+    out_double_2.recompute(i);
     atracer.recordTrigger(i, i);
   }
   output_test_stream output;
+
   atracer.display(output);
 
   atracer.stop();
+  atracer.trace();
   atracer.clearSignalToTrace();
   atracer.closeFiles();
   acmd->execute();
@@ -105,5 +111,5 @@ BOOST_AUTO_TEST_CASE(test_tracer) {
       "TracerRealTime my-tracer [mode=play] : \n"
       "  - Dep list: \n"
       "     -> MyEntity(my-entity)::input(double)::out_double (in output)"
-      "	[0Mo/1Mo]	\n"));
+      "	[9Ko/16Ko]	\n"));
 }
