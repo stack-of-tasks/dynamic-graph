@@ -415,6 +415,198 @@ makeCommandVerbose(E &entity,
 inline std::string docCommandVerbose(const std::string &doc) {
   return std::string("\n") + doc + "\n\nNo input.\n Return a string.\n\n";
 }
+/*************************/
+/* Template return types */
+/*************************/
+
+template <class E, class ReturnType>
+struct CommandReturnType0 : public Command {
+  CommandReturnType0(E &entity, boost::function<ReturnType(void)> function,
+                     const std::string &docString)
+      : Command(entity, EMPTY_ARG, docString), fptr(function) {}
+
+protected:
+  virtual Value doExecute() {
+    assert(getParameterValues().size() == 0);
+    Value res;
+    res = fptr();
+    return res;
+  }
+
+private:
+  boost::function<ReturnType(void)> fptr;
+};
+
+template <class E, class ReturnType>
+CommandReturnType0<E, ReturnType> *
+makeCommandReturnType0(E &entity, boost::function<ReturnType(void)> function,
+                       const std::string &docString) {
+  return new CommandReturnType0<E, ReturnType>(entity, function, docString);
+}
+
+template <class E, class ReturnType>
+CommandReturnType0<E, ReturnType> *
+makeCommandReturnType0(E &entity, boost::function<ReturnType(E *)> function,
+                       const std::string &docString) {
+  return new CommandReturnType0<E, ReturnType>(
+      entity, boost::bind(function, &entity), docString);
+}
+
+template <class E, class ReturnType>
+CommandReturnType0<E, ReturnType> *
+makeCommandReturnType0(E &entity, ReturnType (E::*function)(void),
+                       const std::string &docString) {
+  return new CommandReturnType0<E, ReturnType>(
+      entity, boost::bind(function, &entity), docString);
+}
+
+template <typename ReturnType>
+inline std::string docCommandReturnType0(const std::string &doc,
+                                         const std::string &return_type) {
+  return std::string("\n") + doc + "\n\nNo input.\n" +
+         typeid(ReturnType).name() + " return.\n\n";
+}
+
+} // namespace command
+} // namespace dynamicgraph
+
+/* --- FUNCTION 1 ARGS ------------------------------------------------------ */
+namespace dynamicgraph {
+namespace command {
+
+template <class E, typename ReturnType, typename T>
+struct CommandReturnType1 : public Command {
+  typedef boost::function<ReturnType(const T &)> function_t;
+  typedef boost::function<ReturnType(E *, const T &)> memberFunction_t;
+  typedef void (E::*memberFunction_ptr_t)(const T &);
+
+  CommandReturnType1(E &entity, function_t function,
+                     const std::string &docString)
+      : Command(entity, boost::assign::list_of(ValueHelper<T>::TypeID),
+                docString),
+        fptr(function) {}
+
+protected:
+  virtual Value doExecute() {
+    assert(getParameterValues().size() == 1);
+    T val = getParameterValues()[0].value();
+    Value res(fptr(val));
+    return res; // void
+  }
+
+private:
+  function_t fptr;
+};
+
+template <class E, typename ReturnType, typename T>
+CommandReturnType1<E, ReturnType, T> *
+makeCommandReturnType1(E &entity,
+                       boost::function<ReturnType(const T &)> function,
+                       const std::string &docString) {
+  return new CommandReturnType1<E, ReturnType, T>(entity, function, docString);
+}
+
+template <class E, typename ReturnType, typename T>
+CommandReturnType1<E, ReturnType, T> *makeCommandReturnType1(
+    E &entity,
+    // The following syntaxt don't compile when not specializing the template
+    // arg... why ???
+    // typename CommandReturnType1<E,T>::memberFunction_t function ,
+    boost::function<ReturnType(E *, const T &)> function,
+    const std::string &docString) {
+  return new CommandReturnType1<E, ReturnType, T>(
+      entity, boost::bind(function, &entity, _1), docString);
+}
+
+template <class E, typename ReturnType, typename T>
+CommandReturnType1<E, ReturnType, T> *
+makeCommandReturnType1(E &entity, ReturnType (E::*function)(const T &),
+                       const std::string &docString) {
+  return new CommandReturnType1<E, ReturnType, T>(
+      entity, boost::bind(function, &entity, _1), docString);
+  return NULL;
+}
+
+template <typename ReturnType>
+inline std::string docCommandReturnType1(const std::string &doc,
+                                         const std::string &type) {
+  return std::string("\n") + doc + "\n\nInput:\n - A " + type + ".\n" +
+         typeid(ReturnType).name() + "return.\n\n";
+}
+
+} // namespace command
+} // namespace dynamicgraph
+
+/*********** FUNCTION 2 Arguments ************************/
+namespace dynamicgraph {
+namespace command {
+
+template <class E, typename ReturnType, typename T1, typename T2>
+struct CommandReturnType2 : public Command {
+  typedef boost::function<ReturnType(const T1 &, const T2 &)> function_t;
+  typedef boost::function<ReturnType(E *, const T1 &, const T2 &)>
+      memberFunction_t;
+  typedef void (E::*memberFunction_ptr_t)(const T1 &, const T2 &);
+
+  CommandReturnType2(E &entity, function_t function,
+                     const std::string &docString)
+      : Command(entity,
+                boost::assign::list_of(ValueHelper<T1>::TypeID)(
+                    ValueHelper<T2>::TypeID),
+                docString),
+        fptr(function) {}
+
+protected:
+  virtual Value doExecute() {
+    assert(getParameterValues().size() == 2);
+    T1 val1 = getParameterValues()[0].value();
+    T2 val2 = getParameterValues()[1].value();
+    fptr(val1, val2);
+    return Value(); // void
+  }
+
+private:
+  function_t fptr;
+};
+
+template <class E, typename ReturnType, typename T1, typename T2>
+CommandReturnType2<E, ReturnType, T1, T2> *makeCommandReturnType2(
+    E &entity, boost::function<ReturnType(const T1 &, const T2 &)> function,
+    const std::string &docString) {
+  return new CommandReturnType2<E, ReturnType, T1, T2>(entity, function,
+                                                       docString);
+}
+
+template <class E, typename ReturnType, typename T1, typename T2>
+CommandReturnType2<E, ReturnType, T1, T2> *makeCommandReturnType2(
+    E &entity,
+    // The following syntaxt don't compile when not specializing the template
+    // arg... why ???
+    // typename CommandReturnType2<E,T1,T2>::memberFunction_t function ,
+    boost::function<ReturnType(E *, const T1 &, const T2 &)> function,
+    const std::string &docString) {
+  return new CommandReturnType2<E, ReturnType, T1, T2>(
+      entity, boost::bind(function, &entity, _1, _2), docString);
+}
+
+template <class E, typename ReturnType, typename T1, typename T2>
+CommandReturnType2<E, ReturnType, T1, T2> *
+makeCommandReturnType2(E &entity,
+                       ReturnType (E::*function)(const T1 &, const T2 &),
+                       const std::string &docString) {
+  return new CommandReturnType2<E, ReturnType, T1, T2>(
+      entity, boost::bind(function, &entity, _1, _2), docString);
+  return NULL;
+}
+
+template <typename ReturnType>
+inline std::string docCommandReturnType2(const std::string &doc,
+                                         const std::string &type1,
+                                         const std::string &type2) {
+  return (std::string("\n") + doc + "\n\n" + "Input:\n - A " + type1 + ".\n" +
+          "Input:\n - A " + type2 + ".\n" +
+          "ReturnType:\n - Returns:" + typeid(ReturnType).name() + +".\n\n");
+}
 
 } // namespace command
 } // namespace dynamicgraph
