@@ -63,6 +63,16 @@ public:
                    *this, &CustomEntity::four_args,
                    docCommandVoid4("four args", "int", "int", "int", "int")));
 
+    addCommand("1_arg_r",
+               makeCommandReturnType1(
+                 *this, &CustomEntity::one_arg_ret,
+                 docCommandVoid1("one arg", "int")));
+
+    addCommand("2_args_r",
+               makeCommandReturnType2(
+                 *this, &CustomEntity::two_args_ret,
+                 docCommandVoid2("two args", "int","int")));
+
     /// Generating an exception by adding a command which already exist
     bool res = false;
     std::string e_1_arg("1_arg");
@@ -89,6 +99,12 @@ public:
   void four_args(const int &, const int &, const int &, const int &) {
     test_four_args_ = true;
   }
+
+  int one_arg_ret(const int &) { test_one_arg_ = true; return 2;}
+
+  std::string two_args_ret(const int &, const int &)
+  { test_two_args_ = true; return std::string("return");}
+
 };
 DYNAMICGRAPH_FACTORY_ENTITY_PLUGIN(CustomEntity, "CustomEntity");
 } // namespace dynamicgraph
