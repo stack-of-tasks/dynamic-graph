@@ -17,7 +17,7 @@ The sources are available through github at the following URL:
 href="https://github.com/stack-of-tasks/dynamic-graph">https://github.com/stack-of-tasks/dynamic-graph</a>
 
 To clone:
-\code
+\code{.sh}
 git clone https://github.com/stack-of-tasks/dynamic-graph.git
 \endcode
 

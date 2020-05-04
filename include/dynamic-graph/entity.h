@@ -63,14 +63,50 @@ public:
     static std::string ret("Entity");
     return ret;
   }
+  /** \brief Returns the Entity documentation
+      \return The documentation is provided as std::string object.
+   */
   virtual std::string getDocString() const;
+
+  /** \brief Test if a signal of name signame is present.
+      \return True if the signal is present, False otherwise
+   */
   bool hasSignal(const std::string &signame) const;
+
+  /** \brief Provides a reference to the signal named signalName.
+      \param signalName: Name of the signal
+      \return A reference to the signal with a temporal dependency.
+   */
   SignalBase<int> &getSignal(const std::string &signalName);
+
+  /** \brief Provides a const reference to the signal named signalName.
+      \param signalName: Name of the signal
+      \return A const reference to the signal with a temporal dependency.
+   */
   const SignalBase<int> &getSignal(const std::string &signalName) const;
+
+  /** \brief Display the list of signals of this entity in output stream os.
+      \param os: the output stream where to display the list of signals.
+      \returns The output stream given in parameter.
+  */
   std::ostream &displaySignalList(std::ostream &os) const;
+
+  /** \brief This method is used to write down in os the edges of the graph
+      by calling the signals writeGraph method.
+      \param os: The output stream where to write the informations.
+      \return os: The output stream.
+   */
   virtual std::ostream &writeGraph(std::ostream &os) const;
+
+  /** \brief This method is used write in the output stream os the
+      signals names and the commands of the entity.
+      \param os: The output stream where to write the list of objects
+      related to the entity.
+   */
   virtual std::ostream &writeCompletionList(std::ostream &os) const;
 
+  /** \brief Display information on the entity inside the output stream os.
+   */
   virtual void display(std::ostream &os) const;
 
   virtual SignalBase<int> *test() { return 0; }
@@ -78,9 +114,20 @@ public:
   virtual void test2(SignalBase<int> *) { return; }
 
   const std::string &getCommandList() const;
+
+  /** \brief Provides the std::map where all the commands are registered
+      \returns A map of pointers towards Command objects
+  */
   CommandMap_t getNewStyleCommandMap();
+  /** \brief Provides the pointer towards the Command object cmdName.
+      \param cmdName: Name of the command
+  */
   command::Command *getNewStyleCommand(const std::string &cmdName);
 
+  /** \brief Provides a map of all the signals.
+      \returns A copy of the map with all the pointers towards
+      the entity signals.
+   */
   SignalMap getSignalMap() const;
 
   /// \name Logger related methods

@@ -78,11 +78,11 @@ namespace command {
 
 template <class E, typename T> struct CommandVoid1 : public Command {
   typedef boost::function<void(const T &)> function_t;
-  typedef boost::function<void(E *, const T &)> memberFunction_t;
-  typedef void (E::*memberFunction_ptr_t)(const T &);
 
   CommandVoid1(E &entity, function_t function, const std::string &docString)
-      : Command(entity, boost::assign::list_of(ValueHelper<T>::TypeID),
+      : Command(entity,
+                boost::assign::list_of
+                (ValueHelper<T>::TypeID),
                 docString),
         fptr(function) {}
 
@@ -111,7 +111,6 @@ CommandVoid1<E, T> *makeCommandVoid1(
     E &entity,
     // The following syntaxt don't compile when not specializing the template
     // arg... why ???
-    // typename CommandVoid1<E,T>::memberFunction_t function ,
     boost::function<void(E *, const T &)> function,
     const std::string &docString) {
   return new CommandVoid1<E, T>(entity, boost::bind(function, &entity, _1),
@@ -142,13 +141,12 @@ namespace command {
 template <class E, typename T1, typename T2>
 struct CommandVoid2 : public Command {
   typedef boost::function<void(const T1 &, const T2 &)> function_t;
-  typedef boost::function<void(E *, const T1 &, const T2 &)> memberFunction_t;
-  typedef void (E::*memberFunction_ptr_t)(const T1 &, const T2 &);
 
   CommandVoid2(E &entity, function_t function, const std::string &docString)
       : Command(entity,
-                boost::assign::list_of(ValueHelper<T1>::TypeID)(
-                    ValueHelper<T2>::TypeID),
+                boost::assign::list_of
+                (ValueHelper<T1>::TypeID)
+                (ValueHelper<T2>::TypeID),
                 docString),
         fptr(function) {}
 
@@ -178,7 +176,6 @@ CommandVoid2<E, T1, T2> *makeCommandVoid2(
     E &entity,
     // The following syntaxt don't compile when not specializing the template
     // arg... why ???
-    // typename CommandVoid2<E,T1,T2>::memberFunction_t function ,
     boost::function<void(E *, const T1 &, const T2 &)> function,
     const std::string &docString) {
   return new CommandVoid2<E, T1, T2>(
@@ -211,14 +208,13 @@ namespace command {
 template <class E, typename T1, typename T2, typename T3>
 struct CommandVoid3 : public Command {
   typedef boost::function<void(const T1 &, const T2 &, const T3 &)> function_t;
-  typedef boost::function<void(E *, const T1 &, const T2 &, const T3 &)>
-      memberFunction_t;
-  typedef void (E::*memberFunction_ptr_t)(const T1 &, const T2 &, const T3);
 
   CommandVoid3(E &entity, function_t function, const std::string &docString)
       : Command(entity,
-                boost::assign::list_of(ValueHelper<T1>::TypeID)(
-                    ValueHelper<T2>::TypeID)(ValueHelper<T3>::TypeID),
+                boost::assign::list_of
+                (ValueHelper<T1>::TypeID)
+                (ValueHelper<T2>::TypeID)
+                (ValueHelper<T3>::TypeID),
                 docString),
         fptr(function) {}
 
@@ -249,7 +245,6 @@ CommandVoid3<E, T1, T2, T3> *makeCommandVoid3(
     E &entity,
     // The following syntaxt don't compile when not specializing the template
     // arg... why ???
-    // typename CommandVoid3<E,T1,T2>::memberFunction_t function ,
     boost::function<void(E *, const T1 &, const T2 &, const T3 &)> function,
     const std::string &docString) {
   return new CommandVoid3<E, T1, T2, T3>(
@@ -286,17 +281,16 @@ template <class E, typename T1, typename T2, typename T3, typename T4>
 struct CommandVoid4 : public Command {
   typedef boost::function<void(const T1 &, const T2 &, const T3 &, const T4 &)>
       function_t;
-  typedef boost::function<void(E *, const T1 &, const T2 &, const T3 &,
-                               const T4 &)>
-      memberFunction_t;
   typedef void (E::*memberFunction_ptr_t)(const T1 &, const T2 &, const T3 &,
                                           const T4 &);
 
   CommandVoid4(E &entity, function_t function, const std::string &docString)
       : Command(entity,
-                boost::assign::list_of(ValueHelper<T1>::TypeID)(
-                    ValueHelper<T2>::TypeID)(ValueHelper<T3>::TypeID)(
-                    ValueHelper<T4>::TypeID),
+                boost::assign::list_of
+                (ValueHelper<T1>::TypeID)
+                (ValueHelper<T2>::TypeID)
+                (ValueHelper<T3>::TypeID)
+                (ValueHelper<T4>::TypeID),
                 docString),
         fptr(function) {}
 
@@ -364,9 +358,6 @@ namespace dynamicgraph {
 namespace command {
 template <class E> struct CommandVerbose : public Command {
   typedef boost::function<void(std::ostream &)> function_t;
-  typedef boost::function<void(E *, std::ostream &)> memberFunction_t;
-  typedef void (E::*memberFunctionConst_ptr_t)(std::ostream &) const;
-  typedef void (E::*memberFunction_ptr_t)(std::ostream &);
 
   CommandVerbose(E &entity, function_t function, const std::string &docString)
       : Command(entity, EMPTY_ARG, docString), fptr(function) {}
@@ -477,12 +468,12 @@ namespace command {
 template <class E, typename ReturnType, typename T>
 struct CommandReturnType1 : public Command {
   typedef boost::function<ReturnType(const T &)> function_t;
-  typedef boost::function<ReturnType(E *, const T &)> memberFunction_t;
-  typedef void (E::*memberFunction_ptr_t)(const T &);
 
   CommandReturnType1(E &entity, function_t function,
                      const std::string &docString)
-      : Command(entity, boost::assign::list_of(ValueHelper<T>::TypeID),
+      : Command(entity,
+                boost::assign::list_of
+                (ValueHelper<T>::TypeID),
                 docString),
         fptr(function) {}
 
@@ -511,7 +502,6 @@ CommandReturnType1<E, ReturnType, T> *makeCommandReturnType1(
     E &entity,
     // The following syntaxt don't compile when not specializing the template
     // arg... why ???
-    // typename CommandReturnType1<E,T>::memberFunction_t function ,
     boost::function<ReturnType(E *, const T &)> function,
     const std::string &docString) {
   return new CommandReturnType1<E, ReturnType, T>(
@@ -544,15 +534,13 @@ namespace command {
 template <class E, typename ReturnType, typename T1, typename T2>
 struct CommandReturnType2 : public Command {
   typedef boost::function<ReturnType(const T1 &, const T2 &)> function_t;
-  typedef boost::function<ReturnType(E *, const T1 &, const T2 &)>
-      memberFunction_t;
-  typedef void (E::*memberFunction_ptr_t)(const T1 &, const T2 &);
 
   CommandReturnType2(E &entity, function_t function,
                      const std::string &docString)
       : Command(entity,
-                boost::assign::list_of(ValueHelper<T1>::TypeID)(
-                    ValueHelper<T2>::TypeID),
+                boost::assign::list_of
+                (ValueHelper<T1>::TypeID)
+                (ValueHelper<T2>::TypeID),
                 docString),
         fptr(function) {}
 
@@ -582,7 +570,6 @@ CommandReturnType2<E, ReturnType, T1, T2> *makeCommandReturnType2(
     E &entity,
     // The following syntaxt don't compile when not specializing the template
     // arg... why ???
-    // typename CommandReturnType2<E,T1,T2>::memberFunction_t function ,
     boost::function<ReturnType(E *, const T1 &, const T2 &)> function,
     const std::string &docString) {
   return new CommandReturnType2<E, ReturnType, T1, T2>(
@@ -610,5 +597,6 @@ inline std::string docCommandReturnType2(const std::string &doc,
 
 } // namespace command
 } // namespace dynamicgraph
+
 
 #endif // __dg_command_bind_h__
