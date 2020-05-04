@@ -14,6 +14,7 @@
 namespace dynamicgraph {
 class Entity;
 namespace command {
+/// \ingroup dgraph
 /// Abstract class for entity commands
 ///
 /// This class provide a mean to control entities from external

@@ -38,6 +38,10 @@ private:
   const Value *value_;
 };
 
+/** \ingroup dgraph
+    \brief This class implements a variant design pattern to handle basic types in Command.
+
+ */
 class DYNAMIC_GRAPH_DLLAPI Value {
 public:
   enum Type {

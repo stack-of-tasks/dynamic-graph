@@ -8,6 +8,8 @@ In dynamic-graph a graph is build with:
 - computational nodes which are entities \subpage subpage_entities.
 - directed edges which are created by connecting input and output signals
 \subpage subp_signals.
+- commands which are expanding the capabilities of the entity
+\subpage subpage_command
 - managing the nodes is done through a factory \subpage subp_factory providing
 classes and a way to create instances from this list of classes.
 - the instances of node are handled through a pool \subpage subp_pool
