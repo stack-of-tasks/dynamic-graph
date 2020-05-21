@@ -198,29 +198,9 @@ void TracerRealTime::trace() {
     }
 
     if ((hardFile.good()) && (NULL != file)) {
-      //          const unsigned int SIZE = 1024*8;
-      //          char buffer[SIZE];
-      //          streambuf * pbuf = file.rdbuf ();
-      //          pbuf->pubseekpos(0);
-      //          const unsigned int NB_BYTE = pbuf->in_avail ();
-      //          dgDEBUG(35) << "Bytes in buffer: " << NB_BYTE << endl;
-      //          //dgDEBUG(35) << "Copie" <<endl<<file.str ()<< endl;
-
-      //          for( unsigned int index=0;index<NB_BYTE;index+=SIZE )
-      //            {
-      //              pbuf->pubseekpos( index );
-      //              int nget = pbuf->sgetn( buffer,SIZE );
-      //              dgDEBUG(35) << "Copie ["<<nget<<"] " <<buffer<<endl;
-      //              hardFile.write( buffer,nget );
-      //            }
-      // hardFile << file.str () << flush;
-      // file.seekp(0);
-
       file->dump(hardFile);
       file->empty();
       hardFile.flush();
-
-      // file.str("");
     }
 
     ++iter;
@@ -246,13 +226,6 @@ void TracerRealTime::emptyBuffers() {
   dgDEBUGOUT(15);
 }
 
-// void TracerRealTime::
-// emptyBuffer( std::stringstream & file )
-// {
-//   streambuf * pbuf = file.rdbuf ();
-//   pbuf->file.rdbuf () ->pubsetbuf( fileBuffer,10 );
-
-// }
 void TracerRealTime::recordSignal(std::ostream &os,
                                   const SignalBase<int> &sig) {
   dgDEBUGIN(15);
