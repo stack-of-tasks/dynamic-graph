@@ -26,7 +26,7 @@ It is possible to set the output stream of the messages inside a file:
 \section sec_use_rt_logger Using the rt_logger
 
 
-\newcode
+\code
 // Somewhere in your library
 dgRTLOG() << "your message. Prefer to use \n than std::endl."
 \endcode

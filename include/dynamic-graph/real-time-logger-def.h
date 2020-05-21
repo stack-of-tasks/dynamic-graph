@@ -27,7 +27,7 @@ public:
 
 /// Write to an ostream object.
 ///
-/// The easieast is to use the macro \ref dgADD_OSTREAM_TO_RTLOG(ostr) where
+/// The easieast is to use the macro  dgADD_OSTREAM_TO_RTLOG(ostr) where
 /// `ostr` can be `std::cout` or an std::ofstream...
 class LoggerIOStream : public LoggerStream {
 public:

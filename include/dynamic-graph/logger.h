@@ -206,6 +206,7 @@ public:
    * allows it. The lineId is used to identify the point where sendMsg is
    * called so that streaming messages are printed only every streamPrintPeriod
    * iterations.
+   * \param type specifies the verbosity level, for instance MSG_TYPE_DEBUG
    * \param lineId typically __FILE__ ":" BOOST_PP_STRINGIZE(__LINE__)
    */
   RTLoggerStream stream(MsgType type, const std::string &lineId = "") {
@@ -265,8 +266,8 @@ protected:
 
   inline bool isStreamMsg(MsgType m) { return (m & MSG_TYPE_STREAM_BIT); }
 
-  /** Check whether a message of type \m and from \c lineId should be accepted.
-   *  \note If \c is a stream type, the internal counter associated to \c lineId
+  /** Check whether a message of type \p m and from \p c lineId should be accepted.
+   *  \note If \p m is a stream type, the internal counter associated to \p lineId
    *        is updated.
    */
   bool acceptMsg(MsgType m, const std::string &lineId) {
