@@ -62,6 +62,6 @@ load classes of entities  and create instances of entities.</p>
 \li Type-safe connection of input and output signals
 \li On-demand signal computation as well as a caching system for signal values
 allow fast computation of signal values, which is a critical point for real-time
-systems\n See \ref scriptingabout
+systems\n 
 
 */
