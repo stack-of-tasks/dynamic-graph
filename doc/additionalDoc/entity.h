@@ -24,7 +24,7 @@ To add flexibility to a node, it is possible to add command with arguments to
 modify the internal behavior of the entity or get information from the entity.
 As a command is in general asynchronous and rare with respect to the data-flow
 scheme for the signals the command is in general executed in a \b none-real-time
-thread.
+thread. For more details on command see \subpage subpage_command .
 
 \subsection entity_classes Entity class
 Entities are implemented as C++ classes and compiled as dynamic libraries. They
@@ -34,9 +34,9 @@ to load the library, it is not advised to do that during a control-law
 computation. Entity instanciation also implies memory allocation which is also
 time consuming and thus not advised inside a real-time thread.
 
-The entities will be placed in ${PREFIX}/lib/plugin (since this may change, it
-is advised to check the install log or the CMakeLists.txt file to check the
-installation path).
+The entities will be placed in ${PREFIX}/lib/dynamic-graph-plugin
+(since this may change, it is advised to check the install log or the
+CMakeLists.txt file to check the installation path).
 
 \subsection entities List of entities in this package
 Since most of the functionality in projects using the dynamic-graph framework
