@@ -10,8 +10,8 @@ are recorded to a memory buffer, which can be emptied at any time.
 The \b commands that this entity exposes are:
 \code
 empty (discards all buffers)
-buffersize (sets buffer size for recording)
-trace (writes traces to files)
+getBufferSize (gets buffer size for recording)
+setBufferSize (sets buffer size for recording)
 \endcode
 Plus all the commands exposed by \ref tracerdoc
 \n
