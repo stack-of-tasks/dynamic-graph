@@ -382,23 +382,14 @@ makeCommandVerbose(E &entity, typename CommandVerbose<E>::function_t function,
   return NULL;
 }
 
-template <class E>
-CommandVerbose<E> *makeCommandVerbose(
-    E &entity,
-    // void (E::*function) (std::ostream&) const,
-    typename CommandVerbose<E>::memberFunctionConst_ptr_t function,
-    const std::string &docString) {
-  return new CommandVerbose<E>(entity, boost::bind(function, &entity, _1),
-                               docString);
-  return NULL;
-}
 
 template <class E>
 CommandVerbose<E> *
 makeCommandVerbose(E &entity,
-                   typename CommandVerbose<E>::memberFunction_ptr_t function,
+                   void (E::*function)(std::ostream &),
                    const std::string &docString) {
-  return new CommandVerbose<E>(entity, boost::bind(function, &entity, _1),
+  return new CommandVerbose<E>(entity,
+                               boost::bind(function, &entity,_1),
                                docString);
   return NULL;
 }

@@ -35,7 +35,9 @@ public:
   bool test_two_args_;
   bool test_three_args_;
   bool test_four_args_;
-
+  bool test_one_arg_ret_;
+  bool test_two_args_ret_;
+  
   virtual const std::string &getClassName() const { return CLASS_NAME; }
   explicit CustomEntity(const std::string &n) : Entity(n) {
     test_zero_arg_ = false;
@@ -43,7 +45,9 @@ public:
     test_two_args_ = false;
     test_three_args_ = false;
     test_four_args_ = false;
-
+    test_one_arg_ret_ = false;
+    test_two_args_ret_ = false;
+    
     addCommand("0_arg", makeCommandVoid0(*this, &CustomEntity::zero_arg,
                                          docCommandVoid0("zero arg")));
 
@@ -73,6 +77,12 @@ public:
                  *this, &CustomEntity::two_args_ret,
                  docCommandVoid2("two args", "int","int")));
 
+
+    addCommand("cmd_verbose",
+               makeCommandVerbose(
+                 *this,&CustomEntity::cmd_verbose,
+                 docCommandVerbose("Display some information")));
+
     /// Generating an exception by adding a command which already exist
     bool res = false;
     std::string e_1_arg("1_arg");
@@ -100,11 +110,15 @@ public:
     test_four_args_ = true;
   }
 
-  int one_arg_ret(const int &) { test_one_arg_ = true; return 2;}
+  int one_arg_ret(const int &) { test_one_arg_ret_ = true; return 2;}
 
   std::string two_args_ret(const int &, const int &)
-  { test_two_args_ = true; return std::string("return");}
+  { test_two_args_ret_ = true; return std::string("return");}
 
+  void cmd_verbose(std::ostream &oss)
+  { std::string as("print verbose");
+    oss << as;
+  }
 };
 DYNAMICGRAPH_FACTORY_ENTITY_PLUGIN(CustomEntity, "CustomEntity");
 } // namespace dynamicgraph
@@ -151,6 +165,29 @@ BOOST_AUTO_TEST_CASE(command_test) {
   BOOST_CHECK(entity.test_two_args_);
   BOOST_CHECK(entity.test_three_args_);
   BOOST_CHECK(entity.test_four_args_);
+
+  // With return type.
+  vec_fname.clear();
+  vec_fname.push_back(std::string("1_arg_r"));
+  vec_fname.push_back(std::string("2_args_r"));
+  values.clear();
+  
+  for (unsigned int i = 0; i < 2; i++) {
+    it_map = aCommandMap.find(vec_fname[i]);
+    if (it_map == aCommandMap.end())
+    {
+      BOOST_CHECK(false);
+      exit(-1);
+    }
+    values.push_back(aValue);
+    it_map->second->setParameterValues(values);
+    Value aValue =it_map->second->execute();
+    it_map->second->owner();
+    it_map->second->getDocstring();
+  }
+
+  BOOST_CHECK(entity.test_one_arg_ret_);
+  BOOST_CHECK(entity.test_two_args_ret_);
 
   std::vector<Value> values_two;
   values_two.push_back(aValue);
