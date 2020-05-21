@@ -39,7 +39,8 @@ private:
 };
 
 /** \ingroup dgraph
-    \brief This class implements a variant design pattern to handle basic types in Command.
+    \brief This class implements a variant design pattern to handle basic types
+   in Command.
 
  */
 class DYNAMIC_GRAPH_DLLAPI Value {

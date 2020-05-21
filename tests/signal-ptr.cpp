@@ -306,9 +306,7 @@ BOOST_AUTO_TEST_CASE(set_signal_string) {
   std::istringstream value(os.str());
   try {
     s.set(value);
-  }
-  catch(const std::exception& exc)
-  {
+  } catch (const std::exception &exc) {
     std::cout << exc.what() << std::endl;
     BOOST_CHECK(!"Tentative to set signal to empty string");
   }
