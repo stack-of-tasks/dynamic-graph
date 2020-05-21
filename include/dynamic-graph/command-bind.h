@@ -80,9 +80,7 @@ template <class E, typename T> struct CommandVoid1 : public Command {
   typedef boost::function<void(const T &)> function_t;
 
   CommandVoid1(E &entity, function_t function, const std::string &docString)
-      : Command(entity,
-                boost::assign::list_of
-                (ValueHelper<T>::TypeID),
+      : Command(entity, boost::assign::list_of(ValueHelper<T>::TypeID),
                 docString),
         fptr(function) {}
 
@@ -107,12 +105,12 @@ makeCommandVoid1(E &entity, boost::function<void(const T &)> function,
 }
 
 template <class E, typename T>
-CommandVoid1<E, T> *makeCommandVoid1(
-    E &entity,
-    // The following syntaxt don't compile when not specializing the template
-    // arg... why ???
-    boost::function<void(E *, const T &)> function,
-    const std::string &docString) {
+CommandVoid1<E, T> *
+makeCommandVoid1(E &entity,
+                 // The following syntaxt don't compile when not specializing
+                 // the template arg... why ???
+                 boost::function<void(E *, const T &)> function,
+                 const std::string &docString) {
   return new CommandVoid1<E, T>(entity, boost::bind(function, &entity, _1),
                                 docString);
 }
@@ -144,9 +142,8 @@ struct CommandVoid2 : public Command {
 
   CommandVoid2(E &entity, function_t function, const std::string &docString)
       : Command(entity,
-                boost::assign::list_of
-                (ValueHelper<T1>::TypeID)
-                (ValueHelper<T2>::TypeID),
+                boost::assign::list_of(ValueHelper<T1>::TypeID)(
+                    ValueHelper<T2>::TypeID),
                 docString),
         fptr(function) {}
 
@@ -172,12 +169,12 @@ makeCommandVoid2(E &entity,
 }
 
 template <class E, typename T1, typename T2>
-CommandVoid2<E, T1, T2> *makeCommandVoid2(
-    E &entity,
-    // The following syntaxt don't compile when not specializing the template
-    // arg... why ???
-    boost::function<void(E *, const T1 &, const T2 &)> function,
-    const std::string &docString) {
+CommandVoid2<E, T1, T2> *
+makeCommandVoid2(E &entity,
+                 // The following syntaxt don't compile when not specializing
+                 // the template arg... why ???
+                 boost::function<void(E *, const T1 &, const T2 &)> function,
+                 const std::string &docString) {
   return new CommandVoid2<E, T1, T2>(
       entity, boost::bind(function, &entity, _1, _2), docString);
 }
@@ -211,10 +208,8 @@ struct CommandVoid3 : public Command {
 
   CommandVoid3(E &entity, function_t function, const std::string &docString)
       : Command(entity,
-                boost::assign::list_of
-                (ValueHelper<T1>::TypeID)
-                (ValueHelper<T2>::TypeID)
-                (ValueHelper<T3>::TypeID),
+                boost::assign::list_of(ValueHelper<T1>::TypeID)(
+                    ValueHelper<T2>::TypeID)(ValueHelper<T3>::TypeID),
                 docString),
         fptr(function) {}
 
@@ -286,11 +281,9 @@ struct CommandVoid4 : public Command {
 
   CommandVoid4(E &entity, function_t function, const std::string &docString)
       : Command(entity,
-                boost::assign::list_of
-                (ValueHelper<T1>::TypeID)
-                (ValueHelper<T2>::TypeID)
-                (ValueHelper<T3>::TypeID)
-                (ValueHelper<T4>::TypeID),
+                boost::assign::list_of(ValueHelper<T1>::TypeID)(
+                    ValueHelper<T2>::TypeID)(ValueHelper<T3>::TypeID)(
+                    ValueHelper<T4>::TypeID),
                 docString),
         fptr(function) {}
 
@@ -382,14 +375,11 @@ makeCommandVerbose(E &entity, typename CommandVerbose<E>::function_t function,
   return NULL;
 }
 
-
 template <class E>
-CommandVerbose<E> *
-makeCommandVerbose(E &entity,
-                   void (E::*function)(std::ostream &),
-                   const std::string &docString) {
-  return new CommandVerbose<E>(entity,
-                               boost::bind(function, &entity,_1),
+CommandVerbose<E> *makeCommandVerbose(E &entity,
+                                      void (E::*function)(std::ostream &),
+                                      const std::string &docString) {
+  return new CommandVerbose<E>(entity, boost::bind(function, &entity, _1),
                                docString);
   return NULL;
 }
@@ -462,9 +452,7 @@ struct CommandReturnType1 : public Command {
 
   CommandReturnType1(E &entity, function_t function,
                      const std::string &docString)
-      : Command(entity,
-                boost::assign::list_of
-                (ValueHelper<T>::TypeID),
+      : Command(entity, boost::assign::list_of(ValueHelper<T>::TypeID),
                 docString),
         fptr(function) {}
 
@@ -489,12 +477,12 @@ makeCommandReturnType1(E &entity,
 }
 
 template <class E, typename ReturnType, typename T>
-CommandReturnType1<E, ReturnType, T> *makeCommandReturnType1(
-    E &entity,
-    // The following syntaxt don't compile when not specializing the template
-    // arg... why ???
-    boost::function<ReturnType(E *, const T &)> function,
-    const std::string &docString) {
+CommandReturnType1<E, ReturnType, T> *
+makeCommandReturnType1(E &entity,
+                       // The following syntaxt don't compile when not
+                       // specializing the template arg... why ???
+                       boost::function<ReturnType(E *, const T &)> function,
+                       const std::string &docString) {
   return new CommandReturnType1<E, ReturnType, T>(
       entity, boost::bind(function, &entity, _1), docString);
 }
@@ -529,9 +517,8 @@ struct CommandReturnType2 : public Command {
   CommandReturnType2(E &entity, function_t function,
                      const std::string &docString)
       : Command(entity,
-                boost::assign::list_of
-                (ValueHelper<T1>::TypeID)
-                (ValueHelper<T2>::TypeID),
+                boost::assign::list_of(ValueHelper<T1>::TypeID)(
+                    ValueHelper<T2>::TypeID),
                 docString),
         fptr(function) {}
 
@@ -588,6 +575,5 @@ inline std::string docCommandReturnType2(const std::string &doc,
 
 } // namespace command
 } // namespace dynamicgraph
-
 
 #endif // __dg_command_bind_h__

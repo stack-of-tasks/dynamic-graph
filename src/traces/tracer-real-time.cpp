@@ -127,7 +127,8 @@ void TracerRealTime::openFile(const SignalBase<int> &sig,
   std::ofstream *newfile = new std::ofstream(filename.c_str());
   if (!newfile->good()) {
     delete newfile;
-    DG_THROW ExceptionTraces(ExceptionTraces::NOT_OPEN,
+    DG_THROW ExceptionTraces(
+        ExceptionTraces::NOT_OPEN,
         "Could not open file " + filename + " for signal " + signame, "");
   }
   dgDEBUG(5) << "Newfile:" << (void *)newfile << endl;

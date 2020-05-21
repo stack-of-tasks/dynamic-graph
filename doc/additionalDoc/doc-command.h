@@ -97,7 +97,7 @@ std::map<const std::string, Command *> aCommandMap =
 std::string cmd_name = "4_args";
 
 std::map<const std::string, Command *>::iterator it_map;
-  
+
 it_map = aCommandMap.find(cmd_name);
 if (it_map == aCommandMap.end())
 
@@ -107,7 +107,7 @@ std::vector<Value> values;
 
 for (unsigned int i = 0; i < 4; i++)
   values.push_back(aValue);
-  
+
 it_map->second->setParameterValues(values);
 it_map->second->execute();
 it_map->second->owner();
