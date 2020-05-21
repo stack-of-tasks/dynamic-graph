@@ -1,12 +1,5 @@
 var searchData=
 [
-  ['file',['file',['../a00030.html#a89287e356e37d3e494d67177b7e9884a',1,'dynamicgraph::ExceptionAbstract::Param']]],
-  ['filename',['filename',['../a00014.html#afedd7a447c06712d7b2dcf773ca9141d',1,'dynamicgraph::Contiifstream']]],
-  ['fileptr',['filePTR',['../a00030.html#a621cb78702ba71d9f4bc5fecb17b7048',1,'dynamicgraph::ExceptionAbstract::Param']]],
-  ['files',['files',['../a00051.html#aaace5b0cc3c6c8cd2a2e56b779505ec0',1,'dynamicgraph::Tracer']]],
-  ['first',['first',['../a00014.html#a7151e2e117f27701209eecf9cb5ff1ed',1,'dynamicgraph::Contiifstream']]],
-  ['frequency',['frequency',['../a00051.html#a3b56626a097bf50f20d7ecb3a66395e5',1,'dynamicgraph::Tracer']]],
-  ['full',['full',['../a00029.html#acddc2030736bb566af40c5331e16760e',1,'dynamicgraph::OutStringStream']]],
-  ['function',['function',['../a00030.html#a8b5169fedd43754d1b02ca21b8d84d69',1,'dynamicgraph::ExceptionAbstract::Param']]],
-  ['functionptr',['functionPTR',['../a00030.html#ac446ff634daa369a2601da0f27587f8d',1,'dynamicgraph::ExceptionAbstract::Param']]]
+  ['nice_5fperiod_5f',['nice_period_',['../classdynamicgraph_1_1CPU_1_1CPUData.html#afaca876976f73cb01dc008b37c6a5223',1,'dynamicgraph::CPU::CPUData']]],
+  ['nice_5ftime_5f',['nice_time_',['../classdynamicgraph_1_1CPU_1_1CPUData.html#ac66121278d1db2fafffb8e139e5e9987',1,'dynamicgraph::CPU::CPUData']]]
 ];

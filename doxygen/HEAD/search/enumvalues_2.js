@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['constant',['CONSTANT',['../a00041.html#a57b8e35c45307a40b6dc3c48cc334155aee2d1fa88618982d476c6f7bce0a5450',1,'dynamicgraph::Signal']]],
-  ['copy_5fnot_5finitialized',['COPY_NOT_INITIALIZED',['../a00025.html#a5c6942a3d775d104aa6fa46902106f10afecd9889df78436cc6a1c81b824e19fc',1,'dynamicgraph::ExceptionSignal']]]
+  ['when_5fsaid',['WHEN_SAID',['../classdynamicgraph_1_1Tracer.html#a7862f00bf81975ff1d5fe8ef13c06baeafd976facea8977ecd7a8147887b3ce52',1,'dynamicgraph::Tracer']]]
 ];

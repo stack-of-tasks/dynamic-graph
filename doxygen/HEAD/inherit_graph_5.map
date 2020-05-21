@@ -1,3 +1,6 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$a00015.html" title="Logging class. " alt="" coords="5,5,188,32"/>
+<area shape="rect" id="node2" href="$classdynamicgraph_1_1ExceptionAbstract.html" title="Abstract root class for all dynamic&#45;graph exceptions. " alt="" coords="132,56,261,83"/>
+<area shape="rect" id="node3" href="$classdynamicgraph_1_1ExceptionFactory.html" title="Generic error class. " alt="" coords="309,5,433,32"/>
+<area shape="rect" id="node4" href="$classdynamicgraph_1_1ExceptionSignal.html" title="Exceptions raised when an error related to signals happen. " alt="" coords="313,56,429,83"/>
+<area shape="rect" id="node5" href="$classdynamicgraph_1_1ExceptionTraces.html" title="Exceptions raised when an error related to traces happen. " alt="" coords="311,107,431,133"/>
 </map>

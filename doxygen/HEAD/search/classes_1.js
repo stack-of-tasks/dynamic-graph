@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['debugtrace',['DebugTrace',['../a00015.html',1,'dynamicgraph']]],
-  ['defaultcastregisterer',['DefaultCastRegisterer',['../a00016.html',1,'dynamicgraph']]],
-  ['directgetter',['DirectGetter',['../a00017.html',1,'dynamicgraph::command']]],
-  ['directsetter',['DirectSetter',['../a00018.html',1,'dynamicgraph::command']]]
+  ['debugtrace',['DebugTrace',['../classdynamicgraph_1_1DebugTrace.html',1,'dynamicgraph']]],
+  ['defaultcastregisterer',['DefaultCastRegisterer',['../classdynamicgraph_1_1DefaultCastRegisterer.html',1,'dynamicgraph']]],
+  ['directgetter',['DirectGetter',['../classdynamicgraph_1_1command_1_1DirectGetter.html',1,'dynamicgraph::command']]],
+  ['directsetter',['DirectSetter',['../classdynamicgraph_1_1command_1_1DirectSetter.html',1,'dynamicgraph::command']]]
 ];

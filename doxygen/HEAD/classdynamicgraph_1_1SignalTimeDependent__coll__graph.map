@@ -1,0 +1,5 @@
+<map id="SignalTimeDependent&lt; T, Time &gt;" name="SignalTimeDependent&lt; T, Time &gt;">
+<area shape="rect" id="node2" href="$classdynamicgraph_1_1Signal.html" title="Signals link I/O ports of entities. They can be constant&#45;valued signals, or copy the value of a heap ..." alt="" coords="13,155,139,181"/>
+<area shape="rect" id="node3" href="$classdynamicgraph_1_1SignalBase.html" title="The base class for signals: not to be used as such. " alt="" coords="5,80,147,107"/>
+<area shape="rect" id="node5" href="$classdynamicgraph_1_1TimeDependency.html" title="A helper class for setting and specifying dependencies between signals. " alt="" coords="163,155,341,181"/>
+</map>

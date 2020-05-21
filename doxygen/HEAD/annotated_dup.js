@@ -1,4 +1,4 @@
 var annotated_dup =
 [
-    [ "dynamicgraph", "a00100.html", "a00100" ]
+    [ "dynamicgraph", "namespacedynamicgraph.html", "namespacedynamicgraph" ]
 ];

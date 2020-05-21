@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['param',['Param',['../a00030.html#ac53fad55ece883984d60f9cbd67158da',1,'dynamicgraph::ExceptionAbstract::Param::Param(const int &amp;_line, const char *_function, const char *_file)'],['../a00030.html#aa5969501ae537a84d812f6b5aca8d8c6',1,'dynamicgraph::ExceptionAbstract::Param::Param()']]],
-  ['plug',['plug',['../a00044.html#ad5558c80e899fb1b7a884b629f5d4984',1,'dynamicgraph::SignalBase::plug()'],['../a00048.html#a2c408f7845c6a922572f9749fb1c3b0f',1,'dynamicgraph::SignalPtr::plug()']]],
-  ['pre',['pre',['../a00015.html#af4111545a1bbb5d5c764506dcd1fc27d',1,'dynamicgraph::DebugTrace::pre(const std::ostream &amp;)'],['../a00015.html#a7464ed4392fc02b201d534c9dafcdd87',1,'dynamicgraph::DebugTrace::pre(const std::ostream &amp;, int level)']]]
+  ['trace',['trace',['../classdynamicgraph_1_1SignalCaster.html#a5ed0e309d284fd63a506b5d008893e4d',1,'dynamicgraph::SignalCaster']]],
+  ['type',['type',['../classdynamicgraph_1_1command_1_1Value.html#adf4a6727c689e0038cf2cdd158d5ed2c',1,'dynamicgraph::command::Value']]],
+  ['typename',['typeName',['../classdynamicgraph_1_1command_1_1Value.html#a5eacb25dc53110c4126cb5cf5ab44995',1,'dynamicgraph::command::Value']]]
 ];

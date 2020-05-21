@@ -1,0 +1,65 @@
+var group__debug =
+[
+    [ "DebugTrace", "classdynamicgraph_1_1DebugTrace.html", [
+      [ "DebugTrace", "classdynamicgraph_1_1DebugTrace.html#a6c08304e8091de58f142e681441ebf21", null ],
+      [ "closeFile", "classdynamicgraph_1_1DebugTrace.html#ae0287579bbc7ef80578d6c39f851ae11", null ],
+      [ "openFile", "classdynamicgraph_1_1DebugTrace.html#a0c5eb0422506af139aae8b46b4618ab8", null ],
+      [ "pre", "classdynamicgraph_1_1DebugTrace.html#a0af9eec1cba456512c92a7f2c05469da", null ],
+      [ "pre", "classdynamicgraph_1_1DebugTrace.html#a8b8e86570896460412067aadbf0e7a2d", null ],
+      [ "trace", "classdynamicgraph_1_1DebugTrace.html#a91909a4416ddba8d02ebe519e428a5f4", null ],
+      [ "trace", "classdynamicgraph_1_1DebugTrace.html#aae522cc9fd6844006e8969aeab784a50", null ],
+      [ "trace", "classdynamicgraph_1_1DebugTrace.html#a8697a607d7da5e5a2fe3b17a7fdb6501", null ],
+      [ "traceTemplate", "classdynamicgraph_1_1DebugTrace.html#a8ffd87d086e7c17306091d638d42497b", null ],
+      [ "traceTemplate", "classdynamicgraph_1_1DebugTrace.html#a7734e888821010096fa3154c89083b68", null ],
+      [ "charbuffer", "classdynamicgraph_1_1DebugTrace.html#a4b0aece8fe2d06ba8663c190c1065515", null ],
+      [ "DEBUG_FILENAME_DEFAULT", "classdynamicgraph_1_1DebugTrace.html#a350ad988a382df47fcca708cb99f87c7", null ],
+      [ "outputbuffer", "classdynamicgraph_1_1DebugTrace.html#a1ee6da5ad74936dbc712f9c2ac0ab2d5", null ],
+      [ "SIZE", "classdynamicgraph_1_1DebugTrace.html#af08413a3ee12cf78b0ddeea71e2648b3", null ],
+      [ "tmpbuffer", "classdynamicgraph_1_1DebugTrace.html#afc237261d0b6fe6ec289470b603c0218", null ],
+      [ "traceLevel", "classdynamicgraph_1_1DebugTrace.html#aeb46985060d131c48901c70608450c40", null ],
+      [ "traceLevelTemplate", "classdynamicgraph_1_1DebugTrace.html#a01b9a809378022d28480c0b95cc155c6", null ]
+    ] ],
+    [ "Logger", "classdynamicgraph_1_1Logger.html", [
+      [ "StreamCounterMap_t", "classdynamicgraph_1_1Logger.html#aba1b3aba7c9afa39f887607f5d979154", null ],
+      [ "Logger", "classdynamicgraph_1_1Logger.html#a7f170a7fac786184389763abdeefd8a3", null ],
+      [ "~Logger", "classdynamicgraph_1_1Logger.html#a0d77f27eb95c246d555904aaf08018eb", null ],
+      [ "acceptMsg", "classdynamicgraph_1_1Logger.html#aa43265772e9c67edc42ceeea43e6bf23", null ],
+      [ "checkStreamPeriod", "classdynamicgraph_1_1Logger.html#a2b586d4401e70dc7d1fb116e32d3c52d", null ],
+      [ "countdown", "classdynamicgraph_1_1Logger.html#a87726c5d201ef29efa9aa57511a2e562", null ],
+      [ "getStreamPrintPeriod", "classdynamicgraph_1_1Logger.html#a3b42de8e3728e866095e94f056657d79", null ],
+      [ "getTimeSample", "classdynamicgraph_1_1Logger.html#a202a5feda43963b8845226db92b6a553", null ],
+      [ "getVerbosity", "classdynamicgraph_1_1Logger.html#a9c14c15af786dff51737503d5b81c2ed", null ],
+      [ "isStreamMsg", "classdynamicgraph_1_1Logger.html#a1a0c3a45409a9056fe65201571b56271", null ],
+      [ "sendMsg", "classdynamicgraph_1_1Logger.html#a1c98c02131ba1f76e7f13e0b88e9df7d", null ],
+      [ "sendMsg", "classdynamicgraph_1_1Logger.html#abbf4db4d0e617ea1ac731b21fbfac25f", null ],
+      [ "setStreamPrintPeriod", "classdynamicgraph_1_1Logger.html#a917adfda33f99209e699e4f26d08f366", null ],
+      [ "setTimeSample", "classdynamicgraph_1_1Logger.html#a5ad8c1934a10732a0badc7b7743397d8", null ],
+      [ "setVerbosity", "classdynamicgraph_1_1Logger.html#a6238e061348e3a3939dd2e6e7d0615eb", null ],
+      [ "stream", "classdynamicgraph_1_1Logger.html#ad227501bc6301b14a12f3f3d66e70f59", null ],
+      [ "stream", "classdynamicgraph_1_1Logger.html#ae5a573ae40632d59e961aa4c4bf22feb", null ],
+      [ "m_lv", "classdynamicgraph_1_1Logger.html#a365320382177825f8e03364db46ed3ca", null ],
+      [ "m_printCountdown", "classdynamicgraph_1_1Logger.html#a1212125812030acf7dc316e1e9c06f20", null ],
+      [ "m_stream_msg_counters", "classdynamicgraph_1_1Logger.html#a2a4f51f75ed1fc67bfa347fa44da3f7c", null ],
+      [ "m_streamPrintPeriod", "classdynamicgraph_1_1Logger.html#afee9844d73723c178f05ef920a0c5259", null ],
+      [ "m_timeSample", "classdynamicgraph_1_1Logger.html#abef44488256f38679699eded84bb3351", null ]
+    ] ],
+    [ "LoggerStream", "classdynamicgraph_1_1LoggerStream.html", [
+      [ "write", "classdynamicgraph_1_1LoggerStream.html#a9413ddeeb83b1d512614848d45c0b32a", null ]
+    ] ],
+    [ "RealTimeLogger", "classdynamicgraph_1_1RealTimeLogger.html", [
+      [ "RealTimeLogger", "classdynamicgraph_1_1RealTimeLogger.html#ae5b3049dffa042456a07c1e32d747d43", null ],
+      [ "~RealTimeLogger", "classdynamicgraph_1_1RealTimeLogger.html#a48dbecc14be6b67796a8ff8308c951a1", null ],
+      [ "addOutputStream", "classdynamicgraph_1_1RealTimeLogger.html#a9b0d79d623902ec96886b0ca7e6ce675", null ],
+      [ "clearOutputStreams", "classdynamicgraph_1_1RealTimeLogger.html#a8e3aa78162274f9a8f08fb8e4ec3d634", null ],
+      [ "destroy", "classdynamicgraph_1_1RealTimeLogger.html#a112a068c3a6f373ec6c12fdf0b48987b", null ],
+      [ "empty", "classdynamicgraph_1_1RealTimeLogger.html#a644718bb2fb240de962dc3c9a1fdf0dc", null ],
+      [ "emptyStream", "classdynamicgraph_1_1RealTimeLogger.html#a2b028ac0de363899ba79394258f9fcd0", null ],
+      [ "front", "classdynamicgraph_1_1RealTimeLogger.html#aadcf2fc0ccd4ecec36976870ac49d6ae", null ],
+      [ "frontReady", "classdynamicgraph_1_1RealTimeLogger.html#aeb8ee56742020fa5bde3e8e38579d7ee", null ],
+      [ "full", "classdynamicgraph_1_1RealTimeLogger.html#a8abf3cf65268916fe1f1660fd9efd90a", null ],
+      [ "getBufferSize", "classdynamicgraph_1_1RealTimeLogger.html#a7ae3ba74c30fff5d1d1a96e370bbfd60", null ],
+      [ "instance", "classdynamicgraph_1_1RealTimeLogger.html#a47715b4636a02d4fcdc237a972d128f8", null ],
+      [ "size", "classdynamicgraph_1_1RealTimeLogger.html#ade1601ccf1fa3bcf050867f0852ca4e5", null ],
+      [ "spinOnce", "classdynamicgraph_1_1RealTimeLogger.html#aa4eee767566e62020245ee422954fcfe", null ]
+    ] ]
+];

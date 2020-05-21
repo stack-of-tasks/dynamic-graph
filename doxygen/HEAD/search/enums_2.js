@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['signaltype',['SignalType',['../a00041.html#a57b8e35c45307a40b6dc3c48cc334155',1,'dynamicgraph::Signal']]]
+  ['tracestyle',['TraceStyle',['../classdynamicgraph_1_1Tracer.html#a7862f00bf81975ff1d5fe8ef13c06bae',1,'dynamicgraph::Tracer']]]
 ];

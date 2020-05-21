@@ -1,83 +1,86 @@
 var hierarchy =
 [
-    [ "dynamicgraph::command::Command", "a00007.html", [
-      [ "dynamicgraph::command::CommandVerbose< E >", "a00008.html", null ],
-      [ "dynamicgraph::command::CommandVoid0< E >", "a00009.html", null ],
-      [ "dynamicgraph::command::CommandVoid1< E, T >", "a00010.html", null ],
-      [ "dynamicgraph::command::CommandVoid2< E, T1, T2 >", "a00011.html", null ],
-      [ "dynamicgraph::command::CommandVoid3< E, T1, T2, T3 >", "a00012.html", null ],
-      [ "dynamicgraph::command::CommandVoid4< E, T1, T2, T3, T4 >", "a00013.html", null ],
-      [ "dynamicgraph::command::DirectGetter< E, T >", "a00017.html", null ],
-      [ "dynamicgraph::command::DirectSetter< E, T >", "a00018.html", null ],
-      [ "dynamicgraph::command::Getter< E, T >", "a00028.html", null ],
-      [ "dynamicgraph::command::Setter< E, T >", "a00032.html", null ],
-      [ "dynamicgraph::command::Setter< E, bool >", "a00033.html", null ],
-      [ "dynamicgraph::command::Setter< E, double >", "a00034.html", null ],
-      [ "dynamicgraph::command::Setter< E, float >", "a00035.html", null ],
-      [ "dynamicgraph::command::Setter< E, int >", "a00036.html", null ],
-      [ "dynamicgraph::command::Setter< E, Matrix >", "a00037.html", null ],
-      [ "dynamicgraph::command::Setter< E, std::string >", "a00038.html", null ],
-      [ "dynamicgraph::command::Setter< E, unsigned >", "a00039.html", null ],
-      [ "dynamicgraph::command::Setter< E, Vector >", "a00040.html", null ]
+    [ "Command", "classdynamicgraph_1_1command_1_1Command.html", [
+      [ "CommandReturnType0< E, ReturnType >", "structdynamicgraph_1_1command_1_1CommandReturnType0.html", null ],
+      [ "CommandReturnType1< E, ReturnType, T >", "structdynamicgraph_1_1command_1_1CommandReturnType1.html", null ],
+      [ "CommandReturnType2< E, ReturnType, T1, T2 >", "structdynamicgraph_1_1command_1_1CommandReturnType2.html", null ],
+      [ "CommandVerbose< E >", "structdynamicgraph_1_1command_1_1CommandVerbose.html", null ],
+      [ "CommandVoid0< E >", "structdynamicgraph_1_1command_1_1CommandVoid0.html", null ],
+      [ "CommandVoid1< E, T >", "structdynamicgraph_1_1command_1_1CommandVoid1.html", null ],
+      [ "CommandVoid2< E, T1, T2 >", "structdynamicgraph_1_1command_1_1CommandVoid2.html", null ],
+      [ "CommandVoid3< E, T1, T2, T3 >", "structdynamicgraph_1_1command_1_1CommandVoid3.html", null ],
+      [ "CommandVoid4< E, T1, T2, T3, T4 >", "structdynamicgraph_1_1command_1_1CommandVoid4.html", null ],
+      [ "DirectGetter< E, T >", "classdynamicgraph_1_1command_1_1DirectGetter.html", null ],
+      [ "DirectSetter< E, T >", "classdynamicgraph_1_1command_1_1DirectSetter.html", null ],
+      [ "Getter< E, T >", "classdynamicgraph_1_1command_1_1Getter.html", null ],
+      [ "Setter< E, T >", "classdynamicgraph_1_1command_1_1Setter.html", null ],
+      [ "Setter< E, bool >", "classdynamicgraph_1_1command_1_1Setter_3_01E_00_01bool_01_4.html", null ],
+      [ "Setter< E, double >", "classdynamicgraph_1_1command_1_1Setter_3_01E_00_01double_01_4.html", null ],
+      [ "Setter< E, float >", "classdynamicgraph_1_1command_1_1Setter_3_01E_00_01float_01_4.html", null ],
+      [ "Setter< E, int >", "classdynamicgraph_1_1command_1_1Setter_3_01E_00_01int_01_4.html", null ],
+      [ "Setter< E, Matrix >", "classdynamicgraph_1_1command_1_1Setter_3_01E_00_01Matrix_01_4.html", null ],
+      [ "Setter< E, std::string >", "classdynamicgraph_1_1command_1_1Setter_3_01E_00_01std_1_1string_01_4.html", null ],
+      [ "Setter< E, unsigned >", "classdynamicgraph_1_1command_1_1Setter_3_01E_00_01unsigned_01_4.html", null ],
+      [ "Setter< E, Vector >", "classdynamicgraph_1_1command_1_1Setter_3_01E_00_01Vector_01_4.html", null ]
     ] ],
-    [ "dynamicgraph::Contiifstream", "a00014.html", null ],
-    [ "dynamicgraph::DebugTrace", "a00015.html", null ],
-    [ "dynamicgraph::command::EitherType", "a00019.html", null ],
-    [ "dynamicgraph::EntityHelper< Ent >", "a00021.html", null ],
-    [ "std::exception", null, [
-      [ "dynamicgraph::ExceptionAbstract", "a00023.html", [
-        [ "dynamicgraph::ExceptionFactory", "a00024.html", null ],
-        [ "dynamicgraph::ExceptionSignal", "a00025.html", null ],
-        [ "dynamicgraph::ExceptionTraces", "a00026.html", null ]
+    [ "CPUData", "classdynamicgraph_1_1CPU_1_1CPUData.html", null ],
+    [ "DebugTrace", "classdynamicgraph_1_1DebugTrace.html", null ],
+    [ "EitherType", "classdynamicgraph_1_1command_1_1EitherType.html", null ],
+    [ "EntityHelper< Ent >", "structdynamicgraph_1_1EntityHelper.html", null ],
+    [ "exception", null, [
+      [ "ExceptionAbstract", "classdynamicgraph_1_1ExceptionAbstract.html", [
+        [ "ExceptionFactory", "classdynamicgraph_1_1ExceptionFactory.html", null ],
+        [ "ExceptionSignal", "classdynamicgraph_1_1ExceptionSignal.html", null ],
+        [ "ExceptionTraces", "classdynamicgraph_1_1ExceptionTraces.html", null ]
       ] ]
     ] ],
-    [ "std::ios_base", null, [
-      [ "std::basic_ios< Char >", null, [
-        [ "std::basic_ostream< Char >", null, [
-          [ "std::basic_ostringstream< Char >", null, [
-            [ "std::ostringstream", null, [
-              [ "dynamicgraph::OutStringStream", "a00029.html", null ]
-            ] ]
-          ] ]
-        ] ]
-      ] ]
+    [ "Logger", "classdynamicgraph_1_1Logger.html", null ],
+    [ "LoggerStream", "classdynamicgraph_1_1LoggerStream.html", [
+      [ "LoggerIOStream", "classdynamicgraph_1_1LoggerIOStream.html", null ]
     ] ],
     [ "noncopyable", null, [
-      [ "dynamicgraph::Entity", "a00020.html", [
-        [ "dynamicgraph::Tracer", "a00051.html", [
-          [ "dynamicgraph::TracerRealTime", "a00052.html", null ]
+      [ "Entity", "classdynamicgraph_1_1Entity.html", [
+        [ "Tracer", "classdynamicgraph_1_1Tracer.html", [
+          [ "TracerRealTime", "classdynamicgraph_1_1TracerRealTime.html", null ]
         ] ]
       ] ],
-      [ "dynamicgraph::EntityRegisterer", "a00022.html", null ],
-      [ "dynamicgraph::FactoryStorage", "a00027.html", null ],
-      [ "dynamicgraph::SignalBase< Time >", "a00044.html", [
-        [ "dynamicgraph::Signal< T, Time >", "a00041.html", [
-          [ "dynamicgraph::SignalPtr< T, Time >", "a00048.html", null ],
-          [ "dynamicgraph::SignalTimeDependent< T, Time >", "a00049.html", null ]
+      [ "EntityRegisterer", "classdynamicgraph_1_1EntityRegisterer.html", null ],
+      [ "FactoryStorage", "classdynamicgraph_1_1FactoryStorage.html", null ],
+      [ "SignalBase< Time >", "classdynamicgraph_1_1SignalBase.html", [
+        [ "Signal< T, Time >", "classdynamicgraph_1_1Signal.html", [
+          [ "SignalPtr< T, Time >", "classdynamicgraph_1_1SignalPtr.html", null ],
+          [ "SignalTimeDependent< T, Time >", "classdynamicgraph_1_1SignalTimeDependent.html", null ]
         ] ]
       ] ],
-      [ "dynamicgraph::SignalBase< int >", "a00044.html", [
-        [ "dynamicgraph::Signal< int, int >", "a00041.html", [
-          [ "dynamicgraph::SignalTimeDependent< int, int >", "a00049.html", null ]
+      [ "SignalBase< int >", "classdynamicgraph_1_1SignalBase.html", [
+        [ "Signal< int, int >", "classdynamicgraph_1_1Signal.html", [
+          [ "SignalTimeDependent< int, int >", "classdynamicgraph_1_1SignalTimeDependent.html", null ]
         ] ]
       ] ]
     ] ],
-    [ "dynamicgraph::ExceptionAbstract::Param", "a00030.html", null ],
-    [ "dynamicgraph::PoolStorage", "a00031.html", null ],
-    [ "dynamicgraph::SignalArray_const< Time >", "a00043.html", [
-      [ "dynamicgraph::SignalArray< Time >", "a00042.html", null ]
+    [ "ostringstream", null, [
+      [ "OutStringStream", "classdynamicgraph_1_1OutStringStream.html", null ]
     ] ],
-    [ "dynamicgraph::SignalCast< T >", "a00045.html", null ],
-    [ "dynamicgraph::SignalCaster", "a00046.html", null ],
-    [ "dynamicgraph::SignalCastRegisterer", "a00047.html", [
-      [ "dynamicgraph::DefaultCastRegisterer< T >", "a00016.html", null ]
+    [ "ExceptionAbstract::Param", "classdynamicgraph_1_1ExceptionAbstract_1_1Param.html", null ],
+    [ "PoolStorage", "classdynamicgraph_1_1PoolStorage.html", null ],
+    [ "ProcessData", "classdynamicgraph_1_1CPU_1_1ProcessData.html", null ],
+    [ "ProcessList", "classdynamicgraph_1_1CPU_1_1ProcessList.html", null ],
+    [ "RealTimeLogger", "classdynamicgraph_1_1RealTimeLogger.html", null ],
+    [ "SignalArray_const< Time >", "classdynamicgraph_1_1SignalArray__const.html", [
+      [ "SignalArray< Time >", "classdynamicgraph_1_1SignalArray.html", null ]
     ] ],
-    [ "dynamicgraph::TimeDependency< Time >", "a00050.html", [
-      [ "dynamicgraph::SignalTimeDependent< T, Time >", "a00049.html", null ]
+    [ "SignalCast< T >", "classdynamicgraph_1_1SignalCast.html", null ],
+    [ "SignalCaster", "classdynamicgraph_1_1SignalCaster.html", null ],
+    [ "SignalCastRegisterer", "classdynamicgraph_1_1SignalCastRegisterer.html", [
+      [ "DefaultCastRegisterer< T >", "classdynamicgraph_1_1DefaultCastRegisterer.html", null ]
     ] ],
-    [ "dynamicgraph::TimeDependency< int >", "a00050.html", [
-      [ "dynamicgraph::SignalTimeDependent< int, int >", "a00049.html", null ]
+    [ "System", "classdynamicgraph_1_1CPU_1_1System.html", null ],
+    [ "TimeDependency< Time >", "classdynamicgraph_1_1TimeDependency.html", [
+      [ "SignalTimeDependent< T, Time >", "classdynamicgraph_1_1SignalTimeDependent.html", null ]
     ] ],
-    [ "dynamicgraph::command::Value", "a00053.html", null ],
-    [ "dynamicgraph::command::ValueHelper< T >", "a00054.html", null ]
+    [ "TimeDependency< int >", "classdynamicgraph_1_1TimeDependency.html", [
+      [ "SignalTimeDependent< int, int >", "classdynamicgraph_1_1SignalTimeDependent.html", null ]
+    ] ],
+    [ "Value", "classdynamicgraph_1_1command_1_1Value.html", null ],
+    [ "ValueHelper< T >", "structdynamicgraph_1_1command_1_1ValueHelper.html", null ]
 ];

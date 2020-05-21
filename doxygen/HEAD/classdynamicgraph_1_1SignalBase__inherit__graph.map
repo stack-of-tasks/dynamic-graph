@@ -1,0 +1,5 @@
+<map id="SignalBase&lt; Time &gt;" name="SignalBase&lt; Time &gt;">
+<area shape="rect" id="node3" href="$classdynamicgraph_1_1Signal.html" title="Signals link I/O ports of entities. They can be constant&#45;valued signals, or copy the value of a heap ..." alt="" coords="107,155,218,181"/>
+<area shape="rect" id="node4" href="$classdynamicgraph_1_1SignalPtr.html" title="This is the only type of signal that can be plugged to, using the plug () command. " alt="" coords="5,237,149,263"/>
+<area shape="rect" id="node5" href="$classdynamicgraph_1_1SignalTimeDependent.html" title="A type of signal that enforces a time dependency between other signals, making sure its inputs are up..." alt="" coords="174,229,325,271"/>
+</map>

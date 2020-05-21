@@ -1,13 +1,6 @@
 var searchData=
 [
-  ['value',['Value',['../a00053.html',1,'dynamicgraph::command']]],
-  ['value',['Value',['../a00053.html#acbddf6024f516382e89a7fc262d5795f',1,'dynamicgraph::command::Value::Value(const bool &amp;value)'],['../a00053.html#aa9fcf61eb22a30df8879fb6ec5c8a2a0',1,'dynamicgraph::command::Value::Value(const unsigned &amp;value)'],['../a00053.html#adcffe9a55345cc32a398a1fd8d2ae151',1,'dynamicgraph::command::Value::Value(const int &amp;value)'],['../a00053.html#a6bc690dad0d55c10bcc099f828a143db',1,'dynamicgraph::command::Value::Value(const float &amp;value)'],['../a00053.html#a364031c21bf1045ee29ea2d18a89401d',1,'dynamicgraph::command::Value::Value(const double &amp;value)'],['../a00053.html#ae8e842549d739a78d496b2863142887d',1,'dynamicgraph::command::Value::Value(const std::string &amp;value)'],['../a00053.html#a422cfbd11bd76b37dcbd9ac928f398fe',1,'dynamicgraph::command::Value::Value(const Vector &amp;value)'],['../a00053.html#ad4c276f0fb87c300aab7a1eb989b98ce',1,'dynamicgraph::command::Value::Value(const Eigen::MatrixXd &amp;value)'],['../a00053.html#a8dc1b1b6f71ea074ea930061b6c8a31a',1,'dynamicgraph::command::Value::Value(const Eigen::Matrix4d &amp;value)'],['../a00053.html#ac0b13ebdd034bb2511753ee924bdb711',1,'dynamicgraph::command::Value::Value(const Value &amp;value)'],['../a00053.html#aa110513fefc4406cde866ac3ed16fcb4',1,'dynamicgraph::command::Value::Value()'],['../a00053.html#aa9b16c31672114c16e81049c0aa0495c',1,'dynamicgraph::command::Value::value() const ']]],
-  ['value_2eh',['value.h',['../a00099.html',1,'']]],
-  ['value_5f',['value_',['../a00053.html#a27a56a72b4055821192430eaea5286ed',1,'dynamicgraph::command::Value']]],
-  ['valuehelper',['ValueHelper',['../a00054.html',1,'dynamicgraph::command']]],
-  ['valuetypes',['valueTypes',['../a00007.html#a4288f646b6aa99cfe91613671537f237',1,'dynamicgraph::command::Command']]],
-  ['vector',['VECTOR',['../a00053.html#a8b1ad07088898b7d8e530682e589576fa80ad7c49e3d452f05f31c1351ca20b07',1,'dynamicgraph::command::Value::VECTOR()'],['../a00100.html#aa80b557e83a1386adf67f925062124f8',1,'dynamicgraph::Vector()']]],
-  ['vectorvalue',['vectorValue',['../a00053.html#ac1b0e15ddc1543628aa5a283ace1c134',1,'dynamicgraph::command::Value']]],
-  ['vp_5fdebug_5fmode',['VP_DEBUG_MODE',['../a00066.html#a6dd3437819a217fef90ef973cf9364ca',1,'debug.h']]],
-  ['vp_5ftemplate_5fdebug_5fmode',['VP_TEMPLATE_DEBUG_MODE',['../a00066.html#a99bf14cae76d8d5cbfe574d6ae62f30d',1,'VP_TEMPLATE_DEBUG_MODE():&#160;debug.h'],['../a00089.html#a99bf14cae76d8d5cbfe574d6ae62f30d',1,'VP_TEMPLATE_DEBUG_MODE():&#160;signal-ptr.t.cpp'],['../a00092.html#a99bf14cae76d8d5cbfe574d6ae62f30d',1,'VP_TEMPLATE_DEBUG_MODE():&#160;signal.t.cpp'],['../a00094.html#a99bf14cae76d8d5cbfe574d6ae62f30d',1,'VP_TEMPLATE_DEBUG_MODE():&#160;time-dependency.t.cpp']]]
+  ['_7eentityregisterer',['~EntityRegisterer',['../classdynamicgraph_1_1EntityRegisterer.html#a868c5910d46048b3a627ee28b909c3f0',1,'dynamicgraph::EntityRegisterer']]],
+  ['_7elogger',['~Logger',['../classdynamicgraph_1_1Logger.html#a0d77f27eb95c246d555904aaf08018eb',1,'dynamicgraph::Logger']]],
+  ['_7epoolstorage',['~PoolStorage',['../classdynamicgraph_1_1PoolStorage.html#a4b4aa7ce276ca7b1d6143021dae40ed9',1,'dynamicgraph::PoolStorage']]]
 ];

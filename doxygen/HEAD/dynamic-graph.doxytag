@@ -1,0 +1,2138 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
+<tagfile>
+  <compound kind="class">
+    <name>dynamicgraph::command::Command</name>
+    <filename>classdynamicgraph_1_1command_1_1Command.html</filename>
+    <member kind="function">
+      <type></type>
+      <name>Command</name>
+      <anchorfile>classdynamicgraph_1_1command_1_1Command.html</anchorfile>
+      <anchor>a201244d57e326e687fd627fef7b77aca</anchor>
+      <arglist>(Entity &amp;entity, const std::vector&lt; Value::Type &gt; &amp;valueTypes, const std::string &amp;docstring)</arglist>
+    </member>
+    <member kind="function">
+      <type>Value</type>
+      <name>execute</name>
+      <anchorfile>classdynamicgraph_1_1command_1_1Command.html</anchorfile>
+      <anchor>a23203f18362e524de638461d6c024826</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>std::string</type>
+      <name>getDocstring</name>
+      <anchorfile>classdynamicgraph_1_1command_1_1Command.html</anchorfile>
+      <anchor>abbf8081b8ea882e2ef4d6249174aa3d9</anchor>
+      <arglist>() const</arglist>
+    </member>
+    <member kind="function">
+      <type>const std::vector&lt; Value &gt; &amp;</type>
+      <name>getParameterValues</name>
+      <anchorfile>classdynamicgraph_1_1command_1_1Command.html</anchorfile>
+      <anchor>a00a696d560f7763b1dfa5d64afad7acf</anchor>
+      <arglist>() const</arglist>
+    </member>
+    <member kind="function">
+      <type>Entity &amp;</type>
+      <name>owner</name>
+      <anchorfile>classdynamicgraph_1_1command_1_1Command.html</anchorfile>
+      <anchor>af38554bd17d1afe351993d187c7ae8fe</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>setParameterValues</name>
+      <anchorfile>classdynamicgraph_1_1command_1_1Command.html</anchorfile>
+      <anchor>ac1bb4044bc442a65833a29ec97d80306</anchor>
+      <arglist>(const std::vector&lt; Value &gt; &amp;values)</arglist>
+    </member>
+    <member kind="function">
+      <type>const std::vector&lt; Value::Type &gt; &amp;</type>
+      <name>valueTypes</name>
+      <anchorfile>classdynamicgraph_1_1command_1_1Command.html</anchorfile>
+      <anchor>a8e36363c3e9a2bf3977eb4963653da47</anchor>
+      <arglist>() const</arglist>
+    </member>
+    <member kind="function" protection="protected" virtualness="pure">
+      <type>virtual Value</type>
+      <name>doExecute</name>
+      <anchorfile>classdynamicgraph_1_1command_1_1Command.html</anchorfile>
+      <anchor>ae164f358804acc475120c41d2503882b</anchor>
+      <arglist>()=0</arglist>
+    </member>
+  </compound>
+  <compound kind="struct">
+    <name>dynamicgraph::command::CommandReturnType0</name>
+    <filename>structdynamicgraph_1_1command_1_1CommandReturnType0.html</filename>
+    <templarg>E</templarg>
+    <templarg>ReturnType</templarg>
+    <base>dynamicgraph::command::Command</base>
+    <member kind="function" protection="protected" virtualness="virtual">
+      <type>virtual Value</type>
+      <name>doExecute</name>
+      <anchorfile>structdynamicgraph_1_1command_1_1CommandReturnType0.html</anchorfile>
+      <anchor>acac1faa0f713da9f7683d89baab6e169</anchor>
+      <arglist>()</arglist>
+    </member>
+  </compound>
+  <compound kind="struct">
+    <name>dynamicgraph::command::CommandReturnType1</name>
+    <filename>structdynamicgraph_1_1command_1_1CommandReturnType1.html</filename>
+    <templarg>E</templarg>
+    <templarg>ReturnType</templarg>
+    <templarg>T</templarg>
+    <base>dynamicgraph::command::Command</base>
+    <member kind="function" protection="protected" virtualness="virtual">
+      <type>virtual Value</type>
+      <name>doExecute</name>
+      <anchorfile>structdynamicgraph_1_1command_1_1CommandReturnType1.html</anchorfile>
+      <anchor>acac1faa0f713da9f7683d89baab6e169</anchor>
+      <arglist>()</arglist>
+    </member>
+  </compound>
+  <compound kind="struct">
+    <name>dynamicgraph::command::CommandReturnType2</name>
+    <filename>structdynamicgraph_1_1command_1_1CommandReturnType2.html</filename>
+    <templarg>E</templarg>
+    <templarg>ReturnType</templarg>
+    <templarg>T1</templarg>
+    <templarg>T2</templarg>
+    <base>dynamicgraph::command::Command</base>
+    <member kind="function" protection="protected" virtualness="virtual">
+      <type>virtual Value</type>
+      <name>doExecute</name>
+      <anchorfile>structdynamicgraph_1_1command_1_1CommandReturnType2.html</anchorfile>
+      <anchor>acac1faa0f713da9f7683d89baab6e169</anchor>
+      <arglist>()</arglist>
+    </member>
+  </compound>
+  <compound kind="struct">
+    <name>dynamicgraph::command::CommandVerbose</name>
+    <filename>structdynamicgraph_1_1command_1_1CommandVerbose.html</filename>
+    <templarg>E</templarg>
+    <base>dynamicgraph::command::Command</base>
+    <member kind="function" protection="protected" virtualness="virtual">
+      <type>virtual Value</type>
+      <name>doExecute</name>
+      <anchorfile>structdynamicgraph_1_1command_1_1CommandVerbose.html</anchorfile>
+      <anchor>acac1faa0f713da9f7683d89baab6e169</anchor>
+      <arglist>()</arglist>
+    </member>
+  </compound>
+  <compound kind="struct">
+    <name>dynamicgraph::command::CommandVoid0</name>
+    <filename>structdynamicgraph_1_1command_1_1CommandVoid0.html</filename>
+    <templarg>E</templarg>
+    <base>dynamicgraph::command::Command</base>
+    <member kind="function" protection="protected" virtualness="virtual">
+      <type>virtual Value</type>
+      <name>doExecute</name>
+      <anchorfile>structdynamicgraph_1_1command_1_1CommandVoid0.html</anchorfile>
+      <anchor>acac1faa0f713da9f7683d89baab6e169</anchor>
+      <arglist>()</arglist>
+    </member>
+  </compound>
+  <compound kind="struct">
+    <name>dynamicgraph::command::CommandVoid1</name>
+    <filename>structdynamicgraph_1_1command_1_1CommandVoid1.html</filename>
+    <templarg>E</templarg>
+    <templarg>T</templarg>
+    <base>dynamicgraph::command::Command</base>
+    <member kind="function" protection="protected" virtualness="virtual">
+      <type>virtual Value</type>
+      <name>doExecute</name>
+      <anchorfile>structdynamicgraph_1_1command_1_1CommandVoid1.html</anchorfile>
+      <anchor>acac1faa0f713da9f7683d89baab6e169</anchor>
+      <arglist>()</arglist>
+    </member>
+  </compound>
+  <compound kind="struct">
+    <name>dynamicgraph::command::CommandVoid2</name>
+    <filename>structdynamicgraph_1_1command_1_1CommandVoid2.html</filename>
+    <templarg>E</templarg>
+    <templarg>T1</templarg>
+    <templarg>T2</templarg>
+    <base>dynamicgraph::command::Command</base>
+    <member kind="function" protection="protected" virtualness="virtual">
+      <type>virtual Value</type>
+      <name>doExecute</name>
+      <anchorfile>structdynamicgraph_1_1command_1_1CommandVoid2.html</anchorfile>
+      <anchor>acac1faa0f713da9f7683d89baab6e169</anchor>
+      <arglist>()</arglist>
+    </member>
+  </compound>
+  <compound kind="struct">
+    <name>dynamicgraph::command::CommandVoid3</name>
+    <filename>structdynamicgraph_1_1command_1_1CommandVoid3.html</filename>
+    <templarg>E</templarg>
+    <templarg>T1</templarg>
+    <templarg>T2</templarg>
+    <templarg>T3</templarg>
+    <base>dynamicgraph::command::Command</base>
+    <member kind="function" protection="protected" virtualness="virtual">
+      <type>virtual Value</type>
+      <name>doExecute</name>
+      <anchorfile>structdynamicgraph_1_1command_1_1CommandVoid3.html</anchorfile>
+      <anchor>acac1faa0f713da9f7683d89baab6e169</anchor>
+      <arglist>()</arglist>
+    </member>
+  </compound>
+  <compound kind="struct">
+    <name>dynamicgraph::command::CommandVoid4</name>
+    <filename>structdynamicgraph_1_1command_1_1CommandVoid4.html</filename>
+    <templarg>E</templarg>
+    <templarg>T1</templarg>
+    <templarg>T2</templarg>
+    <templarg>T3</templarg>
+    <templarg>T4</templarg>
+    <base>dynamicgraph::command::Command</base>
+    <member kind="function" protection="protected" virtualness="virtual">
+      <type>virtual Value</type>
+      <name>doExecute</name>
+      <anchorfile>structdynamicgraph_1_1command_1_1CommandVoid4.html</anchorfile>
+      <anchor>acac1faa0f713da9f7683d89baab6e169</anchor>
+      <arglist>()</arglist>
+    </member>
+  </compound>
+  <compound kind="class">
+    <name>dynamicgraph::CPU::CPUData</name>
+    <filename>classdynamicgraph_1_1CPU_1_1CPUData.html</filename>
+    <member kind="variable">
+      <type>unsigned long long int</type>
+      <name>total_time_</name>
+      <anchorfile>classdynamicgraph_1_1CPU_1_1CPUData.html</anchorfile>
+      <anchor>ac9699b4258582fc25ab5a2002cb73aae</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>unsigned long long int</type>
+      <name>user_mode_time_</name>
+      <anchorfile>classdynamicgraph_1_1CPU_1_1CPUData.html</anchorfile>
+      <anchor>adb5b6c78ae51b9600f3013aa3a174294</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>unsigned long long int</type>
+      <name>nice_time_</name>
+      <anchorfile>classdynamicgraph_1_1CPU_1_1CPUData.html</anchorfile>
+      <anchor>ac66121278d1db2fafffb8e139e5e9987</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>unsigned long long int</type>
+      <name>system_time_</name>
+      <anchorfile>classdynamicgraph_1_1CPU_1_1CPUData.html</anchorfile>
+      <anchor>a51f150371fdff4cd0d6de8b4f22c0897</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>unsigned long long int</type>
+      <name>system_all_time_</name>
+      <anchorfile>classdynamicgraph_1_1CPU_1_1CPUData.html</anchorfile>
+      <anchor>ab2e450ff381a9b20de33b07c67230701</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>unsigned long long int</type>
+      <name>idle_time_</name>
+      <anchorfile>classdynamicgraph_1_1CPU_1_1CPUData.html</anchorfile>
+      <anchor>a0297a65b7253769e9b0e86b8d1934f00</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>unsigned long long int</type>
+      <name>idle_all_time_</name>
+      <anchorfile>classdynamicgraph_1_1CPU_1_1CPUData.html</anchorfile>
+      <anchor>a025ac3e1814e93c9f119a5f7a882bb7c</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>unsigned long long int</type>
+      <name>iowait_time_</name>
+      <anchorfile>classdynamicgraph_1_1CPU_1_1CPUData.html</anchorfile>
+      <anchor>ad66e5f2ea4184a1a2cbbc3b1ffe8fe7c</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>unsigned long long int</type>
+      <name>irq_time_</name>
+      <anchorfile>classdynamicgraph_1_1CPU_1_1CPUData.html</anchorfile>
+      <anchor>a074536f98d057b3a9e45dea47a8add6b</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>unsigned long long int</type>
+      <name>softirq_time_</name>
+      <anchorfile>classdynamicgraph_1_1CPU_1_1CPUData.html</anchorfile>
+      <anchor>a2f85f0d9270f44c7092a27912de3592b</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>unsigned long long int</type>
+      <name>steal_time_</name>
+      <anchorfile>classdynamicgraph_1_1CPU_1_1CPUData.html</anchorfile>
+      <anchor>abc1fcdcb309b0991f60a3fa1695e5e3a</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>unsigned long long int</type>
+      <name>guest_time_</name>
+      <anchorfile>classdynamicgraph_1_1CPU_1_1CPUData.html</anchorfile>
+      <anchor>a954d2afed89ecc0525c1f23d456baa2c</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>unsigned long long int</type>
+      <name>guest_nice_time_</name>
+      <anchorfile>classdynamicgraph_1_1CPU_1_1CPUData.html</anchorfile>
+      <anchor>a859fcbe265dfe039fce5a406f4917c86</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>unsigned long long int</type>
+      <name>total_period_</name>
+      <anchorfile>classdynamicgraph_1_1CPU_1_1CPUData.html</anchorfile>
+      <anchor>a81be4ba0414e283379ab08b3b218c9e9</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>unsigned long long int</type>
+      <name>user_mode_period_</name>
+      <anchorfile>classdynamicgraph_1_1CPU_1_1CPUData.html</anchorfile>
+      <anchor>a255109214168d1c99dc4f8aacbce85ce</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>unsigned long long int</type>
+      <name>nice_period_</name>
+      <anchorfile>classdynamicgraph_1_1CPU_1_1CPUData.html</anchorfile>
+      <anchor>afaca876976f73cb01dc008b37c6a5223</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>unsigned long long int</type>
+      <name>system_period_</name>
+      <anchorfile>classdynamicgraph_1_1CPU_1_1CPUData.html</anchorfile>
+      <anchor>a1775d4f370489c3a06d8bbc9dc8efa6e</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>unsigned long long int</type>
+      <name>system_all_period_</name>
+      <anchorfile>classdynamicgraph_1_1CPU_1_1CPUData.html</anchorfile>
+      <anchor>aba2897d40f40df08e600274b084fb6ad</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>unsigned long long int</type>
+      <name>idle_period_</name>
+      <anchorfile>classdynamicgraph_1_1CPU_1_1CPUData.html</anchorfile>
+      <anchor>ae30a814229d5ebd81563598aa11562a0</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>unsigned long long int</type>
+      <name>idle_all_period_</name>
+      <anchorfile>classdynamicgraph_1_1CPU_1_1CPUData.html</anchorfile>
+      <anchor>aabea865bfc3f30c73b6f19877fc23a7e</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>unsigned long long int</type>
+      <name>iowait_period_</name>
+      <anchorfile>classdynamicgraph_1_1CPU_1_1CPUData.html</anchorfile>
+      <anchor>adb5a1a4bb9333278f0e4b6a386a89213</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>unsigned long long int</type>
+      <name>irq_period_</name>
+      <anchorfile>classdynamicgraph_1_1CPU_1_1CPUData.html</anchorfile>
+      <anchor>a1a557cef8fdee34cd2aeb791b6649b14</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>unsigned long long int</type>
+      <name>softirq_period_</name>
+      <anchorfile>classdynamicgraph_1_1CPU_1_1CPUData.html</anchorfile>
+      <anchor>a415a14c6284c09d3e597f8743c36e194</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>unsigned long long int</type>
+      <name>steal_period_</name>
+      <anchorfile>classdynamicgraph_1_1CPU_1_1CPUData.html</anchorfile>
+      <anchor>ada8e3c72d79018f873589638c89d8ddf</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>unsigned long long int</type>
+      <name>guest_period_</name>
+      <anchorfile>classdynamicgraph_1_1CPU_1_1CPUData.html</anchorfile>
+      <anchor>a51ba4538ea50cd7ac41044635c4ef57e</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>unsigned long long int</type>
+      <name>total_time_</name>
+      <anchorfile>classdynamicgraph_1_1CPU_1_1CPUData.html</anchorfile>
+      <anchor>ac9699b4258582fc25ab5a2002cb73aae</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>unsigned long long int</type>
+      <name>user_mode_time_</name>
+      <anchorfile>classdynamicgraph_1_1CPU_1_1CPUData.html</anchorfile>
+      <anchor>adb5b6c78ae51b9600f3013aa3a174294</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>unsigned long long int</type>
+      <name>nice_time_</name>
+      <anchorfile>classdynamicgraph_1_1CPU_1_1CPUData.html</anchorfile>
+      <anchor>ac66121278d1db2fafffb8e139e5e9987</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>unsigned long long int</type>
+      <name>system_time_</name>
+      <anchorfile>classdynamicgraph_1_1CPU_1_1CPUData.html</anchorfile>
+      <anchor>a51f150371fdff4cd0d6de8b4f22c0897</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>unsigned long long int</type>
+      <name>system_all_time_</name>
+      <anchorfile>classdynamicgraph_1_1CPU_1_1CPUData.html</anchorfile>
+      <anchor>ab2e450ff381a9b20de33b07c67230701</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>unsigned long long int</type>
+      <name>idle_time_</name>
+      <anchorfile>classdynamicgraph_1_1CPU_1_1CPUData.html</anchorfile>
+      <anchor>a0297a65b7253769e9b0e86b8d1934f00</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>unsigned long long int</type>
+      <name>idle_all_time_</name>
+      <anchorfile>classdynamicgraph_1_1CPU_1_1CPUData.html</anchorfile>
+      <anchor>a025ac3e1814e93c9f119a5f7a882bb7c</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>unsigned long long int</type>
+      <name>iowait_time_</name>
+      <anchorfile>classdynamicgraph_1_1CPU_1_1CPUData.html</anchorfile>
+      <anchor>ad66e5f2ea4184a1a2cbbc3b1ffe8fe7c</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>unsigned long long int</type>
+      <name>irq_time_</name>
+      <anchorfile>classdynamicgraph_1_1CPU_1_1CPUData.html</anchorfile>
+      <anchor>a074536f98d057b3a9e45dea47a8add6b</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>unsigned long long int</type>
+      <name>softirq_time_</name>
+      <anchorfile>classdynamicgraph_1_1CPU_1_1CPUData.html</anchorfile>
+      <anchor>a2f85f0d9270f44c7092a27912de3592b</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>unsigned long long int</type>
+      <name>steal_time_</name>
+      <anchorfile>classdynamicgraph_1_1CPU_1_1CPUData.html</anchorfile>
+      <anchor>abc1fcdcb309b0991f60a3fa1695e5e3a</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>unsigned long long int</type>
+      <name>guest_time_</name>
+      <anchorfile>classdynamicgraph_1_1CPU_1_1CPUData.html</anchorfile>
+      <anchor>a954d2afed89ecc0525c1f23d456baa2c</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>unsigned long long int</type>
+      <name>guest_nice_time_</name>
+      <anchorfile>classdynamicgraph_1_1CPU_1_1CPUData.html</anchorfile>
+      <anchor>a859fcbe265dfe039fce5a406f4917c86</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>unsigned long long int</type>
+      <name>total_period_</name>
+      <anchorfile>classdynamicgraph_1_1CPU_1_1CPUData.html</anchorfile>
+      <anchor>a81be4ba0414e283379ab08b3b218c9e9</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>unsigned long long int</type>
+      <name>user_mode_period_</name>
+      <anchorfile>classdynamicgraph_1_1CPU_1_1CPUData.html</anchorfile>
+      <anchor>a255109214168d1c99dc4f8aacbce85ce</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>unsigned long long int</type>
+      <name>nice_period_</name>
+      <anchorfile>classdynamicgraph_1_1CPU_1_1CPUData.html</anchorfile>
+      <anchor>afaca876976f73cb01dc008b37c6a5223</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>unsigned long long int</type>
+      <name>system_period_</name>
+      <anchorfile>classdynamicgraph_1_1CPU_1_1CPUData.html</anchorfile>
+      <anchor>a1775d4f370489c3a06d8bbc9dc8efa6e</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>unsigned long long int</type>
+      <name>system_all_period_</name>
+      <anchorfile>classdynamicgraph_1_1CPU_1_1CPUData.html</anchorfile>
+      <anchor>aba2897d40f40df08e600274b084fb6ad</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>unsigned long long int</type>
+      <name>idle_period_</name>
+      <anchorfile>classdynamicgraph_1_1CPU_1_1CPUData.html</anchorfile>
+      <anchor>ae30a814229d5ebd81563598aa11562a0</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>unsigned long long int</type>
+      <name>idle_all_period_</name>
+      <anchorfile>classdynamicgraph_1_1CPU_1_1CPUData.html</anchorfile>
+      <anchor>aabea865bfc3f30c73b6f19877fc23a7e</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>unsigned long long int</type>
+      <name>iowait_period_</name>
+      <anchorfile>classdynamicgraph_1_1CPU_1_1CPUData.html</anchorfile>
+      <anchor>adb5a1a4bb9333278f0e4b6a386a89213</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>unsigned long long int</type>
+      <name>irq_period_</name>
+      <anchorfile>classdynamicgraph_1_1CPU_1_1CPUData.html</anchorfile>
+      <anchor>a1a557cef8fdee34cd2aeb791b6649b14</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>unsigned long long int</type>
+      <name>softirq_period_</name>
+      <anchorfile>classdynamicgraph_1_1CPU_1_1CPUData.html</anchorfile>
+      <anchor>a415a14c6284c09d3e597f8743c36e194</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>unsigned long long int</type>
+      <name>steal_period_</name>
+      <anchorfile>classdynamicgraph_1_1CPU_1_1CPUData.html</anchorfile>
+      <anchor>ada8e3c72d79018f873589638c89d8ddf</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>unsigned long long int</type>
+      <name>guest_period_</name>
+      <anchorfile>classdynamicgraph_1_1CPU_1_1CPUData.html</anchorfile>
+      <anchor>a51ba4538ea50cd7ac41044635c4ef57e</anchor>
+      <arglist></arglist>
+    </member>
+  </compound>
+  <compound kind="class">
+    <name>dynamicgraph::DebugTrace</name>
+    <filename>classdynamicgraph_1_1DebugTrace.html</filename>
+  </compound>
+  <compound kind="class">
+    <name>dynamicgraph::DefaultCastRegisterer</name>
+    <filename>classdynamicgraph_1_1DefaultCastRegisterer.html</filename>
+    <templarg></templarg>
+    <base>dynamicgraph::SignalCastRegisterer</base>
+    <member kind="function" static="yes">
+      <type>static boost::any</type>
+      <name>cast</name>
+      <anchorfile>classdynamicgraph_1_1DefaultCastRegisterer.html</anchorfile>
+      <anchor>af6c72e5c92e4084ae1488c742a1f9ade</anchor>
+      <arglist>(std::istringstream &amp;iss)</arglist>
+    </member>
+  </compound>
+  <compound kind="class">
+    <name>dynamicgraph::command::DirectGetter</name>
+    <filename>classdynamicgraph_1_1command_1_1DirectGetter.html</filename>
+    <templarg>E</templarg>
+    <templarg>T</templarg>
+    <base>dynamicgraph::command::Command</base>
+    <member kind="typedef">
+      <type>T(E::*</type>
+      <name>GetterMethod</name>
+      <anchorfile>classdynamicgraph_1_1command_1_1DirectGetter.html</anchorfile>
+      <anchor>ad92f9143f07ff55230cd992f900d3acc</anchor>
+      <arglist>)() const</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>DirectGetter</name>
+      <anchorfile>classdynamicgraph_1_1command_1_1DirectGetter.html</anchorfile>
+      <anchor>a2b0d4c75130e9c5971c45714b3248c80</anchor>
+      <arglist>(E &amp;entity, T *ptr, const std::string &amp;docString)</arglist>
+    </member>
+    <member kind="function" protection="protected" virtualness="virtual">
+      <type>virtual Value</type>
+      <name>doExecute</name>
+      <anchorfile>classdynamicgraph_1_1command_1_1DirectGetter.html</anchorfile>
+      <anchor>acac1faa0f713da9f7683d89baab6e169</anchor>
+      <arglist>()</arglist>
+    </member>
+  </compound>
+  <compound kind="class">
+    <name>dynamicgraph::command::DirectSetter</name>
+    <filename>classdynamicgraph_1_1command_1_1DirectSetter.html</filename>
+    <templarg>E</templarg>
+    <templarg>T</templarg>
+    <base>dynamicgraph::command::Command</base>
+    <member kind="function" protection="protected" virtualness="virtual">
+      <type>virtual Value</type>
+      <name>doExecute</name>
+      <anchorfile>classdynamicgraph_1_1command_1_1DirectSetter.html</anchorfile>
+      <anchor>acac1faa0f713da9f7683d89baab6e169</anchor>
+      <arglist>()</arglist>
+    </member>
+  </compound>
+  <compound kind="class">
+    <name>dynamicgraph::command::EitherType</name>
+    <filename>classdynamicgraph_1_1command_1_1EitherType.html</filename>
+  </compound>
+  <compound kind="class">
+    <name>dynamicgraph::Entity</name>
+    <filename>classdynamicgraph_1_1Entity.html</filename>
+    <member kind="function" virtualness="virtual">
+      <type>virtual void</type>
+      <name>display</name>
+      <anchorfile>classdynamicgraph_1_1Entity.html</anchorfile>
+      <anchor>a0b5f61ee9d048a02b6af2936f34c1961</anchor>
+      <arglist>(std::ostream &amp;os) const</arglist>
+    </member>
+    <member kind="function">
+      <type>std::ostream &amp;</type>
+      <name>displaySignalList</name>
+      <anchorfile>classdynamicgraph_1_1Entity.html</anchorfile>
+      <anchor>a54ce3d7c643320ac1120062d49856ec1</anchor>
+      <arglist>(std::ostream &amp;os) const</arglist>
+    </member>
+    <member kind="function" virtualness="virtual">
+      <type>virtual std::string</type>
+      <name>getDocString</name>
+      <anchorfile>classdynamicgraph_1_1Entity.html</anchorfile>
+      <anchor>a91de578b7f175e3eb6437a94e6b4d467</anchor>
+      <arglist>() const</arglist>
+    </member>
+    <member kind="function">
+      <type>command::Command *</type>
+      <name>getNewStyleCommand</name>
+      <anchorfile>classdynamicgraph_1_1Entity.html</anchorfile>
+      <anchor>a20f4d36a085eace58a5366bebafbb8ce</anchor>
+      <arglist>(const std::string &amp;cmdName)</arglist>
+    </member>
+    <member kind="function">
+      <type>CommandMap_t</type>
+      <name>getNewStyleCommandMap</name>
+      <anchorfile>classdynamicgraph_1_1Entity.html</anchorfile>
+      <anchor>a212b14e37161971e1d99f56e59f37c8d</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>SignalBase&lt; int &gt; &amp;</type>
+      <name>getSignal</name>
+      <anchorfile>classdynamicgraph_1_1Entity.html</anchorfile>
+      <anchor>a737ed2954eea9bea0850b5273c4dcbda</anchor>
+      <arglist>(const std::string &amp;signalName)</arglist>
+    </member>
+    <member kind="function">
+      <type>const SignalBase&lt; int &gt; &amp;</type>
+      <name>getSignal</name>
+      <anchorfile>classdynamicgraph_1_1Entity.html</anchorfile>
+      <anchor>a720dceee45e93e6a88bd72cc3b6958da</anchor>
+      <arglist>(const std::string &amp;signalName) const</arglist>
+    </member>
+    <member kind="function">
+      <type>SignalMap</type>
+      <name>getSignalMap</name>
+      <anchorfile>classdynamicgraph_1_1Entity.html</anchorfile>
+      <anchor>a6c2ca3ea9d92573bc5f736b72d675f36</anchor>
+      <arglist>() const</arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>hasSignal</name>
+      <anchorfile>classdynamicgraph_1_1Entity.html</anchorfile>
+      <anchor>a36a4114f0128608e619604463074b887</anchor>
+      <arglist>(const std::string &amp;signame) const</arglist>
+    </member>
+    <member kind="function" virtualness="virtual">
+      <type>virtual std::ostream &amp;</type>
+      <name>writeCompletionList</name>
+      <anchorfile>classdynamicgraph_1_1Entity.html</anchorfile>
+      <anchor>a610eb957cf36bfaf14df2d0409f3db8d</anchor>
+      <arglist>(std::ostream &amp;os) const</arglist>
+    </member>
+    <member kind="function" virtualness="virtual">
+      <type>virtual std::ostream &amp;</type>
+      <name>writeGraph</name>
+      <anchorfile>classdynamicgraph_1_1Entity.html</anchorfile>
+      <anchor>a2b96fc3d63bb8b97c9a6421657f3cd5e</anchor>
+      <arglist>(std::ostream &amp;os) const</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>sendMsg</name>
+      <anchorfile>classdynamicgraph_1_1Entity.html</anchorfile>
+      <anchor>ace55f597da05704f719691dca6cfa2a1</anchor>
+      <arglist>(const std::string &amp;msg, MsgType t=MSG_TYPE_INFO, const std::string &amp;lineId=&quot;&quot;)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>setLoggerVerbosityLevel</name>
+      <anchorfile>classdynamicgraph_1_1Entity.html</anchorfile>
+      <anchor>a4e6c1f0b7b57857afaa8879c16b4dd95</anchor>
+      <arglist>(LoggerVerbosity lv)</arglist>
+    </member>
+    <member kind="function">
+      <type>LoggerVerbosity</type>
+      <name>getLoggerVerbosityLevel</name>
+      <anchorfile>classdynamicgraph_1_1Entity.html</anchorfile>
+      <anchor>ac926b571135d0fe1c15f5c29e2a25f80</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>setTimeSample</name>
+      <anchorfile>classdynamicgraph_1_1Entity.html</anchorfile>
+      <anchor>a5ad8c1934a10732a0badc7b7743397d8</anchor>
+      <arglist>(double t)</arglist>
+    </member>
+    <member kind="function">
+      <type>double</type>
+      <name>getTimeSample</name>
+      <anchorfile>classdynamicgraph_1_1Entity.html</anchorfile>
+      <anchor>a202a5feda43963b8845226db92b6a553</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>setStreamPrintPeriod</name>
+      <anchorfile>classdynamicgraph_1_1Entity.html</anchorfile>
+      <anchor>a567f33cb4b8fe1b83fb9c77acac927e9</anchor>
+      <arglist>(double t)</arglist>
+    </member>
+    <member kind="function">
+      <type>double</type>
+      <name>getStreamPrintPeriod</name>
+      <anchorfile>classdynamicgraph_1_1Entity.html</anchorfile>
+      <anchor>a3b42de8e3728e866095e94f056657d79</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>sendMsg</name>
+      <anchorfile>classdynamicgraph_1_1Entity.html</anchorfile>
+      <anchor>ace55f597da05704f719691dca6cfa2a1</anchor>
+      <arglist>(const std::string &amp;msg, MsgType t=MSG_TYPE_INFO, const std::string &amp;lineId=&quot;&quot;)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>setLoggerVerbosityLevel</name>
+      <anchorfile>classdynamicgraph_1_1Entity.html</anchorfile>
+      <anchor>a4e6c1f0b7b57857afaa8879c16b4dd95</anchor>
+      <arglist>(LoggerVerbosity lv)</arglist>
+    </member>
+    <member kind="function">
+      <type>LoggerVerbosity</type>
+      <name>getLoggerVerbosityLevel</name>
+      <anchorfile>classdynamicgraph_1_1Entity.html</anchorfile>
+      <anchor>ac926b571135d0fe1c15f5c29e2a25f80</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>setTimeSample</name>
+      <anchorfile>classdynamicgraph_1_1Entity.html</anchorfile>
+      <anchor>a5ad8c1934a10732a0badc7b7743397d8</anchor>
+      <arglist>(double t)</arglist>
+    </member>
+    <member kind="function">
+      <type>double</type>
+      <name>getTimeSample</name>
+      <anchorfile>classdynamicgraph_1_1Entity.html</anchorfile>
+      <anchor>a202a5feda43963b8845226db92b6a553</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>setStreamPrintPeriod</name>
+      <anchorfile>classdynamicgraph_1_1Entity.html</anchorfile>
+      <anchor>a567f33cb4b8fe1b83fb9c77acac927e9</anchor>
+      <arglist>(double t)</arglist>
+    </member>
+    <member kind="function">
+      <type>double</type>
+      <name>getStreamPrintPeriod</name>
+      <anchorfile>classdynamicgraph_1_1Entity.html</anchorfile>
+      <anchor>a3b42de8e3728e866095e94f056657d79</anchor>
+      <arglist>()</arglist>
+    </member>
+  </compound>
+  <compound kind="struct">
+    <name>dynamicgraph::EntityHelper</name>
+    <filename>structdynamicgraph_1_1EntityHelper.html</filename>
+    <templarg></templarg>
+  </compound>
+  <compound kind="class">
+    <name>dynamicgraph::EntityRegisterer</name>
+    <filename>classdynamicgraph_1_1EntityRegisterer.html</filename>
+    <member kind="function">
+      <type></type>
+      <name>EntityRegisterer</name>
+      <anchorfile>classdynamicgraph_1_1EntityRegisterer.html</anchorfile>
+      <anchor>aba57a583f145604bd16858dc41d61eef</anchor>
+      <arglist>(const std::string &amp;entityClassName, FactoryStorage::EntityConstructor_ptr maker)</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>~EntityRegisterer</name>
+      <anchorfile>classdynamicgraph_1_1EntityRegisterer.html</anchorfile>
+      <anchor>a868c5910d46048b3a627ee28b909c3f0</anchor>
+      <arglist>()</arglist>
+    </member>
+  </compound>
+  <compound kind="class">
+    <name>dynamicgraph::ExceptionAbstract</name>
+    <filename>classdynamicgraph_1_1ExceptionAbstract.html</filename>
+    <class kind="class">dynamicgraph::ExceptionAbstract::Param</class>
+    <member kind="enumeration">
+      <type></type>
+      <name>ExceptionEnum</name>
+      <anchorfile>classdynamicgraph_1_1ExceptionAbstract.html</anchorfile>
+      <anchor>a029bce4a97285339a902691b8d2c5f97</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="function">
+      <type>int</type>
+      <name>getCode</name>
+      <anchorfile>classdynamicgraph_1_1ExceptionAbstract.html</anchorfile>
+      <anchor>a09b24025428e929afa9b21488a462e20</anchor>
+      <arglist>() const</arglist>
+    </member>
+    <member kind="function">
+      <type>const char *</type>
+      <name>getMessage</name>
+      <anchorfile>classdynamicgraph_1_1ExceptionAbstract.html</anchorfile>
+      <anchor>a72240c2398fe3aa14f79d03bac538287</anchor>
+      <arglist>() const</arglist>
+    </member>
+    <member kind="function">
+      <type>const std::string &amp;</type>
+      <name>getStringMessage</name>
+      <anchorfile>classdynamicgraph_1_1ExceptionAbstract.html</anchorfile>
+      <anchor>ab68c4b965f399546515caacbd9d26537</anchor>
+      <arglist>() const</arglist>
+    </member>
+    <member kind="variable" protection="protected">
+      <type>int</type>
+      <name>code</name>
+      <anchorfile>classdynamicgraph_1_1ExceptionAbstract.html</anchorfile>
+      <anchor>a45a5b7c00a796a23f01673cef1dbe0a9</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable" protection="protected">
+      <type>std::string</type>
+      <name>message</name>
+      <anchorfile>classdynamicgraph_1_1ExceptionAbstract.html</anchorfile>
+      <anchor>a36bd74109f547f7f8198faf5a12d2879</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="friend">
+      <type>DYNAMIC_GRAPH_DLLAPI friend std::ostream &amp;</type>
+      <name>operator&lt;&lt;</name>
+      <anchorfile>classdynamicgraph_1_1ExceptionAbstract.html</anchorfile>
+      <anchor>a0750be86e659677bdca43adb9669411b</anchor>
+      <arglist>(std::ostream &amp;os, const ExceptionAbstract &amp;err)</arglist>
+    </member>
+  </compound>
+  <compound kind="class">
+    <name>dynamicgraph::ExceptionFactory</name>
+    <filename>classdynamicgraph_1_1ExceptionFactory.html</filename>
+    <base>dynamicgraph::ExceptionAbstract</base>
+  </compound>
+  <compound kind="class">
+    <name>dynamicgraph::ExceptionSignal</name>
+    <filename>classdynamicgraph_1_1ExceptionSignal.html</filename>
+    <base>dynamicgraph::ExceptionAbstract</base>
+  </compound>
+  <compound kind="class">
+    <name>dynamicgraph::ExceptionTraces</name>
+    <filename>classdynamicgraph_1_1ExceptionTraces.html</filename>
+    <base>dynamicgraph::ExceptionAbstract</base>
+  </compound>
+  <compound kind="class">
+    <name>dynamicgraph::FactoryStorage</name>
+    <filename>classdynamicgraph_1_1FactoryStorage.html</filename>
+    <member kind="typedef">
+      <type>Entity *(*</type>
+      <name>EntityConstructor_ptr</name>
+      <anchorfile>classdynamicgraph_1_1FactoryStorage.html</anchorfile>
+      <anchor>a14ff4f4b6892b8786e2fbaab3c9c4b60</anchor>
+      <arglist>)(const std::string &amp;)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>deregisterEntity</name>
+      <anchorfile>classdynamicgraph_1_1FactoryStorage.html</anchorfile>
+      <anchor>ae718a4f2aad1d79c083438f13bce4e2d</anchor>
+      <arglist>(const std::string &amp;entname)</arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>existEntity</name>
+      <anchorfile>classdynamicgraph_1_1FactoryStorage.html</anchorfile>
+      <anchor>a83f751e5e59e47a7aaf50eaaa670b9e4</anchor>
+      <arglist>(const std::string &amp;name) const</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>listEntities</name>
+      <anchorfile>classdynamicgraph_1_1FactoryStorage.html</anchorfile>
+      <anchor>a9396d8af68d2ff8c2b1f1b1ac766bba1</anchor>
+      <arglist>(std::vector&lt; std::string &gt; &amp;list) const</arglist>
+    </member>
+    <member kind="function">
+      <type>Entity *</type>
+      <name>newEntity</name>
+      <anchorfile>classdynamicgraph_1_1FactoryStorage.html</anchorfile>
+      <anchor>aa97e6f7ecc462042756649acc73d9d77</anchor>
+      <arglist>(const std::string &amp;classname, const std::string &amp;objname) const</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>registerEntity</name>
+      <anchorfile>classdynamicgraph_1_1FactoryStorage.html</anchorfile>
+      <anchor>ac1388ad31ae457c6ea3d5a061f7d494d</anchor>
+      <arglist>(const std::string &amp;entname, EntityConstructor_ptr ent)</arglist>
+    </member>
+    <member kind="function" static="yes">
+      <type>static void</type>
+      <name>destroy</name>
+      <anchorfile>classdynamicgraph_1_1FactoryStorage.html</anchorfile>
+      <anchor>a112a068c3a6f373ec6c12fdf0b48987b</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function" static="yes">
+      <type>static FactoryStorage *</type>
+      <name>getInstance</name>
+      <anchorfile>classdynamicgraph_1_1FactoryStorage.html</anchorfile>
+      <anchor>a8fe84181939beb06aa0ee186d9a043e8</anchor>
+      <arglist>()</arglist>
+    </member>
+  </compound>
+  <compound kind="class">
+    <name>dynamicgraph::command::Getter</name>
+    <filename>classdynamicgraph_1_1command_1_1Getter.html</filename>
+    <templarg></templarg>
+    <templarg></templarg>
+    <base>dynamicgraph::command::Command</base>
+    <member kind="typedef">
+      <type>T(E::*</type>
+      <name>GetterMethod</name>
+      <anchorfile>classdynamicgraph_1_1command_1_1Getter.html</anchorfile>
+      <anchor>ad92f9143f07ff55230cd992f900d3acc</anchor>
+      <arglist>)() const</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>Getter</name>
+      <anchorfile>classdynamicgraph_1_1command_1_1Getter.html</anchorfile>
+      <anchor>a3203e5e941295a37e673a6914f035454</anchor>
+      <arglist>(E &amp;entity, GetterMethod getterMethod, const std::string &amp;docString)</arglist>
+    </member>
+    <member kind="function" protection="protected" virtualness="virtual">
+      <type>virtual Value</type>
+      <name>doExecute</name>
+      <anchorfile>classdynamicgraph_1_1command_1_1Getter.html</anchorfile>
+      <anchor>a70ae1176845bd03067d755c38f40451b</anchor>
+      <arglist>()</arglist>
+    </member>
+  </compound>
+  <compound kind="class">
+    <name>dynamicgraph::Logger</name>
+    <filename>classdynamicgraph_1_1Logger.html</filename>
+    <member kind="function">
+      <type></type>
+      <name>Logger</name>
+      <anchorfile>classdynamicgraph_1_1Logger.html</anchorfile>
+      <anchor>a7f170a7fac786184389763abdeefd8a3</anchor>
+      <arglist>(double timeSample=0.001, double streamPrintPeriod=1.0)</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>~Logger</name>
+      <anchorfile>classdynamicgraph_1_1Logger.html</anchorfile>
+      <anchor>a0d77f27eb95c246d555904aaf08018eb</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>countdown</name>
+      <anchorfile>classdynamicgraph_1_1Logger.html</anchorfile>
+      <anchor>a87726c5d201ef29efa9aa57511a2e562</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>double</type>
+      <name>getStreamPrintPeriod</name>
+      <anchorfile>classdynamicgraph_1_1Logger.html</anchorfile>
+      <anchor>a3b42de8e3728e866095e94f056657d79</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>double</type>
+      <name>getTimeSample</name>
+      <anchorfile>classdynamicgraph_1_1Logger.html</anchorfile>
+      <anchor>a202a5feda43963b8845226db92b6a553</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>LoggerVerbosity</type>
+      <name>getVerbosity</name>
+      <anchorfile>classdynamicgraph_1_1Logger.html</anchorfile>
+      <anchor>a9c14c15af786dff51737503d5b81c2ed</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>sendMsg</name>
+      <anchorfile>classdynamicgraph_1_1Logger.html</anchorfile>
+      <anchor>a1c98c02131ba1f76e7f13e0b88e9df7d</anchor>
+      <arglist>(std::string msg, MsgType type, const std::string &amp;lineId=&quot;&quot;)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>sendMsg</name>
+      <anchorfile>classdynamicgraph_1_1Logger.html</anchorfile>
+      <anchor>abbf4db4d0e617ea1ac731b21fbfac25f</anchor>
+      <arglist>(std::string msg, MsgType type, const std::string &amp;file, int line) DYNAMIC_GRAPH_DEPRECATED</arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>setStreamPrintPeriod</name>
+      <anchorfile>classdynamicgraph_1_1Logger.html</anchorfile>
+      <anchor>a917adfda33f99209e699e4f26d08f366</anchor>
+      <arglist>(double s)</arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>setTimeSample</name>
+      <anchorfile>classdynamicgraph_1_1Logger.html</anchorfile>
+      <anchor>a5ad8c1934a10732a0badc7b7743397d8</anchor>
+      <arglist>(double t)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>setVerbosity</name>
+      <anchorfile>classdynamicgraph_1_1Logger.html</anchorfile>
+      <anchor>a6238e061348e3a3939dd2e6e7d0615eb</anchor>
+      <arglist>(LoggerVerbosity lv)</arglist>
+    </member>
+    <member kind="function">
+      <type>RTLoggerStream</type>
+      <name>stream</name>
+      <anchorfile>classdynamicgraph_1_1Logger.html</anchorfile>
+      <anchor>ad227501bc6301b14a12f3f3d66e70f59</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>RTLoggerStream</type>
+      <name>stream</name>
+      <anchorfile>classdynamicgraph_1_1Logger.html</anchorfile>
+      <anchor>ae5a573ae40632d59e961aa4c4bf22feb</anchor>
+      <arglist>(MsgType type, const std::string &amp;lineId=&quot;&quot;)</arglist>
+    </member>
+    <member kind="typedef" protection="protected">
+      <type>std::map&lt; std::string, double &gt;</type>
+      <name>StreamCounterMap_t</name>
+      <anchorfile>classdynamicgraph_1_1Logger.html</anchorfile>
+      <anchor>aba1b3aba7c9afa39f887607f5d979154</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="function" protection="protected">
+      <type>bool</type>
+      <name>acceptMsg</name>
+      <anchorfile>classdynamicgraph_1_1Logger.html</anchorfile>
+      <anchor>aa43265772e9c67edc42ceeea43e6bf23</anchor>
+      <arglist>(MsgType m, const std::string &amp;lineId)</arglist>
+    </member>
+    <member kind="function" protection="protected">
+      <type>bool</type>
+      <name>checkStreamPeriod</name>
+      <anchorfile>classdynamicgraph_1_1Logger.html</anchorfile>
+      <anchor>a2b586d4401e70dc7d1fb116e32d3c52d</anchor>
+      <arglist>(const std::string &amp;lineId)</arglist>
+    </member>
+    <member kind="variable" protection="protected">
+      <type>double</type>
+      <name>m_printCountdown</name>
+      <anchorfile>classdynamicgraph_1_1Logger.html</anchorfile>
+      <anchor>a1212125812030acf7dc316e1e9c06f20</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable" protection="protected">
+      <type>StreamCounterMap_t</type>
+      <name>m_stream_msg_counters</name>
+      <anchorfile>classdynamicgraph_1_1Logger.html</anchorfile>
+      <anchor>a2a4f51f75ed1fc67bfa347fa44da3f7c</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable" protection="protected">
+      <type>double</type>
+      <name>m_streamPrintPeriod</name>
+      <anchorfile>classdynamicgraph_1_1Logger.html</anchorfile>
+      <anchor>afee9844d73723c178f05ef920a0c5259</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable" protection="protected">
+      <type>double</type>
+      <name>m_timeSample</name>
+      <anchorfile>classdynamicgraph_1_1Logger.html</anchorfile>
+      <anchor>abef44488256f38679699eded84bb3351</anchor>
+      <arglist></arglist>
+    </member>
+  </compound>
+  <compound kind="class">
+    <name>dynamicgraph::LoggerIOStream</name>
+    <filename>classdynamicgraph_1_1LoggerIOStream.html</filename>
+    <base>dynamicgraph::LoggerStream</base>
+  </compound>
+  <compound kind="class">
+    <name>dynamicgraph::LoggerStream</name>
+    <filename>classdynamicgraph_1_1LoggerStream.html</filename>
+  </compound>
+  <compound kind="class">
+    <name>dynamicgraph::OutStringStream</name>
+    <filename>classdynamicgraph_1_1OutStringStream.html</filename>
+  </compound>
+  <compound kind="class">
+    <name>dynamicgraph::ExceptionAbstract::Param</name>
+    <filename>classdynamicgraph_1_1ExceptionAbstract_1_1Param.html</filename>
+  </compound>
+  <compound kind="class">
+    <name>dynamicgraph::PoolStorage</name>
+    <filename>classdynamicgraph_1_1PoolStorage.html</filename>
+    <member kind="function">
+      <type></type>
+      <name>~PoolStorage</name>
+      <anchorfile>classdynamicgraph_1_1PoolStorage.html</anchorfile>
+      <anchor>a4b4aa7ce276ca7b1d6143021dae40ed9</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>SignalBase&lt; int &gt; &amp;</type>
+      <name>getSignal</name>
+      <anchorfile>classdynamicgraph_1_1PoolStorage.html</anchorfile>
+      <anchor>a08f20c1c81e609123fa4fd34ffcafad3</anchor>
+      <arglist>(std::istringstream &amp;sigpath)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>writeGraph</name>
+      <anchorfile>classdynamicgraph_1_1PoolStorage.html</anchorfile>
+      <anchor>a6f0a6acc9a1b64f66cffaf779090b0df</anchor>
+      <arglist>(const std::string &amp;aFileName)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>registerEntity</name>
+      <anchorfile>classdynamicgraph_1_1PoolStorage.html</anchorfile>
+      <anchor>a8eb50532360593e9c2068451ca2fa212</anchor>
+      <arglist>(const std::string &amp;entname, Entity *ent)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>deregisterEntity</name>
+      <anchorfile>classdynamicgraph_1_1PoolStorage.html</anchorfile>
+      <anchor>ae718a4f2aad1d79c083438f13bce4e2d</anchor>
+      <arglist>(const std::string &amp;entname)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>deregisterEntity</name>
+      <anchorfile>classdynamicgraph_1_1PoolStorage.html</anchorfile>
+      <anchor>aee28febf0941a37777e290f64631bfc3</anchor>
+      <arglist>(const Entities::iterator &amp;entity)</arglist>
+    </member>
+    <member kind="function">
+      <type>Entity &amp;</type>
+      <name>getEntity</name>
+      <anchorfile>classdynamicgraph_1_1PoolStorage.html</anchorfile>
+      <anchor>a72cf0d9059b007c153e8ba4e5017d2b0</anchor>
+      <arglist>(const std::string &amp;name)</arglist>
+    </member>
+    <member kind="function">
+      <type>const Entities &amp;</type>
+      <name>getEntityMap</name>
+      <anchorfile>classdynamicgraph_1_1PoolStorage.html</anchorfile>
+      <anchor>acf1073bf0ebdc0b44a9a8a178984d974</anchor>
+      <arglist>() const</arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>existEntity</name>
+      <anchorfile>classdynamicgraph_1_1PoolStorage.html</anchorfile>
+      <anchor>a041edb285f3bedf58cefc4dcc188b1ef</anchor>
+      <arglist>(const std::string &amp;name)</arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>existEntity</name>
+      <anchorfile>classdynamicgraph_1_1PoolStorage.html</anchorfile>
+      <anchor>ab64a2597ca7029b667d5f915bd55981b</anchor>
+      <arglist>(const std::string &amp;name, Entity *&amp;ptr)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>clearPlugin</name>
+      <anchorfile>classdynamicgraph_1_1PoolStorage.html</anchorfile>
+      <anchor>a4aca9fbe8d9d659d982a1fe2aaebb2d6</anchor>
+      <arglist>(const std::string &amp;name)</arglist>
+    </member>
+    <member kind="typedef">
+      <type>std::map&lt; std::string, Entity * &gt;</type>
+      <name>Entities</name>
+      <anchorfile>classdynamicgraph_1_1PoolStorage.html</anchorfile>
+      <anchor>ab6b2d2a4b16a3e57c50b7745ad1368c0</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="function" static="yes">
+      <type>static PoolStorage *</type>
+      <name>getInstance</name>
+      <anchorfile>classdynamicgraph_1_1PoolStorage.html</anchorfile>
+      <anchor>a62b449087861cdc618e97fbd173fac0c</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function" static="yes">
+      <type>static void</type>
+      <name>destroy</name>
+      <anchorfile>classdynamicgraph_1_1PoolStorage.html</anchorfile>
+      <anchor>a112a068c3a6f373ec6c12fdf0b48987b</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>registerEntity</name>
+      <anchorfile>classdynamicgraph_1_1PoolStorage.html</anchorfile>
+      <anchor>a8eb50532360593e9c2068451ca2fa212</anchor>
+      <arglist>(const std::string &amp;entname, Entity *ent)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>deregisterEntity</name>
+      <anchorfile>classdynamicgraph_1_1PoolStorage.html</anchorfile>
+      <anchor>ae718a4f2aad1d79c083438f13bce4e2d</anchor>
+      <arglist>(const std::string &amp;entname)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>deregisterEntity</name>
+      <anchorfile>classdynamicgraph_1_1PoolStorage.html</anchorfile>
+      <anchor>aee28febf0941a37777e290f64631bfc3</anchor>
+      <arglist>(const Entities::iterator &amp;entity)</arglist>
+    </member>
+    <member kind="function">
+      <type>Entity &amp;</type>
+      <name>getEntity</name>
+      <anchorfile>classdynamicgraph_1_1PoolStorage.html</anchorfile>
+      <anchor>a72cf0d9059b007c153e8ba4e5017d2b0</anchor>
+      <arglist>(const std::string &amp;name)</arglist>
+    </member>
+    <member kind="function">
+      <type>const Entities &amp;</type>
+      <name>getEntityMap</name>
+      <anchorfile>classdynamicgraph_1_1PoolStorage.html</anchorfile>
+      <anchor>acf1073bf0ebdc0b44a9a8a178984d974</anchor>
+      <arglist>() const</arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>existEntity</name>
+      <anchorfile>classdynamicgraph_1_1PoolStorage.html</anchorfile>
+      <anchor>a041edb285f3bedf58cefc4dcc188b1ef</anchor>
+      <arglist>(const std::string &amp;name)</arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>existEntity</name>
+      <anchorfile>classdynamicgraph_1_1PoolStorage.html</anchorfile>
+      <anchor>ab64a2597ca7029b667d5f915bd55981b</anchor>
+      <arglist>(const std::string &amp;name, Entity *&amp;ptr)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>clearPlugin</name>
+      <anchorfile>classdynamicgraph_1_1PoolStorage.html</anchorfile>
+      <anchor>a4aca9fbe8d9d659d982a1fe2aaebb2d6</anchor>
+      <arglist>(const std::string &amp;name)</arglist>
+    </member>
+    <member kind="variable" protection="protected">
+      <type>Entities</type>
+      <name>entityMap</name>
+      <anchorfile>classdynamicgraph_1_1PoolStorage.html</anchorfile>
+      <anchor>aeaaaa43267843b1609d580d80fbcac51</anchor>
+      <arglist></arglist>
+    </member>
+  </compound>
+  <compound kind="class">
+    <name>dynamicgraph::CPU::ProcessData</name>
+    <filename>classdynamicgraph_1_1CPU_1_1ProcessData.html</filename>
+  </compound>
+  <compound kind="class">
+    <name>dynamicgraph::CPU::ProcessList</name>
+    <filename>classdynamicgraph_1_1CPU_1_1ProcessList.html</filename>
+  </compound>
+  <compound kind="class">
+    <name>dynamicgraph::RealTimeLogger</name>
+    <filename>classdynamicgraph_1_1RealTimeLogger.html</filename>
+    <member kind="function">
+      <type></type>
+      <name>RealTimeLogger</name>
+      <anchorfile>classdynamicgraph_1_1RealTimeLogger.html</anchorfile>
+      <anchor>ae5b3049dffa042456a07c1e32d747d43</anchor>
+      <arglist>(const std::size_t &amp;bufferSize)</arglist>
+    </member>
+    <member kind="function">
+      <type>RTLoggerStream</type>
+      <name>emptyStream</name>
+      <anchorfile>classdynamicgraph_1_1RealTimeLogger.html</anchorfile>
+      <anchor>a2b028ac0de363899ba79394258f9fcd0</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>RTLoggerStream</type>
+      <name>front</name>
+      <anchorfile>classdynamicgraph_1_1RealTimeLogger.html</anchorfile>
+      <anchor>aadcf2fc0ccd4ecec36976870ac49d6ae</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>spinOnce</name>
+      <anchorfile>classdynamicgraph_1_1RealTimeLogger.html</anchorfile>
+      <anchor>aa4eee767566e62020245ee422954fcfe</anchor>
+      <arglist>()</arglist>
+    </member>
+  </compound>
+  <compound kind="class">
+    <name>dynamicgraph::command::Setter</name>
+    <filename>classdynamicgraph_1_1command_1_1Setter.html</filename>
+    <templarg></templarg>
+    <templarg></templarg>
+    <base>dynamicgraph::command::Command</base>
+    <member kind="typedef">
+      <type>void(E::*</type>
+      <name>SetterMethod</name>
+      <anchorfile>classdynamicgraph_1_1command_1_1Setter.html</anchorfile>
+      <anchor>a3bfe485b0a9782f00e50b534b3a8fcee</anchor>
+      <arglist>)(const T &amp;)</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>Setter</name>
+      <anchorfile>classdynamicgraph_1_1command_1_1Setter.html</anchorfile>
+      <anchor>adc8256f517ea6670aa244adaea9575f9</anchor>
+      <arglist>(E &amp;entity, SetterMethod setterMethod, const std::string &amp;docString)</arglist>
+    </member>
+    <member kind="function" protection="protected" virtualness="virtual">
+      <type>virtual Value</type>
+      <name>doExecute</name>
+      <anchorfile>classdynamicgraph_1_1command_1_1Setter.html</anchorfile>
+      <anchor>acac1faa0f713da9f7683d89baab6e169</anchor>
+      <arglist>()</arglist>
+    </member>
+  </compound>
+  <compound kind="class">
+    <name>dynamicgraph::command::Setter&lt; E, bool &gt;</name>
+    <filename>classdynamicgraph_1_1command_1_1Setter_3_01E_00_01bool_01_4.html</filename>
+    <templarg></templarg>
+    <base>dynamicgraph::command::Command</base>
+    <member kind="typedef">
+      <type>void(E::*</type>
+      <name>SetterMethod</name>
+      <anchorfile>classdynamicgraph_1_1command_1_1Setter_3_01E_00_01bool_01_4.html</anchorfile>
+      <anchor>a5ea70b346b385138e3b9962fee24b5c1</anchor>
+      <arglist>)(const bool &amp;)</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>Setter</name>
+      <anchorfile>classdynamicgraph_1_1command_1_1Setter_3_01E_00_01bool_01_4.html</anchorfile>
+      <anchor>adc8256f517ea6670aa244adaea9575f9</anchor>
+      <arglist>(E &amp;entity, SetterMethod setterMethod, const std::string &amp;docString)</arglist>
+    </member>
+    <member kind="function" protection="protected" virtualness="virtual">
+      <type>virtual Value</type>
+      <name>doExecute</name>
+      <anchorfile>classdynamicgraph_1_1command_1_1Setter_3_01E_00_01bool_01_4.html</anchorfile>
+      <anchor>a70ae1176845bd03067d755c38f40451b</anchor>
+      <arglist>()</arglist>
+    </member>
+  </compound>
+  <compound kind="class">
+    <name>dynamicgraph::command::Setter&lt; E, double &gt;</name>
+    <filename>classdynamicgraph_1_1command_1_1Setter_3_01E_00_01double_01_4.html</filename>
+    <templarg></templarg>
+    <base>dynamicgraph::command::Command</base>
+    <member kind="typedef">
+      <type>void(E::*</type>
+      <name>SetterMethod</name>
+      <anchorfile>classdynamicgraph_1_1command_1_1Setter_3_01E_00_01double_01_4.html</anchorfile>
+      <anchor>a0c7f369b2c2e01f0fd9f39aaea52218f</anchor>
+      <arglist>)(const double &amp;)</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>Setter</name>
+      <anchorfile>classdynamicgraph_1_1command_1_1Setter_3_01E_00_01double_01_4.html</anchorfile>
+      <anchor>adc8256f517ea6670aa244adaea9575f9</anchor>
+      <arglist>(E &amp;entity, SetterMethod setterMethod, const std::string &amp;docString)</arglist>
+    </member>
+    <member kind="function" protection="protected" virtualness="virtual">
+      <type>virtual Value</type>
+      <name>doExecute</name>
+      <anchorfile>classdynamicgraph_1_1command_1_1Setter_3_01E_00_01double_01_4.html</anchorfile>
+      <anchor>a70ae1176845bd03067d755c38f40451b</anchor>
+      <arglist>()</arglist>
+    </member>
+  </compound>
+  <compound kind="class">
+    <name>dynamicgraph::command::Setter&lt; E, float &gt;</name>
+    <filename>classdynamicgraph_1_1command_1_1Setter_3_01E_00_01float_01_4.html</filename>
+    <templarg></templarg>
+    <base>dynamicgraph::command::Command</base>
+    <member kind="typedef">
+      <type>void(E::*</type>
+      <name>SetterMethod</name>
+      <anchorfile>classdynamicgraph_1_1command_1_1Setter_3_01E_00_01float_01_4.html</anchorfile>
+      <anchor>a5f894ef6be9bb85f140f5a64a35b2736</anchor>
+      <arglist>)(const float &amp;)</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>Setter</name>
+      <anchorfile>classdynamicgraph_1_1command_1_1Setter_3_01E_00_01float_01_4.html</anchorfile>
+      <anchor>adc8256f517ea6670aa244adaea9575f9</anchor>
+      <arglist>(E &amp;entity, SetterMethod setterMethod, const std::string &amp;docString)</arglist>
+    </member>
+    <member kind="function" protection="protected" virtualness="virtual">
+      <type>virtual Value</type>
+      <name>doExecute</name>
+      <anchorfile>classdynamicgraph_1_1command_1_1Setter_3_01E_00_01float_01_4.html</anchorfile>
+      <anchor>a70ae1176845bd03067d755c38f40451b</anchor>
+      <arglist>()</arglist>
+    </member>
+  </compound>
+  <compound kind="class">
+    <name>dynamicgraph::command::Setter&lt; E, int &gt;</name>
+    <filename>classdynamicgraph_1_1command_1_1Setter_3_01E_00_01int_01_4.html</filename>
+    <templarg></templarg>
+    <base>dynamicgraph::command::Command</base>
+    <member kind="typedef">
+      <type>void(E::*</type>
+      <name>SetterMethod</name>
+      <anchorfile>classdynamicgraph_1_1command_1_1Setter_3_01E_00_01int_01_4.html</anchorfile>
+      <anchor>af7aa93b0a2e77346b95ec1ba5fa76a40</anchor>
+      <arglist>)(const int &amp;)</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>Setter</name>
+      <anchorfile>classdynamicgraph_1_1command_1_1Setter_3_01E_00_01int_01_4.html</anchorfile>
+      <anchor>adc8256f517ea6670aa244adaea9575f9</anchor>
+      <arglist>(E &amp;entity, SetterMethod setterMethod, const std::string &amp;docString)</arglist>
+    </member>
+    <member kind="function" protection="protected" virtualness="virtual">
+      <type>virtual Value</type>
+      <name>doExecute</name>
+      <anchorfile>classdynamicgraph_1_1command_1_1Setter_3_01E_00_01int_01_4.html</anchorfile>
+      <anchor>a70ae1176845bd03067d755c38f40451b</anchor>
+      <arglist>()</arglist>
+    </member>
+  </compound>
+  <compound kind="class">
+    <name>dynamicgraph::command::Setter&lt; E, Matrix &gt;</name>
+    <filename>classdynamicgraph_1_1command_1_1Setter_3_01E_00_01Matrix_01_4.html</filename>
+    <templarg></templarg>
+    <base>dynamicgraph::command::Command</base>
+    <member kind="typedef">
+      <type>void(E::*</type>
+      <name>SetterMethod</name>
+      <anchorfile>classdynamicgraph_1_1command_1_1Setter_3_01E_00_01Matrix_01_4.html</anchorfile>
+      <anchor>a0cf52a6d1484c891ee3c43edf9d3a873</anchor>
+      <arglist>)(const Matrix &amp;)</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>Setter</name>
+      <anchorfile>classdynamicgraph_1_1command_1_1Setter_3_01E_00_01Matrix_01_4.html</anchorfile>
+      <anchor>adc8256f517ea6670aa244adaea9575f9</anchor>
+      <arglist>(E &amp;entity, SetterMethod setterMethod, const std::string &amp;docString)</arglist>
+    </member>
+    <member kind="function" protection="protected" virtualness="virtual">
+      <type>virtual Value</type>
+      <name>doExecute</name>
+      <anchorfile>classdynamicgraph_1_1command_1_1Setter_3_01E_00_01Matrix_01_4.html</anchorfile>
+      <anchor>a70ae1176845bd03067d755c38f40451b</anchor>
+      <arglist>()</arglist>
+    </member>
+  </compound>
+  <compound kind="class">
+    <name>dynamicgraph::command::Setter&lt; E, std::string &gt;</name>
+    <filename>classdynamicgraph_1_1command_1_1Setter_3_01E_00_01std_1_1string_01_4.html</filename>
+    <templarg></templarg>
+    <base>dynamicgraph::command::Command</base>
+    <member kind="typedef">
+      <type>void(E::*</type>
+      <name>SetterMethod</name>
+      <anchorfile>classdynamicgraph_1_1command_1_1Setter_3_01E_00_01std_1_1string_01_4.html</anchorfile>
+      <anchor>a4926b2e61c19344ec5a0c81278c99107</anchor>
+      <arglist>)(const std::string &amp;)</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>Setter</name>
+      <anchorfile>classdynamicgraph_1_1command_1_1Setter_3_01E_00_01std_1_1string_01_4.html</anchorfile>
+      <anchor>adc8256f517ea6670aa244adaea9575f9</anchor>
+      <arglist>(E &amp;entity, SetterMethod setterMethod, const std::string &amp;docString)</arglist>
+    </member>
+    <member kind="function" protection="protected" virtualness="virtual">
+      <type>virtual Value</type>
+      <name>doExecute</name>
+      <anchorfile>classdynamicgraph_1_1command_1_1Setter_3_01E_00_01std_1_1string_01_4.html</anchorfile>
+      <anchor>a70ae1176845bd03067d755c38f40451b</anchor>
+      <arglist>()</arglist>
+    </member>
+  </compound>
+  <compound kind="class">
+    <name>dynamicgraph::command::Setter&lt; E, unsigned &gt;</name>
+    <filename>classdynamicgraph_1_1command_1_1Setter_3_01E_00_01unsigned_01_4.html</filename>
+    <templarg></templarg>
+    <base>dynamicgraph::command::Command</base>
+    <member kind="typedef">
+      <type>void(E::*</type>
+      <name>SetterMethod</name>
+      <anchorfile>classdynamicgraph_1_1command_1_1Setter_3_01E_00_01unsigned_01_4.html</anchorfile>
+      <anchor>a0797c0aced17d85a487eb2fde724ced1</anchor>
+      <arglist>)(const unsigned &amp;)</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>Setter</name>
+      <anchorfile>classdynamicgraph_1_1command_1_1Setter_3_01E_00_01unsigned_01_4.html</anchorfile>
+      <anchor>adc8256f517ea6670aa244adaea9575f9</anchor>
+      <arglist>(E &amp;entity, SetterMethod setterMethod, const std::string &amp;docString)</arglist>
+    </member>
+    <member kind="function" protection="protected" virtualness="virtual">
+      <type>virtual Value</type>
+      <name>doExecute</name>
+      <anchorfile>classdynamicgraph_1_1command_1_1Setter_3_01E_00_01unsigned_01_4.html</anchorfile>
+      <anchor>a70ae1176845bd03067d755c38f40451b</anchor>
+      <arglist>()</arglist>
+    </member>
+  </compound>
+  <compound kind="class">
+    <name>dynamicgraph::command::Setter&lt; E, Vector &gt;</name>
+    <filename>classdynamicgraph_1_1command_1_1Setter_3_01E_00_01Vector_01_4.html</filename>
+    <templarg></templarg>
+    <base>dynamicgraph::command::Command</base>
+    <member kind="typedef">
+      <type>void(E::*</type>
+      <name>SetterMethod</name>
+      <anchorfile>classdynamicgraph_1_1command_1_1Setter_3_01E_00_01Vector_01_4.html</anchorfile>
+      <anchor>a6e8655cb15c6bfc096bae5966ce39549</anchor>
+      <arglist>)(const Vector &amp;)</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>Setter</name>
+      <anchorfile>classdynamicgraph_1_1command_1_1Setter_3_01E_00_01Vector_01_4.html</anchorfile>
+      <anchor>adc8256f517ea6670aa244adaea9575f9</anchor>
+      <arglist>(E &amp;entity, SetterMethod setterMethod, const std::string &amp;docString)</arglist>
+    </member>
+    <member kind="function" protection="protected" virtualness="virtual">
+      <type>virtual Value</type>
+      <name>doExecute</name>
+      <anchorfile>classdynamicgraph_1_1command_1_1Setter_3_01E_00_01Vector_01_4.html</anchorfile>
+      <anchor>a70ae1176845bd03067d755c38f40451b</anchor>
+      <arglist>()</arglist>
+    </member>
+  </compound>
+  <compound kind="class">
+    <name>dynamicgraph::Signal</name>
+    <filename>classdynamicgraph_1_1Signal.html</filename>
+    <templarg>T</templarg>
+    <templarg>Time</templarg>
+    <base>dynamicgraph::SignalBase</base>
+    <member kind="function" virtualness="virtual">
+      <type>virtual void</type>
+      <name>checkCompatibility</name>
+      <anchorfile>classdynamicgraph_1_1Signal.html</anchorfile>
+      <anchor>aca720606d4ae5b88ad51d9110f8a3bd8</anchor>
+      <arglist>()</arglist>
+    </member>
+  </compound>
+  <compound kind="class">
+    <name>Signal&lt; int, int &gt;</name>
+    <filename>classdynamicgraph_1_1Signal.html</filename>
+    <base>SignalBase&lt; int &gt;</base>
+    <member kind="function" virtualness="virtual">
+      <type>virtual void</type>
+      <name>checkCompatibility</name>
+      <anchorfile>classdynamicgraph_1_1Signal.html</anchorfile>
+      <anchor>aca720606d4ae5b88ad51d9110f8a3bd8</anchor>
+      <arglist>()</arglist>
+    </member>
+  </compound>
+  <compound kind="class">
+    <name>dynamicgraph::SignalArray</name>
+    <filename>classdynamicgraph_1_1SignalArray.html</filename>
+    <templarg>Time</templarg>
+    <base>dynamicgraph::SignalArray_const</base>
+  </compound>
+  <compound kind="class">
+    <name>dynamicgraph::SignalArray_const</name>
+    <filename>classdynamicgraph_1_1SignalArray__const.html</filename>
+    <templarg></templarg>
+  </compound>
+  <compound kind="class">
+    <name>dynamicgraph::SignalBase</name>
+    <filename>classdynamicgraph_1_1SignalBase.html</filename>
+    <templarg>Time</templarg>
+  </compound>
+  <compound kind="class">
+    <name>SignalBase&lt; int &gt;</name>
+    <filename>classdynamicgraph_1_1SignalBase.html</filename>
+  </compound>
+  <compound kind="class">
+    <name>dynamicgraph::SignalCast</name>
+    <filename>classdynamicgraph_1_1SignalCast.html</filename>
+    <templarg></templarg>
+  </compound>
+  <compound kind="class">
+    <name>dynamicgraph::SignalCaster</name>
+    <filename>classdynamicgraph_1_1SignalCaster.html</filename>
+    <member kind="typedef">
+      <type>boost::function2&lt; void, const boost::any &amp;, std::ostream &amp; &gt;</type>
+      <name>displayer_type</name>
+      <anchorfile>classdynamicgraph_1_1SignalCaster.html</anchorfile>
+      <anchor>afd5edafca7be0cea9d72cc0cff4b5391</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="function">
+      <type>boost::any</type>
+      <name>cast</name>
+      <anchorfile>classdynamicgraph_1_1SignalCaster.html</anchorfile>
+      <anchor>ac4a146662c039e7ecf74fd8fa5e6c50b</anchor>
+      <arglist>(const std::type_info &amp;, std::istringstream &amp;iss)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>disp</name>
+      <anchorfile>classdynamicgraph_1_1SignalCaster.html</anchorfile>
+      <anchor>ad7ebd5ae9917eb469b78960f8d2f26f4</anchor>
+      <arglist>(const boost::any &amp;object, std::ostream &amp;os)</arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>existsCast</name>
+      <anchorfile>classdynamicgraph_1_1SignalCaster.html</anchorfile>
+      <anchor>a2492c340f8d0230603bb7a221e13e774</anchor>
+      <arglist>(const std::type_info &amp;type) const</arglist>
+    </member>
+    <member kind="function">
+      <type>std::vector&lt; std::string &gt;</type>
+      <name>listTypenames</name>
+      <anchorfile>classdynamicgraph_1_1SignalCaster.html</anchorfile>
+      <anchor>a1b38336640a29d27d0011153ea460bcf</anchor>
+      <arglist>() const</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>registerCast</name>
+      <anchorfile>classdynamicgraph_1_1SignalCaster.html</anchorfile>
+      <anchor>a5d357446244a461b1758f5ec72e10517</anchor>
+      <arglist>(const std::type_info &amp;type, displayer_type displayer, caster_type caster, tracer_type tracer)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>trace</name>
+      <anchorfile>classdynamicgraph_1_1SignalCaster.html</anchorfile>
+      <anchor>a5ed0e309d284fd63a506b5d008893e4d</anchor>
+      <arglist>(const boost::any &amp;object, std::ostream &amp;os)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>unregisterCast</name>
+      <anchorfile>classdynamicgraph_1_1SignalCaster.html</anchorfile>
+      <anchor>ad9a016daa76ed9bee22a322f2034a228</anchor>
+      <arglist>(const std::type_info &amp;type)</arglist>
+    </member>
+    <member kind="function" static="yes">
+      <type>static void</type>
+      <name>destroy</name>
+      <anchorfile>classdynamicgraph_1_1SignalCaster.html</anchorfile>
+      <anchor>a112a068c3a6f373ec6c12fdf0b48987b</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function" static="yes">
+      <type>static SignalCaster *</type>
+      <name>getInstance</name>
+      <anchorfile>classdynamicgraph_1_1SignalCaster.html</anchorfile>
+      <anchor>a1008cc9f956593c26f23a73c66f44ec7</anchor>
+      <arglist>(void)</arglist>
+    </member>
+  </compound>
+  <compound kind="class">
+    <name>dynamicgraph::SignalCastRegisterer</name>
+    <filename>classdynamicgraph_1_1SignalCastRegisterer.html</filename>
+  </compound>
+  <compound kind="class">
+    <name>dynamicgraph::SignalPtr</name>
+    <filename>classdynamicgraph_1_1SignalPtr.html</filename>
+    <templarg></templarg>
+    <templarg></templarg>
+    <base virtualness="virtual">dynamicgraph::Signal</base>
+    <member kind="function" virtualness="virtual">
+      <type>virtual void</type>
+      <name>checkCompatibility</name>
+      <anchorfile>classdynamicgraph_1_1SignalPtr.html</anchorfile>
+      <anchor>af2a02e9374a9af15467ce8ffdfce29b2</anchor>
+      <arglist>()</arglist>
+    </member>
+  </compound>
+  <compound kind="class">
+    <name>dynamicgraph::SignalTimeDependent</name>
+    <filename>classdynamicgraph_1_1SignalTimeDependent.html</filename>
+    <templarg>T</templarg>
+    <templarg>Time</templarg>
+    <base virtualness="virtual">dynamicgraph::Signal</base>
+    <base>dynamicgraph::TimeDependency</base>
+  </compound>
+  <compound kind="class">
+    <name>SignalTimeDependent&lt; int, int &gt;</name>
+    <filename>classdynamicgraph_1_1SignalTimeDependent.html</filename>
+    <base virtualness="virtual">Signal&lt; int, int &gt;</base>
+    <base>TimeDependency&lt; int &gt;</base>
+  </compound>
+  <compound kind="class">
+    <name>dynamicgraph::CPU::System</name>
+    <filename>classdynamicgraph_1_1CPU_1_1System.html</filename>
+    <member kind="function">
+      <type>void</type>
+      <name>init</name>
+      <anchorfile>classdynamicgraph_1_1CPU_1_1System.html</anchorfile>
+      <anchor>a02fd73d861ef2e4aabb38c0c9ff82947</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>readProcStat</name>
+      <anchorfile>classdynamicgraph_1_1CPU_1_1System.html</anchorfile>
+      <anchor>a7de11b6ed88463e20c6ed7db0e5bddb2</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="variable">
+      <type>unsigned int</type>
+      <name>cpuNb_</name>
+      <anchorfile>classdynamicgraph_1_1CPU_1_1System.html</anchorfile>
+      <anchor>a1fb330ec349babca80e05f316e560d37</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>CPUData</type>
+      <name>gCPUData_</name>
+      <anchorfile>classdynamicgraph_1_1CPU_1_1System.html</anchorfile>
+      <anchor>a1089b3ea29db014efd7dd7321cd8c86b</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>std::vector&lt; CPUData &gt;</type>
+      <name>vCPUData_</name>
+      <anchorfile>classdynamicgraph_1_1CPU_1_1System.html</anchorfile>
+      <anchor>ad7339f9bb4008cbe16013e913c4c946a</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="friend">
+      <type>friend class</type>
+      <name>boost::serialization::access</name>
+      <anchorfile>classdynamicgraph_1_1CPU_1_1System.html</anchorfile>
+      <anchor>ac98d07dd8f7b70e16ccb9a01abf56b9c</anchor>
+      <arglist></arglist>
+    </member>
+  </compound>
+  <compound kind="class">
+    <name>dynamicgraph::TimeDependency</name>
+    <filename>classdynamicgraph_1_1TimeDependency.html</filename>
+    <templarg>Time</templarg>
+  </compound>
+  <compound kind="class">
+    <name>TimeDependency&lt; int &gt;</name>
+    <filename>classdynamicgraph_1_1TimeDependency.html</filename>
+  </compound>
+  <compound kind="class">
+    <name>dynamicgraph::Tracer</name>
+    <filename>classdynamicgraph_1_1Tracer.html</filename>
+    <base>dynamicgraph::Entity</base>
+    <member kind="enumvalue">
+      <name>EACH_TIME</name>
+      <anchorfile>classdynamicgraph_1_1Tracer.html</anchorfile>
+      <anchor>a7862f00bf81975ff1d5fe8ef13c06baeab618c6f99db65ab65486fe79f2c21ea3</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="enumvalue">
+      <name>FREQUENTLY</name>
+      <anchorfile>classdynamicgraph_1_1Tracer.html</anchorfile>
+      <anchor>a7862f00bf81975ff1d5fe8ef13c06baea101d85e1d9f29c1f2261d2db0f16da8d</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="enumeration">
+      <type></type>
+      <name>TraceStyle</name>
+      <anchorfile>classdynamicgraph_1_1Tracer.html</anchorfile>
+      <anchor>a7862f00bf81975ff1d5fe8ef13c06bae</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="enumvalue">
+      <name>WHEN_SAID</name>
+      <anchorfile>classdynamicgraph_1_1Tracer.html</anchorfile>
+      <anchor>a7862f00bf81975ff1d5fe8ef13c06baeafd976facea8977ecd7a8147887b3ce52</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="enumvalue">
+      <name>EACH_TIME</name>
+      <anchorfile>classdynamicgraph_1_1Tracer.html</anchorfile>
+      <anchor>a7862f00bf81975ff1d5fe8ef13c06baeab618c6f99db65ab65486fe79f2c21ea3</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="enumvalue">
+      <name>FREQUENTLY</name>
+      <anchorfile>classdynamicgraph_1_1Tracer.html</anchorfile>
+      <anchor>a7862f00bf81975ff1d5fe8ef13c06baea101d85e1d9f29c1f2261d2db0f16da8d</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="enumvalue">
+      <name>WHEN_SAID</name>
+      <anchorfile>classdynamicgraph_1_1Tracer.html</anchorfile>
+      <anchor>a7862f00bf81975ff1d5fe8ef13c06baeafd976facea8977ecd7a8147887b3ce52</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>display</name>
+      <anchorfile>classdynamicgraph_1_1Tracer.html</anchorfile>
+      <anchor>a72c320150fced86d9c234ddda30a8efc</anchor>
+      <arglist>(std::ostream &amp;os) const</arglist>
+    </member>
+  </compound>
+  <compound kind="class">
+    <name>dynamicgraph::TracerRealTime</name>
+    <filename>classdynamicgraph_1_1TracerRealTime.html</filename>
+    <base>dynamicgraph::Tracer</base>
+    <member kind="function">
+      <type>void</type>
+      <name>display</name>
+      <anchorfile>classdynamicgraph_1_1TracerRealTime.html</anchorfile>
+      <anchor>a72c320150fced86d9c234ddda30a8efc</anchor>
+      <arglist>(std::ostream &amp;os) const</arglist>
+    </member>
+  </compound>
+  <compound kind="class">
+    <name>dynamicgraph::command::Value</name>
+    <filename>classdynamicgraph_1_1command_1_1Value.html</filename>
+    <member kind="function">
+      <type></type>
+      <name>Value</name>
+      <anchorfile>classdynamicgraph_1_1command_1_1Value.html</anchorfile>
+      <anchor>a3bce26d6d2900fbe74b7c1df3f6f5742</anchor>
+      <arglist>(const Value &amp;value)</arglist>
+    </member>
+    <member kind="function">
+      <type>Type</type>
+      <name>type</name>
+      <anchorfile>classdynamicgraph_1_1command_1_1Value.html</anchorfile>
+      <anchor>adf4a6727c689e0038cf2cdd158d5ed2c</anchor>
+      <arglist>() const</arglist>
+    </member>
+    <member kind="function">
+      <type>const EitherType</type>
+      <name>value</name>
+      <anchorfile>classdynamicgraph_1_1command_1_1Value.html</anchorfile>
+      <anchor>a80bb465a3e47916a2ae0f5bc56a83af2</anchor>
+      <arglist>() const</arglist>
+    </member>
+    <member kind="function" static="yes">
+      <type>static std::string</type>
+      <name>typeName</name>
+      <anchorfile>classdynamicgraph_1_1command_1_1Value.html</anchorfile>
+      <anchor>a5eacb25dc53110c4126cb5cf5ab44995</anchor>
+      <arglist>(Type type)</arglist>
+    </member>
+    <member kind="friend">
+      <type>DYNAMIC_GRAPH_DLLAPI friend std::ostream &amp;</type>
+      <name>operator&lt;&lt;</name>
+      <anchorfile>classdynamicgraph_1_1command_1_1Value.html</anchorfile>
+      <anchor>a3ecca1cfb3c499af94e61f5906aed725</anchor>
+      <arglist>(std::ostream &amp;os, const Value &amp;value)</arglist>
+    </member>
+  </compound>
+  <compound kind="struct">
+    <name>dynamicgraph::command::ValueHelper</name>
+    <filename>structdynamicgraph_1_1command_1_1ValueHelper.html</filename>
+    <templarg></templarg>
+  </compound>
+  <compound kind="namespace">
+    <name>dynamicgraph</name>
+    <filename>namespacedynamicgraph.html</filename>
+    <class kind="class">dynamicgraph::DebugTrace</class>
+    <class kind="class">dynamicgraph::DefaultCastRegisterer</class>
+    <class kind="class">dynamicgraph::Entity</class>
+    <class kind="struct">dynamicgraph::EntityHelper</class>
+    <class kind="class">dynamicgraph::EntityRegisterer</class>
+    <class kind="class">dynamicgraph::ExceptionAbstract</class>
+    <class kind="class">dynamicgraph::ExceptionFactory</class>
+    <class kind="class">dynamicgraph::ExceptionSignal</class>
+    <class kind="class">dynamicgraph::ExceptionTraces</class>
+    <class kind="class">dynamicgraph::FactoryStorage</class>
+    <class kind="class">dynamicgraph::Logger</class>
+    <class kind="class">dynamicgraph::LoggerIOStream</class>
+    <class kind="class">dynamicgraph::LoggerStream</class>
+    <class kind="class">dynamicgraph::OutStringStream</class>
+    <class kind="class">dynamicgraph::PoolStorage</class>
+    <class kind="class">dynamicgraph::RealTimeLogger</class>
+    <class kind="class">dynamicgraph::Signal</class>
+    <class kind="class">dynamicgraph::SignalArray</class>
+    <class kind="class">dynamicgraph::SignalArray_const</class>
+    <class kind="class">dynamicgraph::SignalBase</class>
+    <class kind="class">dynamicgraph::SignalCast</class>
+    <class kind="class">dynamicgraph::SignalCaster</class>
+    <class kind="class">dynamicgraph::SignalCastRegisterer</class>
+    <class kind="class">dynamicgraph::SignalPtr</class>
+    <class kind="class">dynamicgraph::SignalTimeDependent</class>
+    <class kind="class">dynamicgraph::TimeDependency</class>
+    <class kind="class">dynamicgraph::Tracer</class>
+    <class kind="class">dynamicgraph::TracerRealTime</class>
+    <member kind="enumeration">
+      <type></type>
+      <name>MsgType</name>
+      <anchorfile>namespacedynamicgraph.html</anchorfile>
+      <anchor>a2ea0bb09adcce7f655e8f8ee8d30561b</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="function">
+      <type>std::ostream &amp;</type>
+      <name>operator&lt;&lt;</name>
+      <anchorfile>namespacedynamicgraph.html</anchorfile>
+      <anchor>a1dfaa17be4c97d2d5491073ac9c59ecf</anchor>
+      <arglist>(std::ostream &amp;os, const SignalBase&lt; Time &gt; &amp;sig)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>signal_disp</name>
+      <anchorfile>namespacedynamicgraph.html</anchorfile>
+      <anchor>a385c0611ea655151b52a7515d4f836f9</anchor>
+      <arglist>(const T &amp;value, std::ostream &amp;os)</arglist>
+    </member>
+  </compound>
+  <compound kind="group">
+    <name>debug</name>
+    <title>Debugging</title>
+    <filename>group__debug.html</filename>
+    <class kind="class">dynamicgraph::DebugTrace</class>
+    <class kind="class">dynamicgraph::Logger</class>
+    <class kind="class">dynamicgraph::LoggerStream</class>
+    <class kind="class">dynamicgraph::RealTimeLogger</class>
+  </compound>
+  <compound kind="group">
+    <name>dgraph</name>
+    <title>Core classes and objects</title>
+    <filename>group__dgraph.html</filename>
+    <class kind="class">dynamicgraph::command::Command</class>
+    <class kind="class">dynamicgraph::Entity</class>
+    <class kind="class">dynamicgraph::EntityRegisterer</class>
+    <class kind="class">dynamicgraph::FactoryStorage</class>
+    <class kind="class">dynamicgraph::PoolStorage</class>
+    <class kind="class">dynamicgraph::Signal</class>
+    <class kind="class">dynamicgraph::SignalArray</class>
+    <class kind="class">dynamicgraph::SignalArray_const</class>
+    <class kind="class">dynamicgraph::SignalPtr</class>
+    <class kind="class">dynamicgraph::command::Value</class>
+    <member kind="define">
+      <type>#define</type>
+      <name>DYNAMICGRAPH_FACTORY_ENTITY_PLUGIN</name>
+      <anchorfile>group__dgraph.html</anchorfile>
+      <anchor>ga85cdc78c7d7456c08cc56b701770542d</anchor>
+      <arglist>(CLASSTYPE, CLASSNAME)</arglist>
+    </member>
+  </compound>
+  <compound kind="group">
+    <name>signals</name>
+    <title>Signals</title>
+    <filename>group__signals.html</filename>
+  </compound>
+  <compound kind="page">
+    <name>debug</name>
+    <title>Debugging</title>
+    <filename>debug</filename>
+  </compound>
+  <compound kind="page">
+    <name>subp_logger</name>
+    <title>Loggers</title>
+    <filename>subp_logger</filename>
+    <docanchor file="subp_logger" title="Initialization of the logger">sec_init_rt_logger</docanchor>
+    <docanchor file="subp_logger" title="Header and preprocessor variable">subsec_init_rt_logger_hcpp</docanchor>
+    <docanchor file="subp_logger" title="Initialize the output stream">subsec_logger_</docanchor>
+    <docanchor file="subp_logger" title="Using the rt_logger">sec_use_rt_logger</docanchor>
+  </compound>
+  <compound kind="page">
+    <name>subp_dbg_trace</name>
+    <title>Debugging with macros and level</title>
+    <filename>subp_dbg_trace</filename>
+    <docanchor file="subp_dbg_trace" title="Introduction">subp_dbg_trace_intro</docanchor>
+    <docanchor file="subp_dbg_trace" title="Setting up dgDEBUG macros">subp_dbg_trace_set_on_macros</docanchor>
+    <docanchor file="subp_dbg_trace" title="Using dgDEBUG macros">subp_dbg_trace_using_macros</docanchor>
+    <docanchor file="subp_dbg_trace" title="Working example">subp_dbg_trace_wrk_exp</docanchor>
+  </compound>
+  <compound kind="page">
+    <name>subpage_command</name>
+    <title>Commands</title>
+    <filename>subpage_command</filename>
+    <docanchor file="subpage_command" title="Quick introduction">subpage_command_intro</docanchor>
+    <docanchor file="subpage_command" title="Extending entities">subpage_command_using</docanchor>
+    <docanchor file="subpage_command" title="Setters and getters">subpage_command_setters_and_getters</docanchor>
+    <docanchor file="subpage_command" title="Implementing a command">subsubpage_command_void_multiple_args</docanchor>
+    <docanchor file="subpage_command" title="Commands returning a value">subpage_command_void_multiple_args</docanchor>
+    <docanchor file="subpage_command" title="Calling a generic command">section_calling_a_generic_command</docanchor>
+  </compound>
+  <compound kind="page">
+    <name>subp_debug_rt_logger</name>
+    <title>Real-time Logger</title>
+    <filename>subp_debug_rt_logger</filename>
+    <docanchor file="subp_debug_rt_logger" title="Quick introduction">real_time_logger_quick_intro</docanchor>
+    <docanchor file="subp_debug_rt_logger" title="Putting information in your">real_time_logger_modifying_entities</docanchor>
+  </compound>
+  <compound kind="page">
+    <name>subpage_entities</name>
+    <title>Entities</title>
+    <filename>subpage_entities</filename>
+    <docanchor file="subpage_entities" title="Entities">section_entities</docanchor>
+    <docanchor file="subpage_entities" title="General definition">entity_definition</docanchor>
+    <docanchor file="subpage_entities" title="Entity class">entity_classes</docanchor>
+    <docanchor file="subpage_entities" title="List of entities in this package">entities</docanchor>
+    <docanchor file="subpage_entities" title="Specific semantics with entities">specific_semantics</docanchor>
+  </compound>
+  <compound kind="page">
+    <name>subp_how_to_use</name>
+    <title>Using this package</title>
+    <filename>subp_how_to_use</filename>
+    <docanchor file="subp_how_to_use" title="How to use this package">usecase</docanchor>
+    <docanchor file="subp_how_to_use" title="General introduction">use_programmatically</docanchor>
+    <docanchor file="subp_how_to_use">Tutorial</docanchor>
+    <docanchor file="subp_how_to_use" title="Helpers">sec_htw_helpers</docanchor>
+    <docanchor file="subp_how_to_use" title="Entity helpers">subsec_howto_typedef</docanchor>
+    <docanchor file="subp_how_to_use" title="Macro helpers">sec_howto_macros_helpers</docanchor>
+    <docanchor file="subp_how_to_use" title="Preprocessing macros for entities">subsec_howto_macros_helpers_ent</docanchor>
+    <docanchor file="subp_how_to_use" title="Preprocessing macros for signals">subsec_howto_macros_helpers_sig</docanchor>
+  </compound>
+  <compound kind="page">
+    <name>subp_factory</name>
+    <title>Factory</title>
+    <filename>subp_factory</filename>
+    <docanchor file="subp_factory" title="Factory">sec_factory</docanchor>
+  </compound>
+  <compound kind="page">
+    <name>p_graph</name>
+    <title>Graph</title>
+    <filename>p_graph</filename>
+  </compound>
+  <compound kind="page">
+    <name>subp_installation</name>
+    <title>Installation</title>
+    <filename>subp_installation</filename>
+    <docanchor file="subp_installation" title="Dependencies">sec_inst_dep</docanchor>
+    <docanchor file="subp_installation" title="Getting the source">sec_inst_get_src</docanchor>
+    <docanchor file="subp_installation" title="Compiling">sec_inst_comp</docanchor>
+  </compound>
+  <compound kind="page">
+    <name>subp_concept_intro</name>
+    <title>General introduction</title>
+    <filename>subp_concept_intro</filename>
+    <docanchor file="subp_concept_intro" title="Introduction">intro_dynamicGraph</docanchor>
+    <docanchor file="subp_concept_intro" title="Exemple: Real-time control">controlgraph</docanchor>
+    <docanchor file="subp_concept_intro">Functionnalities</docanchor>
+  </compound>
+  <compound kind="page">
+    <name>subp_pool</name>
+    <title>Pool</title>
+    <filename>subp_pool</filename>
+    <docanchor file="subp_pool" title="Pool">pool</docanchor>
+  </compound>
+  <compound kind="page">
+    <name>subp_references</name>
+    <title>References</title>
+    <filename>subp_references</filename>
+    <docanchor file="subp_references" title="References">sec_refer</docanchor>
+    <docanchor file="subp_references">Mansard2009</docanchor>
+    <docanchor file="subp_references">Mansard2007</docanchor>
+  </compound>
+  <compound kind="page">
+    <name>subp_signals</name>
+    <title>Signals</title>
+    <filename>subp_signals</filename>
+    <docanchor file="subp_signals" title="Signals">sec_sigintro</docanchor>
+  </compound>
+  <compound kind="page">
+    <name>tracerrealtimedoc</name>
+    <title>TracerRealTime</title>
+    <filename>tracerrealtimedoc</filename>
+    <docanchor file="tracerrealtimedoc" title="Description">tracerrealtimedoc_description</docanchor>
+    <docanchor file="tracerrealtimedoc" title="Commands">tracerrealtimedoc_commands</docanchor>
+    <docanchor file="tracerrealtimedoc" title="Sample usage">tracerrealtimedoc_sample</docanchor>
+    <docanchor file="tracerrealtimedoc" title="Additional information">tracerrealtimedoc_addi</docanchor>
+    <docanchor file="tracerrealtimedoc" title="Generated plugin file">tracerrealtimedoc_generates</docanchor>
+  </compound>
+  <compound kind="page">
+    <name>tracerdoc</name>
+    <title>Tracer</title>
+    <filename>tracerdoc</filename>
+    <docanchor file="tracerdoc" title="Description">tracerdoc_description</docanchor>
+    <docanchor file="tracerdoc" title="Commands">tracerdoc_commands</docanchor>
+    <docanchor file="tracerdoc" title="Sample usage">tracerdoc_sample</docanchor>
+    <docanchor file="tracerdoc" title="Additional information">tracerdoc_addi</docanchor>
+    <docanchor file="tracerdoc" title="Generated plugin file">tracerdoc_generates</docanchor>
+  </compound>
+  <compound kind="page">
+    <name>writegraphdoc</name>
+    <title>Displaying the graph of entities</title>
+    <filename>writegraphdoc</filename>
+    <docanchor file="writegraphdoc" title="Description">description</docanchor>
+    <docanchor file="writegraphdoc" title="Viewing as a PDF file">fromdottopdf</docanchor>
+    <docanchor file="writegraphdoc" title="Viewing in a browser">fromdottojs</docanchor>
+  </compound>
+  <compound kind="page">
+    <name>index</name>
+    <title></title>
+    <filename>index</filename>
+  </compound>
+</tagfile>

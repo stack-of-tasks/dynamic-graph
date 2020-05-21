@@ -1,6 +1,8 @@
 var searchData=
 [
-  ['empty_5farg',['EMPTY_ARG',['../a00007.html#ad710622ad06ed14b87739e124c61f69b',1,'dynamicgraph::command::Command']]],
-  ['entitymap',['entityMap',['../a00031.html#a8376c06ce501450b7373017481333361',1,'dynamicgraph::PoolStorage']]],
-  ['exception_5fname',['EXCEPTION_NAME',['../a00023.html#aa3cbda2debc333ce399bcc3cb3bad505',1,'dynamicgraph::ExceptionAbstract::EXCEPTION_NAME()'],['../a00024.html#a8c2d132bfb615d36cb4fad02bf42d951',1,'dynamicgraph::ExceptionFactory::EXCEPTION_NAME()'],['../a00025.html#a81523ec5f40be31b989e1d0d7989e713',1,'dynamicgraph::ExceptionSignal::EXCEPTION_NAME()'],['../a00026.html#a8e537a54b4b4d1f4cdfb2b9659294617',1,'dynamicgraph::ExceptionTraces::EXCEPTION_NAME()']]]
+  ['m_5fprintcountdown',['m_printCountdown',['../classdynamicgraph_1_1Logger.html#a1212125812030acf7dc316e1e9c06f20',1,'dynamicgraph::Logger']]],
+  ['m_5fstream_5fmsg_5fcounters',['m_stream_msg_counters',['../classdynamicgraph_1_1Logger.html#a2a4f51f75ed1fc67bfa347fa44da3f7c',1,'dynamicgraph::Logger']]],
+  ['m_5fstreamprintperiod',['m_streamPrintPeriod',['../classdynamicgraph_1_1Logger.html#afee9844d73723c178f05ef920a0c5259',1,'dynamicgraph::Logger']]],
+  ['m_5ftimesample',['m_timeSample',['../classdynamicgraph_1_1Logger.html#abef44488256f38679699eded84bb3351',1,'dynamicgraph::Logger']]],
+  ['message',['message',['../classdynamicgraph_1_1ExceptionAbstract.html#a36bd74109f547f7f8198faf5a12d2879',1,'dynamicgraph::ExceptionAbstract']]]
 ];

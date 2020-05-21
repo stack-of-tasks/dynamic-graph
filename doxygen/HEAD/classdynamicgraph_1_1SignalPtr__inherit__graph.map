@@ -1,0 +1,4 @@
+<map id="SignalPtr&lt; T, Time &gt;" name="SignalPtr&lt; T, Time &gt;">
+<area shape="rect" id="node2" href="$classdynamicgraph_1_1Signal.html" title="Signals link I/O ports of entities. They can be constant&#45;valued signals, or copy the value of a heap ..." alt="" coords="14,155,141,181"/>
+<area shape="rect" id="node3" href="$classdynamicgraph_1_1SignalBase.html" title="The base class for signals: not to be used as such. " alt="" coords="7,80,148,107"/>
+</map>

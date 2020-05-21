@@ -1,5 +1,0 @@
-<map id="dynamicgraph::Signal&lt; T, Time &gt;" name="dynamicgraph::Signal&lt; T, Time &gt;">
-<area shape="rect" id="node4" href="$a00047.html" title="This is the only type of signal that can be plugged to, using the plug () command. " alt="" coords="5,259,169,300"/>
-<area shape="rect" id="node5" href="$a00048.html" title="A type of signal that enforces a time dependency between other signals, making sure its inputs are up..." alt="" coords="194,259,370,300"/>
-<area shape="rect" id="node2" href="$a00043.html" title="The base class for signals: not to be used as such. " alt="" coords="96,80,273,121"/>
-</map>

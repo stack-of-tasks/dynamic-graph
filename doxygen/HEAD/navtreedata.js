@@ -1,45 +1,44 @@
 var NAVTREE =
 [
   [ "dynamic-graph", "index.html", [
-    [ "Introduction", "index.html#intro_dynamicGraph", [
-      [ "Exemple: Real-time control", "index.html#controlgraph", null ],
-      [ "Functionnalities", "index.html#Functionnalities", null ]
+    [ "General introduction", "subp_concept_intro.html", [
+      [ "Introduction", "subp_concept_intro.html#intro_dynamicGraph", [
+        [ "Exemple: Real-time control", "subp_concept_intro.html#controlgraph", null ],
+        [ "Functionnalities", "subp_concept_intro.html#Functionnalities", null ]
+      ] ]
     ] ],
-    [ "Computational Entity", "index.html#entity", [
-      [ "General definition", "index.html#entity_definition", null ],
-      [ "Entity class", "index.html#entity_classes", null ],
-      [ "List of entities in this package", "index.html#entities", null ],
-      [ "Specific semantics with entities", "index.html#specific_semantics", null ]
+    [ "Installation", "subp_installation.html", [
+      [ "Dependencies", "subp_installation.html#sec_inst_dep", null ],
+      [ "Getting the source", "subp_installation.html#sec_inst_get_src", null ],
+      [ "Compiling", "subp_installation.html#sec_inst_comp", null ]
     ] ],
-    [ "Signals", "index.html#sigintro", null ],
-    [ "Graph", "index.html#graph", [
-      [ "Factory", "index.html#factory", null ],
-      [ "Pool", "index.html#pool", null ],
-      [ "Building the graph", "index.html#scriptingabout", null ]
+    [ "Graph", "p_graph.html", "p_graph" ],
+    [ "Debugging", "debug.html", "debug" ],
+    [ "References", "subp_references.html", [
+      [ "References", "subp_references.html#sec_refer", null ]
     ] ],
-    [ "How to use this package", "index.html#usecase", [
-      [ "Programmatically", "index.html#use_programmtically", null ],
-      [ "Through scripts", "index.html#use_scripts", null ],
-      [ "Tutorial", "index.html#Tutorial", null ]
+    [ "Using this package", "subp_how_to_use.html", [
+      [ "How to use this package", "subp_how_to_use.html#usecase", [
+        [ "General introduction", "subp_how_to_use.html#use_programmatically", null ],
+        [ "Tutorial", "subp_how_to_use.html#Tutorial", null ]
+      ] ],
+      [ "Helpers", "subp_how_to_use.html#sec_htw_helpers", [
+        [ "Entity helpers", "subp_how_to_use.html#subsec_howto_typedef", null ]
+      ] ],
+      [ "Macro helpers", "subp_how_to_use.html#sec_howto_macros_helpers", [
+        [ "Preprocessing macros for entities", "subp_how_to_use.html#subsec_howto_macros_helpers_ent", null ],
+        [ "Preprocessing macros for signals", "subp_how_to_use.html#subsec_howto_macros_helpers_sig", null ]
+      ] ]
     ] ],
-    [ "References", "index.html#references", [
-      [ "Description", "a00002.html#description", null ],
-      [ "Commands", "a00002.html#commands", null ],
-      [ "Additional information", "a00002.html#addi", null ],
-      [ "Generated plugin file", "a00002.html#generates", null ]
-    ] ],
-    [ "TracerRealTime", "a00004.html", [
-      [ "Sample usage", "a00004.html#sample", null ]
-    ] ],
-    [ "Tracer", "a00005.html", null ],
+    [ "Todo List", "todo.html", null ],
+    [ "Deprecated List", "deprecated.html", null ],
     [ "Modules", "modules.html", "modules" ],
     [ "Namespaces", null, [
       [ "Namespace List", "namespaces.html", "namespaces" ],
       [ "Namespace Members", "namespacemembers.html", [
         [ "All", "namespacemembers.html", null ],
         [ "Functions", "namespacemembers_func.html", null ],
-        [ "Variables", "namespacemembers_vars.html", null ],
-        [ "Typedefs", "namespacemembers_type.html", null ]
+        [ "Enumerations", "namespacemembers_enum.html", null ]
       ] ]
     ] ],
     [ "Classes", "annotated.html", [
@@ -47,8 +46,8 @@ var NAVTREE =
       [ "Class Index", "classes.html", null ],
       [ "Class Hierarchy", "hierarchy.html", "hierarchy" ],
       [ "Class Members", "functions.html", [
-        [ "All", "functions.html", "functions_dup" ],
-        [ "Functions", "functions_func.html", "functions_func" ],
+        [ "All", "functions.html", null ],
+        [ "Functions", "functions_func.html", null ],
         [ "Variables", "functions_vars.html", null ],
         [ "Typedefs", "functions_type.html", null ],
         [ "Enumerations", "functions_enum.html", null ],
@@ -57,22 +56,17 @@ var NAVTREE =
       ] ]
     ] ],
     [ "Files", null, [
-      [ "File List", "files.html", "files" ],
-      [ "File Members", "globals.html", [
-        [ "All", "globals.html", null ],
-        [ "Functions", "globals_func.html", null ],
-        [ "Macros", "globals_defs.html", null ]
-      ] ]
+      [ "File List", "files.html", "files" ]
     ] ]
   ] ]
 ];
 
 var NAVTREEINDEX =
 [
-"a00002.html",
-"a00031.html",
-"a00050.html#a5a36dad644972bb146a9c7cec85087f9",
-"a00094.html"
+".html",
+"classdynamicgraph_1_1PoolStorage.html#ae718a4f2aad1d79c083438f13bce4e2d",
+"classdynamicgraph_1_1Tracer.html#abe2cad0a50cbd9e30e5bf07ca92edfb5",
+"structdynamicgraph_1_1command_1_1CommandVoid0.html#acac1faa0f713da9f7683d89baab6e169"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
