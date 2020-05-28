@@ -2,8 +2,8 @@
 Changelog for package dynamic-graph
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+4.1.1 (2020-05-28)
+------------------
 * Update CMakeLists.txt
 * Update dependency and export
 * Update CMakeLists.txt
