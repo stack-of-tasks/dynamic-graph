@@ -32,7 +32,6 @@ INCLUDE(cmake/pthread.cmake)  # needs to be included after the CXX definition
 # Project dependencies
 ADD_PROJECT_DEPENDENCY(Eigen3 REQUIRED PKG_CONFIG_REQUIRES eigen3)
 SET(BOOST_COMPONENTS serialization system unit_test_framework thread)
-set(PKG_CONFIG_EXECUTABLE "/usr/bin/pkg-config")
 SEARCH_FOR_BOOST()
 SEARCH_FOR_PTHREAD()
 
