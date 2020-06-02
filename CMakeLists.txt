@@ -1,7 +1,7 @@
 CMAKE_MINIMUM_REQUIRED(VERSION 3.1)
 
 # Project properties
-SET(PROJECT_ORG stack-of-tasks)
+SET(PROJECT_ORG Rascof)
 SET(PROJECT_NAME dynamic-graph)
 SET(PROJECT_DESCRIPTION "Dynamic graph library")
 SET(PROJECT_URL "https://github.com/${PROJECT_ORG}/${PROJECT_NAME}")
