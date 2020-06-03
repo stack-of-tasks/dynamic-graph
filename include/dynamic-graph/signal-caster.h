@@ -90,14 +90,15 @@ inline static double run (std::istringstream &iss) {
 
 /// Template class used to display a signal value.
 template <typename T> struct signal_trace {
-inline static void run(const T &value, std::ostream &os) { os << value << '\n'; }
+inline static void run(const T &value, std::ostream &os) { os << value; }
 };
 
 /// Template specialization of signal_trace for Eigen objects
-template <typename Derived> struct signal_trace<Eigen::DenseBase<Derived> > {
-inline static void run(const Eigen::DenseBase<Derived> &value, std::ostream &os) {
+template<typename _Scalar, int _Rows, int _Cols, int _Options, int _MaxRows, int _MaxCols>
+struct signal_trace<Eigen::Matrix<_Scalar, _Rows, _Cols, _Options, _MaxRows, _MaxCols> > {
+inline static void run(const Eigen::Matrix<_Scalar, _Rows, _Cols, _Options, _MaxRows, _MaxCols> &value, std::ostream &os) {
   static const Eigen::IOFormat row_format (Eigen::StreamPrecision,
-      Eigen::DontAlignCols, ", ", ", ", "", "", "", "\n");
+      Eigen::DontAlignCols, "\t", "\t", "", "", "", "");
   os << value.format(row_format);
 }
 };
