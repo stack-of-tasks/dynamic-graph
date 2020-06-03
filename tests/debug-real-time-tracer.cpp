@@ -111,5 +111,5 @@ BOOST_AUTO_TEST_CASE(test_tracer) {
       "TracerRealTime my-tracer [mode=play] : \n"
       "  - Dep list: \n"
       "     -> MyEntity(my-entity)::input(double)::out_double (in output)"
-      "	[9Ko/16Ko]	\n"));
+      "	[8Ko/16Ko]	\n"));
 }
