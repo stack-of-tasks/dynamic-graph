@@ -25,6 +25,7 @@ struct MyEntity : public dynamicgraph::Entity {
 
   dynamicgraph::Signal<double, int> m_sigdSIN;
   dynamicgraph::SignalTimeDependent<double, int> m_sigdTimeDepSOUT;
+  dynamicgraph::SignalTimeDependent<Vector, int> m_sigVTimeDepSOUT;
   dynamicgraph::SignalTimeDependent<double, int> m_sigdTwoTimeDepSOUT;
 
   explicit MyEntity(const std::string &name)
@@ -33,12 +34,15 @@ struct MyEntity : public dynamicgraph::Entity {
         m_sigdTimeDepSOUT(boost::bind(&MyEntity::update, this, _1, _2),
                           m_sigdSIN,
                           "MyEntity(" + name + ")::input(double)::out_double"),
+        m_sigVTimeDepSOUT(boost::bind(&MyEntity::updateVector, this, _1, _2),
+                          m_sigdSIN,
+                          "MyEntity(" + name + ")::input(vector)::out_vector"),
         m_sigdTwoTimeDepSOUT(
             boost::bind(&MyEntity::update, this, _1, _2), m_sigdSIN,
             "MyEntity(" + name + ")::input(double)::out2double")
 
   {
-    signalRegistration(m_sigdSIN << m_sigdTimeDepSOUT << m_sigdTwoTimeDepSOUT);
+    signalRegistration(m_sigdSIN << m_sigdTimeDepSOUT << m_sigVTimeDepSOUT << m_sigdTwoTimeDepSOUT);
   }
 
   virtual void display(std::ostream &os) const {
@@ -52,11 +56,20 @@ struct MyEntity : public dynamicgraph::Entity {
     res = aDouble;
     return res;
   }
+
+  Vector &updateVector(Vector &res, const int &inTime) {
+    const double &aDouble = m_sigdSIN(inTime);
+    res.resize(2);
+    res << aDouble, 2*aDouble;
+    return res;
+  }
 };
 DYNAMICGRAPH_FACTORY_ENTITY_PLUGIN(MyEntity, "MyEntity");
 } // namespace dynamicgraph
 
 BOOST_AUTO_TEST_CASE(test_tracer) {
+  using dynamicgraph::Vector;
+
   // Creates a tracer.
   dynamicgraph::Tracer &atracer = *dynamic_cast<dynamicgraph::Tracer *>(
       dynamicgraph::FactoryStorage::getInstance()->newEntity("Tracer",
@@ -75,12 +88,18 @@ BOOST_AUTO_TEST_CASE(test_tracer) {
 
   /// Add trace by name
   atracer.addSignalToTraceByName("my-entity.out_double", "output");
+  /// Add trace by name
+  atracer.addSignalToTraceByName("my-entity.out_vector", "output-vector");
 
   dynamicgraph::SignalBase<int> &aSignal = entity.getSignal("out2double");
 
   dynamicgraph::Signal<double, int> &aSignalInt =
       *(dynamic_cast<dynamicgraph::Signal<double, int> *>(
           &entity.getSignal("in_double")));
+
+  dynamicgraph::Signal<Vector, int> &aSignalVector =
+      *(dynamic_cast<dynamicgraph::Signal<Vector, int> *>(
+          &entity.getSignal("out_vector")));
 
   /// Add trace by signal object
   atracer.addSignalToTrace(aSignal, "output2");
@@ -91,7 +110,10 @@ BOOST_AUTO_TEST_CASE(test_tracer) {
 
   for (int i = 0; i < 1000; i++) {
     aSignal.setTime(i);
+    aSignalInt.access(i);
     aSignalInt.setTime(i);
+    aSignalVector.recompute(i);
+    aSignalVector.setTime(i);
     atracer.recordTrigger(i, i);
   }
 
