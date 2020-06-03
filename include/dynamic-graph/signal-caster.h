@@ -18,7 +18,7 @@
 namespace dynamicgraph {
 /// Template class used to serialize a signal value.
 template <typename T> struct signal_disp {
-inline static void run (const T &value, std::ostream &os) { os << value << '\n'; }
+inline static void run (const T &value, std::ostream &os) { os << value; }
 };
 
 /// Template specialization of signal_disp for Eigen objects

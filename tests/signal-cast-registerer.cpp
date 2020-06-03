@@ -36,15 +36,15 @@ BOOST_AUTO_TEST_CASE(standard_double_registerer) {
   typedef std::pair<std::string, std::string> test_t;
   std::vector<test_t> values;
 
-  values.push_back(std::make_pair("42.0", "42\n"));
-  values.push_back(std::make_pair("42.5", "42.5\n"));
-  values.push_back(std::make_pair("-12.", "-12\n"));
+  values.push_back(std::make_pair("42.0", "42"));
+  values.push_back(std::make_pair("42.5", "42.5"));
+  values.push_back(std::make_pair("-12.", "-12"));
 
   // Double special values.
   // FIXME: these tests are failing :(
-  values.push_back(std::make_pair("inf", "inf\n"));
-  values.push_back(std::make_pair("-inf", "-inf\n"));
-  values.push_back(std::make_pair("nan", "nan\n"));
+  values.push_back(std::make_pair("inf", "inf"));
+  values.push_back(std::make_pair("-inf", "-inf"));
+  values.push_back(std::make_pair("nan", "nan"));
 
   BOOST_FOREACH (const test_t &test, values) {
     // Set
@@ -55,14 +55,14 @@ BOOST_AUTO_TEST_CASE(standard_double_registerer) {
     {
       output_test_stream output;
       mySignal.get(output);
-      BOOST_CHECK(output.is_equal(test.second));
+      BOOST_CHECK_EQUAL(output.str(), test.second);
     }
 
     // Trace
     {
       output_test_stream output;
       mySignal.trace(output);
-      BOOST_CHECK(output.is_equal(test.second));
+      BOOST_CHECK_EQUAL(output.str(), test.second);
     }
   }
 
