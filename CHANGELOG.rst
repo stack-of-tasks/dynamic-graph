@@ -2,8 +2,8 @@
 Changelog for package dynamic-graph
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+4.1.2 (2020-06-04)
+------------------
 * Update dependency
   Adding graphviz to solve the dot not found error
 * Update CMakeLists.txt
