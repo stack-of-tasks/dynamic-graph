@@ -16,46 +16,91 @@
 #include <dynamic-graph/eigen-io.h>
 
 namespace dynamicgraph {
-/// Template class used to serialize a signal value.
-template <typename T> struct signal_disp {
-inline static void run (const T &value, std::ostream &os) { os << value; }
+
+/// Inherit from this class if you want to keep default implementation for some
+/// functions.
+template <typename T> struct signal_io_base {
+/// serialize a signal value.
+inline static void disp (const T &value, std::ostream &os) { os << value; }
+/// deserialize a signal value.
+inline static T cast (std::istringstream &is) {
+  T inst;
+  is >> inst;
+  if (is.fail()) {
+    throw ExceptionSignal(ExceptionSignal::GENERIC,
+        "failed to serialize " + is.str());
+  }
+  return inst;
+}
+/// write a signal value to log file
+inline static void trace(const T &value, std::ostream &os) { os << value; }
 };
+
+/// Inherit from this class if tracing is not implemented for a given type.
+template <typename T> struct signal_io_unimplemented {
+inline static void disp (const T &, std::ostream &) {
+  throw std::logic_error("this disp is not implemented.");
+}
+inline static T cast (std::istringstream &) {
+  throw std::logic_error("this cast is not implemented.");
+}
+inline static void trace(const T &, std::ostream &) {
+  throw std::logic_error("this trace is not implemented.");
+}
+};
+
+/// Class used for I/O operations in Signal<T,Time>
+template <typename T> struct signal_io : signal_io_base<T> {};
 
 /// Template specialization of signal_disp for Eigen objects
 template<typename _Scalar, int _Rows, int _Cols, int _Options, int _MaxRows, int _MaxCols>
-struct signal_disp<Eigen::Matrix< _Scalar, _Rows, _Cols, _Options, _MaxRows, _MaxCols > > {
-inline static void run(const Eigen::Matrix< _Scalar, _Rows, _Cols, _Options, _MaxRows, _MaxCols > &value, std::ostream &os) {
+struct signal_io<Eigen::Matrix< _Scalar, _Rows, _Cols, _Options, _MaxRows, _MaxCols > >
+: signal_io_base <Eigen::Matrix< _Scalar, _Rows, _Cols, _Options, _MaxRows, _MaxCols > >
+{
+typedef Eigen::Matrix< _Scalar, _Rows, _Cols, _Options, _MaxRows, _MaxCols > matrix_type;
+
+inline static void disp(const matrix_type &value, std::ostream &os) {
   static const Eigen::IOFormat row_format (Eigen::StreamPrecision,
       Eigen::DontAlignCols, " ", " ", "", "", "", "");
   os << value.format(row_format);
 }
-};
 
-/// Template specialization of signal_disp for std::string.
-/// Do not print '\n' at the end.
-template <> struct signal_disp<std::string> {
-inline static void run (const std::string &value, std::ostream &os) { os << value; }
-};
-
-/// Template class used to deserialize a signal value (reverse of signal_disp).
-template <typename T> struct signal_cast {
-inline static T run (std::istringstream &iss) {
-  T inst;
-  iss >> inst;
-  if (iss.fail()) {
-    throw ExceptionSignal(ExceptionSignal::GENERIC,
-        "failed to serialize " + iss.str());
-  }
-  return inst;
+inline static void trace(const matrix_type &value, std::ostream &os) {
+  static const Eigen::IOFormat row_format (Eigen::StreamPrecision,
+      Eigen::DontAlignCols, "\t", "\t", "", "", "", "");
+  os << value.format(row_format);
 }
 };
 
-/// Template specialization of signal_cast for std::string.
-template <> struct signal_cast<std::string> {
-inline static std::string run (std::istringstream &iss) { return iss.str(); }
+/// Template specialization of signal_io for Eigen quaternion objects
+template<typename _Scalar, int _Options>
+struct signal_io<Eigen::Quaternion< _Scalar, _Options> >
+: signal_io_base<Eigen::Quaternion< _Scalar, _Options> >
+{
+typedef Eigen::Quaternion< _Scalar, _Options> quat_type;
+typedef Eigen::Matrix< _Scalar, 4, 1, _Options> matrix_type;
+
+inline static void disp(const quat_type &value, std::ostream &os) {
+  signal_io<matrix_type>::disp(value.coeffs(), os);
+}
+
+inline static quat_type cast (std::istringstream &is) {
+  return quat_type(signal_io<matrix_type>::cast(is));
+}
+
+inline static void trace(const quat_type &value, std::ostream &os) {
+  signal_io<matrix_type>::trace(value.coeffs(), os);
+}
 };
 
-/// Template specialization of signal_cast for double
+/// Template specialization of signal_io for std::string.
+/// Do not print '\n' at the end.
+template <> struct signal_io<std::string> : signal_io_base<std::string>
+{
+inline static std::string cast (std::istringstream &iss) { return iss.str(); }
+};
+
+/// Template specialization of signal_io for double
 /// to workaround the limitations of the stream based approach.
 ///
 /// When dealing with double: displaying a double on a stream
@@ -67,8 +112,8 @@ inline static std::string run (std::istringstream &iss) { return iss.str(); }
 /// To workaround this problem, parse special values manually
 /// (the strings used are the one produces by displaying special
 /// values on a stream).
-template <> struct signal_cast<double> {
-inline static double run (std::istringstream &iss) {
+template <> struct signal_io<double> : signal_io_base<double> {
+inline static double cast (std::istringstream &iss) {
   std::string tmp (iss.str());
 
   if (tmp == "nan")
@@ -85,21 +130,6 @@ inline static double run (std::istringstream &iss) {
     fmt % tmp;
     throw ExceptionSignal(ExceptionSignal::GENERIC, fmt.str());
   }
-}
-};
-
-/// Template class used to display a signal value.
-template <typename T> struct signal_trace {
-inline static void run(const T &value, std::ostream &os) { os << value; }
-};
-
-/// Template specialization of signal_trace for Eigen objects
-template<typename _Scalar, int _Rows, int _Cols, int _Options, int _MaxRows, int _MaxCols>
-struct signal_trace<Eigen::Matrix<_Scalar, _Rows, _Cols, _Options, _MaxRows, _MaxCols> > {
-inline static void run(const Eigen::Matrix<_Scalar, _Rows, _Cols, _Options, _MaxRows, _MaxCols> &value, std::ostream &os) {
-  static const Eigen::IOFormat row_format (Eigen::StreamPrecision,
-      Eigen::DontAlignCols, "\t", "\t", "", "", "", "");
-  os << value.format(row_format);
 }
 };
 
