@@ -142,12 +142,12 @@ BOOST_AUTO_TEST_CASE(test_base) {
 BOOST_AUTO_TEST_CASE(test_cast_helper) {
   std::istringstream iss;
   iss.str("1");
-  signal_cast<int>::run(iss);
+  signal_io<int>::cast(iss);
 
   {
     std::istringstream iss_fail;
     iss.str("test");
-    BOOST_CHECK_THROW(signal_cast<int>::run(iss_fail), ExceptionSignal);
+    BOOST_CHECK_THROW(signal_io<int>::cast(iss_fail), ExceptionSignal);
   }
 
   /// Test cast register with Vector
@@ -158,7 +158,7 @@ BOOST_AUTO_TEST_CASE(test_cast_helper) {
   avec[1] = 2.0;
   avec[2] = 3.0;
   avec[3] = 4.0;
-  BOOST_CHECK_NO_THROW(signal_trace<Vector>::run(avec, output));
+  BOOST_CHECK_NO_THROW(signal_io<Vector>::trace(avec, output));
 
   /// Test cast register with Matrix
   dynamicgraph::Matrix amatrix;
@@ -167,8 +167,8 @@ BOOST_AUTO_TEST_CASE(test_cast_helper) {
   amatrix(0, 1) = 1.0;
   amatrix(1, 0) = 2.0;
   amatrix(1, 1) = 3.0;
-  BOOST_CHECK_NO_THROW(signal_trace<Matrix>::run(amatrix, output));
+  BOOST_CHECK_NO_THROW(signal_io<Matrix>::trace(amatrix, output));
 
   std::istringstream aiss("test");
-  signal_cast<std::string>::run(aiss);
+  signal_io<std::string>::cast(aiss);
 }
