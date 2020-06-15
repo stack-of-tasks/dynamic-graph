@@ -2,8 +2,8 @@
 Changelog for package dynamic-graph
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+4.1.1 (2020-06-15)
+------------------
 * Fix Eigen3 issues
 * v4.1.0
 * sync submodule
