@@ -2,8 +2,8 @@
 Changelog for package dynamic-graph
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+4.1.2 (2020-06-16)
+------------------
 * v4.1.1
 * Update Changelog
 * Fix Eigen3 issues
