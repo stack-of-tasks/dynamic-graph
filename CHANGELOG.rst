@@ -2,8 +2,8 @@
 Changelog for package dynamic-graph
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+4.1.3 (2020-06-16)
+------------------
 * Update package.xml
 * v4.1.1
 * Update package.xml
