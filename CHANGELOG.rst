@@ -2,8 +2,10 @@
 Changelog for package dynamic-graph
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-4.1.1 (2020-06-15)
-------------------
+Forthcoming
+-----------
+* v4.1.1
+* Update Changelog
 * Fix Eigen3 issues
 * v4.1.0
 * sync submodule
@@ -14,22 +16,15 @@ Changelog for package dynamic-graph
   Only up to 2 arguments.
   Variadic template might be implemented but I found no
   simple solution.
-* Merge branch 'master' into devel
 * v4.0.0
 * [CMake] clean: keep minimal required instructions
 * [CMake] fix SUFFIX_SO_VERSION
 * [CMake] ADD_PROJECT_DEPENDENCY is ready for Eigen3
   thanks to PKG_CONFIG_REQUIRES
-* Merge pull request `#62 <https://github.com/Rascof/dynamic-graph/issues/62>`_ from jmirabel/devel
-  [TracerRealTime] Check that output file is valid.
 * [TracerRealTime] Fix addSignalToTrace for exception handling
 * [TracerRealTime] Check that output file is valid.
 * Update tests/debug-real-time-tracer.cpp
 * Make TracerRealTime::getBufferSize and setBufferSize public.
-* Merge pull request `#60 <https://github.com/Rascof/dynamic-graph/issues/60>`_ from florent-lamiraux/signal-empty-string
-  Fix Signal<std::string>
-* Merge pull request `#59 <https://github.com/Rascof/dynamic-graph/issues/59>`_ from florent-lamiraux/suffix-so-file
-  Add Cmake option to deactivate suffix of so files.
 * Do not use --disable-new-dtags that is not supported by all linker versions.
 * Partially revert 5daf1d390dbd1249a153d015ca00c6cfb847734c:
   "[signal-cast-helper] Removed unused template specialization".
@@ -58,7 +53,6 @@ Changelog for package dynamic-graph
 * Add Value::operator==
 * Add vector of value as value type.
 * Remove unused file.
-* Merge branch 'master' into devel
 * [linter] Apply cppcheck
 * Remove file include/dynamic-graph/null-ptr.hh
 * [README.md] Fix link to logo.
@@ -158,8 +152,6 @@ Changelog for package dynamic-graph
 * Improve doc.
   Fix debug-tracer.cpp
 * Add signals of type std::string.
-* Merge pull request `#45 <https://github.com/Rascof/dynamic-graph/issues/45>`_ from jmirabel/devel
-  Add TimeDependency::addDependencies + doc of SignalTimeDependent
 * [CMake] Synchronize module.
 * Update documentation of SignalTimeDependent + fix doxygen errors.
 * Add convenience function TimeDependency::addDependencies
@@ -167,12 +159,7 @@ Changelog for package dynamic-graph
 * [debug] Add toString logger tests + uncomment line used for scalar types.
 * [clang-format] Comply to Google style.
 * Fix typo. Enforce 80 columns policy.
-* Merge branch 'coverage' into 'devel'
-  Merge Coverage into devel
-  See merge request stack-of-tasks/dynamic-graph!2
 * Format all the code
-* Merge pull request `#43 <https://github.com/Rascof/dynamic-graph/issues/43>`_ from corentinberge/coverage
-  Coverage
 * Update process-list.cpp
   Delete the cout and the include of iostream
 * Update process-list.cpp
@@ -181,7 +168,6 @@ Changelog for package dynamic-graph
   Include iostream because cout need that to be part on the namespace std
 * Update logger.cpp
   Change the input mode to ostringstream
-* Merge remote-tracking branch 'origin/coverage' into coverage
 * Update logger.cpp
   Made a bug when I was added line, I delete the bug
 * Update signal-cast-registerer.cpp
@@ -194,16 +180,13 @@ Changelog for package dynamic-graph
   Delete isplugged instead of unplug
 * Delete command.cpp
   command-test was already created, didn't have this test when I pull
-* Merge remote-tracking branch 'origin/coverage' into coverage
 * command-test was already created
-* Merge branch 'master' into coverage
 * Commit for PR
 * Commit command.cpp and CMkaLists.txt for analysis
 * Increase the coverage (include/dynamic-graph/eigen-io.h -> 100%) Make the matrix test, but 36 Warnings
 * Increase the coverage (include/dynamic-graph/time-dependency.h -> 100%)
 * Add test to follow multi-threading.
 * Fix priority problem when logging + add CPU load introspection.
-* Merge branch 'devel' into origin-2019-07-12
 * Increase the coverage (include/dynamic-graph/Eigen-io.h)
   Add on test/signal-cast-registerer lot of try - catch for the signalException error
 * Another useless function find, maybe delete?
@@ -215,7 +198,6 @@ Changelog for package dynamic-graph
 * Increase the coverage (include/dynamic-graph/Entity.h -> 100%)
   Add on test/Entity.h the virtual function (Entity::getClassName)
 * Fix following Address Sanitizer
-* Merge tag v3.4.0
 * [tests] Add cmake tests.
 * [doc] Update documentation for real-time-logger.
 * [debug] Logger - Fix race condition
@@ -228,12 +210,6 @@ Changelog for package dynamic-graph
 * [js/doc] Add display using a browser and documentation
 * Minor fix. Remove trailing whitespace
 * [doc] Add documentation on macros for the entities.
-* Merge tag 'v3.3.0'
-  Release of version 3.3.0.
-* Merge pull request `#39 <https://github.com/Rascof/dynamic-graph/issues/39>`_ from nim65s/devel
-  Packaging for the v3.3.0 Release
-* Merge branch 'devel' of github.com:stack-of-tasks/dynamic-graph into devel
-* Merge branch 'devel' of github.com:stack-of-tasks/dynamic-graph into devel
 * [doc] Add macros explanations.
 * [test] Add missing tests/debug-logger-winit.cpp
 * [tests] Add tests on sendMsgs without initialization.
@@ -327,16 +303,10 @@ Changelog for package dynamic-graph
   Spotted by M. Naveau.
 * [cmake] Synchronize
 * [travis] Synchronize
-* Merge pull request `#25 <https://github.com/Rascof/dynamic-graph/issues/25>`_ from nim65s/master
-  update badges
 * update badges
-* Merge pull request `#24 <https://github.com/Rascof/dynamic-graph/issues/24>`_ from nim65s/master
-  [CI] add .gitlab-ci.yml
 * [CI] add .gitlab-ci.yml
 * [doc] Add reference to tutorial.
 * [doc] Improve documentation.
-* Merge pull request `#20 <https://github.com/Rascof/dynamic-graph/issues/20>`_ from stack-of-tasks/devel
-  Move Master to v3
 * [debian] Correct error from previous commit
   Remove 'Nosoname true' for plugins
 * [codespell] Correct minor spelling errors
@@ -357,17 +327,12 @@ Changelog for package dynamic-graph
   modify dg::Vector and dg::Matrix istream operators.
 * [eigen] Replace jrl-mal with eigen
 * [cmake] Synchronize
-* Merge pull request `#17 <https://github.com/Rascof/dynamic-graph/issues/17>`_ from andreadelprete/master
-  Fix bug in signal-array (max number of signals was 20)
 * Initialize signal array with size 20 even when constructing it from a single signal.
-* Merge branch 'master' of github.com:andreadelprete/dynamic-graph
 * Fix bug in signal-array that was limiting the number of signals in a signal-array to 20. Moreover I replaced the C array with an std::vector.
 * Contributors: Alexis Nicolin, Andrea Del Prete, Bergé, Florent Lamiraux, Guilhem Saurel, Joseph Mirabel, Noëlie Ramuzat, Olivier Stasse, Rohan Budhiraja, andreadelprete, corentinberge, fbailly, ostasse@laas.fr, rascof
 
 2.5.6 (2014-08-01)
 ------------------
-* Merge pull request `#16 <https://github.com/Rascof/dynamic-graph/issues/16>`_ from gergondet/topic/FixVisibilityIssue
-  Fix visibility issues
 * [Win32] Remove template specialization declaratn, export symbols.
 * Don't export/import template functions
 * Move definition of template instatiation to cpp
@@ -378,13 +343,9 @@ Changelog for package dynamic-graph
   - Replace DYNAMIC_GRAPH_DLLEXPORT by DYNAMIC_GRAPH_DLLAPI
   - Remove an unnecessary attribute
 * [Travis] Synchronize.
-* Merge pull request `#15 <https://github.com/Rascof/dynamic-graph/issues/15>`_ from francois-keith/master
-  Add a method to check if a signal with the given name exists.
 * Add a method to check if a signal with the given name exists.
 * [Travis] Synchronize
 * [cmake] Synchronize
-* Merge pull request `#14 <https://github.com/Rascof/dynamic-graph/issues/14>`_ from francois-keith/master
-  Correct the name of the method isPlugged.
 * Correct the name of the method isPlugged.
   The old one is kept, but with a warning message
   (for now).
@@ -438,7 +399,6 @@ Changelog for package dynamic-graph
 * Fix build for binutils > 2.22
   Patch reported by Anthony Mallet.
 * Synchronize cmake submodule.
-* Merge remote branch 'origin/master'
 * Added a caster for signal<bool>.
 * Update NEWS.
 * Do not hardcode dl, use ${CMAKE_DL_LIBS}.
@@ -456,13 +416,7 @@ Changelog for package dynamic-graph
 * Win32: Correct a wrong macro
 * Win32: Correct the importation/exportation of symbols
 * For compatibility, added a static function to bind the singleton.
-* Merge branch 'topic/proto-command' into topic/singleton
-  Conflicts:
-  tests/entity.cpp
 * Entity has no more CLASS_NAME static member.
-* Merge branch 'topic/proto-command' of github.com:jrl-umi3218/dynamic-graph into topic/proto-command
-  Conflicts:
-  include/dynamic-graph/entity.h
 * Account for the Entity::getClassName becoming pure virtual.
 * Pass the getclassName to pure virtual.
 * Make package pass tests successfully.
@@ -488,7 +442,6 @@ Changelog for package dynamic-graph
 * Correct a bug in previous commit.
 * Added command 4.
 * Problem of automatic typing with templates.
-* Merge branch 'topic/proto-command' of github.com:jrl-umi3218/dynamic-graph into topic/proto-command
 * Add nullptr class.
 * Corrected function to inline to avoid multiple symbole definition.
 * Added a function to test for the existence of a named entity.
@@ -498,7 +451,6 @@ Changelog for package dynamic-graph
 * Reforge the caster for signals.
 * Remove a duplicated command.
 * IVIGIT: transfert some code and automatic-code-generation macros from sot-core to dg.
-* Merge branch 'topic/proto-command' of github.com:jrl-umi3218/dynamic-graph into topic/proto-command
 * Added new-style command for the two entities.
 * Put back the dirty removal of Florent.
 * Revert "Set version number as 1.99."
@@ -512,7 +464,6 @@ Changelog for package dynamic-graph
 * Added command 3 params.
 * Remove unnecessary virtual keyword.
 * Added a function to access directly a given command, with protection.
-* Merge remote branch 'origin/topic/proto-command' into topic/tmpsafe-proto-command
 * Added the command 2 args (what a funny code to write).
 * Put back mistakenly removed method pool::getSignal.
 * Added all-commnds in the cmake list.
@@ -527,13 +478,11 @@ Changelog for package dynamic-graph
   Move python interpreter in dynamic-graph-python.
 * Added a bind for commands on std::ostream.
 * Added missing include.
-* Merge remote branch 'origin/topic/proto-command' into proto-command
 * Added an alias for EMPTY_ARG for readibility.
 * IVIGIT.
 * Add read access to Entity::signalMap.
 * IVIGIT.
 * Added an helper to get the Value::TypeID directly from the type.
-* Merge remote branch 'origin/topic/proto-command' into proto-command
 * Link libdynamicgraph.so with libpython
   * src/CMakeLists.txt,
   * tools/CMakeLists.txt.
@@ -545,7 +494,6 @@ Changelog for package dynamic-graph
   * tests/CMakeLists.txt,
   * tools/dg-python.cpp: new,
   * tools/CMakeLists.txt: this adds a dependency to  python in dynamic-graph.
-* Merge back master branch.
 * Synchronize.
 * Add tracer test.
 * Add a method returning the list of type names registered for signals.
@@ -707,7 +655,6 @@ Changelog for package dynamic-graph
 * Include cpack to geneate 8.04 Ubuntu package.
 * Synchronize.
 * Synchronize
-* Merge branch 'master' of git://github.com/jrl-umi3218/dynamic-graph
 * Synchronize
 * Remove the macro BUILDING\_'PKG' and use the one defined by header.cmake instead
 * Add missing Boost flags for the projects in tools
@@ -720,8 +667,6 @@ Changelog for package dynamic-graph
 * Enable -Werror.
 * Synchronize.
 * Synchronize.
-* Merge branch 'topic/submodule'
-* Merge branch 'topic/warnings'
 * Small documentation update.
 * Synchronize.
 * Synchronize.
@@ -733,7 +678,6 @@ Changelog for package dynamic-graph
 * Switch to generic pthread detection macro.
 * Synchronize.
 * Switch to new Boost detection macro.
-* Merge branch 'master' into topic/submodule
 * Convert figure to png.
   Figures are to be converted to png so that all browsers can read them,
   however svg files are be kept to allow futher editions of the figures.
@@ -741,7 +685,6 @@ Changelog for package dynamic-graph
   Figures are to be converted to png so that all browsers can read them,
   however svg files are be kept to allow futher editions of the figures.
 * Synchronize.
-* Merge remote branch 'origin/master' into topic/submodule
 * * Moved entity.png to doc/figures so that it can be found by doxygen (cannot use the svg version because it breaks the layout in my browser - Chrome).
   * Corrected some doxygen errors.
 * Add extra image path for Doxygen documentation.
@@ -750,7 +693,6 @@ Changelog for package dynamic-graph
 * Use generated config.hh header file for symbol visibility management.
 * Set CUSTOM_HEADER_DIR in CMakeLists.txt.
 * Synchronize.
-* Merge branch 'master' of github.com:jrl-umi3218/dynamic-graph into topic/submodule
 * Corrected doxygen errors. Complemented documentation on signals.
 * Simplify CMakeLists.txt in unitTesting and add copyright header.
 * Switch completely to submodule.
@@ -760,7 +702,6 @@ Changelog for package dynamic-graph
 * Get rid of generated Makefile.
 * Get rid of generated documentation.
 * More documentation.
-* Merge branch 'gh-pages' of github.com:jrl-umi3218/dynamic-graph
 * Updated documentation
 * Update HEAD Doxygen documentation.
   Source commit id: 241e52083f7159ba66f2866c931d51efefd5cfba
@@ -783,7 +724,6 @@ Changelog for package dynamic-graph
 * Expanded documentation.
 * Work on documentation.
 * Remove trailing whitespaces.
-* Merge branch 'master' of git+ssh://softs.laas.fr/git/jrl/frameworks/dynamicGraph
 * More documentation stubs.
 * Added documentation for most classes in dynamicgraph. Updated css.
 * [doc] Files generated from templates are located in BUILD_DIR.
@@ -791,7 +731,6 @@ Changelog for package dynamic-graph
 * Updated doxygen configuration file; added documentation for entity Tracer.
 * Added import functions for scripts to dynamic-graph (from Thomas Moulard)
 * Added preliminary documentation on entities exposed by the package.
-* Merge branch 'master' of git+ssh://softs.laas.fr/git/jrl/frameworks/dynamicGraph
 * Corrected authors file.
 * Release 1.1
 * Fix man page list in CMakeLists.txt
@@ -827,7 +766,6 @@ Changelog for package dynamic-graph
   This reverts commit 088220ad54bb38a35c34c4bddd9690747092761c.
 * Added libraries rpath.
 * Removed automatic definition of VP_DEBUG.
-* Merge branch 'master' of git+ssh://softs.laas.fr/git/jrl/frameworks/dynamicGraph
 * Added more exception catch codes in interpreter. Should now link correctly with boost libraries. Small debug output changes.
 * Correct the exception raised by signalTime
 * Changed name of the traces file.
@@ -926,7 +864,6 @@ Changelog for package dynamic-graph
   * CMakeLists.txt: build doc by default,
   * doc/package.dox.cmake: headers are now in include directory.
 * Added UNIX guard for inclusion of dynamic load library in CMakeFiles.
-* Fix boost detection
 * Add detection of boost.
 * Removed all using namespace directives from headers. Some minor resulting bugfixes.
 * Separated unit tests and tools. Added ADD_TEST cmake command.
@@ -971,4 +908,4 @@ Changelog for package dynamic-graph
 * Wrong file added to git repository (corrected).
 * Added forgotten files.
 * Configured dynamicGraph package and cmake files. Last-minute adjustment to code for SOT separation (SOT Break)
-* Contributors: Aurelie Clodic, Florent Lamiraux, Francois Bleibel, Francois Keith, François Keith, Keith François, Nicolas Mansard, Olivier Stasse, Pierre Gergondet, Thomas Moulard, olivier-stasse, thomas-moulard
+* Contributors: Aurelie Clodic, Florent Lamiraux, Francois Bleibel, Francois Keith, Keith François, Nicolas Mansard, Olivier Stasse, Pierre Gergondet, Thomas Moulard, olivier-stasse, thomas-moulard
