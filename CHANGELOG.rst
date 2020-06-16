@@ -2,15 +2,22 @@
 Changelog for package dynamic-graph
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-4.1.2 (2020-06-04)
-------------------
+Forthcoming
+-----------
+* Update package.xml
+* v4.1.1
+* Update package.xml
+* Update package.xml
+* Update package.xml
+* Update Cmakelist.txt in tests
+  Fix eigen3 issues
+* 4.1.2
+* Update Changelog
 * Update dependency
   Adding graphviz to solve the dot not found error
 * Update CMakeLists.txt
-* Contributors: Thomas PEYRUCAIN
-
-4.1.1 (2020-05-28)
-------------------
+* 4.1.1
+* Create CHANGELOG.rst
 * Update CMakeLists.txt
 * Update dependency and export
 * Update CMakeLists.txt
