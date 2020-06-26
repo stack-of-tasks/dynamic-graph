@@ -434,7 +434,7 @@ makeCommandReturnType0(E &entity, ReturnType (E::*function)(void),
 
 template <typename ReturnType>
 inline std::string docCommandReturnType0(const std::string &doc,
-                                         const std::string &return_type) {
+                                         const std::string & /* return_type */) {
   return std::string("\n") + doc + "\n\nNo input.\n" +
          typeid(ReturnType).name() + " return.\n\n";
 }
