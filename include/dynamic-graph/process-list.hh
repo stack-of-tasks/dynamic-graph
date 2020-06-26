@@ -4,7 +4,7 @@
  */
 
 #ifndef DYNAMIC_GRAPH_PROCESS_LIST_H_
-#define DYNAMIC_GRAPH_PROCESS_LIST_H
+#define DYNAMIC_GRAPH_PROCESS_LIST_H_
 
 #include <boost/archive/text_iarchive.hpp>
 #include <boost/archive/text_oarchive.hpp>
