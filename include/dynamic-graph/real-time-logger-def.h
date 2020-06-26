@@ -32,6 +32,7 @@ public:
 class LoggerIOStream : public LoggerStream {
 public:
   LoggerIOStream(std::ostream &os) : os_(os) {}
+  virtual ~LoggerIOStream() {}
   virtual void write(const char *c) { os_ << c; }
 
 private:
