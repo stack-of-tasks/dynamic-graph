@@ -146,7 +146,7 @@ BOOST_AUTO_TEST_CASE(custom_vector_registerer) {
   } catch (const ExceptionSignal &aes) {
     res = (aes.getCode() == ExceptionSignal::GENERIC);
   }
-  //  BOOST_CHECK(res);
+  BOOST_CHECK(res); // Uncomment this line to resolve the unused-but-set-variable warning to have a stable release in ros buildfarm
 
   // Print the signal name.
   {
