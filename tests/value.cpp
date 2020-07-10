@@ -64,6 +64,7 @@ BOOST_AUTO_TEST_CASE(value_exceptions) {
   bool res = false;
   try {
     int aInt(anet);
+    aInt++; //silence unused variable warnings to have a stable release in the ros buildfarm
   } catch (const dg::ExceptionAbstract &aea) {
     output << aea.getExceptionName();
     output2 << aea.what();
@@ -78,6 +79,7 @@ BOOST_AUTO_TEST_CASE(value_exceptions) {
   res = false;
   try {
     bool abool(anet);
+    abool=!abool; //silence unused variable warnings to have a stable release in the ros buildfarm
   } catch (const dg::ExceptionAbstract &aea) {
     res = (aea.getCode() == dg::ExceptionAbstract::TOOLS);
   }
@@ -88,6 +90,7 @@ BOOST_AUTO_TEST_CASE(value_exceptions) {
   res = false;
   try {
     unsigned int aint(anet);
+    aint++; //silence unused variable warnings to have a stable release in the ros buildfarm
   } catch (const dg::ExceptionAbstract &aea) {
     res = (aea.getCode() == dg::ExceptionAbstract::TOOLS);
   }
@@ -98,6 +101,7 @@ BOOST_AUTO_TEST_CASE(value_exceptions) {
   res = false;
   try {
     double adouble(anet);
+    adouble++; //silence unused variable warnings to have a stable release in the ros buildfarm
   } catch (const dg::ExceptionAbstract &aea) {
     res = (aea.getCode() == dg::ExceptionAbstract::TOOLS);
   }
@@ -108,6 +112,7 @@ BOOST_AUTO_TEST_CASE(value_exceptions) {
   res = false;
   try {
     float afloat(anet);
+    afloat++; //silence unused variable warnings to have a stable release in the ros buildfarm
   } catch (const dg::ExceptionAbstract &aea) {
     res = (aea.getCode() == dg::ExceptionAbstract::TOOLS);
   }
