@@ -90,7 +90,7 @@ BOOST_AUTO_TEST_CASE(value_exceptions) {
   res = false;
   try {
     unsigned int aint(anet);
-    aint++;
+    aint++; // silence unused variable warnings to have a stable release in the ros buildfarm
   } catch (const dg::ExceptionAbstract &aea) {
     res = (aea.getCode() == dg::ExceptionAbstract::TOOLS);
   }
