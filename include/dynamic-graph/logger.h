@@ -266,9 +266,9 @@ protected:
 
   inline bool isStreamMsg(MsgType m) { return (m & MSG_TYPE_STREAM_BIT); }
 
-  /** Check whether a message of type \p m and from \p c lineId should be accepted.
-   *  \note If \p m is a stream type, the internal counter associated to \p lineId
-   *        is updated.
+  /** Check whether a message of type \p m and from \p c lineId should be
+   * accepted. \note If \p m is a stream type, the internal counter associated
+   * to \p lineId is updated.
    */
   bool acceptMsg(MsgType m, const std::string &lineId) {
     // If more verbose than the current verbosity level
