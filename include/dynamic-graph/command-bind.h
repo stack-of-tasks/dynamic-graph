@@ -400,8 +400,7 @@ struct CommandReturnType0 : public Command {
 protected:
   virtual Value doExecute() {
     assert(getParameterValues().size() == 0);
-    Value res;
-    res = fptr();
+    Value res (fptr());
     return res;
   }
 
@@ -462,7 +461,7 @@ protected:
     assert(getParameterValues().size() == 1);
     T val = getParameterValues()[0].value();
     Value res(fptr(val));
-    return res; // void
+    return res;
   }
 
 private:
@@ -528,8 +527,8 @@ protected:
     assert(getParameterValues().size() == 2);
     T1 val1 = getParameterValues()[0].value();
     T2 val2 = getParameterValues()[1].value();
-    fptr(val1, val2);
-    return Value(); // void
+    Value res(fptr(val1, val2));
+    return res;
   }
 
 private:
