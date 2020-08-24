@@ -30,18 +30,18 @@ Signal<T, Time>::Signal(std::string name)
 
 template <class T, class Time>
 void Signal<T, Time>::set(std::istringstream &stringValue) {
-  (*this) = signal_cast<T>(stringValue);
+  (*this) = signal_io<T>::cast(stringValue);
 }
 
 template <class T, class Time>
 void Signal<T, Time>::get(std::ostream &os) const {
-  signal_disp<T>(this->accessCopy(), os);
+  signal_io<T>::disp(this->accessCopy(), os);
 }
 
 template <class T, class Time>
 void Signal<T, Time>::trace(std::ostream &os) const {
   try {
-    signal_trace<T>(this->accessCopy(), os);
+    signal_io<T>::trace(this->accessCopy(), os);
   } catch DG_RETHROW catch (...) {
     DG_THROW ExceptionSignal(ExceptionSignal::SET_IMPOSSIBLE,
                              "TRACE operation not possible with this signal. ",

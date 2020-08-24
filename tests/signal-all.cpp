@@ -7,7 +7,7 @@
 #include <dynamic-graph/debug.h>
 #include <dynamic-graph/factory.h>
 #include <dynamic-graph/signal-array.h>
-#include <dynamic-graph/signal-cast-helper.h>
+#include <dynamic-graph/signal-caster.h>
 #include <dynamic-graph/tracer.h>
 
 #include <assert.h>
@@ -140,96 +140,35 @@ BOOST_AUTO_TEST_CASE(test_base) {
 }
 
 BOOST_AUTO_TEST_CASE(test_cast_helper) {
-  DefaultCastRegisterer<int> defaultCR;
   std::istringstream iss;
   iss.str("1");
-  defaultCR.cast(iss);
+  signal_io<int>::cast(iss);
 
-  bool res = false;
-  try {
+  {
     std::istringstream iss_fail;
     iss.str("test");
-    defaultCR.cast(iss_fail);
-  } catch (ExceptionSignal &e) {
-    // Take int, not string
-    res = true;
+    BOOST_CHECK_THROW(signal_io<int>::cast(iss_fail), ExceptionSignal);
   }
-  BOOST_CHECK(res);
 
   /// Test cast register with Vector
   output_test_stream output;
   dynamicgraph::Vector avec;
-  DefaultCastRegisterer<dynamicgraph::Vector> defaultVR;
   avec.resize(4);
   avec[0] = 1.0;
   avec[1] = 2.0;
   avec[2] = 3.0;
   avec[3] = 4.0;
-  res = true;
-  try {
-    defaultVR.trace(avec, output);
-  } catch (ExceptionSignal &e) {
-    /// Exception in case of wrong cast.
-    /// This should not happen.
-    res = false;
-  }
-  BOOST_CHECK(res);
+  BOOST_CHECK_NO_THROW(signal_io<Vector>::trace(avec, output));
 
   /// Test cast register with Matrix
   dynamicgraph::Matrix amatrix;
-  DefaultCastRegisterer<dynamicgraph::Matrix> defaultMR;
   amatrix.resize(2, 2);
   amatrix(0, 0) = 0.0;
   amatrix(0, 1) = 1.0;
   amatrix(1, 0) = 2.0;
   amatrix(1, 1) = 3.0;
-  res = true;
-  try {
-    defaultMR.trace(amatrix, output);
-  } catch (ExceptionSignal &e) {
-    /// Exception in case of wrong cast.
-    /// This should happen
-    res = false;
-  }
-  BOOST_CHECK(res);
+  BOOST_CHECK_NO_THROW(signal_io<Matrix>::trace(amatrix, output));
 
   std::istringstream aiss("test");
-  DefaultCastRegisterer<std::string> defaultSR;
-  boost::any aTest = defaultSR.cast(aiss);
-}
-
-BOOST_AUTO_TEST_CASE(signal_caster_basics) {
-  /// Get the singleton on registered types.
-  SignalCaster *asig_caster = SignalCaster::getInstance();
-
-  /// List the registered types.
-  std::vector<std::string> amap = asig_caster->listTypenames();
-  for (std::vector<std::string>::iterator it = amap.begin(); it != amap.end();
-       ++it)
-    std::cout << "signal_caster:listTypename: " << *it << std::endl;
-
-  /// Unregister a type
-  asig_caster->unregisterCast(typeid(double));
-
-  /// Unregister the type a second time to generate exception
-  bool res = false;
-  try {
-    asig_caster->unregisterCast(typeid(double));
-  } catch (ExceptionSignal &aes) {
-    res = (aes.getCode() == ExceptionSignal::GENERIC);
-  }
-  BOOST_CHECK(res);
-
-  /// Get the type cast to generate exception
-  res = false;
-  double ad = 2.0;
-  output_test_stream output;
-  try {
-    asig_caster->disp(ad, output);
-  } catch (ExceptionSignal &aes) {
-    res = (aes.getCode() == ExceptionSignal::BAD_CAST);
-  }
-  BOOST_CHECK(res);
-  asig_caster->destroy();
-  BOOST_CHECK(true);
+  signal_io<std::string>::cast(aiss);
 }

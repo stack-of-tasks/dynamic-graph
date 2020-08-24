@@ -23,13 +23,8 @@ class OutStringStream;
 class PluginLoader;
 class PoolStorage;
 
-class SignalCaster;
-class SignalCastRegisterer;
-
 class Tracer;
 class TracerRealTime;
-
-template <typename T> class DefaultCastRegisterer;
 
 template <typename T, typename Time> class Signal;
 

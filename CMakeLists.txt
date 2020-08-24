@@ -74,6 +74,7 @@ SET(${PROJECT_NAME}_HEADERS
   include/${CUSTOM_HEADER_DIR}/signal.t.cpp
   include/${CUSTOM_HEADER_DIR}/time-dependency.h
   include/${CUSTOM_HEADER_DIR}/time-dependency.t.cpp
+  # Kept for a brittle backward compatiblity.
   include/${CUSTOM_HEADER_DIR}/signal-caster.h
   include/${CUSTOM_HEADER_DIR}/signal-cast-helper.h
   include/${CUSTOM_HEADER_DIR}/all-signals.h
@@ -117,8 +118,6 @@ SET(${PROJECT_NAME}_SOURCES
   src/mt/process-list.cpp
 
   src/signal/signal-array.cpp
-  src/signal/signal-caster.cpp
-  src/signal/signal-cast-helper.cpp
 
   src/command/value.cpp
   src/command/command.cpp

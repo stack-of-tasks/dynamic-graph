@@ -13,8 +13,6 @@
 #include <dynamic-graph/factory.h>
 #include <dynamic-graph/linear-algebra.h>
 #include <dynamic-graph/pool.h>
-#include <dynamic-graph/signal-cast-helper.h>
-#include <dynamic-graph/signal-caster.h>
 #include <dynamic-graph/signal.h>
 
 #include "signal-cast-registerer-libA.hh"
@@ -31,67 +29,6 @@ using boost::test_tools::output_test_stream;
 typedef Eigen::VectorXd Vector;
 typedef Eigen::MatrixXd Matrix;
 
-struct EigenCastRegisterer_V : public dynamicgraph::SignalCastRegisterer {
-  typedef Vector bnuVector;
-
-  EigenCastRegisterer_V()
-      : SignalCastRegisterer(typeid(bnuVector), dispVector, castVector,
-                             traceVector) {}
-
-  static boost::any castVector(std::istringstream &iss) {
-    bnuVector res;
-    iss >> res;
-    return res;
-  }
-
-  static void dispVector(const boost::any &object, std::ostream &os) {
-    const bnuVector &v = boost::any_cast<bnuVector>(object);
-    os << "[ ";
-    for (int i = 0; i < v.size(); ++i)
-      os << v(i) << " ";
-    os << " ];" << std::endl;
-  }
-
-  static void traceVector(const boost::any &object, std::ostream &os) {
-    const bnuVector &v = boost::any_cast<bnuVector>(object);
-    for (int i = 0; i < v.size(); ++i)
-      os << v(i) << " ";
-    os << std::endl;
-  }
-};
-
-template <typename Derived>
-struct EigenCastRegisterer_M : public dynamicgraph::SignalCastRegisterer {
-  typedef Matrix bnuMatrix;
-
-  EigenCastRegisterer_M()
-      : SignalCastRegisterer(typeid(bnuMatrix), dispMatrix, castMatrix,
-                             traceMatrix) {}
-
-  static boost::any castMatrix(std::istringstream &iss) {
-    bnuMatrix res;
-    iss >> res;
-    return res;
-  }
-
-  static void dispMatrix(const boost::any &object, std::ostream &os) {
-    const bnuMatrix &m = boost::any_cast<bnuMatrix>(object);
-    os << m << std::endl;
-  }
-
-  static void traceMatrix(const boost::any &object, std::ostream &os) {
-    const bnuMatrix &m = boost::any_cast<bnuMatrix>(object);
-    os << m << std::endl;
-  }
-};
-
-EigenCastRegisterer_V myVectorCast;
-EigenCastRegisterer_M<int> myMatrixCast;
-
-// Define a new cast with a type that supports streaming operators to
-// and from it (this could be automated with macros).
-dynamicgraph::DefaultCastRegisterer<bool> myBooleanCast;
-
 // Check standard double cast registerer.
 BOOST_AUTO_TEST_CASE(standard_double_registerer) {
   dynamicgraph::Signal<double, int> mySignal("out");
@@ -99,15 +36,15 @@ BOOST_AUTO_TEST_CASE(standard_double_registerer) {
   typedef std::pair<std::string, std::string> test_t;
   std::vector<test_t> values;
 
-  values.push_back(std::make_pair("42.0", "42\n"));
-  values.push_back(std::make_pair("42.5", "42.5\n"));
-  values.push_back(std::make_pair("-12.", "-12\n"));
+  values.push_back(std::make_pair("42.0", "42"));
+  values.push_back(std::make_pair("42.5", "42.5"));
+  values.push_back(std::make_pair("-12.", "-12"));
 
   // Double special values.
   // FIXME: these tests are failing :(
-  values.push_back(std::make_pair("inf", "inf\n"));
-  values.push_back(std::make_pair("-inf", "-inf\n"));
-  values.push_back(std::make_pair("nan", "nan\n"));
+  values.push_back(std::make_pair("inf", "inf"));
+  values.push_back(std::make_pair("-inf", "-inf"));
+  values.push_back(std::make_pair("nan", "nan"));
 
   BOOST_FOREACH (const test_t &test, values) {
     // Set
@@ -118,14 +55,14 @@ BOOST_AUTO_TEST_CASE(standard_double_registerer) {
     {
       output_test_stream output;
       mySignal.get(output);
-      BOOST_CHECK(output.is_equal(test.second));
+      BOOST_CHECK_EQUAL(output.str(), test.second);
     }
 
     // Trace
     {
       output_test_stream output;
       mySignal.trace(output);
-      BOOST_CHECK(output.is_equal(test.second));
+      BOOST_CHECK_EQUAL(output.str(), test.second);
     }
   }
 
@@ -159,7 +96,7 @@ BOOST_AUTO_TEST_CASE(custom_vector_registerer) {
     output_test_stream output;
     myVectorSignal.get(output);
 
-    boost::format fmt("[ %d %d %d %d %d  ];\n");
+    boost::format fmt("%d %d %d %d %d");
     fmt % (i == 0) % (i == 1) % (i == 2) % (i == 3) % (i == 4);
 
     BOOST_CHECK(output.is_equal(fmt.str()));
@@ -204,7 +141,7 @@ BOOST_AUTO_TEST_CASE(custom_vector_registerer) {
     std::istringstream ss("[5](1, ");
     myVectorSignal.set(ss);
   } catch (ExceptionSignal &e) {
-    BOOST_ERROR("Can't happened");
+    std::cout << "Test passed : ss[4] != \" \" || \",\"";
   }
 
   // ss[-1] != ")"
@@ -296,7 +233,7 @@ BOOST_AUTO_TEST_CASE(custom_matrix_registerer) {
     std::istringstream ss("[5,3]((1,");
     myMatrixSignal.set(ss);
   } catch (ExceptionSignal &e) {
-    BOOST_ERROR("Can't happened");
+    std::cout << "Test passed : ss[8] != \" \" || \",\"";
   }
 
   // ss[6+n] != ")"
