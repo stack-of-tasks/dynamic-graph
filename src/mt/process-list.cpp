@@ -141,7 +141,7 @@ void System::readProcStat() {
   if (!init_) {
     /// The number of CPU has been detected by going through /proc/stat.
     vCPUData_.resize(cpuNb_ + 1);
-    for (unsigned long i = 0; i < (unsigned long )cpuNb_; i++)
+    for (unsigned long i = 0; i < (unsigned long)cpuNb_; i++)
       vCPUData_[i].cpu_id_ = (int)i;
   }
   aif.close();

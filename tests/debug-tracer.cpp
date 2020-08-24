@@ -42,7 +42,8 @@ struct MyEntity : public dynamicgraph::Entity {
             "MyEntity(" + name + ")::input(double)::out2double")
 
   {
-    signalRegistration(m_sigdSIN << m_sigdTimeDepSOUT << m_sigVTimeDepSOUT << m_sigdTwoTimeDepSOUT);
+    signalRegistration(m_sigdSIN << m_sigdTimeDepSOUT << m_sigVTimeDepSOUT
+                                 << m_sigdTwoTimeDepSOUT);
   }
 
   virtual void display(std::ostream &os) const {
@@ -60,7 +61,7 @@ struct MyEntity : public dynamicgraph::Entity {
   Vector &updateVector(Vector &res, const int &inTime) {
     const double &aDouble = m_sigdSIN(inTime);
     res.resize(2);
-    res << aDouble, 2*aDouble;
+    res << aDouble, 2 * aDouble;
     return res;
   }
 };
