@@ -26,13 +26,14 @@ INCLUDE(cmake/boost.cmake)
 # Project definition
 COMPUTE_PROJECT_ARGS(PROJECT_ARGS LANGUAGES CXX)
 PROJECT(${PROJECT_NAME} ${PROJECT_ARGS})
+CHECK_MINIMAL_CXX_STANDARD(11 ENFORCE)
 
 INCLUDE(cmake/pthread.cmake)  # needs to be included after the CXX definition
 
 # Project dependencies
 ADD_PROJECT_DEPENDENCY(Eigen3 REQUIRED PKG_CONFIG_REQUIRES eigen3)
-SET(BOOST_COMPONENTS serialization system unit_test_framework thread)
-SEARCH_FOR_BOOST()
+ADD_PROJECT_DEPENDENCY(Boost REQUIRED COMPONENTS serialization system thread)
+FIND_PACKAGE(Boost REQUIRED COMPONENTS unit_test_framework)
 SEARCH_FOR_PTHREAD()
 
 # Add configuration headers for plug-ins.
