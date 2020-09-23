@@ -171,6 +171,7 @@ void Tracer::openFile(const SignalBase<int> &sig, const string &givenname) {
 
 void Tracer::closeFiles() {
   dgDEBUGIN(15);
+  std::lock_guard<std::mutex> files_lock(files_mtx);
 
   for (FileList::iterator iter = files.begin(); files.end() != iter; ++iter) {
     std::ostream *filePtr = *iter;
@@ -192,6 +193,14 @@ void Tracer::record() {
   }
 
   dgDEBUGIN(15);
+
+  // Ensure record() never hangs. If the attempt to acquire the lock fails,
+  // then closeFiles() is active and we shouldn't write to files anyways.
+  std::unique_lock<std::mutex> files_lock(files_mtx, std::try_to_lock);
+  if (!files_lock.owns_lock()) {
+    dgDEBUGOUT(15);
+    return;
+  }
 
   if (files.size() != toTraceSignals.size()) {
     DG_THROW

@@ -146,6 +146,7 @@ void TracerRealTime::openFile(const SignalBase<int> &sig,
 
 void TracerRealTime::closeFiles() {
   dgDEBUGIN(15);
+  std::lock_guard<std::mutex> files_lock(files_mtx);
 
   FileList::iterator iter = files.begin();
   HardFileList::iterator hardIter = hardFiles.begin();
