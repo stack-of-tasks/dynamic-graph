@@ -7,8 +7,8 @@
 #define DYNAMIC_GRAPH_TRACER_H
 #include <boost/function.hpp>
 #include <list>
-#include <string>
 #include <mutex>
+#include <string>
 
 #include <dynamic-graph/entity.h>
 #include <dynamic-graph/exception-traces.h>

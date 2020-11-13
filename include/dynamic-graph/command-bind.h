@@ -400,7 +400,7 @@ struct CommandReturnType0 : public Command {
 protected:
   virtual Value doExecute() {
     assert(getParameterValues().size() == 0);
-    Value res (fptr());
+    Value res(fptr());
     return res;
   }
 
