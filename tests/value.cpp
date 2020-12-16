@@ -7,6 +7,8 @@
 
 #define BOOST_TEST_MODULE value
 
+#include <boost/version.hpp>
+
 #if BOOST_VERSION >= 105900
 #include <boost/test/tools/output_test_stream.hpp>
 #else
