@@ -41,8 +41,9 @@ public:
         m_sigdSIN2(NULL,
                    "CustomEntity(" + name + ")::input(double)::in_double"),
         m_sigdTimeDepSOUT(
-            boost::bind(&CustomEntity::update, this, _1, _2), m_sigdSIN,
-            "CustomEntity(" + name + ")::input(double)::out_double"),
+            boost::bind(&CustomEntity::update, this, boost::placeholders::_1,
+                        boost::placeholders::_2),
+            m_sigdSIN, "CustomEntity(" + name + ")::input(double)::out_double"),
         m_value(0.0) {}
 
   ~CustomEntity() { entityDeregistration(); }

@@ -158,7 +158,9 @@ BOOST_AUTO_TEST_CASE(normal_test) {
   }
   BOOST_CHECK(true);
 
-  sigPtrA.setFunction(boost::bind(&DummyClass<double>::fun, &pro3, _1, _2));
+  sigPtrA.setFunction(boost::bind(&DummyClass<double>::fun, &pro3,
+                                  boost::placeholders::_1,
+                                  boost::placeholders::_2));
   sigPtrA.recompute(3);
 
   /// Plugging signal.

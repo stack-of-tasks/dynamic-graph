@@ -22,7 +22,7 @@
 
 #include "dynamic-graph/command.h"
 #include <boost/assign/list_of.hpp>
-#include <boost/bind.hpp>
+#include <boost/bind/bind.hpp>
 #include <boost/function.hpp>
 
 /* --- FUNCTION 0 ARGS ----------------------------------------------------- */
@@ -111,15 +111,17 @@ makeCommandVoid1(E &entity,
                  // the template arg... why ???
                  boost::function<void(E *, const T &)> function,
                  const std::string &docString) {
-  return new CommandVoid1<E, T>(entity, boost::bind(function, &entity, _1),
-                                docString);
+  return new CommandVoid1<E, T>(
+      entity, boost::bind(function, &entity, boost::placeholders::_1),
+      docString);
 }
 
 template <class E, typename T>
 CommandVoid1<E, T> *makeCommandVoid1(E &entity, void (E::*function)(const T &),
                                      const std::string &docString) {
-  return new CommandVoid1<E, T>(entity, boost::bind(function, &entity, _1),
-                                docString);
+  return new CommandVoid1<E, T>(
+      entity, boost::bind(function, &entity, boost::placeholders::_1),
+      docString);
   return NULL;
 }
 
@@ -175,16 +177,22 @@ makeCommandVoid2(E &entity,
                  // the template arg... why ???
                  boost::function<void(E *, const T1 &, const T2 &)> function,
                  const std::string &docString) {
-  return new CommandVoid2<E, T1, T2>(
-      entity, boost::bind(function, &entity, _1, _2), docString);
+  return new CommandVoid2<E, T1, T2>(entity,
+                                     boost::bind(function, &entity,
+                                                 boost::placeholders::_1,
+                                                 boost::placeholders::_2),
+                                     docString);
 }
 
 template <class E, typename T1, typename T2>
 CommandVoid2<E, T1, T2> *
 makeCommandVoid2(E &entity, void (E::*function)(const T1 &, const T2 &),
                  const std::string &docString) {
-  return new CommandVoid2<E, T1, T2>(
-      entity, boost::bind(function, &entity, _1, _2), docString);
+  return new CommandVoid2<E, T1, T2>(entity,
+                                     boost::bind(function, &entity,
+                                                 boost::placeholders::_1,
+                                                 boost::placeholders::_2),
+                                     docString);
   return NULL;
 }
 
@@ -243,7 +251,10 @@ CommandVoid3<E, T1, T2, T3> *makeCommandVoid3(
     boost::function<void(E *, const T1 &, const T2 &, const T3 &)> function,
     const std::string &docString) {
   return new CommandVoid3<E, T1, T2, T3>(
-      entity, boost::bind(function, &entity, _1, _2, _3), docString);
+      entity,
+      boost::bind(function, &entity, boost::placeholders::_1,
+                  boost::placeholders::_2, boost::placeholders::_3),
+      docString);
 }
 
 template <class E, typename T1, typename T2, typename T3>
@@ -252,7 +263,10 @@ makeCommandVoid3(E &entity,
                  void (E::*function)(const T1 &, const T2 &, const T3 &),
                  const std::string &docString) {
   return new CommandVoid3<E, T1, T2, T3>(
-      entity, boost::bind(function, &entity, _1, _2, _3), docString);
+      entity,
+      boost::bind(function, &entity, boost::placeholders::_1,
+                  boost::placeholders::_2, boost::placeholders::_3),
+      docString);
   return NULL;
 }
 
@@ -317,7 +331,11 @@ CommandVoid4<E, T1, T2, T3, T4> *makeCommandVoid4(
         function,
     const std::string &docString) {
   return new CommandVoid4<E, T1, T2, T3, T4>(
-      entity, boost::bind(function, &entity, _1, _2, _3, _4), docString);
+      entity,
+      boost::bind(function, &entity, boost::placeholders::_1,
+                  boost::placeholders::_2, boost::placeholders::_3,
+                  boost::placeholders::_4),
+      docString);
 }
 
 template <class E, typename T1, typename T2, typename T3, typename T4>
@@ -326,7 +344,11 @@ CommandVoid4<E, T1, T2, T3, T4> *makeCommandVoid4(
     void (E::*function)(const T1 &, const T2 &, const T3 &, const T4 &),
     const std::string &docString) {
   return new CommandVoid4<E, T1, T2, T3, T4>(
-      entity, boost::bind(function, &entity, _1, _2, _3, _4), docString);
+      entity,
+      boost::bind(function, &entity, boost::placeholders::_1,
+                  boost::placeholders::_2, boost::placeholders::_3,
+                  boost::placeholders::_4),
+      docString);
   return NULL;
 }
 
@@ -379,8 +401,9 @@ template <class E>
 CommandVerbose<E> *makeCommandVerbose(E &entity,
                                       void (E::*function)(std::ostream &),
                                       const std::string &docString) {
-  return new CommandVerbose<E>(entity, boost::bind(function, &entity, _1),
-                               docString);
+  return new CommandVerbose<E>(
+      entity, boost::bind(function, &entity, boost::placeholders::_1),
+      docString);
   return NULL;
 }
 
@@ -484,7 +507,8 @@ makeCommandReturnType1(E &entity,
                        boost::function<ReturnType(E *, const T &)> function,
                        const std::string &docString) {
   return new CommandReturnType1<E, ReturnType, T>(
-      entity, boost::bind(function, &entity, _1), docString);
+      entity, boost::bind(function, &entity, boost::placeholders::_1),
+      docString);
 }
 
 template <class E, typename ReturnType, typename T>
@@ -492,7 +516,8 @@ CommandReturnType1<E, ReturnType, T> *
 makeCommandReturnType1(E &entity, ReturnType (E::*function)(const T &),
                        const std::string &docString) {
   return new CommandReturnType1<E, ReturnType, T>(
-      entity, boost::bind(function, &entity, _1), docString);
+      entity, boost::bind(function, &entity, boost::placeholders::_1),
+      docString);
   return NULL;
 }
 
@@ -551,7 +576,10 @@ CommandReturnType2<E, ReturnType, T1, T2> *makeCommandReturnType2(
     boost::function<ReturnType(E *, const T1 &, const T2 &)> function,
     const std::string &docString) {
   return new CommandReturnType2<E, ReturnType, T1, T2>(
-      entity, boost::bind(function, &entity, _1, _2), docString);
+      entity,
+      boost::bind(function, &entity, boost::placeholders::_1,
+                  boost::placeholders::_2),
+      docString);
 }
 
 template <class E, typename ReturnType, typename T1, typename T2>
@@ -560,7 +588,10 @@ makeCommandReturnType2(E &entity,
                        ReturnType (E::*function)(const T1 &, const T2 &),
                        const std::string &docString) {
   return new CommandReturnType2<E, ReturnType, T1, T2>(
-      entity, boost::bind(function, &entity, _1, _2), docString);
+      entity,
+      boost::bind(function, &entity, boost::placeholders::_1,
+                  boost::placeholders::_2),
+      docString);
   return NULL;
 }
 

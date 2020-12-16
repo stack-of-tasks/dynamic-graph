@@ -35,15 +35,18 @@ struct MyEntity : public dynamicgraph::Entity {
   explicit MyEntity(const std::string &name)
       : Entity(name),
         m_sigdSIN("MyEntity(" + name + ")::input(double)::in_double"),
-        m_sigdTimeDepSOUT(boost::bind(&MyEntity::update, this, _1, _2),
-                          m_sigdSIN,
-                          "MyEntity(" + name + ")::input(double)::out_double"),
-        m_sigVTimeDepSOUT(boost::bind(&MyEntity::updateVector, this, _1, _2),
-                          m_sigdSIN,
-                          "MyEntity(" + name + ")::input(vector)::out_vector"),
+        m_sigdTimeDepSOUT(
+            boost::bind(&MyEntity::update, this, boost::placeholders::_1,
+                        boost::placeholders::_2),
+            m_sigdSIN, "MyEntity(" + name + ")::input(double)::out_double"),
+        m_sigVTimeDepSOUT(
+            boost::bind(&MyEntity::updateVector, this, boost::placeholders::_1,
+                        boost::placeholders::_2),
+            m_sigdSIN, "MyEntity(" + name + ")::input(vector)::out_vector"),
         m_sigdTwoTimeDepSOUT(
-            boost::bind(&MyEntity::update, this, _1, _2), m_sigdSIN,
-            "MyEntity(" + name + ")::input(double)::out2double")
+            boost::bind(&MyEntity::update, this, boost::placeholders::_1,
+                        boost::placeholders::_2),
+            m_sigdSIN, "MyEntity(" + name + ")::input(double)::out2double")
 
   {
     signalRegistration(m_sigdSIN << m_sigdTimeDepSOUT << m_sigVTimeDepSOUT

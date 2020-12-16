@@ -26,9 +26,10 @@
                   #type + ")::" + #name)
 #define BIND_SIGNAL_TO_FUNCTION(name, IO, type)                                \
   m_##name##S##IO.setFunction(boost::bind(                                     \
-      &EntityClassName::SIGNAL_OUT_FUNCTION_NAME(name), this, _1, _2));
+      &EntityClassName::SIGNAL_OUT_FUNCTION_NAME(name), this,
+        boost::placeholders::_1, boost::placeholders::_2));
 
-/**/
+        /**/
 
 #define DECLARE_SIGNAL_IN(name, type)                                          \
   ::dynamicgraph::SignalPtr<type, int> m_##name##SIN
@@ -36,7 +37,7 @@
   m_##name##SIN(NULL, getClassName() + "(" + getName() + ")::input(" + #type + \
                           ")::" + #name)
 
-/**/
+        /**/
 
 #define DECLARE_SIGNAL_OUT_FUNCTION(name, type)                                \
   type &SIGNAL_OUT_FUNCTION_NAME(name)(type &, int)
@@ -55,10 +56,12 @@ protected:                                                                     \
 
 #define CONSTRUCT_SIGNAL_OUT(name, type, dep)                                  \
   m_##name##SOUT(                                                              \
-      boost::bind(&EntityClassName::name##SOUT_function, this, _1, _2), dep,   \
+      boost::bind(&EntityClassName::name##SOUT_function, this,                 \
+                  boost::placeholders::_1, boost::placeholders::_2),           \
+      dep,                                                                     \
       getClassName() + "(" + getName() + ")::output(" + #type + ")::" + #name)
 
-/**************** INNER SIGNALS *******************/
+        /**************** INNER SIGNALS *******************/
 #define SIGNAL_INNER_FUNCTION_NAME(name) name##SINNER_function
 
 #define DECLARE_SIGNAL_INNER_FUNCTION(name, type)                              \
@@ -76,7 +79,9 @@ protected:                                                                     \
 
 #define CONSTRUCT_SIGNAL_INNER(name, type, dep)                                \
   m_##name##SINNER(                                                            \
-      boost::bind(&EntityClassName::name##SINNER_function, this, _1, _2), dep, \
+      boost::bind(&EntityClassName::name##SINNER_function, this,               \
+                  boost::placeholders::_1, boost::placeholders::_2),           \
+      dep,                                                                     \
       getClassName() + "(" + getName() + ")::inner(" + #type + ")::" + #name)
 
 #endif // __dynamic_graph_signal_helper_H__

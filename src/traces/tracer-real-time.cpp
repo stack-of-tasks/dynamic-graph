@@ -12,7 +12,7 @@
 /* --------------------------------------------------------------------- */
 
 /* DG */
-#include <boost/bind.hpp>
+#include <boost/bind/bind.hpp>
 #include <iomanip>
 
 #include <dynamic-graph/all-commands.h>

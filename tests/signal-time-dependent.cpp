@@ -75,15 +75,27 @@ BOOST_AUTO_TEST_CASE(signaltimedependent) {
   sigString_t sig4(sig5, "Sig4");
   sigString_t sig2(sig4 << sig4 << sig4 << sig6, "Sig2");
   sigDouble_t sig3(sig2 << sig5 << sig6, "Sig3");
-  sigDouble_t sig1(boost::bind(&DummyClass<double>::fun, &pro1, _1, _2),
+  sigDouble_t sig1(boost::bind(&DummyClass<double>::fun, &pro1,
+                               boost::placeholders::_1,
+                               boost::placeholders::_2),
                    sig2 << sig3, "Sig1");
   sigDouble_t sig7("Sig7");
 
-  sig2.setFunction(boost::bind(&DummyClass<std::string>::fun, &pro2, _1, _2));
-  sig3.setFunction(boost::bind(&DummyClass<double>::fun, &pro3, _1, _2));
-  sig4.setFunction(boost::bind(&DummyClass<std::string>::fun, &pro4, _1, _2));
-  sig5.setFunction(boost::bind(&DummyClass<double>::fun, &pro5, _1, _2));
-  sig6.setFunction(boost::bind(&DummyClass<std::string>::fun, &pro6, _1, _2));
+  sig2.setFunction(boost::bind(&DummyClass<std::string>::fun, &pro2,
+                               boost::placeholders::_1,
+                               boost::placeholders::_2));
+  sig3.setFunction(boost::bind(&DummyClass<double>::fun, &pro3,
+                               boost::placeholders::_1,
+                               boost::placeholders::_2));
+  sig4.setFunction(boost::bind(&DummyClass<std::string>::fun, &pro4,
+                               boost::placeholders::_1,
+                               boost::placeholders::_2));
+  sig5.setFunction(boost::bind(&DummyClass<double>::fun, &pro5,
+                               boost::placeholders::_1,
+                               boost::placeholders::_2));
+  sig6.setFunction(boost::bind(&DummyClass<std::string>::fun, &pro6,
+                               boost::placeholders::_1,
+                               boost::placeholders::_2));
 
   pro1.add(sig2);
   pro1.add(sig3);
