@@ -10,7 +10,7 @@
 #ifndef __SIGNAL_HH
 #define __SIGNAL_HH
 
-#include <boost/bind/bind.hpp>
+#include <boost/bind.hpp>
 #include <boost/function.hpp>
 
 #include <string>

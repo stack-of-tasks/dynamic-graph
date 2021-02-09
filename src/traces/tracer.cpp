@@ -12,7 +12,7 @@
 /* --------------------------------------------------------------------- */
 
 /* DG */
-#include <boost/bind/bind.hpp>
+#include <boost/bind.hpp>
 #include <dynamic-graph/all-commands.h>
 #include <dynamic-graph/debug.h>
 #include <dynamic-graph/factory.h>
@@ -34,9 +34,8 @@ Tracer::Tracer(const std::string n)
     : Entity(n), toTraceSignals(), traceStyle(TRACE_STYLE_DEFAULT),
       frequency(1), basename(), suffix(".dat"), rootdir(), namesSet(false),
       files(), names(), play(false), timeStart(0),
-      triger(boost::bind(&Tracer::recordTrigger, this, boost::placeholders::_1,
-                         boost::placeholders::_2),
-             sotNOSIGNAL, "Tracer(" + n + ")::triger") {
+      triger(boost::bind(&Tracer::recordTrigger, this, _1, _2), sotNOSIGNAL,
+             "Tracer(" + n + ")::triger") {
   signalRegistration(triger);
 
   /* --- Commands --- */

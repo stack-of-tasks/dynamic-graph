@@ -38,8 +38,7 @@ namespace dynamicgraph {
     : Entity (name)
     , signal (
         // Set the function that computes the signal value
-        boost::bind (&Entity::computeSignal, this, boost::placeholders::_1,
-  boost::placeholders::_2),
+        boost::bind (&Entity::computeSignal, this, _1, _2),
         // Declare the dependencies
         dep1 << dep2,
         "signalname")
