@@ -37,6 +37,12 @@ ADD_PROJECT_DEPENDENCY(Boost REQUIRED COMPONENTS serialization system thread)
 ADD_PROJECT_DEPENDENCY(Eigen3 REQUIRED PKG_CONFIG_REQUIRES eigen3)
 SEARCH_FOR_PTHREAD()
 
+IF(Boost_VERSION GREATER 107299)
+  # Silence a warning about a deprecated use of boost bind by boost >= 1.73
+  # without dropping support for boost < 1.73
+  ADD_DEFINITIONS(-DBOOST_BIND_GLOBAL_PLACEHOLDERS)
+ENDIF()
+
 # Add configuration headers for plug-ins.
 GENERATE_CONFIGURATION_HEADER(
   ${HEADER_DIR} config-tracer.hh DG_TRACER tracer_EXPORTS)
