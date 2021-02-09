@@ -5,7 +5,6 @@ SET(PROJECT_ORG stack-of-tasks)
 SET(PROJECT_NAME dynamic-graph)
 SET(PROJECT_DESCRIPTION "Dynamic graph library")
 SET(PROJECT_URL "https://github.com/${PROJECT_ORG}/${PROJECT_NAME}")
-SET(PROJECT_SUFFIX "-v3")
 
 # Project options
 OPTION(SUFFIX_SO_VERSION "Suffix library name with its version" ON)
