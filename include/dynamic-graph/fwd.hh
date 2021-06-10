@@ -5,7 +5,18 @@
 #ifndef DYNAMIC_GRAPH_FWD_HH
 #define DYNAMIC_GRAPH_FWD_HH
 
+#include <boost/smart_ptr.hpp>
+
 namespace dynamicgraph {
+
+// to be replace by std:: when we switch to C++11 and later
+using boost::shared_ptr;
+using boost::weak_ptr;
+using boost::static_pointer_cast;
+using boost::dynamic_pointer_cast;
+using boost::const_pointer_cast;
+using boost::make_shared;
+
 class DebugTrace;
 
 class PluginRefMap;
@@ -17,6 +28,7 @@ class ExceptionSignal;
 class ExceptionTraces;
 class FactoryStorage;
 class Interpreter;
+typedef shared_ptr<Interpreter> InterpreterShPtr_t;
 class InterpreterHelper;
 class Logger;
 class OutStringStream;
