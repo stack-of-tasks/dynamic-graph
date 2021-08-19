@@ -25,7 +25,7 @@ INCLUDE(cmake/boost.cmake)
 # Project definition
 COMPUTE_PROJECT_ARGS(PROJECT_ARGS LANGUAGES CXX)
 PROJECT(${PROJECT_NAME} ${PROJECT_ARGS})
-CHECK_MINIMAL_CXX_STANDARD(11 ENFORCE)
+CHECK_MINIMAL_CXX_STANDARD(14 ENFORCE)
 
 INCLUDE(cmake/pthread.cmake)  # needs to be included after the CXX definition
 
