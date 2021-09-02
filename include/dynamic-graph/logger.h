@@ -221,15 +221,16 @@ public:
    *    stream(type, lineId) << msg << '\n';
    *  \endcode
    */
-  void sendMsg(std::string msg, MsgType type, const std::string &lineId = "");
+  [[deprecated("use stream(type, lineId) << msg")]] void
+  sendMsg(std::string msg, MsgType type, const std::string &lineId = "");
 
   /** \deprecated instead, use
    *  \code
    *    stream(type, lineId) << msg << '\n';
    *  \endcode
    */
-  void sendMsg(std::string msg, MsgType type, const std::string &file,
-               int line) DYNAMIC_GRAPH_DEPRECATED;
+  [[deprecated("use stream(type, lineId) << msg")]] void
+  sendMsg(std::string msg, MsgType type, const std::string &file, int line);
 
   /** Set the sampling time at which the method countdown()
    * is going to be called. */

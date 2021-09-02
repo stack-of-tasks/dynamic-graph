@@ -9,8 +9,6 @@
 #include <dynamic-graph/exception-signal.h>
 #include <dynamic-graph/signal.h>
 
-#include <dynamic-graph/deprecated.hh>
-
 namespace dynamicgraph {
 /// \ingroup dgraph
 ///
