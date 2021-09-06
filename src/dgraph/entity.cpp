@@ -209,5 +209,5 @@ Command *Entity::getNewStyleCommand(const std::string &commandName) {
 
 void Entity::sendMsg(const std::string &msg, MsgType t,
                      const std::string &lineId) {
-  logger_.sendMsg("[" + name + "]" + msg, t, lineId);
+  logger_.stream(t, lineId) << "[" << name << "]" << msg << '\n';
 }
