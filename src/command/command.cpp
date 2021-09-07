@@ -5,8 +5,10 @@
 //
 
 #include "dynamic-graph/command.h"
-#include "dynamic-graph/exception-abstract.h"
+
 #include <sstream>
+
+#include "dynamic-graph/exception-abstract.h"
 
 namespace dynamicgraph {
 namespace command {
@@ -51,5 +53,5 @@ Value Command::execute() { return doExecute(); }
 
 Entity &Command::owner() { return owner_; }
 std::string Command::getDocstring() const { return docstring_; }
-} // namespace command
-} // namespace dynamicgraph
+}  // namespace command
+}  // namespace dynamicgraph

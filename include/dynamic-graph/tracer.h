@@ -5,18 +5,17 @@
 
 #ifndef DYNAMIC_GRAPH_TRACER_H
 #define DYNAMIC_GRAPH_TRACER_H
-#include <boost/function.hpp>
-#include <list>
-#include <mutex>
-#include <string>
-
 #include <dynamic-graph/entity.h>
 #include <dynamic-graph/exception-traces.h>
 #include <dynamic-graph/signal-base.h>
 #include <dynamic-graph/signal-time-dependent.h>
 #include <dynamic-graph/time-dependency.h>
 
+#include <boost/function.hpp>
 #include <dynamic-graph/config-tracer.hh>
+#include <list>
+#include <mutex>
+#include <string>
 
 namespace dynamicgraph {
 /// \ingroup plugin
@@ -25,12 +24,12 @@ namespace dynamicgraph {
 class DG_TRACER_DLLAPI Tracer : public Entity {
   DYNAMIC_GRAPH_ENTITY_DECL();
 
-protected:
+ protected:
   typedef std::list<const SignalBase<int> *> SignalList;
   SignalList toTraceSignals;
   std::mutex files_mtx;
 
-public:
+ public:
   enum TraceStyle {
     WHEN_SAID
     /// Record, then trace to file only when said to.
@@ -56,7 +55,7 @@ public:
   bool play;
   int timeStart;
 
-public:
+ public:
   Tracer(const std::string n);
   virtual ~Tracer() { closeFiles(); }
 
@@ -70,11 +69,11 @@ public:
                  const std::string &suffix);
   virtual void closeFiles();
 
-protected:
+ protected:
   virtual void openFile(const SignalBase<int> &sig,
                         const std::string &filename);
 
-public:
+ public:
   void setTraceStyle(const TraceStyle &style) { traceStyle = style; }
   TraceStyle getTraceStyle() { return traceStyle; }
 
@@ -89,7 +88,7 @@ public:
   void start() { play = true; }
   void stop() { play = false; }
 
-public:
+ public:
   // SignalTrigerer<int> triger;
   SignalTimeDependent<int, int> triger;
 
@@ -101,6 +100,6 @@ public:
   void display(std::ostream &os) const;
 };
 
-} // end of namespace dynamicgraph
+}  // end of namespace dynamicgraph
 
-#endif //! DYNAMIC_GRAPH_TRACER_H
+#endif  //! DYNAMIC_GRAPH_TRACER_H

@@ -8,6 +8,7 @@
 
 #include <dynamic-graph/dynamic-graph-api.h>
 #include <dynamic-graph/exception-abstract.h>
+
 #include <dynamic-graph/fwd.hh>
 
 namespace dynamicgraph {
@@ -16,7 +17,7 @@ namespace dynamicgraph {
 /// \brief Exceptions raised when an error related to signals
 /// happen.
 class DYNAMIC_GRAPH_DLLAPI ExceptionSignal : public ExceptionAbstract {
-public:
+ public:
   enum ErrorCodeEnum {
     GENERIC = ExceptionAbstract::SIGNAL,
     READWRITE_LOCK,
@@ -38,6 +39,6 @@ public:
   virtual const std::string &getExceptionName() const { return EXCEPTION_NAME; }
 };
 
-} // end of namespace dynamicgraph
+}  // end of namespace dynamicgraph
 
-#endif //! DYNAMIC_GRAPH_EXCEPTION_SIGNAL_H
+#endif  //! DYNAMIC_GRAPH_EXCEPTION_SIGNAL_H

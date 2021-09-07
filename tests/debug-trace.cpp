@@ -3,12 +3,14 @@
  * Olivier Stasse
  *
  */
-#include "dynamic-graph/factory.h"
-#include "dynamic-graph/pool.h"
 #include <dynamic-graph/entity.h>
 #include <dynamic-graph/exception-factory.h>
+
 #include <iostream>
 #include <sstream>
+
+#include "dynamic-graph/factory.h"
+#include "dynamic-graph/pool.h"
 
 #define VP_DEBUG 1
 #define VP_DEBUG_MODE 50
@@ -29,7 +31,7 @@ using boost::test_tools::output_test_stream;
 
 namespace dynamicgraph {
 class CustomEntity : public Entity {
-public:
+ public:
   static const std::string CLASS_NAME;
   virtual const std::string &getClassName() const { return CLASS_NAME; }
   explicit CustomEntity(const std::string &n) : Entity(n) {
@@ -52,7 +54,7 @@ public:
   }
 };
 DYNAMICGRAPH_FACTORY_ENTITY_PLUGIN(CustomEntity, "CustomEntity");
-} // namespace dynamicgraph
+}  // namespace dynamicgraph
 
 BOOST_AUTO_TEST_CASE(testDebugTrace) {
   BOOST_CHECK_EQUAL(dynamicgraph::CustomEntity::CLASS_NAME, "CustomEntity");
@@ -86,10 +88,11 @@ BOOST_AUTO_TEST_CASE(testDebugTrace) {
   the_debug_file.close();
 
   // Compare with the strings put inside this source file
-  std::string str_to_test = "# In {"
-                            "# In/Out { }"
-                            "Here is a test"
-                            "# Out }";
+  std::string str_to_test =
+      "# In {"
+      "# In/Out { }"
+      "Here is a test"
+      "# Out }";
   bool two_sub_string_identical;
 
   // Make comparisons.

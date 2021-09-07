@@ -5,23 +5,24 @@
 
 #ifndef DYNAMIC_GRAPH_TIME_DEPENDENCY_H
 #define DYNAMIC_GRAPH_TIME_DEPENDENCY_H
-#include <list>
-
-#include <dynamic-graph/fwd.hh>
 #include <dynamic-graph/signal-array.h>
 #include <dynamic-graph/signal-base.h>
+
+#include <dynamic-graph/fwd.hh>
+#include <list>
 
 namespace dynamicgraph {
 /** \brief A helper class for setting and specifying dependencies
     between signals.
 */
-template <class Time> class TimeDependency {
-public:
+template <class Time>
+class TimeDependency {
+ public:
   enum DependencyType { TIME_DEPENDENT, BOOL_DEPENDENT, ALWAYS_READY };
 
   mutable Time lastAskForUpdate;
 
-public:
+ public:
   SignalBase<Time> &leader;
 
   typedef std::list<const SignalBase<Time> *> Dependencies;
@@ -36,7 +37,7 @@ public:
   Time periodTime;
   static const Time PERIOD_TIME_DEFAULT = 1;
 
-public:
+ public:
   TimeDependency(SignalBase<Time> *sig,
                  const DependencyType dep = DEPENDENCY_TYPE_DEFAULT);
   TimeDependency(SignalBase<Time> *sig, const SignalArray_const<Time> &arr,
@@ -67,7 +68,7 @@ public:
   Time getPeriodTime() const { return periodTime; }
 };
 
-} // end of namespace dynamicgraph
+}  // end of namespace dynamicgraph
 
 #include <dynamic-graph/time-dependency.t.cpp>
-#endif //! DYNAMIC_GRAPH_TIME_DEPENDENCY_H
+#endif  //! DYNAMIC_GRAPH_TIME_DEPENDENCY_H

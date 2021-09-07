@@ -7,9 +7,10 @@
 #ifndef DYNAMIC_GRAPH_COMMAND_H
 #define DYNAMIC_GRAPH_COMMAND_H
 
+#include <vector>
+
 #include "dynamic-graph/dynamic-graph-api.h"
 #include "dynamic-graph/value.h"
-#include <vector>
 
 namespace dynamicgraph {
 class Entity;
@@ -32,7 +33,7 @@ namespace command {
 /// vector of Values the types of which should fit the vector specified
 /// at construction.
 class DYNAMIC_GRAPH_DLLAPI Command {
-public:
+ public:
   virtual ~Command();
   /// Store the owner entity and a vector of value types
   /// \param entity reference to Entity owning this command.
@@ -53,20 +54,20 @@ public:
   /// Get documentation string
   std::string getDocstring() const;
 
-protected:
+ protected:
   /// Specific action performed by the command
   virtual Value doExecute() = 0;
 
-private:
+ private:
   Entity &owner_;
   std::vector<Value::Type> valueTypeVector_;
   std::vector<Value> valueVector_;
   std::string docstring_;
 
-public:
+ public:
   static const std::vector<Value::Type> EMPTY_ARG;
 };
-} // namespace command
-} // namespace dynamicgraph
+}  // namespace command
+}  // namespace dynamicgraph
 
-#endif // DYNAMIC_GRAPH_COMMAND_H
+#endif  // DYNAMIC_GRAPH_COMMAND_H

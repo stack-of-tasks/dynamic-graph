@@ -12,13 +12,14 @@
 /* --------------------------------------------------------------------- */
 
 /* DG */
-#include <boost/bind.hpp>
 #include <dynamic-graph/all-commands.h>
 #include <dynamic-graph/debug.h>
 #include <dynamic-graph/factory.h>
 #include <dynamic-graph/pool.h>
 #include <dynamic-graph/tracer.h>
 #include <dynamic-graph/value.h>
+
+#include <boost/bind.hpp>
 
 using namespace std;
 using namespace dynamicgraph;
@@ -31,9 +32,18 @@ DYNAMICGRAPH_FACTORY_ENTITY_PLUGIN(Tracer, "Tracer");
 /* --------------------------------------------------------------------- */
 
 Tracer::Tracer(const std::string n)
-    : Entity(n), toTraceSignals(), traceStyle(TRACE_STYLE_DEFAULT),
-      frequency(1), basename(), suffix(".dat"), rootdir(), namesSet(false),
-      files(), names(), play(false), timeStart(0),
+    : Entity(n),
+      toTraceSignals(),
+      traceStyle(TRACE_STYLE_DEFAULT),
+      frequency(1),
+      basename(),
+      suffix(".dat"),
+      rootdir(),
+      namesSet(false),
+      files(),
+      names(),
+      play(false),
+      timeStart(0),
       triger(boost::bind(&Tracer::recordTrigger, this, _1, _2), sotNOSIGNAL,
              "Tracer(" + n + ")::triger") {
   signalRegistration(triger);
@@ -62,8 +72,9 @@ Tracer::Tracer(const std::string n)
     doc = docCommandVoid0("Close all the open files.");
     addCommand("close", makeCommandVoid0(*this, &Tracer::closeFiles, doc));
 
-    doc = docCommandVoid0("If necessary, dump "
-                          "(can be done automatically for some traces type).");
+    doc = docCommandVoid0(
+        "If necessary, dump "
+        "(can be done automatically for some traces type).");
     addCommand("dump", makeCommandVoid0(*this, &Tracer::trace, doc));
 
     doc = docCommandVoid0("Start the tracing process.");
@@ -78,7 +89,7 @@ Tracer::Tracer(const std::string n)
     addCommand("setTimeStart",
                makeDirectSetter(*this, &timeStart,
                                 docDirectSetter("timeStart", "int")));
-  } // using namespace command
+  }  // using namespace command
 }
 
 /* --------------------------------------------------------------------- */
@@ -89,8 +100,7 @@ void Tracer::addSignalToTrace(const SignalBase<int> &sig,
                               const string &filename) {
   dgDEBUGIN(15);
   // openFile may throw so it should be called first.
-  if (namesSet)
-    openFile(sig, filename);
+  if (namesSet) openFile(sig, filename);
   toTraceSignals.push_back(&sig);
   dgDEBUGF(15, "%p", &sig);
   names.push_back(filename);
@@ -129,14 +139,12 @@ void Tracer::openFiles(const std::string &rootdir_,
   dgDEBUGIN(15);
   std::basic_string<char>::size_type n = rootdir_.length();
   rootdir = rootdir_;
-  if ((0 < n) & ('/' != rootdir[n - 1]))
-    rootdir += '/';
+  if ((0 < n) & ('/' != rootdir[n - 1])) rootdir += '/';
 
   basename = basename_;
   suffix = suffix_;
 
-  if (files.size())
-    closeFiles();
+  if (files.size()) closeFiles();
 
   SignalList::const_iterator iter = toTraceSignals.begin();
   NameList::const_iterator iterName = names.begin();

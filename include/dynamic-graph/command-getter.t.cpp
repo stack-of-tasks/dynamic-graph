@@ -8,6 +8,7 @@
 #define DYNAMIC_GRAPH_COMMAND_GETTER_T_CPP
 
 #include "dynamic-graph/command-getter.h"
+
 #include <sstream>
 
 namespace dynamicgraph {
@@ -20,12 +21,13 @@ Getter<E, T>::Getter(E &entity, GetterMethod getterMethod,
     : Command(entity, std::vector<Value::Type>(), docstring),
       getterMethod_(getterMethod) {}
 
-template <class E, typename T> Value Getter<E, T>::doExecute() {
+template <class E, typename T>
+Value Getter<E, T>::doExecute() {
   E &entity = static_cast<E &>(owner());
   T value = (entity.*getterMethod_)();
   return Value(value);
 }
-} // namespace command
-} // namespace dynamicgraph
+}  // namespace command
+}  // namespace dynamicgraph
 
-#endif // DYNAMIC_GRAPH_COMMAND_GETTER_T_CPP
+#endif  // DYNAMIC_GRAPH_COMMAND_GETTER_T_CPP

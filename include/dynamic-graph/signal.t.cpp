@@ -12,10 +12,10 @@
 #define VP_TEMPLATE_DEBUG_MODE 0
 #include <dynamic-graph/debug.h>
 
-#define __SIGNAL_INIT(name, Tcpy, Tref, TrefNC, mutex)                         \
-  SignalBase<Time>(name), signalType(SIGNAL_TYPE_DEFAULT), Tcopy1(Tcpy),       \
-      Tcopy2(Tcpy), Tcopy(&Tcopy1), Treference(Tref),                          \
-      TreferenceNonConst(TrefNC), Tfunction(),                                 \
+#define __SIGNAL_INIT(name, Tcpy, Tref, TrefNC, mutex)                   \
+  SignalBase<Time>(name), signalType(SIGNAL_TYPE_DEFAULT), Tcopy1(Tcpy), \
+      Tcopy2(Tcpy), Tcopy(&Tcopy1), Treference(Tref),                    \
+      TreferenceNonConst(TrefNC), Tfunction(),                           \
       keepReference(KEEP_REFERENCE_DEFAULT), providerMutex(mutex)
 
 namespace dynamicgraph {
@@ -52,7 +52,8 @@ void Signal<T, Time>::trace(std::ostream &os) const {
 
 /* ------------------------------------------------------------------------ */
 
-template <class T, class Time> const T &Signal<T, Time>::setTcopy(const T &t) {
+template <class T, class Time>
+const T &Signal<T, Time>::setTcopy(const T &t) {
   if (Tcopy == &Tcopy1) {
     Tcopy2 = t;
     copyInit = true;
@@ -66,21 +67,24 @@ template <class T, class Time> const T &Signal<T, Time>::setTcopy(const T &t) {
   }
 }
 
-template <class T, class Time> T &Signal<T, Time>::getTwork() {
+template <class T, class Time>
+T &Signal<T, Time>::getTwork() {
   if (Tcopy == &Tcopy1)
     return Tcopy2;
   else
     return Tcopy1;
 }
 
-template <class T, class Time> const T &Signal<T, Time>::getTwork() const {
+template <class T, class Time>
+const T &Signal<T, Time>::getTwork() const {
   if (Tcopy == &Tcopy1)
     return Tcopy2;
   else
     return Tcopy1;
 }
 
-template <class T, class Time> const T &Signal<T, Time>::switchTcopy() {
+template <class T, class Time>
+const T &Signal<T, Time>::switchTcopy() {
   if (Tcopy == &Tcopy1) {
     Tcopy = &Tcopy2;
     return Tcopy2;
@@ -90,7 +94,8 @@ template <class T, class Time> const T &Signal<T, Time>::switchTcopy() {
   }
 }
 
-template <class T, class Time> void Signal<T, Time>::setConstant(const T &t) {
+template <class T, class Time>
+void Signal<T, Time>::setConstant(const T &t) {
   signalType = CONSTANT;
   setTcopy(t);
   setReady();
@@ -125,62 +130,64 @@ void Signal<T, Time>::setFunction(boost::function2<T &, T &, Time> t,
   setReady();
 }
 
-template <class T, class Time> const T &Signal<T, Time>::accessCopy() const {
+template <class T, class Time>
+const T &Signal<T, Time>::accessCopy() const {
   return *Tcopy;
 }
 
-template <class T, class Time> const T &Signal<T, Time>::access(const Time &t) {
+template <class T, class Time>
+const T &Signal<T, Time>::access(const Time &t) {
   switch (signalType) {
-  case REFERENCE:
-  case REFERENCE_NON_CONST: {
-    if (NULL == providerMutex) {
-      copyInit = true;
-      signalTime = t;
-      return setTcopy(*Treference);
-    } else {
-      try {
-#ifdef HAVE_LIBBOOST_THREAD
-        boost::try_mutex::scoped_try_lock lock(*providerMutex);
-#endif
+    case REFERENCE:
+    case REFERENCE_NON_CONST: {
+      if (NULL == providerMutex) {
         copyInit = true;
         signalTime = t;
         return setTcopy(*Treference);
-      } catch (const MutexError &) {
-        return accessCopy();
+      } else {
+        try {
+#ifdef HAVE_LIBBOOST_THREAD
+          boost::try_mutex::scoped_try_lock lock(*providerMutex);
+#endif
+          copyInit = true;
+          signalTime = t;
+          return setTcopy(*Treference);
+        } catch (const MutexError &) {
+          return accessCopy();
+        }
       }
+
+      break;
     }
 
-    break;
-  }
-
-  case FUNCTION: {
-    if (NULL == providerMutex) {
-      signalTime = t;
-      Tfunction(getTwork(), t);
-      copyInit = true;
-      return switchTcopy();
-    } else {
-      try {
-#ifdef HAVE_LIBBOOST_THREAD
-        boost::try_mutex::scoped_try_lock lock(*providerMutex);
-#endif
+    case FUNCTION: {
+      if (NULL == providerMutex) {
         signalTime = t;
         Tfunction(getTwork(), t);
         copyInit = true;
         return switchTcopy();
-      } catch (const MutexError &) {
-        return accessCopy();
+      } else {
+        try {
+#ifdef HAVE_LIBBOOST_THREAD
+          boost::try_mutex::scoped_try_lock lock(*providerMutex);
+#endif
+          signalTime = t;
+          Tfunction(getTwork(), t);
+          copyInit = true;
+          return switchTcopy();
+        } catch (const MutexError &) {
+          return accessCopy();
+        }
       }
+      break;
     }
-    break;
-  }
-  case CONSTANT:
-  default:
-    if (this->getReady()) {
-      setReady(false);
-      this->setTime(t);
-    }
-    return accessCopy();
+    case CONSTANT:
+    default:
+      if (this->getReady()) {
+        setReady(false);
+        this->setTime(t);
+      }
+      return accessCopy();
   };
 }
 
@@ -211,23 +218,23 @@ template <class T, class Time>
 std::ostream &Signal<T, Time>::display(std::ostream &os) const {
   os << "Sig:" << this->name << " (Type ";
   switch (this->signalType) {
-  case Signal<T, Time>::CONSTANT:
-    os << "Cst";
-    break;
-  case Signal<T, Time>::REFERENCE:
-    os << "Ref";
-    break;
-  case Signal<T, Time>::REFERENCE_NON_CONST:
-    os << "RefNonCst";
-    break;
-  case Signal<T, Time>::FUNCTION:
-    os << "Fun";
-    break;
+    case Signal<T, Time>::CONSTANT:
+      os << "Cst";
+      break;
+    case Signal<T, Time>::REFERENCE:
+      os << "Ref";
+      break;
+    case Signal<T, Time>::REFERENCE_NON_CONST:
+      os << "RefNonCst";
+      break;
+    case Signal<T, Time>::FUNCTION:
+      os << "Fun";
+      break;
   }
   return os << ")";
 }
 
-} // end of namespace dynamicgraph.
+}  // end of namespace dynamicgraph.
 
 #undef __SIGNAL_INIT
-#endif //! DYNAMIC_GRAPH_SIGNAL_T_CPP
+#endif  //! DYNAMIC_GRAPH_SIGNAL_T_CPP

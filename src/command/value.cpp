@@ -5,6 +5,7 @@
 //
 
 #include "dynamic-graph/value.h"
+
 #include "dynamic-graph/exception-abstract.h"
 
 namespace dynamicgraph {
@@ -33,37 +34,37 @@ EitherType::operator Values() const { return value_->valuesValue(); }
 
 void Value::deleteValue() {
   switch (type_) {
-  case BOOL:
-    delete (const bool *)value_;
-    break;
-  case UNSIGNED:
-    delete (const unsigned *)value_;
-    break;
-  case INT:
-    delete (const int *)value_;
-    break;
-  case FLOAT:
-    delete (const float *)value_;
-    break;
-  case DOUBLE:
-    delete (const double *)value_;
-    break;
-  case STRING:
-    delete (const std::string *)value_;
-    break;
-  case VECTOR:
-    delete (const Vector *)value_;
-    break;
-  case MATRIX:
-    delete (const Eigen::MatrixXd *)value_;
-    break;
-  case MATRIX4D:
-    delete (const Eigen::Matrix4d *)value_;
-    break;
-  case VALUES:
-    delete (const Values *)value_;
-    break;
-  default:;
+    case BOOL:
+      delete (const bool *)value_;
+      break;
+    case UNSIGNED:
+      delete (const unsigned *)value_;
+      break;
+    case INT:
+      delete (const int *)value_;
+      break;
+    case FLOAT:
+      delete (const float *)value_;
+      break;
+    case DOUBLE:
+      delete (const double *)value_;
+      break;
+    case STRING:
+      delete (const std::string *)value_;
+      break;
+    case VECTOR:
+      delete (const Vector *)value_;
+      break;
+    case MATRIX:
+      delete (const Eigen::MatrixXd *)value_;
+      break;
+    case MATRIX4D:
+      delete (const Eigen::Matrix4d *)value_;
+      break;
+    case VALUES:
+      delete (const Values *)value_;
+      break;
+    default:;
   }
 }
 
@@ -90,42 +91,41 @@ Value::Value(const Value &value)
 void *copyValue(const Value &value) {
   void *copy;
   switch (value.type()) {
-
-  case Value::NONE:
-    copy = NULL;
-    break;
-  case Value::BOOL:
-    copy = new bool(value.boolValue());
-    break;
-  case Value::UNSIGNED:
-    copy = new unsigned(value.unsignedValue());
-    break;
-  case Value::INT:
-    copy = new int(value.intValue());
-    break;
-  case Value::FLOAT:
-    copy = new float(value.floatValue());
-    break;
-  case Value::DOUBLE:
-    copy = new double(value.doubleValue());
-    break;
-  case Value::STRING:
-    copy = new std::string(value.stringValue());
-    break;
-  case Value::VECTOR:
-    copy = new Vector(value.vectorValue());
-    break;
-  case Value::MATRIX:
-    copy = new Eigen::MatrixXd(value.matrixXdValue());
-    break;
-  case Value::MATRIX4D:
-    copy = new Eigen::Matrix4d(value.matrix4dValue());
-    break;
-  case Value::VALUES:
-    copy = new Values(value.valuesValue());
-    break;
-  default:
-    abort();
+    case Value::NONE:
+      copy = NULL;
+      break;
+    case Value::BOOL:
+      copy = new bool(value.boolValue());
+      break;
+    case Value::UNSIGNED:
+      copy = new unsigned(value.unsignedValue());
+      break;
+    case Value::INT:
+      copy = new int(value.intValue());
+      break;
+    case Value::FLOAT:
+      copy = new float(value.floatValue());
+      break;
+    case Value::DOUBLE:
+      copy = new double(value.doubleValue());
+      break;
+    case Value::STRING:
+      copy = new std::string(value.stringValue());
+      break;
+    case Value::VECTOR:
+      copy = new Vector(value.vectorValue());
+      break;
+    case Value::MATRIX:
+      copy = new Eigen::MatrixXd(value.matrixXdValue());
+      break;
+    case Value::MATRIX4D:
+      copy = new Eigen::Matrix4d(value.matrix4dValue());
+      break;
+    case Value::VALUES:
+      copy = new Values(value.valuesValue());
+      break;
+    default:
+      abort();
   }
   return copy;
 }
@@ -134,8 +134,7 @@ Value::Value() : type_(NONE), value_(NULL) {}
 
 Value Value::operator=(const Value &value) {
   if (&value != this) {
-    if (value_ != 0x0)
-      deleteValue();
+    if (value_ != 0x0) deleteValue();
     type_ = value.type_;
     void **ptValue = const_cast<void **>(&value_);
     *ptValue = copyValue(value);
@@ -144,33 +143,32 @@ Value Value::operator=(const Value &value) {
 }
 
 bool Value::operator==(const Value &other) const {
-  if (type_ != other.type_)
-    return false;
+  if (type_ != other.type_) return false;
   switch (type_) {
-  case Value::BOOL:
-    return boolValue() == other.boolValue();
-  case Value::UNSIGNED:
-    return unsignedValue() == other.unsignedValue();
-  case Value::INT:
-    return intValue() == other.intValue();
-  case Value::DOUBLE:
-    return doubleValue() == other.doubleValue();
-  case Value::FLOAT:
-    return floatValue() == other.floatValue();
-  case Value::STRING:
-    return stringValue() == other.stringValue();
-  case Value::VECTOR:
-    return vectorValue() == other.vectorValue();
-  case Value::MATRIX:
-    return matrixXdValue() == other.matrixXdValue();
-  case Value::MATRIX4D:
-    return matrix4dValue() == other.matrix4dValue();
-  case Value::VALUES:
-    return constValuesValue() == other.constValuesValue();
-  case Value::NONE:
-    break;
-  default:
-    break;
+    case Value::BOOL:
+      return boolValue() == other.boolValue();
+    case Value::UNSIGNED:
+      return unsignedValue() == other.unsignedValue();
+    case Value::INT:
+      return intValue() == other.intValue();
+    case Value::DOUBLE:
+      return doubleValue() == other.doubleValue();
+    case Value::FLOAT:
+      return floatValue() == other.floatValue();
+    case Value::STRING:
+      return stringValue() == other.stringValue();
+    case Value::VECTOR:
+      return vectorValue() == other.vectorValue();
+    case Value::MATRIX:
+      return matrixXdValue() == other.matrixXdValue();
+    case Value::MATRIX4D:
+      return matrix4dValue() == other.matrix4dValue();
+    case Value::VALUES:
+      return constValuesValue() == other.constValuesValue();
+    case Value::NONE:
+      break;
+    default:
+      break;
   }
   return false;
 }
@@ -180,21 +178,18 @@ const EitherType Value::value() const { return EitherType(*this); }
 Value::Type Value::type() const { return type_; }
 
 bool Value::boolValue() const {
-  if (type_ == BOOL)
-    return *((const bool *)value_);
+  if (type_ == BOOL) return *((const bool *)value_);
   throw ExceptionAbstract(ExceptionAbstract::TOOLS, "value is not an bool");
 }
 
 unsigned Value::unsignedValue() const {
-  if (type_ == UNSIGNED)
-    return *((const unsigned *)value_);
+  if (type_ == UNSIGNED) return *((const unsigned *)value_);
   throw ExceptionAbstract(ExceptionAbstract::TOOLS,
                           "value is not an unsigned int");
 }
 
 int Value::intValue() const {
-  if (type_ == INT)
-    return *((const int *)value_);
+  if (type_ == INT) return *((const int *)value_);
   throw ExceptionAbstract(ExceptionAbstract::TOOLS, "value is not an int int");
 }
 
@@ -215,127 +210,129 @@ double Value::doubleValue() const {
 }
 
 std::string Value::stringValue() const {
-  if (type_ == STRING)
-    return *((const std::string *)value_);
+  if (type_ == STRING) return *((const std::string *)value_);
   throw ExceptionAbstract(ExceptionAbstract::TOOLS, "value is not an string");
 }
 
 Vector Value::vectorValue() const {
-  if (type_ == VECTOR)
-    return *((const Vector *)value_);
+  if (type_ == VECTOR) return *((const Vector *)value_);
   throw ExceptionAbstract(ExceptionAbstract::TOOLS, "value is not an vector");
 }
 
 Eigen::MatrixXd Value::matrixXdValue() const {
-  if (type_ == MATRIX)
-    return *((const Eigen::MatrixXd *)value_);
+  if (type_ == MATRIX) return *((const Eigen::MatrixXd *)value_);
   throw ExceptionAbstract(ExceptionAbstract::TOOLS,
                           "value is not a Eigen matrixXd");
 }
 
 Eigen::Matrix4d Value::matrix4dValue() const {
-  if (type_ == MATRIX4D)
-    return *((const Eigen::Matrix4d *)value_);
+  if (type_ == MATRIX4D) return *((const Eigen::Matrix4d *)value_);
   throw ExceptionAbstract(ExceptionAbstract::TOOLS,
                           "value is not a Eigen matrix4d");
 }
 
 Values Value::valuesValue() const {
-  if (type_ == VALUES)
-    return *((const Values *)value_);
+  if (type_ == VALUES) return *((const Values *)value_);
   throw ExceptionAbstract(ExceptionAbstract::TOOLS,
                           "value is not a vector of Value");
 }
 
 const Values &Value::constValuesValue() const {
-  if (type_ == VALUES)
-    return *((const Values *)value_);
+  if (type_ == VALUES) return *((const Values *)value_);
   throw ExceptionAbstract(ExceptionAbstract::TOOLS,
                           "value is not a vector of Value");
 }
 
 std::string Value::typeName(Type type) {
   switch (type) {
-  case BOOL:
-    return std::string("bool");
-  case UNSIGNED:
-    return std::string("unsigned int");
-  case INT:
-    return std::string("int");
-  case FLOAT:
-    return std::string("float");
-  case DOUBLE:
-    return std::string("double");
-  case STRING:
-    return std::string("string");
-  case VECTOR:
-    return std::string("vector");
-  case MATRIX:
-    return std::string("matrixXd");
-  case MATRIX4D:
-    return std::string("matrix4d");
-  case VALUES:
-    return std::string("values");
-  default:
-    return std::string("unknown");
+    case BOOL:
+      return std::string("bool");
+    case UNSIGNED:
+      return std::string("unsigned int");
+    case INT:
+      return std::string("int");
+    case FLOAT:
+      return std::string("float");
+    case DOUBLE:
+      return std::string("double");
+    case STRING:
+      return std::string("string");
+    case VECTOR:
+      return std::string("vector");
+    case MATRIX:
+      return std::string("matrixXd");
+    case MATRIX4D:
+      return std::string("matrix4d");
+    case VALUES:
+      return std::string("values");
+    default:
+      return std::string("unknown");
   }
 }
 
 std::ostream &operator<<(std::ostream &os, const Value &value) {
   os << "Type=" << Value::typeName(value.type_) << ", value=";
   switch (value.type_) {
-  case Value::BOOL:
-    os << value.boolValue();
-    break;
-  case Value::UNSIGNED:
-    os << value.unsignedValue();
-    break;
-  case Value::INT:
-    os << value.intValue();
-    break;
-  case Value::DOUBLE:
-    os << value.doubleValue();
-    break;
-  case Value::FLOAT:
-    os << value.floatValue();
-    break;
-  case Value::STRING:
-    os << value.stringValue();
-    break;
-  case Value::VECTOR:
-    os << value.vectorValue();
-    break;
-  case Value::MATRIX:
-    os << value.matrixXdValue();
-    break;
-  case Value::MATRIX4D:
-    os << value.matrix4dValue();
-    break;
-  case Value::VALUES: {
-    const std::vector<Value> &vals = value.constValuesValue();
-    os << "[ ";
-    for (std::size_t i = 0; i < vals.size(); ++i)
-      os << "Value(" << vals[i] << "), ";
-    os << "]";
-  } break;
-  default:
-    return os;
+    case Value::BOOL:
+      os << value.boolValue();
+      break;
+    case Value::UNSIGNED:
+      os << value.unsignedValue();
+      break;
+    case Value::INT:
+      os << value.intValue();
+      break;
+    case Value::DOUBLE:
+      os << value.doubleValue();
+      break;
+    case Value::FLOAT:
+      os << value.floatValue();
+      break;
+    case Value::STRING:
+      os << value.stringValue();
+      break;
+    case Value::VECTOR:
+      os << value.vectorValue();
+      break;
+    case Value::MATRIX:
+      os << value.matrixXdValue();
+      break;
+    case Value::MATRIX4D:
+      os << value.matrix4dValue();
+      break;
+    case Value::VALUES: {
+      const std::vector<Value> &vals = value.constValuesValue();
+      os << "[ ";
+      for (std::size_t i = 0; i < vals.size(); ++i)
+        os << "Value(" << vals[i] << "), ";
+      os << "]";
+    } break;
+    default:
+      return os;
   }
   return os;
 }
 
-template <> const Value::Type ValueHelper<bool>::TypeID = Value::BOOL;
-template <> const Value::Type ValueHelper<unsigned>::TypeID = Value::UNSIGNED;
-template <> const Value::Type ValueHelper<int>::TypeID = Value::INT;
-template <> const Value::Type ValueHelper<float>::TypeID = Value::FLOAT;
-template <> const Value::Type ValueHelper<double>::TypeID = Value::DOUBLE;
-template <> const Value::Type ValueHelper<std::string>::TypeID = Value::STRING;
-template <> const Value::Type ValueHelper<Vector>::TypeID = Value::VECTOR;
+template <>
+const Value::Type ValueHelper<bool>::TypeID = Value::BOOL;
+template <>
+const Value::Type ValueHelper<unsigned>::TypeID = Value::UNSIGNED;
+template <>
+const Value::Type ValueHelper<int>::TypeID = Value::INT;
+template <>
+const Value::Type ValueHelper<float>::TypeID = Value::FLOAT;
+template <>
+const Value::Type ValueHelper<double>::TypeID = Value::DOUBLE;
+template <>
+const Value::Type ValueHelper<std::string>::TypeID = Value::STRING;
+template <>
+const Value::Type ValueHelper<Vector>::TypeID = Value::VECTOR;
 template <>
 const Value::Type ValueHelper<Eigen::MatrixXd>::TypeID = Value::MATRIX;
 template <>
 const Value::Type ValueHelper<Eigen::Matrix4d>::TypeID = Value::MATRIX4D;
-template <> const Value::Type ValueHelper<Values>::TypeID = Value::VALUES;
+template <>
+const Value::Type ValueHelper<Values>::TypeID = Value::VALUES;
 
-} // namespace command
-} // namespace dynamicgraph
+}  // namespace command
+}  // namespace dynamicgraph

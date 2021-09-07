@@ -64,7 +64,7 @@ class SignalTimeDependent : public virtual Signal<T, Time>,
                             public TimeDependency<Time> {
   // TimeDependency<Time> timeDependency;
 
-public:
+ public:
   SignalTimeDependent(std::string name = "");
   SignalTimeDependent(const SignalArray_const<Time> &arr,
                       std::string name = "");
@@ -163,6 +163,6 @@ Time SignalTimeDependent<T, Time>::getPeriodTime() const {
   return TimeDependency<Time>::getPeriodTime();
 }
 
-} // end of namespace dynamicgraph
+}  // end of namespace dynamicgraph
 
-#endif //! DYNAMIC_GRAPH_SIGNAL_TIME_DEPENDENT_H
+#endif  //! DYNAMIC_GRAPH_SIGNAL_TIME_DEPENDENT_H

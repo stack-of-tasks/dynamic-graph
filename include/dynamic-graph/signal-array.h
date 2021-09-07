@@ -8,6 +8,7 @@
 #include <dynamic-graph/dynamic-graph-api.h>
 #include <dynamic-graph/signal-base.h>
 #include <stdio.h>
+
 #include <vector>
 
 namespace dynamicgraph {
@@ -15,16 +16,16 @@ namespace dynamicgraph {
 /// \ingroup dgraph
 ///
 /// \brief TODO
-template <class Time> class SignalArray_const {
-
-public:
+template <class Time>
+class SignalArray_const {
+ public:
   static const int DEFAULT_SIZE = 20;
 
-protected:
+ protected:
   std::vector<const SignalBase<Time> *> const_array;
   unsigned int size, rank;
 
-public:
+ public:
   SignalArray_const<Time>(const unsigned int &sizeARG = DEFAULT_SIZE)
       : const_array(sizeARG), size(sizeARG), rank(0) {}
 
@@ -34,22 +35,22 @@ public:
   }
 
   SignalArray_const<Time>(const SignalArray<Time> &siga)
-      : const_array(siga.getSize()), size(siga.getSize()),
+      : const_array(siga.getSize()),
+        size(siga.getSize()),
         rank(siga.getSize()) {
-    for (unsigned int i = 0; i < rank; ++i)
-      const_array[i] = &siga[i];
+    for (unsigned int i = 0; i < rank; ++i) const_array[i] = &siga[i];
   }
 
   SignalArray_const<Time>(const SignalArray_const<Time> &siga)
-      : const_array(siga.getSize()), size(siga.getSize()),
+      : const_array(siga.getSize()),
+        size(siga.getSize()),
         rank(siga.getSize()) {
-    for (unsigned int i = 0; i < rank; ++i)
-      const_array[i] = &siga[i];
+    for (unsigned int i = 0; i < rank; ++i) const_array[i] = &siga[i];
   }
 
   virtual ~SignalArray_const<Time>() {}
 
-protected:
+ protected:
   void addElmt(const SignalBase<Time> *el) {
     if (rank >= size) {
       size += DEFAULT_SIZE;
@@ -58,13 +59,13 @@ protected:
     const_array[rank++] = el;
   }
 
-public:
+ public:
   virtual SignalArray_const<Time> &operator<<(const SignalBase<Time> &sig) {
     addElmt(&sig);
     return *this;
   }
 
-public:
+ public:
   virtual const SignalBase<Time> &operator[](const unsigned int &idx) const {
     return *const_array[idx];
   }
@@ -82,16 +83,17 @@ SignalArray_const<Time> operator<<(const SignalBase<Time> &sig1,
 /// \ingroup dgraph
 ///
 /// \brief TODO
-template <class Time> class SignalArray : public SignalArray_const<Time> {
-public:
+template <class Time>
+class SignalArray : public SignalArray_const<Time> {
+ public:
   using SignalArray_const<Time>::DEFAULT_SIZE;
   using SignalArray_const<Time>::size;
   using SignalArray_const<Time>::rank;
 
-protected:
+ protected:
   mutable std::vector<SignalBase<Time> *> array;
 
-public:
+ public:
   SignalArray<Time>(const unsigned int &sizeARG = DEFAULT_SIZE)
       : SignalArray_const<Time>(0), array(sizeARG) {
     size = sizeARG;
@@ -106,13 +108,12 @@ public:
   SignalArray<Time>(const SignalArray<Time> &siga)
       : SignalArray_const<Time>(siga.getSize()), array(siga.getSize()) {
     rank = siga.getSize();
-    for (unsigned int i = 0; i < rank; ++i)
-      array[i] = &siga[i];
+    for (unsigned int i = 0; i < rank; ++i) array[i] = &siga[i];
   }
 
   virtual ~SignalArray<Time>() {}
 
-protected:
+ protected:
   void addElmt(SignalBase<Time> *el) {
     if (rank >= size) {
       size += DEFAULT_SIZE;
@@ -121,14 +122,14 @@ protected:
     array[rank++] = el;
   }
 
-public:
+ public:
   virtual SignalArray<Time> &operator<<(SignalBase<Time> &sig) {
     addElmt(&sig);
     return *this;
   }
 
-  virtual SignalArray_const<Time>
-  operator<<(const SignalBase<Time> &sig) const {
+  virtual SignalArray_const<Time> operator<<(
+      const SignalBase<Time> &sig) const {
     SignalArray_const<Time> res(*this);
     res << sig;
     return res;
@@ -148,6 +149,6 @@ SignalArray<Time> operator<<(SignalBase<Time> &sig1, SignalBase<Time> &sig2) {
 
 DYNAMIC_GRAPH_DLLAPI extern SignalArray<int> sotNOSIGNAL;
 
-} // end of namespace dynamicgraph.
+}  // end of namespace dynamicgraph.
 
-#endif //! DYNAMIC_GRAPH_SIGNAL_ARRAY_H
+#endif  //! DYNAMIC_GRAPH_SIGNAL_ARRAY_H

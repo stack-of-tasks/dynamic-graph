@@ -6,9 +6,8 @@
 #include <dynamic-graph/exception-signal.h>
 #include <dynamic-graph/exception-traces.h>
 
-#include <sstream>
-
 #include <boost/version.hpp>
+#include <sstream>
 
 #if BOOST_VERSION >= 105900
 #include <boost/test/tools/output_test_stream.hpp>
@@ -22,7 +21,6 @@ using boost::test_tools::output_test_stream;
 using namespace dynamicgraph;
 
 BOOST_AUTO_TEST_CASE(exception_abstract_param) {
-
   /// Test param from Exception
   /// Default constructor
   ExceptionAbstract::Param aParamSimple;
@@ -32,7 +30,6 @@ BOOST_AUTO_TEST_CASE(exception_abstract_param) {
 }
 
 BOOST_AUTO_TEST_CASE(exception_abstract) {
-
   /// Test exception abstract with a simple message
   std::string msg_aea("Test exception abstract");
   ExceptionAbstract aEA(10, msg_aea);
@@ -48,7 +45,6 @@ BOOST_AUTO_TEST_CASE(exception_abstract) {
 }
 
 BOOST_AUTO_TEST_CASE(exception_traces) {
-
   std::string msg_aet("Test exception traces simple");
   ExceptionTraces aET(ExceptionTraces::GENERIC, msg_aet);
   output_test_stream output;

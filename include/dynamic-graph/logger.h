@@ -27,19 +27,19 @@ namespace dynamicgraph {
 /** Enum representing the different kind of messages.
  */
 enum MsgType {
-  MSG_TYPE_TYPE_BITS = 1 << 0 | 1 << 1 | 1 << 2 | 1 << 3, // 15
-  MSG_TYPE_STREAM_BIT = 1 << 4,                           // 16
+  MSG_TYPE_TYPE_BITS = 1 << 0 | 1 << 1 | 1 << 2 | 1 << 3,  // 15
+  MSG_TYPE_STREAM_BIT = 1 << 4,                            // 16
 
-  MSG_TYPE_DEBUG = 1 << 3,                                          // 1
-  MSG_TYPE_INFO = 1 << 2,                                           // 2
-  MSG_TYPE_WARNING = 1 << 1,                                        // 4
-  MSG_TYPE_ERROR = 1 << 0,                                          // 8
-  MSG_TYPE_DEBUG_STREAM = MSG_TYPE_DEBUG | MSG_TYPE_STREAM_BIT,     // 17
-  MSG_TYPE_INFO_STREAM = MSG_TYPE_INFO | MSG_TYPE_STREAM_BIT,       // 18
-  MSG_TYPE_WARNING_STREAM = MSG_TYPE_WARNING | MSG_TYPE_STREAM_BIT, // 20
-  MSG_TYPE_ERROR_STREAM = MSG_TYPE_ERROR | MSG_TYPE_STREAM_BIT      // 24
+  MSG_TYPE_DEBUG = 1 << 3,                                           // 1
+  MSG_TYPE_INFO = 1 << 2,                                            // 2
+  MSG_TYPE_WARNING = 1 << 1,                                         // 4
+  MSG_TYPE_ERROR = 1 << 0,                                           // 8
+  MSG_TYPE_DEBUG_STREAM = MSG_TYPE_DEBUG | MSG_TYPE_STREAM_BIT,      // 17
+  MSG_TYPE_INFO_STREAM = MSG_TYPE_INFO | MSG_TYPE_STREAM_BIT,        // 18
+  MSG_TYPE_WARNING_STREAM = MSG_TYPE_WARNING | MSG_TYPE_STREAM_BIT,  // 20
+  MSG_TYPE_ERROR_STREAM = MSG_TYPE_ERROR | MSG_TYPE_STREAM_BIT       // 24
 };
-} // namespace dynamicgraph
+}  // namespace dynamicgraph
 
 /* --------------------------------------------------------------------- */
 /* --- INCLUDE --------------------------------------------------------- */
@@ -47,23 +47,22 @@ enum MsgType {
 
 #include <map>
 /// \todo These 3 headers should be removed.
-#include <fstream>
-#include <iomanip> // std::setprecision
-#include <sstream>
+#include <dynamic-graph/linear-algebra.h>
+#include <dynamic-graph/real-time-logger-def.h>
 
 #include <boost/assign.hpp>
 #include <boost/preprocessor/stringize.hpp>
-
 #include <dynamic-graph/deprecated.hh>
-#include <dynamic-graph/linear-algebra.h>
-#include <dynamic-graph/real-time-logger-def.h>
+#include <fstream>
+#include <iomanip>  // std::setprecision
+#include <sstream>
 
 namespace dynamicgraph {
 
 //#define LOGGER_VERBOSITY_INFO_WARNING_ERROR
 #define LOGGER_VERBOSITY_ALL
 
-#define SEND_MSG(msg, type)                                                    \
+#define SEND_MSG(msg, type) \
   sendMsg(msg, type, __FILE__ ":" BOOST_PP_STRINGIZE(__LINE__))
 
 #define SEND_DEBUG_STREAM_MSG(msg) SEND_MSG(msg, MSG_TYPE_DEBUG_STREAM)
@@ -71,25 +70,25 @@ namespace dynamicgraph {
 #define SEND_WARNING_STREAM_MSG(msg) SEND_MSG(msg, MSG_TYPE_WARNING_STREAM)
 #define SEND_ERROR_STREAM_MSG(msg) SEND_MSG(msg, MSG_TYPE_ERROR_STREAM)
 
-#define _DYNAMIC_GRAPH_ENTITY_MSG(entity, type)                                \
+#define _DYNAMIC_GRAPH_ENTITY_MSG(entity, type) \
   (entity).logger().stream(type, __FILE__ BOOST_PP_STRINGIZE(__LINE__))
 
-#define DYNAMIC_GRAPH_ENTITY_DEBUG(entity)                                     \
+#define DYNAMIC_GRAPH_ENTITY_DEBUG(entity) \
   _DYNAMIC_GRAPH_ENTITY_MSG(entity, MSG_TYPE_DEBUG)
-#define DYNAMIC_GRAPH_ENTITY_INFO(entity)                                      \
+#define DYNAMIC_GRAPH_ENTITY_INFO(entity) \
   _DYNAMIC_GRAPH_ENTITY_MSG(entity, MSG_TYPE_INFO)
-#define DYNAMIC_GRAPH_ENTITY_WARNING(entity)                                   \
+#define DYNAMIC_GRAPH_ENTITY_WARNING(entity) \
   _DYNAMIC_GRAPH_ENTITY_MSG(entity, MSG_TYPE_WARNING)
-#define DYNAMIC_GRAPH_ENTITY_ERROR(entity)                                     \
+#define DYNAMIC_GRAPH_ENTITY_ERROR(entity) \
   _DYNAMIC_GRAPH_ENTITY_MSG(entity, MSG_TYPE_ERROR)
 
-#define DYNAMIC_GRAPH_ENTITY_DEBUG_STREAM(entity)                              \
+#define DYNAMIC_GRAPH_ENTITY_DEBUG_STREAM(entity) \
   _DYNAMIC_GRAPH_ENTITY_MSG(entity, MSG_TYPE_DEBUG_STREAM)
-#define DYNAMIC_GRAPH_ENTITY_INFO_STREAM(entity)                               \
+#define DYNAMIC_GRAPH_ENTITY_INFO_STREAM(entity) \
   _DYNAMIC_GRAPH_ENTITY_MSG(entity, MSG_TYPE_INFO_STREAM)
-#define DYNAMIC_GRAPH_ENTITY_WARNING_STREAM(entity)                            \
+#define DYNAMIC_GRAPH_ENTITY_WARNING_STREAM(entity) \
   _DYNAMIC_GRAPH_ENTITY_MSG(entity, MSG_TYPE_WARNING_STREAM)
-#define DYNAMIC_GRAPH_ENTITY_ERROR_STREAM(entity)                              \
+#define DYNAMIC_GRAPH_ENTITY_ERROR_STREAM(entity) \
   _DYNAMIC_GRAPH_ENTITY_MSG(entity, MSG_TYPE_ERROR_STREAM)
 
 template <typename T>
@@ -185,7 +184,7 @@ enum LoggerVerbosity {
 ///       integer counting the number of calls. This will achieve exactly the
 ///       same behaviour without rouding numerical errors.
 class Logger {
-public:
+ public:
   /** Constructor */
   Logger(double timeSample = 0.001, double streamPrintPeriod = 1.0);
 
@@ -211,8 +210,7 @@ public:
    */
   RTLoggerStream stream(MsgType type, const std::string &lineId = "") {
     RealTimeLogger &rtlogger = ::dynamicgraph::RealTimeLogger::instance();
-    if (acceptMsg(type, lineId))
-      return rtlogger.front();
+    if (acceptMsg(type, lineId)) return rtlogger.front();
     return rtlogger.emptyStream();
   }
 
@@ -221,16 +219,16 @@ public:
    *    stream(type, lineId) << msg << '\n';
    *  \endcode
    */
-  [[deprecated("use stream(type, lineId) << msg")]] void
-  sendMsg(std::string msg, MsgType type, const std::string &lineId = "");
+  [[deprecated("use stream(type, lineId) << msg")]] void sendMsg(
+      std::string msg, MsgType type, const std::string &lineId = "");
 
   /** \deprecated instead, use
    *  \code
    *    stream(type, lineId) << msg << '\n';
    *  \endcode
    */
-  [[deprecated("use stream(type, lineId) << msg")]] void
-  sendMsg(std::string msg, MsgType type, const std::string &file, int line);
+  [[deprecated("use stream(type, lineId) << msg")]] void sendMsg(
+      std::string msg, MsgType type, const std::string &file, int line);
 
   /** Set the sampling time at which the method countdown()
    * is going to be called. */
@@ -252,11 +250,11 @@ public:
   /** Get the verbosity level of the logger. */
   LoggerVerbosity getVerbosity();
 
-protected:
-  LoggerVerbosity m_lv; /// verbosity of the logger
+ protected:
+  LoggerVerbosity m_lv;  /// verbosity of the logger
   double m_timeSample;
   /// specify the period of call of the countdown method
-  double m_streamPrintPeriod; /// specify the time period of the stream prints
+  double m_streamPrintPeriod;  /// specify the time period of the stream prints
   double m_printCountdown;
   /// every time this is < 0 (i.e. every _streamPrintPeriod sec) print stuff
 
@@ -273,12 +271,10 @@ protected:
    */
   bool acceptMsg(MsgType m, const std::string &lineId) {
     // If more verbose than the current verbosity level
-    if ((m & MSG_TYPE_TYPE_BITS) > m_lv)
-      return false;
+    if ((m & MSG_TYPE_TYPE_BITS) > m_lv) return false;
 
     // if print is allowed by current verbosity level
-    if (isStreamMsg(m))
-      return checkStreamPeriod(lineId);
+    if (isStreamMsg(m)) return checkStreamPeriod(lineId);
     return true;
   }
 
@@ -288,6 +284,6 @@ protected:
   bool checkStreamPeriod(const std::string &lineId);
 };
 
-} // namespace dynamicgraph
+}  // namespace dynamicgraph
 
-#endif // #ifndef __sot_torque_control_logger_H__
+#endif  // #ifndef __sot_torque_control_logger_H__

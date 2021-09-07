@@ -2,7 +2,9 @@
 //
 
 #include "dynamic-graph/value.h"
+
 #include <dynamic-graph/exception-factory.h>
+
 #include <iostream>
 
 #define BOOST_TEST_MODULE value
@@ -70,8 +72,8 @@ BOOST_AUTO_TEST_CASE(value_exceptions) {
   bool res = false;
   try {
     int aInt(anet);
-    aInt++; // silence unused variable warnings to have a stable release in the
-            // ros buildfarm
+    aInt++;  // silence unused variable warnings to have a stable release in the
+             // ros buildfarm
   } catch (const dg::ExceptionAbstract &aea) {
     output << aea.getExceptionName();
     output2 << aea.what();
@@ -86,8 +88,8 @@ BOOST_AUTO_TEST_CASE(value_exceptions) {
   res = false;
   try {
     bool abool(anet);
-    abool = !abool; // silence unused variable warnings to have a stable release
-                    // in the ros buildfarm
+    abool = !abool;  // silence unused variable warnings to have a stable
+                     // release in the ros buildfarm
   } catch (const dg::ExceptionAbstract &aea) {
     res = (aea.getCode() == dg::ExceptionAbstract::TOOLS);
   }
@@ -98,8 +100,8 @@ BOOST_AUTO_TEST_CASE(value_exceptions) {
   res = false;
   try {
     unsigned int aint(anet);
-    aint++; // silence unused variable warnings to have a stable release in the
-            // ros buildfarm
+    aint++;  // silence unused variable warnings to have a stable release in the
+             // ros buildfarm
   } catch (const dg::ExceptionAbstract &aea) {
     res = (aea.getCode() == dg::ExceptionAbstract::TOOLS);
   }
@@ -110,8 +112,8 @@ BOOST_AUTO_TEST_CASE(value_exceptions) {
   res = false;
   try {
     double adouble(anet);
-    adouble++; // silence unused variable warnings to have a stable release in
-               // the ros buildfarm
+    adouble++;  // silence unused variable warnings to have a stable release in
+                // the ros buildfarm
   } catch (const dg::ExceptionAbstract &aea) {
     res = (aea.getCode() == dg::ExceptionAbstract::TOOLS);
   }
@@ -122,8 +124,8 @@ BOOST_AUTO_TEST_CASE(value_exceptions) {
   res = false;
   try {
     float afloat(anet);
-    afloat++; // silence unused variable warnings to have a stable release in
-              // the ros buildfarm
+    afloat++;  // silence unused variable warnings to have a stable release in
+               // the ros buildfarm
   } catch (const dg::ExceptionAbstract &aea) {
     res = (aea.getCode() == dg::ExceptionAbstract::TOOLS);
   }
@@ -368,17 +370,19 @@ BOOST_AUTO_TEST_CASE(value_matrix4d) {
   {
     output_test_stream output;
     output << value1;
-    BOOST_CHECK(output.is_equal("Type=matrix4d, value=0.5 1.5   0   0\n"
-                                "2.5 3.5   0   0\n  0   0   0   0\n"
-                                "  0   0   0   0"));
+    BOOST_CHECK(
+        output.is_equal("Type=matrix4d, value=0.5 1.5   0   0\n"
+                        "2.5 3.5   0   0\n  0   0   0   0\n"
+                        "  0   0   0   0"));
   }
 
   {
     output_test_stream output;
     output << value;
-    BOOST_CHECK(output.is_equal("Type=matrix4d, value=0.5 1.5   0   0\n"
-                                "2.5 3.5   0   0\n  0   0   0   0\n"
-                                "  0   0   0   0"));
+    BOOST_CHECK(
+        output.is_equal("Type=matrix4d, value=0.5 1.5   0   0\n"
+                        "2.5 3.5   0   0\n  0   0   0   0\n"
+                        "  0   0   0   0"));
   }
 }
 
@@ -399,7 +403,7 @@ BOOST_AUTO_TEST_CASE(value_values) {
 
   BOOST_CHECK_EQUAL(vvalues.type(), Value::VALUES);
 
-  { // Const ref
+  {  // Const ref
     const Values &vs = vvalues.constValuesValue();
     BOOST_CHECK_EQUAL(vs.size(), values.size());
     BOOST_CHECK(vs == values);
@@ -410,7 +414,7 @@ BOOST_AUTO_TEST_CASE(value_values) {
       // Values vs = static_cast<Values>(eitherType);
       // BOOST_CHECK_EQUAL(vs.size(), values.size());
       // BOOST_CHECK(vs == values);
-  } { // Constructor
+  } {  // Constructor
     Value vvs(vvalues);
     BOOST_CHECK(vvs == vvalues);
   }
@@ -418,9 +422,10 @@ BOOST_AUTO_TEST_CASE(value_values) {
   {
     output_test_stream output;
     output << vvalues;
-    BOOST_CHECK(output.is_equal("Type=values, value=[ "
-                                "Value(Type=string, value=value #1), "
-                                "Value(Type=double, value=0.3), "
-                                "]"));
+    BOOST_CHECK(
+        output.is_equal("Type=values, value=[ "
+                        "Value(Type=string, value=value #1), "
+                        "Value(Type=double, value=0.3), "
+                        "]"));
   }
 }

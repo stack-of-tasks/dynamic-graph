@@ -12,4 +12,4 @@
 #include <dynamic-graph/signal-time-dependent.h>
 #include <dynamic-graph/signal.h>
 
-#endif //! DYNAMIC_GRAPH_ALL_SIGNALS_H
+#endif  //! DYNAMIC_GRAPH_ALL_SIGNALS_H

@@ -4,6 +4,7 @@
 #include <dynamic-graph/entity.h>
 #include <dynamic-graph/exception-factory.h>
 #include <dynamic-graph/factory.h>
+
 #include <sstream>
 
 #define BOOST_TEST_MODULE factory
@@ -19,13 +20,13 @@ using boost::test_tools::output_test_stream;
 
 namespace dynamicgraph {
 class CustomEntity : public Entity {
-public:
+ public:
   static const std::string CLASS_NAME;
   virtual const std::string &getClassName() const { return CLASS_NAME; }
   explicit CustomEntity(const std::string &n) : Entity(n) {}
 };
 const std::string CustomEntity::CLASS_NAME = "CustomEntity";
-} // namespace dynamicgraph
+}  // namespace dynamicgraph
 
 dynamicgraph::Entity *makeEntity(const std::string &objectName) {
   return new dynamicgraph::CustomEntity(objectName);

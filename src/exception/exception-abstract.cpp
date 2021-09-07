@@ -2,9 +2,10 @@
 // JRL, CNRS/AIST.
 //
 
-#include <cstring>
 #include <dynamic-graph/debug.h>
 #include <dynamic-graph/exception-abstract.h>
+
+#include <cstring>
 
 namespace dynamicgraph {
 const std::string ExceptionAbstract::EXCEPTION_NAME = "Abstract";
@@ -23,8 +24,7 @@ const std::string &ExceptionAbstract::getStringMessage() const {
 int ExceptionAbstract::getCode() const { return this->code; }
 
 ExceptionAbstract::Param &ExceptionAbstract::Param::initCopy(const Param &p) {
-  if (&p == this)
-    return *this;
+  if (&p == this) return *this;
 
   dgDEBUGIN(25);
   if (p.pointersSet) {
@@ -53,9 +53,9 @@ std::ostream &operator<<(std::ostream &os, const ExceptionAbstract &error) {
   if (error.p.set)
     os << "Thrown from " << error.p.file << ": " << error.p.function << " (#"
        << error.p.line << ")" << std::endl;
-#endif // DYNAMICGRAPH_EXCEPTION_PASSING_PARAM
+#endif  // DYNAMICGRAPH_EXCEPTION_PASSING_PARAM
 
   return os;
 }
 
-} // end of namespace dynamicgraph.
+}  // end of namespace dynamicgraph.

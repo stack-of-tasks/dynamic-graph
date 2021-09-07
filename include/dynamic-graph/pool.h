@@ -5,14 +5,14 @@
 
 #ifndef DYNAMIC_GRAPH_POOL_H
 #define DYNAMIC_GRAPH_POOL_H
+#include <dynamic-graph/dynamic-graph-api.h>
+#include <dynamic-graph/exception-factory.h>
+#include <dynamic-graph/signal-base.h>
+
+#include <dynamic-graph/fwd.hh>
 #include <map>
 #include <sstream>
 #include <string>
-
-#include <dynamic-graph/dynamic-graph-api.h>
-#include <dynamic-graph/exception-factory.h>
-#include <dynamic-graph/fwd.hh>
-#include <dynamic-graph/signal-base.h>
 
 namespace dynamicgraph {
 /*! @ingroup dgraph
@@ -31,7 +31,7 @@ namespace dynamicgraph {
 
 */
 class DYNAMIC_GRAPH_DLLAPI PoolStorage {
-public:
+ public:
   /*! \name Define types to simplify the writing
     @{
   */
@@ -98,7 +98,7 @@ public:
   void writeGraph(const std::string &aFileName);
   void writeCompletionList(std::ostream &os);
 
-protected:
+ protected:
   /*! \name Fields of the class to manage the three entities.
     Also the name is singular, those are true sets.
     @{
@@ -106,13 +106,13 @@ protected:
   /*! \brief Set of basic objects of the SoT */
   Entities entityMap;
 
-private:
+ private:
   PoolStorage() {}
   static PoolStorage *instance_;
 };
 
 inline PoolStorage &g_pool() { return *PoolStorage::getInstance(); }
 
-} // end of namespace dynamicgraph.
+}  // end of namespace dynamicgraph.
 
-#endif //! DYNAMIC_GRAPH_POOL_H
+#endif  //! DYNAMIC_GRAPH_POOL_H

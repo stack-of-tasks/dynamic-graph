@@ -3,11 +3,12 @@
  * Olivier Stasse
  *
  */
+#include <unistd.h>
+
 #include <dynamic-graph/process-list.hh>
 #include <fstream>
 #include <iostream>
 #include <sstream>
-#include <unistd.h>
 
 #define BOOST_TEST_MODULE debug - trace
 

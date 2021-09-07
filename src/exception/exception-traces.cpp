@@ -7,9 +7,10 @@
  *
  */
 
-#include <cstdio>
 #include <dynamic-graph/exception-traces.h>
 #include <stdarg.h>
+
+#include <cstdio>
 
 using namespace dynamicgraph;
 /* --------------------------------------------------------------------- */

@@ -5,12 +5,14 @@
  * See LICENSE file
  *
  */
-#include "dynamic-graph/factory.h"
-#include "dynamic-graph/pool.h"
 #include <dynamic-graph/entity.h>
 #include <dynamic-graph/exception-factory.h>
+
 #include <iostream>
 #include <sstream>
+
+#include "dynamic-graph/factory.h"
+#include "dynamic-graph/pool.h"
 
 #define ENABLE_RT_LOG
 #include <dynamic-graph/logger.h>
@@ -29,7 +31,7 @@ using boost::test_tools::output_test_stream;
 
 namespace dynamicgraph {
 class CustomEntity : public Entity {
-public:
+ public:
   static const std::string CLASS_NAME;
   virtual const std::string &getClassName() const { return CLASS_NAME; }
   explicit CustomEntity(const std::string &n) : Entity(n) {
@@ -122,7 +124,7 @@ public:
   }
 };
 DYNAMICGRAPH_FACTORY_ENTITY_PLUGIN(CustomEntity, "CustomEntity");
-} // namespace dynamicgraph
+}  // namespace dynamicgraph
 
 BOOST_AUTO_TEST_CASE(debug_logger) {
   std::ofstream of;

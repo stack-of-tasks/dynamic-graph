@@ -12,14 +12,14 @@
 /* --------------------------------------------------------------------- */
 
 /* DG */
-#include <boost/bind.hpp>
-#include <iomanip>
-
 #include <dynamic-graph/all-commands.h>
 #include <dynamic-graph/debug.h>
 #include <dynamic-graph/factory.h>
 #include <dynamic-graph/pool.h>
 #include <dynamic-graph/tracer-real-time.h>
+
+#include <boost/bind.hpp>
+#include <iomanip>
 
 using namespace std;
 using namespace dynamicgraph;
@@ -103,7 +103,7 @@ TracerRealTime::TracerRealTime(const std::string &n)
     addCommand("setBufferSize",
                makeDirectSetter(*this, &bufferSize,
                                 docDirectSetter("bufferSize", "int")));
-  } // using namespace command
+  }  // using namespace command
 
   dgDEBUGOUT(15);
 }
@@ -136,7 +136,7 @@ void TracerRealTime::openFile(const SignalBase<int> &sig,
   dgDEBUG(5) << "Creating Outstringstream" << endl;
 
   // std::stringstream * newbuffer = new std::stringstream ();
-  OutStringStream *newbuffer = new OutStringStream(); // std::stringstream ();
+  OutStringStream *newbuffer = new OutStringStream();  // std::stringstream ();
   newbuffer->resize(bufferSize);
   newbuffer->givenname = givenname;
   files.push_back(newbuffer);
@@ -187,7 +187,7 @@ void TracerRealTime::trace() {
                                "");
     }
     // std::stringstream & file = * dynamic_cast< stringstream* >(os);
-    OutStringStream *file = dynamic_cast<OutStringStream *>(os); // segfault
+    OutStringStream *file = dynamic_cast<OutStringStream *>(os);  // segfault
     if (NULL == file) {
       DG_THROW ExceptionTraces(ExceptionTraces::NOT_OPEN,
                                "The buffer is not open", "");
@@ -269,8 +269,7 @@ void TracerRealTime::display(std::ostream &os) const {
     dgDEBUG(35) << "Next" << endl;
     const OutStringStream *file = dynamic_cast<OutStringStream *>(*iterFile);
     os << "     -> " << (*iter)->getName();
-    if (file->givenname.length())
-      os << " (in " << file->givenname << ")";
+    if (file->givenname.length()) os << " (in " << file->givenname << ")";
     os << "\t";
     if (file) {
       const std::streamsize PRECISION = os.precision();
@@ -292,8 +291,7 @@ void TracerRealTime::display(std::ostream &os) const {
          << (((double)SIZE + 0.0) / (1 << dec)) << unit << "/"
          << std::setprecision(2) << (((double)MSIZE + 0.0) / (1 << dec)) << unit
          << "]\t";
-      if (file->full)
-        os << "(FULL)";
+      if (file->full) os << "(FULL)";
       os.precision(PRECISION);
     }
     os << endl;

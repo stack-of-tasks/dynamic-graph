@@ -7,12 +7,14 @@
 #ifndef DYNAMIC_GRAPH_VALUE_H
 #define DYNAMIC_GRAPH_VALUE_H
 
-#include "dynamic-graph/dynamic-graph-api.h"
-#include <cassert>
 #include <dynamic-graph/linear-algebra.h>
+
+#include <cassert>
 #include <string>
 #include <typeinfo>
 #include <vector>
+
+#include "dynamic-graph/dynamic-graph-api.h"
 
 namespace dynamicgraph {
 namespace command {
@@ -20,7 +22,7 @@ class Value;
 typedef std::vector<Value> Values;
 
 class DYNAMIC_GRAPH_DLLAPI EitherType {
-public:
+ public:
   EitherType(const Value &value);
   ~EitherType();
   operator bool() const;
@@ -34,7 +36,7 @@ public:
   operator Eigen::Matrix4d() const;
   operator Values() const;
 
-private:
+ private:
   const Value *value_;
 };
 
@@ -44,7 +46,7 @@ private:
 
  */
 class DYNAMIC_GRAPH_DLLAPI Value {
-public:
+ public:
   enum Type {
     NONE,
     BOOL,
@@ -101,7 +103,7 @@ public:
   DYNAMIC_GRAPH_DLLAPI friend std::ostream &operator<<(std::ostream &os,
                                                        const Value &value);
 
-public:
+ public:
   friend class EitherType;
   bool boolValue() const;
   unsigned unsignedValue() const;
@@ -122,10 +124,11 @@ public:
 // Note: to ensure the WIN32 compatibility, it is necessary to export
 // the template specialization. Also, it is forbidden to do the template
 // specialization declaration in the header file, for the same reason.
-template <typename T> struct DYNAMIC_GRAPH_DLLAPI ValueHelper {
+template <typename T>
+struct DYNAMIC_GRAPH_DLLAPI ValueHelper {
   static const Value::Type TypeID;
 };
-} // namespace command
-} // namespace dynamicgraph
+}  // namespace command
+}  // namespace dynamicgraph
 
-#endif // DYNAMIC_GRAPH_VALUE_H
+#endif  // DYNAMIC_GRAPH_VALUE_H

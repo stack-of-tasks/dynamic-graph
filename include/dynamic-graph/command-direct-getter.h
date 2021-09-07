@@ -15,15 +15,17 @@
  *
  */
 
-#include "dynamic-graph/command.h"
 #include <boost/assign/list_of.hpp>
+
+#include "dynamic-graph/command.h"
 
 /* --- GETTER --------------------------------------------------------- */
 namespace dynamicgraph {
 namespace command {
 
-template <class E, typename T> class DirectGetter : public Command {
-public:
+template <class E, typename T>
+class DirectGetter : public Command {
+ public:
   /// Pointer to method that sets parameter of type T
   typedef T (E::*GetterMethod)() const;
 
@@ -31,10 +33,10 @@ public:
   DirectGetter(E &entity, T *ptr, const std::string &docString)
       : Command(entity, std::vector<Value::Type>(), docString), T_ptr(ptr) {}
 
-protected:
+ protected:
   virtual Value doExecute() { return Value(*T_ptr); }
 
-private:
+ private:
   T *T_ptr;
 };
 
@@ -50,7 +52,7 @@ inline std::string docDirectGetter(const std::string &name,
          type + ".\n\n";
 }
 
-} // namespace command
-} // namespace dynamicgraph
+}  // namespace command
+}  // namespace dynamicgraph
 
-#endif // __dg_command_direct_getter_h__
+#endif  // __dg_command_direct_getter_h__

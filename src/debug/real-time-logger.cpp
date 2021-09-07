@@ -13,21 +13,21 @@
 
 namespace dynamicgraph {
 RealTimeLogger::RealTimeLogger(const std::size_t &bufferSize)
-    : buffer_(bufferSize, NULL), frontIdx_(0), backIdx_(0), oss_(NULL),
+    : buffer_(bufferSize, NULL),
+      frontIdx_(0),
+      backIdx_(0),
+      oss_(NULL),
       nbDiscarded_(0) {
-  for (std::size_t i = 0; i < buffer_.size(); ++i)
-    buffer_[i] = new Data;
+  for (std::size_t i = 0; i < buffer_.size(); ++i) buffer_[i] = new Data;
 }
 
 RealTimeLogger::~RealTimeLogger() {
   // Check that we are not spinning...
-  for (std::size_t i = 0; i < buffer_.size(); ++i)
-    delete buffer_[i];
+  for (std::size_t i = 0; i < buffer_.size(); ++i) delete buffer_[i];
 }
 
 bool RealTimeLogger::spinOnce() {
-  if (empty())
-    return false;
+  if (empty()) return false;
   Data *data = buffer_[frontIdx_];
   frontIdx_ = (frontIdx_ + 1) % buffer_.size();
   std::string str = data->buf.str();
@@ -67,8 +67,11 @@ struct RealTimeLogger::thread {
   boost::thread t_;
 
   explicit thread(RealTimeLogger *logger)
-      : requestShutdown_(false), threadPolicy_(SCHED_OTHER), threadPriority_(0),
-        changedThreadParams(true), t_(&thread::spin, this, logger) {}
+      : requestShutdown_(false),
+        threadPolicy_(SCHED_OTHER),
+        threadPriority_(0),
+        changedThreadParams(true),
+        t_(&thread::spin, this, logger) {}
 
   //  void setThreadPolicy(int policy) {
   //  threadPolicy_ = policy;
@@ -107,8 +110,7 @@ struct RealTimeLogger::thread {
       // Do a pause
       if (!logger->spinOnce())
         boost::this_thread::sleep(boost::posix_time::milliseconds(1000));
-      if (changedThreadParams)
-        changeThreadParams();
+      if (changedThreadParams) changeThreadParams();
     }
   }
 };
@@ -125,11 +127,10 @@ RealTimeLogger &RealTimeLogger::instance() {
 }
 
 void RealTimeLogger::destroy() {
-  if (instance_ == NULL)
-    return;
+  if (instance_ == NULL) return;
   thread_->requestShutdown_ = true;
   thread_->t_.join();
   delete instance_;
   delete thread_;
 }
-} // namespace dynamicgraph
+}  // namespace dynamicgraph

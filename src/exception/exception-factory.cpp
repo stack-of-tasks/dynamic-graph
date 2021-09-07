@@ -7,10 +7,11 @@
  *
  */
 
-#include <cstdio>
 #include <dynamic-graph/debug.h>
 #include <dynamic-graph/exception-factory.h>
 #include <stdarg.h>
+
+#include <cstdio>
 
 using namespace dynamicgraph;
 

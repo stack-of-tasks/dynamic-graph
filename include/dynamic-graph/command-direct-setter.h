@@ -15,29 +15,31 @@
  *
  */
 
-#include "dynamic-graph/command.h"
 #include <boost/assign/list_of.hpp>
+
+#include "dynamic-graph/command.h"
 
 /* --- SETTER --------------------------------------------------------- */
 namespace dynamicgraph {
 namespace command {
 
-template <class E, typename T> class DirectSetter : public Command {
-public:
+template <class E, typename T>
+class DirectSetter : public Command {
+ public:
   DirectSetter(E &entity, T *ptr, const std::string &docString)
       : Command(entity, boost::assign::list_of(ValueHelper<T>::TypeID),
                 docString),
         T_ptr(ptr) {}
 
-protected:
+ protected:
   virtual Value doExecute() {
     const std::vector<Value> &values = getParameterValues();
     T val = values[0].value();
     (*T_ptr) = val;
-    return Value(); // void
+    return Value();  // void
   }
 
-private:
+ private:
   T *T_ptr;
 };
 
@@ -53,7 +55,7 @@ inline std::string docDirectSetter(const std::string &name,
          ".\nVoid return.\n\n";
 }
 
-} // namespace command
-} // namespace dynamicgraph
+}  // namespace command
+}  // namespace dynamicgraph
 
-#endif // __dg_command_direct_setter_h__
+#endif  // __dg_command_direct_setter_h__

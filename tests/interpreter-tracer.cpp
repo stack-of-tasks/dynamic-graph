@@ -4,6 +4,7 @@
 #include <dynamic-graph/exception-factory.h>
 #include <dynamic-graph/interpreter.h>
 #include <dynamic-graph/plugin-loader.h>
+
 #include <sstream>
 
 #define BOOST_TEST_MODULE tracer

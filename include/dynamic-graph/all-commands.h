@@ -15,4 +15,4 @@
 #include <dynamic-graph/command-setter.h>
 #include <dynamic-graph/command.h>
 
-#endif //! DYNAMIC_GRAPH_ALL_COMMANDS_H
+#endif  //! DYNAMIC_GRAPH_ALL_COMMANDS_H

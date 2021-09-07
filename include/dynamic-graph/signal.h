@@ -10,13 +10,12 @@
 #ifndef __SIGNAL_HH
 #define __SIGNAL_HH
 
-#include <boost/bind.hpp>
-#include <boost/function.hpp>
-
-#include <string>
-
 #include <dynamic-graph/exception-signal.h>
 #include <dynamic-graph/signal-base.h>
+
+#include <boost/bind.hpp>
+#include <boost/function.hpp>
+#include <string>
 
 #ifdef HAVE_LIBBOOST_THREAD
 #include <boost/thread.hpp>
@@ -38,8 +37,9 @@ namespace dynamicgraph {
   \li using the function setFunction(boost::function2) that will be called
   when the signal's value is accessed.
 */
-template <class T, class Time> class Signal : public SignalBase<Time> {
-protected:
+template <class T, class Time>
+class Signal : public SignalBase<Time> {
+ protected:
   enum SignalType { CONSTANT, REFERENCE, REFERENCE_NON_CONST, FUNCTION };
   static const SignalType SIGNAL_TYPE_DEFAULT = CONSTANT;
 
@@ -55,7 +55,7 @@ protected:
   bool keepReference;
   const static bool KEEP_REFERENCE_DEFAULT = false;
 
-public:
+ public:
 #ifdef HAVE_LIBBOOST_THREAD
   typedef boost::try_mutex Mutex;
   typedef boost::lock_error MutexError;
@@ -64,14 +64,14 @@ public:
   typedef int *MutexError;
 #endif
 
-protected:
+ protected:
   Mutex *providerMutex;
   using SignalBase<Time>::signalTime;
 
-public:
+ public:
   using SignalBase<Time>::setReady;
 
-public:
+ public:
   /* --- Constructor/destrusctor --- */
   Signal(std::string name);
   virtual ~Signal() {}
@@ -106,23 +106,23 @@ public:
     aClassName = typeid(this).name();
   }
 
-public:
+ public:
   /// checkCompatibility is used to get the object contained in the
   /// signal. This used to verify if a dynamic cast is possible or not.
   virtual void checkCompatibility() { throw Tcopy; }
 
-private:
+ private:
   const T &setTcopy(const T &t);
   T &getTwork();
   const T &getTwork() const;
   const T &switchTcopy();
 };
 
-} // end of namespace dynamicgraph
+}  // end of namespace dynamicgraph
 
 #include <dynamic-graph/signal.t.cpp>
 
-#endif // #ifndef __SIGNAL_HH
+#endif  // #ifndef __SIGNAL_HH
 
 /*
  * Local variables:

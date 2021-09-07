@@ -4,22 +4,23 @@
 
 #ifndef DYNAMIC_GRAPH_SIGNAL_CASTER_HH
 #define DYNAMIC_GRAPH_SIGNAL_CASTER_HH
-#include <map>
-#include <vector>
-
-#include <boost/format.hpp>
-#include <boost/lexical_cast.hpp>
-
-#include "dynamic-graph/exception-signal.h"
 #include <dynamic-graph/dynamic-graph-api.h>
 #include <dynamic-graph/eigen-io.h>
 #include <dynamic-graph/linear-algebra.h>
+
+#include <boost/format.hpp>
+#include <boost/lexical_cast.hpp>
+#include <map>
+#include <vector>
+
+#include "dynamic-graph/exception-signal.h"
 
 namespace dynamicgraph {
 
 /// Inherit from this class if you want to keep default implementation for some
 /// functions.
-template <typename T> struct signal_io_base {
+template <typename T>
+struct signal_io_base {
   /// serialize a signal value.
   inline static void disp(const T &value, std::ostream &os) { os << value; }
   /// deserialize a signal value.
@@ -37,7 +38,8 @@ template <typename T> struct signal_io_base {
 };
 
 /// Inherit from this class if tracing is not implemented for a given type.
-template <typename T> struct signal_io_unimplemented {
+template <typename T>
+struct signal_io_unimplemented {
   inline static void disp(const T &, std::ostream &) {
     throw std::logic_error("this disp is not implemented.");
   }
@@ -50,7 +52,8 @@ template <typename T> struct signal_io_unimplemented {
 };
 
 /// Class used for I/O operations in Signal<T,Time>
-template <typename T> struct signal_io : signal_io_base<T> {};
+template <typename T>
+struct signal_io : signal_io_base<T> {};
 
 /// Template specialization of signal_disp for Eigen objects
 template <typename _Scalar, int _Rows, int _Cols, int _Options, int _MaxRows,
@@ -98,7 +101,8 @@ struct signal_io<Eigen::Quaternion<_Scalar, _Options>>
 
 /// Template specialization of signal_io for std::string.
 /// Do not print '\n' at the end.
-template <> struct signal_io<std::string> : signal_io_base<std::string> {
+template <>
+struct signal_io<std::string> : signal_io_base<std::string> {
   inline static std::string cast(std::istringstream &iss) { return iss.str(); }
 };
 
@@ -114,7 +118,8 @@ template <> struct signal_io<std::string> : signal_io_base<std::string> {
 /// To workaround this problem, parse special values manually
 /// (the strings used are the one produces by displaying special
 /// values on a stream).
-template <> struct signal_io<double> : signal_io_base<double> {
+template <>
+struct signal_io<double> : signal_io_base<double> {
   inline static double cast(std::istringstream &iss) {
     std::string tmp(iss.str());
 
@@ -135,6 +140,6 @@ template <> struct signal_io<double> : signal_io_base<double> {
   }
 };
 
-} // end of namespace dynamicgraph.
+}  // end of namespace dynamicgraph.
 
-#endif //! DYNAMIC_GRAPH_SIGNAL_CASTER_HH
+#endif  //! DYNAMIC_GRAPH_SIGNAL_CASTER_HH

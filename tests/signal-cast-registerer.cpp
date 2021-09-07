@@ -1,12 +1,6 @@
 // Copyright 2010 Thomas Moulard.
 //
 
-#include <string>
-
-#include <boost/foreach.hpp>
-#include <boost/format.hpp>
-
-#include "signal-cast-register-test.h"
 #include <dynamic-graph/debug.h>
 #include <dynamic-graph/eigen-io.h>
 #include <dynamic-graph/entity.h>
@@ -15,6 +9,11 @@
 #include <dynamic-graph/pool.h>
 #include <dynamic-graph/signal.h>
 
+#include <boost/foreach.hpp>
+#include <boost/format.hpp>
+#include <string>
+
+#include "signal-cast-register-test.h"
 #include "signal-cast-registerer-libA.hh"
 #include "signal-cast-registerer-libB.hh"
 
