@@ -9,13 +9,13 @@
 #include <sstream>
 
 #define ENABLE_RT_LOG
-#include "dynamic-graph/factory.h"
-#include "dynamic-graph/pool.h"
 #include <dynamic-graph/entity.h>
 #include <dynamic-graph/exception-factory.h>
-
 #include <dynamic-graph/logger.h>
 #include <dynamic-graph/real-time-logger.h>
+
+#include "dynamic-graph/factory.h"
+#include "dynamic-graph/pool.h"
 
 #define BOOST_TEST_MODULE debug - logger
 
@@ -24,16 +24,15 @@
 #else
 #include <boost/test/output_test_stream.hpp>
 #endif
-#include <boost/test/unit_test.hpp>
-
 #include <boost/date_time/posix_time/posix_time.hpp>
+#include <boost/test/unit_test.hpp>
 #include <boost/thread/thread.hpp>
 
 using boost::test_tools::output_test_stream;
 
 namespace dynamicgraph {
 class CustomEntity : public Entity {
-public:
+ public:
   static const std::string CLASS_NAME;
   virtual const std::string &getClassName() const { return CLASS_NAME; }
   explicit CustomEntity(const std::string &n) : Entity(n) {
@@ -63,7 +62,7 @@ public:
   }
 };
 DYNAMICGRAPH_FACTORY_ENTITY_PLUGIN(CustomEntity, "CustomEntity");
-} // namespace dynamicgraph
+}  // namespace dynamicgraph
 
 BOOST_AUTO_TEST_CASE(debug_logger_wrong_initialization) {
   dynamicgraph::RealTimeLogger::instance();

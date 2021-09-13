@@ -5,18 +5,18 @@
 
 #ifndef DYNAMIC_GRAPH_EXCEPTION_FACTORY_H
 #define DYNAMIC_GRAPH_EXCEPTION_FACTORY_H
-#include <string>
-
 #include <dynamic-graph/dynamic-graph-api.h>
 #include <dynamic-graph/exception-abstract.h>
+
 #include <dynamic-graph/fwd.hh>
+#include <string>
 
 namespace dynamicgraph {
 /// \ingroup error
 ///
 /// \brief Generic error class.
 class DYNAMIC_GRAPH_DLLAPI ExceptionFactory : public ExceptionAbstract {
-public:
+ public:
   enum ErrorCodeEnum {
     GENERIC = ExceptionAbstract::FACTORY,
     UNREFERED_OBJECT,
@@ -44,6 +44,6 @@ public:
     return ExceptionFactory::EXCEPTION_NAME;
   }
 };
-} // end of namespace dynamicgraph
+}  // end of namespace dynamicgraph
 
-#endif //! DYNAMIC_GRAPH_EXCEPTION_FACTORY_H
+#endif  //! DYNAMIC_GRAPH_EXCEPTION_FACTORY_H

@@ -2,15 +2,14 @@
 // Created by corentin on 7/3/19.
 //
 
-#include <boost/foreach.hpp>
-
+#include <assert.h>
 #include <dynamic-graph/debug.h>
 #include <dynamic-graph/factory.h>
 #include <dynamic-graph/signal-array.h>
 #include <dynamic-graph/signal-caster.h>
 #include <dynamic-graph/tracer.h>
 
-#include <assert.h>
+#include <boost/foreach.hpp>
 #if BOOST_VERSION >= 105900
 #include <boost/test/tools/output_test_stream.hpp>
 #else

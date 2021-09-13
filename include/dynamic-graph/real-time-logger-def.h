@@ -4,13 +4,11 @@
 
 #ifndef DYNAMIC_GRAPH_LOGGER_REAL_TIME_DEF_H
 #define DYNAMIC_GRAPH_LOGGER_REAL_TIME_DEF_H
-#include <sstream>
-#include <vector>
-
 #include <boost/shared_ptr.hpp>
 #include <boost/thread/mutex.hpp>
-
 #include <dynamic-graph/config.hh>
+#include <sstream>
+#include <vector>
 
 namespace dynamicgraph {
 /// \ingroup debug
@@ -21,7 +19,7 @@ namespace dynamicgraph {
 /// want.
 /// \sa LoggerIOStream
 class LoggerStream {
-public:
+ public:
   virtual void write(const char *c) = 0;
 };
 
@@ -30,12 +28,12 @@ public:
 /// The easieast is to use the macro  dgADD_OSTREAM_TO_RTLOG(ostr) where
 /// `ostr` can be `std::cout` or an std::ofstream...
 class LoggerIOStream : public LoggerStream {
-public:
+ public:
   LoggerIOStream(std::ostream &os) : os_(os) {}
   virtual ~LoggerIOStream() {}
   virtual void write(const char *c) { os_ << c; }
 
-private:
+ private:
   std::ostream &os_;
 };
 typedef boost::shared_ptr<LoggerStream> LoggerStreamPtr_t;
@@ -48,17 +46,16 @@ class RealTimeLogger;
 /// The entry starts when an instance is created and ends when is is deleted.
 /// This class is only used by RealTimeLogger.
 class RTLoggerStream {
-public:
+ public:
   inline RTLoggerStream(RealTimeLogger *logger, std::ostream &os)
       : ok_(logger != NULL), logger_(logger), os_(os) {}
-  template <typename T> inline RTLoggerStream &operator<<(T t) {
-    if (ok_)
-      os_ << t;
+  template <typename T>
+  inline RTLoggerStream &operator<<(T t) {
+    if (ok_) os_ << t;
     return *this;
   }
   inline RTLoggerStream &operator<<(std::ostream &(*pf)(std::ostream &)) {
-    if (ok_)
-      os_ << pf;
+    if (ok_) os_ << pf;
     return *this;
   }
 
@@ -66,7 +63,7 @@ public:
 
   inline bool isNull() { return !ok_; }
 
-private:
+ private:
   const bool ok_;
   RealTimeLogger *logger_;
   std::ostream &os_;
@@ -97,7 +94,7 @@ private:
 /// - one writer at a time. Writing to the logs is **never** a blocking
 ///   operation. If the resource is busy, the log entry is discarded.
 class DYNAMIC_GRAPH_DLLAPI RealTimeLogger {
-public:
+ public:
   static RealTimeLogger &instance();
 
   static void destroy();
@@ -146,7 +143,7 @@ public:
 
   ~RealTimeLogger();
 
-private:
+ private:
   struct Data {
     std::stringbuf buf;
   };
@@ -177,6 +174,6 @@ RTLoggerStream::~RTLoggerStream() {
   }
 }
 
-} // end of namespace dynamicgraph
+}  // end of namespace dynamicgraph
 
-#endif //! DYNAMIC_GRAPH_LOGGER_REAL_TIME_DEF_H
+#endif  //! DYNAMIC_GRAPH_LOGGER_REAL_TIME_DEF_H

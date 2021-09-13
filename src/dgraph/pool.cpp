@@ -13,12 +13,14 @@
 
 /* --- DYNAMIC-GRAPH --- */
 #include "dynamic-graph/pool.h"
-#include "dynamic-graph/debug.h"
-#include "dynamic-graph/entity.h"
+
 #include <list>
 #include <sstream>
 #include <string>
 #include <typeinfo>
+
+#include "dynamic-graph/debug.h"
+#include "dynamic-graph/entity.h"
 
 using namespace dynamicgraph;
 
@@ -57,7 +59,7 @@ PoolStorage::~PoolStorage() {
 /* --------------------------------------------------------------------- */
 void PoolStorage::registerEntity(const std::string &entname, Entity *ent) {
   Entities::iterator entkey = entityMap.find(entname);
-  if (entkey != entityMap.end()) // key does exist
+  if (entkey != entityMap.end())  // key does exist
   {
     throw ExceptionFactory(
         ExceptionFactory::OBJECT_CONFLICT,
@@ -72,7 +74,7 @@ void PoolStorage::registerEntity(const std::string &entname, Entity *ent) {
 
 void PoolStorage::deregisterEntity(const std::string &entname) {
   Entities::iterator entkey = entityMap.find(entname);
-  if (entkey == entityMap.end()) // key doesnot exist
+  if (entkey == entityMap.end())  // key doesnot exist
   {
     throw ExceptionFactory(ExceptionFactory::OBJECT_CONFLICT,
                            "Entity not defined yet. ", "Entity name is <%s>.",
@@ -207,7 +209,7 @@ static bool objectNameParser(std::istringstream &cmdparse, std::string &objName,
   char buffer[SIZE];
   cmdparse >> std::ws;
   cmdparse.getline(buffer, SIZE, '.');
-  if (!cmdparse.good()) // The callback is not an object method
+  if (!cmdparse.good())  // The callback is not an object method
     return false;
 
   objName = buffer;

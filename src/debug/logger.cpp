@@ -13,17 +13,18 @@
 #define ENABLE_RT_LOG
 
 #include <dynamic-graph/logger.h>
-#include <iomanip> // std::setprecision
-#include <iostream>
-#include <sstream>
+#include <dynamic-graph/real-time-logger.h>
 #include <stdio.h>
 
-#include <dynamic-graph/real-time-logger.h>
+#include <iomanip>  // std::setprecision
+#include <iostream>
+#include <sstream>
 
 namespace dynamicgraph {
 
 Logger::Logger(double timeSample, double streamPrintPeriod)
-    : m_timeSample(timeSample), m_streamPrintPeriod(streamPrintPeriod),
+    : m_timeSample(timeSample),
+      m_streamPrintPeriod(streamPrintPeriod),
       m_printCountdown(0.0) {
   m_lv = VERBOSITY_ERROR;
 }
@@ -34,8 +35,7 @@ void Logger::setVerbosity(LoggerVerbosity lv) { m_lv = lv; }
 
 LoggerVerbosity Logger::getVerbosity() { return m_lv; }
 void Logger::countdown() {
-  if (m_printCountdown < 0.0)
-    m_printCountdown = m_streamPrintPeriod;
+  if (m_printCountdown < 0.0) m_printCountdown = m_streamPrintPeriod;
   m_printCountdown -= m_timeSample;
 }
 
@@ -51,15 +51,13 @@ void Logger::sendMsg(std::string msg, MsgType type, const std::string &file,
 }
 
 bool Logger::setTimeSample(double t) {
-  if (t <= 0.0)
-    return false;
+  if (t <= 0.0) return false;
   m_timeSample = t;
   return true;
 }
 
 bool Logger::setStreamPrintPeriod(double s) {
-  if (s <= 0.0)
-    return false;
+  if (s <= 0.0) return false;
   m_streamPrintPeriod = s;
   return true;
 }
@@ -79,9 +77,9 @@ bool Logger::checkStreamPeriod(const std::string &lineId) {
   counter -= m_timeSample;
   if (counter > 0.0) {
     return false;
-  } else // otherwise reset counter and print
+  } else  // otherwise reset counter and print
     counter = m_streamPrintPeriod;
   return true;
 }
 
-} // namespace dynamicgraph
+}  // namespace dynamicgraph

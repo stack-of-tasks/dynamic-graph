@@ -5,25 +5,25 @@
 
 #ifndef DYNAMIC_GRAPH_TRACER_REAL_TIME_H
 #define DYNAMIC_GRAPH_TRACER_REAL_TIME_H
-#include <sstream>
+#include <dynamic-graph/tracer.h>
 
 #include <dynamic-graph/config-tracer-real-time.hh>
 #include <dynamic-graph/fwd.hh>
-#include <dynamic-graph/tracer.h>
+#include <sstream>
 
 namespace dynamicgraph {
 /// \ingroup plugin
 ///
 /// \brief Stream for the tracer real-time.
 class DG_TRACERREALTIME_DLLAPI OutStringStream : public std::ostringstream {
-public:
+ public:
   char *buffer;
   std::streamsize index;
   std::streamsize bufferSize;
   bool full;
   std::string givenname;
 
-public:
+ public:
   OutStringStream();
   ~OutStringStream();
 
@@ -39,7 +39,7 @@ public:
 class DG_TRACERREALTIME_DLLAPI TracerRealTime : public Tracer {
   DYNAMIC_GRAPH_ENTITY_DECL();
 
-public:
+ public:
   TracerRealTime(const std::string &n);
   virtual ~TracerRealTime() {}
 
@@ -47,8 +47,8 @@ public:
   virtual void trace();
 
   void display(std::ostream &os) const;
-  DG_TRACERREALTIME_DLLAPI friend std::ostream &
-  operator<<(std::ostream &os, const TracerRealTime &t);
+  DG_TRACERREALTIME_DLLAPI friend std::ostream &operator<<(
+      std::ostream &os, const TracerRealTime &t);
 
   void emptyBuffers();
 
@@ -56,18 +56,18 @@ public:
 
   const int &getBufferSize() { return bufferSize; }
 
-protected:
+ protected:
   virtual void openFile(const SignalBase<int> &sig,
                         const std::string &filename);
 
   virtual void recordSignal(std::ostream &os, const SignalBase<int> &sig);
 
   typedef std::list<std::ofstream *> HardFileList;
-  static const int BUFFER_SIZE_DEFAULT = 1048576; //  1Mo
+  static const int BUFFER_SIZE_DEFAULT = 1048576;  //  1Mo
 
   int bufferSize;
   HardFileList hardFiles;
 };
-} // end of namespace dynamicgraph
+}  // end of namespace dynamicgraph
 
-#endif //! DYNAMIC_GRAPH_TRACER_REAL_TIME_H
+#endif  //! DYNAMIC_GRAPH_TRACER_REAL_TIME_H

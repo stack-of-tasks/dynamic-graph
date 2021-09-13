@@ -6,11 +6,11 @@
 #ifndef DYNAMIC_GRAPH_PROCESS_LIST_H_
 #define DYNAMIC_GRAPH_PROCESS_LIST_H_
 
+#include <dynamic-graph/dynamic-graph-api.h>
+
 #include <boost/archive/text_iarchive.hpp>
 #include <boost/archive/text_oarchive.hpp>
 #include <boost/serialization/vector.hpp>
-
-#include <dynamic-graph/dynamic-graph-api.h>
 #include <dynamic-graph/fwd.hh>
 
 namespace dynamicgraph {
@@ -18,14 +18,14 @@ namespace CPU {
 class DYNAMIC_GRAPH_DLLAPI ProcessData {};
 
 class DYNAMIC_GRAPH_DLLAPI ProcessList {
-public:
+ public:
   ProcessList();
 };
 
 /// This class gather information on a specific CPU.
 ///
 class DYNAMIC_GRAPH_DLLAPI CPUData {
-public:
+ public:
   CPUData();
   int cpu_id_;
 
@@ -126,10 +126,10 @@ public:
 /// This class gathers information on a computer.
 /// This includes a list of CPU
 class DYNAMIC_GRAPH_DLLAPI System {
-private:
+ private:
   bool init_;
 
-public:
+ public:
   System();
 
   /// Read /proc/state file to extract CPU count.
@@ -160,7 +160,7 @@ public:
     ar &vCPUData_;
   }
 };
-} // namespace CPU
-} // namespace dynamicgraph
+}  // namespace CPU
+}  // namespace dynamicgraph
 
 #endif /* DYNAMIC_GRAPH_PROCESS_LIST_H_ */

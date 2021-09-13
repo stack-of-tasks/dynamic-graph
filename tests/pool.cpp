@@ -7,6 +7,7 @@
 #include <dynamic-graph/pool.h>
 #include <dynamic-graph/signal-ptr.h>
 #include <dynamic-graph/signal-time-dependent.h>
+
 #include <iostream>
 #include <sstream>
 

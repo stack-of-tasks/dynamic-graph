@@ -5,42 +5,47 @@
 
 #ifndef DYNAMIC_GRAPH_EXCEPTION_ABSTRACT_H
 #define DYNAMIC_GRAPH_EXCEPTION_ABSTRACT_H
-#include <string>
-
 #include <dynamic-graph/dynamic-graph-api.h>
+
 #include <dynamic-graph/fwd.hh>
+#include <string>
 
 // Uncomment this macros to have lines parameter on the throw display
 // #define DYNAMIC-GRAPH_EXCEPTION_PASSING_PARAM
 
-#define DG_RETHROW                                                             \
+#define DG_RETHROW \
   (const ::dynamicgraph::ExceptionAbstract &err) { throw err; }
 
 #ifdef DYNAMICGRAPH_EXCEPTION_PASSING_PARAM
-#define DG_THROW                                                               \
-  throw ::dynamicgraph::ExceptionAbstract::Param(__LINE__, __FUNCTION__,       \
+#define DG_THROW                                                         \
+  throw ::dynamicgraph::ExceptionAbstract::Param(__LINE__, __FUNCTION__, \
                                                  __FILE__) +
 #else
 #define DG_THROW throw
-#endif // DYNAMICGRAPH_EXCEPTION_PASSING_PARAM
+#endif  // DYNAMICGRAPH_EXCEPTION_PASSING_PARAM
 
 namespace dynamicgraph {
 /// \ingroup error
 ///
 /// \brief Abstract root class for all dynamic-graph exceptions.
 class DYNAMIC_GRAPH_DLLAPI ExceptionAbstract : public std::exception {
-public:
+ public:
   /// \ingroup error
   ///
   /// \brief Class owned by exceptions to store error locations.
   class Param {
-  public:
+   public:
     static const int BUFFER_SIZE = 80;
 
     Param(const int &_line, const char *_function, const char *_file);
     Param()
-        : functionPTR(), function(), line(), filePTR(), file(),
-          pointersSet(false), set(false) {}
+        : functionPTR(),
+          function(),
+          line(),
+          filePTR(),
+          file(),
+          pointersSet(false),
+          set(false) {}
     Param &initCopy(const Param &p);
 
     const char *functionPTR;
@@ -91,10 +96,10 @@ public:
   }
 
   /// \brief Print the error structure.
-  DYNAMIC_GRAPH_DLLAPI friend std::ostream &
-  operator<<(std::ostream &os, const ExceptionAbstract &err);
+  DYNAMIC_GRAPH_DLLAPI friend std::ostream &operator<<(
+      std::ostream &os, const ExceptionAbstract &err);
 
-protected:
+ protected:
   /// \brief Error code.
   /// \sa ErrorCodeEnum
   int code;
@@ -121,12 +126,12 @@ protected:
     return e;
   }
 
-#endif // DYNAMICGRAPH_EXCEPTION_PASSING_PARAM
+#endif  // DYNAMICGRAPH_EXCEPTION_PASSING_PARAM
 
-private:
+ private:
   /// \brief Forbid the empty constructor (private).
   ExceptionAbstract();
 };
-} // end of namespace dynamicgraph
+}  // end of namespace dynamicgraph
 
-#endif //! DYNAMIC_GRAPH_EXCEPTION_ABSTRACT_H
+#endif  //! DYNAMIC_GRAPH_EXCEPTION_ABSTRACT_H

@@ -18,9 +18,8 @@
 #else
 #include <boost/test/output_test_stream.hpp>
 #endif
-#include <boost/test/unit_test.hpp>
-
 #include <boost/date_time/posix_time/posix_time.hpp>
+#include <boost/test/unit_test.hpp>
 #include <boost/thread/thread.hpp>
 
 using namespace dynamicgraph;
@@ -28,8 +27,7 @@ using namespace dynamicgraph;
 BOOST_AUTO_TEST_CASE(monothread) {
   RealTimeLogger rtl(10);
   rtl.addOutputStream(LoggerStreamPtr_t(new LoggerIOStream(std::cout)));
-  for (int i = 0; i < 9; ++i)
-    rtl.front() << "Call number " << i << '\n';
+  for (int i = 0; i < 9; ++i) rtl.front() << "Call number " << i << '\n';
   BOOST_CHECK(rtl.full());
   rtl.front() << "This call should not appear in the output" << '\n';
 

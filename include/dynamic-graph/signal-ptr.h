@@ -25,10 +25,10 @@ namespace dynamicgraph {
 ///
 template <class T, class Time>
 class SignalPtr : public virtual Signal<T, Time> {
-public:
+ public:
   using SignalBase<Time>::getName;
 
-protected:
+ protected:
   Signal<T, Time> *signalPtr;
   bool modeNoThrow;
   bool transmitAbstract;
@@ -37,19 +37,22 @@ protected:
 
   inline bool autoref() const { return signalPtr == this; }
 
-public: /* --- CONSTRUCTORS --- */
+ public: /* --- CONSTRUCTORS --- */
   SignalPtr(Signal<T, Time> *ptr, std::string name = "")
-      : Signal<T, Time>(name), signalPtr(ptr), modeNoThrow(false),
-        transmitAbstract(false), abstractTransmitter(NULL) {}
+      : Signal<T, Time>(name),
+        signalPtr(ptr),
+        modeNoThrow(false),
+        transmitAbstract(false),
+        abstractTransmitter(NULL) {}
 
   virtual ~SignalPtr() { signalPtr = NULL; }
 
-public:
+ public:
   /* --- PLUG-IN OPERATION --- */
-  Signal<T, Time> *getPtr();                      // throw
-  const Signal<T, Time> *getPtr() const;          // throw
-  SignalBase<Time> *getAbstractPtr();             // throw
-  const SignalBase<Time> *getAbstractPtr() const; // throw
+  Signal<T, Time> *getPtr();                       // throw
+  const Signal<T, Time> *getPtr() const;           // throw
+  SignalBase<Time> *getAbstractPtr();              // throw
+  const SignalBase<Time> *getAbstractPtr() const;  // throw
   virtual void plug(SignalBase<Time> *ref);
 
   virtual void unplug() { plug(NULL); }
@@ -66,7 +69,7 @@ public:
   inline const Signal<T, Time> &operator*() const { return *getPtr(); }
   inline operator bool() const { return isPlugged(); }
 
-public: /* --- INHERITANCE --- */
+ public: /* --- INHERITANCE --- */
   virtual bool needUpdate(const Time &t) const;
   virtual std::ostream &writeGraph(std::ostream &os) const;
   virtual std::ostream &display(std::ostream &os) const;
@@ -90,7 +93,7 @@ public: /* --- INHERITANCE --- */
 
   virtual void checkCompatibility();
 
-public: /* --- INHERITANCE --- */
+ public: /* --- INHERITANCE --- */
   /* SignalPtr could be used as a classical signal, through the normal
    * setting functions. The behavior is to plugged the signalPtr on
    * the classical mother Signal layer of the object.
@@ -126,7 +129,7 @@ public: /* --- INHERITANCE --- */
                                             std::string next1 = "",
                                             std::string next2 = "") const;
 
-protected: // Interdiction of the rest of the heritage
+ protected:  // Interdiction of the rest of the heritage
   using Signal<T, Time>::addDependency;
   virtual void addDependency() {}
   using Signal<T, Time>::removeDependency;
@@ -134,7 +137,7 @@ protected: // Interdiction of the rest of the heritage
   virtual void clearDependencies() {}
 };
 
-} // end of namespace dynamicgraph
+}  // end of namespace dynamicgraph
 
 #include <dynamic-graph/signal-ptr.t.cpp>
-#endif //! DYNAMIC_GRAPH_SIGNAL_PTR_H
+#endif  //! DYNAMIC_GRAPH_SIGNAL_PTR_H

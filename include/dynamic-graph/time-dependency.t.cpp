@@ -11,8 +11,8 @@
 #define VP_TEMPLATE_DEBUG_MODE 0
 #include <dynamic-graph/debug.h>
 
-#define __TIME_DEPENDENCY_INIT(sig, dep)                                       \
-  leader(*sig), dependencies(), updateFromAllChildren(ALL_READY_DEFAULT),      \
+#define __TIME_DEPENDENCY_INIT(sig, dep)                                  \
+  leader(*sig), dependencies(), updateFromAllChildren(ALL_READY_DEFAULT), \
       dependencyType(dep), periodTime(PERIOD_TIME_DEFAULT)
 
 namespace dynamicgraph {
@@ -49,7 +49,8 @@ void TimeDependency<Time>::removeDependency(const SignalBase<Time> &sig) {
   dependencies.remove(&sig);
 }
 
-template <class Time> void TimeDependency<Time>::clearDependency() {
+template <class Time>
+void TimeDependency<Time>::clearDependency() {
   dependencies.clear();
 }
 
@@ -68,19 +69,19 @@ bool TimeDependency<Time>::needUpdate(const Time &t1) const {
   }
 
   switch (dependencyType) {
-  case ALWAYS_READY: {
-    dgTDEBUGOUT(15);
-    return true;
-  }
-  case BOOL_DEPENDENT:
-    break;
-  case TIME_DEPENDENT: {
-    if (t1 < leader.getTime() + periodTime) {
+    case ALWAYS_READY: {
       dgTDEBUGOUT(15);
-      return false;
+      return true;
     }
-    break;
-  }
+    case BOOL_DEPENDENT:
+      break;
+    case TIME_DEPENDENT: {
+      if (t1 < leader.getTime() + periodTime) {
+        dgTDEBUGOUT(15);
+        return false;
+      }
+      break;
+    }
   };
 
   bool res = updateFromAllChildren;
@@ -117,24 +118,23 @@ std::ostream &TimeDependency<Time>::writeGraph(std::ostream &os) const {
 }
 
 template <class Time>
-std::ostream &
-TimeDependency<Time>::displayDependencies(std::ostream &os, const int depth,
-                                          std::string space, std::string next1,
-                                          std::string next2) const {
+std::ostream &TimeDependency<Time>::displayDependencies(
+    std::ostream &os, const int depth, std::string space, std::string next1,
+    std::string next2) const {
   leader.SignalBase<Time>::displayDependencies(os, depth, space, next1, next2)
       << " (";
   switch (dependencyType) {
-  case ALWAYS_READY:
-    os << "A";
-    break;
-  case BOOL_DEPENDENT:
-    os << "ready=" << ((leader.getReady()) ? "TRUE" : "FALSE");
-    break;
-  case TIME_DEPENDENT:
-    os << "t=" << leader.getTime() << " (/" << periodTime << ") ";
-    break;
+    case ALWAYS_READY:
+      os << "A";
+      break;
+    case BOOL_DEPENDENT:
+      os << "ready=" << ((leader.getReady()) ? "TRUE" : "FALSE");
+      break;
+    case TIME_DEPENDENT:
+      os << "t=" << leader.getTime() << " (/" << periodTime << ") ";
+      break;
   };
-  os << ")"; //<<std::endl;
+  os << ")";  //<<std::endl;
   {
     const typename Dependencies::const_iterator itend = dependencies.end();
     for (typename Dependencies::const_iterator it = dependencies.begin();
@@ -159,7 +159,7 @@ TimeDependency<Time>::displayDependencies(std::ostream &os, const int depth,
   return os;
 }
 
-} // end of namespace dynamicgraph
+}  // end of namespace dynamicgraph
 
 #undef __TIME_DEPENDENCY_INIT
-#endif //! DYNAMIC_GRAPH_TIME_DEPENDENCY_T_CPP
+#endif  //! DYNAMIC_GRAPH_TIME_DEPENDENCY_T_CPP

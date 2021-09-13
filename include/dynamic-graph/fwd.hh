@@ -10,12 +10,12 @@
 namespace dynamicgraph {
 
 // to be replace by std:: when we switch to C++11 and later
-using boost::shared_ptr;
-using boost::weak_ptr;
-using boost::static_pointer_cast;
-using boost::dynamic_pointer_cast;
 using boost::const_pointer_cast;
+using boost::dynamic_pointer_cast;
 using boost::make_shared;
+using boost::shared_ptr;
+using boost::static_pointer_cast;
+using boost::weak_ptr;
 
 class DebugTrace;
 
@@ -38,22 +38,29 @@ class PoolStorage;
 class Tracer;
 class TracerRealTime;
 
-template <typename T, typename Time> class Signal;
+template <typename T, typename Time>
+class Signal;
 
-template <typename Time> class SignalArray;
+template <typename Time>
+class SignalArray;
 
-template <typename Time> class SignalArray_const;
+template <typename Time>
+class SignalArray_const;
 
-template <typename Time> class SignalBase;
+template <typename Time>
+class SignalBase;
 
-template <typename T, typename Time> class SignalPtr;
-template <typename T, typename Time> class SignalTimeDependent;
-template <typename Time> class TimeDependency;
+template <typename T, typename Time>
+class SignalPtr;
+template <typename T, typename Time>
+class SignalTimeDependent;
+template <typename Time>
+class TimeDependency;
 
 namespace command {
 class Command;
-} // end of namespace command.
+}  // end of namespace command.
 
-} // end of namespace dynamicgraph.
+}  // end of namespace dynamicgraph.
 
-#endif //! DYNAMIC_GRAPH_FWD_HH
+#endif  //! DYNAMIC_GRAPH_FWD_HH

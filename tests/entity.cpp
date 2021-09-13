@@ -5,8 +5,6 @@
 
 #define ENABLE_RT_LOG
 
-#include "dynamic-graph/factory.h"
-#include "dynamic-graph/pool.h"
 #include <dynamic-graph/command-direct-getter.h>
 #include <dynamic-graph/command-direct-setter.h>
 #include <dynamic-graph/entity.h>
@@ -14,7 +12,11 @@
 #include <dynamic-graph/real-time-logger.h>
 #include <dynamic-graph/signal-ptr.h>
 #include <dynamic-graph/signal-time-dependent.h>
+
 #include <sstream>
+
+#include "dynamic-graph/factory.h"
+#include "dynamic-graph/pool.h"
 
 #define BOOST_TEST_MODULE entity
 
@@ -29,7 +31,7 @@ using boost::test_tools::output_test_stream;
 
 namespace dynamicgraph {
 class CustomEntity : public Entity {
-public:
+ public:
   dynamicgraph::SignalPtr<double, int> m_sigdSIN, m_sigdSIN2;
   dynamicgraph::SignalTimeDependent<double, int> m_sigdTimeDepSOUT;
 
@@ -69,11 +71,11 @@ public:
     return res;
   }
 
-public:
+ public:
   double m_value;
 };
 DYNAMICGRAPH_FACTORY_ENTITY_PLUGIN(CustomEntity, "CustomEntity");
-} // namespace dynamicgraph
+}  // namespace dynamicgraph
 
 BOOST_AUTO_TEST_CASE(constructor) {
   namespace dg = dynamicgraph;

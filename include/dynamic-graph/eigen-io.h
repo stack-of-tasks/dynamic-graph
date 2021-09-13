@@ -34,8 +34,9 @@ inline std::istringstream &operator>>(std::istringstream &iss,
   unsigned int _size;
   double _dbl_val;
   char _ch;
-  boost::format fmt("Failed to enter %s as vector."
-                    " Reenter as [N](val1,val2,val3,...,valN)");
+  boost::format fmt(
+      "Failed to enter %s as vector."
+      " Reenter as [N](val1,val2,val3,...,valN)");
   fmt % iss.str();
   if (iss >> _ch && _ch != '[') {
     throw ExceptionSignal(ExceptionSignal::GENERIC, fmt.str());
@@ -52,8 +53,7 @@ inline std::istringstream &operator>>(std::istringstream &iss,
       else {
         for (unsigned int i = 0; i < _size; i++) {
           iss >> _dbl_val;
-          if (iss.peek() == ',' || iss.peek() == ' ')
-            iss.ignore();
+          if (iss.peek() == ',' || iss.peek() == ' ') iss.ignore();
           inst(i) = _dbl_val;
         }
         if (iss >> _ch && _ch != ')')
@@ -78,17 +78,17 @@ inline std::istringstream &operator>>(std::istringstream &iss,
   unsigned int _rowsize;
   double _dbl_val;
   char _ch;
-  boost::format fmt("Failed to enter %s as matrix. Reenter as "
-                    "((val11,val12,val13,...,val1N),"
-                    "...,(valM1,valM2,...,valMN))");
+  boost::format fmt(
+      "Failed to enter %s as matrix. Reenter as "
+      "((val11,val12,val13,...,val1N),"
+      "...,(valM1,valM2,...,valMN))");
   MatrixXd _tmp_matrix;
   fmt % iss.str();
   if (iss >> _ch && _ch != '[') {
     throw ExceptionSignal(ExceptionSignal::GENERIC, fmt.str());
   } else {
     iss >> _rowsize;
-    if (iss.peek() == ',' || iss.peek() == ' ')
-      iss.ignore();
+    if (iss.peek() == ',' || iss.peek() == ' ') iss.ignore();
     iss >> _colsize;
     if (iss.fail())
       throw ExceptionSignal(ExceptionSignal::GENERIC, fmt.str());
@@ -105,14 +105,12 @@ inline std::istringstream &operator>>(std::istringstream &iss,
               throw ExceptionSignal(ExceptionSignal::GENERIC, fmt.str());
             for (unsigned int i = 0; i < _colsize; i++) {
               iss >> _dbl_val;
-              if (iss.peek() == ',' || iss.peek() == ' ')
-                iss.ignore();
+              if (iss.peek() == ',' || iss.peek() == ' ') iss.ignore();
               _tmp_matrix(j, i) = _dbl_val;
             }
             if (iss >> _ch && _ch != ')')
               throw ExceptionSignal(ExceptionSignal::GENERIC, fmt.str());
-            if (iss.peek() == ',' || iss.peek() == ' ')
-              iss.ignore();
+            if (iss.peek() == ',' || iss.peek() == ' ') iss.ignore();
           }
           if (iss >> _ch && _ch != ')')
             throw ExceptionSignal(ExceptionSignal::GENERIC, fmt.str());
@@ -165,6 +163,6 @@ inline std::istringstream &operator>>(std::istringstream &iss,
   return iss;
 }
 
-} // namespace Eigen
+}  // namespace Eigen
 
-#endif // DYNAMIC_GRAPH_EIGEN_IO_H
+#endif  // DYNAMIC_GRAPH_EIGEN_IO_H

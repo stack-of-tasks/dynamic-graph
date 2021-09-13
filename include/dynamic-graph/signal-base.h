@@ -6,13 +6,13 @@
 
 #ifndef DYNAMIC_GRAPH_SIGNAL_BASE_H
 #define DYNAMIC_GRAPH_SIGNAL_BASE_H
+#include <dynamic-graph/exception-signal.h>
+
 #include <boost/noncopyable.hpp>
+#include <dynamic-graph/fwd.hh>
 #include <sstream>
 #include <string>
 #include <typeinfo>
-
-#include <dynamic-graph/exception-signal.h>
-#include <dynamic-graph/fwd.hh>
 
 namespace dynamicgraph {
 
@@ -23,8 +23,9 @@ namespace dynamicgraph {
     value of the signal, which can involve an extra computation,
     while the latter accesses a cached value, or 'copy'.
 */
-template <class Time> class SignalBase : public boost::noncopyable {
-public:
+template <class Time>
+class SignalBase : public boost::noncopyable {
+ public:
   explicit SignalBase(std::string name = "")
       : name(name), signalTime(0), ready(false) {}
 
@@ -195,7 +196,7 @@ public:
   }
   /// \}
 
-protected:
+ protected:
   std::string name;
   Time signalTime;
   bool ready;
@@ -206,6 +207,6 @@ template <class Time>
 std::ostream &operator<<(std::ostream &os, const SignalBase<Time> &sig) {
   return sig.display(os);
 }
-} // end of namespace dynamicgraph.
+}  // end of namespace dynamicgraph.
 
-#endif //! DYNAMIC_GRAPH_SIGNAL_BASE_H
+#endif  //! DYNAMIC_GRAPH_SIGNAL_BASE_H

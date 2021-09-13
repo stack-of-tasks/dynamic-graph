@@ -2,17 +2,24 @@
  * Author: O. Stasse, 2019
  * See LICENSE file in the root directory of this repository.
  */
+#include <dynamic-graph/process-list.hh>
 #include <fstream>
 #include <sstream>
 #include <string>
 
-#include <dynamic-graph/process-list.hh>
-
 using namespace dynamicgraph::CPU;
 CPUData::CPUData()
-    : user_mode_time_(0), nice_time_(0), system_time_(0), idle_time_(0),
-      iowait_time_(0), irq_time_(0), softirq_time_(0), steal_time_(0),
-      guest_time_(0), guest_nice_time_(0), percent_(0.0) {}
+    : user_mode_time_(0),
+      nice_time_(0),
+      system_time_(0),
+      idle_time_(0),
+      iowait_time_(0),
+      irq_time_(0),
+      softirq_time_(0),
+      steal_time_(0),
+      guest_time_(0),
+      guest_nice_time_(0),
+      percent_(0.0) {}
 
 void CPUData::ProcessLine(std::istringstream &aCPULine) {
   unsigned long long int luser_mode_time = 0, lnice_time = 0, lsystem_time = 0,
@@ -129,8 +136,7 @@ void System::readProcStat() {
         // If we did not initialize
         if (!init_) {
           // Count the number of CPU.
-          if (lcpunb > cpuNb_)
-            cpuNb_ = lcpunb;
+          if (lcpunb > cpuNb_) cpuNb_ = lcpunb;
         } else
           // Otherwise process the line.
           ProcessCPULine(lcpunb, anISSLine);

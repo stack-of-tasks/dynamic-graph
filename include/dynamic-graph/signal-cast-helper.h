@@ -8,4 +8,4 @@
 
 #pragma warning "This file is now useless"
 
-#endif // #ifndef DYNAMIC_GRAPH_SIGNAL_CASTER_HELPER_HH
+#endif  // #ifndef DYNAMIC_GRAPH_SIGNAL_CASTER_HELPER_HH

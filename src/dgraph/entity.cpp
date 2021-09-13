@@ -14,8 +14,9 @@
 #include <dynamic-graph/pool.h>
 
 /*! System includes */
-#include <sstream>
 #include <stdlib.h>
+
+#include <sstream>
 
 using namespace std;
 using namespace dynamicgraph;
@@ -68,7 +69,7 @@ void Entity::signalRegistration(const SignalArray<int> &signals) {
     const string &signame(buffer);
 
     SignalMap::iterator sigkey = signalMap.find(signame);
-    if (sigkey != signalMap.end()) // key does exist
+    if (sigkey != signalMap.end())  // key does exist
     {
       dgERRORF("Key %s already exist in the signalMap.", signame.c_str());
       if (sigkey->second != &sig) {
@@ -87,7 +88,7 @@ void Entity::signalRegistration(const SignalArray<int> &signals) {
 
 void Entity::signalDeregistration(const std::string &signame) {
   SignalMap::iterator sigkey = signalMap.find(signame);
-  if (sigkey == signalMap.end()) // key does not exist
+  if (sigkey == signalMap.end())  // key does not exist
   {
     dgERRORF("Key %s does not exist in the signalMap.", signame.c_str());
     throw ExceptionFactory(ExceptionFactory::UNREFERED_SIGNAL,
@@ -105,14 +106,14 @@ std::string Entity::getDocString() const {
   return docString;
 }
 
-#define __DG_ENTITY_GET_SIGNAL__(ITER_TYPE)                                    \
-  SignalMap::ITER_TYPE sigkey = signalMap.find(signame);                       \
-  if (sigkey == signalMap.end()) /* key does NOT exist */                      \
-  {                                                                            \
-    throw ExceptionFactory(ExceptionFactory::UNREFERED_SIGNAL,                 \
-                           "The requested signal is not registered", ": %s",   \
-                           signame.c_str());                                   \
-  }                                                                            \
+#define __DG_ENTITY_GET_SIGNAL__(ITER_TYPE)                                  \
+  SignalMap::ITER_TYPE sigkey = signalMap.find(signame);                     \
+  if (sigkey == signalMap.end()) /* key does NOT exist */                    \
+  {                                                                          \
+    throw ExceptionFactory(ExceptionFactory::UNREFERED_SIGNAL,               \
+                           "The requested signal is not registered", ": %s", \
+                           signame.c_str());                                 \
+  }                                                                          \
   return *(sigkey->second);
 
 bool Entity::hasSignal(const string &signame) const {
@@ -185,9 +186,9 @@ const std::string &Entity::getCommandList() const {
 /// Add a command to Entity
 void Entity::addCommand(const std::string &inName, Command *command) {
   if (commandMap.count(inName) != 0) {
-    DG_THROW ExceptionFactory(ExceptionFactory::OBJECT_CONFLICT,
-                              "Command " + inName +
-                                  " already registered in Entity.");
+    DG_THROW ExceptionFactory(
+        ExceptionFactory::OBJECT_CONFLICT,
+        "Command " + inName + " already registered in Entity.");
   }
   std::pair<const std::string, Command *> item(inName, command);
   commandMap.insert(item);
@@ -200,9 +201,9 @@ std::map<const std::string, Command *> Entity::getNewStyleCommandMap() {
 
 Command *Entity::getNewStyleCommand(const std::string &commandName) {
   if (commandMap.count(commandName) != 1) {
-    DG_THROW ExceptionFactory(ExceptionFactory::UNREFERED_FUNCTION,
-                              "Command <" + commandName +
-                                  "> is not registered in Entity.");
+    DG_THROW ExceptionFactory(
+        ExceptionFactory::UNREFERED_FUNCTION,
+        "Command <" + commandName + "> is not registered in Entity.");
   }
   return commandMap[commandName];
 }

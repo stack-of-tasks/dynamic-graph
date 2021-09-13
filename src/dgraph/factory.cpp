@@ -2,10 +2,11 @@
 // JRL, CNRS/AIST.
 //
 
+#include "dynamic-graph/factory.h"
+
 #include <boost/foreach.hpp>
 
 #include "dynamic-graph/debug.h"
-#include "dynamic-graph/factory.h"
 
 using namespace std;
 using namespace dynamicgraph;
@@ -39,9 +40,10 @@ void FactoryStorage::registerEntity(const std::string &entname,
         "Another entity class already defined with the same name. ",
         "(while adding entity class <%s> inside the factory).",
         entname.c_str());
-    dgERRORF("Another entity class already defined with the same name. "
-             "(while adding entity class <%s> inside the factory).",
-             entname.c_str());
+    dgERRORF(
+        "Another entity class already defined with the same name. "
+        "(while adding entity class <%s> inside the factory).",
+        entname.c_str());
   } else {
     if (!ent) {
       // FIXME: we should have a better error code for that.
@@ -118,4 +120,4 @@ EntityRegisterer::~EntityRegisterer() {
 
 // The global factory.
 FactoryStorage *FactoryStorage::instance_ = NULL;
-} // end of namespace dynamicgraph.
+}  // end of namespace dynamicgraph.

@@ -5,13 +5,15 @@
  * See LICENSE file
  *
  */
+#include <dynamic-graph/entity.h>
+#include <dynamic-graph/exception-factory.h>
+
+#include <iostream>
+#include <sstream>
+
 #include "dynamic-graph/command-bind.h"
 #include "dynamic-graph/factory.h"
 #include "dynamic-graph/pool.h"
-#include <dynamic-graph/entity.h>
-#include <dynamic-graph/exception-factory.h>
-#include <iostream>
-#include <sstream>
 
 #define ENABLE_RT_LOG
 #include <dynamic-graph/logger.h>
@@ -32,7 +34,7 @@ using namespace dynamicgraph::command;
 
 namespace dynamicgraph {
 class CustomEntity : public Entity {
-public:
+ public:
   static const std::string CLASS_NAME;
   bool test_zero_arg_;
   bool test_one_arg_;
@@ -127,7 +129,7 @@ public:
   }
 };
 DYNAMICGRAPH_FACTORY_ENTITY_PLUGIN(CustomEntity, "CustomEntity");
-} // namespace dynamicgraph
+}  // namespace dynamicgraph
 
 BOOST_AUTO_TEST_CASE(command_test) {
   dynamicgraph::CustomEntity *ptr_entity =
@@ -142,8 +144,7 @@ BOOST_AUTO_TEST_CASE(command_test) {
   std::map<const std::string, Command *>::iterator it_map;
 
   it_map = aCommandMap.find("0_arg");
-  if (it_map == aCommandMap.end())
-    BOOST_CHECK(false);
+  if (it_map == aCommandMap.end()) BOOST_CHECK(false);
   it_map->second->execute();
   BOOST_CHECK(entity.test_zero_arg_);
 
@@ -158,8 +159,7 @@ BOOST_AUTO_TEST_CASE(command_test) {
 
   for (unsigned int i = 0; i < 4; i++) {
     it_map = aCommandMap.find(vec_fname[i]);
-    if (it_map == aCommandMap.end())
-      BOOST_CHECK(false);
+    if (it_map == aCommandMap.end()) BOOST_CHECK(false);
     values.push_back(aValue);
     it_map->second->setParameterValues(values);
     it_map->second->execute();

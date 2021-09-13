@@ -17,10 +17,10 @@ bool SignalPtr<T, Time>::isAbstractPluged() const {
   return ((NULL != signalPtr) || (abstractTransmitter));
 }
 
-template <class T, class Time> Signal<T, Time> *SignalPtr<T, Time>::getPtr() {
+template <class T, class Time>
+Signal<T, Time> *SignalPtr<T, Time>::getPtr() {
   dgTDEBUGIN(25);
-  if (!isPlugged())
-    DG_THROW
+  if (!isPlugged()) DG_THROW
   ExceptionSignal(ExceptionSignal::NOT_INITIALIZED,
                   "In SignalPtr: SIN ptr not set.", " (in signal <%s>)",
                   getName().c_str());
@@ -110,7 +110,8 @@ void SignalPtr<T, Time>::plug(SignalBase<Time> *unknown_ref) {
   dgTDEBUGOUT(5);
 }
 
-template <class T, class Time> void SignalPtr<T, Time>::checkCompatibility() {
+template <class T, class Time>
+void SignalPtr<T, Time>::checkCompatibility() {
   if (isPlugged() && (!autoref())) {
     getPtr()->checkCompatibility();
   } else if (isAbstractPluged() && (!autoref())) {
@@ -127,7 +128,8 @@ bool SignalPtr<T, Time>::needUpdate(const Time &t) const {
     return Signal<T, Time>::needUpdate(t);
 }
 
-template <class T, class Time> const Time &SignalPtr<T, Time>::getTime() const {
+template <class T, class Time>
+const Time &SignalPtr<T, Time>::getTime() const {
   if ((isAbstractPluged()) && (!autoref())) {
     return getAbstractPtr()->getTime();
   }
@@ -158,7 +160,8 @@ const T &SignalPtr<T, Time>::access(const Time &t) {
   }
 }
 
-template <class T, class Time> const T &SignalPtr<T, Time>::accessCopy() const {
+template <class T, class Time>
+const T &SignalPtr<T, Time>::accessCopy() const {
   if (modeNoThrow && (!isPlugged()) && Signal<T, Time>::copyInit)
     return Signal<T, Time>::accessCopy();
   else if (autoref())
@@ -204,10 +207,11 @@ std::ostream &SignalPtr<T, Time>::display(std::ostream &os) const {
 }
 
 template <class T, class Time>
-std::ostream &
-SignalPtr<T, Time>::displayDependencies(std::ostream &os, const int depth,
-                                        std::string space, std::string next1,
-                                        std::string next2) const {
+std::ostream &SignalPtr<T, Time>::displayDependencies(std::ostream &os,
+                                                      const int depth,
+                                                      std::string space,
+                                                      std::string next1,
+                                                      std::string next2) const {
   dgTDEBUGIN(25);
   if ((isAbstractPluged()) && (!autoref())) {
     getAbstractPtr()->displayDependencies(
@@ -220,6 +224,6 @@ SignalPtr<T, Time>::displayDependencies(std::ostream &os, const int depth,
   return os;
 }
 
-} // end of namespace dynamicgraph.
+}  // end of namespace dynamicgraph.
 
-#endif //! DYNAMIC_GRAPH_SIGNAL_PTR_T_CPP
+#endif  //! DYNAMIC_GRAPH_SIGNAL_PTR_T_CPP

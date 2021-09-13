@@ -4,8 +4,6 @@
  *
  */
 
-#include <iostream>
-
 #include <dynamic-graph/entity.h>
 #include <dynamic-graph/exception-factory.h>
 #include <dynamic-graph/factory.h>
@@ -13,6 +11,8 @@
 #include <dynamic-graph/signal-ptr.h>
 #include <dynamic-graph/signal-time-dependent.h>
 #include <dynamic-graph/tracer.h>
+
+#include <iostream>
 
 #define BOOST_TEST_MODULE debug - tracer
 
@@ -70,7 +70,7 @@ struct MyEntity : public dynamicgraph::Entity {
   }
 };
 DYNAMICGRAPH_FACTORY_ENTITY_PLUGIN(MyEntity, "MyEntity");
-} // namespace dynamicgraph
+}  // namespace dynamicgraph
 
 BOOST_AUTO_TEST_CASE(test_tracer) {
   using dynamicgraph::Vector;

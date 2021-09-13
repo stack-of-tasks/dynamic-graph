@@ -5,15 +5,14 @@
 
 #ifndef DYNAMIC_GRAPH_FACTORY_HH
 #define DYNAMIC_GRAPH_FACTORY_HH
+#include <dynamic-graph/dynamic-graph-api.h>
+#include <dynamic-graph/exception-factory.h>
+
+#include <boost/noncopyable.hpp>
+#include <dynamic-graph/fwd.hh>
 #include <map>
 #include <string>
 #include <vector>
-
-#include <boost/noncopyable.hpp>
-
-#include <dynamic-graph/dynamic-graph-api.h>
-#include <dynamic-graph/exception-factory.h>
-#include <dynamic-graph/fwd.hh>
 
 /// \ingroup dgraph
 ///
@@ -24,16 +23,16 @@
 /// \param CLASSNAME the name of the Entity to be registered (this must
 ///        be a std::string or a type implicitly castable into a std::string
 ///        such as classic C string delimited by double quotes).
-#define DYNAMICGRAPH_FACTORY_ENTITY_PLUGIN(CLASSTYPE, CLASSNAME)               \
-  const std::string CLASSTYPE::CLASS_NAME = CLASSNAME;                         \
-  extern "C" {                                                                 \
-  ::dynamicgraph::Entity *                                                     \
-      EntityMaker_##CLASSTYPE(const std::string &objname) {                    \
-    return new CLASSTYPE(objname);                                             \
-  }                                                                            \
-  ::dynamicgraph::EntityRegisterer reg_##CLASSTYPE(CLASSNAME,                  \
-                                                   &EntityMaker_##CLASSTYPE);  \
-  }                                                                            \
+#define DYNAMICGRAPH_FACTORY_ENTITY_PLUGIN(CLASSTYPE, CLASSNAME)              \
+  const std::string CLASSTYPE::CLASS_NAME = CLASSNAME;                        \
+  extern "C" {                                                                \
+  ::dynamicgraph::Entity *EntityMaker_##CLASSTYPE(                            \
+      const std::string &objname) {                                           \
+    return new CLASSTYPE(objname);                                            \
+  }                                                                           \
+  ::dynamicgraph::EntityRegisterer reg_##CLASSTYPE(CLASSNAME,                 \
+                                                   &EntityMaker_##CLASSTYPE); \
+  }                                                                           \
   struct e_n_d__w_i_t_h__s_e_m_i_c_o_l_o_n
 
 namespace dynamicgraph {
@@ -80,7 +79,7 @@ namespace dynamicgraph {
 /// instance of this class enforces this behavior, instantiating one
 /// yourself would break this property.
 class DYNAMIC_GRAPH_DLLAPI FactoryStorage : private boost::noncopyable {
-public:
+ public:
   /// \brief Function pointer providing an entity instance from its
   /// name.
   typedef Entity *(*EntityConstructor_ptr)(const std::string &);
@@ -151,7 +150,7 @@ public:
   /// \param list Available entities will be appended to list.
   void listEntities(std::vector<std::string> &list) const;
 
-private:
+ private:
   /// \brief Constructor the factory.
   ///
   /// After the initialization, no entities will be available.
@@ -183,7 +182,7 @@ private:
 /// DYNAMICGRAPH_FACTORY_ENTITY_PLUGIN macro and is of little interest
 /// by itself.
 class DYNAMIC_GRAPH_DLLAPI EntityRegisterer : private boost::noncopyable {
-public:
+ public:
   /// \brief Register entity to the global factory.
   explicit EntityRegisterer(const std::string &entityClassName,
                             FactoryStorage::EntityConstructor_ptr maker);
@@ -191,13 +190,13 @@ public:
   /// \brief Unregister entity to the global factory.
   ~EntityRegisterer();
 
-private:
+ private:
   /// \brief Name of the entity registered when the instance has
   /// been initialized.
   const std::string entityName;
 };
-} // end of namespace dynamicgraph
+}  // end of namespace dynamicgraph
 
-#endif //! DYNAMIC_GRAPH_FACTORY_HH
+#endif  //! DYNAMIC_GRAPH_FACTORY_HH
 
 //  LocalWords:  unregister

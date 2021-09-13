@@ -1,10 +1,6 @@
 // Copyright 2010 Thomas Moulard.
 //
 
-#include <string>
-
-#include <boost/foreach.hpp>
-
 #include <dynamic-graph/debug.h>
 #include <dynamic-graph/entity.h>
 #include <dynamic-graph/factory.h>
@@ -13,7 +9,10 @@
 #include <dynamic-graph/signal-ptr.h>
 #include <dynamic-graph/signal-time-dependent.h>
 #include <dynamic-graph/signal.h>
+
+#include <boost/foreach.hpp>
 #include <iostream>
+#include <string>
 
 #if BOOST_VERSION >= 105900
 #include <boost/test/tools/output_test_stream.hpp>
@@ -32,8 +31,9 @@ typedef dynamicgraph::SignalTimeDependent<std::string, int> sigString_t;
 using namespace dynamicgraph;
 using std::cout;
 
-template <class T> class DummyClass {
-public:
+template <class T>
+class DummyClass {
+ public:
   std::string proname;
   std::list<sigDouble_t *> inputsig;
   std::list<sigString_t *> inputsigV;
@@ -65,17 +65,22 @@ public:
   int timedata;
 };
 
-template <> double DummyClass<double>::operator()() {
+template <>
+double DummyClass<double>::operator()() {
   res = call * timedata;
   return res;
 }
-template <> std::string DummyClass<std::string>::operator()() {
+template <>
+std::string DummyClass<std::string>::operator()() {
   std::ostringstream oss;
   oss << call * timedata;
   return oss.str();
 }
 
-template <class T> T DummyClass<T>::operator()() { return this->res; }
+template <class T>
+T DummyClass<T>::operator()() {
+  return this->res;
+}
 
 BOOST_AUTO_TEST_CASE(normal_cst_test) {
   SignalPtr<double, int> sigNotPlug(NULL, "sigNotPlug");

@@ -5,6 +5,7 @@
 #include <dynamic-graph/exception-factory.h>
 #include <dynamic-graph/factory.h>
 #include <dynamic-graph/pool.h>
+
 #include <sstream>
 
 #define BOOST_TEST_MODULE customEntity

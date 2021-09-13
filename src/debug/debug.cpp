@@ -8,6 +8,7 @@
  */
 
 #include <dynamic-graph/debug.h>
+
 #include <fstream>
 #include <ios>
 
@@ -32,7 +33,7 @@ std::ofstream dg_debugfile("/tmp/dynamic-graph-traces.txt",
 #else
 std::ofstream dg_debugfile;
 class dgDebug_init {
-public:
+ public:
   dgDebug_init() { dg_debugfile.setstate(std::ios::failbit); }
 };
 dgDebug_init dgDebug_initialisator;
@@ -42,11 +43,10 @@ dgDebug_init dgDebug_initialisator;
 namespace dynamicgraph {
 DebugTrace dgDEBUGFLOW(dg_debugfile);
 DebugTrace dgERRORFLOW(dg_debugfile);
-} // namespace dynamicgraph
+}  // namespace dynamicgraph
 
 void DebugTrace::openFile(const char *filename) {
-  if (dg_debugfile.good() && dg_debugfile.is_open())
-    dg_debugfile.close();
+  if (dg_debugfile.good() && dg_debugfile.is_open()) dg_debugfile.close();
   dg_debugfile.clear();
   dg_debugfile.open(filename, std::ios::trunc & std::ios::out);
 }
