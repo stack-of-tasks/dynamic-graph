@@ -317,6 +317,6 @@ BOOST_AUTO_TEST_CASE(set_signal_string) {
     s.set(value);
   } catch (const std::exception &exc) {
     std::cout << exc.what() << std::endl;
-    BOOST_CHECK(!"Tentative to set signal to empty string");
+    BOOST_CHECK(!(bool)("Tentative to set signal to empty string"));
   }
 }
