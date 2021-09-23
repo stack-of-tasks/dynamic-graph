@@ -7,14 +7,12 @@
 #ifndef DYNAMIC_GRAPH_EIGEN_IO_H
 #define DYNAMIC_GRAPH_EIGEN_IO_H
 
-#include <boost/format.hpp>
-#include <boost/numeric/conversion/cast.hpp>
-#pragma GCC diagnostic push
-#pragma GCC system_header
-#include <Eigen/Geometry>
-#pragma GCC diagnostic pop
 #include <dynamic-graph/exception-signal.h>
 #include <dynamic-graph/linear-algebra.h>
+
+#include <Eigen/Geometry>
+#include <boost/format.hpp>
+#include <boost/numeric/conversion/cast.hpp>
 
 using dynamicgraph::ExceptionSignal;
 
