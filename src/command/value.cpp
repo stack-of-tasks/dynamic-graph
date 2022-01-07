@@ -22,7 +22,9 @@ EitherType::~EitherType() {
 
 EitherType::operator bool() const { return value_->boolValue(); }
 EitherType::operator unsigned() const { return value_->unsignedValue(); }
+EitherType::operator unsigned long int() const { return value_->unsignedlongintValue(); }
 EitherType::operator int() const { return value_->intValue(); }
+EitherType::operator long int() const { return value_->longintValue(); }
 EitherType::operator float() const { return value_->floatValue(); }
 EitherType::operator double() const { return value_->doubleValue(); }
 EitherType::operator std::string() const { return value_->stringValue(); }
@@ -40,8 +42,14 @@ void Value::deleteValue() {
     case UNSIGNED:
       delete (const unsigned *)value_;
       break;
+    case UNSIGNEDLONGINT:
+      delete (const unsigned long int*)value_;
+      break;
     case INT:
       delete (const int *)value_;
+      break;
+    case LONGINT:
+      delete (const long int *)value_;
       break;
     case FLOAT:
       delete (const float *)value_;
@@ -64,7 +72,9 @@ void Value::deleteValue() {
     case VALUES:
       delete (const Values *)value_;
       break;
-    default:;
+    default:
+      throw "Value::deleteValue : Undefined type";
+      ;
   }
 }
 
@@ -73,6 +83,8 @@ Value::~Value() { deleteValue(); }
 Value::Value(const bool &value) : type_(BOOL), value_(new bool(value)) {}
 Value::Value(const unsigned &value)
     : type_(UNSIGNED), value_(new unsigned(value)) {}
+Value::Value(const unsigned long &value)
+    : type_(UNSIGNED), value_(new unsigned long(value)) {}
 Value::Value(const int &value) : type_(INT), value_(new int(value)) {}
 Value::Value(const float &value) : type_(FLOAT), value_(new float(value)) {}
 Value::Value(const double &value) : type_(DOUBLE), value_(new double(value)) {}
@@ -91,6 +103,7 @@ Value::Value(const Value &value)
 void *copyValue(const Value &value) {
   void *copy;
   switch (value.type()) {
+
     case Value::NONE:
       copy = NULL;
       break;
@@ -100,8 +113,14 @@ void *copyValue(const Value &value) {
     case Value::UNSIGNED:
       copy = new unsigned(value.unsignedValue());
       break;
+    case Value::UNSIGNEDLONGINT:
+      copy = new unsigned long int(value.unsignedlongintValue());
+      break;
     case Value::INT:
       copy = new int(value.intValue());
+      break;
+    case Value::LONGINT:
+      copy = new long int(value.longintValue());
       break;
     case Value::FLOAT:
       copy = new float(value.floatValue());
@@ -149,6 +168,8 @@ bool Value::operator==(const Value &other) const {
       return boolValue() == other.boolValue();
     case Value::UNSIGNED:
       return unsignedValue() == other.unsignedValue();
+    case Value::UNSIGNEDLONGINT:
+      return unsignedlongintValue() == other.unsignedlongintValue();
     case Value::INT:
       return intValue() == other.intValue();
     case Value::DOUBLE:
@@ -188,9 +209,23 @@ unsigned Value::unsignedValue() const {
                           "value is not an unsigned int");
 }
 
+unsigned long int Value::unsignedlongintValue() const {
+  if (type_ == UNSIGNEDLONGINT)
+    return *((const unsigned long int*)value_);
+  throw ExceptionAbstract(ExceptionAbstract::TOOLS,
+                          "value is not an unsigned long int");
+}
+
+long int Value::longintValue() const {
+  if (type_ == LONGINT)
+    return *((const long int *)value_);
+  throw ExceptionAbstract(ExceptionAbstract::TOOLS, "value is not an long int");
+}
+
 int Value::intValue() const {
-  if (type_ == INT) return *((const int *)value_);
-  throw ExceptionAbstract(ExceptionAbstract::TOOLS, "value is not an int int");
+  if (type_ == INT)
+    return *((const int *)value_);
+  throw ExceptionAbstract(ExceptionAbstract::TOOLS, "value is not an int");
 }
 
 float Value::floatValue() const {
@@ -249,6 +284,8 @@ std::string Value::typeName(Type type) {
       return std::string("bool");
     case UNSIGNED:
       return std::string("unsigned int");
+    case UNSIGNEDLONGINT:
+      return std::string("unsigned long int");
     case INT:
       return std::string("int");
     case FLOAT:
@@ -278,6 +315,9 @@ std::ostream &operator<<(std::ostream &os, const Value &value) {
       break;
     case Value::UNSIGNED:
       os << value.unsignedValue();
+      break;
+    case Value::UNSIGNEDLONGINT:
+      os << value.unsignedlongintValue();
       break;
     case Value::INT:
       os << value.intValue();
@@ -309,24 +349,20 @@ std::ostream &operator<<(std::ostream &os, const Value &value) {
     } break;
     default:
       return os;
+
   }
   return os;
 }
 
-template <>
-const Value::Type ValueHelper<bool>::TypeID = Value::BOOL;
-template <>
-const Value::Type ValueHelper<unsigned>::TypeID = Value::UNSIGNED;
-template <>
-const Value::Type ValueHelper<int>::TypeID = Value::INT;
-template <>
-const Value::Type ValueHelper<float>::TypeID = Value::FLOAT;
-template <>
-const Value::Type ValueHelper<double>::TypeID = Value::DOUBLE;
-template <>
-const Value::Type ValueHelper<std::string>::TypeID = Value::STRING;
-template <>
-const Value::Type ValueHelper<Vector>::TypeID = Value::VECTOR;
+template <> const Value::Type ValueHelper<bool>::TypeID = Value::BOOL;
+template <> const Value::Type ValueHelper<unsigned>::TypeID = Value::UNSIGNED;
+template <> const Value::Type ValueHelper<unsigned long int>::TypeID = Value::UNSIGNEDLONGINT;
+template <> const Value::Type ValueHelper<int>::TypeID = Value::INT;
+template <> const Value::Type ValueHelper<float>::TypeID = Value::FLOAT;
+template <> const Value::Type ValueHelper<double>::TypeID = Value::DOUBLE;
+template <> const Value::Type ValueHelper<std::string>::TypeID = Value::STRING;
+template <> const Value::Type ValueHelper<Vector>::TypeID = Value::VECTOR;
+
 template <>
 const Value::Type ValueHelper<Eigen::MatrixXd>::TypeID = Value::MATRIX;
 template <>

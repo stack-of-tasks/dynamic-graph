@@ -27,7 +27,9 @@ class DYNAMIC_GRAPH_DLLAPI EitherType {
   ~EitherType();
   operator bool() const;
   operator unsigned() const;
+  operator unsigned long int () const;
   operator int() const;
+  operator long int() const;
   operator float() const;
   operator double() const;
   operator std::string() const;
@@ -51,7 +53,9 @@ class DYNAMIC_GRAPH_DLLAPI Value {
     NONE,
     BOOL,
     UNSIGNED,
+    UNSIGNEDLONGINT,
     INT,
+    LONGINT,
     FLOAT,
     DOUBLE,
     STRING,
@@ -65,7 +69,9 @@ class DYNAMIC_GRAPH_DLLAPI Value {
   void deleteValue();
   explicit Value(const bool &value);
   explicit Value(const unsigned &value);
+  explicit Value(const unsigned long &value);
   explicit Value(const int &value);
+  explicit Value(const long int &value);
   explicit Value(const float &value);
   explicit Value(const double &value);
   explicit Value(const std::string &value);
@@ -107,7 +113,9 @@ class DYNAMIC_GRAPH_DLLAPI Value {
   friend class EitherType;
   bool boolValue() const;
   unsigned unsignedValue() const;
+  unsigned long unsignedlongintValue() const;
   int intValue() const;
+  long int longintValue() const;
   float floatValue() const;
   double doubleValue() const;
   std::string stringValue() const;
