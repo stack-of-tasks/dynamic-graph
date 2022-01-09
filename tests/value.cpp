@@ -81,7 +81,7 @@ BOOST_AUTO_TEST_CASE(value_exceptions) {
   }
   BOOST_CHECK(res);
   BOOST_CHECK(output.is_equal("Abstract"));
-  BOOST_CHECK(output2.is_equal("value is not an int int"));
+  BOOST_CHECK(output2.is_equal("value is not an int"));
 
   // Check if the exception is working when calling boolValue
   // while we are having a none.
