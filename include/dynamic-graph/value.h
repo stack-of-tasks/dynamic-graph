@@ -69,7 +69,7 @@ class DYNAMIC_GRAPH_DLLAPI Value {
   void deleteValue();
   explicit Value(const bool &value);
   explicit Value(const unsigned &value);
-  explicit Value(const unsigned long &value);
+  explicit Value(const unsigned long int&value);
   explicit Value(const int &value);
   explicit Value(const long int &value);
   explicit Value(const float &value);
@@ -113,7 +113,7 @@ class DYNAMIC_GRAPH_DLLAPI Value {
   friend class EitherType;
   bool boolValue() const;
   unsigned unsignedValue() const;
-  unsigned long unsignedlongintValue() const;
+  unsigned long int unsignedlongintValue() const;
   int intValue() const;
   long int longintValue() const;
   float floatValue() const;
