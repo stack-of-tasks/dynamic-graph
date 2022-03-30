@@ -129,4 +129,3 @@ stasse (3):
       Reinforce the dependant->dependent policy.     Merge the florent branch.     Makes the test_depend.cpp test works.
       Reinforce the dependant->dependent policy.
       Adding documentation to cmdPlug.
-

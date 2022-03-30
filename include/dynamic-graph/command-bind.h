@@ -283,8 +283,8 @@ struct CommandVoid4 : public Command {
   CommandVoid4(E &entity, function_t function, const std::string &docString)
       : Command(entity,
                 boost::assign::list_of(ValueHelper<T1>::TypeID)(
-                    ValueHelper<T2>::TypeID)(
-                    ValueHelper<T3>::TypeID)(ValueHelper<T4>::TypeID),
+                    ValueHelper<T2>::TypeID)(ValueHelper<T3>::TypeID)(
+                    ValueHelper<T4>::TypeID),
                 docString),
         fptr(function) {}
 
@@ -357,13 +357,11 @@ struct CommandVoid5 : public Command {
                                           const T4 &, const T5 &);
 
   CommandVoid5(E &entity, function_t function, const std::string &docString)
-      : Command(
-            entity,
-            boost::assign::list_of(ValueHelper<T1>::TypeID)(
-                ValueHelper<T2>::TypeID)(
-                ValueHelper<T3>::TypeID)(ValueHelper<T4>::TypeID)(ValueHelper<
-                                                                  T5>::TypeID),
-            docString),
+      : Command(entity,
+                boost::assign::list_of(ValueHelper<T1>::TypeID)(
+                    ValueHelper<T2>::TypeID)(ValueHelper<T3>::TypeID)(
+                    ValueHelper<T4>::TypeID)(ValueHelper<T5>::TypeID),
+                docString),
         fptr(function) {}
 
  protected:
@@ -444,15 +442,12 @@ struct CommandVoid6 : public Command {
                                           const T4 &, const T5 &, const T6 &);
 
   CommandVoid6(E &entity, function_t function, const std::string &docString)
-      : Command(
-            entity,
-            boost::assign::list_of(ValueHelper<T1>::TypeID)(
-                ValueHelper<T2>::TypeID)(
-                ValueHelper<T3>::TypeID)(ValueHelper<
-                                         T4>::TypeID)(ValueHelper<T5>::
-                                                          TypeID)(ValueHelper<
-                                                                  T6>::TypeID),
-            docString),
+      : Command(entity,
+                boost::assign::list_of(ValueHelper<T1>::TypeID)(
+                    ValueHelper<T2>::TypeID)(ValueHelper<T3>::TypeID)(
+                    ValueHelper<T4>::TypeID)(ValueHelper<T5>::TypeID)(
+                    ValueHelper<T6>::TypeID),
+                docString),
         fptr(function) {}
 
  protected:
@@ -536,17 +531,12 @@ struct CommandVoid7 : public Command {
                                           const T7 &);
 
   CommandVoid7(E &entity, function_t function, const std::string &docString)
-      : Command(
-            entity,
-            boost::assign::list_of(ValueHelper<T1>::TypeID)(
-                ValueHelper<T2>::TypeID)(
-                ValueHelper<T3>::
-                    TypeID)(ValueHelper<
-                            T4>::TypeID)(ValueHelper<T5>::
-                                             TypeID)(ValueHelper<T6>::
-                                                         TypeID)(ValueHelper<
-                                                                 T7>::TypeID),
-            docString),
+      : Command(entity,
+                boost::assign::list_of(ValueHelper<T1>::TypeID)(
+                    ValueHelper<T2>::TypeID)(ValueHelper<T3>::TypeID)(
+                    ValueHelper<T4>::TypeID)(ValueHelper<T5>::TypeID)(
+                    ValueHelper<T6>::TypeID)(ValueHelper<T7>::TypeID),
+                docString),
         fptr(function) {}
 
  protected:
@@ -633,20 +623,13 @@ struct CommandVoid8 : public Command {
                                           const T7 &, const T8 &);
 
   CommandVoid8(E &entity, function_t function, const std::string &docString)
-      : Command(
-            entity,
-            boost::assign::list_of(ValueHelper<T1>::TypeID)(
-                ValueHelper<T2>::TypeID)(
-                ValueHelper<T3>::
-                    TypeID)(ValueHelper<T4>::
-                                TypeID)(ValueHelper<T5>::
-                                            TypeID)(ValueHelper<T6>::
-                                                        TypeID)(ValueHelper<
-                                                                T7>::
-                                                                    TypeID)(ValueHelper<
-                                                                            T8>::
-                                                                                TypeID),
-            docString),
+      : Command(entity,
+                boost::assign::list_of(ValueHelper<T1>::TypeID)(
+                    ValueHelper<T2>::TypeID)(ValueHelper<T3>::TypeID)(
+                    ValueHelper<T4>::TypeID)(ValueHelper<T5>::TypeID)(
+                    ValueHelper<T6>::TypeID)(ValueHelper<T7>::TypeID)(
+                    ValueHelper<T8>::TypeID),
+                docString),
         fptr(function) {}
 
  protected:
