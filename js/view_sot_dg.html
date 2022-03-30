@@ -6,7 +6,7 @@
    <script>
      function renderDOTFile() {
        var fileInputElement = document.getElementById("fileInputElement");
-     
+
        var reader = new FileReader();
        var graphtextres = ""
        reader.onloadend = function(e) {
@@ -27,7 +27,7 @@
          .catch(error => {
           // Create a new Viz instance (@see Caveats page for more info)
           viz = new Viz();
-     
+
           // Possibly display the error
           console.error(error);
           });
@@ -37,7 +37,7 @@
 
 
    </script>
-   <input type="file" id="fileInputElement">   
+   <input type="file" id="fileInputElement">
    <input id="Rendering" type="button" value="Rendering" onclick="renderDOTFile();" />
    <script>
      var el = document.getElementById("Rendering");
@@ -49,4 +49,3 @@
 </body>
 
 </html>
-
