@@ -1,0 +1,32 @@
+# pre-commit: details (Guilhem Saurel, 2022-04-14)
+1c0f3cc1048a8b2a8206510a51a237b2f1e68a34
+
+# pre-commit run -a (Guilhem Saurel, 2022-03-30)
+0c1e6fb50735d4d6cc93e15d3bef202392d47c5b
+
+# clang format defaults + pre-commit (Guilhem Saurel, 2022-03-30)
+b6fc5d81e645a84fa8f4d656371adfb27c2b2b23
+
+# [value] Clang format. (Olivier Stasse, 2022-01-09)
+b852eef0d56de04ae91a43b1ddbd837ec69ddbe6
+
+# linters: fix clang-check-12 (Guilhem Saurel, 2021-09-14)
+ca1b2fc51540b4fcb2cd0b4fccaa33b02738af41
+
+# reformat for clang-format-12 (Guilhem Saurel, 2021-09-07)
+ed5899076b7b11c16d9517295e3826dd9b9d80d2
+
+# format (Guilhem Saurel, 2020-11-13)
+c54add29f80f6bcd1d05ca741d472491cf74c180
+
+# format (Guilhem Saurel, 2020-07-22)
+f4def3bfeaf0f9c9a6d5c5eb01c3a3b2fbb04b2f
+
+# clang format. (Olivier Stasse, 2020-02-03)
+70864112c87365af645f0404f881edf36c1ec734
+
+# [clang] Update format. (Olivier Stasse, 2019-08-26)
+384b2078e4962d762db4293bf3396be17df4e5c7
+
+# [clang-format] Comply to Google style. (Olivier Stasse, 2019-08-20)
+df48199dd436ba8341ae93c7b1f87eb30d0f457a
