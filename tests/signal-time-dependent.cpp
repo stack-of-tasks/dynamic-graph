@@ -34,11 +34,9 @@ class DummyClass {
     ++call;
     timedata = t;
 
-    BOOST_FOREACH (sigDouble_t *ptr, inputsig)
-      ptr->access(timedata);
+    BOOST_FOREACH (sigDouble_t *ptr, inputsig) ptr->access(timedata);
 
-    BOOST_FOREACH (sigString_t *ptr, inputsigV)
-      ptr->access(timedata);
+    BOOST_FOREACH (sigString_t *ptr, inputsigV) ptr->access(timedata);
 
     res = (*this)();
     return res;
