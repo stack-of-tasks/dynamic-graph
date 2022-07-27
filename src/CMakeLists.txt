@@ -1,23 +1,24 @@
-SET(CMAKE_BUILD_WITH_INSTALL_RPATH TRUE)
+set(CMAKE_BUILD_WITH_INSTALL_RPATH TRUE)
 
-SET(plugins
-  traces/tracer
-  traces/tracer-real-time
-  )
+set(plugins traces/tracer traces/tracer-real-time)
 
-SET(tracer-real-time_deps tracer)
+set(tracer-real-time_deps tracer)
 
-FOREACH(plugin ${plugins})
-  GET_FILENAME_COMPONENT(LIBRARY_NAME ${plugin} NAME)
-  ADD_LIBRARY(${LIBRARY_NAME} SHARED "${plugin}.cpp")
+foreach(plugin ${plugins})
+  get_filename_component(LIBRARY_NAME ${plugin} NAME)
+  add_library(${LIBRARY_NAME} SHARED "${plugin}.cpp")
 
-  IF(SUFFIX_SO_VERSION)
-    SET_TARGET_PROPERTIES(${LIBRARY_NAME} PROPERTIES SOVERSION ${PROJECT_VERSION})
-  ENDIF(SUFFIX_SO_VERSION)
-  SET_TARGET_PROPERTIES(${LIBRARY_NAME} PROPERTIES INSTALL_RPATH $ORIGIN)
+  if(SUFFIX_SO_VERSION)
+    set_target_properties(${LIBRARY_NAME} PROPERTIES SOVERSION
+                                                     ${PROJECT_VERSION})
+  endif(SUFFIX_SO_VERSION)
+  set_target_properties(${LIBRARY_NAME} PROPERTIES INSTALL_RPATH $ORIGIN)
 
-  TARGET_LINK_LIBRARIES(${LIBRARY_NAME} PUBLIC ${PROJECT_NAME} ${${LIBRARY_NAME}_deps})
+  target_link_libraries(${LIBRARY_NAME} PUBLIC ${PROJECT_NAME}
+                                               ${${LIBRARY_NAME}_deps})
 
-  INSTALL(TARGETS ${LIBRARY_NAME} EXPORT ${TARGETS_EXPORT_NAME}
+  install(
+    TARGETS ${LIBRARY_NAME}
+    EXPORT ${TARGETS_EXPORT_NAME}
     DESTINATION ${DYNAMIC_GRAPH_PLUGINDIR})
-ENDFOREACH(plugin)
+endforeach(plugin)
