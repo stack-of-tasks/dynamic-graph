@@ -59,7 +59,7 @@ enum MsgType {
 
 namespace dynamicgraph {
 
-//#define LOGGER_VERBOSITY_INFO_WARNING_ERROR
+// #define LOGGER_VERBOSITY_INFO_WARNING_ERROR
 #define LOGGER_VERBOSITY_ALL
 
 #define SEND_MSG(msg, type) \
