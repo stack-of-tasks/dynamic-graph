@@ -61,7 +61,7 @@ void Entity::signalRegistration(const SignalArray<int> &signals) {
     SignalBase<int> &sig = signals[i];
     // const string& signame = sig.getName ();
     istringstream iss(sig.getName());
-    const int SIZE = 128;
+    const int SIZE = 4096;
     char buffer[SIZE];
     while (iss.good()) {
       iss.getline(buffer, SIZE, ':');
