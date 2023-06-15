@@ -26,10 +26,10 @@ class DYNAMIC_GRAPH_DLLAPI EitherType {
   EitherType(const Value &value);
   ~EitherType();
   operator bool() const;
-  operator unsigned() const;
-  operator unsigned long int() const;
-  operator int() const;
-  operator long int() const;
+  operator uint32_t() const;
+  operator uint64_t() const;
+  operator int32_t() const;
+  operator int64_t() const;
   operator float() const;
   operator double() const;
   operator std::string() const;
@@ -68,10 +68,10 @@ class DYNAMIC_GRAPH_DLLAPI Value {
   ~Value();
   void deleteValue();
   explicit Value(const bool &value);
-  explicit Value(const unsigned &value);
-  explicit Value(const unsigned long int &value);
-  explicit Value(const int &value);
-  explicit Value(const long int &value);
+  explicit Value(const uint32_t &value);
+  explicit Value(const uint64_t &value);
+  explicit Value(const int32_t &value);
+  explicit Value(const int64_t &value);
   explicit Value(const float &value);
   explicit Value(const double &value);
   explicit Value(const std::string &value);
@@ -112,10 +112,10 @@ class DYNAMIC_GRAPH_DLLAPI Value {
  public:
   friend class EitherType;
   bool boolValue() const;
-  unsigned unsignedValue() const;
-  unsigned long int unsignedlongintValue() const;
-  int intValue() const;
-  long int longintValue() const;
+  uint32_t unsignedValue() const;
+  uint64_t unsignedlongintValue() const;
+  int32_t intValue() const;
+  int64_t longintValue() const;
   float floatValue() const;
   double doubleValue() const;
   std::string stringValue() const;

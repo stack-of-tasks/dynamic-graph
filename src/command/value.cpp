@@ -21,12 +21,12 @@ EitherType::~EitherType() {
 }
 
 EitherType::operator bool() const { return value_->boolValue(); }
-EitherType::operator unsigned() const { return value_->unsignedValue(); }
-EitherType::operator unsigned long int() const {
+EitherType::operator uint32_t() const { return value_->unsignedValue(); }
+EitherType::operator uint64_t() const {
   return value_->unsignedlongintValue();
 }
-EitherType::operator int() const { return value_->intValue(); }
-EitherType::operator long int() const { return value_->longintValue(); }
+EitherType::operator int32_t() const { return value_->intValue(); }
+EitherType::operator int64_t() const { return value_->longintValue(); }
 EitherType::operator float() const { return value_->floatValue(); }
 EitherType::operator double() const { return value_->doubleValue(); }
 EitherType::operator std::string() const { return value_->stringValue(); }
@@ -42,16 +42,16 @@ void Value::deleteValue() {
       delete (const bool *)value_;
       break;
     case UNSIGNED:
-      delete (const unsigned *)value_;
+      delete (const uint32_t *)value_;
       break;
     case UNSIGNEDLONGINT:
-      delete (const unsigned long int *)value_;
+      delete (const uint64_t *)value_;
       break;
     case INT:
-      delete (const int *)value_;
+      delete (const int32_t *)value_;
       break;
     case LONGINT:
-      delete (const long int *)value_;
+      delete (const int64_t *)value_;
       break;
     case FLOAT:
       delete (const float *)value_;
@@ -85,11 +85,13 @@ void Value::deleteValue() {
 Value::~Value() { deleteValue(); }
 
 Value::Value(const bool &value) : type_(BOOL), value_(new bool(value)) {}
-Value::Value(const unsigned &value)
-    : type_(UNSIGNED), value_(new unsigned(value)) {}
-Value::Value(const unsigned long int &value)
-    : type_(UNSIGNEDLONGINT), value_(new unsigned long int(value)) {}
-Value::Value(const int &value) : type_(INT), value_(new int(value)) {}
+Value::Value(const uint32_t &value)
+    : type_(UNSIGNED), value_(new uint32_t(value)) {}
+Value::Value(const uint64_t &value)
+    : type_(UNSIGNEDLONGINT), value_(new uint64_t(value)) {}
+Value::Value(const int32_t &value) : type_(INT), value_(new int32_t(value)) {}
+Value::Value(const int64_t &value) : type_(LONGINT), value_(new int64_t(value))
+{}
 Value::Value(const float &value) : type_(FLOAT), value_(new float(value)) {}
 Value::Value(const double &value) : type_(DOUBLE), value_(new double(value)) {}
 Value::Value(const std::string &value)
@@ -206,25 +208,25 @@ bool Value::boolValue() const {
   throw ExceptionAbstract(ExceptionAbstract::TOOLS, "value is not an bool");
 }
 
-unsigned Value::unsignedValue() const {
-  if (type_ == UNSIGNED) return *((const unsigned *)value_);
+uint32_t Value::unsignedValue() const {
+  if (type_ == UNSIGNED) return *((const uint32_t *)value_);
   throw ExceptionAbstract(ExceptionAbstract::TOOLS,
                           "value is not an unsigned int");
 }
 
-unsigned long int Value::unsignedlongintValue() const {
-  if (type_ == UNSIGNEDLONGINT) return *((const unsigned long int *)value_);
+uint64_t Value::unsignedlongintValue() const {
+  if (type_ == UNSIGNEDLONGINT) return *((const uint64_t *)value_);
   throw ExceptionAbstract(ExceptionAbstract::TOOLS,
                           "value is not an unsigned long int");
 }
 
-long int Value::longintValue() const {
-  if (type_ == LONGINT) return *((const long int *)value_);
+int64_t Value::longintValue() const {
+  if (type_ == LONGINT) return *((const int64_t *)value_);
   throw ExceptionAbstract(ExceptionAbstract::TOOLS, "value is not an long int");
 }
 
-int Value::intValue() const {
-  if (type_ == INT) return *((const int *)value_);
+int32_t Value::intValue() const {
+  if (type_ == INT) return *((const int32_t *)value_);
   throw ExceptionAbstract(ExceptionAbstract::TOOLS, "value is not an int");
 }
 
@@ -356,12 +358,14 @@ std::ostream &operator<<(std::ostream &os, const Value &value) {
 template <>
 const Value::Type ValueHelper<bool>::TypeID = Value::BOOL;
 template <>
-const Value::Type ValueHelper<unsigned>::TypeID = Value::UNSIGNED;
+const Value::Type ValueHelper<uint32_t>::TypeID = Value::UNSIGNED;
 template <>
-const Value::Type ValueHelper<unsigned long int>::TypeID =
+const Value::Type ValueHelper<uint64_t>::TypeID =
     Value::UNSIGNEDLONGINT;
 template <>
-const Value::Type ValueHelper<int>::TypeID = Value::INT;
+const Value::Type ValueHelper<int32_t>::TypeID = Value::INT;
+template <>
+const Value::Type ValueHelper<int64_t>::TypeID = Value::LONGINT;
 template <>
 const Value::Type ValueHelper<float>::TypeID = Value::FLOAT;
 template <>
