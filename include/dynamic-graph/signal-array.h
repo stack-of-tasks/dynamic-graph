@@ -147,7 +147,7 @@ SignalArray<Time> operator<<(SignalBase<Time> &sig1, SignalBase<Time> &sig2) {
   return res;
 }
 
-DYNAMIC_GRAPH_DLLAPI extern SignalArray<int> sotNOSIGNAL;
+DYNAMIC_GRAPH_DLLAPI extern SignalArray<sigtime_t> sotNOSIGNAL;
 
 }  // end of namespace dynamicgraph.
 

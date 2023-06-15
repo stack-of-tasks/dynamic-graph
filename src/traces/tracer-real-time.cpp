@@ -112,7 +112,7 @@ TracerRealTime::TracerRealTime(const std::string &n)
 /* --------------------------------------------------------------------- */
 /* --------------------------------------------------------------------- */
 
-void TracerRealTime::openFile(const SignalBase<int> &sig,
+void TracerRealTime::openFile(const SignalBase<sigtime_t> &sig,
                               const std::string &givenname) {
   dgDEBUGIN(15);
   string signame;
@@ -229,7 +229,7 @@ void TracerRealTime::emptyBuffers() {
 }
 
 void TracerRealTime::recordSignal(std::ostream &os,
-                                  const SignalBase<int> &sig) {
+                                  const SignalBase<sigtime_t> &sig) {
   dgDEBUGIN(15);
 
   try {

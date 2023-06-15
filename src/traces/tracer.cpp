@@ -44,9 +44,9 @@ Tracer::Tracer(const std::string n)
       names(),
       play(false),
       timeStart(0),
-      triger(boost::bind(&Tracer::recordTrigger, this, _1, _2), sotNOSIGNAL,
-             "Tracer(" + n + ")::triger") {
+      triger("Tracer(" + n + ")::triger") {
   signalRegistration(triger);
+  triger.setFunction(boost::bind(&Tracer::recordTrigger, this, _1, _2));
 
   /* --- Commands --- */
   {
@@ -85,10 +85,10 @@ Tracer::Tracer(const std::string n)
 
     addCommand("getTimeStart",
                makeDirectGetter(*this, &timeStart,
-                                docDirectGetter("timeStart", "int")));
+                                docDirectGetter("timeStart", "long int")));
     addCommand("setTimeStart",
                makeDirectSetter(*this, &timeStart,
-                                docDirectSetter("timeStart", "int")));
+                                docDirectSetter("timeStart", "long int")));
   }  // using namespace command
 }
 
@@ -96,7 +96,7 @@ Tracer::Tracer(const std::string n)
 /* --------------------------------------------------------------------- */
 /* --------------------------------------------------------------------- */
 
-void Tracer::addSignalToTrace(const SignalBase<int> &sig,
+void Tracer::addSignalToTrace(const SignalBase<sigtime_t> &sig,
                               const string &filename) {
   dgDEBUGIN(15);
   // openFile may throw so it should be called first.
@@ -112,7 +112,7 @@ void Tracer::addSignalToTraceByName(const string &signame,
                                     const string &filename) {
   dgDEBUGIN(15);
   istringstream iss(signame);
-  SignalBase<int> &sig = PoolStorage::getInstance()->getSignal(iss);
+  SignalBase<sigtime_t> &sig = PoolStorage::getInstance()->getSignal(iss);
   addSignalToTrace(sig, filename);
   dgDEBUGOUT(15);
 }
@@ -160,7 +160,7 @@ void Tracer::openFiles(const std::string &rootdir_,
   dgDEBUGOUT(15);
 }
 
-void Tracer::openFile(const SignalBase<int> &sig, const string &givenname) {
+void Tracer::openFile(const SignalBase<sigtime_t> &sig, const string &givenname) {
   dgDEBUGIN(15);
   string signame;
   if (givenname.length()) {
@@ -229,7 +229,7 @@ void Tracer::record() {
   dgDEBUGOUT(15);
 }
 
-void Tracer::recordSignal(std::ostream &os, const SignalBase<int> &sig) {
+void Tracer::recordSignal(std::ostream &os, const SignalBase<sigtime_t> &sig) {
   dgDEBUGIN(15);
 
   try {
@@ -247,7 +247,7 @@ void Tracer::recordSignal(std::ostream &os, const SignalBase<int> &sig) {
   dgDEBUGOUT(15);
 }
 
-int &Tracer::recordTrigger(int &dummy, const int &time) {
+sigtime_t &Tracer::recordTrigger(sigtime_t &dummy, const sigtime_t &time) {
   dgDEBUGIN(15) << "    time=" << time << endl;
   record();
   dgDEBUGOUT(15);

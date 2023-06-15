@@ -56,9 +56,9 @@ Entity::~Entity() {
 /* -------------------------------------------------------------------------- */
 /* --- SIGNALS -------------------------------------------------------------- */
 /* -------------------------------------------------------------------------- */
-void Entity::signalRegistration(const SignalArray<int> &signals) {
+void Entity::signalRegistration(const SignalArray<sigtime_t> &signals) {
   for (unsigned int i = 0; i < signals.getSize(); ++i) {
-    SignalBase<int> &sig = signals[i];
+    SignalBase<sigtime_t> &sig = signals[i];
     // const string& signame = sig.getName ();
     istringstream iss(sig.getName());
     const int SIZE = 4096;
@@ -106,26 +106,30 @@ std::string Entity::getDocString() const {
   return docString;
 }
 
-#define __DG_ENTITY_GET_SIGNAL__(ITER_TYPE)                                  \
-  SignalMap::ITER_TYPE sigkey = signalMap.find(signame);                     \
-  if (sigkey == signalMap.end()) /* key does NOT exist */                    \
-  {                                                                          \
-    throw ExceptionFactory(ExceptionFactory::UNREFERED_SIGNAL,               \
-                           "The requested signal is not registered", ": %s", \
-                           signame.c_str());                                 \
-  }                                                                          \
-  return *(sigkey->second);
-
 bool Entity::hasSignal(const string &signame) const {
   return (!(signalMap.find(signame) == signalMap.end()));
 }
 
-SignalBase<int> &Entity::getSignal(const string &signame) {
-  __DG_ENTITY_GET_SIGNAL__(iterator);
+SignalBase<sigtime_t> &Entity::getSignal(const string &signame) {
+  SignalMap::iterator sigkey = signalMap.find(signame);
+  if (sigkey == signalMap.end()) /* key does NOT exist */
+  {
+    throw ExceptionFactory(ExceptionFactory::UNREFERED_SIGNAL,
+                           "The requested signal is not registered", ": %s",
+                           signame.c_str());
+  }
+  return *(sigkey->second);
 }
 
-const SignalBase<int> &Entity::getSignal(const string &signame) const {
-  __DG_ENTITY_GET_SIGNAL__(const_iterator);
+const SignalBase<sigtime_t> &Entity::getSignal(const string &signame) const {
+  SignalMap::const_iterator sigkey = signalMap.find(signame);
+  if (sigkey == signalMap.end()) /* key does NOT exist */
+  {
+    throw ExceptionFactory(ExceptionFactory::UNREFERED_SIGNAL,
+                           "The requested signal is not registered", ": %s",
+                           signame.c_str());
+  }
+  return *(sigkey->second);
 }
 
 std::ostream &Entity::displaySignalList(std::ostream &os) const {

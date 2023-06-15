@@ -21,12 +21,13 @@
 #include <boost/test/unit_test.hpp>
 
 using boost::test_tools::output_test_stream;
+typedef dynamicgraph::sigtime_t sigtime_t;
 
 struct MyEntity : public dynamicgraph::Entity {
   static const std::string CLASS_NAME;
 
-  dynamicgraph::SignalPtr<double, int> m_sigdSIN;
-  dynamicgraph::SignalTimeDependent<double, int> m_sigdTimeDepSOUT;
+  dynamicgraph::SignalPtr<double, sigtime_t> m_sigdSIN;
+  dynamicgraph::SignalTimeDependent<double, sigtime_t> m_sigdTimeDepSOUT;
 
   explicit MyEntity(const std::string &name)
       : Entity(name),
@@ -43,7 +44,7 @@ struct MyEntity : public dynamicgraph::Entity {
 
   virtual const std::string &getClassName() const { return CLASS_NAME; }
 
-  double &update(double &res, const int &inTime) {
+  double &update(double &res, const sigtime_t &inTime) {
     const double &aDouble = m_sigdSIN(inTime);
     res = aDouble;
     return res;
@@ -158,7 +159,7 @@ BOOST_AUTO_TEST_CASE(pool_display) {
   /// Test name of a valid signal.
   std::istringstream an_iss("MyEntityInst.in_double");
 
-  dg::SignalBase<int> &aSignal =
+  dg::SignalBase<sigtime_t> &aSignal =
       dg::PoolStorage::getInstance()->getSignal(an_iss);
 
   std::string aSignalName = aSignal.getName();

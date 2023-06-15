@@ -10,5 +10,5 @@
 #include <dynamic-graph/signal-array.h>
 
 namespace dynamicgraph {
-SignalArray<int> sotNOSIGNAL(0);
+SignalArray<sigtime_t> sotNOSIGNAL(0);
 }

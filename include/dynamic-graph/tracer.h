@@ -25,7 +25,7 @@ class DG_TRACER_DLLAPI Tracer : public Entity {
   DYNAMIC_GRAPH_ENTITY_DECL();
 
  protected:
-  typedef std::list<const SignalBase<int> *> SignalList;
+  typedef std::list<const SignalBase<sigtime_t> *> SignalList;
   SignalList toTraceSignals;
   std::mutex files_mtx;
 
@@ -53,13 +53,13 @@ class DG_TRACER_DLLAPI Tracer : public Entity {
   typedef std::list<std::string> NameList;
   NameList names;
   bool play;
-  int timeStart;
+  sigtime_t timeStart;
 
  public:
   Tracer(const std::string n);
   virtual ~Tracer() { closeFiles(); }
 
-  void addSignalToTrace(const SignalBase<int> &sig,
+  void addSignalToTrace(const SignalBase<sigtime_t> &sig,
                         const std::string &filename = "");
   void addSignalToTraceByName(const std::string &signame,
                               const std::string &filename = "");
@@ -70,7 +70,7 @@ class DG_TRACER_DLLAPI Tracer : public Entity {
   virtual void closeFiles();
 
  protected:
-  virtual void openFile(const SignalBase<int> &sig,
+  virtual void openFile(const SignalBase<sigtime_t> &sig,
                         const std::string &filename);
 
  public:
@@ -81,8 +81,8 @@ class DG_TRACER_DLLAPI Tracer : public Entity {
   double getFrequency() { return frequency; }
 
   void record();
-  virtual void recordSignal(std::ostream &os, const SignalBase<int> &sig);
-  int &recordTrigger(int &dummy, const int &time);
+  virtual void recordSignal(std::ostream &os, const SignalBase<sigtime_t> &sig);
+  sigtime_t &recordTrigger(sigtime_t &dummy, const sigtime_t &time);
 
   virtual void trace();
   void start() { play = true; }
@@ -90,7 +90,7 @@ class DG_TRACER_DLLAPI Tracer : public Entity {
 
  public:
   // SignalTrigerer<int> triger;
-  SignalTimeDependent<int, int> triger;
+  SignalTimeDependent<sigtime_t, sigtime_t> triger;
 
   /* --- DISPLAY --------------------------------------------------------- */
   DG_TRACER_DLLAPI friend std::ostream &operator<<(std::ostream &os,
