@@ -51,7 +51,7 @@ namespace dynamicgraph {
 /// DYNAMICGRAPH_FACTORY_ENTITY_PLUGIN macro in factory.h.
 class DYNAMIC_GRAPH_DLLAPI Entity : private boost::noncopyable {
  public:
-  typedef std::map<std::string, SignalBase<int> *> SignalMap;
+  typedef std::map<std::string, SignalBase<sigtime_t> *> SignalMap;
   typedef std::map<const std::string, command::Command *> CommandMap_t;
 
   explicit Entity(const std::string &name);
@@ -76,13 +76,13 @@ class DYNAMIC_GRAPH_DLLAPI Entity : private boost::noncopyable {
       \param signalName: Name of the signal
       \return A reference to the signal with a temporal dependency.
    */
-  SignalBase<int> &getSignal(const std::string &signalName);
+  SignalBase<sigtime_t> &getSignal(const std::string &signalName);
 
   /** \brief Provides a const reference to the signal named signalName.
       \param signalName: Name of the signal
       \return A const reference to the signal with a temporal dependency.
    */
-  const SignalBase<int> &getSignal(const std::string &signalName) const;
+  const SignalBase<sigtime_t> &getSignal(const std::string &signalName) const;
 
   /** \brief Display the list of signals of this entity in output stream os.
       \param os: the output stream where to display the list of signals.
@@ -108,9 +108,9 @@ class DYNAMIC_GRAPH_DLLAPI Entity : private boost::noncopyable {
    */
   virtual void display(std::ostream &os) const;
 
-  virtual SignalBase<int> *test() { return 0; }
+  virtual SignalBase<sigtime_t> *test() { return 0; }
 
-  virtual void test2(SignalBase<int> *) { return; }
+  virtual void test2(SignalBase<sigtime_t> *) { return; }
 
   const std::string &getCommandList() const;
 
@@ -168,7 +168,7 @@ class DYNAMIC_GRAPH_DLLAPI Entity : private boost::noncopyable {
   void entityRegistration();
   void entityDeregistration();
 
-  void signalRegistration(const SignalArray<int> &signals);
+  void signalRegistration(const SignalArray<sigtime_t> &signals);
   void signalDeregistration(const std::string &name);
 
   std::string name;

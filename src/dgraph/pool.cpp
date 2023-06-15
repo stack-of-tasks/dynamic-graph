@@ -138,10 +138,6 @@ void PoolStorage::clearPlugin(const std::string &name) {
 
 #include <dynamic-graph/entity.h>
 
-#ifdef WIN32
-#include <time.h>
-#endif /*WIN32*/
-
 void PoolStorage::writeGraph(const std::string &aFileName) {
   size_t IdxPointFound = aFileName.rfind(".");
   std::string tmp1 = aFileName.substr(0, IdxPointFound);
@@ -152,24 +148,9 @@ void PoolStorage::writeGraph(const std::string &aFileName) {
   else
     GenericName = tmp1;
 
-  /* Reading local time */
-  time_t ltime;
-  ltime = time(NULL);
-  struct tm ltimeformatted;
-#ifdef WIN32
-  localtime_s(&ltimeformatted, &ltime);
-#else
-  localtime_r(&ltime, &ltimeformatted);
-#endif /*WIN32*/
-
   /* Opening the file and writing the first comment. */
   std::ofstream GraphFile(aFileName.c_str(), std::ofstream::out);
   GraphFile << "/* This graph has been automatically generated. " << std::endl;
-  GraphFile << "   " << 1900 + ltimeformatted.tm_year
-            << " Month: " << 1 + ltimeformatted.tm_mon
-            << " Day: " << ltimeformatted.tm_mday
-            << " Time: " << ltimeformatted.tm_hour << ":"
-            << ltimeformatted.tm_min;
   GraphFile << " */" << std::endl;
   GraphFile << "digraph \"" << GenericName << "\" { ";
   GraphFile << "\t graph [ label=\"" << GenericName
@@ -219,7 +200,7 @@ static bool objectNameParser(std::istringstream &cmdparse, std::string &objName,
   return true;
 }
 
-SignalBase<int> &PoolStorage::getSignal(std::istringstream &sigpath) {
+SignalBase<sigtime_t> &PoolStorage::getSignal(std::istringstream &sigpath) {
   std::string objname, signame;
   if (!objectNameParser(sigpath, objname, signame)) {
     DG_THROW ExceptionFactory(ExceptionFactory::UNREFERED_SIGNAL,

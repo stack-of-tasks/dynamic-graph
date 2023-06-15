@@ -57,10 +57,10 @@ class DG_TRACERREALTIME_DLLAPI TracerRealTime : public Tracer {
   const int &getBufferSize() { return bufferSize; }
 
  protected:
-  virtual void openFile(const SignalBase<int> &sig,
+  virtual void openFile(const SignalBase<sigtime_t> &sig,
                         const std::string &filename);
 
-  virtual void recordSignal(std::ostream &os, const SignalBase<int> &sig);
+  virtual void recordSignal(std::ostream &os, const SignalBase<sigtime_t> &sig);
 
   typedef std::list<std::ofstream *> HardFileList;
   static const int BUFFER_SIZE_DEFAULT = 1048576;  //  1Mo

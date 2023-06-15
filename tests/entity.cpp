@@ -32,8 +32,8 @@ using boost::test_tools::output_test_stream;
 namespace dynamicgraph {
 class CustomEntity : public Entity {
  public:
-  dynamicgraph::SignalPtr<double, int> m_sigdSIN, m_sigdSIN2;
-  dynamicgraph::SignalTimeDependent<double, int> m_sigdTimeDepSOUT;
+  dynamicgraph::SignalPtr<double, sigtime_t> m_sigdSIN, m_sigdSIN2;
+  dynamicgraph::SignalTimeDependent<double, sigtime_t> m_sigdTimeDepSOUT;
 
   static const std::string CLASS_NAME;
   virtual const std::string &getClassName() const { return CLASS_NAME; }
@@ -65,7 +65,7 @@ class CustomEntity : public Entity {
     signalDeregistration("out_double");
   }
 
-  double &update(double &res, const int &inTime) {
+  double &update(double &res, const sigtime_t &inTime) {
     const double &aDouble = m_sigdSIN(inTime);
     res = aDouble;
     return res;
@@ -244,12 +244,13 @@ BOOST_AUTO_TEST_CASE(sendMsg) {
 }
 
 // WTF?
+typedef dynamicgraph::sigtime_t sigtime_t;
 BOOST_AUTO_TEST_CASE(wtf) {
   dynamicgraph::Entity &entity =
       dynamicgraph::PoolStorage::getInstance()->getEntity("my-entity");
 
   BOOST_CHECK_EQUAL(entity.test(),
-                    static_cast<dynamicgraph::SignalBase<int> *>(0));
+                    static_cast<dynamicgraph::SignalBase<sigtime_t> *>(0));
 
-  entity.test2(static_cast<dynamicgraph::SignalBase<int> *>(0));
+  entity.test2(static_cast<dynamicgraph::SignalBase<sigtime_t> *>(0));
 }

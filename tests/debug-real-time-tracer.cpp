@@ -28,9 +28,9 @@ namespace dynamicgraph {
 struct MyEntity : public dynamicgraph::Entity {
   static const std::string CLASS_NAME;
 
-  dynamicgraph::Signal<double, int> m_sigdSIN;
-  dynamicgraph::SignalTimeDependent<double, int> m_sigdTimeDepSOUT;
-  dynamicgraph::SignalTimeDependent<double, int> m_sigdTwoTimeDepSOUT;
+  dynamicgraph::Signal<double, sigtime_t> m_sigdSIN;
+  dynamicgraph::SignalTimeDependent<double, sigtime_t> m_sigdTimeDepSOUT;
+  dynamicgraph::SignalTimeDependent<double, sigtime_t> m_sigdTwoTimeDepSOUT;
 
   explicit MyEntity(const std::string &name)
       : Entity(name),
@@ -46,7 +46,7 @@ struct MyEntity : public dynamicgraph::Entity {
     signalRegistration(m_sigdSIN << m_sigdTimeDepSOUT << m_sigdTwoTimeDepSOUT);
   }
 
-  double &update(double &res, const int &inTime) {
+  double &update(double &res, const sigtime_t &inTime) {
     const double &aDouble = m_sigdSIN(inTime);
     res = aDouble;
     return res;
@@ -83,11 +83,11 @@ BOOST_AUTO_TEST_CASE(test_tracer) {
   atracer.addSignalToTraceByName("my-entity.out_double", "output");
 
   /// Add trace by name
-  SignalBase<int> &out_double = entity.getSignal("out_double");
-  SignalBase<int> &out_double_2 = entity.getSignal("out2double");
+  SignalBase<sigtime_t> &out_double = entity.getSignal("out_double");
+  SignalBase<sigtime_t> &out_double_2 = entity.getSignal("out2double");
 
-  Signal<double, int> &in_double =
-      *(dynamic_cast<Signal<double, int> *>(&entity.getSignal("in_double")));
+  Signal<double, sigtime_t> &in_double =
+      *(dynamic_cast<Signal<double, sigtime_t> *>(&entity.getSignal("in_double")));
 
   in_double.setConstant(1.5);
   atracer.start();
@@ -95,7 +95,7 @@ BOOST_AUTO_TEST_CASE(test_tracer) {
   std::string emptybuf_cmd_str("empty");
   command::Command *acmd = atracer.getNewStyleCommand(emptybuf_cmd_str);
   acmd->execute();
-  for (int i = 0; i < 1000; i++) {
+  for (sigtime_t i = 0; i < 1000; i++) {
     in_double.setTime(i);
     out_double.recompute(i);
     out_double_2.recompute(i);

@@ -27,10 +27,10 @@ namespace dynamicgraph {
 struct MyEntity : public dynamicgraph::Entity {
   static const std::string CLASS_NAME;
 
-  dynamicgraph::Signal<double, int> m_sigdSIN;
-  dynamicgraph::SignalTimeDependent<double, int> m_sigdTimeDepSOUT;
-  dynamicgraph::SignalTimeDependent<Vector, int> m_sigVTimeDepSOUT;
-  dynamicgraph::SignalTimeDependent<double, int> m_sigdTwoTimeDepSOUT;
+  dynamicgraph::Signal<double, sigtime_t> m_sigdSIN;
+  dynamicgraph::SignalTimeDependent<double, sigtime_t> m_sigdTimeDepSOUT;
+  dynamicgraph::SignalTimeDependent<Vector, sigtime_t> m_sigVTimeDepSOUT;
+  dynamicgraph::SignalTimeDependent<double, sigtime_t> m_sigdTwoTimeDepSOUT;
 
   explicit MyEntity(const std::string &name)
       : Entity(name),
@@ -56,13 +56,13 @@ struct MyEntity : public dynamicgraph::Entity {
 
   virtual const std::string &getClassName() const { return CLASS_NAME; }
 
-  double &update(double &res, const int &inTime) {
+  double &update(double &res, const sigtime_t &inTime) {
     const double &aDouble = m_sigdSIN(inTime);
     res = aDouble;
     return res;
   }
 
-  Vector &updateVector(Vector &res, const int &inTime) {
+  Vector &updateVector(Vector &res, const sigtime_t &inTime) {
     const double &aDouble = m_sigdSIN(inTime);
     res.resize(2);
     res << aDouble, 2 * aDouble;
@@ -71,6 +71,8 @@ struct MyEntity : public dynamicgraph::Entity {
 };
 DYNAMICGRAPH_FACTORY_ENTITY_PLUGIN(MyEntity, "MyEntity");
 }  // namespace dynamicgraph
+
+typedef dynamicgraph::sigtime_t sigtime_t;
 
 BOOST_AUTO_TEST_CASE(test_tracer) {
   using dynamicgraph::Vector;
@@ -96,14 +98,14 @@ BOOST_AUTO_TEST_CASE(test_tracer) {
   /// Add trace by name
   atracer.addSignalToTraceByName("my-entity.out_vector", "output-vector");
 
-  dynamicgraph::SignalBase<int> &aSignal = entity.getSignal("out2double");
+  dynamicgraph::SignalBase<sigtime_t> &aSignal = entity.getSignal("out2double");
 
-  dynamicgraph::Signal<double, int> &aSignalInt =
-      *(dynamic_cast<dynamicgraph::Signal<double, int> *>(
+  dynamicgraph::Signal<double, sigtime_t> &aSignalInt =
+      *(dynamic_cast<dynamicgraph::Signal<double, sigtime_t> *>(
           &entity.getSignal("in_double")));
 
-  dynamicgraph::Signal<Vector, int> &aSignalVector =
-      *(dynamic_cast<dynamicgraph::Signal<Vector, int> *>(
+  dynamicgraph::Signal<Vector, sigtime_t> &aSignalVector =
+      *(dynamic_cast<dynamicgraph::Signal<Vector, sigtime_t> *>(
           &entity.getSignal("out_vector")));
 
   /// Add trace by signal object
@@ -113,7 +115,7 @@ BOOST_AUTO_TEST_CASE(test_tracer) {
 
   atracer.start();
 
-  for (int i = 0; i < 1000; i++) {
+  for (sigtime_t i = 0; i < 1000; i++) {
     aSignal.setTime(i);
     aSignalInt.access(i);
     aSignalInt.setTime(i);

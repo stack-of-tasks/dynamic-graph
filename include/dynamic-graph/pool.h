@@ -91,7 +91,7 @@ class DYNAMIC_GRAPH_DLLAPI PoolStorage {
   /// \brief Get a signal by name
   ///
   /// \param sigpath stream containing a string of the form "entity.signal"
-  SignalBase<int> &getSignal(std::istringstream &sigpath);
+  SignalBase<sigtime_t> &getSignal(std::istringstream &sigpath);
 
   /*! \brief This method write a graph description on the file named
       FileName. */
