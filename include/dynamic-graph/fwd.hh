@@ -9,7 +9,7 @@
 
 namespace dynamicgraph {
 // Set a typedef for signal time type
-typedef int sigtime_t;
+typedef int64_t sigtime_t;
 
 // to be replace by std:: when we switch to C++11 and later
 using boost::const_pointer_cast;
