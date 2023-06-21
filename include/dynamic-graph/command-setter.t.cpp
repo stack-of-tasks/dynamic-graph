@@ -87,6 +87,41 @@ Value Setter<E, unsigned>::doExecute() {
 }
 
 //
+// Template specialization: unsigned long
+//
+template <class E>
+class Setter<E, unsigned long> : public Command {
+ public:
+  /// Pointer to method that sets parameter of type unsigned long
+  typedef void (E::*SetterMethod)(const unsigned long &);
+  /// Constructor
+  Setter(E &entity, SetterMethod setterMethod, const std::string &docString);
+
+ protected:
+  virtual Value doExecute();
+
+ private:
+  SetterMethod setterMethod_;
+};  // Class Setter
+
+template <class E>
+Setter<E, unsigned long>::Setter(E &entity, SetterMethod setterMethod,
+                            const std::string &docString)
+    : Command(entity, boost::assign::list_of(Value::UNSIGNEDLONGINT),
+              docString),
+      setterMethod_(setterMethod) {}
+
+template <class E>
+Value Setter<E, unsigned long>::doExecute() {
+  const std::vector<Value> &values = getParameterValues();
+  // Get parameter
+  unsigned long value = values[0].value();
+  E &entity = static_cast<E &>(owner());
+  (entity.*setterMethod_)(value);
+  return Value();
+}
+
+//
 // Template specialization: int
 //
 template <class E>
