@@ -90,13 +90,6 @@ BOOST_AUTO_TEST_CASE(test_base) {
   }
   BOOST_CHECK(res);
 
-  res = false;
-  try {
-    /// Check signal compatibility.
-    sigB.checkCompatibility();
-  } catch (const ExceptionSignal &aea) {
-    res = (aea.getCode() == ExceptionSignal::PLUG_IMPOSSIBLE);
-  }
   /// Verify set command value
 
   /// set

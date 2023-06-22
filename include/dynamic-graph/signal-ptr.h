@@ -31,7 +31,6 @@ class SignalPtr : public virtual Signal<T, Time> {
  protected:
   Signal<T, Time> *signalPtr;
   bool modeNoThrow;
-  bool transmitAbstract;
   SignalBase<Time> *abstractTransmitter;
   T *transmitAbstractData;
 
@@ -42,7 +41,6 @@ class SignalPtr : public virtual Signal<T, Time> {
       : Signal<T, Time>(name),
         signalPtr(ptr),
         modeNoThrow(false),
-        transmitAbstract(false),
         abstractTransmitter(NULL) {}
 
   virtual ~SignalPtr() { signalPtr = NULL; }
@@ -51,15 +49,12 @@ class SignalPtr : public virtual Signal<T, Time> {
   /* --- PLUG-IN OPERATION --- */
   Signal<T, Time> *getPtr();                       // throw
   const Signal<T, Time> *getPtr() const;           // throw
-  SignalBase<Time> *getAbstractPtr();              // throw
-  const SignalBase<Time> *getAbstractPtr() const;  // throw
   virtual void plug(SignalBase<Time> *ref);
 
   virtual void unplug() { plug(NULL); }
 
   virtual bool isPlugged() const { return (NULL != signalPtr); }
   virtual SignalBase<Time> *getPluged() const { return signalPtr; }
-  virtual bool isAbstractPluged() const;
   virtual const Time &getTime() const;
 
   /* Equivalent operator-like definitions. */
@@ -90,8 +85,6 @@ class SignalPtr : public virtual Signal<T, Time> {
   }
   virtual inline void setConstantDefault() { setConstantDefault(accessCopy()); }
   inline void unsetConstantDefault() { modeNoThrow = false; }
-
-  virtual void checkCompatibility();
 
  public: /* --- INHERITANCE --- */
   /* SignalPtr could be used as a classical signal, through the normal

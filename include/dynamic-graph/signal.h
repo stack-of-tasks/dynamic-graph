@@ -106,11 +106,6 @@ class Signal : public SignalBase<Time> {
     aClassName = typeid(this).name();
   }
 
- public:
-  /// checkCompatibility is used to get the object contained in the
-  /// signal. This used to verify if a dynamic cast is possible or not.
-  virtual void checkCompatibility() { throw Tcopy; }
-
  private:
   const T &setTcopy(const T &t);
   T &getTwork();
