@@ -186,16 +186,6 @@ class SignalBase : public boost::noncopyable {
 
   /// \}
 
-  /// \name Test
-  /// \{
-  virtual void checkCompatibility() {
-    DG_THROW ExceptionSignal(ExceptionSignal::PLUG_IMPOSSIBLE,
-                             "Abstract signal not compatible with anything.",
-                             "(while trying to plug <%s>).",
-                             this->getName().c_str());
-  }
-  /// \}
-
  protected:
   std::string name;
   Time signalTime;

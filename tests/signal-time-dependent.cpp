@@ -228,13 +228,4 @@ BOOST_AUTO_TEST_CASE(signaltimedependent) {
   const double &avalue = sig1(6);
   output << avalue;
   BOOST_CHECK(true);
-  /// Verify check compatibility
-  try {
-    sig1.checkCompatibility();
-  }
-  //  catch(double e)
-  catch (...) {
-    std::cout << "Message: test \n";
-  }
-  BOOST_CHECK(true);
 }
