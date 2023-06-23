@@ -87,7 +87,8 @@ BOOST_AUTO_TEST_CASE(test_tracer) {
   SignalBase<sigtime_t> &out_double_2 = entity.getSignal("out2double");
 
   Signal<double, sigtime_t> &in_double =
-      *(dynamic_cast<Signal<double, sigtime_t> *>(&entity.getSignal("in_double")));
+      *(dynamic_cast<Signal<double, sigtime_t> *>(
+          &entity.getSignal("in_double")));
 
   in_double.setConstant(1.5);
   atracer.start();
