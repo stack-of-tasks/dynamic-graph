@@ -47,8 +47,8 @@ class SignalPtr : public virtual Signal<T, Time> {
 
  public:
   /* --- PLUG-IN OPERATION --- */
-  Signal<T, Time> *getPtr();                       // throw
-  const Signal<T, Time> *getPtr() const;           // throw
+  Signal<T, Time> *getPtr();              // throw
+  const Signal<T, Time> *getPtr() const;  // throw
   virtual void plug(SignalBase<Time> *ref);
 
   virtual void unplug() { plug(NULL); }

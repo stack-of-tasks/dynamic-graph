@@ -160,7 +160,8 @@ void Tracer::openFiles(const std::string &rootdir_,
   dgDEBUGOUT(15);
 }
 
-void Tracer::openFile(const SignalBase<sigtime_t> &sig, const string &givenname) {
+void Tracer::openFile(const SignalBase<sigtime_t> &sig,
+                      const string &givenname) {
   dgDEBUGIN(15);
   string signame;
   if (givenname.length()) {

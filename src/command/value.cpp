@@ -22,9 +22,7 @@ EitherType::~EitherType() {
 
 EitherType::operator bool() const { return value_->boolValue(); }
 EitherType::operator uint32_t() const { return value_->unsignedValue(); }
-EitherType::operator uint64_t() const {
-  return value_->unsignedlongintValue();
-}
+EitherType::operator uint64_t() const { return value_->unsignedlongintValue(); }
 EitherType::operator int32_t() const { return value_->intValue(); }
 EitherType::operator int64_t() const { return value_->longintValue(); }
 EitherType::operator float() const { return value_->floatValue(); }
@@ -90,8 +88,8 @@ Value::Value(const uint32_t &value)
 Value::Value(const uint64_t &value)
     : type_(UNSIGNEDLONGINT), value_(new uint64_t(value)) {}
 Value::Value(const int32_t &value) : type_(INT), value_(new int32_t(value)) {}
-Value::Value(const int64_t &value) : type_(LONGINT), value_(new int64_t(value))
-{}
+Value::Value(const int64_t &value)
+    : type_(LONGINT), value_(new int64_t(value)) {}
 Value::Value(const float &value) : type_(FLOAT), value_(new float(value)) {}
 Value::Value(const double &value) : type_(DOUBLE), value_(new double(value)) {}
 Value::Value(const std::string &value)
@@ -360,8 +358,7 @@ const Value::Type ValueHelper<bool>::TypeID = Value::BOOL;
 template <>
 const Value::Type ValueHelper<uint32_t>::TypeID = Value::UNSIGNED;
 template <>
-const Value::Type ValueHelper<uint64_t>::TypeID =
-    Value::UNSIGNEDLONGINT;
+const Value::Type ValueHelper<uint64_t>::TypeID = Value::UNSIGNEDLONGINT;
 template <>
 const Value::Type ValueHelper<int32_t>::TypeID = Value::INT;
 template <>
