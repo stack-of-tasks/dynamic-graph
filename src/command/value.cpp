@@ -22,7 +22,9 @@ EitherType::~EitherType() {
 
 EitherType::operator bool() const { return value_->boolValue(); }
 EitherType::operator std::uint32_t() const { return value_->unsignedValue(); }
-EitherType::operator std::uint64_t() const { return value_->unsignedlongintValue(); }
+EitherType::operator std::uint64_t() const {
+  return value_->unsignedlongintValue();
+}
 EitherType::operator std::int32_t() const { return value_->intValue(); }
 EitherType::operator std::int64_t() const { return value_->longintValue(); }
 EitherType::operator float() const { return value_->floatValue(); }
@@ -87,7 +89,8 @@ Value::Value(const std::uint32_t &value)
     : type_(UNSIGNED), value_(new std::uint32_t(value)) {}
 Value::Value(const std::uint64_t &value)
     : type_(UNSIGNEDLONGINT), value_(new std::uint64_t(value)) {}
-Value::Value(const std::int32_t &value) : type_(INT), value_(new std::int32_t(value)) {}
+Value::Value(const std::int32_t &value)
+    : type_(INT), value_(new std::int32_t(value)) {}
 Value::Value(const std::int64_t &value)
     : type_(LONGINT), value_(new int64_t(value)) {}
 Value::Value(const float &value) : type_(FLOAT), value_(new float(value)) {}

@@ -106,7 +106,7 @@ class Setter<E, std::uint64_t> : public Command {
 
 template <class E>
 Setter<E, std::uint64_t>::Setter(E &entity, SetterMethod setterMethod,
-                            const std::string &docString)
+                                 const std::string &docString)
     : Command(entity, boost::assign::list_of(Value::UNSIGNEDLONGINT),
               docString),
       setterMethod_(setterMethod) {}
@@ -175,7 +175,7 @@ class Setter<E, std::int64_t> : public Command {
 
 template <class E>
 Setter<E, std::int64_t>::Setter(E &entity, SetterMethod setterMethod,
-                           const std::string &docString)
+                                const std::string &docString)
     : Command(entity, boost::assign::list_of(Value::LONGINT), docString),
       setterMethod_(setterMethod) {}
 

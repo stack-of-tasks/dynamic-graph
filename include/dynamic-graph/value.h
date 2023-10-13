@@ -9,8 +9,8 @@
 
 #include <dynamic-graph/linear-algebra.h>
 
-#include <cstdint>
 #include <cassert>
+#include <cstdint>
 #include <string>
 #include <typeinfo>
 #include <vector>
