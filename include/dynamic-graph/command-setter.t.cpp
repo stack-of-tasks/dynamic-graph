@@ -90,10 +90,10 @@ Value Setter<E, unsigned>::doExecute() {
 // Template specialization: unsigned long
 //
 template <class E>
-class Setter<E, uint64_t> : public Command {
+class Setter<E, std::uint64_t> : public Command {
  public:
   /// Pointer to method that sets parameter of type unsigned long
-  typedef void (E::*SetterMethod)(const uint64_t &);
+  typedef void (E::*SetterMethod)(const std::uint64_t &);
   /// Constructor
   Setter(E &entity, SetterMethod setterMethod, const std::string &docString);
 
@@ -105,17 +105,17 @@ class Setter<E, uint64_t> : public Command {
 };  // Class Setter
 
 template <class E>
-Setter<E, uint64_t>::Setter(E &entity, SetterMethod setterMethod,
+Setter<E, std::uint64_t>::Setter(E &entity, SetterMethod setterMethod,
                             const std::string &docString)
     : Command(entity, boost::assign::list_of(Value::UNSIGNEDLONGINT),
               docString),
       setterMethod_(setterMethod) {}
 
 template <class E>
-Value Setter<E, uint64_t>::doExecute() {
+Value Setter<E, std::uint64_t>::doExecute() {
   const std::vector<Value> &values = getParameterValues();
   // Get parameter
-  uint64_t value = values[0].value();
+  std::uint64_t value = values[0].value();
   E &entity = static_cast<E &>(owner());
   (entity.*setterMethod_)(value);
   return Value();
@@ -159,10 +159,10 @@ Value Setter<E, int>::doExecute() {
 // Template specialization: int64_t
 //
 template <class E>
-class Setter<E, int64_t> : public Command {
+class Setter<E, std::int64_t> : public Command {
  public:
   /// Pointer to method that sets parameter of type int64_t
-  typedef void (E::*SetterMethod)(const int64_t &);
+  typedef void (E::*SetterMethod)(const std::int64_t &);
   /// Constructor
   Setter(E &entity, SetterMethod setterMethod, const std::string &docString);
 
@@ -174,16 +174,16 @@ class Setter<E, int64_t> : public Command {
 };  // Class Setter
 
 template <class E>
-Setter<E, int64_t>::Setter(E &entity, SetterMethod setterMethod,
+Setter<E, std::int64_t>::Setter(E &entity, SetterMethod setterMethod,
                            const std::string &docString)
     : Command(entity, boost::assign::list_of(Value::LONGINT), docString),
       setterMethod_(setterMethod) {}
 
 template <class E>
-Value Setter<E, int64_t>::doExecute() {
+Value Setter<E, std::int64_t>::doExecute() {
   const std::vector<Value> &values = getParameterValues();
   // Get parameter
-  int64_t value = values[0].value();
+  std::int64_t value = values[0].value();
   E &entity = static_cast<E &>(owner());
   (entity.*setterMethod_)(value);
   return Value();

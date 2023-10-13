@@ -9,6 +9,7 @@
 
 #include <dynamic-graph/linear-algebra.h>
 
+#include <cstdint>
 #include <cassert>
 #include <string>
 #include <typeinfo>
@@ -26,10 +27,10 @@ class DYNAMIC_GRAPH_DLLAPI EitherType {
   EitherType(const Value &value);
   ~EitherType();
   operator bool() const;
-  operator uint32_t() const;
-  operator uint64_t() const;
-  operator int32_t() const;
-  operator int64_t() const;
+  operator std::uint32_t() const;
+  operator std::uint64_t() const;
+  operator std::int32_t() const;
+  operator std::int64_t() const;
   operator float() const;
   operator double() const;
   operator std::string() const;
@@ -68,10 +69,10 @@ class DYNAMIC_GRAPH_DLLAPI Value {
   ~Value();
   void deleteValue();
   explicit Value(const bool &value);
-  explicit Value(const uint32_t &value);
-  explicit Value(const uint64_t &value);
-  explicit Value(const int32_t &value);
-  explicit Value(const int64_t &value);
+  explicit Value(const std::uint32_t &value);
+  explicit Value(const std::uint64_t &value);
+  explicit Value(const std::int32_t &value);
+  explicit Value(const std::int64_t &value);
   explicit Value(const float &value);
   explicit Value(const double &value);
   explicit Value(const std::string &value);
@@ -112,10 +113,10 @@ class DYNAMIC_GRAPH_DLLAPI Value {
  public:
   friend class EitherType;
   bool boolValue() const;
-  uint32_t unsignedValue() const;
-  uint64_t unsignedlongintValue() const;
-  int32_t intValue() const;
-  int64_t longintValue() const;
+  std::uint32_t unsignedValue() const;
+  std::uint64_t unsignedlongintValue() const;
+  std::int32_t intValue() const;
+  std::int64_t longintValue() const;
   float floatValue() const;
   double doubleValue() const;
   std::string stringValue() const;
