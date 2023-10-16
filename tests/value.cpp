@@ -409,12 +409,13 @@ BOOST_AUTO_TEST_CASE(value_values) {
     BOOST_CHECK(vs == values);
   }
   {
-      // Cast does not work.
-      // dg::command::EitherType eitherType (vvalues);
-      // Values vs = static_cast<Values>(eitherType);
-      // BOOST_CHECK_EQUAL(vs.size(), values.size());
-      // BOOST_CHECK(vs == values);
-  } {  // Constructor
+    // Cast does not work.
+    // dg::command::EitherType eitherType (vvalues);
+    // Values vs = static_cast<Values>(eitherType);
+    // BOOST_CHECK_EQUAL(vs.size(), values.size());
+    // BOOST_CHECK(vs == values);
+  }
+  {  // Constructor
     Value vvs(vvalues);
     BOOST_CHECK(vvs == vvalues);
   }
