@@ -105,21 +105,21 @@ class DYNAMIC_GRAPH_DLLAPI CPUData {
 
   template <class Archive>
   void serialize(Archive &ar, const unsigned int version) {
-    ar &version;
-    ar &total_time_;
-    ar &user_mode_time_;
-    ar &nice_time_;
-    ar &system_time_;
-    ar &system_all_time_;
-    ar &idle_time_;
-    ar &idle_all_time_;
-    ar &iowait_time_;
-    ar &irq_time_;
-    ar &softirq_time_;
-    ar &steal_time_;
-    ar &guest_time_;
-    ar &guest_nice_time_;
-    ar &percent_;
+    ar & version;
+    ar & total_time_;
+    ar & user_mode_time_;
+    ar & nice_time_;
+    ar & system_time_;
+    ar & system_all_time_;
+    ar & idle_time_;
+    ar & idle_all_time_;
+    ar & iowait_time_;
+    ar & irq_time_;
+    ar & softirq_time_;
+    ar & steal_time_;
+    ar & guest_time_;
+    ar & guest_nice_time_;
+    ar & percent_;
   }
 };
 
@@ -154,10 +154,10 @@ class DYNAMIC_GRAPH_DLLAPI System {
 
   template <class Archive>
   void serialize(Archive &ar, const unsigned int version) {
-    ar &version;
-    ar &cpuNb_;
-    ar &gCPUData_;
-    ar &vCPUData_;
+    ar & version;
+    ar & cpuNb_;
+    ar & gCPUData_;
+    ar & vCPUData_;
   }
 };
 }  // namespace CPU

@@ -81,13 +81,13 @@ void CPUData::ProcessLine(std::istringstream &aCPULine) {
   total_time_ = ltotal_time;
 
   if (total_period_ != 0) {
-    percent_ = (double)(user_mode_period_) / (double)(total_period_)*100.0;
-    percent_ += (double)(nice_period_) / (double)(total_period_)*100.0;
-    percent_ += (double)(system_period_) / (double)(total_period_)*100.0;
-    percent_ += (double)(irq_period_) / (double)(total_period_)*100.0;
-    percent_ += (double)(softirq_period_) / (double)(total_period_)*100.0;
-    percent_ += (double)(steal_period_) / (double)(total_period_)*100.0;
-    percent_ += (double)(iowait_period_) / (double)(total_period_)*100.0;
+    percent_ = (double)(user_mode_period_) / (double)(total_period_) * 100.0;
+    percent_ += (double)(nice_period_) / (double)(total_period_) * 100.0;
+    percent_ += (double)(system_period_) / (double)(total_period_) * 100.0;
+    percent_ += (double)(irq_period_) / (double)(total_period_) * 100.0;
+    percent_ += (double)(softirq_period_) / (double)(total_period_) * 100.0;
+    percent_ += (double)(steal_period_) / (double)(total_period_) * 100.0;
+    percent_ += (double)(iowait_period_) / (double)(total_period_) * 100.0;
   }
 }
 
