@@ -164,8 +164,8 @@ void PoolStorage::writeGraph(const std::string &aFileName) {
   for (Entities::iterator iter = entityMap.begin(); iter != entityMap.end();
        ++iter) {
     Entity *ent = iter->second;
-    GraphFile << "\"" << ent->getName() << "\""
-              << " [ label = \"" << ent->getName() << "\" ," << std::endl
+    GraphFile << "\"" << ent->getName() << "\"" << " [ label = \""
+              << ent->getName() << "\" ," << std::endl
               << "   fontcolor = black, color = black, fillcolor=cyan,"
               << " style=filled, shape=box ]" << std::endl;
     ent->writeGraph(GraphFile);
