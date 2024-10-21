@@ -15,7 +15,7 @@
 
 namespace dynamicgraph {
 namespace CPU {
-class DYNAMIC_GRAPH_DLLAPI ProcessData {};
+class DYNAMIC_GRAPH_DLLAPI ProcessData{};
 
 class DYNAMIC_GRAPH_DLLAPI ProcessList {
  public:
