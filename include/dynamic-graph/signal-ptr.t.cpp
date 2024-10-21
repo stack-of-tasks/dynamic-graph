@@ -122,7 +122,9 @@ template <class T, class Time>
 std::ostream &SignalPtr<T, Time>::display(std::ostream &os) const {
   dgTDEBUGIN(25) << SignalBase<Time>::name << this << "||" << isPlugged()
                  << "||" << signalPtr;
-  { Signal<T, Time>::display(os); }
+  {
+    Signal<T, Time>::display(os);
+  }
 
   if ((isPlugged()) && (!autoref())) {
     os << " -->-- PLUGGED";
