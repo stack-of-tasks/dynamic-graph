@@ -32,8 +32,8 @@ namespace command {
 
 template <class E>
 struct CommandVoid0 : public Command {
-  CommandVoid0(E &entity, boost::function<void(void)> function,
-               const std::string &docString)
+  CommandVoid0(E& entity, boost::function<void(void)> function,
+               const std::string& docString)
       : Command(entity, EMPTY_ARG, docString), fptr(function) {}
 
  protected:
@@ -48,26 +48,25 @@ struct CommandVoid0 : public Command {
 };
 
 template <class E>
-CommandVoid0<E> *makeCommandVoid0(E &entity,
+CommandVoid0<E>* makeCommandVoid0(E& entity,
                                   boost::function<void(void)> function,
-                                  const std::string &docString) {
+                                  const std::string& docString) {
   return new CommandVoid0<E>(entity, function, docString);
 }
 
 template <class E>
-CommandVoid0<E> *makeCommandVoid0(E &entity,
-                                  boost::function<void(E *)> function,
-                                  const std::string &docString) {
+CommandVoid0<E>* makeCommandVoid0(E& entity, boost::function<void(E*)> function,
+                                  const std::string& docString) {
   return new CommandVoid0<E>(entity, boost::bind(function, &entity), docString);
 }
 
 template <class E>
-CommandVoid0<E> *makeCommandVoid0(E &entity, void (E::*function)(void),
-                                  const std::string &docString) {
+CommandVoid0<E>* makeCommandVoid0(E& entity, void (E::*function)(void),
+                                  const std::string& docString) {
   return new CommandVoid0<E>(entity, boost::bind(function, &entity), docString);
 }
 
-inline std::string docCommandVoid0(const std::string &doc) {
+inline std::string docCommandVoid0(const std::string& doc) {
   return std::string("\n") + doc + "\n\nNo input.\nVoid return.\n\n";
 }
 
@@ -80,9 +79,9 @@ namespace command {
 
 template <class E, typename T>
 struct CommandVoid1 : public Command {
-  typedef boost::function<void(const T &)> function_t;
+  typedef boost::function<void(const T&)> function_t;
 
-  CommandVoid1(E &entity, function_t function, const std::string &docString)
+  CommandVoid1(E& entity, function_t function, const std::string& docString)
       : Command(entity, boost::assign::list_of(ValueHelper<T>::TypeID),
                 docString),
         fptr(function) {}
@@ -100,34 +99,34 @@ struct CommandVoid1 : public Command {
 };
 
 template <class E, typename T>
-CommandVoid1<E, T> *makeCommandVoid1(
-    E &entity, boost::function<void(const T &)> function,
+CommandVoid1<E, T>* makeCommandVoid1(
+    E& entity, boost::function<void(const T&)> function,
     // typename CommandVoid1<E,T>::function_t function ,
-    const std::string &docString) {
+    const std::string& docString) {
   return new CommandVoid1<E, T>(entity, function, docString);
 }
 
 template <class E, typename T>
-CommandVoid1<E, T> *makeCommandVoid1(
-    E &entity,
+CommandVoid1<E, T>* makeCommandVoid1(
+    E& entity,
     // The following syntaxt don't compile when not specializing
     // the template arg... why ???
-    boost::function<void(E *, const T &)> function,
-    const std::string &docString) {
+    boost::function<void(E*, const T&)> function,
+    const std::string& docString) {
   return new CommandVoid1<E, T>(entity, boost::bind(function, &entity, _1),
                                 docString);
 }
 
 template <class E, typename T>
-CommandVoid1<E, T> *makeCommandVoid1(E &entity, void (E::*function)(const T &),
-                                     const std::string &docString) {
+CommandVoid1<E, T>* makeCommandVoid1(E& entity, void (E::*function)(const T&),
+                                     const std::string& docString) {
   return new CommandVoid1<E, T>(entity, boost::bind(function, &entity, _1),
                                 docString);
   return NULL;
 }
 
-inline std::string docCommandVoid1(const std::string &doc,
-                                   const std::string &type) {
+inline std::string docCommandVoid1(const std::string& doc,
+                                   const std::string& type) {
   return std::string("\n") + doc + "\n\nInput:\n - A " + type +
          ".\nVoid return.\n\n";
 }
@@ -141,9 +140,9 @@ namespace command {
 
 template <class E, typename T1, typename T2>
 struct CommandVoid2 : public Command {
-  typedef boost::function<void(const T1 &, const T2 &)> function_t;
+  typedef boost::function<void(const T1&, const T2&)> function_t;
 
-  CommandVoid2(E &entity, function_t function, const std::string &docString)
+  CommandVoid2(E& entity, function_t function, const std::string& docString)
       : Command(entity,
                 boost::assign::list_of(ValueHelper<T1>::TypeID)(
                     ValueHelper<T2>::TypeID),
@@ -164,36 +163,36 @@ struct CommandVoid2 : public Command {
 };
 
 template <class E, typename T1, typename T2>
-CommandVoid2<E, T1, T2> *makeCommandVoid2(
-    E &entity, boost::function<void(const T1 &, const T2 &)> function,
-    const std::string &docString) {
+CommandVoid2<E, T1, T2>* makeCommandVoid2(
+    E& entity, boost::function<void(const T1&, const T2&)> function,
+    const std::string& docString) {
   return new CommandVoid2<E, T1, T2>(entity, function, docString);
 }
 
 template <class E, typename T1, typename T2>
-CommandVoid2<E, T1, T2> *makeCommandVoid2(
-    E &entity,
+CommandVoid2<E, T1, T2>* makeCommandVoid2(
+    E& entity,
     // The following syntaxt don't compile when not specializing
     // the template arg... why ???
-    boost::function<void(E *, const T1 &, const T2 &)> function,
-    const std::string &docString) {
+    boost::function<void(E*, const T1&, const T2&)> function,
+    const std::string& docString) {
   return new CommandVoid2<E, T1, T2>(
       entity, boost::bind(function, &entity, _1, _2), docString);
 }
 
 template <class E, typename T1, typename T2>
-CommandVoid2<E, T1, T2> *makeCommandVoid2(E &entity,
-                                          void (E::*function)(const T1 &,
-                                                              const T2 &),
-                                          const std::string &docString) {
+CommandVoid2<E, T1, T2>* makeCommandVoid2(E& entity,
+                                          void (E::*function)(const T1&,
+                                                              const T2&),
+                                          const std::string& docString) {
   return new CommandVoid2<E, T1, T2>(
       entity, boost::bind(function, &entity, _1, _2), docString);
   return NULL;
 }
 
-inline std::string docCommandVoid2(const std::string &doc,
-                                   const std::string &type1,
-                                   const std::string &type2) {
+inline std::string docCommandVoid2(const std::string& doc,
+                                   const std::string& type1,
+                                   const std::string& type2) {
   return (std::string("\n") + doc + "\n\n" + "Input:\n - A " + type1 + ".\n" +
           "Input:\n - A " + type2 + ".\n" + "Void return.\n\n");
 }
@@ -207,9 +206,9 @@ namespace command {
 
 template <class E, typename T1, typename T2, typename T3>
 struct CommandVoid3 : public Command {
-  typedef boost::function<void(const T1 &, const T2 &, const T3 &)> function_t;
+  typedef boost::function<void(const T1&, const T2&, const T3&)> function_t;
 
-  CommandVoid3(E &entity, function_t function, const std::string &docString)
+  CommandVoid3(E& entity, function_t function, const std::string& docString)
       : Command(entity,
                 boost::assign::list_of(ValueHelper<T1>::TypeID)(
                     ValueHelper<T2>::TypeID)(ValueHelper<T3>::TypeID),
@@ -231,36 +230,36 @@ struct CommandVoid3 : public Command {
 };
 
 template <class E, typename T1, typename T2, typename T3>
-CommandVoid3<E, T1, T2, T3> *makeCommandVoid3(
-    E &entity, typename CommandVoid3<E, T1, T2, T3>::function_t function,
-    const std::string &docString) {
+CommandVoid3<E, T1, T2, T3>* makeCommandVoid3(
+    E& entity, typename CommandVoid3<E, T1, T2, T3>::function_t function,
+    const std::string& docString) {
   return new CommandVoid3<E, T1, T2, T3>(entity, function, docString);
 }
 
 template <class E, typename T1, typename T2, typename T3>
-CommandVoid3<E, T1, T2, T3> *makeCommandVoid3(
-    E &entity,
+CommandVoid3<E, T1, T2, T3>* makeCommandVoid3(
+    E& entity,
     // The following syntaxt don't compile when not specializing the template
     // arg... why ???
-    boost::function<void(E *, const T1 &, const T2 &, const T3 &)> function,
-    const std::string &docString) {
+    boost::function<void(E*, const T1&, const T2&, const T3&)> function,
+    const std::string& docString) {
   return new CommandVoid3<E, T1, T2, T3>(
       entity, boost::bind(function, &entity, _1, _2, _3), docString);
 }
 
 template <class E, typename T1, typename T2, typename T3>
-CommandVoid3<E, T1, T2, T3> *makeCommandVoid3(
-    E &entity, void (E::*function)(const T1 &, const T2 &, const T3 &),
-    const std::string &docString) {
+CommandVoid3<E, T1, T2, T3>* makeCommandVoid3(
+    E& entity, void (E::*function)(const T1&, const T2&, const T3&),
+    const std::string& docString) {
   return new CommandVoid3<E, T1, T2, T3>(
       entity, boost::bind(function, &entity, _1, _2, _3), docString);
   return NULL;
 }
 
-inline std::string docCommandVoid3(const std::string &doc,
-                                   const std::string &type1,
-                                   const std::string &type2,
-                                   const std::string &type3) {
+inline std::string docCommandVoid3(const std::string& doc,
+                                   const std::string& type1,
+                                   const std::string& type2,
+                                   const std::string& type3) {
   return (std::string("\n") + doc + "\n\n" + "Input:\n - A " + type1 + ".\n" +
           "Input:\n - A " + type2 + ".\n" + "Input:\n - A " + type3 + ".\n" +
           "Void return.\n\n");
@@ -275,12 +274,12 @@ namespace command {
 
 template <class E, typename T1, typename T2, typename T3, typename T4>
 struct CommandVoid4 : public Command {
-  typedef boost::function<void(const T1 &, const T2 &, const T3 &, const T4 &)>
+  typedef boost::function<void(const T1&, const T2&, const T3&, const T4&)>
       function_t;
-  typedef void (E::*memberFunction_ptr_t)(const T1 &, const T2 &, const T3 &,
-                                          const T4 &);
+  typedef void (E::*memberFunction_ptr_t)(const T1&, const T2&, const T3&,
+                                          const T4&);
 
-  CommandVoid4(E &entity, function_t function, const std::string &docString)
+  CommandVoid4(E& entity, function_t function, const std::string& docString)
       : Command(entity,
                 boost::assign::list_of(ValueHelper<T1>::TypeID)(
                     ValueHelper<T2>::TypeID)(ValueHelper<T3>::TypeID)(
@@ -304,37 +303,36 @@ struct CommandVoid4 : public Command {
 };
 
 template <class E, typename T1, typename T2, typename T3, typename T4>
-CommandVoid4<E, T1, T2, T3, T4> *makeCommandVoid4(
-    E &entity, typename CommandVoid4<E, T1, T2, T3, T4>::function_t function,
-    const std::string &docString) {
+CommandVoid4<E, T1, T2, T3, T4>* makeCommandVoid4(
+    E& entity, typename CommandVoid4<E, T1, T2, T3, T4>::function_t function,
+    const std::string& docString) {
   return new CommandVoid4<E, T1, T2, T3, T4>(entity, function, docString);
 }
 
 template <class E, typename T1, typename T2, typename T3, typename T4>
-CommandVoid4<E, T1, T2, T3, T4> *makeCommandVoid4(
-    E &entity,
-    boost::function<void(E *, const T1 &, const T2 &, const T3 &, const T4 &)>
+CommandVoid4<E, T1, T2, T3, T4>* makeCommandVoid4(
+    E& entity,
+    boost::function<void(E*, const T1&, const T2&, const T3&, const T4&)>
         function,
-    const std::string &docString) {
+    const std::string& docString) {
   return new CommandVoid4<E, T1, T2, T3, T4>(
       entity, boost::bind(function, &entity, _1, _2, _3, _4), docString);
 }
 
 template <class E, typename T1, typename T2, typename T3, typename T4>
-CommandVoid4<E, T1, T2, T3, T4> *makeCommandVoid4(
-    E &entity,
-    void (E::*function)(const T1 &, const T2 &, const T3 &, const T4 &),
-    const std::string &docString) {
+CommandVoid4<E, T1, T2, T3, T4>* makeCommandVoid4(
+    E& entity, void (E::*function)(const T1&, const T2&, const T3&, const T4&),
+    const std::string& docString) {
   return new CommandVoid4<E, T1, T2, T3, T4>(
       entity, boost::bind(function, &entity, _1, _2, _3, _4), docString);
   return NULL;
 }
 
-inline std::string docCommandVoid4(const std::string &doc,
-                                   const std::string &type1,
-                                   const std::string &type2,
-                                   const std::string &type3,
-                                   const std::string &type4) {
+inline std::string docCommandVoid4(const std::string& doc,
+                                   const std::string& type1,
+                                   const std::string& type2,
+                                   const std::string& type3,
+                                   const std::string& type4) {
   return (std::string("\n") + doc + "\n\n" + "Input:\n - A " + type1 + ".\n" +
           "Input:\n - A " + type2 + ".\n" + "Input:\n - A " + type3 + ".\n" +
           "Input:\n - A " + type4 + ".\n" + "Void return.\n\n");
@@ -350,13 +348,13 @@ namespace command {
 template <class E, typename T1, typename T2, typename T3, typename T4,
           typename T5>
 struct CommandVoid5 : public Command {
-  typedef boost::function<void(const T1 &, const T2 &, const T3 &, const T4 &,
-                               const T5 &)>
+  typedef boost::function<void(const T1&, const T2&, const T3&, const T4&,
+                               const T5&)>
       function_t;
-  typedef void (E::*memberFunction_ptr_t)(const T1 &, const T2 &, const T3 &,
-                                          const T4 &, const T5 &);
+  typedef void (E::*memberFunction_ptr_t)(const T1&, const T2&, const T3&,
+                                          const T4&, const T5&);
 
-  CommandVoid5(E &entity, function_t function, const std::string &docString)
+  CommandVoid5(E& entity, function_t function, const std::string& docString)
       : Command(entity,
                 boost::assign::list_of(ValueHelper<T1>::TypeID)(
                     ValueHelper<T2>::TypeID)(ValueHelper<T3>::TypeID)(
@@ -382,43 +380,42 @@ struct CommandVoid5 : public Command {
 
 template <class E, typename T1, typename T2, typename T3, typename T4,
           typename T5>
-CommandVoid5<E, T1, T2, T3, T4, T5> *makeCommandVoid5(
-    E &entity,
+CommandVoid5<E, T1, T2, T3, T4, T5>* makeCommandVoid5(
+    E& entity,
     typename CommandVoid5<E, T1, T2, T3, T4, T5>::function_t function,
-    const std::string &docString) {
+    const std::string& docString) {
   return new CommandVoid5<E, T1, T2, T3, T4, T5>(entity, function, docString);
 }
 
 template <class E, typename T1, typename T2, typename T3, typename T4,
           typename T5>
-CommandVoid5<E, T1, T2, T3, T4, T5> *makeCommandVoid5(
-    E &entity,
-    boost::function<void(E *, const T1 &, const T2 &, const T3 &, const T4 &,
-                         const T5 &)>
+CommandVoid5<E, T1, T2, T3, T4, T5>* makeCommandVoid5(
+    E& entity,
+    boost::function<void(E*, const T1&, const T2&, const T3&, const T4&,
+                         const T5&)>
         function,
-    const std::string &docString) {
+    const std::string& docString) {
   return new CommandVoid5<E, T1, T2, T3, T4, T5>(
       entity, boost::bind(function, &entity, _1, _2, _3, _4, _5), docString);
 }
 
 template <class E, typename T1, typename T2, typename T3, typename T4,
           typename T5>
-CommandVoid5<E, T1, T2, T3, T4, T5> *makeCommandVoid5(
-    E &entity,
-    void (E::*function)(const T1 &, const T2 &, const T3 &, const T4 &,
-                        const T5 &),
-    const std::string &docString) {
+CommandVoid5<E, T1, T2, T3, T4, T5>* makeCommandVoid5(
+    E& entity,
+    void (E::*function)(const T1&, const T2&, const T3&, const T4&, const T5&),
+    const std::string& docString) {
   return new CommandVoid5<E, T1, T2, T3, T4, T5>(
       entity, boost::bind(function, &entity, _1, _2, _3, _4, _5), docString);
   return NULL;
 }
 
-inline std::string docCommandVoid5(const std::string &doc,
-                                   const std::string &type1,
-                                   const std::string &type2,
-                                   const std::string &type3,
-                                   const std::string &type4,
-                                   const std::string &type5) {
+inline std::string docCommandVoid5(const std::string& doc,
+                                   const std::string& type1,
+                                   const std::string& type2,
+                                   const std::string& type3,
+                                   const std::string& type4,
+                                   const std::string& type5) {
   return (std::string("\n") + doc + "\n\n" + "Input:\n - A " + type1 + ".\n" +
           "Input:\n - A " + type2 + ".\n" + "Input:\n - A " + type3 + ".\n" +
           "Input:\n - A " + type4 + ".\n" + "Input:\n - A " + type5 + ".\n" +
@@ -435,13 +432,13 @@ namespace command {
 template <class E, typename T1, typename T2, typename T3, typename T4,
           typename T5, typename T6>
 struct CommandVoid6 : public Command {
-  typedef boost::function<void(const T1 &, const T2 &, const T3 &, const T4 &,
-                               const T5 &, const T6 &)>
+  typedef boost::function<void(const T1&, const T2&, const T3&, const T4&,
+                               const T5&, const T6&)>
       function_t;
-  typedef void (E::*memberFunction_ptr_t)(const T1 &, const T2 &, const T3 &,
-                                          const T4 &, const T5 &, const T6 &);
+  typedef void (E::*memberFunction_ptr_t)(const T1&, const T2&, const T3&,
+                                          const T4&, const T5&, const T6&);
 
-  CommandVoid6(E &entity, function_t function, const std::string &docString)
+  CommandVoid6(E& entity, function_t function, const std::string& docString)
       : Command(entity,
                 boost::assign::list_of(ValueHelper<T1>::TypeID)(
                     ValueHelper<T2>::TypeID)(ValueHelper<T3>::TypeID)(
@@ -469,22 +466,22 @@ struct CommandVoid6 : public Command {
 
 template <class E, typename T1, typename T2, typename T3, typename T4,
           typename T5, typename T6>
-CommandVoid6<E, T1, T2, T3, T4, T5, T6> *makeCommandVoid6(
-    E &entity,
+CommandVoid6<E, T1, T2, T3, T4, T5, T6>* makeCommandVoid6(
+    E& entity,
     typename CommandVoid6<E, T1, T2, T3, T4, T5, T6>::function_t function,
-    const std::string &docString) {
+    const std::string& docString) {
   return new CommandVoid6<E, T1, T2, T3, T4, T5, T6>(entity, function,
                                                      docString);
 }
 
 template <class E, typename T1, typename T2, typename T3, typename T4,
           typename T5, typename T6>
-CommandVoid6<E, T1, T2, T3, T4, T5, T6> *makeCommandVoid6(
-    E &entity,
-    boost::function<void(E *, const T1 &, const T2 &, const T3 &, const T4 &,
-                         const T5 &, const T6 &)>
+CommandVoid6<E, T1, T2, T3, T4, T5, T6>* makeCommandVoid6(
+    E& entity,
+    boost::function<void(E*, const T1&, const T2&, const T3&, const T4&,
+                         const T5&, const T6&)>
         function,
-    const std::string &docString) {
+    const std::string& docString) {
   return new CommandVoid6<E, T1, T2, T3, T4, T5, T6>(
       entity, boost::bind(function, &entity, _1, _2, _3, _4, _5, _6),
       docString);
@@ -492,11 +489,11 @@ CommandVoid6<E, T1, T2, T3, T4, T5, T6> *makeCommandVoid6(
 
 template <class E, typename T1, typename T2, typename T3, typename T4,
           typename T5, typename T6>
-CommandVoid6<E, T1, T2, T3, T4, T5, T6> *makeCommandVoid6(
-    E &entity,
-    void (E::*function)(const T1 &, const T2 &, const T3 &, const T4 &,
-                        const T5 &, const T6 &),
-    const std::string &docString) {
+CommandVoid6<E, T1, T2, T3, T4, T5, T6>* makeCommandVoid6(
+    E& entity,
+    void (E::*function)(const T1&, const T2&, const T3&, const T4&, const T5&,
+                        const T6&),
+    const std::string& docString) {
   return new CommandVoid6<E, T1, T2, T3, T4, T5, T6>(
       entity, boost::bind(function, &entity, _1, _2, _3, _4, _5, _6),
       docString);
@@ -504,9 +501,9 @@ CommandVoid6<E, T1, T2, T3, T4, T5, T6> *makeCommandVoid6(
 }
 
 inline std::string docCommandVoid6(
-    const std::string &doc, const std::string &type1, const std::string &type2,
-    const std::string &type3, const std::string &type4,
-    const std::string &type5, const std::string &type6) {
+    const std::string& doc, const std::string& type1, const std::string& type2,
+    const std::string& type3, const std::string& type4,
+    const std::string& type5, const std::string& type6) {
   return (std::string("\n") + doc + "\n\n" + "Input:\n - A " + type1 + ".\n" +
           "Input:\n - A " + type2 + ".\n" + "Input:\n - A " + type3 + ".\n" +
           "Input:\n - A " + type4 + ".\n" + "Input:\n - A " + type5 + ".\n" +
@@ -523,14 +520,14 @@ namespace command {
 template <class E, typename T1, typename T2, typename T3, typename T4,
           typename T5, typename T6, typename T7>
 struct CommandVoid7 : public Command {
-  typedef boost::function<void(const T1 &, const T2 &, const T3 &, const T4 &,
-                               const T5 &, const T6 &, const T7 &)>
+  typedef boost::function<void(const T1&, const T2&, const T3&, const T4&,
+                               const T5&, const T6&, const T7&)>
       function_t;
-  typedef void (E::*memberFunction_ptr_t)(const T1 &, const T2 &, const T3 &,
-                                          const T4 &, const T5 &, const T6 &,
-                                          const T7 &);
+  typedef void (E::*memberFunction_ptr_t)(const T1&, const T2&, const T3&,
+                                          const T4&, const T5&, const T6&,
+                                          const T7&);
 
-  CommandVoid7(E &entity, function_t function, const std::string &docString)
+  CommandVoid7(E& entity, function_t function, const std::string& docString)
       : Command(entity,
                 boost::assign::list_of(ValueHelper<T1>::TypeID)(
                     ValueHelper<T2>::TypeID)(ValueHelper<T3>::TypeID)(
@@ -559,22 +556,22 @@ struct CommandVoid7 : public Command {
 
 template <class E, typename T1, typename T2, typename T3, typename T4,
           typename T5, typename T6, typename T7>
-CommandVoid7<E, T1, T2, T3, T4, T5, T6, T7> *makeCommandVoid7(
-    E &entity,
+CommandVoid7<E, T1, T2, T3, T4, T5, T6, T7>* makeCommandVoid7(
+    E& entity,
     typename CommandVoid7<E, T1, T2, T3, T4, T5, T6, T7>::function_t function,
-    const std::string &docString) {
+    const std::string& docString) {
   return new CommandVoid7<E, T1, T2, T3, T4, T5, T6, T7>(entity, function,
                                                          docString);
 }
 
 template <class E, typename T1, typename T2, typename T3, typename T4,
           typename T5, typename T6, typename T7>
-CommandVoid7<E, T1, T2, T3, T4, T5, T6, T7> *makeCommandVoid7(
-    E &entity,
-    boost::function<void(E *, const T1 &, const T2 &, const T3 &, const T4 &,
-                         const T5 &, const T6 &, const T7 &)>
+CommandVoid7<E, T1, T2, T3, T4, T5, T6, T7>* makeCommandVoid7(
+    E& entity,
+    boost::function<void(E*, const T1&, const T2&, const T3&, const T4&,
+                         const T5&, const T6&, const T7&)>
         function,
-    const std::string &docString) {
+    const std::string& docString) {
   return new CommandVoid7<E, T1, T2, T3, T4, T5, T6, T7>(
       entity, boost::bind(function, &entity, _1, _2, _3, _4, _5, _6, _7),
       docString);
@@ -582,11 +579,11 @@ CommandVoid7<E, T1, T2, T3, T4, T5, T6, T7> *makeCommandVoid7(
 
 template <class E, typename T1, typename T2, typename T3, typename T4,
           typename T5, typename T6, typename T7>
-CommandVoid7<E, T1, T2, T3, T4, T5, T6, T7> *makeCommandVoid7(
-    E &entity,
-    void (E::*function)(const T1 &, const T2 &, const T3 &, const T4 &,
-                        const T5 &, const T6 &, const T7 &),
-    const std::string &docString) {
+CommandVoid7<E, T1, T2, T3, T4, T5, T6, T7>* makeCommandVoid7(
+    E& entity,
+    void (E::*function)(const T1&, const T2&, const T3&, const T4&, const T5&,
+                        const T6&, const T7&),
+    const std::string& docString) {
   return new CommandVoid7<E, T1, T2, T3, T4, T5, T6, T7>(
       entity, boost::bind(function, &entity, _1, _2, _3, _4, _5, _6, _7),
       docString);
@@ -594,10 +591,10 @@ CommandVoid7<E, T1, T2, T3, T4, T5, T6, T7> *makeCommandVoid7(
 }
 
 inline std::string docCommandVoid7(
-    const std::string &doc, const std::string &type1, const std::string &type2,
-    const std::string &type3, const std::string &type4,
-    const std::string &type5, const std::string &type6,
-    const std::string &type7) {
+    const std::string& doc, const std::string& type1, const std::string& type2,
+    const std::string& type3, const std::string& type4,
+    const std::string& type5, const std::string& type6,
+    const std::string& type7) {
   return (std::string("\n") + doc + "\n\n" + "Input:\n - A " + type1 + ".\n" +
           "Input:\n - A " + type2 + ".\n" + "Input:\n - A " + type3 + ".\n" +
           "Input:\n - A " + type4 + ".\n" + "Input:\n - A " + type5 + ".\n" +
@@ -615,14 +612,14 @@ namespace command {
 template <class E, typename T1, typename T2, typename T3, typename T4,
           typename T5, typename T6, typename T7, typename T8>
 struct CommandVoid8 : public Command {
-  typedef boost::function<void(const T1 &, const T2 &, const T3 &, const T4 &,
-                               const T5 &, const T6 &, const T7 &, const T8 &)>
+  typedef boost::function<void(const T1&, const T2&, const T3&, const T4&,
+                               const T5&, const T6&, const T7&, const T8&)>
       function_t;
-  typedef void (E::*memberFunction_ptr_t)(const T1 &, const T2 &, const T3 &,
-                                          const T4 &, const T5 &, const T6 &,
-                                          const T7 &, const T8 &);
+  typedef void (E::*memberFunction_ptr_t)(const T1&, const T2&, const T3&,
+                                          const T4&, const T5&, const T6&,
+                                          const T7&, const T8&);
 
-  CommandVoid8(E &entity, function_t function, const std::string &docString)
+  CommandVoid8(E& entity, function_t function, const std::string& docString)
       : Command(entity,
                 boost::assign::list_of(ValueHelper<T1>::TypeID)(
                     ValueHelper<T2>::TypeID)(ValueHelper<T3>::TypeID)(
@@ -653,23 +650,23 @@ struct CommandVoid8 : public Command {
 
 template <class E, typename T1, typename T2, typename T3, typename T4,
           typename T5, typename T6, typename T7, typename T8>
-CommandVoid8<E, T1, T2, T3, T4, T5, T6, T7, T8> *makeCommandVoid8(
-    E &entity,
+CommandVoid8<E, T1, T2, T3, T4, T5, T6, T7, T8>* makeCommandVoid8(
+    E& entity,
     typename CommandVoid8<E, T1, T2, T3, T4, T5, T6, T7, T8>::function_t
         function,
-    const std::string &docString) {
+    const std::string& docString) {
   return new CommandVoid8<E, T1, T2, T3, T4, T5, T6, T7, T8>(entity, function,
                                                              docString);
 }
 
 template <class E, typename T1, typename T2, typename T3, typename T4,
           typename T5, typename T6, typename T7, typename T8>
-CommandVoid8<E, T1, T2, T3, T4, T5, T6, T7, T8> *makeCommandVoid8(
-    E &entity,
-    boost::function<void(E *, const T1 &, const T2 &, const T3 &, const T4 &,
-                         const T5 &, const T6 &, const T7 &, const T8 &)>
+CommandVoid8<E, T1, T2, T3, T4, T5, T6, T7, T8>* makeCommandVoid8(
+    E& entity,
+    boost::function<void(E*, const T1&, const T2&, const T3&, const T4&,
+                         const T5&, const T6&, const T7&, const T8&)>
         function,
-    const std::string &docString) {
+    const std::string& docString) {
   return new CommandVoid8<E, T1, T2, T3, T4, T5, T6, T7, T8>(
       entity, boost::bind(function, &entity, _1, _2, _3, _4, _5, _6, _7, _8),
       docString);
@@ -677,11 +674,11 @@ CommandVoid8<E, T1, T2, T3, T4, T5, T6, T7, T8> *makeCommandVoid8(
 
 template <class E, typename T1, typename T2, typename T3, typename T4,
           typename T5, typename T6, typename T7, typename T8>
-CommandVoid8<E, T1, T2, T3, T4, T5, T6, T7, T8> *makeCommandVoid8(
-    E &entity,
-    void (E::*function)(const T1 &, const T2 &, const T3 &, const T4 &,
-                        const T5 &, const T6 &, const T7 &, const T8 &),
-    const std::string &docString) {
+CommandVoid8<E, T1, T2, T3, T4, T5, T6, T7, T8>* makeCommandVoid8(
+    E& entity,
+    void (E::*function)(const T1&, const T2&, const T3&, const T4&, const T5&,
+                        const T6&, const T7&, const T8&),
+    const std::string& docString) {
   return new CommandVoid8<E, T1, T2, T3, T4, T5, T6, T7, T8>(
       entity, boost::bind(function, &entity, _1, _2, _3, _4, _5, _6, _7, _8),
       docString);
@@ -689,10 +686,10 @@ CommandVoid8<E, T1, T2, T3, T4, T5, T6, T7, T8> *makeCommandVoid8(
 }
 
 inline std::string docCommandVoid8(
-    const std::string &doc, const std::string &type1, const std::string &type2,
-    const std::string &type3, const std::string &type4,
-    const std::string &type5, const std::string &type6,
-    const std::string &type7, const std::string &type8) {
+    const std::string& doc, const std::string& type1, const std::string& type2,
+    const std::string& type3, const std::string& type4,
+    const std::string& type5, const std::string& type6,
+    const std::string& type7, const std::string& type8) {
   return (std::string("\n") + doc + "\n\n" + "Input:\n - A " + type1 + ".\n" +
           "Input:\n - A " + type2 + ".\n" + "Input:\n - A " + type3 + ".\n" +
           "Input:\n - A " + type4 + ".\n" + "Input:\n - A " + type5 + ".\n" +
@@ -711,9 +708,9 @@ namespace dynamicgraph {
 namespace command {
 template <class E>
 struct CommandVerbose : public Command {
-  typedef boost::function<void(std::ostream &)> function_t;
+  typedef boost::function<void(std::ostream&)> function_t;
 
-  CommandVerbose(E &entity, function_t function, const std::string &docString)
+  CommandVerbose(E& entity, function_t function, const std::string& docString)
       : Command(entity, EMPTY_ARG, docString), fptr(function) {}
 
  protected:
@@ -729,23 +726,23 @@ struct CommandVerbose : public Command {
 };
 
 template <class E>
-CommandVerbose<E> *makeCommandVerbose(
-    E &entity, typename CommandVerbose<E>::function_t function,
-    const std::string &docString) {
+CommandVerbose<E>* makeCommandVerbose(
+    E& entity, typename CommandVerbose<E>::function_t function,
+    const std::string& docString) {
   return new CommandVerbose<E>(entity, function, docString);
   return NULL;
 }
 
 template <class E>
-CommandVerbose<E> *makeCommandVerbose(E &entity,
-                                      void (E::*function)(std::ostream &),
-                                      const std::string &docString) {
+CommandVerbose<E>* makeCommandVerbose(E& entity,
+                                      void (E::*function)(std::ostream&),
+                                      const std::string& docString) {
   return new CommandVerbose<E>(entity, boost::bind(function, &entity, _1),
                                docString);
   return NULL;
 }
 
-inline std::string docCommandVerbose(const std::string &doc) {
+inline std::string docCommandVerbose(const std::string& doc) {
   return std::string("\n") + doc + "\n\nNo input.\n Return a string.\n\n";
 }
 /*************************/
@@ -754,8 +751,8 @@ inline std::string docCommandVerbose(const std::string &doc) {
 
 template <class E, class ReturnType>
 struct CommandReturnType0 : public Command {
-  CommandReturnType0(E &entity, boost::function<ReturnType(void)> function,
-                     const std::string &docString)
+  CommandReturnType0(E& entity, boost::function<ReturnType(void)> function,
+                     const std::string& docString)
       : Command(entity, EMPTY_ARG, docString), fptr(function) {}
 
  protected:
@@ -770,30 +767,30 @@ struct CommandReturnType0 : public Command {
 };
 
 template <class E, class ReturnType>
-CommandReturnType0<E, ReturnType> *makeCommandReturnType0(
-    E &entity, boost::function<ReturnType(void)> function,
-    const std::string &docString) {
+CommandReturnType0<E, ReturnType>* makeCommandReturnType0(
+    E& entity, boost::function<ReturnType(void)> function,
+    const std::string& docString) {
   return new CommandReturnType0<E, ReturnType>(entity, function, docString);
 }
 
 template <class E, class ReturnType>
-CommandReturnType0<E, ReturnType> *makeCommandReturnType0(
-    E &entity, boost::function<ReturnType(E *)> function,
-    const std::string &docString) {
+CommandReturnType0<E, ReturnType>* makeCommandReturnType0(
+    E& entity, boost::function<ReturnType(E*)> function,
+    const std::string& docString) {
   return new CommandReturnType0<E, ReturnType>(
       entity, boost::bind(function, &entity), docString);
 }
 
 template <class E, class ReturnType>
-CommandReturnType0<E, ReturnType> *makeCommandReturnType0(
-    E &entity, ReturnType (E::*function)(void), const std::string &docString) {
+CommandReturnType0<E, ReturnType>* makeCommandReturnType0(
+    E& entity, ReturnType (E::*function)(void), const std::string& docString) {
   return new CommandReturnType0<E, ReturnType>(
       entity, boost::bind(function, &entity), docString);
 }
 
 template <typename ReturnType>
-inline std::string docCommandReturnType0(
-    const std::string &doc, const std::string & /* return_type */) {
+inline std::string docCommandReturnType0(const std::string& doc,
+                                         const std::string& /* return_type */) {
   return std::string("\n") + doc + "\n\nNo input.\n" +
          typeid(ReturnType).name() + " return.\n\n";
 }
@@ -807,10 +804,10 @@ namespace command {
 
 template <class E, typename ReturnType, typename T>
 struct CommandReturnType1 : public Command {
-  typedef boost::function<ReturnType(const T &)> function_t;
+  typedef boost::function<ReturnType(const T&)> function_t;
 
-  CommandReturnType1(E &entity, function_t function,
-                     const std::string &docString)
+  CommandReturnType1(E& entity, function_t function,
+                     const std::string& docString)
       : Command(entity, boost::assign::list_of(ValueHelper<T>::TypeID),
                 docString),
         fptr(function) {}
@@ -828,35 +825,35 @@ struct CommandReturnType1 : public Command {
 };
 
 template <class E, typename ReturnType, typename T>
-CommandReturnType1<E, ReturnType, T> *makeCommandReturnType1(
-    E &entity, boost::function<ReturnType(const T &)> function,
-    const std::string &docString) {
+CommandReturnType1<E, ReturnType, T>* makeCommandReturnType1(
+    E& entity, boost::function<ReturnType(const T&)> function,
+    const std::string& docString) {
   return new CommandReturnType1<E, ReturnType, T>(entity, function, docString);
 }
 
 template <class E, typename ReturnType, typename T>
-CommandReturnType1<E, ReturnType, T> *makeCommandReturnType1(
-    E &entity,
+CommandReturnType1<E, ReturnType, T>* makeCommandReturnType1(
+    E& entity,
     // The following syntaxt don't compile when not
     // specializing the template arg... why ???
-    boost::function<ReturnType(E *, const T &)> function,
-    const std::string &docString) {
+    boost::function<ReturnType(E*, const T&)> function,
+    const std::string& docString) {
   return new CommandReturnType1<E, ReturnType, T>(
       entity, boost::bind(function, &entity, _1), docString);
 }
 
 template <class E, typename ReturnType, typename T>
-CommandReturnType1<E, ReturnType, T> *makeCommandReturnType1(
-    E &entity, ReturnType (E::*function)(const T &),
-    const std::string &docString) {
+CommandReturnType1<E, ReturnType, T>* makeCommandReturnType1(
+    E& entity, ReturnType (E::*function)(const T&),
+    const std::string& docString) {
   return new CommandReturnType1<E, ReturnType, T>(
       entity, boost::bind(function, &entity, _1), docString);
   return NULL;
 }
 
 template <typename ReturnType>
-inline std::string docCommandReturnType1(const std::string &doc,
-                                         const std::string &type) {
+inline std::string docCommandReturnType1(const std::string& doc,
+                                         const std::string& type) {
   return std::string("\n") + doc + "\n\nInput:\n - A " + type + ".\n" +
          typeid(ReturnType).name() + "return.\n\n";
 }
@@ -870,10 +867,10 @@ namespace command {
 
 template <class E, typename ReturnType, typename T1, typename T2>
 struct CommandReturnType2 : public Command {
-  typedef boost::function<ReturnType(const T1 &, const T2 &)> function_t;
+  typedef boost::function<ReturnType(const T1&, const T2&)> function_t;
 
-  CommandReturnType2(E &entity, function_t function,
-                     const std::string &docString)
+  CommandReturnType2(E& entity, function_t function,
+                     const std::string& docString)
       : Command(entity,
                 boost::assign::list_of(ValueHelper<T1>::TypeID)(
                     ValueHelper<T2>::TypeID),
@@ -894,37 +891,37 @@ struct CommandReturnType2 : public Command {
 };
 
 template <class E, typename ReturnType, typename T1, typename T2>
-CommandReturnType2<E, ReturnType, T1, T2> *makeCommandReturnType2(
-    E &entity, boost::function<ReturnType(const T1 &, const T2 &)> function,
-    const std::string &docString) {
+CommandReturnType2<E, ReturnType, T1, T2>* makeCommandReturnType2(
+    E& entity, boost::function<ReturnType(const T1&, const T2&)> function,
+    const std::string& docString) {
   return new CommandReturnType2<E, ReturnType, T1, T2>(entity, function,
                                                        docString);
 }
 
 template <class E, typename ReturnType, typename T1, typename T2>
-CommandReturnType2<E, ReturnType, T1, T2> *makeCommandReturnType2(
-    E &entity,
+CommandReturnType2<E, ReturnType, T1, T2>* makeCommandReturnType2(
+    E& entity,
     // The following syntaxt don't compile when not specializing the template
     // arg... why ???
-    boost::function<ReturnType(E *, const T1 &, const T2 &)> function,
-    const std::string &docString) {
+    boost::function<ReturnType(E*, const T1&, const T2&)> function,
+    const std::string& docString) {
   return new CommandReturnType2<E, ReturnType, T1, T2>(
       entity, boost::bind(function, &entity, _1, _2), docString);
 }
 
 template <class E, typename ReturnType, typename T1, typename T2>
-CommandReturnType2<E, ReturnType, T1, T2> *makeCommandReturnType2(
-    E &entity, ReturnType (E::*function)(const T1 &, const T2 &),
-    const std::string &docString) {
+CommandReturnType2<E, ReturnType, T1, T2>* makeCommandReturnType2(
+    E& entity, ReturnType (E::*function)(const T1&, const T2&),
+    const std::string& docString) {
   return new CommandReturnType2<E, ReturnType, T1, T2>(
       entity, boost::bind(function, &entity, _1, _2), docString);
   return NULL;
 }
 
 template <typename ReturnType>
-inline std::string docCommandReturnType2(const std::string &doc,
-                                         const std::string &type1,
-                                         const std::string &type2) {
+inline std::string docCommandReturnType2(const std::string& doc,
+                                         const std::string& type1,
+                                         const std::string& type2) {
   return (std::string("\n") + doc + "\n\n" + "Input:\n - A " + type1 + ".\n" +
           "Input:\n - A " + type2 + ".\n" +
           "ReturnType:\n - Returns:" + typeid(ReturnType).name() + +".\n\n");

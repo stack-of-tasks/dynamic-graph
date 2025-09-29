@@ -26,8 +26,8 @@
 #define DYNAMICGRAPH_FACTORY_ENTITY_PLUGIN(CLASSTYPE, CLASSNAME)              \
   const std::string CLASSTYPE::CLASS_NAME = CLASSNAME;                        \
   extern "C" {                                                                \
-  ::dynamicgraph::Entity *EntityMaker_##CLASSTYPE(                            \
-      const std::string &objname) {                                           \
+  ::dynamicgraph::Entity* EntityMaker_##CLASSTYPE(                            \
+      const std::string& objname) {                                           \
     return new CLASSTYPE(objname);                                            \
   }                                                                           \
   ::dynamicgraph::EntityRegisterer reg_##CLASSTYPE(CLASSNAME,                 \
@@ -82,12 +82,12 @@ class DYNAMIC_GRAPH_DLLAPI FactoryStorage : private boost::noncopyable {
  public:
   /// \brief Function pointer providing an entity instance from its
   /// name.
-  typedef Entity *(*EntityConstructor_ptr)(const std::string &);
+  typedef Entity* (*EntityConstructor_ptr)(const std::string&);
 
   ~FactoryStorage();
 
   /// \brief Get pointer to unique object of the class
-  static FactoryStorage *getInstance();
+  static FactoryStorage* getInstance();
 
   /// \brief Destroy the unique instance of the class
   static void destroy();
@@ -104,7 +104,7 @@ class DYNAMIC_GRAPH_DLLAPI FactoryStorage : private boost::noncopyable {
   /// \param entname the name used to subscribe the entity.
   /// \param ent pointer to a function allocating an entity from an
   /// instance name.
-  void registerEntity(const std::string &entname, EntityConstructor_ptr ent);
+  void registerEntity(const std::string& entname, EntityConstructor_ptr ent);
 
   /// \brief Delete an entity from the factory.
   ///
@@ -113,7 +113,7 @@ class DYNAMIC_GRAPH_DLLAPI FactoryStorage : private boost::noncopyable {
   /// OBJECT_CONFLICT.
   ///
   /// \param entname the entity name (as passed to registerEntity before)
-  void deregisterEntity(const std::string &entname);
+  void deregisterEntity(const std::string& entname);
 
   /// \brief Instantiate (and allocate) an entity.
   ///
@@ -133,22 +133,22 @@ class DYNAMIC_GRAPH_DLLAPI FactoryStorage : private boost::noncopyable {
   /// \param classname the name of the Entity type
   /// \param objname the instance name
   /// \return Dynamically allocated instance of classname.
-  Entity *newEntity(const std::string &classname,
-                    const std::string &objname) const;
+  Entity* newEntity(const std::string& classname,
+                    const std::string& objname) const;
 
   /// \brief Check if an Entity associated with a particular name
   /// has already been registered.
   ///
   /// \param name entity name
   /// \return Do the entity exist?
-  bool existEntity(const std::string &name) const;
+  bool existEntity(const std::string& name) const;
 
   /// \brief List the available entities.
   ///
   /// Available entities are appended to the method argument.
   ///
   /// \param list Available entities will be appended to list.
-  void listEntities(std::vector<std::string> &list) const;
+  void listEntities(std::vector<std::string>& list) const;
 
  private:
   /// \brief Constructor the factory.
@@ -169,7 +169,7 @@ class DYNAMIC_GRAPH_DLLAPI FactoryStorage : private boost::noncopyable {
   EntityMap entityMap;
 
   /// \pointer to the unique object of the class
-  static FactoryStorage *instance_;
+  static FactoryStorage* instance_;
 };
 
 /// \ingroup dgraph
@@ -184,7 +184,7 @@ class DYNAMIC_GRAPH_DLLAPI FactoryStorage : private boost::noncopyable {
 class DYNAMIC_GRAPH_DLLAPI EntityRegisterer : private boost::noncopyable {
  public:
   /// \brief Register entity to the global factory.
-  explicit EntityRegisterer(const std::string &entityClassName,
+  explicit EntityRegisterer(const std::string& entityClassName,
                             FactoryStorage::EntityConstructor_ptr maker);
 
   /// \brief Unregister entity to the global factory.

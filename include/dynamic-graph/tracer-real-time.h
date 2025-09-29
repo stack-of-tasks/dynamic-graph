@@ -17,7 +17,7 @@ namespace dynamicgraph {
 /// \brief Stream for the tracer real-time.
 class DG_TRACERREALTIME_DLLAPI OutStringStream : public std::ostringstream {
  public:
-  char *buffer;
+  char* buffer;
   std::streamsize index;
   std::streamsize bufferSize;
   bool full;
@@ -27,9 +27,9 @@ class DG_TRACERREALTIME_DLLAPI OutStringStream : public std::ostringstream {
   OutStringStream();
   ~OutStringStream();
 
-  void resize(const std::streamsize &size);
-  bool addData(const char *data, const std::streamoff &size);
-  void dump(std::ostream &os);
+  void resize(const std::streamsize& size);
+  bool addData(const char* data, const std::streamoff& size);
+  void dump(std::ostream& os);
   void empty();
 };
 
@@ -40,29 +40,29 @@ class DG_TRACERREALTIME_DLLAPI TracerRealTime : public Tracer {
   DYNAMIC_GRAPH_ENTITY_DECL();
 
  public:
-  TracerRealTime(const std::string &n);
+  TracerRealTime(const std::string& n);
   virtual ~TracerRealTime() {}
 
   virtual void closeFiles();
   virtual void trace();
 
-  void display(std::ostream &os) const;
-  DG_TRACERREALTIME_DLLAPI friend std::ostream &operator<<(
-      std::ostream &os, const TracerRealTime &t);
+  void display(std::ostream& os) const;
+  DG_TRACERREALTIME_DLLAPI friend std::ostream& operator<<(
+      std::ostream& os, const TracerRealTime& t);
 
   void emptyBuffers();
 
-  void setBufferSize(const int &SIZE) { bufferSize = SIZE; }
+  void setBufferSize(const int& SIZE) { bufferSize = SIZE; }
 
-  const int &getBufferSize() { return bufferSize; }
+  const int& getBufferSize() { return bufferSize; }
 
  protected:
-  virtual void openFile(const SignalBase<sigtime_t> &sig,
-                        const std::string &filename);
+  virtual void openFile(const SignalBase<sigtime_t>& sig,
+                        const std::string& filename);
 
-  virtual void recordSignal(std::ostream &os, const SignalBase<sigtime_t> &sig);
+  virtual void recordSignal(std::ostream& os, const SignalBase<sigtime_t>& sig);
 
-  typedef std::list<std::ofstream *> HardFileList;
+  typedef std::list<std::ofstream*> HardFileList;
   static const int BUFFER_SIZE_DEFAULT = 1048576;  //  1Mo
 
   int bufferSize;

@@ -92,7 +92,7 @@ namespace dynamicgraph {
   _DYNAMIC_GRAPH_ENTITY_MSG(entity, MSG_TYPE_ERROR_STREAM)
 
 template <typename T>
-std::string toString(const T &v, const int precision = 3,
+std::string toString(const T& v, const int precision = 3,
                      const int width = -1) {
   std::stringstream ss;
   if (width > precision)
@@ -103,7 +103,7 @@ std::string toString(const T &v, const int precision = 3,
 }
 
 template <typename T>
-std::string toString(const std::vector<T> &v, const int precision = 3,
+std::string toString(const std::vector<T>& v, const int precision = 3,
                      const int width = -1, const std::string separator = ", ") {
   std::stringstream ss;
   if (width > precision) {
@@ -122,7 +122,7 @@ std::string toString(const std::vector<T> &v, const int precision = 3,
 }
 
 template <typename T>
-std::string toString(const Eigen::MatrixBase<T> &v, const int precision = 3,
+std::string toString(const Eigen::MatrixBase<T>& v, const int precision = 3,
                      const int width = -1, const std::string separator = ", ") {
   std::stringstream ss;
   if (width > precision) {
@@ -208,8 +208,8 @@ class Logger {
    * \param type specifies the verbosity level, for instance MSG_TYPE_DEBUG
    * \param lineId typically __FILE__ ":" BOOST_PP_STRINGIZE(__LINE__)
    */
-  RTLoggerStream stream(MsgType type, const std::string &lineId = "") {
-    RealTimeLogger &rtlogger = ::dynamicgraph::RealTimeLogger::instance();
+  RTLoggerStream stream(MsgType type, const std::string& lineId = "") {
+    RealTimeLogger& rtlogger = ::dynamicgraph::RealTimeLogger::instance();
     if (acceptMsg(type, lineId)) return rtlogger.front();
     return rtlogger.emptyStream();
   }
@@ -220,7 +220,7 @@ class Logger {
    *  \endcode
    */
   [[deprecated("use stream(type, lineId) << msg")]] void sendMsg(
-      std::string msg, MsgType type, const std::string &lineId = "");
+      std::string msg, MsgType type, const std::string& lineId = "");
 
   /** \deprecated instead, use
    *  \code
@@ -228,7 +228,7 @@ class Logger {
    *  \endcode
    */
   [[deprecated("use stream(type, lineId) << msg")]] void sendMsg(
-      std::string msg, MsgType type, const std::string &file, int line);
+      std::string msg, MsgType type, const std::string& file, int line);
 
   /** Set the sampling time at which the method countdown()
    * is going to be called. */
@@ -269,7 +269,7 @@ class Logger {
    * accepted. \note If \p m is a stream type, the internal counter associated
    * to \p lineId is updated.
    */
-  bool acceptMsg(MsgType m, const std::string &lineId) {
+  bool acceptMsg(MsgType m, const std::string& lineId) {
     // If more verbose than the current verbosity level
     if ((m & MSG_TYPE_TYPE_BITS) > m_lv) return false;
 
@@ -281,7 +281,7 @@ class Logger {
   /** Check whether a message from \c lineId should be accepted.
    *  \note The internal counter associated to \c lineId is updated.
    */
-  bool checkStreamPeriod(const std::string &lineId);
+  bool checkStreamPeriod(const std::string& lineId);
 };
 
 }  // namespace dynamicgraph

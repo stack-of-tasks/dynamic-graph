@@ -21,7 +21,7 @@ CPUData::CPUData()
       guest_nice_time_(0),
       percent_(0.0) {}
 
-void CPUData::ProcessLine(std::istringstream &aCPULine) {
+void CPUData::ProcessLine(std::istringstream& aCPULine) {
   unsigned long long int luser_mode_time = 0, lnice_time = 0, lsystem_time = 0,
                          lidle_time = 0, liowait_time = 0, lirq_time = 0,
                          lsoftirq_time = 0, lsteal_time = 0, lguest_time = 0,
@@ -102,7 +102,7 @@ void System::init() {
   init_ = true;
 }
 
-void System::ProcessCPULine(unsigned int cpunb, std::istringstream &aCPULine) {
+void System::ProcessCPULine(unsigned int cpunb, std::istringstream& aCPULine) {
   vCPUData_[cpunb].ProcessLine(aCPULine);
 }
 

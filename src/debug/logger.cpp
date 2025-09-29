@@ -39,11 +39,11 @@ void Logger::countdown() {
   m_printCountdown -= m_timeSample;
 }
 
-void Logger::sendMsg(std::string msg, MsgType type, const std::string &lineId) {
+void Logger::sendMsg(std::string msg, MsgType type, const std::string& lineId) {
   stream(type, lineId) << msg << '\n';
 }
 
-void Logger::sendMsg(std::string msg, MsgType type, const std::string &file,
+void Logger::sendMsg(std::string msg, MsgType type, const std::string& file,
                      int line) {
   std::ostringstream oss;
   oss << file << line;
@@ -66,14 +66,14 @@ double Logger::getTimeSample() { return m_timeSample; }
 
 double Logger::getStreamPrintPeriod() { return m_streamPrintPeriod; }
 
-bool Logger::checkStreamPeriod(const std::string &lineId) {
+bool Logger::checkStreamPeriod(const std::string& lineId) {
   // insert element with value 0 if it does not exist.
   // otherwise, return a counter to the existing one.
   std::pair<StreamCounterMap_t::iterator, bool> result =
       m_stream_msg_counters.insert(std::make_pair(lineId, 0.));
 
   // if counter is greater than 0 then decrement it and do not print
-  double &counter = result.first->second;
+  double& counter = result.first->second;
   counter -= m_timeSample;
   if (counter > 0.0) {
     return false;

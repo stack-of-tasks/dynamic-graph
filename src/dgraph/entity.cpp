@@ -30,7 +30,7 @@ void Entity::entityDeregistration() {
   PoolStorage::getInstance()->deregisterEntity(name);
 }
 
-Entity::Entity(const string &name__) : name(name__) {
+Entity::Entity(const string& name__) : name(name__) {
   dgDEBUG(15) << "New entity <" << name__ << ">" << endl;
   if (name.length() == 0) {
     stringstream oss;
@@ -46,7 +46,7 @@ Entity::Entity(const string &name__) : name(name__) {
 
 Entity::~Entity() {
   dgDEBUG(25) << "# In (" << name << " { " << endl;
-  for (std::map<const std::string, Command *>::iterator it = commandMap.begin();
+  for (std::map<const std::string, Command*>::iterator it = commandMap.begin();
        it != commandMap.end(); ++it) {
     delete it->second;
   }
@@ -56,9 +56,9 @@ Entity::~Entity() {
 /* -------------------------------------------------------------------------- */
 /* --- SIGNALS -------------------------------------------------------------- */
 /* -------------------------------------------------------------------------- */
-void Entity::signalRegistration(const SignalArray<sigtime_t> &signals) {
+void Entity::signalRegistration(const SignalArray<sigtime_t>& signals) {
   for (unsigned int i = 0; i < signals.getSize(); ++i) {
-    SignalBase<sigtime_t> &sig = signals[i];
+    SignalBase<sigtime_t>& sig = signals[i];
     // const string& signame = sig.getName ();
     istringstream iss(sig.getName());
     const int SIZE = 4096;
@@ -66,7 +66,7 @@ void Entity::signalRegistration(const SignalArray<sigtime_t> &signals) {
     while (iss.good()) {
       iss.getline(buffer, SIZE, ':');
     }
-    const string &signame(buffer);
+    const string& signame(buffer);
 
     SignalMap::iterator sigkey = signalMap.find(signame);
     if (sigkey != signalMap.end())  // key does exist
@@ -86,7 +86,7 @@ void Entity::signalRegistration(const SignalArray<sigtime_t> &signals) {
   }
 }
 
-void Entity::signalDeregistration(const std::string &signame) {
+void Entity::signalDeregistration(const std::string& signame) {
   SignalMap::iterator sigkey = signalMap.find(signame);
   if (sigkey == signalMap.end())  // key does not exist
   {
@@ -106,11 +106,11 @@ std::string Entity::getDocString() const {
   return docString;
 }
 
-bool Entity::hasSignal(const string &signame) const {
+bool Entity::hasSignal(const string& signame) const {
   return (!(signalMap.find(signame) == signalMap.end()));
 }
 
-SignalBase<sigtime_t> &Entity::getSignal(const string &signame) {
+SignalBase<sigtime_t>& Entity::getSignal(const string& signame) {
   SignalMap::iterator sigkey = signalMap.find(signame);
   if (sigkey == signalMap.end()) /* key does NOT exist */
   {
@@ -121,7 +121,7 @@ SignalBase<sigtime_t> &Entity::getSignal(const string &signame) {
   return *(sigkey->second);
 }
 
-const SignalBase<sigtime_t> &Entity::getSignal(const string &signame) const {
+const SignalBase<sigtime_t>& Entity::getSignal(const string& signame) const {
   SignalMap::const_iterator sigkey = signalMap.find(signame);
   if (sigkey == signalMap.end()) /* key does NOT exist */
   {
@@ -132,7 +132,7 @@ const SignalBase<sigtime_t> &Entity::getSignal(const string &signame) const {
   return *(sigkey->second);
 }
 
-std::ostream &Entity::displaySignalList(std::ostream &os) const {
+std::ostream& Entity::displaySignalList(std::ostream& os) const {
   os << "--- <" << getName() << "> signal list: " << endl;
   const SignalMap::const_iterator iterend = signalMap.end();
   for (SignalMap::const_iterator iter = signalMap.begin(); iterend != iter;
@@ -147,7 +147,7 @@ std::ostream &Entity::displaySignalList(std::ostream &os) const {
   return os;
 }
 
-std::ostream &Entity::writeGraph(std::ostream &os) const {
+std::ostream& Entity::writeGraph(std::ostream& os) const {
   const SignalMap::const_iterator iterend = signalMap.end();
   for (SignalMap::const_iterator iter = signalMap.begin(); iterend != iter;
        ++iter) {
@@ -156,7 +156,7 @@ std::ostream &Entity::writeGraph(std::ostream &os) const {
   return os;
 }
 
-std::ostream &Entity::writeCompletionList(std::ostream &os) const {
+std::ostream& Entity::writeCompletionList(std::ostream& os) const {
   const SignalMap::const_iterator iterend = signalMap.end();
   for (SignalMap::const_iterator iter = signalMap.begin(); iterend != iter;
        ++iter) {
@@ -167,11 +167,11 @@ std::ostream &Entity::writeCompletionList(std::ostream &os) const {
   return os;
 }
 
-void Entity::display(std::ostream &os) const {
+void Entity::display(std::ostream& os) const {
   os << this->getClassName() << ": " << name;
 }
 
-std::ostream &dynamicgraph::operator<<(std::ostream &os, const Entity &ent) {
+std::ostream& dynamicgraph::operator<<(std::ostream& os, const Entity& ent) {
   ent.display(os);
   return os;
 }
@@ -183,27 +183,27 @@ Entity::SignalMap Entity::getSignalMap() const { return signalMap; }
 /* --- PARAMS --------------------------------------------------------------- */
 
 static std::string Entity_COMMAND_LIST = "print\nsignals\nsignalDep";
-const std::string &Entity::getCommandList() const {
+const std::string& Entity::getCommandList() const {
   return Entity_COMMAND_LIST;
 }
 
 /// Add a command to Entity
-void Entity::addCommand(const std::string &inName, Command *command) {
+void Entity::addCommand(const std::string& inName, Command* command) {
   if (commandMap.count(inName) != 0) {
     DG_THROW ExceptionFactory(
         ExceptionFactory::OBJECT_CONFLICT,
         "Command " + inName + " already registered in Entity.");
   }
-  std::pair<const std::string, Command *> item(inName, command);
+  std::pair<const std::string, Command*> item(inName, command);
   commandMap.insert(item);
 }
 
 /// Return the list of command objects
-std::map<const std::string, Command *> Entity::getNewStyleCommandMap() {
+std::map<const std::string, Command*> Entity::getNewStyleCommandMap() {
   return commandMap;
 }
 
-Command *Entity::getNewStyleCommand(const std::string &commandName) {
+Command* Entity::getNewStyleCommand(const std::string& commandName) {
   if (commandMap.count(commandName) != 1) {
     DG_THROW ExceptionFactory(
         ExceptionFactory::UNREFERED_FUNCTION,
@@ -212,7 +212,7 @@ Command *Entity::getNewStyleCommand(const std::string &commandName) {
   return commandMap[commandName];
 }
 
-void Entity::sendMsg(const std::string &msg, MsgType t,
-                     const std::string &lineId) {
+void Entity::sendMsg(const std::string& msg, MsgType t,
+                     const std::string& lineId) {
   logger_.stream(t, lineId) << "[" << name << "]" << msg << '\n';
 }

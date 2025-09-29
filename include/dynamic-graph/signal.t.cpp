@@ -29,17 +29,17 @@ Signal<T, Time>::Signal(std::string name)
 /* ------------------------------------------------------------------------ */
 
 template <class T, class Time>
-void Signal<T, Time>::set(std::istringstream &stringValue) {
+void Signal<T, Time>::set(std::istringstream& stringValue) {
   (*this) = signal_io<T>::cast(stringValue);
 }
 
 template <class T, class Time>
-void Signal<T, Time>::get(std::ostream &os) const {
+void Signal<T, Time>::get(std::ostream& os) const {
   signal_io<T>::disp(this->accessCopy(), os);
 }
 
 template <class T, class Time>
-void Signal<T, Time>::trace(std::ostream &os) const {
+void Signal<T, Time>::trace(std::ostream& os) const {
   try {
     signal_io<T>::trace(this->accessCopy(), os);
   } catch DG_RETHROW catch (...) {
@@ -53,7 +53,7 @@ void Signal<T, Time>::trace(std::ostream &os) const {
 /* ------------------------------------------------------------------------ */
 
 template <class T, class Time>
-const T &Signal<T, Time>::setTcopy(const T &t) {
+const T& Signal<T, Time>::setTcopy(const T& t) {
   if (Tcopy == &Tcopy1) {
     Tcopy2 = t;
     copyInit = true;
@@ -68,7 +68,7 @@ const T &Signal<T, Time>::setTcopy(const T &t) {
 }
 
 template <class T, class Time>
-T &Signal<T, Time>::getTwork() {
+T& Signal<T, Time>::getTwork() {
   if (Tcopy == &Tcopy1)
     return Tcopy2;
   else
@@ -76,7 +76,7 @@ T &Signal<T, Time>::getTwork() {
 }
 
 template <class T, class Time>
-const T &Signal<T, Time>::getTwork() const {
+const T& Signal<T, Time>::getTwork() const {
   if (Tcopy == &Tcopy1)
     return Tcopy2;
   else
@@ -84,7 +84,7 @@ const T &Signal<T, Time>::getTwork() const {
 }
 
 template <class T, class Time>
-const T &Signal<T, Time>::switchTcopy() {
+const T& Signal<T, Time>::switchTcopy() {
   if (Tcopy == &Tcopy1) {
     Tcopy = &Tcopy2;
     return Tcopy2;
@@ -95,14 +95,14 @@ const T &Signal<T, Time>::switchTcopy() {
 }
 
 template <class T, class Time>
-void Signal<T, Time>::setConstant(const T &t) {
+void Signal<T, Time>::setConstant(const T& t) {
   signalType = CONSTANT;
   setTcopy(t);
   setReady();
 }
 
 template <class T, class Time>
-void Signal<T, Time>::setReference(const T *t, Mutex *mutexref) {
+void Signal<T, Time>::setReference(const T* t, Mutex* mutexref) {
   signalType = REFERENCE;
   Treference = t;
   providerMutex = mutexref;
@@ -111,7 +111,7 @@ void Signal<T, Time>::setReference(const T *t, Mutex *mutexref) {
 }
 
 template <class T, class Time>
-void Signal<T, Time>::setReferenceNonConstant(T *t, Mutex *mutexref) {
+void Signal<T, Time>::setReferenceNonConstant(T* t, Mutex* mutexref) {
   signalType = REFERENCE_NON_CONST;
   Treference = t;
   TreferenceNonConst = t;
@@ -121,8 +121,8 @@ void Signal<T, Time>::setReferenceNonConstant(T *t, Mutex *mutexref) {
 }
 
 template <class T, class Time>
-void Signal<T, Time>::setFunction(boost::function2<T &, T &, Time> t,
-                                  Mutex *mutexref) {
+void Signal<T, Time>::setFunction(boost::function2<T&, T&, Time> t,
+                                  Mutex* mutexref) {
   signalType = FUNCTION;
   Tfunction = t;
   providerMutex = mutexref;
@@ -131,12 +131,12 @@ void Signal<T, Time>::setFunction(boost::function2<T &, T &, Time> t,
 }
 
 template <class T, class Time>
-const T &Signal<T, Time>::accessCopy() const {
+const T& Signal<T, Time>::accessCopy() const {
   return *Tcopy;
 }
 
 template <class T, class Time>
-const T &Signal<T, Time>::access(const Time &t) {
+const T& Signal<T, Time>::access(const Time& t) {
   switch (signalType) {
     case REFERENCE:
     case REFERENCE_NON_CONST: {
@@ -152,7 +152,7 @@ const T &Signal<T, Time>::access(const Time &t) {
           copyInit = true;
           signalTime = t;
           return setTcopy(*Treference);
-        } catch (const MutexError &) {
+        } catch (const MutexError&) {
           return accessCopy();
         }
       }
@@ -175,7 +175,7 @@ const T &Signal<T, Time>::access(const Time &t) {
           Tfunction(getTwork(), t);
           copyInit = true;
           return switchTcopy();
-        } catch (const MutexError &) {
+        } catch (const MutexError&) {
           return accessCopy();
         }
       }
@@ -192,7 +192,7 @@ const T &Signal<T, Time>::access(const Time &t) {
 }
 
 template <class T, class Time>
-Signal<T, Time> &Signal<T, Time>::operator=(const T &t) {
+Signal<T, Time>& Signal<T, Time>::operator=(const T& t) {
   if (keepReference && (REFERENCE_NON_CONST == signalType) &&
       (NULL != TreferenceNonConst)) {
     if (NULL == providerMutex) {
@@ -205,7 +205,7 @@ Signal<T, Time> &Signal<T, Time>::operator=(const T &t) {
 #endif
         setTcopy(t);
         (*TreferenceNonConst) = t;
-      } catch (const MutexError &) { /* TODO ERROR */
+      } catch (const MutexError&) { /* TODO ERROR */
       }
     }
   } else {
@@ -215,7 +215,7 @@ Signal<T, Time> &Signal<T, Time>::operator=(const T &t) {
 }
 
 template <class T, class Time>
-std::ostream &Signal<T, Time>::display(std::ostream &os) const {
+std::ostream& Signal<T, Time>::display(std::ostream& os) const {
   os << "Sig:" << this->name << " (Type ";
   switch (this->signalType) {
     case Signal<T, Time>::CONSTANT:

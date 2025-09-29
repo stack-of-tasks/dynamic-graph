@@ -23,9 +23,9 @@ class TimeDependency {
   mutable Time lastAskForUpdate;
 
  public:
-  SignalBase<Time> &leader;
+  SignalBase<Time>& leader;
 
-  typedef std::list<const SignalBase<Time> *> Dependencies;
+  typedef std::list<const SignalBase<Time>*> Dependencies;
   static const DependencyType DEPENDENCY_TYPE_DEFAULT = TIME_DEPENDENT;
 
   Dependencies dependencies;
@@ -38,24 +38,24 @@ class TimeDependency {
   static const Time PERIOD_TIME_DEFAULT = 1;
 
  public:
-  TimeDependency(SignalBase<Time> *sig,
+  TimeDependency(SignalBase<Time>* sig,
                  const DependencyType dep = DEPENDENCY_TYPE_DEFAULT);
-  TimeDependency(SignalBase<Time> *sig, const SignalArray_const<Time> &arr,
+  TimeDependency(SignalBase<Time>* sig, const SignalArray_const<Time>& arr,
                  const DependencyType dep = DEPENDENCY_TYPE_DEFAULT);
   virtual ~TimeDependency() {}
 
-  void addDependencies(const SignalArray_const<Time> &arr);
-  void addDependency(const SignalBase<Time> &sig);
-  void removeDependency(const SignalBase<Time> &sig);
+  void addDependencies(const SignalArray_const<Time>& arr);
+  void addDependency(const SignalBase<Time>& sig);
+  void removeDependency(const SignalBase<Time>& sig);
   void clearDependency();
 
-  virtual std::ostream &writeGraph(std::ostream &os) const;
-  std::ostream &displayDependencies(std::ostream &os, const int depth = -1,
+  virtual std::ostream& writeGraph(std::ostream& os) const;
+  std::ostream& displayDependencies(std::ostream& os, const int depth = -1,
                                     std::string space = "",
                                     std::string next1 = "",
                                     std::string next2 = "") const;
 
-  bool needUpdate(const Time &t1) const;
+  bool needUpdate(const Time& t1) const;
 
   void setDependencyType(DependencyType dep) { dependencyType = dep; }
 
@@ -64,7 +64,7 @@ class TimeDependency {
   }
   bool getNeedUpdateFromAllChildren() const { return updateFromAllChildren; }
 
-  void setPeriodTime(const Time &p) { periodTime = p; }
+  void setPeriodTime(const Time& p) { periodTime = p; }
   Time getPeriodTime() const { return periodTime; }
 };
 

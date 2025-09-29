@@ -20,12 +20,12 @@ using namespace dynamicgraph;
 
 const std::string ExceptionSignal::EXCEPTION_NAME = "Signal";
 
-ExceptionSignal::ExceptionSignal(const ExceptionSignal::ErrorCodeEnum &errcode,
-                                 const std::string &msg)
+ExceptionSignal::ExceptionSignal(const ExceptionSignal::ErrorCodeEnum& errcode,
+                                 const std::string& msg)
     : ExceptionAbstract(errcode, msg) {}
 
-ExceptionSignal::ExceptionSignal(const ExceptionSignal::ErrorCodeEnum &errcode,
-                                 const std::string &msg, const char *format,
+ExceptionSignal::ExceptionSignal(const ExceptionSignal::ErrorCodeEnum& errcode,
+                                 const std::string& msg, const char* format,
                                  ...)
     : ExceptionAbstract(errcode, msg) {
   va_list args;

@@ -39,10 +39,10 @@
 /**/
 
 #define DECLARE_SIGNAL_OUT_FUNCTION(name, type) \
-  type &SIGNAL_OUT_FUNCTION_NAME(name)(type &, sigtime_t)
+  type& SIGNAL_OUT_FUNCTION_NAME(name)(type&, sigtime_t)
 
 #define DEFINE_SIGNAL_OUT_FUNCTION(name, type)                    \
-  type &EntityClassName::SIGNAL_OUT_FUNCTION_NAME(name)(type & s, \
+  type& EntityClassName::SIGNAL_OUT_FUNCTION_NAME(name)(type & s, \
                                                         sigtime_t iter)
 
 #define SIGNAL_OUT_FUNCTION(name) name##SOUT_function
@@ -52,7 +52,7 @@
   ::dynamicgraph::SignalTimeDependent<type, sigtime_t> m_##name##SOUT; \
                                                                        \
  protected:                                                            \
-  type &SIGNAL_OUT_FUNCTION(name)(type &, sigtime_t)
+  type& SIGNAL_OUT_FUNCTION(name)(type&, sigtime_t)
 
 #define CONSTRUCT_SIGNAL_OUT(name, type, dep)                                \
   m_##name##SOUT(                                                            \
@@ -63,10 +63,10 @@
 #define SIGNAL_INNER_FUNCTION_NAME(name) name##SINNER_function
 
 #define DECLARE_SIGNAL_INNER_FUNCTION(name, type) \
-  type &SIGNAL_INNER_FUNCTION_NAME(name)(type &, sigtime_t)
+  type& SIGNAL_INNER_FUNCTION_NAME(name)(type&, sigtime_t)
 
 #define DEFINE_SIGNAL_INNER_FUNCTION(name, type)                    \
-  type &EntityClassName::SIGNAL_INNER_FUNCTION_NAME(name)(type & s, \
+  type& EntityClassName::SIGNAL_INNER_FUNCTION_NAME(name)(type & s, \
                                                           sigtime_t iter)
 
 #define DECLARE_SIGNAL_INNER(name, type)                                 \

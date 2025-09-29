@@ -22,13 +22,13 @@ using boost::test_tools::output_test_stream;
 struct CustomEntity : public dynamicgraph::Entity {
   static const std::string CLASS_NAME;
 
-  virtual const std::string &getClassName() const { return CLASS_NAME; }
+  virtual const std::string& getClassName() const { return CLASS_NAME; }
 
-  explicit CustomEntity(const std::string &n) : Entity(n) {}
+  explicit CustomEntity(const std::string& n) : Entity(n) {}
 
   virtual ~CustomEntity() {}
 
-  void display(std::ostream &os) const { os << "custom entity"; }
+  void display(std::ostream& os) const { os << "custom entity"; }
 };
 
 DYNAMICGRAPH_FACTORY_ENTITY_PLUGIN(CustomEntity, "CustomEntity");
@@ -36,7 +36,7 @@ DYNAMICGRAPH_FACTORY_ENTITY_PLUGIN(CustomEntity, "CustomEntity");
 BOOST_AUTO_TEST_CASE(constructor) {
   BOOST_CHECK_EQUAL(CustomEntity::CLASS_NAME, "CustomEntity");
 
-  dynamicgraph::Entity *entity =
+  dynamicgraph::Entity* entity =
       dynamicgraph::FactoryStorage::getInstance()->newEntity("CustomEntity",
                                                              "my-entity");
   BOOST_CHECK_EQUAL(entity->getName(), "my-entity");
@@ -49,7 +49,7 @@ BOOST_AUTO_TEST_CASE(constructor) {
 }
 
 BOOST_AUTO_TEST_CASE(display) {
-  dynamicgraph::Entity *entity =
+  dynamicgraph::Entity* entity =
       dynamicgraph::FactoryStorage::getInstance()->newEntity("CustomEntity",
                                                              "my-entity");
 

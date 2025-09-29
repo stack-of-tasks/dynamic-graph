@@ -16,16 +16,16 @@ namespace command {
 const std::vector<Value::Type> Command::EMPTY_ARG = std::vector<Value::Type>();
 
 Command::~Command() {}
-Command::Command(Entity &entity, const std::vector<Value::Type> &valueTypes,
-                 const std::string &docstring)
+Command::Command(Entity& entity, const std::vector<Value::Type>& valueTypes,
+                 const std::string& docstring)
     : owner_(entity), valueTypeVector_(valueTypes), docstring_(docstring) {}
 
-const std::vector<Value::Type> &Command::valueTypes() const {
+const std::vector<Value::Type>& Command::valueTypes() const {
   return valueTypeVector_;
 }
 
-void Command::setParameterValues(const std::vector<Value> &values) {
-  const std::vector<Value::Type> &paramTypes = valueTypes();
+void Command::setParameterValues(const std::vector<Value>& values) {
+  const std::vector<Value::Type>& paramTypes = valueTypes();
   // Check that number of parameters is correct
   if (values.size() != paramTypes.size()) {
     throw ExceptionAbstract(ExceptionAbstract::ABSTRACT,
@@ -45,13 +45,13 @@ void Command::setParameterValues(const std::vector<Value> &values) {
   valueVector_ = values;
 }
 
-const std::vector<Value> &Command::getParameterValues() const {
+const std::vector<Value>& Command::getParameterValues() const {
   return valueVector_;
 }
 
 Value Command::execute() { return doExecute(); }
 
-Entity &Command::owner() { return owner_; }
+Entity& Command::owner() { return owner_; }
 std::string Command::getDocstring() const { return docstring_; }
 }  // namespace command
 }  // namespace dynamicgraph

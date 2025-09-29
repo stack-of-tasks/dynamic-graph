@@ -26,31 +26,31 @@ namespace command {
 template <class E, typename T>
 class DirectSetter : public Command {
  public:
-  DirectSetter(E &entity, T *ptr, const std::string &docString)
+  DirectSetter(E& entity, T* ptr, const std::string& docString)
       : Command(entity, boost::assign::list_of(ValueHelper<T>::TypeID),
                 docString),
         T_ptr(ptr) {}
 
  protected:
   virtual Value doExecute() {
-    const std::vector<Value> &values = getParameterValues();
+    const std::vector<Value>& values = getParameterValues();
     T val = values[0].value();
     (*T_ptr) = val;
     return Value();  // void
   }
 
  private:
-  T *T_ptr;
+  T* T_ptr;
 };
 
 template <class E, typename T>
-DirectSetter<E, T> *makeDirectSetter(E &entity, T *ptr,
-                                     const std::string &docString) {
+DirectSetter<E, T>* makeDirectSetter(E& entity, T* ptr,
+                                     const std::string& docString) {
   return new DirectSetter<E, T>(entity, ptr, docString);
 }
 
-inline std::string docDirectSetter(const std::string &name,
-                                   const std::string &type) {
+inline std::string docDirectSetter(const std::string& name,
+                                   const std::string& type) {
   return std::string("\nSet the ") + name + ".\n\nInput:\n - a " + type +
          ".\nVoid return.\n\n";
 }

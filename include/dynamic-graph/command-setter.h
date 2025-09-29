@@ -45,9 +45,9 @@ template <class E, typename T>
 class Setter : public Command {
  public:
   /// Pointer to method that sets parameter of type T
-  typedef void (E::*SetterMethod)(const T &);
+  typedef void (E::*SetterMethod)(const T&);
   /// Constructor
-  Setter(E &entity, SetterMethod setterMethod, const std::string &docString);
+  Setter(E& entity, SetterMethod setterMethod, const std::string& docString);
 
  protected:
   virtual Value doExecute();

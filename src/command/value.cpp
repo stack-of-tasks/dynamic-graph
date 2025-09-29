@@ -11,9 +11,9 @@
 namespace dynamicgraph {
 namespace command {
 
-static void *copyValue(const Value &value);
+static void* copyValue(const Value& value);
 
-EitherType::EitherType(const Value &value) : value_(new Value(value)) {}
+EitherType::EitherType(const Value& value) : value_(new Value(value)) {}
 
 EitherType::~EitherType() {
   delete value_;
@@ -39,40 +39,40 @@ EitherType::operator Values() const { return value_->valuesValue(); }
 void Value::deleteValue() {
   switch (type_) {
     case BOOL:
-      delete (const bool *)value_;
+      delete (const bool*)value_;
       break;
     case UNSIGNED:
-      delete (const std::uint32_t *)value_;
+      delete (const std::uint32_t*)value_;
       break;
     case UNSIGNEDLONGINT:
-      delete (const std::uint64_t *)value_;
+      delete (const std::uint64_t*)value_;
       break;
     case INT:
-      delete (const std::int32_t *)value_;
+      delete (const std::int32_t*)value_;
       break;
     case LONGINT:
-      delete (const std::int64_t *)value_;
+      delete (const std::int64_t*)value_;
       break;
     case FLOAT:
-      delete (const float *)value_;
+      delete (const float*)value_;
       break;
     case DOUBLE:
-      delete (const double *)value_;
+      delete (const double*)value_;
       break;
     case STRING:
-      delete (const std::string *)value_;
+      delete (const std::string*)value_;
       break;
     case VECTOR:
-      delete (const Vector *)value_;
+      delete (const Vector*)value_;
       break;
     case MATRIX:
-      delete (const Eigen::MatrixXd *)value_;
+      delete (const Eigen::MatrixXd*)value_;
       break;
     case MATRIX4D:
-      delete (const Eigen::Matrix4d *)value_;
+      delete (const Eigen::Matrix4d*)value_;
       break;
     case VALUES:
-      delete (const Values *)value_;
+      delete (const Values*)value_;
       break;
     case NONE: /* Equivalent to void */
       break;
@@ -84,31 +84,31 @@ void Value::deleteValue() {
 
 Value::~Value() { deleteValue(); }
 
-Value::Value(const bool &value) : type_(BOOL), value_(new bool(value)) {}
-Value::Value(const std::uint32_t &value)
+Value::Value(const bool& value) : type_(BOOL), value_(new bool(value)) {}
+Value::Value(const std::uint32_t& value)
     : type_(UNSIGNED), value_(new std::uint32_t(value)) {}
-Value::Value(const std::uint64_t &value)
+Value::Value(const std::uint64_t& value)
     : type_(UNSIGNEDLONGINT), value_(new std::uint64_t(value)) {}
-Value::Value(const std::int32_t &value)
+Value::Value(const std::int32_t& value)
     : type_(INT), value_(new std::int32_t(value)) {}
-Value::Value(const std::int64_t &value)
+Value::Value(const std::int64_t& value)
     : type_(LONGINT), value_(new int64_t(value)) {}
-Value::Value(const float &value) : type_(FLOAT), value_(new float(value)) {}
-Value::Value(const double &value) : type_(DOUBLE), value_(new double(value)) {}
-Value::Value(const std::string &value)
+Value::Value(const float& value) : type_(FLOAT), value_(new float(value)) {}
+Value::Value(const double& value) : type_(DOUBLE), value_(new double(value)) {}
+Value::Value(const std::string& value)
     : type_(STRING), value_(new std::string(value)) {}
-Value::Value(const Vector &value) : type_(VECTOR), value_(new Vector(value)) {}
-Value::Value(const Eigen::MatrixXd &value)
+Value::Value(const Vector& value) : type_(VECTOR), value_(new Vector(value)) {}
+Value::Value(const Eigen::MatrixXd& value)
     : type_(MATRIX), value_(new Eigen::MatrixXd(value)) {}
-Value::Value(const Eigen::Matrix4d &value)
+Value::Value(const Eigen::Matrix4d& value)
     : type_(MATRIX4D), value_(new Eigen::Matrix4d(value)) {}
-Value::Value(const Values &value) : type_(VALUES), value_(new Values(value)) {}
+Value::Value(const Values& value) : type_(VALUES), value_(new Values(value)) {}
 
-Value::Value(const Value &value)
+Value::Value(const Value& value)
     : type_(value.type_), value_(copyValue(value)) {}
 
-void *copyValue(const Value &value) {
-  void *copy;
+void* copyValue(const Value& value) {
+  void* copy;
   switch (value.type()) {
     case Value::NONE:
       copy = NULL;
@@ -157,17 +157,17 @@ void *copyValue(const Value &value) {
 
 Value::Value() : type_(NONE), value_(NULL) {}
 
-Value Value::operator=(const Value &value) {
+Value Value::operator=(const Value& value) {
   if (&value != this) {
     if (value_ != 0x0) deleteValue();
     type_ = value.type_;
-    void **ptValue = const_cast<void **>(&value_);
+    void** ptValue = const_cast<void**>(&value_);
     *ptValue = copyValue(value);
   }
   return *this;
 }
 
-bool Value::operator==(const Value &other) const {
+bool Value::operator==(const Value& other) const {
   if (type_ != other.type_) return false;
   switch (type_) {
     case Value::BOOL:
@@ -205,29 +205,29 @@ const EitherType Value::value() const { return EitherType(*this); }
 Value::Type Value::type() const { return type_; }
 
 bool Value::boolValue() const {
-  if (type_ == BOOL) return *((const bool *)value_);
+  if (type_ == BOOL) return *((const bool*)value_);
   throw ExceptionAbstract(ExceptionAbstract::TOOLS, "value is not an bool");
 }
 
 std::uint32_t Value::unsignedValue() const {
-  if (type_ == UNSIGNED) return *((const std::uint32_t *)value_);
+  if (type_ == UNSIGNED) return *((const std::uint32_t*)value_);
   throw ExceptionAbstract(ExceptionAbstract::TOOLS,
                           "value is not an unsigned int");
 }
 
 std::uint64_t Value::unsignedlongintValue() const {
-  if (type_ == UNSIGNEDLONGINT) return *((const std::uint64_t *)value_);
+  if (type_ == UNSIGNEDLONGINT) return *((const std::uint64_t*)value_);
   throw ExceptionAbstract(ExceptionAbstract::TOOLS,
                           "value is not an unsigned long int");
 }
 
 std::int64_t Value::longintValue() const {
-  if (type_ == LONGINT) return *((const std::int64_t *)value_);
+  if (type_ == LONGINT) return *((const std::int64_t*)value_);
   throw ExceptionAbstract(ExceptionAbstract::TOOLS, "value is not an long int");
 }
 
 std::int32_t Value::intValue() const {
-  if (type_ == INT) return *((const std::int32_t *)value_);
+  if (type_ == INT) return *((const std::int32_t*)value_);
   throw ExceptionAbstract(ExceptionAbstract::TOOLS, "value is not an int");
 }
 
@@ -235,7 +235,7 @@ float Value::floatValue() const {
   float result;
   if (FLOAT != type_)
     throw ExceptionAbstract(ExceptionAbstract::TOOLS, "value is not a float");
-  result = *((const float *)value_);
+  result = *((const float*)value_);
   return result;
 }
 
@@ -243,40 +243,40 @@ double Value::doubleValue() const {
   double result;
   if (DOUBLE != type_)
     throw ExceptionAbstract(ExceptionAbstract::TOOLS, "value is not a double");
-  result = *((const double *)value_);
+  result = *((const double*)value_);
   return result;
 }
 
 std::string Value::stringValue() const {
-  if (type_ == STRING) return *((const std::string *)value_);
+  if (type_ == STRING) return *((const std::string*)value_);
   throw ExceptionAbstract(ExceptionAbstract::TOOLS, "value is not an string");
 }
 
 Vector Value::vectorValue() const {
-  if (type_ == VECTOR) return *((const Vector *)value_);
+  if (type_ == VECTOR) return *((const Vector*)value_);
   throw ExceptionAbstract(ExceptionAbstract::TOOLS, "value is not an vector");
 }
 
 Eigen::MatrixXd Value::matrixXdValue() const {
-  if (type_ == MATRIX) return *((const Eigen::MatrixXd *)value_);
+  if (type_ == MATRIX) return *((const Eigen::MatrixXd*)value_);
   throw ExceptionAbstract(ExceptionAbstract::TOOLS,
                           "value is not a Eigen matrixXd");
 }
 
 Eigen::Matrix4d Value::matrix4dValue() const {
-  if (type_ == MATRIX4D) return *((const Eigen::Matrix4d *)value_);
+  if (type_ == MATRIX4D) return *((const Eigen::Matrix4d*)value_);
   throw ExceptionAbstract(ExceptionAbstract::TOOLS,
                           "value is not a Eigen matrix4d");
 }
 
 Values Value::valuesValue() const {
-  if (type_ == VALUES) return *((const Values *)value_);
+  if (type_ == VALUES) return *((const Values*)value_);
   throw ExceptionAbstract(ExceptionAbstract::TOOLS,
                           "value is not a vector of Value");
 }
 
-const Values &Value::constValuesValue() const {
-  if (type_ == VALUES) return *((const Values *)value_);
+const Values& Value::constValuesValue() const {
+  if (type_ == VALUES) return *((const Values*)value_);
   throw ExceptionAbstract(ExceptionAbstract::TOOLS,
                           "value is not a vector of Value");
 }
@@ -310,7 +310,7 @@ std::string Value::typeName(Type type) {
   }
 }
 
-std::ostream &operator<<(std::ostream &os, const Value &value) {
+std::ostream& operator<<(std::ostream& os, const Value& value) {
   os << "Type=" << Value::typeName(value.type_) << ", value=";
   switch (value.type_) {
     case Value::BOOL:
@@ -344,7 +344,7 @@ std::ostream &operator<<(std::ostream &os, const Value &value) {
       os << value.matrix4dValue();
       break;
     case Value::VALUES: {
-      const std::vector<Value> &vals = value.constValuesValue();
+      const std::vector<Value>& vals = value.constValuesValue();
       os << "[ ";
       for (std::size_t i = 0; i < vals.size(); ++i)
         os << "Value(" << vals[i] << "), ";

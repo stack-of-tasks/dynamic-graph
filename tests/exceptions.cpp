@@ -34,7 +34,7 @@ BOOST_AUTO_TEST_CASE(exception_abstract) {
   std::string msg_aea("Test exception abstract");
   ExceptionAbstract aEA(10, msg_aea);
 
-  const char *aC = aEA.getMessage();
+  const char* aC = aEA.getMessage();
   output_test_stream output;
   output << aC;
   BOOST_CHECK(output.is_equal("Test exception abstract"));

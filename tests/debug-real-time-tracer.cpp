@@ -32,7 +32,7 @@ struct MyEntity : public dynamicgraph::Entity {
   dynamicgraph::SignalTimeDependent<double, sigtime_t> m_sigdTimeDepSOUT;
   dynamicgraph::SignalTimeDependent<double, sigtime_t> m_sigdTwoTimeDepSOUT;
 
-  explicit MyEntity(const std::string &name)
+  explicit MyEntity(const std::string& name)
       : Entity(name),
         m_sigdSIN("MyEntity(" + name + ")::input(double)::in_double"),
         m_sigdTimeDepSOUT(boost::bind(&MyEntity::update, this, _1, _2),
@@ -46,8 +46,8 @@ struct MyEntity : public dynamicgraph::Entity {
     signalRegistration(m_sigdSIN << m_sigdTimeDepSOUT << m_sigdTwoTimeDepSOUT);
   }
 
-  double &update(double &res, const sigtime_t &inTime) {
-    const double &aDouble = m_sigdSIN(inTime);
+  double& update(double& res, const sigtime_t& inTime) {
+    const double& aDouble = m_sigdSIN(inTime);
     res = aDouble;
     return res;
   }
@@ -59,10 +59,10 @@ BOOST_AUTO_TEST_CASE(test_tracer) {
   using namespace dynamicgraph;
 
   // Creates a tracer.
-  TracerRealTime &atracer = *dynamic_cast<TracerRealTime *>(
+  TracerRealTime& atracer = *dynamic_cast<TracerRealTime*>(
       FactoryStorage::getInstance()->newEntity("TracerRealTime", "my-tracer"));
 
-  MyEntity &entity = *dynamic_cast<MyEntity *>(
+  MyEntity& entity = *dynamic_cast<MyEntity*>(
       FactoryStorage::getInstance()->newEntity("MyEntity", "my-entity"));
 
   std::string rootdir("/tmp");
@@ -83,18 +83,17 @@ BOOST_AUTO_TEST_CASE(test_tracer) {
   atracer.addSignalToTraceByName("my-entity.out_double", "output");
 
   /// Add trace by name
-  SignalBase<sigtime_t> &out_double = entity.getSignal("out_double");
-  SignalBase<sigtime_t> &out_double_2 = entity.getSignal("out2double");
+  SignalBase<sigtime_t>& out_double = entity.getSignal("out_double");
+  SignalBase<sigtime_t>& out_double_2 = entity.getSignal("out2double");
 
-  Signal<double, sigtime_t> &in_double =
-      *(dynamic_cast<Signal<double, sigtime_t> *>(
-          &entity.getSignal("in_double")));
+  Signal<double, sigtime_t>& in_double = *(
+      dynamic_cast<Signal<double, sigtime_t>*>(&entity.getSignal("in_double")));
 
   in_double.setConstant(1.5);
   atracer.start();
 
   std::string emptybuf_cmd_str("empty");
-  command::Command *acmd = atracer.getNewStyleCommand(emptybuf_cmd_str);
+  command::Command* acmd = atracer.getNewStyleCommand(emptybuf_cmd_str);
   acmd->execute();
   for (sigtime_t i = 0; i < 1000; i++) {
     in_double.setTime(i);

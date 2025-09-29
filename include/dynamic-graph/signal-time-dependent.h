@@ -66,24 +66,24 @@ class SignalTimeDependent : public virtual Signal<T, Time>,
 
  public:
   SignalTimeDependent(std::string name = "");
-  SignalTimeDependent(const SignalArray_const<Time> &arr,
+  SignalTimeDependent(const SignalArray_const<Time>& arr,
                       std::string name = "");
-  SignalTimeDependent(boost::function2<T &, T &, Time> t,
-                      const SignalArray_const<Time> &sig,
+  SignalTimeDependent(boost::function2<T&, T&, Time> t,
+                      const SignalArray_const<Time>& sig,
                       std::string name = "");
 
   virtual ~SignalTimeDependent() {}
 
-  inline const T &operator()(const Time &t1) { return access(t1); }
-  const T &access(const Time &t1);
+  inline const T& operator()(const Time& t1) { return access(t1); }
+  const T& access(const Time& t1);
 
-  virtual void addDependency(const SignalBase<Time> &signal);
-  virtual void removeDependency(const SignalBase<Time> &signal);
+  virtual void addDependency(const SignalBase<Time>& signal);
+  virtual void removeDependency(const SignalBase<Time>& signal);
   virtual void clearDependencies();
 
-  std::ostream &writeGraph(std::ostream &os) const { return os; }
+  std::ostream& writeGraph(std::ostream& os) const { return os; }
 
-  std::ostream &displayDependencies(std::ostream &os, const int depth = -1,
+  std::ostream& displayDependencies(std::ostream& os, const int depth = -1,
                                     std::string space = "",
                                     std::string next1 = "",
                                     std::string next2 = "") const {
@@ -91,8 +91,8 @@ class SignalTimeDependent : public virtual Signal<T, Time>,
                                                      next2);
   }
 
-  virtual bool needUpdate(const Time &t) const;
-  virtual void setPeriodTime(const Time &p);
+  virtual bool needUpdate(const Time& t) const;
+  virtual void setPeriodTime(const Time& p);
   virtual Time getPeriodTime() const;
 };
 
@@ -104,19 +104,19 @@ SignalTimeDependent<T, Time>::SignalTimeDependent(std::string name)
 
 template <class T, class Time>
 SignalTimeDependent<T, Time>::SignalTimeDependent(
-    const SignalArray_const<Time> &arr, std::string name)
+    const SignalArray_const<Time>& arr, std::string name)
     : Signal<T, Time>(name), TimeDependency<Time>(this, arr) {}
 
 template <class T, class Time>
 SignalTimeDependent<T, Time>::SignalTimeDependent(
-    boost::function2<T &, T &, Time> t, const SignalArray_const<Time> &sig,
+    boost::function2<T&, T&, Time> t, const SignalArray_const<Time>& sig,
     std::string name)
     : Signal<T, Time>(name), TimeDependency<Time>(this, sig) {
   this->setFunction(t);
 }
 
 template <class T, class Time>
-const T &SignalTimeDependent<T, Time>::access(const Time &t1) {
+const T& SignalTimeDependent<T, Time>::access(const Time& t1) {
   const bool up = TimeDependency<Time>::needUpdate(t1);
   // SignalBase<Time>::setReady(false);
 
@@ -124,7 +124,7 @@ const T &SignalTimeDependent<T, Time>::access(const Time &t1) {
   /*            << t1<< "  -> Up: "<<up <<std::endl ;   */
   if (up) {
     TimeDependency<Time>::lastAskForUpdate = false;
-    const T &Tres = Signal<T, Time>::access(t1);
+    const T& Tres = Signal<T, Time>::access(t1);
     SignalBase<Time>::setReady(false);
     return Tres;
   } else {
@@ -134,13 +134,13 @@ const T &SignalTimeDependent<T, Time>::access(const Time &t1) {
 
 template <class T, class Time>
 void SignalTimeDependent<T, Time>::addDependency(
-    const SignalBase<Time> &signal) {
+    const SignalBase<Time>& signal) {
   TimeDependency<Time>::addDependency(signal);
 }
 
 template <class T, class Time>
 void SignalTimeDependent<T, Time>::removeDependency(
-    const SignalBase<Time> &signal) {
+    const SignalBase<Time>& signal) {
   TimeDependency<Time>::removeDependency(signal);
 }
 
@@ -150,12 +150,12 @@ void SignalTimeDependent<T, Time>::clearDependencies() {
 }
 
 template <class T, class Time>
-bool SignalTimeDependent<T, Time>::needUpdate(const Time &t) const {
+bool SignalTimeDependent<T, Time>::needUpdate(const Time& t) const {
   return TimeDependency<Time>::needUpdate(t);
 }
 
 template <class T, class Time>
-void SignalTimeDependent<T, Time>::setPeriodTime(const Time &p) {
+void SignalTimeDependent<T, Time>::setPeriodTime(const Time& p) {
   TimeDependency<Time>::setPeriodTime(p);
 }
 template <class T, class Time>

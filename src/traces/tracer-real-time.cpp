@@ -41,7 +41,7 @@ OutStringStream::~OutStringStream() {
   dgDEBUGOUT(15);
 }
 
-void OutStringStream::resize(const std::streamsize &size) {
+void OutStringStream::resize(const std::streamsize& size) {
   dgDEBUGIN(15);
 
   index = 0;
@@ -54,7 +54,7 @@ void OutStringStream::resize(const std::streamsize &size) {
   dgDEBUGOUT(15);
 }
 
-bool OutStringStream::addData(const char *data, const std::streamoff &size) {
+bool OutStringStream::addData(const char* data, const std::streamoff& size) {
   dgDEBUGIN(15);
   std::streamsize towrite = static_cast<std::streamsize>(size);
   if (index + towrite > bufferSize) {
@@ -68,7 +68,7 @@ bool OutStringStream::addData(const char *data, const std::streamoff &size) {
   return true;
 }
 
-void OutStringStream::dump(std::ostream &os) {
+void OutStringStream::dump(std::ostream& os) {
   dgDEBUGIN(15);
   os.write(buffer, index);
   dgDEBUGOUT(15);
@@ -85,7 +85,7 @@ void OutStringStream::empty() {
 /* --------------------------------------------------------------------- */
 /* --------------------------------------------------------------------- */
 
-TracerRealTime::TracerRealTime(const std::string &n)
+TracerRealTime::TracerRealTime(const std::string& n)
     : Tracer(n), bufferSize(BUFFER_SIZE_DEFAULT) {
   dgDEBUGINOUT(15);
 
@@ -112,8 +112,8 @@ TracerRealTime::TracerRealTime(const std::string &n)
 /* --------------------------------------------------------------------- */
 /* --------------------------------------------------------------------- */
 
-void TracerRealTime::openFile(const SignalBase<sigtime_t> &sig,
-                              const std::string &givenname) {
+void TracerRealTime::openFile(const SignalBase<sigtime_t>& sig,
+                              const std::string& givenname) {
   dgDEBUGIN(15);
   string signame;
   if (givenname.length()) {
@@ -124,19 +124,19 @@ void TracerRealTime::openFile(const SignalBase<sigtime_t> &sig,
 
   string filename = rootdir + basename + signame + suffix;
   dgDEBUG(5) << "Sig <" << sig.getName() << ">: new file " << filename << endl;
-  std::ofstream *newfile = new std::ofstream(filename.c_str());
+  std::ofstream* newfile = new std::ofstream(filename.c_str());
   if (!newfile->good()) {
     delete newfile;
     DG_THROW ExceptionTraces(
         ExceptionTraces::NOT_OPEN,
         "Could not open file " + filename + " for signal " + signame, "");
   }
-  dgDEBUG(5) << "Newfile:" << (void *)newfile << endl;
+  dgDEBUG(5) << "Newfile:" << (void*)newfile << endl;
   hardFiles.push_back(newfile);
   dgDEBUG(5) << "Creating Outstringstream" << endl;
 
   // std::stringstream * newbuffer = new std::stringstream ();
-  OutStringStream *newbuffer = new OutStringStream();  // std::stringstream ();
+  OutStringStream* newbuffer = new OutStringStream();  // std::stringstream ();
   newbuffer->resize(bufferSize);
   newbuffer->givenname = givenname;
   files.push_back(newbuffer);
@@ -154,8 +154,8 @@ void TracerRealTime::closeFiles() {
   while (files.end() != iter) {
     dgDEBUG(25) << "Close the files." << endl;
 
-    std::stringstream *file = dynamic_cast<stringstream *>(*iter);
-    std::ofstream *hardFile = *hardIter;
+    std::stringstream* file = dynamic_cast<stringstream*>(*iter);
+    std::ofstream* hardFile = *hardIter;
 
     (*hardFile) << flush;
     hardFile->close();
@@ -181,19 +181,19 @@ void TracerRealTime::trace() {
 
   while (files.end() != iter) {
     dgDEBUG(35) << "Next" << endl;
-    std::ostream *os = *iter;
+    std::ostream* os = *iter;
     if (NULL == os) {
       DG_THROW ExceptionTraces(ExceptionTraces::NOT_OPEN, "The buffer is null",
                                "");
     }
     // std::stringstream & file = * dynamic_cast< stringstream* >(os);
-    OutStringStream *file = dynamic_cast<OutStringStream *>(os);  // segfault
+    OutStringStream* file = dynamic_cast<OutStringStream*>(os);  // segfault
     if (NULL == file) {
       DG_THROW ExceptionTraces(ExceptionTraces::NOT_OPEN,
                                "The buffer is not open", "");
     }
 
-    std::ofstream &hardFile = **hardIter;
+    std::ofstream& hardFile = **hardIter;
     if (!hardFile.good()) {
       DG_THROW ExceptionTraces(ExceptionTraces::NOT_OPEN,
                                "The file is not open", "");
@@ -217,7 +217,7 @@ void TracerRealTime::emptyBuffers() {
   for (FileList::iterator iter = files.begin(); files.end() != iter; ++iter) {
     // std::stringstream & file = * dynamic_cast< stringstream* >(*iter);
     try {
-      OutStringStream &file = *dynamic_cast<OutStringStream *>(*iter);
+      OutStringStream& file = *dynamic_cast<OutStringStream*>(*iter);
       file.empty();
       // file.str("");
     } catch (...) {
@@ -228,12 +228,12 @@ void TracerRealTime::emptyBuffers() {
   dgDEBUGOUT(15);
 }
 
-void TracerRealTime::recordSignal(std::ostream &os,
-                                  const SignalBase<sigtime_t> &sig) {
+void TracerRealTime::recordSignal(std::ostream& os,
+                                  const SignalBase<sigtime_t>& sig) {
   dgDEBUGIN(15);
 
   try {
-    OutStringStream &file = dynamic_cast<OutStringStream &>(os);
+    OutStringStream& file = dynamic_cast<OutStringStream&>(os);
     file.str("");
     dgDEBUG(45) << "Empty file [" << file.tellp() << "] <" << file.str().c_str()
                 << "> " << endl;
@@ -243,7 +243,7 @@ void TracerRealTime::recordSignal(std::ostream &os,
     dgDEBUG(35) << "Write data [" << file.tellp() << "] <" << file.str().c_str()
                 << "> " << endl;
 
-  } catch (ExceptionAbstract &exc) {
+  } catch (ExceptionAbstract& exc) {
     throw;
   } catch (...) {
     DG_THROW ExceptionTraces(ExceptionTraces::NOT_OPEN,
@@ -258,7 +258,7 @@ void TracerRealTime::recordSignal(std::ostream &os,
 /* --------------------------------------------------------------------- */
 /* --------------------------------------------------------------------- */
 
-void TracerRealTime::display(std::ostream &os) const {
+void TracerRealTime::display(std::ostream& os) const {
   os << CLASS_NAME << " " << name << " [mode=" << (play ? "play" : "pause")
      << "] : " << endl
      << "  - Dep list: " << endl;
@@ -267,7 +267,7 @@ void TracerRealTime::display(std::ostream &os) const {
   for (SignalList::const_iterator iter = toTraceSignals.begin();
        toTraceSignals.end() != iter; ++iter) {
     dgDEBUG(35) << "Next" << endl;
-    const OutStringStream *file = dynamic_cast<OutStringStream *>(*iterFile);
+    const OutStringStream* file = dynamic_cast<OutStringStream*>(*iterFile);
     os << "     -> " << (*iter)->getName();
     if (file->givenname.length()) os << " (in " << file->givenname << ")";
     os << "\t";
@@ -299,7 +299,7 @@ void TracerRealTime::display(std::ostream &os) const {
   }
 }
 
-std::ostream &operator<<(std::ostream &os, const TracerRealTime &t) {
+std::ostream& operator<<(std::ostream& os, const TracerRealTime& t) {
   t.display(os);
   return os;
 }

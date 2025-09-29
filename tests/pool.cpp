@@ -29,7 +29,7 @@ struct MyEntity : public dynamicgraph::Entity {
   dynamicgraph::SignalPtr<double, sigtime_t> m_sigdSIN;
   dynamicgraph::SignalTimeDependent<double, sigtime_t> m_sigdTimeDepSOUT;
 
-  explicit MyEntity(const std::string &name)
+  explicit MyEntity(const std::string& name)
       : Entity(name),
         m_sigdSIN(NULL, "MyEntity(" + name + ")::input(double)::in_double"),
         m_sigdTimeDepSOUT(boost::bind(&MyEntity::update, this, _1, _2),
@@ -38,14 +38,14 @@ struct MyEntity : public dynamicgraph::Entity {
     signalRegistration(m_sigdSIN << m_sigdTimeDepSOUT);
   }
 
-  virtual void display(std::ostream &os) const {
+  virtual void display(std::ostream& os) const {
     os << "Hello! My name is " << getName() << " !" << std::endl;
   }
 
-  virtual const std::string &getClassName() const { return CLASS_NAME; }
+  virtual const std::string& getClassName() const { return CLASS_NAME; }
 
-  double &update(double &res, const sigtime_t &inTime) {
-    const double &aDouble = m_sigdSIN(inTime);
+  double& update(double& res, const sigtime_t& inTime) {
+    const double& aDouble = m_sigdSIN(inTime);
     res = aDouble;
     return res;
   }
@@ -56,18 +56,18 @@ DYNAMICGRAPH_FACTORY_ENTITY_PLUGIN(MyEntity, "MyEntity");
 namespace dg = dynamicgraph;
 BOOST_AUTO_TEST_CASE(pool_display) {
   /// Create Entity
-  dg::Entity *entity =
+  dg::Entity* entity =
       dg::FactoryStorage::getInstance()->newEntity("MyEntity", "MyEntityInst");
 
   /// Test exception catching when registering Entity
   bool res = false;
   try {
-    dg::Entity *entity2 = dg::FactoryStorage::getInstance()->newEntity(
+    dg::Entity* entity2 = dg::FactoryStorage::getInstance()->newEntity(
         "MyEntity", "MyEntityInst");
 
     bool res2 = (entity2 == entity);
     BOOST_CHECK(res2);
-  } catch (const dg::ExceptionFactory &aef) {
+  } catch (const dg::ExceptionFactory& aef) {
     res = (aef.getCode() == dg::ExceptionFactory::OBJECT_CONFLICT);
   }
   BOOST_CHECK(res);
@@ -76,14 +76,14 @@ BOOST_AUTO_TEST_CASE(pool_display) {
   res = false;
   try {
     dg::FactoryStorage::getInstance()->deregisterEntity("MyEntityInstFailure");
-  } catch (const dg::ExceptionFactory &aef) {
+  } catch (const dg::ExceptionFactory& aef) {
     res = (aef.getCode() == dg::ExceptionFactory::OBJECT_CONFLICT);
   }
   BOOST_CHECK(res);
 
   /// Search for an entity inside the map
   output_test_stream output;
-  dg::Entity &e = dg::PoolStorage::getInstance()->getEntity("MyEntityInst");
+  dg::Entity& e = dg::PoolStorage::getInstance()->getEntity("MyEntityInst");
   e.display(output);
   BOOST_CHECK(output.is_equal("Hello! My name is MyEntityInst !\n"));
 
@@ -91,13 +91,13 @@ BOOST_AUTO_TEST_CASE(pool_display) {
   res = false;
   try {
     dg::PoolStorage::getInstance()->getEntity("MyEntityInstFailure");
-  } catch (const dg::ExceptionFactory &aef) {
+  } catch (const dg::ExceptionFactory& aef) {
     res = (aef.getCode() == dg::ExceptionFactory::UNREFERED_OBJECT);
   }
   BOOST_CHECK(res);
 
   /// Testing entityMap
-  const dg::PoolStorage::Entities &anEntityMap =
+  const dg::PoolStorage::Entities& anEntityMap =
       dg::PoolStorage::getInstance()->getEntityMap();
 
   bool testExistence = anEntityMap.find("MyEntityInst") == anEntityMap.end();
@@ -159,7 +159,7 @@ BOOST_AUTO_TEST_CASE(pool_display) {
   /// Test name of a valid signal.
   std::istringstream an_iss("MyEntityInst.in_double");
 
-  dg::SignalBase<sigtime_t> &aSignal =
+  dg::SignalBase<sigtime_t>& aSignal =
       dg::PoolStorage::getInstance()->getSignal(an_iss);
 
   std::string aSignalName = aSignal.getName();
@@ -172,7 +172,7 @@ BOOST_AUTO_TEST_CASE(pool_display) {
 
   try {
     dg::PoolStorage::getInstance()->getSignal(an_iss);
-  } catch (const dg::ExceptionFactory &aef) {
+  } catch (const dg::ExceptionFactory& aef) {
     res = (aef.getCode() == dg::ExceptionFactory::UNREFERED_SIGNAL);
   }
   BOOST_CHECK(res);

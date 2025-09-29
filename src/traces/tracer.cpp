@@ -96,8 +96,8 @@ Tracer::Tracer(const std::string n)
 /* --------------------------------------------------------------------- */
 /* --------------------------------------------------------------------- */
 
-void Tracer::addSignalToTrace(const SignalBase<sigtime_t> &sig,
-                              const string &filename) {
+void Tracer::addSignalToTrace(const SignalBase<sigtime_t>& sig,
+                              const string& filename) {
   dgDEBUGIN(15);
   // openFile may throw so it should be called first.
   if (namesSet) openFile(sig, filename);
@@ -108,11 +108,11 @@ void Tracer::addSignalToTrace(const SignalBase<sigtime_t> &sig,
   dgDEBUGOUT(15);
 }
 
-void Tracer::addSignalToTraceByName(const string &signame,
-                                    const string &filename) {
+void Tracer::addSignalToTraceByName(const string& signame,
+                                    const string& filename) {
   dgDEBUGIN(15);
   istringstream iss(signame);
-  SignalBase<sigtime_t> &sig = PoolStorage::getInstance()->getSignal(iss);
+  SignalBase<sigtime_t>& sig = PoolStorage::getInstance()->getSignal(iss);
   addSignalToTrace(sig, filename);
   dgDEBUGOUT(15);
 }
@@ -133,9 +133,9 @@ void Tracer::clearSignalToTrace() {
 //   triger.parasite(sig);
 // }
 
-void Tracer::openFiles(const std::string &rootdir_,
-                       const std::string &basename_,
-                       const std::string &suffix_) {
+void Tracer::openFiles(const std::string& rootdir_,
+                       const std::string& basename_,
+                       const std::string& suffix_) {
   dgDEBUGIN(15);
   std::basic_string<char>::size_type n = rootdir_.length();
   rootdir = rootdir_;
@@ -160,8 +160,8 @@ void Tracer::openFiles(const std::string &rootdir_,
   dgDEBUGOUT(15);
 }
 
-void Tracer::openFile(const SignalBase<sigtime_t> &sig,
-                      const string &givenname) {
+void Tracer::openFile(const SignalBase<sigtime_t>& sig,
+                      const string& givenname) {
   dgDEBUGIN(15);
   string signame;
   if (givenname.length()) {
@@ -173,7 +173,7 @@ void Tracer::openFile(const SignalBase<sigtime_t> &sig,
   string filename = rootdir + basename + signame + suffix;
 
   dgDEBUG(5) << "Sig <" << sig.getName() << ">: new file " << filename << endl;
-  std::ofstream *newfile = new std::ofstream(filename.c_str());
+  std::ofstream* newfile = new std::ofstream(filename.c_str());
   files.push_back(newfile);
   dgDEBUGOUT(15);
 }
@@ -183,7 +183,7 @@ void Tracer::closeFiles() {
   std::lock_guard<std::mutex> files_lock(files_mtx);
 
   for (FileList::iterator iter = files.begin(); files.end() != iter; ++iter) {
-    std::ostream *filePtr = *iter;
+    std::ostream* filePtr = *iter;
     delete filePtr;
   }
   files.clear();
@@ -230,7 +230,7 @@ void Tracer::record() {
   dgDEBUGOUT(15);
 }
 
-void Tracer::recordSignal(std::ostream &os, const SignalBase<sigtime_t> &sig) {
+void Tracer::recordSignal(std::ostream& os, const SignalBase<sigtime_t>& sig) {
   dgDEBUGIN(15);
 
   try {
@@ -239,7 +239,7 @@ void Tracer::recordSignal(std::ostream &os, const SignalBase<sigtime_t> &sig) {
       sig.trace(os);
       os << endl;
     }
-  } catch (ExceptionAbstract &exc) {
+  } catch (ExceptionAbstract& exc) {
     os << exc << std::endl;
   } catch (...) {
     os << "Unknown error occurred while reading signal." << std::endl;
@@ -248,7 +248,7 @@ void Tracer::recordSignal(std::ostream &os, const SignalBase<sigtime_t> &sig) {
   dgDEBUGOUT(15);
 }
 
-sigtime_t &Tracer::recordTrigger(sigtime_t &dummy, const sigtime_t &time) {
+sigtime_t& Tracer::recordTrigger(sigtime_t& dummy, const sigtime_t& time) {
   dgDEBUGIN(15) << "    time=" << time << endl;
   record();
   dgDEBUGOUT(15);
@@ -261,7 +261,7 @@ void Tracer::trace() {}
 /* --------------------------------------------------------------------- */
 /* --------------------------------------------------------------------- */
 
-void Tracer::display(std::ostream &os) const {
+void Tracer::display(std::ostream& os) const {
   os << CLASS_NAME << " " << name << " [mode=" << (play ? "play" : "pause")
      << "] : " << endl
      << "  - Dep list: " << endl;
@@ -271,7 +271,7 @@ void Tracer::display(std::ostream &os) const {
   }
 }
 
-std::ostream &operator<<(std::ostream &os, const Tracer &t) {
+std::ostream& operator<<(std::ostream& os, const Tracer& t) {
   t.display(os);
   return os;
 }

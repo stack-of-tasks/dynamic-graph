@@ -14,7 +14,7 @@
 // #define DYNAMIC-GRAPH_EXCEPTION_PASSING_PARAM
 
 #define DG_RETHROW \
-  (const ::dynamicgraph::ExceptionAbstract &err) { throw err; }
+  (const ::dynamicgraph::ExceptionAbstract& err) { throw err; }
 
 #ifdef DYNAMICGRAPH_EXCEPTION_PASSING_PARAM
 #define DG_THROW                                                         \
@@ -37,7 +37,7 @@ class DYNAMIC_GRAPH_DLLAPI ExceptionAbstract : public std::exception {
    public:
     static const int BUFFER_SIZE = 80;
 
-    Param(const int &_line, const char *_function, const char *_file);
+    Param(const int& _line, const char* _function, const char* _file);
     Param()
         : functionPTR(),
           function(),
@@ -46,12 +46,12 @@ class DYNAMIC_GRAPH_DLLAPI ExceptionAbstract : public std::exception {
           file(),
           pointersSet(false),
           set(false) {}
-    Param &initCopy(const Param &p);
+    Param& initCopy(const Param& p);
 
-    const char *functionPTR;
+    const char* functionPTR;
     char function[BUFFER_SIZE];
     int line;
-    const char *filePTR;
+    const char* filePTR;
     char file[BUFFER_SIZE];
     bool pointersSet;
     bool set;
@@ -74,30 +74,30 @@ class DYNAMIC_GRAPH_DLLAPI ExceptionAbstract : public std::exception {
 
   static const std::string EXCEPTION_NAME;
 
-  explicit ExceptionAbstract(const int &code, const std::string &msg = "");
+  explicit ExceptionAbstract(const int& code, const std::string& msg = "");
   virtual ~ExceptionAbstract() throw() {}
 
-  virtual const std::string &getExceptionName() const { return EXCEPTION_NAME; }
+  virtual const std::string& getExceptionName() const { return EXCEPTION_NAME; }
 
   /// \brief Access to the error code.
   int getCode() const;
 
   /// \brief Reference access to the error message (can be empty).
-  const std::string &getStringMessage() const;
+  const std::string& getStringMessage() const;
 
   /// \brief Access to the pointer on the array of \e char related
   /// to the error string.
   ///
   /// Cannot be \e NULL.
-  const char *getMessage() const;
+  const char* getMessage() const;
 
-  virtual const char *what() const throw() {
+  virtual const char* what() const throw() {
     return getStringMessage().c_str();
   }
 
   /// \brief Print the error structure.
-  DYNAMIC_GRAPH_DLLAPI friend std::ostream &operator<<(
-      std::ostream &os, const ExceptionAbstract &err);
+  DYNAMIC_GRAPH_DLLAPI friend std::ostream& operator<<(
+      std::ostream& os, const ExceptionAbstract& err);
 
  protected:
   /// \brief Error code.
@@ -115,13 +115,13 @@ class DYNAMIC_GRAPH_DLLAPI ExceptionAbstract : public std::exception {
   mutable Param p;
 
   template <class Exc>
-  friend const Exc &operator+(const ExceptionAbstract::Param &p, const Exc &e) {
+  friend const Exc& operator+(const ExceptionAbstract::Param& p, const Exc& e) {
     e.p.initCopy(p);
     return e;
   }
 
   template <class Exc>
-  friend Exc &operator+(const ExceptionAbstract::Param &p, Exc &e) {
+  friend Exc& operator+(const ExceptionAbstract::Param& p, Exc& e) {
     e.p.initCopy(p);
     return e;
   }

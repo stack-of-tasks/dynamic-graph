@@ -27,8 +27,8 @@ using dynamicgraph::ExceptionSignal;
 namespace Eigen {
 typedef EIGEN_DEFAULT_DENSE_INDEX_TYPE eigen_index;
 
-inline std::istringstream &operator>>(std::istringstream &iss,
-                                      dynamicgraph::Vector &inst) {
+inline std::istringstream& operator>>(std::istringstream& iss,
+                                      dynamicgraph::Vector& inst) {
   unsigned int _size;
   double _dbl_val;
   char _ch;
@@ -70,8 +70,8 @@ inline std::istringstream &operator>>(std::istringstream &iss,
  */
 
 template <typename Derived>
-inline std::istringstream &operator>>(std::istringstream &iss,
-                                      DenseBase<Derived> &inst) {
+inline std::istringstream& operator>>(std::istringstream& iss,
+                                      DenseBase<Derived>& inst) {
   unsigned int _colsize;
   unsigned int _rowsize;
   double _dbl_val;
@@ -120,8 +120,8 @@ inline std::istringstream &operator>>(std::istringstream &iss,
   return iss;
 }
 
-inline std::istringstream &operator>>(std::istringstream &iss,
-                                      Transform<double, 3, Affine> &inst) {
+inline std::istringstream& operator>>(std::istringstream& iss,
+                                      Transform<double, 3, Affine>& inst) {
   MatrixXd M;
   iss >> M;
   inst.matrix() = M;
@@ -135,7 +135,7 @@ inline std::istringstream &operator>>(std::istringstream &iss,
  * e.g. [2,5]((1 23 32.2 12.12 32),(2 32 23 92.01 19.2))
  */
 
-inline std::ostream &operator<<(std::ostream &os,
+inline std::ostream& operator<<(std::ostream& os,
                                 Transform<double, 3, Affine> MH) {
   IOFormat boostFmt(StreamPrecision, DontAlignCols, ",", ",", "(", ")", "(",
                     ")");
@@ -144,7 +144,7 @@ inline std::ostream &operator<<(std::ostream &os,
   return os;
 }
 
-inline std::ostream &operator<<(std::ostream &os, AngleAxisd quat) {
+inline std::ostream& operator<<(std::ostream& os, AngleAxisd quat) {
   VectorXd v(4);
   v(0) = quat.angle();
   v.tail<3>() = quat.axis();
@@ -152,8 +152,8 @@ inline std::ostream &operator<<(std::ostream &os, AngleAxisd quat) {
   return os;
 }
 
-inline std::istringstream &operator>>(std::istringstream &iss,
-                                      AngleAxisd &inst) {
+inline std::istringstream& operator>>(std::istringstream& iss,
+                                      AngleAxisd& inst) {
   VectorXd v(4);
   iss >> v;
   inst.angle() = v(0);

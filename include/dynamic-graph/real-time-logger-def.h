@@ -20,7 +20,7 @@ namespace dynamicgraph {
 /// \sa LoggerIOStream
 class LoggerStream {
  public:
-  virtual void write(const char *c) = 0;
+  virtual void write(const char* c) = 0;
 };
 
 /// Write to an ostream object.
@@ -29,12 +29,12 @@ class LoggerStream {
 /// `ostr` can be `std::cout` or an std::ofstream...
 class LoggerIOStream : public LoggerStream {
  public:
-  LoggerIOStream(std::ostream &os) : os_(os) {}
+  LoggerIOStream(std::ostream& os) : os_(os) {}
   virtual ~LoggerIOStream() {}
-  virtual void write(const char *c) { os_ << c; }
+  virtual void write(const char* c) { os_ << c; }
 
  private:
-  std::ostream &os_;
+  std::ostream& os_;
 };
 typedef boost::shared_ptr<LoggerStream> LoggerStreamPtr_t;
 
@@ -47,14 +47,14 @@ class RealTimeLogger;
 /// This class is only used by RealTimeLogger.
 class RTLoggerStream {
  public:
-  inline RTLoggerStream(RealTimeLogger *logger, std::ostream &os)
+  inline RTLoggerStream(RealTimeLogger* logger, std::ostream& os)
       : ok_(logger != NULL), logger_(logger), os_(os) {}
   template <typename T>
-  inline RTLoggerStream &operator<<(T t) {
+  inline RTLoggerStream& operator<<(T t) {
     if (ok_) os_ << t;
     return *this;
   }
-  inline RTLoggerStream &operator<<(std::ostream &(*pf)(std::ostream &)) {
+  inline RTLoggerStream& operator<<(std::ostream& (*pf)(std::ostream&)) {
     if (ok_) os_ << pf;
     return *this;
   }
@@ -65,8 +65,8 @@ class RTLoggerStream {
 
  private:
   const bool ok_;
-  RealTimeLogger *logger_;
-  std::ostream &os_;
+  RealTimeLogger* logger_;
+  std::ostream& os_;
 };
 /// \endcond DEVEL
 
@@ -95,17 +95,17 @@ class RTLoggerStream {
 ///   operation. If the resource is busy, the log entry is discarded.
 class DYNAMIC_GRAPH_DLLAPI RealTimeLogger {
  public:
-  static RealTimeLogger &instance();
+  static RealTimeLogger& instance();
 
   static void destroy();
 
   /// \todo add an argument to preallocate the internal string
   /// to a given size.
-  RealTimeLogger(const std::size_t &bufferSize);
+  RealTimeLogger(const std::size_t& bufferSize);
 
   inline void clearOutputStreams() { outputs_.clear(); }
 
-  inline void addOutputStream(const LoggerStreamPtr_t &os) {
+  inline void addOutputStream(const LoggerStreamPtr_t& os) {
     outputs_.push_back(os);
   }
 
@@ -149,7 +149,7 @@ class DYNAMIC_GRAPH_DLLAPI RealTimeLogger {
   };
 
   std::vector<LoggerStreamPtr_t> outputs_;
-  std::vector<Data *> buffer_;
+  std::vector<Data*> buffer_;
   /// Index of the next value to be read.
   std::size_t frontIdx_;
   /// Index of the slot where to write next value
@@ -163,8 +163,8 @@ class DYNAMIC_GRAPH_DLLAPI RealTimeLogger {
 
   struct thread;
 
-  static RealTimeLogger *instance_;
-  static thread *thread_;
+  static RealTimeLogger* instance_;
+  static thread* thread_;
 };
 
 RTLoggerStream::~RTLoggerStream() {

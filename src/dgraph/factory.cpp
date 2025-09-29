@@ -12,7 +12,7 @@ using namespace std;
 using namespace dynamicgraph;
 
 namespace dynamicgraph {
-FactoryStorage *FactoryStorage::getInstance() {
+FactoryStorage* FactoryStorage::getInstance() {
   if (instance_ == 0) {
     instance_ = new FactoryStorage;
   }
@@ -31,7 +31,7 @@ FactoryStorage::~FactoryStorage() {
   dgDEBUGINOUT(25);
 }
 
-void FactoryStorage::registerEntity(const std::string &entname,
+void FactoryStorage::registerEntity(const std::string& entname,
                                     FactoryStorage::EntityConstructor_ptr ent) {
   dgDEBUGIN(25);
   if (existEntity(entname)) {
@@ -58,7 +58,7 @@ void FactoryStorage::registerEntity(const std::string &entname,
   dgDEBUGOUT(25);
 }
 
-void FactoryStorage::deregisterEntity(const std::string &entname) {
+void FactoryStorage::deregisterEntity(const std::string& entname) {
   dgDEBUGIN(25);
   if (!existEntity(entname)) {
     DG_THROW ExceptionFactory(
@@ -76,8 +76,8 @@ void FactoryStorage::deregisterEntity(const std::string &entname) {
   dgDEBUGOUT(25);
 }
 
-Entity *FactoryStorage::newEntity(const std::string &classname,
-                                  const std::string &objname) const {
+Entity* FactoryStorage::newEntity(const std::string& classname,
+                                  const std::string& objname) const {
   dgDEBUG(15) << "New <" << classname << ">Entity <" << objname << ">"
               << std::endl;
 
@@ -92,19 +92,19 @@ Entity *FactoryStorage::newEntity(const std::string &classname,
 
 // This checks efficiently if a key exists in an STL map using the
 // approach suggested by Scott Meyer's Effective STL (item 24).
-bool FactoryStorage::existEntity(const std::string &name) const {
+bool FactoryStorage::existEntity(const std::string& name) const {
   EntityMap::const_iterator lb = entityMap.lower_bound(name);
   return lb != entityMap.end() && !(entityMap.key_comp()(name, lb->first));
 }
 
 // FIXME: this should be removed at some point.
-void FactoryStorage::listEntities(std::vector<std::string> &outList) const {
+void FactoryStorage::listEntities(std::vector<std::string>& outList) const {
   typedef std::pair<std::string, EntityConstructor_ptr> iter_t;
-  BOOST_FOREACH (const iter_t &entity, entityMap)
+  BOOST_FOREACH (const iter_t& entity, entityMap)
     outList.push_back(entity.first);
 }
 
-EntityRegisterer::EntityRegisterer(const std::string &entityClassName,
+EntityRegisterer::EntityRegisterer(const std::string& entityClassName,
                                    FactoryStorage::EntityConstructor_ptr maker)
     : entityName(entityClassName) {
   dgDEBUGIN(15);
@@ -119,5 +119,5 @@ EntityRegisterer::~EntityRegisterer() {
 }
 
 // The global factory.
-FactoryStorage *FactoryStorage::instance_ = NULL;
+FactoryStorage* FactoryStorage::instance_ = NULL;
 }  // end of namespace dynamicgraph.

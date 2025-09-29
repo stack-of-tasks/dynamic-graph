@@ -17,13 +17,13 @@
 
 namespace dynamicgraph {
 template <class Time>
-TimeDependency<Time>::TimeDependency(SignalBase<Time> *sig,
+TimeDependency<Time>::TimeDependency(SignalBase<Time>* sig,
                                      const DependencyType dep)
     : __TIME_DEPENDENCY_INIT(sig, dep) {}
 
 template <class Time>
-TimeDependency<Time>::TimeDependency(SignalBase<Time> *sig,
-                                     const SignalArray_const<Time> &ar,
+TimeDependency<Time>::TimeDependency(SignalBase<Time>* sig,
+                                     const SignalArray_const<Time>& ar,
                                      const DependencyType dep)
     : __TIME_DEPENDENCY_INIT(sig, dep) {
   addDependencies(ar);
@@ -33,19 +33,19 @@ TimeDependency<Time>::TimeDependency(SignalBase<Time> *sig,
 
 /* ------------------------------------------------------------------------ */
 template <class Time>
-void TimeDependency<Time>::addDependencies(const SignalArray_const<Time> &ar) {
+void TimeDependency<Time>::addDependencies(const SignalArray_const<Time>& ar) {
   for (unsigned int i = 0; i < ar.getSize(); ++i) {
     addDependency(ar[i]);
   }
 }
 
 template <class Time>
-void TimeDependency<Time>::addDependency(const SignalBase<Time> &sig) {
+void TimeDependency<Time>::addDependency(const SignalBase<Time>& sig) {
   dependencies.push_front(&sig);
 }
 
 template <class Time>
-void TimeDependency<Time>::removeDependency(const SignalBase<Time> &sig) {
+void TimeDependency<Time>::removeDependency(const SignalBase<Time>& sig) {
   dependencies.remove(&sig);
 }
 
@@ -55,7 +55,7 @@ void TimeDependency<Time>::clearDependency() {
 }
 
 template <class Time>
-bool TimeDependency<Time>::needUpdate(const Time &t1) const {
+bool TimeDependency<Time>::needUpdate(const Time& t1) const {
   dgTDEBUG(15) << "# In {" << leader.getName() << " : (" << leader.getReady()
                << ") " << t1 << " >? " << leader.getTime() << std::endl;
 
@@ -88,7 +88,7 @@ bool TimeDependency<Time>::needUpdate(const Time &t1) const {
   const typename Dependencies::const_iterator itend = dependencies.end();
   for (typename Dependencies::const_iterator it = dependencies.begin();
        it != itend; ++it) {
-    const SignalBase<Time> &sig = **it;
+    const SignalBase<Time>& sig = **it;
     dgTDEBUG(15) << "Ask update for " << sig << std::endl;
 
     if ((sig.getTime() > leader.getTime()) || (sig.needUpdate(t1))) {
@@ -113,13 +113,13 @@ bool TimeDependency<Time>::needUpdate(const Time &t1) const {
 }
 
 template <class Time>
-std::ostream &TimeDependency<Time>::writeGraph(std::ostream &os) const {
+std::ostream& TimeDependency<Time>::writeGraph(std::ostream& os) const {
   return os;
 }
 
 template <class Time>
-std::ostream &TimeDependency<Time>::displayDependencies(
-    std::ostream &os, const int depth, std::string space, std::string next1,
+std::ostream& TimeDependency<Time>::displayDependencies(
+    std::ostream& os, const int depth, std::string space, std::string next1,
     std::string next2) const {
   leader.SignalBase<Time>::displayDependencies(os, depth, space, next1, next2)
       << " (";

@@ -45,12 +45,12 @@ class Signal : public SignalBase<Time> {
 
   SignalType signalType;
   T Tcopy1, Tcopy2;
-  T *Tcopy;
+  T* Tcopy;
   bool copyInit;
 
-  const T *Treference;
-  T *TreferenceNonConst;
-  boost::function2<T &, T &, Time> Tfunction;
+  const T* Treference;
+  T* TreferenceNonConst;
+  boost::function2<T&, T&, Time> Tfunction;
 
   bool keepReference;
   const static bool KEEP_REFERENCE_DEFAULT = false;
@@ -60,12 +60,12 @@ class Signal : public SignalBase<Time> {
   typedef boost::try_mutex Mutex;
   typedef boost::lock_error MutexError;
 #else
-  typedef int *Mutex;
-  typedef int *MutexError;
+  typedef int* Mutex;
+  typedef int* MutexError;
 #endif
 
  protected:
-  Mutex *providerMutex;
+  Mutex* providerMutex;
   using SignalBase<Time>::signalTime;
 
  public:
@@ -77,40 +77,40 @@ class Signal : public SignalBase<Time> {
   virtual ~Signal() {}
 
   /* --- Generic In/Out function --- */
-  virtual void get(std::ostream &value) const;
-  virtual void set(std::istringstream &value);
-  virtual void trace(std::ostream &os) const;
+  virtual void get(std::ostream& value) const;
+  virtual void set(std::istringstream& value);
+  virtual void trace(std::ostream& os) const;
 
   /* --- Generic Set function --- */
-  virtual void setConstant(const T &t);
-  virtual void setReference(const T *t, Mutex *mutexref = NULL);
-  virtual void setReferenceNonConstant(T *t, Mutex *mutexref = NULL);
-  virtual void setFunction(boost::function2<T &, T &, Time> t,
-                           Mutex *mutexref = NULL);
+  virtual void setConstant(const T& t);
+  virtual void setReference(const T* t, Mutex* mutexref = NULL);
+  virtual void setReferenceNonConstant(T* t, Mutex* mutexref = NULL);
+  virtual void setFunction(boost::function2<T&, T&, Time> t,
+                           Mutex* mutexref = NULL);
 
   inline bool getKeepReference() { return keepReference; }
-  inline void setKeepReference(const bool &b) { keepReference = b; }
+  inline void setKeepReference(const bool& b) { keepReference = b; }
 
   /* --- Signal computation --- */
-  virtual const T &access(const Time &t);
-  virtual inline void recompute(const Time &t) { access(t); }
-  virtual const T &accessCopy() const;
+  virtual const T& access(const Time& t);
+  virtual inline void recompute(const Time& t) { access(t); }
+  virtual const T& accessCopy() const;
 
-  virtual std::ostream &display(std::ostream &os) const;
+  virtual std::ostream& display(std::ostream& os) const;
 
   /* --- Operators --- */
-  virtual inline const T &operator()(const Time &t) { return access(t); }
-  virtual Signal<T, Time> &operator=(const T &t);
-  inline operator const T &() const { return accessCopy(); }
-  virtual void getClassName(std::string &aClassName) const {
+  virtual inline const T& operator()(const Time& t) { return access(t); }
+  virtual Signal<T, Time>& operator=(const T& t);
+  inline operator const T&() const { return accessCopy(); }
+  virtual void getClassName(std::string& aClassName) const {
     aClassName = typeid(this).name();
   }
 
  private:
-  const T &setTcopy(const T &t);
-  T &getTwork();
-  const T &getTwork() const;
-  const T &switchTcopy();
+  const T& setTcopy(const T& t);
+  T& getTwork();
+  const T& getTwork() const;
+  const T& switchTcopy();
 };
 
 }  // end of namespace dynamicgraph

@@ -30,13 +30,13 @@ class DYNAMIC_GRAPH_DLLAPI ExceptionSignal : public ExceptionAbstract {
 
   static const std::string EXCEPTION_NAME;
 
-  explicit ExceptionSignal(const ExceptionSignal::ErrorCodeEnum &errcode,
-                           const std::string &msg = "");
-  ExceptionSignal(const ExceptionSignal::ErrorCodeEnum &errcode,
-                  const std::string &msg, const char *format, ...);
+  explicit ExceptionSignal(const ExceptionSignal::ErrorCodeEnum& errcode,
+                           const std::string& msg = "");
+  ExceptionSignal(const ExceptionSignal::ErrorCodeEnum& errcode,
+                  const std::string& msg, const char* format, ...);
   virtual ~ExceptionSignal() throw() {}
 
-  virtual const std::string &getExceptionName() const { return EXCEPTION_NAME; }
+  virtual const std::string& getExceptionName() const { return EXCEPTION_NAME; }
 };
 
 }  // end of namespace dynamicgraph

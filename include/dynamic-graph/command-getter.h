@@ -47,7 +47,7 @@ class Getter : public Command {
   /// Pointer to method that sets parameter of type T
   typedef T (E::*GetterMethod)() const;
   /// Constructor
-  Getter(E &entity, GetterMethod getterMethod, const std::string &docString);
+  Getter(E& entity, GetterMethod getterMethod, const std::string& docString);
 
  protected:
   virtual Value doExecute();

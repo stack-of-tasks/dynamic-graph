@@ -42,19 +42,19 @@ class DYNAMIC_GRAPH_DLLAPI DebugTrace {
   static const int SIZE = 512;
 
   std::stringstream tmpbuffer;
-  std::ostream &outputbuffer;
+  std::ostream& outputbuffer;
   char charbuffer[SIZE + 1];
   int traceLevel;
   int traceLevelTemplate;
 
-  DebugTrace(std::ostream &os) : outputbuffer(os) {}
+  DebugTrace(std::ostream& os) : outputbuffer(os) {}
 
-  inline void trace(const int level, const char *format, ...) {
+  inline void trace(const int level, const char* format, ...) {
     if (level <= traceLevel) DG_COMMON_TRACES;
     tmpbuffer.str("");
   }
 
-  inline void trace(const char *format, ...) {
+  inline void trace(const char* format, ...) {
     DG_COMMON_TRACES;
     tmpbuffer.str("");
   }
@@ -66,26 +66,26 @@ class DYNAMIC_GRAPH_DLLAPI DebugTrace {
     }
   }
 
-  inline void traceTemplate(const int level, const char *format, ...) {
+  inline void traceTemplate(const int level, const char* format, ...) {
     if (level <= traceLevelTemplate) DG_COMMON_TRACES;
     tmpbuffer.str("");
   }
 
-  inline void traceTemplate(const char *format, ...) {
+  inline void traceTemplate(const char* format, ...) {
     DG_COMMON_TRACES;
     tmpbuffer.str("");
   }
 
-  inline DebugTrace &pre(const std::ostream &) { return *this; }
+  inline DebugTrace& pre(const std::ostream&) { return *this; }
 
-  inline DebugTrace &pre(const std::ostream &, int level) {
+  inline DebugTrace& pre(const std::ostream&, int level) {
     traceLevel = level;
     return *this;
   }
 
-  static const char *DEBUG_FILENAME_DEFAULT;
-  static void openFile(const char *filename = DEBUG_FILENAME_DEFAULT);
-  static void closeFile(const char *filename = DEBUG_FILENAME_DEFAULT);
+  static const char* DEBUG_FILENAME_DEFAULT;
+  static void openFile(const char* filename = DEBUG_FILENAME_DEFAULT);
+  static void closeFile(const char* filename = DEBUG_FILENAME_DEFAULT);
 };
 
 DYNAMIC_GRAPH_DLLAPI extern DebugTrace dgDEBUGFLOW;
@@ -143,9 +143,9 @@ DYNAMIC_GRAPH_DLLAPI extern DebugTrace dgERRORFLOW;
         .pre(dgDEBUGFLOW.tmpbuffer << dgPREDEBUG, VP_TEMPLATE_DEBUG_MODE) \
         .trace
 
-inline bool dgDEBUG_ENABLE(const int &level) { return level <= VP_DEBUG_MODE; }
+inline bool dgDEBUG_ENABLE(const int& level) { return level <= VP_DEBUG_MODE; }
 
-inline bool dgTDEBUG_ENABLE(const int &level) {
+inline bool dgTDEBUG_ENABLE(const int& level) {
   return level <= VP_TEMPLATE_DEBUG_MODE;
 }
 
@@ -166,16 +166,16 @@ inline bool dgTDEBUG_ENABLE(const int &level) {
 
 #define dgERROR dgERRORFLOW.outputbuffer << dgPREERROR
 
-inline void dgDEBUGF(const int, const char *, ...) { return; }
+inline void dgDEBUGF(const int, const char*, ...) { return; }
 
-inline void dgDEBUGF(const char *, ...) { return; }
+inline void dgDEBUGF(const char*, ...) { return; }
 
-inline void dgERRORF(const int, const char *, ...) { return; }
+inline void dgERRORF(const int, const char*, ...) { return; }
 
-inline void dgERRORF(const char *, ...) { return; }
+inline void dgERRORF(const char*, ...) { return; }
 
 namespace dynamicgraph {
-inline std::ostream &__null_stream() {
+inline std::ostream& __null_stream() {
   // This function should never be called. With -O3,
   // it should not appear in the generated binary.
   static std::ostream os(NULL);
@@ -190,9 +190,9 @@ inline std::ostream &__null_stream() {
   else                  \
     ::dynamicgraph::__null_stream()
 
-inline void dgTDEBUGF(const int, const char *, ...) { return; }
+inline void dgTDEBUGF(const int, const char*, ...) { return; }
 
-inline void dgTDEBUGF(const char *, ...) { return; }
+inline void dgTDEBUGF(const char*, ...) { return; }
 
 #define dgDEBUG_ENABLE(level) false
 #define dgTDEBUG_ENABLE(level) false

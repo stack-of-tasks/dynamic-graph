@@ -39,18 +39,18 @@ class DYNAMIC_GRAPH_DLLAPI Command {
   /// \param entity reference to Entity owning this command.
   /// \param valueTypes vector specifying the number and types of parameters
   /// \param docstring documentation of the command
-  Command(Entity &entity, const std::vector<Value::Type> &valueTypes,
-          const std::string &docstring);
+  Command(Entity& entity, const std::vector<Value::Type>& valueTypes,
+          const std::string& docstring);
   /// Return the value type of all parameters
-  const std::vector<Value::Type> &valueTypes() const;
+  const std::vector<Value::Type>& valueTypes() const;
   /// Set parameter values
-  void setParameterValues(const std::vector<Value> &values);
+  void setParameterValues(const std::vector<Value>& values);
   /// Get parameter values
-  const std::vector<Value> &getParameterValues() const;
+  const std::vector<Value>& getParameterValues() const;
   /// Execute the command after checking parameters
   Value execute();
   /// Get a reference to the Entity owning this command
-  Entity &owner();
+  Entity& owner();
   /// Get documentation string
   std::string getDocstring() const;
 
@@ -59,7 +59,7 @@ class DYNAMIC_GRAPH_DLLAPI Command {
   virtual Value doExecute() = 0;
 
  private:
-  Entity &owner_;
+  Entity& owner_;
   std::vector<Value::Type> valueTypeVector_;
   std::vector<Value> valueVector_;
   std::string docstring_;

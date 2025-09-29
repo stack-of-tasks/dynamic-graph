@@ -69,7 +69,7 @@ BOOST_AUTO_TEST_CASE(test_base) {
   bool res = false;
   try {
     sigB.plug(&sigA);
-  } catch (const ExceptionSignal &aea) {
+  } catch (const ExceptionSignal& aea) {
     res = (aea.getCode() == ExceptionSignal::PLUG_IMPOSSIBLE);
   }
   BOOST_CHECK(res);
@@ -77,7 +77,7 @@ BOOST_AUTO_TEST_CASE(test_base) {
   res = false;
   try {
     sigB.unplug();
-  } catch (const ExceptionSignal &aea) {
+  } catch (const ExceptionSignal& aea) {
     res = (aea.getCode() == ExceptionSignal::PLUG_IMPOSSIBLE);
   }
   BOOST_CHECK(res);
@@ -85,7 +85,7 @@ BOOST_AUTO_TEST_CASE(test_base) {
   res = false;
   try {
     sigB.setConstantDefault();
-  } catch (const ExceptionSignal &aea) {
+  } catch (const ExceptionSignal& aea) {
     res = (aea.getCode() == ExceptionSignal::PLUG_IMPOSSIBLE);
   }
   BOOST_CHECK(res);
@@ -97,7 +97,7 @@ BOOST_AUTO_TEST_CASE(test_base) {
   res = false;
   try {
     sigB.set(iss);
-  } catch (const ExceptionSignal &aea) {
+  } catch (const ExceptionSignal& aea) {
     res = (aea.getCode() == ExceptionSignal::SET_IMPOSSIBLE);
   }
   BOOST_CHECK(res);
@@ -107,7 +107,7 @@ BOOST_AUTO_TEST_CASE(test_base) {
   std::ostringstream oss;
   try {
     sigB.get(oss);
-  } catch (const ExceptionSignal &aea) {
+  } catch (const ExceptionSignal& aea) {
     res = (aea.getCode() == ExceptionSignal::SET_IMPOSSIBLE);
   }
   BOOST_CHECK(res);
@@ -116,7 +116,7 @@ BOOST_AUTO_TEST_CASE(test_base) {
   res = false;
   try {
     sigB.recompute(100);
-  } catch (const ExceptionSignal &aea) {
+  } catch (const ExceptionSignal& aea) {
     res = (aea.getCode() == ExceptionSignal::SET_IMPOSSIBLE);
   }
   BOOST_CHECK(res);
@@ -125,7 +125,7 @@ BOOST_AUTO_TEST_CASE(test_base) {
   res = false;
   try {
     sigB.trace(oss);
-  } catch (const ExceptionSignal &aea) {
+  } catch (const ExceptionSignal& aea) {
     res = (aea.getCode() == ExceptionSignal::SET_IMPOSSIBLE);
   }
   BOOST_CHECK(res);

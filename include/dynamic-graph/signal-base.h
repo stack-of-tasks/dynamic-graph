@@ -33,19 +33,19 @@ class SignalBase : public boost::noncopyable {
 
   /// \name Time
   /// \{
-  virtual const Time &getTime() const { return signalTime; }
+  virtual const Time& getTime() const { return signalTime; }
 
-  virtual void setTime(const Time &t) { signalTime = t; }
+  virtual void setTime(const Time& t) { signalTime = t; }
 
-  const bool &getReady() const { return ready; }
+  const bool& getReady() const { return ready; }
 
-  const std::string &getName() const { return name; }
+  const std::string& getName() const { return name; }
 
-  void getClassName(std::string &aClassName) const {
+  void getClassName(std::string& aClassName) const {
     aClassName = typeid(this).name();
   }
 
-  virtual void setPeriodTime(const Time &) {}
+  virtual void setPeriodTime(const Time&) {}
 
   virtual Time getPeriodTime() const { return 1; }
 
@@ -54,19 +54,19 @@ class SignalBase : public boost::noncopyable {
   /// \name Dependencies
   /// \{
 
-  virtual void addDependency(const SignalBase<Time> &) {}
+  virtual void addDependency(const SignalBase<Time>&) {}
 
-  virtual void removeDependency(const SignalBase<Time> &) {}
+  virtual void removeDependency(const SignalBase<Time>&) {}
 
   virtual void clearDependencies() {}
 
-  virtual bool needUpdate(const Time &) const { return ready; }
+  virtual bool needUpdate(const Time&) const { return ready; }
 
   inline void setReady(const bool sready = true) { ready = sready; }
 
-  virtual std::ostream &writeGraph(std::ostream &os) const { return os; }
+  virtual std::ostream& writeGraph(std::ostream& os) const { return os; }
 
-  virtual std::ostream &displayDependencies(std::ostream &os, const int = -1,
+  virtual std::ostream& displayDependencies(std::ostream& os, const int = -1,
                                             std::string space = "",
                                             std::string next1 = "",
                                             std::string = "") const {
@@ -84,7 +84,7 @@ class SignalBase : public boost::noncopyable {
    * a descending operation (the actual <this> object will call the arg-signal
    * and not the opposite).
    */
-  virtual void plug(SignalBase<Time> *sigarg) {
+  virtual void plug(SignalBase<Time>* sigarg) {
     DG_THROW ExceptionSignal(
         ExceptionSignal::PLUG_IMPOSSIBLE,
         "Plug-in operation not possible with this signal. ",
@@ -101,7 +101,7 @@ class SignalBase : public boost::noncopyable {
 
   virtual bool isPlugged() const { return false; }
 
-  virtual SignalBase<Time> *getPluged() const { return NULL; }
+  virtual SignalBase<Time>* getPluged() const { return NULL; }
 
   virtual void setConstantDefault() {
     DG_THROW ExceptionSignal(
@@ -118,28 +118,28 @@ class SignalBase : public boost::noncopyable {
   /* Generic set function. Should be reimplemented by the specific
    * Signal.  Sets a signal value
    */
-  virtual void set(std::istringstream &) {
+  virtual void set(std::istringstream&) {
     DG_THROW ExceptionSignal(ExceptionSignal::SET_IMPOSSIBLE,
                              "Set operation not possible with this signal. ",
                              "(while trying to set %s).",
                              this->getName().c_str());
   }
 
-  virtual void get(std::ostream &) const {
+  virtual void get(std::ostream&) const {
     DG_THROW ExceptionSignal(ExceptionSignal::SET_IMPOSSIBLE,
                              "Get operation not possible with this signal. ",
                              "(while trying to get %s).",
                              this->getName().c_str());
   }
 
-  virtual inline void recompute(const Time &) {
+  virtual inline void recompute(const Time&) {
     DG_THROW ExceptionSignal(
         ExceptionSignal::SET_IMPOSSIBLE,
         "Recompute operation not possible with this signal. ",
         "(while trying to recompute %s).", this->getName().c_str());
   }
 
-  virtual void trace(std::ostream &) const {
+  virtual void trace(std::ostream&) const {
     DG_THROW ExceptionSignal(ExceptionSignal::SET_IMPOSSIBLE,
                              "Trace operation not possible with this signal. ",
                              "(while trying to trace %s).",
@@ -151,7 +151,7 @@ class SignalBase : public boost::noncopyable {
   /// \name Display
   /// \{
 
-  virtual std::ostream &display(std::ostream &os) const {
+  virtual std::ostream& display(std::ostream& os) const {
     os << "Sig:" << name;
     return os;
   }
@@ -171,8 +171,8 @@ class SignalBase : public boost::noncopyable {
   /// \name Information providers
   /// \{
 
-  virtual void ExtractNodeAndLocalNames(std::string &LocalName,
-                                        std::string &NodeName) const {
+  virtual void ExtractNodeAndLocalNames(std::string& LocalName,
+                                        std::string& NodeName) const {
     std::string fullname = this->getName();
 
     size_t IdxPosLocalName = fullname.rfind(":");
@@ -194,7 +194,7 @@ class SignalBase : public boost::noncopyable {
 
 /// Forward to a virtual fonction.
 template <class Time>
-std::ostream &operator<<(std::ostream &os, const SignalBase<Time> &sig) {
+std::ostream& operator<<(std::ostream& os, const SignalBase<Time>& sig) {
   return sig.display(os);
 }
 }  // end of namespace dynamicgraph.

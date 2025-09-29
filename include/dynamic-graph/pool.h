@@ -36,10 +36,10 @@ class DYNAMIC_GRAPH_DLLAPI PoolStorage {
     @{
   */
   /*! \brief Sorted set of entities with unique key (name). */
-  typedef std::map<std::string, Entity *> Entities;
+  typedef std::map<std::string, Entity*> Entities;
 
   /// \brief Get unique instance of the class.
-  static PoolStorage *getInstance();
+  static PoolStorage* getInstance();
 
   /// \brief Destroy the unique instance of the class
   static void destroy();
@@ -56,47 +56,47 @@ class DYNAMIC_GRAPH_DLLAPI PoolStorage {
     \par[in] entname: The name of the entity,
     \par[in] ent: Pointer towards the entity.
   */
-  void registerEntity(const std::string &entname, Entity *ent);
+  void registerEntity(const std::string& entname, Entity* ent);
 
   /*! \brief Unregister an entity.
     \par[in] entname: The name of the entity,
   */
-  void deregisterEntity(const std::string &entname);
+  void deregisterEntity(const std::string& entname);
 
   /*! \brief Unregister an entity.
     \par[in] entity: iterator in the map,
   */
-  void deregisterEntity(const Entities::iterator &entity);
+  void deregisterEntity(const Entities::iterator& entity);
   /*! \brief Get an entity.
     \par[in] entname: The name of the entity,
     \return Pointer towards the entity.
   */
-  Entity &getEntity(const std::string &name);
+  Entity& getEntity(const std::string& name);
 
   /// Const access to entity map
-  const Entities &getEntityMap() const;
+  const Entities& getEntityMap() const;
 
   /*! \brief Test if the entity exists. */
-  bool existEntity(const std::string &name);
+  bool existEntity(const std::string& name);
   /*! \brief Test if the entity exists. If it does, return a pointer on it. */
-  bool existEntity(const std::string &name, Entity *&ptr);
+  bool existEntity(const std::string& name, Entity*& ptr);
 
   /*! \brief Disallocate an entity.
     \par[in] entname: The name of the entity,
   */
-  void clearPlugin(const std::string &name);
+  void clearPlugin(const std::string& name);
   /*! @} */
 
   ///
   /// \brief Get a signal by name
   ///
   /// \param sigpath stream containing a string of the form "entity.signal"
-  SignalBase<sigtime_t> &getSignal(std::istringstream &sigpath);
+  SignalBase<sigtime_t>& getSignal(std::istringstream& sigpath);
 
   /*! \brief This method write a graph description on the file named
       FileName. */
-  void writeGraph(const std::string &aFileName);
-  void writeCompletionList(std::ostream &os);
+  void writeGraph(const std::string& aFileName);
+  void writeCompletionList(std::ostream& os);
 
  protected:
   /*! \name Fields of the class to manage the three entities.
@@ -108,10 +108,10 @@ class DYNAMIC_GRAPH_DLLAPI PoolStorage {
 
  private:
   PoolStorage() {}
-  static PoolStorage *instance_;
+  static PoolStorage* instance_;
 };
 
-inline PoolStorage &g_pool() { return *PoolStorage::getInstance(); }
+inline PoolStorage& g_pool() { return *PoolStorage::getInstance(); }
 
 }  // end of namespace dynamicgraph.
 

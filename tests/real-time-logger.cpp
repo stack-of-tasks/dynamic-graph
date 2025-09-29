@@ -59,7 +59,7 @@ BOOST_AUTO_TEST_CASE(multithread) {
     pthread_setschedparam(pthread_self(), threadPolicy, &threadParam);
   }
 
-  RealTimeLogger &rtl = RealTimeLogger::instance();
+  RealTimeLogger& rtl = RealTimeLogger::instance();
   dgADD_OSTREAM_TO_RTLOG(std::cout);
 
   for (std::size_t i = 0; i < rtl.getBufferSize() - 1; ++i)
