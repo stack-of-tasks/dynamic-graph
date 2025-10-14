@@ -30,24 +30,24 @@ class DirectGetter : public Command {
   typedef T (E::*GetterMethod)() const;
 
   /// Constructor
-  DirectGetter(E &entity, T *ptr, const std::string &docString)
+  DirectGetter(E& entity, T* ptr, const std::string& docString)
       : Command(entity, std::vector<Value::Type>(), docString), T_ptr(ptr) {}
 
  protected:
   virtual Value doExecute() { return Value(*T_ptr); }
 
  private:
-  T *T_ptr;
+  T* T_ptr;
 };
 
 template <class E, typename T>
-DirectGetter<E, T> *makeDirectGetter(E &entity, T *ptr,
-                                     const std::string &docString) {
+DirectGetter<E, T>* makeDirectGetter(E& entity, T* ptr,
+                                     const std::string& docString) {
   return new DirectGetter<E, T>(entity, ptr, docString);
 }
 
-inline std::string docDirectGetter(const std::string &name,
-                                   const std::string &type) {
+inline std::string docDirectGetter(const std::string& name,
+                                   const std::string& type) {
   return std::string("\nGet the ") + name + ".\n\nNo input.\nReturn an " +
          type + ".\n\n";
 }

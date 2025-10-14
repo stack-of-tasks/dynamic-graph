@@ -44,8 +44,8 @@ class CustomEntity : public Entity {
   bool test_one_arg_ret_;
   bool test_two_args_ret_;
 
-  virtual const std::string &getClassName() const { return CLASS_NAME; }
-  explicit CustomEntity(const std::string &n) : Entity(n) {
+  virtual const std::string& getClassName() const { return CLASS_NAME; }
+  explicit CustomEntity(const std::string& n) : Entity(n) {
     test_zero_arg_ = false;
     test_one_arg_ = false;
     test_two_args_ = false;
@@ -91,7 +91,7 @@ class CustomEntity : public Entity {
     std::string e_1_arg("1_arg");
     try {
       addCommand(e_1_arg, getNewStyleCommand(e_1_arg));
-    } catch (dynamicgraph::ExceptionFactory &aef) {
+    } catch (dynamicgraph::ExceptionFactory& aef) {
       res = (aef.getCode() == dynamicgraph::ExceptionFactory::OBJECT_CONFLICT);
     }
     BOOST_CHECK(res);
@@ -101,29 +101,29 @@ class CustomEntity : public Entity {
 
   void zero_arg() { test_zero_arg_ = true; }
 
-  void one_arg(const int &) { test_one_arg_ = true; }
+  void one_arg(const int&) { test_one_arg_ = true; }
 
-  void two_args(const int &, const int &) { test_two_args_ = true; }
+  void two_args(const int&, const int&) { test_two_args_ = true; }
 
-  void three_args(const int &, const int &, const int &) {
+  void three_args(const int&, const int&, const int&) {
     test_three_args_ = true;
   }
 
-  void four_args(const int &, const int &, const int &, const int &) {
+  void four_args(const int&, const int&, const int&, const int&) {
     test_four_args_ = true;
   }
 
-  int one_arg_ret(const int &) {
+  int one_arg_ret(const int&) {
     test_one_arg_ret_ = true;
     return 2;
   }
 
-  std::string two_args_ret(const int &, const int &) {
+  std::string two_args_ret(const int&, const int&) {
     test_two_args_ret_ = true;
     return std::string("return");
   }
 
-  void cmd_verbose(std::ostream &oss) {
+  void cmd_verbose(std::ostream& oss) {
     std::string as("print verbose");
     oss << as;
   }
@@ -132,16 +132,16 @@ DYNAMICGRAPH_FACTORY_ENTITY_PLUGIN(CustomEntity, "CustomEntity");
 }  // namespace dynamicgraph
 
 BOOST_AUTO_TEST_CASE(command_test) {
-  dynamicgraph::CustomEntity *ptr_entity =
-      (dynamic_cast<dynamicgraph::CustomEntity *>(
+  dynamicgraph::CustomEntity* ptr_entity =
+      (dynamic_cast<dynamicgraph::CustomEntity*>(
           dynamicgraph::FactoryStorage::getInstance()->newEntity("CustomEntity",
                                                                  "my-entity")));
-  dynamicgraph::CustomEntity &entity = *ptr_entity;
+  dynamicgraph::CustomEntity& entity = *ptr_entity;
 
-  std::map<const std::string, Command *> aCommandMap =
+  std::map<const std::string, Command*> aCommandMap =
       entity.getNewStyleCommandMap();
 
-  std::map<const std::string, Command *>::iterator it_map;
+  std::map<const std::string, Command*>::iterator it_map;
 
   it_map = aCommandMap.find("0_arg");
   if (it_map == aCommandMap.end()) BOOST_CHECK(false);
@@ -201,7 +201,7 @@ BOOST_AUTO_TEST_CASE(command_test) {
   it_map = aCommandMap.find(std::string("2_args"));
   try {
     it_map->second->setParameterValues(values_two);
-  } catch (const dynamicgraph::ExceptionAbstract &aea) {
+  } catch (const dynamicgraph::ExceptionAbstract& aea) {
     res = (aea.getCode() == dynamicgraph::ExceptionAbstract::ABSTRACT);
   }
   BOOST_CHECK(res);
@@ -215,7 +215,7 @@ BOOST_AUTO_TEST_CASE(command_test) {
   it_map = aCommandMap.find(std::string("2_args"));
   try {
     it_map->second->setParameterValues(values_two);
-  } catch (const dynamicgraph::ExceptionAbstract &aea) {
+  } catch (const dynamicgraph::ExceptionAbstract& aea) {
     res = (aea.getCode() == dynamicgraph::ExceptionAbstract::TOOLS);
   }
   BOOST_CHECK(res);
@@ -229,7 +229,7 @@ BOOST_AUTO_TEST_CASE(command_test) {
   std::string empty("");
   try {
     entity.getNewStyleCommand(empty);
-  } catch (dynamicgraph::ExceptionFactory &aef) {
+  } catch (dynamicgraph::ExceptionFactory& aef) {
     res = (aef.getCode() == dynamicgraph::ExceptionFactory::UNREFERED_FUNCTION);
   }
   BOOST_CHECK(res);

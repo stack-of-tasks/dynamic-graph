@@ -22,9 +22,9 @@ namespace dynamicgraph {
 template <typename T>
 struct signal_io_base {
   /// serialize a signal value.
-  inline static void disp(const T &value, std::ostream &os) { os << value; }
+  inline static void disp(const T& value, std::ostream& os) { os << value; }
   /// deserialize a signal value.
-  inline static T cast(std::istringstream &is) {
+  inline static T cast(std::istringstream& is) {
     T inst;
     is >> inst;
     if (is.fail()) {
@@ -34,19 +34,19 @@ struct signal_io_base {
     return inst;
   }
   /// write a signal value to log file
-  inline static void trace(const T &value, std::ostream &os) { os << value; }
+  inline static void trace(const T& value, std::ostream& os) { os << value; }
 };
 
 /// Inherit from this class if tracing is not implemented for a given type.
 template <typename T>
 struct signal_io_unimplemented {
-  inline static void disp(const T &, std::ostream &) {
+  inline static void disp(const T&, std::ostream&) {
     throw std::logic_error("this disp is not implemented.");
   }
-  inline static T cast(std::istringstream &) {
+  inline static T cast(std::istringstream&) {
     throw std::logic_error("this cast is not implemented.");
   }
-  inline static void trace(const T &, std::ostream &) {
+  inline static void trace(const T&, std::ostream&) {
     throw std::logic_error("this trace is not implemented.");
   }
 };
@@ -65,13 +65,13 @@ struct signal_io<
   typedef Eigen::Matrix<_Scalar, _Rows, _Cols, _Options, _MaxRows, _MaxCols>
       matrix_type;
 
-  inline static void disp(const matrix_type &value, std::ostream &os) {
+  inline static void disp(const matrix_type& value, std::ostream& os) {
     static const Eigen::IOFormat row_format(
         Eigen::StreamPrecision, Eigen::DontAlignCols, " ", " ", "", "", "", "");
     os << value.format(row_format);
   }
 
-  inline static void trace(const matrix_type &value, std::ostream &os) {
+  inline static void trace(const matrix_type& value, std::ostream& os) {
     static const Eigen::IOFormat row_format(Eigen::StreamPrecision,
                                             Eigen::DontAlignCols, "\t", "\t",
                                             "", "", "", "");
@@ -86,15 +86,15 @@ struct signal_io<Eigen::Quaternion<_Scalar, _Options>>
   typedef Eigen::Quaternion<_Scalar, _Options> quat_type;
   typedef Eigen::Matrix<_Scalar, 4, 1, _Options> matrix_type;
 
-  inline static void disp(const quat_type &value, std::ostream &os) {
+  inline static void disp(const quat_type& value, std::ostream& os) {
     signal_io<matrix_type>::disp(value.coeffs(), os);
   }
 
-  inline static quat_type cast(std::istringstream &is) {
+  inline static quat_type cast(std::istringstream& is) {
     return quat_type(signal_io<matrix_type>::cast(is));
   }
 
-  inline static void trace(const quat_type &value, std::ostream &os) {
+  inline static void trace(const quat_type& value, std::ostream& os) {
     signal_io<matrix_type>::trace(value.coeffs(), os);
   }
 };
@@ -103,7 +103,7 @@ struct signal_io<Eigen::Quaternion<_Scalar, _Options>>
 /// Do not print '\n' at the end.
 template <>
 struct signal_io<std::string> : signal_io_base<std::string> {
-  inline static std::string cast(std::istringstream &iss) { return iss.str(); }
+  inline static std::string cast(std::istringstream& iss) { return iss.str(); }
 };
 
 /// Template specialization of signal_io for double
@@ -120,7 +120,7 @@ struct signal_io<std::string> : signal_io_base<std::string> {
 /// values on a stream).
 template <>
 struct signal_io<double> : signal_io_base<double> {
-  inline static double cast(std::istringstream &iss) {
+  inline static double cast(std::istringstream& iss) {
     std::string tmp(iss.str());
 
     if (tmp == "nan")
@@ -132,7 +132,7 @@ struct signal_io<double> : signal_io_base<double> {
 
     try {
       return boost::lexical_cast<double>(tmp);
-    } catch (boost::bad_lexical_cast &) {
+    } catch (boost::bad_lexical_cast&) {
       boost::format fmt("failed to serialize %s (to double)");
       fmt % tmp;
       throw ExceptionSignal(ExceptionSignal::GENERIC, fmt.str());

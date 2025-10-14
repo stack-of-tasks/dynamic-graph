@@ -10,20 +10,20 @@
 namespace dynamicgraph {
 const std::string ExceptionAbstract::EXCEPTION_NAME = "Abstract";
 
-ExceptionAbstract::ExceptionAbstract(const int &_code, const std::string &_msg)
+ExceptionAbstract::ExceptionAbstract(const int& _code, const std::string& _msg)
     : code(_code), message(_msg) {}
 
-const char *ExceptionAbstract::getMessage() const {
+const char* ExceptionAbstract::getMessage() const {
   return (this->message).c_str();
 }
 
-const std::string &ExceptionAbstract::getStringMessage() const {
+const std::string& ExceptionAbstract::getStringMessage() const {
   return this->message;
 }
 
 int ExceptionAbstract::getCode() const { return this->code; }
 
-ExceptionAbstract::Param &ExceptionAbstract::Param::initCopy(const Param &p) {
+ExceptionAbstract::Param& ExceptionAbstract::Param::initCopy(const Param& p) {
   if (&p == this) return *this;
 
   dgDEBUGIN(25);
@@ -39,13 +39,13 @@ ExceptionAbstract::Param &ExceptionAbstract::Param::initCopy(const Param &p) {
   return *this;
 }
 
-ExceptionAbstract::Param::Param(const int &_line, const char *_function,
-                                const char *_file)
+ExceptionAbstract::Param::Param(const int& _line, const char* _function,
+                                const char* _file)
     : functionPTR(_function), line(_line), filePTR(_file), pointersSet(true) {
   dgDEBUGINOUT(25);
 }
 
-std::ostream &operator<<(std::ostream &os, const ExceptionAbstract &error) {
+std::ostream& operator<<(std::ostream& os, const ExceptionAbstract& error) {
   os << error.getExceptionName() << "Error [#" << error.code
      << "]:  " << error.message << std::endl;
 

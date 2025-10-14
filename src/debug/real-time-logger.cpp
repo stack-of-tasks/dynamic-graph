@@ -12,7 +12,7 @@
 #include <boost/thread/thread.hpp>
 
 namespace dynamicgraph {
-RealTimeLogger::RealTimeLogger(const std::size_t &bufferSize)
+RealTimeLogger::RealTimeLogger(const std::size_t& bufferSize)
     : buffer_(bufferSize, NULL),
       frontIdx_(0),
       backIdx_(0),
@@ -28,7 +28,7 @@ RealTimeLogger::~RealTimeLogger() {
 
 bool RealTimeLogger::spinOnce() {
   if (empty()) return false;
-  Data *data = buffer_[frontIdx_];
+  Data* data = buffer_[frontIdx_];
   frontIdx_ = (frontIdx_ + 1) % buffer_.size();
   std::string str = data->buf.str();
   // It is important to pass str.c_str() and not str
@@ -51,7 +51,7 @@ RTLoggerStream RealTimeLogger::front() {
     nbDiscarded_++;
     return RTLoggerStream(NULL, oss_);
   }
-  Data *data = buffer_[backIdx_];
+  Data* data = buffer_[backIdx_];
   // backIdx_ = (backIdx_+1) % buffer_.size();
   // Reset position of cursor
   data->buf.pubseekpos(0);
@@ -66,7 +66,7 @@ struct RealTimeLogger::thread {
   bool changedThreadParams;
   boost::thread t_;
 
-  explicit thread(RealTimeLogger *logger)
+  explicit thread(RealTimeLogger* logger)
       : requestShutdown_(false),
         threadPolicy_(SCHED_OTHER),
         threadPriority_(0),
@@ -101,7 +101,7 @@ struct RealTimeLogger::thread {
     }
   }
 
-  void spin(RealTimeLogger *logger) {
+  void spin(RealTimeLogger* logger) {
     // Change the thread's scheduler from real-time to normal
     // and reduce its priority
 
@@ -115,10 +115,10 @@ struct RealTimeLogger::thread {
   }
 };
 
-RealTimeLogger *RealTimeLogger::instance_ = NULL;
-RealTimeLogger::thread *RealTimeLogger::thread_ = NULL;
+RealTimeLogger* RealTimeLogger::instance_ = NULL;
+RealTimeLogger::thread* RealTimeLogger::thread_ = NULL;
 
-RealTimeLogger &RealTimeLogger::instance() {
+RealTimeLogger& RealTimeLogger::instance() {
   if (instance_ == NULL) {
     instance_ = new RealTimeLogger(1000);
     thread_ = new thread(instance_);

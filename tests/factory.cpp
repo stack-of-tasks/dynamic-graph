@@ -22,13 +22,13 @@ namespace dynamicgraph {
 class CustomEntity : public Entity {
  public:
   static const std::string CLASS_NAME;
-  virtual const std::string &getClassName() const { return CLASS_NAME; }
-  explicit CustomEntity(const std::string &n) : Entity(n) {}
+  virtual const std::string& getClassName() const { return CLASS_NAME; }
+  explicit CustomEntity(const std::string& n) : Entity(n) {}
 };
 const std::string CustomEntity::CLASS_NAME = "CustomEntity";
 }  // namespace dynamicgraph
 
-dynamicgraph::Entity *makeEntity(const std::string &objectName) {
+dynamicgraph::Entity* makeEntity(const std::string& objectName) {
   return new dynamicgraph::CustomEntity(objectName);
 }
 
@@ -44,7 +44,7 @@ BOOST_AUTO_TEST_CASE(registerEntity) {
     dynamicgraph::FactoryStorage::getInstance()->registerEntity("myEntity",
                                                                 &makeEntity);
     BOOST_ERROR("Should never happen.");
-  } catch (const dynamicgraph::ExceptionFactory &exception) {
+  } catch (const dynamicgraph::ExceptionFactory& exception) {
     BOOST_CHECK_EQUAL(exception.getCode(),
                       dynamicgraph::ExceptionFactory::OBJECT_CONFLICT);
   }
@@ -52,7 +52,7 @@ BOOST_AUTO_TEST_CASE(registerEntity) {
   try {
     dynamicgraph::FactoryStorage::getInstance()->registerEntity("myEntity", 0);
     BOOST_ERROR("Should never happen.");
-  } catch (const dynamicgraph::ExceptionFactory &exception) {
+  } catch (const dynamicgraph::ExceptionFactory& exception) {
     BOOST_CHECK_EQUAL(exception.getCode(),
                       dynamicgraph::ExceptionFactory::OBJECT_CONFLICT);
   }
@@ -64,7 +64,7 @@ BOOST_AUTO_TEST_CASE(unregisterEntity) {
   try {
     dynamicgraph::FactoryStorage::getInstance()->deregisterEntity("myEntity");
     BOOST_ERROR("Should never happen.");
-  } catch (const dynamicgraph::ExceptionFactory &exception) {
+  } catch (const dynamicgraph::ExceptionFactory& exception) {
     BOOST_CHECK_EQUAL(exception.getCode(),
                       dynamicgraph::ExceptionFactory::OBJECT_CONFLICT);
   }
@@ -73,7 +73,7 @@ BOOST_AUTO_TEST_CASE(unregisterEntity) {
     dynamicgraph::FactoryStorage::getInstance()->deregisterEntity(
         "I do not exist.");
     BOOST_ERROR("Should never happen.");
-  } catch (const dynamicgraph::ExceptionFactory &exception) {
+  } catch (const dynamicgraph::ExceptionFactory& exception) {
     BOOST_CHECK_EQUAL(exception.getCode(),
                       dynamicgraph::ExceptionFactory::OBJECT_CONFLICT);
   }
@@ -100,7 +100,7 @@ BOOST_AUTO_TEST_CASE(newEntity) {
     dynamicgraph::FactoryStorage::getInstance()->newEntity("I do not exist.",
                                                            "");
     BOOST_ERROR("Should never happen.");
-  } catch (const dynamicgraph::ExceptionFactory &exception) {
+  } catch (const dynamicgraph::ExceptionFactory& exception) {
     BOOST_CHECK_EQUAL(exception.getCode(),
                       dynamicgraph::ExceptionFactory::UNREFERED_OBJECT);
   }
@@ -109,7 +109,7 @@ BOOST_AUTO_TEST_CASE(newEntity) {
     dynamicgraph::FactoryStorage::getInstance()->destroy();
     dynamicgraph::FactoryStorage::getInstance()->existEntity("myEntity");
     // BOOST_ERROR ("Should never happen.");
-  } catch (const dynamicgraph::ExceptionFactory &exception) {
+  } catch (const dynamicgraph::ExceptionFactory& exception) {
     BOOST_CHECK_EQUAL(exception.getCode(),
                       dynamicgraph::ExceptionFactory::UNREFERED_OBJECT);
   }

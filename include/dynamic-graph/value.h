@@ -24,7 +24,7 @@ typedef std::vector<Value> Values;
 
 class DYNAMIC_GRAPH_DLLAPI EitherType {
  public:
-  EitherType(const Value &value);
+  EitherType(const Value& value);
   ~EitherType();
   operator bool() const;
   operator std::uint32_t() const;
@@ -40,7 +40,7 @@ class DYNAMIC_GRAPH_DLLAPI EitherType {
   operator Values() const;
 
  private:
-  const Value *value_;
+  const Value* value_;
 };
 
 /** \ingroup dgraph
@@ -68,26 +68,26 @@ class DYNAMIC_GRAPH_DLLAPI Value {
   };
   ~Value();
   void deleteValue();
-  explicit Value(const bool &value);
-  explicit Value(const std::uint32_t &value);
-  explicit Value(const std::uint64_t &value);
-  explicit Value(const std::int32_t &value);
-  explicit Value(const std::int64_t &value);
-  explicit Value(const float &value);
-  explicit Value(const double &value);
-  explicit Value(const std::string &value);
-  explicit Value(const Vector &value);
-  explicit Value(const Eigen::MatrixXd &value);
-  explicit Value(const Eigen::Matrix4d &value);
-  explicit Value(const Values &value);
+  explicit Value(const bool& value);
+  explicit Value(const std::uint32_t& value);
+  explicit Value(const std::uint64_t& value);
+  explicit Value(const std::int32_t& value);
+  explicit Value(const std::int64_t& value);
+  explicit Value(const float& value);
+  explicit Value(const double& value);
+  explicit Value(const std::string& value);
+  explicit Value(const Vector& value);
+  explicit Value(const Eigen::MatrixXd& value);
+  explicit Value(const Eigen::Matrix4d& value);
+  explicit Value(const Values& value);
   /// Copy constructor
-  Value(const Value &value);
+  Value(const Value& value);
   // Construct an empty value (None)
   explicit Value();
   // operator assignement
-  Value operator=(const Value &value);
+  Value operator=(const Value& value);
   // Equality operator
-  bool operator==(const Value &other) const;
+  bool operator==(const Value& other) const;
   /// Return the type of the value
   Type type() const;
 
@@ -107,8 +107,8 @@ class DYNAMIC_GRAPH_DLLAPI Value {
   static std::string typeName(Type type);
 
   /// Output in a stream
-  DYNAMIC_GRAPH_DLLAPI friend std::ostream &operator<<(std::ostream &os,
-                                                       const Value &value);
+  DYNAMIC_GRAPH_DLLAPI friend std::ostream& operator<<(std::ostream& os,
+                                                       const Value& value);
 
  public:
   friend class EitherType;
@@ -124,9 +124,9 @@ class DYNAMIC_GRAPH_DLLAPI Value {
   Eigen::MatrixXd matrixXdValue() const;
   Eigen::Matrix4d matrix4dValue() const;
   Values valuesValue() const;
-  const Values &constValuesValue() const;
+  const Values& constValuesValue() const;
   Type type_;
-  const void *const value_;
+  const void* const value_;
 };
 
 /* ---- HELPER ---------------------------------------------------------- */

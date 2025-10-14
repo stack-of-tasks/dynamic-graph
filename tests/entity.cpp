@@ -36,8 +36,8 @@ class CustomEntity : public Entity {
   dynamicgraph::SignalTimeDependent<double, sigtime_t> m_sigdTimeDepSOUT;
 
   static const std::string CLASS_NAME;
-  virtual const std::string &getClassName() const { return CLASS_NAME; }
-  explicit CustomEntity(const std::string &n)
+  virtual const std::string& getClassName() const { return CLASS_NAME; }
+  explicit CustomEntity(const std::string& n)
       : Entity(n),
         m_sigdSIN(NULL, "CustomEntity(" + name + ")::input(double)::in_double"),
         m_sigdSIN2(NULL,
@@ -54,7 +54,7 @@ class CustomEntity : public Entity {
     /// Try a second time to generate an exception
     try {
       signalRegistration(m_sigdSIN2 << m_sigdTimeDepSOUT);
-    } catch (ExceptionFactory &aef) {
+    } catch (ExceptionFactory& aef) {
       BOOST_CHECK_EQUAL(aef.getCode(),
                         dynamicgraph::ExceptionFactory::SIGNAL_CONFLICT);
     }
@@ -65,8 +65,8 @@ class CustomEntity : public Entity {
     signalDeregistration("out_double");
   }
 
-  double &update(double &res, const sigtime_t &inTime) {
-    const double &aDouble = m_sigdSIN(inTime);
+  double& update(double& res, const sigtime_t& inTime) {
+    const double& aDouble = m_sigdSIN(inTime);
     res = aDouble;
     return res;
   }
@@ -83,7 +83,7 @@ BOOST_AUTO_TEST_CASE(constructor) {
 
   BOOST_CHECK_EQUAL(dg::CustomEntity::CLASS_NAME, "CustomEntity");
 
-  dg::Entity &entity = *dg::FactoryStorage::getInstance()->newEntity(
+  dg::Entity& entity = *dg::FactoryStorage::getInstance()->newEntity(
       "CustomEntity", "my-entity");
   BOOST_CHECK_EQUAL(entity.getName(), "my-entity");
   BOOST_CHECK_EQUAL(entity.getClassName(), dg::CustomEntity::CLASS_NAME);
@@ -114,31 +114,31 @@ BOOST_AUTO_TEST_CASE(constructor) {
 }
 
 BOOST_AUTO_TEST_CASE(signal) {
-  dynamicgraph::Entity &entity =
+  dynamicgraph::Entity& entity =
       dynamicgraph::PoolStorage::getInstance()->getEntity("my-entity");
 
   // Non const getter.
   try {
     entity.getSignal("I do not exist");
     BOOST_ERROR("Should never happen.");
-  } catch (const dynamicgraph::ExceptionFactory &exception) {
+  } catch (const dynamicgraph::ExceptionFactory& exception) {
     BOOST_CHECK_EQUAL(exception.getCode(),
                       dynamicgraph::ExceptionFactory::UNREFERED_SIGNAL);
   }
 
   // Const getter.
   try {
-    const dynamicgraph::Entity &entityConst = entity;
+    const dynamicgraph::Entity& entityConst = entity;
     entityConst.getSignal("I do not exist");
     BOOST_ERROR("Should never happen.");
-  } catch (const dynamicgraph::ExceptionFactory &exception) {
+  } catch (const dynamicgraph::ExceptionFactory& exception) {
     BOOST_CHECK_EQUAL(exception.getCode(),
                       dynamicgraph::ExceptionFactory::UNREFERED_SIGNAL);
   }
   // deregistration
   try {
-    dynamicgraph::CustomEntity *customEntity =
-        dynamic_cast<dynamicgraph::CustomEntity *>(&entity);
+    dynamicgraph::CustomEntity* customEntity =
+        dynamic_cast<dynamicgraph::CustomEntity*>(&entity);
     customEntity->addSignal();
     std::string signame("CustomEntity(my-entity)::input(double)::in_double");
     customEntity->Entity::hasSignal(signame);
@@ -151,14 +151,14 @@ BOOST_AUTO_TEST_CASE(signal) {
     // Removing signals generates an exception the second time.
     customEntity->rmValidSignal();
     BOOST_ERROR("Should never happen.");
-  } catch (const dynamicgraph::ExceptionFactory &exception) {
+  } catch (const dynamicgraph::ExceptionFactory& exception) {
     BOOST_CHECK_EQUAL(exception.getCode(),
                       dynamicgraph::ExceptionFactory::UNREFERED_SIGNAL);
   }
 }
 
 BOOST_AUTO_TEST_CASE(displaySignalList) {
-  dynamicgraph::Entity &entity =
+  dynamicgraph::Entity& entity =
       dynamicgraph::PoolStorage::getInstance()->getEntity("my-entity");
 
   output_test_stream output;
@@ -168,7 +168,7 @@ BOOST_AUTO_TEST_CASE(displaySignalList) {
 }
 
 BOOST_AUTO_TEST_CASE(display) {
-  dynamicgraph::Entity &entity =
+  dynamicgraph::Entity& entity =
       dynamicgraph::PoolStorage::getInstance()->getEntity("my-entity");
 
   output_test_stream output;
@@ -178,14 +178,14 @@ BOOST_AUTO_TEST_CASE(display) {
 }
 
 BOOST_AUTO_TEST_CASE(getCommandList) {
-  dynamicgraph::Entity &entity =
+  dynamicgraph::Entity& entity =
       dynamicgraph::PoolStorage::getInstance()->getEntity("my-entity");
 
   BOOST_CHECK_EQUAL(entity.getCommandList(), "print\nsignals\nsignalDep");
 }
 
 BOOST_AUTO_TEST_CASE(writeGraph) {
-  dynamicgraph::Entity &entity =
+  dynamicgraph::Entity& entity =
       dynamicgraph::PoolStorage::getInstance()->getEntity("my-entity");
 
   output_test_stream output;
@@ -195,7 +195,7 @@ BOOST_AUTO_TEST_CASE(writeGraph) {
 }
 
 BOOST_AUTO_TEST_CASE(writeCompletionList) {
-  dynamicgraph::Entity &entity =
+  dynamicgraph::Entity& entity =
       dynamicgraph::PoolStorage::getInstance()->getEntity("my-entity");
 
   output_test_stream output;
@@ -209,7 +209,7 @@ BOOST_AUTO_TEST_CASE(sendMsg) {
   of.open("/tmp/dg-LOGS.txt", std::ofstream::out | std::ofstream::app);
   dgADD_OSTREAM_TO_RTLOG(of);
 
-  dynamicgraph::Entity &entity =
+  dynamicgraph::Entity& entity =
       dynamicgraph::PoolStorage::getInstance()->getEntity("my-entity");
 
   output_test_stream output;
@@ -246,11 +246,11 @@ BOOST_AUTO_TEST_CASE(sendMsg) {
 // WTF?
 typedef dynamicgraph::sigtime_t sigtime_t;
 BOOST_AUTO_TEST_CASE(wtf) {
-  dynamicgraph::Entity &entity =
+  dynamicgraph::Entity& entity =
       dynamicgraph::PoolStorage::getInstance()->getEntity("my-entity");
 
   BOOST_CHECK_EQUAL(entity.test(),
-                    static_cast<dynamicgraph::SignalBase<sigtime_t> *>(0));
+                    static_cast<dynamicgraph::SignalBase<sigtime_t>*>(0));
 
-  entity.test2(static_cast<dynamicgraph::SignalBase<sigtime_t> *>(0));
+  entity.test2(static_cast<dynamicgraph::SignalBase<sigtime_t>*>(0));
 }

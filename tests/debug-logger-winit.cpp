@@ -34,8 +34,8 @@ namespace dynamicgraph {
 class CustomEntity : public Entity {
  public:
   static const std::string CLASS_NAME;
-  virtual const std::string &getClassName() const { return CLASS_NAME; }
-  explicit CustomEntity(const std::string &n) : Entity(n) {
+  virtual const std::string& getClassName() const { return CLASS_NAME; }
+  explicit CustomEntity(const std::string& n) : Entity(n) {
     logger_.setTimeSample(0.001);
     logger_.setStreamPrintPeriod(0.005);
     logger_.setVerbosity(VERBOSITY_ALL);
@@ -69,8 +69,8 @@ BOOST_AUTO_TEST_CASE(debug_logger_wrong_initialization) {
 
   BOOST_CHECK_EQUAL(dynamicgraph::CustomEntity::CLASS_NAME, "CustomEntity");
 
-  dynamicgraph::CustomEntity &entity =
-      *(dynamic_cast<dynamicgraph::CustomEntity *>(
+  dynamicgraph::CustomEntity& entity =
+      *(dynamic_cast<dynamicgraph::CustomEntity*>(
           dynamicgraph::FactoryStorage::getInstance()->newEntity(
               "CustomEntity", "my-entity-2")));
 

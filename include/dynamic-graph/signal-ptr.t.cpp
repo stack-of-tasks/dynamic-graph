@@ -13,7 +13,7 @@
 
 namespace dynamicgraph {
 template <class T, class Time>
-Signal<T, Time> *SignalPtr<T, Time>::getPtr() {
+Signal<T, Time>* SignalPtr<T, Time>::getPtr() {
   dgTDEBUGIN(25);
   if (!isPlugged()) DG_THROW
   ExceptionSignal(ExceptionSignal::NOT_INITIALIZED,
@@ -24,7 +24,7 @@ Signal<T, Time> *SignalPtr<T, Time>::getPtr() {
 }
 
 template <class T, class Time>
-const Signal<T, Time> *SignalPtr<T, Time>::getPtr() const {
+const Signal<T, Time>* SignalPtr<T, Time>::getPtr() const {
   dgTDEBUGIN(25) << SignalBase<Time>::name << "(" << isPlugged() << ")" << this
                  << "->" << signalPtr << std::endl;
   dgTDEBUGIN(25);
@@ -38,7 +38,7 @@ const Signal<T, Time> *SignalPtr<T, Time>::getPtr() const {
 }
 
 template <class T, class Time>
-void SignalPtr<T, Time>::plug(SignalBase<Time> *unknown_ref) {
+void SignalPtr<T, Time>::plug(SignalBase<Time>* unknown_ref) {
   dgTDEBUGIN(5);
   if (!unknown_ref) {
     signalPtr = NULL;
@@ -49,7 +49,7 @@ void SignalPtr<T, Time>::plug(SignalBase<Time> *unknown_ref) {
   dgTDEBUG(5) << "# In  T = " << getName() << " ="
               << typeid(Signal<T, Time>::Tcopy1).name() << "{ " << std::endl;
 
-  Signal<T, Time> *ref = dynamic_cast<Signal<T, Time> *>(unknown_ref);
+  Signal<T, Time>* ref = dynamic_cast<Signal<T, Time>*>(unknown_ref);
   if (NULL != ref) {
     dgTDEBUG(25) << "Cast ok." << std::endl;
     signalPtr = ref;
@@ -58,7 +58,7 @@ void SignalPtr<T, Time>::plug(SignalBase<Time> *unknown_ref) {
 }
 
 template <class T, class Time>
-bool SignalPtr<T, Time>::needUpdate(const Time &t) const {
+bool SignalPtr<T, Time>::needUpdate(const Time& t) const {
   if ((isPlugged()) && (!autoref())) {
     return getPtr()->needUpdate(t);
   } else
@@ -66,7 +66,7 @@ bool SignalPtr<T, Time>::needUpdate(const Time &t) const {
 }
 
 template <class T, class Time>
-const Time &SignalPtr<T, Time>::getTime() const {
+const Time& SignalPtr<T, Time>::getTime() const {
   if ((isPlugged()) && (!autoref())) {
     return getPtr()->getTime();
   }
@@ -74,12 +74,12 @@ const Time &SignalPtr<T, Time>::getTime() const {
 }
 
 template <class T, class Time>
-const T &SignalPtr<T, Time>::operator()(const Time &t) {
+const T& SignalPtr<T, Time>::operator()(const Time& t) {
   return access(t);
 }
 
 template <class T, class Time>
-const T &SignalPtr<T, Time>::access(const Time &t) {
+const T& SignalPtr<T, Time>::access(const Time& t) {
   dgTDEBUGIN(15);
   if (modeNoThrow && (!isPlugged()) && Signal<T, Time>::copyInit) {
     dgTDEBUGOUT(15);
@@ -94,7 +94,7 @@ const T &SignalPtr<T, Time>::access(const Time &t) {
 }
 
 template <class T, class Time>
-const T &SignalPtr<T, Time>::accessCopy() const {
+const T& SignalPtr<T, Time>::accessCopy() const {
   if (modeNoThrow && (!isPlugged()) && Signal<T, Time>::copyInit)
     return Signal<T, Time>::accessCopy();
   else if (autoref())
@@ -103,7 +103,7 @@ const T &SignalPtr<T, Time>::accessCopy() const {
     return getPtr()->accessCopy();
 }
 template <class T, class Time>
-std::ostream &SignalPtr<T, Time>::writeGraph(std::ostream &os) const {
+std::ostream& SignalPtr<T, Time>::writeGraph(std::ostream& os) const {
   std::string LeaderLocalName;
   std::string LeaderNodeName;
   Signal<T, Time>::ExtractNodeAndLocalNames(LeaderLocalName, LeaderNodeName);
@@ -119,7 +119,7 @@ std::ostream &SignalPtr<T, Time>::writeGraph(std::ostream &os) const {
 }
 
 template <class T, class Time>
-std::ostream &SignalPtr<T, Time>::display(std::ostream &os) const {
+std::ostream& SignalPtr<T, Time>::display(std::ostream& os) const {
   dgTDEBUGIN(25) << SignalBase<Time>::name << this << "||" << isPlugged()
                  << "||" << signalPtr;
   {
@@ -140,7 +140,7 @@ std::ostream &SignalPtr<T, Time>::display(std::ostream &os) const {
 }
 
 template <class T, class Time>
-std::ostream &SignalPtr<T, Time>::displayDependencies(std::ostream &os,
+std::ostream& SignalPtr<T, Time>::displayDependencies(std::ostream& os,
                                                       const int depth,
                                                       std::string space,
                                                       std::string next1,

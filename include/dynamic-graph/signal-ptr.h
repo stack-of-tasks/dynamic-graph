@@ -29,15 +29,15 @@ class SignalPtr : public virtual Signal<T, Time> {
   using SignalBase<Time>::getName;
 
  protected:
-  Signal<T, Time> *signalPtr;
+  Signal<T, Time>* signalPtr;
   bool modeNoThrow;
-  SignalBase<Time> *abstractTransmitter;
-  T *transmitAbstractData;
+  SignalBase<Time>* abstractTransmitter;
+  T* transmitAbstractData;
 
   inline bool autoref() const { return signalPtr == this; }
 
  public: /* --- CONSTRUCTORS --- */
-  SignalPtr(Signal<T, Time> *ptr, std::string name = "")
+  SignalPtr(Signal<T, Time>* ptr, std::string name = "")
       : Signal<T, Time>(name),
         signalPtr(ptr),
         modeNoThrow(false),
@@ -47,39 +47,39 @@ class SignalPtr : public virtual Signal<T, Time> {
 
  public:
   /* --- PLUG-IN OPERATION --- */
-  Signal<T, Time> *getPtr();              // throw
-  const Signal<T, Time> *getPtr() const;  // throw
-  virtual void plug(SignalBase<Time> *ref);
+  Signal<T, Time>* getPtr();              // throw
+  const Signal<T, Time>* getPtr() const;  // throw
+  virtual void plug(SignalBase<Time>* ref);
 
   virtual void unplug() { plug(NULL); }
 
   virtual bool isPlugged() const { return (NULL != signalPtr); }
-  virtual SignalBase<Time> *getPluged() const { return signalPtr; }
-  virtual const Time &getTime() const;
+  virtual SignalBase<Time>* getPluged() const { return signalPtr; }
+  virtual const Time& getTime() const;
 
   /* Equivalent operator-like definitions. */
-  inline Signal<T, Time> *operator->() { return getPtr(); }
-  inline const Signal<T, Time> *operator->() const { return getPtr(); }
-  inline Signal<T, Time> &operator*() { return *getPtr(); }
-  inline const Signal<T, Time> &operator*() const { return *getPtr(); }
+  inline Signal<T, Time>* operator->() { return getPtr(); }
+  inline const Signal<T, Time>* operator->() const { return getPtr(); }
+  inline Signal<T, Time>& operator*() { return *getPtr(); }
+  inline const Signal<T, Time>& operator*() const { return *getPtr(); }
   inline operator bool() const { return isPlugged(); }
 
  public: /* --- INHERITANCE --- */
-  virtual bool needUpdate(const Time &t) const;
-  virtual std::ostream &writeGraph(std::ostream &os) const;
-  virtual std::ostream &display(std::ostream &os) const;
+  virtual bool needUpdate(const Time& t) const;
+  virtual std::ostream& writeGraph(std::ostream& os) const;
+  virtual std::ostream& display(std::ostream& os) const;
 
   /* For compatibility, .access () is equivalent to ->access (). For explicit
    * pointer dereference :
    * Prefere -> () to ()
    */
-  virtual const T &operator()(const Time &t);
+  virtual const T& operator()(const Time& t);
   /* Similarly, Prefere ->access to .access
    */
-  virtual const T &access(const Time &t);
-  virtual const T &accessCopy() const;
+  virtual const T& access(const Time& t);
+  virtual const T& accessCopy() const;
 
-  inline void setConstantDefault(const T &t) {
+  inline void setConstantDefault(const T& t) {
     Signal<T, Time>::setConstant(t);
     modeNoThrow = true;
   }
@@ -91,17 +91,17 @@ class SignalPtr : public virtual Signal<T, Time> {
    * setting functions. The behavior is to plugged the signalPtr on
    * the classical mother Signal layer of the object.
    */
-  virtual void setConstant(const T &t) {
+  virtual void setConstant(const T& t) {
     plug(this);
     Signal<T, Time>::setConstant(t);
   }
-  virtual void setReference(const T *t,
-                            typename Signal<T, Time>::Mutex *m = NULL) {
+  virtual void setReference(const T* t,
+                            typename Signal<T, Time>::Mutex* m = NULL) {
     plug(this);
     Signal<T, Time>::setReference(t, m);
   }
-  virtual void setFunction(boost::function2<T &, T &, Time> t,
-                           typename Signal<T, Time>::Mutex *m = NULL) {
+  virtual void setFunction(boost::function2<T&, T&, Time> t,
+                           typename Signal<T, Time>::Mutex* m = NULL) {
     plug(this);
     Signal<T, Time>::setFunction(t, m);
   }
@@ -111,12 +111,12 @@ class SignalPtr : public virtual Signal<T, Time> {
   /*              boost::try_mutex *mutexref=NULL ) */
   /*    { plug(this); Signal<T,Time>::setFunction(fun,obj,mutexref); } */
 
-  virtual inline Signal<T, Time> &operator=(const T &t) {
+  virtual inline Signal<T, Time>& operator=(const T& t) {
     setConstant(t);
     return *this;
   }
 
-  virtual std::ostream &displayDependencies(std::ostream &os,
+  virtual std::ostream& displayDependencies(std::ostream& os,
                                             const int depth = -1,
                                             std::string space = "",
                                             std::string next1 = "",

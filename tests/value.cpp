@@ -74,7 +74,7 @@ BOOST_AUTO_TEST_CASE(value_exceptions) {
     int aInt(anet);
     aInt++;  // silence unused variable warnings to have a stable release in the
              // ros buildfarm
-  } catch (const dg::ExceptionAbstract &aea) {
+  } catch (const dg::ExceptionAbstract& aea) {
     output << aea.getExceptionName();
     output2 << aea.what();
     res = (aea.getCode() == dg::ExceptionAbstract::TOOLS);
@@ -90,7 +90,7 @@ BOOST_AUTO_TEST_CASE(value_exceptions) {
     bool abool(anet);
     abool = !abool;  // silence unused variable warnings to have a stable
                      // release in the ros buildfarm
-  } catch (const dg::ExceptionAbstract &aea) {
+  } catch (const dg::ExceptionAbstract& aea) {
     res = (aea.getCode() == dg::ExceptionAbstract::TOOLS);
   }
   BOOST_CHECK(res);
@@ -102,7 +102,7 @@ BOOST_AUTO_TEST_CASE(value_exceptions) {
     unsigned int aint(anet);
     aint++;  // silence unused variable warnings to have a stable release in the
              // ros buildfarm
-  } catch (const dg::ExceptionAbstract &aea) {
+  } catch (const dg::ExceptionAbstract& aea) {
     res = (aea.getCode() == dg::ExceptionAbstract::TOOLS);
   }
   BOOST_CHECK(res);
@@ -114,7 +114,7 @@ BOOST_AUTO_TEST_CASE(value_exceptions) {
     double adouble(anet);
     adouble++;  // silence unused variable warnings to have a stable release in
                 // the ros buildfarm
-  } catch (const dg::ExceptionAbstract &aea) {
+  } catch (const dg::ExceptionAbstract& aea) {
     res = (aea.getCode() == dg::ExceptionAbstract::TOOLS);
   }
   BOOST_CHECK(res);
@@ -126,7 +126,7 @@ BOOST_AUTO_TEST_CASE(value_exceptions) {
     float afloat(anet);
     afloat++;  // silence unused variable warnings to have a stable release in
                // the ros buildfarm
-  } catch (const dg::ExceptionAbstract &aea) {
+  } catch (const dg::ExceptionAbstract& aea) {
     res = (aea.getCode() == dg::ExceptionAbstract::TOOLS);
   }
   BOOST_CHECK(res);
@@ -136,7 +136,7 @@ BOOST_AUTO_TEST_CASE(value_exceptions) {
   res = false;
   try {
     std::string astring(anet);
-  } catch (const dg::ExceptionAbstract &aea) {
+  } catch (const dg::ExceptionAbstract& aea) {
     res = (aea.getCode() == dg::ExceptionAbstract::TOOLS);
   }
   BOOST_CHECK(res);
@@ -147,7 +147,7 @@ BOOST_AUTO_TEST_CASE(value_exceptions) {
   try {
     dg::Vector avector;
     avector = anet;
-  } catch (const dg::ExceptionAbstract &aea) {
+  } catch (const dg::ExceptionAbstract& aea) {
     res = (aea.getCode() == dg::ExceptionAbstract::TOOLS);
   }
   BOOST_CHECK(res);
@@ -158,7 +158,7 @@ BOOST_AUTO_TEST_CASE(value_exceptions) {
   try {
     Eigen::MatrixXd amatrixXd;
     amatrixXd = anet;
-  } catch (const dg::ExceptionAbstract &aea) {
+  } catch (const dg::ExceptionAbstract& aea) {
     res = (aea.getCode() == dg::ExceptionAbstract::TOOLS);
   }
   BOOST_CHECK(res);
@@ -169,7 +169,7 @@ BOOST_AUTO_TEST_CASE(value_exceptions) {
   try {
     Eigen::Matrix4d amatrix4d;
     amatrix4d = anet;
-  } catch (const dg::ExceptionAbstract &aea) {
+  } catch (const dg::ExceptionAbstract& aea) {
     res = (aea.getCode() == dg::ExceptionAbstract::TOOLS);
   }
   BOOST_CHECK(res);
@@ -404,7 +404,7 @@ BOOST_AUTO_TEST_CASE(value_values) {
   BOOST_CHECK_EQUAL(vvalues.type(), Value::VALUES);
 
   {  // Const ref
-    const Values &vs = vvalues.constValuesValue();
+    const Values& vs = vvalues.constValuesValue();
     BOOST_CHECK_EQUAL(vs.size(), values.size());
     BOOST_CHECK(vs == values);
   }

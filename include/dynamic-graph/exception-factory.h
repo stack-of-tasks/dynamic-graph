@@ -32,15 +32,15 @@ class DYNAMIC_GRAPH_DLLAPI ExceptionFactory : public ExceptionAbstract {
 
   static const std::string EXCEPTION_NAME;
 
-  explicit ExceptionFactory(const ExceptionFactory::ErrorCodeEnum &errcode,
-                            const std::string &msg = "");
+  explicit ExceptionFactory(const ExceptionFactory::ErrorCodeEnum& errcode,
+                            const std::string& msg = "");
 
-  ExceptionFactory(const ExceptionFactory::ErrorCodeEnum &errcode,
-                   const std::string &msg, const char *format, ...);
+  ExceptionFactory(const ExceptionFactory::ErrorCodeEnum& errcode,
+                   const std::string& msg, const char* format, ...);
 
   virtual ~ExceptionFactory() throw() {}
 
-  virtual const std::string &getExceptionName() const {
+  virtual const std::string& getExceptionName() const {
     return ExceptionFactory::EXCEPTION_NAME;
   }
 };

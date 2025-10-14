@@ -33,8 +33,8 @@ namespace dynamicgraph {
 class CustomEntity : public Entity {
  public:
   static const std::string CLASS_NAME;
-  virtual const std::string &getClassName() const { return CLASS_NAME; }
-  explicit CustomEntity(const std::string &n) : Entity(n) {
+  virtual const std::string& getClassName() const { return CLASS_NAME; }
+  explicit CustomEntity(const std::string& n) : Entity(n) {
     dynamicgraph::dgDEBUGFLOW.openFile("/tmp/dynamic-graph-traces.txt");
   }
   ~CustomEntity() {
@@ -59,13 +59,13 @@ DYNAMICGRAPH_FACTORY_ENTITY_PLUGIN(CustomEntity, "CustomEntity");
 BOOST_AUTO_TEST_CASE(testDebugTrace) {
   BOOST_CHECK_EQUAL(dynamicgraph::CustomEntity::CLASS_NAME, "CustomEntity");
 
-  dynamicgraph::CustomEntity *ptr_entity =
-      (dynamic_cast<dynamicgraph::CustomEntity *>(
+  dynamicgraph::CustomEntity* ptr_entity =
+      (dynamic_cast<dynamicgraph::CustomEntity*>(
           dynamicgraph::FactoryStorage::getInstance()->newEntity("CustomEntity",
 
                                                                  "my-entity")));
 
-  dynamicgraph::CustomEntity &entity = *ptr_entity;
+  dynamicgraph::CustomEntity& entity = *ptr_entity;
   entity.testDebugTrace();
 
   /// Copy the debug file into the oss_debug_file

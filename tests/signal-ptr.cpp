@@ -35,26 +35,26 @@ template <class T>
 class DummyClass {
  public:
   std::string proname;
-  std::list<sigDouble_t *> inputsig;
-  std::list<sigString_t *> inputsigV;
+  std::list<sigDouble_t*> inputsig;
+  std::list<sigString_t*> inputsigV;
 
-  explicit DummyClass(const std::string &n)
+  explicit DummyClass(const std::string& n)
       : proname(n), res(), call(), timedata() {}
 
-  T &fun(T &res, int t) {
+  T& fun(T& res, int t) {
     ++call;
     timedata = t;
 
-    BOOST_FOREACH (sigDouble_t *ptr, inputsig) ptr->access(timedata);
+    BOOST_FOREACH (sigDouble_t* ptr, inputsig) ptr->access(timedata);
 
-    BOOST_FOREACH (sigString_t *ptr, inputsigV) ptr->access(timedata);
+    BOOST_FOREACH (sigString_t* ptr, inputsigV) ptr->access(timedata);
 
     res = (*this)();
     return res;
   }
 
-  void add(sigDouble_t &sig) { inputsig.push_back(&sig); }
-  void add(sigString_t &sig) { inputsigV.push_back(&sig); }
+  void add(sigDouble_t& sig) { inputsig.push_back(&sig); }
+  void add(sigString_t& sig) { inputsigV.push_back(&sig); }
 
   T operator()();
 
@@ -86,7 +86,7 @@ BOOST_AUTO_TEST_CASE(normal_cst_test) {
 
   try {
     sigNotPlug.getPtr();
-  } catch (ExceptionSignal &e) {
+  } catch (ExceptionSignal& e) {
     cout << "Error catch" << std::endl;
   }
 
@@ -96,7 +96,7 @@ BOOST_AUTO_TEST_CASE(normal_cst_test) {
   try {
     //    Signal<double, int> * r =
     sigNotPlug.getPtr();
-  } catch (const ExceptionSignal &aea) {
+  } catch (const ExceptionSignal& aea) {
     res = (aea.getCode() == ExceptionSignal::NOT_INITIALIZED);
   }
   BOOST_CHECK(res);
@@ -104,7 +104,7 @@ BOOST_AUTO_TEST_CASE(normal_cst_test) {
   /// Testing const getPtr() interface: no plug case
   try {
     cstSigNotPlug.getPtr();
-  } catch (const ExceptionSignal &aea) {
+  } catch (const ExceptionSignal& aea) {
     res = (aea.getCode() == ExceptionSignal::NOT_INITIALIZED);
   }
   BOOST_CHECK(res);
@@ -133,7 +133,7 @@ BOOST_AUTO_TEST_CASE(normal_test) {
   std::string test = "test";
   try {
     sig.getClassName(test);
-  } catch (ExceptionSignal &e) {
+  } catch (ExceptionSignal& e) {
     e.getExceptionName();
   }
   BOOST_CHECK(true);
@@ -142,9 +142,9 @@ BOOST_AUTO_TEST_CASE(normal_test) {
   sigPtrA.recompute(3);
 
   /// Plugging signal.
-  SignalBase<int> &sigRef = sig, sigBase("sigBase");
-  SignalBase<int> &sigPtrARef = sigPtrA, &sigPtrBRef = sigPtrB,
-                  &sigPtrAbstractRef = sigPtrAbstract;
+  SignalBase<int>&sigRef = sig, sigBase("sigBase");
+  SignalBase<int>&sigPtrARef = sigPtrA, &sigPtrBRef = sigPtrB,
+  &sigPtrAbstractRef = sigPtrAbstract;
   sigPtrARef.plug(0);
   sigPtrARef.plug(&sigRef);
   sigPtrBRef.plug(&sigPtrARef);
@@ -243,7 +243,7 @@ BOOST_AUTO_TEST_CASE(set_signal_string) {
   std::istringstream value(os.str());
   try {
     s.set(value);
-  } catch (const std::exception &exc) {
+  } catch (const std::exception& exc) {
     std::cout << exc.what() << std::endl;
     BOOST_CHECK(!(bool)("Tentative to set signal to empty string"));
   }

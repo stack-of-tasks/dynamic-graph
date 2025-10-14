@@ -21,13 +21,13 @@ class DYNAMIC_GRAPH_DLLAPI ExceptionTraces : public ExceptionAbstract {
 
   static const std::string EXCEPTION_NAME;
 
-  explicit ExceptionTraces(const ExceptionTraces::ErrorCodeEnum &errcode,
-                           const std::string &msg = "");
-  ExceptionTraces(const ExceptionTraces::ErrorCodeEnum &errcode,
-                  const std::string &msg, const char *format, ...);
+  explicit ExceptionTraces(const ExceptionTraces::ErrorCodeEnum& errcode,
+                           const std::string& msg = "");
+  ExceptionTraces(const ExceptionTraces::ErrorCodeEnum& errcode,
+                  const std::string& msg, const char* format, ...);
   virtual ~ExceptionTraces() throw() {}
 
-  virtual const std::string &getExceptionName() const { return EXCEPTION_NAME; }
+  virtual const std::string& getExceptionName() const { return EXCEPTION_NAME; }
 };
 }  // end of namespace dynamicgraph.
 

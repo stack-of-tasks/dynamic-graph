@@ -29,8 +29,8 @@ class DYNAMIC_GRAPH_DLLAPI CPUData {
   CPUData();
   int cpu_id_;
 
-  inline unsigned long long int computePeriod(unsigned long long int &a,
-                                              unsigned long long int &b) {
+  inline unsigned long long int computePeriod(unsigned long long int& a,
+                                              unsigned long long int& b) {
     return (a > b) ? a - b : 0;
   }
 
@@ -99,12 +99,12 @@ class DYNAMIC_GRAPH_DLLAPI CPUData {
   /// @}
 
   double percent_;
-  void ProcessLine(std::istringstream &aCPULine);
+  void ProcessLine(std::istringstream& aCPULine);
 
   friend class boost::serialization::access;
 
   template <class Archive>
-  void serialize(Archive &ar, const unsigned int version) {
+  void serialize(Archive& ar, const unsigned int version) {
     ar & version;
     ar & total_time_;
     ar & user_mode_time_;
@@ -144,7 +144,7 @@ class DYNAMIC_GRAPH_DLLAPI System {
   /// Number of CPU.
   unsigned int cpuNb_;
 
-  void ProcessCPULine(unsigned int cpunb, std::istringstream &aCPULine);
+  void ProcessCPULine(unsigned int cpunb, std::istringstream& aCPULine);
 
   /// \brief Vector of CPU informations.
   std::vector<CPUData> vCPUData_;
@@ -153,7 +153,7 @@ class DYNAMIC_GRAPH_DLLAPI System {
   CPUData gCPUData_;
 
   template <class Archive>
-  void serialize(Archive &ar, const unsigned int version) {
+  void serialize(Archive& ar, const unsigned int version) {
     ar & version;
     ar & cpuNb_;
     ar & gCPUData_;

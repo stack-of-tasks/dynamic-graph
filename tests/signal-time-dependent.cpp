@@ -24,26 +24,26 @@ template <class T>
 class DummyClass {
  public:
   std::string proname;
-  std::list<sigDouble_t *> inputsig;
-  std::list<sigString_t *> inputsigV;
+  std::list<sigDouble_t*> inputsig;
+  std::list<sigString_t*> inputsigV;
 
-  explicit DummyClass(const std::string &n)
+  explicit DummyClass(const std::string& n)
       : proname(n), res(), call(), timedata() {}
 
-  T &fun(T &res, int t) {
+  T& fun(T& res, int t) {
     ++call;
     timedata = t;
 
-    BOOST_FOREACH (sigDouble_t *ptr, inputsig) ptr->access(timedata);
+    BOOST_FOREACH (sigDouble_t* ptr, inputsig) ptr->access(timedata);
 
-    BOOST_FOREACH (sigString_t *ptr, inputsigV) ptr->access(timedata);
+    BOOST_FOREACH (sigString_t* ptr, inputsigV) ptr->access(timedata);
 
     res = (*this)();
     return res;
   }
 
-  void add(sigDouble_t &sig) { inputsig.push_back(&sig); }
-  void add(sigString_t &sig) { inputsigV.push_back(&sig); }
+  void add(sigDouble_t& sig) { inputsig.push_back(&sig); }
+  void add(sigString_t& sig) { inputsigV.push_back(&sig); }
 
   T operator()();
 
@@ -225,7 +225,7 @@ BOOST_AUTO_TEST_CASE(signaltimedependent) {
 
   sig1.removeDependency(sig3);
   BOOST_CHECK(true);
-  const double &avalue = sig1(6);
+  const double& avalue = sig1(6);
   output << avalue;
   BOOST_CHECK(true);
 }

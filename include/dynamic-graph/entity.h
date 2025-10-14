@@ -37,7 +37,7 @@
 /// this macro are correctly initialized.
 #define DYNAMIC_GRAPH_ENTITY_DECL()                                      \
  public:                                                                 \
-  virtual const std::string &getClassName() const { return CLASS_NAME; } \
+  virtual const std::string& getClassName() const { return CLASS_NAME; } \
   static const std::string CLASS_NAME
 
 namespace dynamicgraph {
@@ -51,14 +51,14 @@ namespace dynamicgraph {
 /// DYNAMICGRAPH_FACTORY_ENTITY_PLUGIN macro in factory.h.
 class DYNAMIC_GRAPH_DLLAPI Entity : private boost::noncopyable {
  public:
-  typedef std::map<std::string, SignalBase<sigtime_t> *> SignalMap;
-  typedef std::map<const std::string, command::Command *> CommandMap_t;
+  typedef std::map<std::string, SignalBase<sigtime_t>*> SignalMap;
+  typedef std::map<const std::string, command::Command*> CommandMap_t;
 
-  explicit Entity(const std::string &name);
+  explicit Entity(const std::string& name);
   virtual ~Entity();
 
-  const std::string &getName() const { return name; }
-  virtual const std::string &getClassName() const {
+  const std::string& getName() const { return name; }
+  virtual const std::string& getClassName() const {
     static std::string ret("Entity");
     return ret;
   }
@@ -70,49 +70,49 @@ class DYNAMIC_GRAPH_DLLAPI Entity : private boost::noncopyable {
   /** \brief Test if a signal of name signame is present.
       \return True if the signal is present, False otherwise
    */
-  bool hasSignal(const std::string &signame) const;
+  bool hasSignal(const std::string& signame) const;
 
   /** \brief Provides a reference to the signal named signalName.
       \param signalName: Name of the signal
       \return A reference to the signal with a temporal dependency.
    */
-  SignalBase<sigtime_t> &getSignal(const std::string &signalName);
+  SignalBase<sigtime_t>& getSignal(const std::string& signalName);
 
   /** \brief Provides a const reference to the signal named signalName.
       \param signalName: Name of the signal
       \return A const reference to the signal with a temporal dependency.
    */
-  const SignalBase<sigtime_t> &getSignal(const std::string &signalName) const;
+  const SignalBase<sigtime_t>& getSignal(const std::string& signalName) const;
 
   /** \brief Display the list of signals of this entity in output stream os.
       \param os: the output stream where to display the list of signals.
       \returns The output stream given in parameter.
   */
-  std::ostream &displaySignalList(std::ostream &os) const;
+  std::ostream& displaySignalList(std::ostream& os) const;
 
   /** \brief This method is used to write down in os the edges of the graph
       by calling the signals writeGraph method.
       \param os: The output stream where to write the informations.
       \return os: The output stream.
    */
-  virtual std::ostream &writeGraph(std::ostream &os) const;
+  virtual std::ostream& writeGraph(std::ostream& os) const;
 
   /** \brief This method is used write in the output stream os the
       signals names and the commands of the entity.
       \param os: The output stream where to write the list of objects
       related to the entity.
    */
-  virtual std::ostream &writeCompletionList(std::ostream &os) const;
+  virtual std::ostream& writeCompletionList(std::ostream& os) const;
 
   /** \brief Display information on the entity inside the output stream os.
    */
-  virtual void display(std::ostream &os) const;
+  virtual void display(std::ostream& os) const;
 
-  virtual SignalBase<sigtime_t> *test() { return 0; }
+  virtual SignalBase<sigtime_t>* test() { return 0; }
 
-  virtual void test2(SignalBase<sigtime_t> *) { return; }
+  virtual void test2(SignalBase<sigtime_t>*) { return; }
 
-  const std::string &getCommandList() const;
+  const std::string& getCommandList() const;
 
   /** \brief Provides the std::map where all the commands are registered
       \returns A map of pointers towards Command objects
@@ -121,7 +121,7 @@ class DYNAMIC_GRAPH_DLLAPI Entity : private boost::noncopyable {
   /** \brief Provides the pointer towards the Command object cmdName.
       \param cmdName: Name of the command
   */
-  command::Command *getNewStyleCommand(const std::string &cmdName);
+  command::Command* getNewStyleCommand(const std::string& cmdName);
 
   /** \brief Provides a map of all the signals.
       \returns A copy of the map with all the pointers towards
@@ -132,13 +132,13 @@ class DYNAMIC_GRAPH_DLLAPI Entity : private boost::noncopyable {
   /// \name Logger related methods
   /// \{
 
-  Logger &logger() { return logger_; };
-  Logger const &logger() const { return logger_; };
+  Logger& logger() { return logger_; };
+  Logger const& logger() const { return logger_; };
 
   /// \brief Send messages \c msg with level \c t.
   /// Add string file and line to message.
-  void sendMsg(const std::string &msg, MsgType t = MSG_TYPE_INFO,
-               const std::string &lineId = "");
+  void sendMsg(const std::string& msg, MsgType t = MSG_TYPE_INFO,
+               const std::string& lineId = "");
 
   /// \brief Specify the verbosity level of the logger.
   void setLoggerVerbosityLevel(LoggerVerbosity lv) { logger_.setVerbosity(lv); }
@@ -163,13 +163,13 @@ class DYNAMIC_GRAPH_DLLAPI Entity : private boost::noncopyable {
   /// \}
 
  protected:
-  void addCommand(const std::string &name, command::Command *command);
+  void addCommand(const std::string& name, command::Command* command);
 
   void entityRegistration();
   void entityDeregistration();
 
-  void signalRegistration(const SignalArray<sigtime_t> &signals);
-  void signalDeregistration(const std::string &name);
+  void signalRegistration(const SignalArray<sigtime_t>& signals);
+  void signalDeregistration(const std::string& name);
 
   std::string name;
   SignalMap signalMap;
@@ -177,8 +177,8 @@ class DYNAMIC_GRAPH_DLLAPI Entity : private boost::noncopyable {
   Logger logger_;
 };
 
-DYNAMIC_GRAPH_DLLAPI std::ostream &operator<<(std::ostream &os,
-                                              const dynamicgraph::Entity &ent);
+DYNAMIC_GRAPH_DLLAPI std::ostream& operator<<(std::ostream& os,
+                                              const dynamicgraph::Entity& ent);
 }  // end of namespace dynamicgraph
 
 #endif  //! DYNAMIC_GRAPH_ENTITY_H
